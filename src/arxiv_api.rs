@@ -1,5 +1,34 @@
 use arxiv::{Arxiv, ArxivQueryBuilder};
 
+struct SearchQuery {
+    title: String,
+    author: String,
+    paper_abstract: String,
+    comment: String,
+    journal_reference: String,
+    report_number: String,
+    id: String,
+    all_categories: String,
+}
+
+impl SearchQuery {
+    fn new() -> SearchQuery {
+        SearchQuery {
+            title: String::new(),
+            author: String::new(),
+            paper_abstract: String::new(),
+            comment: String::new(),
+            journal_reference: String::new(),
+            report_number: String::new(),
+            id: String::new(),
+            all_categories: String::new(),
+        }
+    }
+    fn title(&self) -> Self {
+        todo!()
+    }
+}
+
 #[tokio::main]
 pub async fn get_papers() -> Vec<Arxiv> {
     let query = ArxivQueryBuilder::new()

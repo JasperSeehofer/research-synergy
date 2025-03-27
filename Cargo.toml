@@ -4,3 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+arxiv-rs = "0.1.5"
+futures = "0.3.31"
+anyhow = "1.0.97"
+tokio = { version = "1.44.1", features = ["full"] }

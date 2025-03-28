@@ -5,5 +5,5 @@ fn main() {
     for arxiv in arxivs.iter() {
         println!("{:?}", arxiv.title);
     }
-    println!("Hello World");
+    println!("{:?}", arxivs[0]);
 }

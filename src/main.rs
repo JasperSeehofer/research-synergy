@@ -1,9 +1,13 @@
-mod arxiv_api;
+mod data_aggregation;
+mod datamodels;
+use datamodels::paper::Paper;
 
 fn main() {
-    let arxivs = arxiv_api::get_papers();
+    let arxivs = data_aggregation::arxiv_api::get_papers();
     for arxiv in arxivs.iter() {
         println!("{:?}", arxiv.title);
     }
-    println!("{:?}", arxivs[0]);
+    let paper: Paper = Paper::from_arxiv_paper(&arxivs[0]);
+
+    println!("{}", paper);
 }

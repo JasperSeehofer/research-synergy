@@ -3,14 +3,14 @@ use std::fmt;
 use arxiv::Arxiv;
 
 pub struct Paper {
-    title: String,
-    authors: Vec<String>,
-    summary: String,
-    id: String,
-    last_updated: String,
-    published: String,
-    pdf_url: String,
-    comment: Option<String>,
+    pub title: String,
+    pub authors: Vec<String>,
+    pub summary: String,
+    pub id: String,
+    pub last_updated: String,
+    pub published: String,
+    pub pdf_url: String,
+    pub comment: Option<String>,
 }
 
 impl Paper {
@@ -46,7 +46,7 @@ impl fmt::Display for Paper {
         shortened_summary.push_str("...");
         write!(
             f,
-            " __________________\n/_| PAPER\n| Title: {}\n| Authors: {}\n| Summary: {}\n| ID: {}\n| Last updated: {}\n| Published: {}\n| PDF URL: {}\n| Comment: {}\n|_______________",
+            "___________________\n| PAPER\n| Title: {}\n| Authors: {}\n| Summary: {}\n| ID: {}\n| Last updated: {}\n| Published: {}\n| PDF URL: {}\n| Comment: {}\n|_______________",
             self.title.replace("\n", ""),
             self.authors.join(", "),
             shortened_summary,

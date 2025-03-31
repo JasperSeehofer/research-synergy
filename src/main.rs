@@ -29,5 +29,9 @@ fn main() {
     if !arxivs.is_empty() {
         let paper: Paper = Paper::from_arxiv_paper(&arxivs[0]);
         println!("{}", paper);
+        let document_text = data_aggregation::pdf_parser::parse_pdf(&paper.pdf_url);
+        for page_text in document_text.iter() {
+            println!("{}", page_text);
+        }
     }
 }

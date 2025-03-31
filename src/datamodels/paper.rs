@@ -46,8 +46,8 @@ impl fmt::Display for Paper {
         shortened_summary.push_str("...");
         write!(
             f,
-            "Paper Information\nTitle: {}\nAuthors: {}\nSummary: {}\nID: {}\nLast updated: {}\nPublished: {}\nPDF URL: {}\nComment: {}",
-            self.title,
+            " __________________\n/_| PAPER\n| Title: {}\n| Authors: {}\n| Summary: {}\n| ID: {}\n| Last updated: {}\n| Published: {}\n| PDF URL: {}\n| Comment: {}\n|_______________",
+            self.title.replace("\n", ""),
             self.authors.join(", "),
             shortened_summary,
             self.id,

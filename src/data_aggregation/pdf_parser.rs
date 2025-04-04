@@ -30,7 +30,7 @@ async fn download_pdf(pdf_url: &str) -> Result<Vec<u8>, Error> {
         Err(e) => return Err(e),
     };
 
-    let mut dest = File::create("./paper.pdf").expect("File not created.");
+    let mut dest = File::create("./saved_papers/paper.pdf").expect("File not created.");
     let _ = dest.write_all(&content);
     Ok(Vec::from(content))
 }

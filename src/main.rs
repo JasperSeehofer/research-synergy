@@ -1,7 +1,8 @@
 mod data_aggregation;
 mod datamodels;
 use data_aggregation::search_query_handler::SearchQueryHandler;
-use datamodels::paper::Paper;
+use datamodels::paper::{self, Paper};
+use scraper::Selector;
 
 fn main() {
     let search_query_handler: SearchQueryHandler = SearchQueryHandler::new()
@@ -15,7 +16,7 @@ fn main() {
         .comment("")
         .all_categories("");
 
-    let arxivs = data_aggregation::arxiv_api::get_papers(
+    let arxiv_papers = data_aggregation::arxiv_api::get_papers(
         search_query_handler,
         0,
         100,
@@ -23,15 +24,15 @@ fn main() {
         "descending",
     );
 
-    for arxiv in arxivs.iter() {
-        println!("{:?}", arxiv.title);
+    let mut papers: Vec<Paper> = Vec::new();
+    for arxiv_paper in arxiv_papers.iter() {
+        papers.push(Paper::from_arxiv_paper(arxiv_paper));
     }
-    if !arxivs.is_empty() {
-        let paper: Paper = Paper::from_arxiv_paper(&arxivs[0]);
-        println!("{}", paper);
-        let document_text = data_aggregation::pdf_parser::parse_pdf(&paper.pdf_url);
-        for page_text in document_text.iter() {
-            println!("{}", page_text);
-        }
-    }
+    let sample_paper = &papers[0];
+    let paper_references = data_aggregation::html_parser::get_references_for_arxiv_paper(
+        &sample_paper
+            .pdf_url
+            .replace(".pdf", "")
+            .replace("pdf", "html"),
+    );
 }

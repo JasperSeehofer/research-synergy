@@ -1,6 +1,4 @@
 use anyhow::Result;
-use std::{fs::File, io::Write};
-
 use lopdf::Document;
 use reqwest::{self, Error};
 
@@ -29,8 +27,5 @@ async fn download_pdf(pdf_url: &str) -> Result<Vec<u8>, Error> {
         Ok(content) => content,
         Err(e) => return Err(e),
     };
-
-    let mut dest = File::create("./saved_papers/paper.pdf").expect("File not created.");
-    let _ = dest.write_all(&content);
     Ok(Vec::from(content))
 }

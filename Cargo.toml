@@ -10,3 +10,4 @@ anyhow = "1.0.97"
 tokio = { version = "1.44.1", features = ["full"] }
 lopdf = "0.36.0"
 reqwest = "0.12.15"
+scraper = "0.23.1"

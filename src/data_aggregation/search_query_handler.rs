@@ -110,7 +110,6 @@ impl SearchQueryHandler {
 
 #[cfg(test)]
 mod test {
-    use crate::data_aggregation::search_query_handler;
 
     #[test]
     fn test_get_arxiv_search_query_string() {
@@ -120,7 +119,7 @@ mod test {
 
         assert_eq!(
             search_query_handler.get_arxiv_search_query_string(),
-            String::from("ti:dark+sirens")
+            String::from("ti:%22dark+sirens%22")
         );
 
         let search_query_handler_several_fields = SearchQueryHandler::new()
@@ -129,7 +128,7 @@ mod test {
 
         assert_eq!(
             search_query_handler_several_fields.get_arxiv_search_query_string(),
-            String::from("ti:dark+sirens+AND+au:Bob+Ross")
+            String::from("ti:%22dark+sirens%22+AND+au:%22Bob+Ross%22")
         );
     }
     #[test]

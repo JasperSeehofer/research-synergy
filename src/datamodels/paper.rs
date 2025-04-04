@@ -1,3 +1,5 @@
+use reqwest;
+use scraper::{Html, Selector};
 use std::fmt;
 
 use arxiv::Arxiv;
@@ -11,6 +13,7 @@ pub struct Paper {
     pub published: String,
     pub pdf_url: String,
     pub comment: Option<String>,
+    pub references: Vec<Reference>,
 }
 
 impl Paper {
@@ -24,6 +27,7 @@ impl Paper {
             published: String::new(),
             pdf_url: String::new(),
             comment: Option::default(),
+            references: Vec::new(),
         }
     }
     pub fn from_arxiv_paper(arxiv_paper: &Arxiv) -> Paper {
@@ -36,6 +40,7 @@ impl Paper {
             published: arxiv_paper.published.clone(),
             pdf_url: arxiv_paper.pdf_url.clone(),
             comment: arxiv_paper.comment.clone(),
+            references: Vec::new(),
         }
     }
 }
@@ -56,5 +61,21 @@ impl fmt::Display for Paper {
             self.pdf_url,
             self.comment.clone().unwrap_or_default(),
         )
+    }
+}
+
+pub struct Reference {
+    author: String,
+    title: String,
+    link: String,
+}
+
+impl Reference {
+    pub fn new() -> Reference {
+        Reference {
+            author: String::new(),
+            title: String::new(),
+            link: String::new(),
+        }
     }
 }

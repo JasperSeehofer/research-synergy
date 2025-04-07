@@ -1,6 +1,6 @@
 use reqwest;
 use scraper::{Html, Selector};
-use std::fmt;
+use std::fmt::{self, Display};
 
 use arxiv::Arxiv;
 
@@ -65,9 +65,9 @@ impl fmt::Display for Paper {
 }
 
 pub struct Reference {
-    author: String,
-    title: String,
-    link: String,
+    pub author: String,
+    pub title: String,
+    pub links: Vec<Link>,
 }
 
 impl Reference {
@@ -75,7 +75,79 @@ impl Reference {
         Reference {
             author: String::new(),
             title: String::new(),
-            link: String::new(),
+            links: Vec::new(),
+        }
+    }
+}
+
+impl Display for Reference {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        writeln!(f, "Author: {}", self.author)?;
+        writeln!(f, "Title: {}", self.title)?;
+
+        if !self.links.is_empty() {
+            writeln!(f, "Links:")?;
+            for link in &self.links {
+                writeln!(f, "- {}", link)?;
+            }
+        }
+        Ok(())
+    }
+}
+
+pub struct Link {
+    url: String,
+    journal: Journal,
+}
+
+impl Link {
+    pub fn new() -> Link {
+        Link {
+            url: String::new(),
+            journal: Journal::new(),
+        }
+    }
+    pub fn from_url(url: &str) -> Link {
+        Link {
+            url: url.to_string(),
+            journal: Journal::from_url(url),
+        }
+    }
+}
+
+impl Display for Link {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{} ({})", self.url, self.journal)
+    }
+}
+
+pub enum Journal {
+    Arxiv,
+    Nature,
+    PhysRev,
+    Unkown,
+}
+
+impl Journal {
+    pub fn new() -> Journal {
+        Journal::Unkown
+    }
+    pub fn from_url(url: &str) -> Journal {
+        if url.contains("arxiv") {
+            Journal::Arxiv
+        } else {
+            Journal::Unkown
+        }
+    }
+}
+
+impl Display for Journal {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Journal::Arxiv => write!(f, "arXiv"),
+            Journal::Nature => write!(f, "Nature"),
+            Journal::PhysRev => write!(f, "Phys. Rev."),
+            Journal::Unkown => write!(f, "unknown"),
         }
     }
 }

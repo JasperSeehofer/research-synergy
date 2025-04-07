@@ -1,8 +1,8 @@
 mod data_aggregation;
+use std::collections::HashSet;
 mod datamodels;
 use data_aggregation::search_query_handler::SearchQueryHandler;
 use datamodels::paper::{self, Paper};
-use scraper::Selector;
 
 fn main() {
     let search_query_handler: SearchQueryHandler = SearchQueryHandler::new()
@@ -19,20 +19,25 @@ fn main() {
     let arxiv_papers = data_aggregation::arxiv_api::get_papers(
         search_query_handler,
         0,
-        100,
+        1,
         "submittedDate",
         "descending",
-    );
+    )
+    .unwrap_or_default();
 
-    let mut papers: Vec<Paper> = Vec::new();
-    for arxiv_paper in arxiv_papers.iter() {
-        papers.push(Paper::from_arxiv_paper(arxiv_paper));
+    let paper = Paper::from_arxiv_paper(&arxiv_papers[0]);
+
+    println!("{}", paper.id);
+    let paper_id = "2503.18887";
+    let arxiv_paper_by_id =
+        data_aggregation::arxiv_api::get_paper_by_id(paper_id).unwrap_or_default();
+
+    let paper_by_id = Paper::from_arxiv_paper(&arxiv_paper_by_id);
+
+    let referenced_papers =
+        data_aggregation::arxiv_utils::recursive_paper_search_by_references(&paper_by_id.id, 5);
+
+    for paper in referenced_papers {
+        println!("{}", paper);
     }
-    let sample_paper = &papers[0];
-    let paper_references = data_aggregation::html_parser::get_references_for_arxiv_paper(
-        &sample_paper
-            .pdf_url
-            .replace(".pdf", "")
-            .replace("pdf", "html"),
-    );
 }

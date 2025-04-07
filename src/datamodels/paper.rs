@@ -1,8 +1,5 @@
-use reqwest;
-use scraper::{Html, Selector};
-use std::fmt::{self, Display};
-
 use arxiv::Arxiv;
+use std::fmt::{self, Display};
 
 pub struct Paper {
     pub title: String,
@@ -35,13 +32,20 @@ impl Paper {
             title: arxiv_paper.title.clone(),
             authors: arxiv_paper.authors.clone(),
             summary: arxiv_paper.summary.clone(),
-            id: arxiv_paper.id.clone(),
+            id: arxiv_paper.id.split("/").last().unwrap().to_string(),
             last_updated: arxiv_paper.updated.clone(),
             published: arxiv_paper.published.clone(),
             pdf_url: arxiv_paper.pdf_url.clone(),
             comment: arxiv_paper.comment.clone(),
             references: Vec::new(),
         }
+    }
+    pub fn get_arxiv_references_ids(&self) -> Vec<String> {
+        self.references
+            .iter()
+            .map(|x| x.get_arxiv_id().unwrap_or(String::new()))
+            .filter(|x| !x.is_empty())
+            .collect()
     }
 }
 impl fmt::Display for Paper {
@@ -76,6 +80,16 @@ impl Reference {
             author: String::new(),
             title: String::new(),
             links: Vec::new(),
+        }
+    }
+    pub fn get_arxiv_id(&self) -> Result<String, ()> {
+        let link: Option<&Link> = self
+            .links
+            .iter()
+            .find(|link| matches!(link.journal, Journal::Arxiv));
+        match link {
+            Some(existing_link) => Ok(existing_link.url.split("/").last().unwrap().to_string()),
+            None => Err(()),
         }
     }
 }

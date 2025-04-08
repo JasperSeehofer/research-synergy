@@ -35,7 +35,7 @@ fn main() {
     let paper_by_id = Paper::from_arxiv_paper(&arxiv_paper_by_id);
 
     let referenced_papers =
-        data_aggregation::arxiv_utils::recursive_paper_search_by_references(&paper_by_id.id, 5);
+        data_aggregation::arxiv_utils::recursive_paper_search_by_references(&paper_by_id.id, 3);
 
     for paper in referenced_papers {
         println!("{}", paper);

@@ -76,12 +76,19 @@ pub fn recursive_paper_search_by_references(paper_id: &str, max_depth: usize) ->
             referenced_paper_ids.len()
         );
         for paper_id in referenced_paper_ids {
-            visited_papers.insert(paper_id.clone());
+            if visited_papers.contains(&paper_id) {
+                println!(
+                    "Already encountered paper with id {}. Continue...",
+                    paper_id
+                );
+            } else {
+                visited_papers.insert(paper_id.clone());
+            }
 
             let mut paper = Paper::from_arxiv_paper(&get_paper_by_id(&paper_id).unwrap());
 
             aggregate_references_for_arxiv_paper(&mut paper);
-
+            println!("Paper has {} references.", paper.references.len());
             let mut arxiv_paper_ids: Vec<String> = paper.get_arxiv_references_ids();
 
             new_referenced_papers.append(&mut arxiv_paper_ids);

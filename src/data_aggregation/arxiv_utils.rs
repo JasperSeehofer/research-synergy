@@ -1,4 +1,4 @@
-use crate::data_aggregation::html_parser::parse_html;
+use crate::data_aggregation::html_parser::{parse_html, ArxivHTMLDownloader};
 use crate::paper::{Link, Paper, Reference};
 use scraper::{ElementRef, Selector};
 use std::collections::HashSet;
@@ -67,6 +67,7 @@ pub fn recursive_paper_search_by_references(paper_id: &str, max_depth: usize) ->
     let mut depth = 1;
     let mut referenced_paper_ids: Vec<String> = Vec::new();
     let mut new_referenced_papers: Vec<String> = Vec::new();
+    let mut arxiv_api_downloader = ArxivHTMLDownloader::new();
     referenced_paper_ids.push(paper_id.to_string());
 
     while depth <= max_depth {
@@ -85,6 +86,7 @@ pub fn recursive_paper_search_by_references(paper_id: &str, max_depth: usize) ->
                 visited_papers.insert(paper_id.clone());
             }
 
+            arxiv_api_downloader.rate_limit_check();
             let mut paper = Paper::from_arxiv_paper(&get_paper_by_id(&paper_id).unwrap());
 
             aggregate_references_for_arxiv_paper(&mut paper);

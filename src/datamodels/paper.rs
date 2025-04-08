@@ -1,6 +1,7 @@
 use arxiv::Arxiv;
 use std::fmt::{self, Display};
 
+#[derive(Clone)]
 pub struct Paper {
     pub title: String,
     pub authors: Vec<String>,
@@ -43,7 +44,7 @@ impl Paper {
     pub fn get_arxiv_references_ids(&self) -> Vec<String> {
         self.references
             .iter()
-            .map(|x| x.get_arxiv_id().unwrap_or(String::new()))
+            .map(|x| x.get_arxiv_id().unwrap_or_default())
             .filter(|x| !x.is_empty())
             .collect()
     }
@@ -68,6 +69,7 @@ impl fmt::Display for Paper {
     }
 }
 
+#[derive(Clone)]
 pub struct Reference {
     pub author: String,
     pub title: String,
@@ -109,6 +111,7 @@ impl Display for Reference {
     }
 }
 
+#[derive(Clone)]
 pub struct Link {
     url: String,
     journal: Journal,
@@ -135,6 +138,7 @@ impl Display for Link {
     }
 }
 
+#[derive(Clone)]
 pub enum Journal {
     Arxiv,
     Nature,

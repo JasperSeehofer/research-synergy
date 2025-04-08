@@ -1,11 +1,14 @@
 mod data_aggregation;
-use std::collections::HashSet;
+mod data_processing;
 mod datamodels;
-use data_aggregation::search_query_handler::SearchQueryHandler;
-use datamodels::paper::{self, Paper};
+mod visualization;
+use datamodels::{
+    graph::Graph,
+    paper::{self, Paper},
+};
 
 fn main() {
-    let search_query_handler: SearchQueryHandler = SearchQueryHandler::new()
+    /* let search_query_handler: SearchQueryHandler = SearchQueryHandler::new()
         .title("Dark Sirens")
         .author("")
         .paper_abstract("")
@@ -28,6 +31,7 @@ fn main() {
     let paper = Paper::from_arxiv_paper(&arxiv_papers[0]);
 
     println!("{}", paper.id);
+    */
     let paper_id = "2503.18887";
     let arxiv_paper_by_id =
         data_aggregation::arxiv_api::get_paper_by_id(paper_id).unwrap_or_default();
@@ -35,9 +39,13 @@ fn main() {
     let paper_by_id = Paper::from_arxiv_paper(&arxiv_paper_by_id);
 
     let referenced_papers =
-        data_aggregation::arxiv_utils::recursive_paper_search_by_references(&paper_by_id.id, 3);
+        data_aggregation::arxiv_utils::recursive_paper_search_by_references(&paper_by_id.id, 2);
 
-    for paper in referenced_papers {
-        println!("{}", paper);
-    }
+    println!(
+        "Recursive search accumulated {} papers.",
+        referenced_papers.len()
+    );
+
+    let mut paper_graph: Graph =
+        data_processing::graph_creation::create_graph_from_papers(referenced_papers);
 }

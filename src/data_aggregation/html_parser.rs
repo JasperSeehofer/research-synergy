@@ -33,6 +33,8 @@ impl ArxivHTMLDownloader {
                 sleep(remaining);
             }
         }
+
+        self.last_called = Some(now);
     }
 }
 pub fn parse_html(html_url: &str) -> Html {

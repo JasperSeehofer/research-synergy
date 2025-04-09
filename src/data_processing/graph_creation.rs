@@ -8,7 +8,7 @@ pub fn create_graph_from_papers(papers: &Vec<Paper>) -> StableGraph<Paper, f32, 
     let mut paper_graph = StableGraph::<Paper, f32, Directed, u32>::new();
     let mut paper_to_node_id_mapping: HashMap<String, NodeIndex> = HashMap::new();
     for paper in papers {
-        let paper_id = paper.id.trim_end_matches("v1");
+        let paper_id = paper.id.split("v").next().unwrap();
         if paper_to_node_id_mapping.contains_key(paper_id) {
             continue;
         }
@@ -17,7 +17,7 @@ pub fn create_graph_from_papers(papers: &Vec<Paper>) -> StableGraph<Paper, f32, 
     }
 
     for paper in papers {
-        let paper_id = paper.id.trim_end_matches("v1");
+        let paper_id = paper.id.split("v").next().unwrap();
         for arxiv_reference in paper.get_arxiv_references_ids() {
             println!(
                 "Edge from paper id: {} to paper id {}",

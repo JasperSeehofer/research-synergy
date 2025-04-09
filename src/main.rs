@@ -3,9 +3,11 @@ mod data_processing;
 mod datamodels;
 mod visualization;
 use datamodels::{
-    graph::Graph,
+    graph::PaperGraph,
     paper::{self, Paper},
 };
+use eframe::run_native;
+use visualization::graph_app::InteractiveApp;
 
 fn main() {
     /* let search_query_handler: SearchQueryHandler = SearchQueryHandler::new()
@@ -46,6 +48,26 @@ fn main() {
         referenced_papers.len()
     );
 
-    let mut paper_graph: Graph =
-        data_processing::graph_creation::create_graph_from_papers(referenced_papers);
+    let paper_graph: petgraph::prelude::StableGraph<Paper, f32> =
+        data_processing::graph_creation::create_graph_from_papers(&referenced_papers);
+    println!(
+        "paper_graph has {} nodes and {} edges.",
+        paper_graph.node_count(),
+        paper_graph.edge_count()
+    );
+    let native_options = eframe::NativeOptions::default();
+
+    let graph_without_weights = paper_graph.map(|_, _| (), |_, _| ());
+    println!(
+        "paper_graph has {} nodes and {} edges.",
+        graph_without_weights.node_count(),
+        graph_without_weights.edge_count()
+    );
+
+    run_native(
+        "Paper graph interactive",
+        native_options,
+        Box::new(|cc| Ok(Box::new(InteractiveApp::new(cc, graph_without_weights)))),
+    )
+    .unwrap();
 }

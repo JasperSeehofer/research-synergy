@@ -1,20 +1,19 @@
-use std::{thread, time};
+use std::{thread::sleep, time::Duration};
 
 use reqwest;
 use scraper::Html;
+use std::time::Instant;
 
 pub struct ArxivHTMLDownloader {
-    burst_limit: i32,
-    current_request_number: i32,
-    sleep_timer: time::Duration,
+    last_called: Option<Instant>,
+    call_per_duration: Duration,
 }
 
 impl ArxivHTMLDownloader {
     pub fn new() -> ArxivHTMLDownloader {
         ArxivHTMLDownloader {
-            burst_limit: 4,
-            current_request_number: 0,
-            sleep_timer: time::Duration::from_secs(1),
+            last_called: None,
+            call_per_duration: Duration::from_secs(3),
         }
     }
 
@@ -24,12 +23,16 @@ impl ArxivHTMLDownloader {
     }
 
     pub fn rate_limit_check(&mut self) {
-        if self.current_request_number == self.burst_limit {
-            println!("Arxiv API rate limit exceeded. Sleep 1s...");
-            thread::sleep(self.sleep_timer);
-            self.current_request_number = 0
+        let now = Instant::now();
+
+        if let Some(last_call) = self.last_called {
+            let elapsed = now.duration_since(last_call);
+            if elapsed < self.call_per_duration {
+                let remaining = self.call_per_duration - elapsed;
+                println!("Rate limit exceeded. Sleep for {:?}", remaining);
+                sleep(remaining);
+            }
         }
-        self.current_request_number += 1
     }
 }
 pub fn parse_html(html_url: &str) -> Html {

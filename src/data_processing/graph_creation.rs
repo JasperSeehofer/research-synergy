@@ -1,11 +1,38 @@
-use crate::datamodels::graph::Graph;
 use crate::datamodels::paper::Paper;
+use petgraph::prelude::NodeIndex;
+use petgraph::stable_graph::StableGraph;
+use petgraph::{self, Directed};
+use std::collections::HashMap;
 
-pub fn create_graph_from_papers(papers: Vec<Paper>) -> Graph {
-    let mut paper_graph: Graph = Graph::new();
+pub fn create_graph_from_papers(papers: &Vec<Paper>) -> StableGraph<Paper, f32, Directed, u32> {
+    let mut paper_graph = StableGraph::<Paper, f32, Directed, u32>::new();
+    let mut paper_to_node_id_mapping: HashMap<String, NodeIndex> = HashMap::new();
     for paper in papers {
-        paper_graph.push_paper(paper);
+        let paper_id = paper.id.trim_end_matches("v1");
+        if paper_to_node_id_mapping.contains_key(paper_id) {
+            continue;
+        }
+        let node_index: NodeIndex = paper_graph.add_node(paper.clone());
+        paper_to_node_id_mapping.insert(paper_id.to_string(), node_index);
     }
-    paper_graph.remove_open_edges();
+
+    for paper in papers {
+        let paper_id = paper.id.trim_end_matches("v1");
+        for arxiv_reference in paper.get_arxiv_references_ids() {
+            println!(
+                "Edge from paper id: {} to paper id {}",
+                paper_id, arxiv_reference
+            );
+            if paper_to_node_id_mapping.contains_key(paper_id)
+                && paper_to_node_id_mapping.contains_key(&arxiv_reference)
+            {
+                paper_graph.add_edge(
+                    *paper_to_node_id_mapping.get(paper_id).unwrap(),
+                    *paper_to_node_id_mapping.get(&arxiv_reference).unwrap(),
+                    1.0,
+                );
+            }
+        }
+    }
     paper_graph
 }

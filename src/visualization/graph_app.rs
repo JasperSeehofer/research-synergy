@@ -1,29 +1,43 @@
-use eframe;
-use egui;
-use egui_graphs;
-pub struct BasicApp {
-    g: egui_graphs::Graph,
+use eframe::{App, CreationContext};
+use egui::Context;
+use egui_graphs::{
+    DefaultGraphView, Graph, SettingsInteraction, SettingsNavigation, SettingsStyle,
+};
+use petgraph::stable_graph::StableGraph;
+
+pub struct InteractiveApp {
+    g: Graph,
 }
 
-impl BasicApp {
-    fn new(_: &eframe::CreationContext<'_>, graph: egui_graphs::Graph) -> Self {
-        Self { g: graph }
+impl InteractiveApp {
+    pub fn new(_: &CreationContext<'_>, graph: StableGraph<(), ()>) -> Self {
+        let g: Graph = Graph::from(&graph);
+        Self { g }
     }
 }
 
-impl eframe::App for BasicApp {
-    fn update(&mut self, ctx: &egui::Context, _: &mut eframe::Frame) {
+impl App for InteractiveApp {
+    fn update(&mut self, ctx: &Context, _: &mut eframe::Frame) {
         egui::CentralPanel::default().show(ctx, |ui| {
-            ui.add(&mut egui_graphs::GraphView::<
-                (),
-                (),
-                petgraph::Directed,
-                u32,
-                egui_graphs::DefaultNodeShape,
-                egui_graphs::DefaultEdgeShape,
-                egui_graphs::LayoutStateHierarchical,
-                egui_graphs::LayoutHierarchical,
-            >::new(&mut self.g));
+            let interaction_settings = &SettingsInteraction::new()
+                .with_dragging_enabled(true)
+                .with_node_clicking_enabled(true)
+                .with_node_selection_enabled(true)
+                .with_node_selection_multi_enabled(true)
+                .with_edge_clicking_enabled(true)
+                .with_edge_selection_enabled(true)
+                .with_edge_selection_multi_enabled(true);
+            let style_settings = &SettingsStyle::new().with_labels_always(true);
+            let navigation_settings = &SettingsNavigation::new()
+                .with_fit_to_screen_enabled(false)
+                .with_zoom_and_pan_enabled(true);
+
+            ui.add(
+                &mut DefaultGraphView::new(&mut self.g)
+                    .with_styles(style_settings)
+                    .with_interactions(interaction_settings)
+                    .with_navigations(navigation_settings),
+            );
         });
     }
 }

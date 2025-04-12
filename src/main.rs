@@ -7,7 +7,7 @@ use datamodels::{
     paper::{self, Paper},
 };
 use eframe::run_native;
-use visualization::graph_app::InteractiveApp;
+use visualization::force_graph_app::DemoApp;
 
 fn main() {
     /* let search_query_handler: SearchQueryHandler = SearchQueryHandler::new()
@@ -41,7 +41,7 @@ fn main() {
     let paper_by_id = Paper::from_arxiv_paper(&arxiv_paper_by_id);
 
     let referenced_papers =
-        data_aggregation::arxiv_utils::recursive_paper_search_by_references(&paper_by_id.id, 2);
+        data_aggregation::arxiv_utils::recursive_paper_search_by_references(&paper_by_id.id, 3);
 
     println!(
         "Recursive search accumulated {} papers.",
@@ -55,7 +55,6 @@ fn main() {
         paper_graph.node_count(),
         paper_graph.edge_count()
     );
-    let native_options = eframe::NativeOptions::default();
 
     let graph_without_weights = paper_graph.map(|_, _| (), |_, _| ());
     println!(
@@ -64,10 +63,12 @@ fn main() {
         graph_without_weights.edge_count()
     );
 
+    let native_options = eframe::NativeOptions::default();
+
     run_native(
         "Paper graph interactive",
         native_options,
-        Box::new(|cc| Ok(Box::new(InteractiveApp::new(cc, graph_without_weights)))),
+        Box::new(|cc| Ok(Box::new(DemoApp::new(cc, graph_without_weights)))),
     )
     .unwrap();
 }

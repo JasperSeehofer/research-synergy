@@ -143,18 +143,18 @@ pub enum Journal {
     Arxiv,
     Nature,
     PhysRev,
-    Unkown,
+    Unknown,
 }
 
 impl Journal {
     pub fn new() -> Journal {
-        Journal::Unkown
+        Journal::Unknown
     }
     pub fn from_url(url: &str) -> Journal {
         if url.contains("arxiv") {
             Journal::Arxiv
         } else {
-            Journal::Unkown
+            Journal::Unknown
         }
     }
 }
@@ -165,7 +165,7 @@ impl Display for Journal {
             Journal::Arxiv => write!(f, "arXiv"),
             Journal::Nature => write!(f, "Nature"),
             Journal::PhysRev => write!(f, "Phys. Rev."),
-            Journal::Unkown => write!(f, "unknown"),
+            Journal::Unknown => write!(f, "unknown"),
         }
     }
 }

@@ -32,5 +32,8 @@ pub async fn get_papers(
 pub async fn get_paper_by_id(id: &str) -> Result<Arxiv, anyhow::Error> {
     let query = ArxivQueryBuilder::new().id_list(id).build();
     let arxivs = arxiv::fetch_arxivs(query).await.unwrap_or_default();
-    Ok(arxivs[0].clone())
+    arxivs
+        .into_iter()
+        .next()
+        .ok_or_else(|| anyhow::anyhow!("No paper found for ID: {}", id))
 }

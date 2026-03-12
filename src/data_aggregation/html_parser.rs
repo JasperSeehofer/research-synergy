@@ -17,8 +17,8 @@ impl ArxivHTMLDownloader {
         }
     }
 
-    pub fn request_html(mut self, html_url: &str) -> Html {
-        Self::rate_limit_check(&mut self);
+    pub fn request_html(&mut self, html_url: &str) -> Html {
+        self.rate_limit_check();
         parse_html(html_url)
     }
 

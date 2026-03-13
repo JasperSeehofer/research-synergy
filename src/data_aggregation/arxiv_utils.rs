@@ -1,18 +1,22 @@
-use crate::data_aggregation::html_parser::{parse_html, ArxivHTMLDownloader};
-use crate::paper::{Link, Paper, Reference};
+use crate::data_aggregation::html_parser::ArxivHTMLDownloader;
+use crate::datamodels::paper::{Link, Paper, Reference};
+use crate::error::ResynError;
+use crate::utils::strip_version_suffix;
 use scraper::{ElementRef, Selector};
 use std::collections::HashSet;
+use tracing::{debug, info, warn};
 
 use super::arxiv_api::get_paper_by_id;
 
-pub fn aggregate_references_for_arxiv_paper(
+pub async fn aggregate_references_for_arxiv_paper(
     paper: &mut Paper,
     downloader: &mut ArxivHTMLDownloader,
-) {
-    downloader.rate_limit_check();
-    let html_content = parse_html(&convert_pdf_url_to_html_url(&paper.pdf_url));
+) -> Result<(), ResynError> {
+    let html_url = convert_pdf_url_to_html_url(&paper.pdf_url);
+    let html_content = downloader.download_and_parse(&html_url).await?;
     let mut references: Vec<Reference> = Vec::new();
-    let reference_selector = Selector::parse(r#"span[class="ltx_bibblock"]"#).unwrap();
+    let reference_selector =
+        Selector::parse(r#"span[class="ltx_bibblock"]"#).expect("static CSS selector is valid");
     let references_elements = html_content.select(&reference_selector);
     for reference in references_elements {
         let mut links: Vec<String> = Vec::new();
@@ -22,26 +26,25 @@ pub fn aggregate_references_for_arxiv_paper(
         for child in reference.children() {
             if let Some(text) = child.value().as_text() {
                 reference_string.push_str(text);
-            } else if let Some(element) = child.value().as_element() {
-                if let Some(child_element) = ElementRef::wrap(child) {
-                    match element.name() {
-                        "em" => {
-                            let text = child_element.text().collect::<String>();
-                            em_title = text.trim().to_string();
-                            reference_string.push_str(&em_title);
-                        }
-                        "a" => {
-                            if let Some(href) = child_element.value().attr("href") {
-                                links.push(href.to_string());
-                            }
-                        }
-                        _ => {}
+            } else if let Some(element) = child.value().as_element()
+                && let Some(child_element) = ElementRef::wrap(child)
+            {
+                match element.name() {
+                    "em" => {
+                        let text = child_element.text().collect::<String>();
+                        em_title = text.trim().to_string();
+                        reference_string.push_str(&em_title);
                     }
+                    "a" => {
+                        if let Some(href) = child_element.value().attr("href") {
+                            links.push(href.to_string());
+                        }
+                    }
+                    _ => {}
                 }
             }
         }
         let (author, title) = if !em_title.is_empty() {
-            // Use <em> tag content as the title (more reliable than comma splitting)
             let author = reference_string
                 .split(&em_title)
                 .next()
@@ -61,19 +64,11 @@ pub fn aggregate_references_for_arxiv_paper(
         });
     }
     paper.references = references;
+    Ok(())
 }
 
 fn convert_pdf_url_to_html_url(pdf_url: &str) -> String {
     pdf_url.replace(".pdf", "").replace("pdf", "html")
-}
-
-fn strip_version_suffix(id: &str) -> String {
-    if let Some(pos) = id.rfind('v') {
-        if id[pos + 1..].chars().all(|c| c.is_ascii_digit()) && pos + 1 < id.len() {
-            return id[..pos].to_string();
-        }
-    }
-    id.to_string()
 }
 
 fn trim_and_split_arxiv_reference_string(text: &str) -> (String, String) {
@@ -89,48 +84,57 @@ fn trim_and_split_arxiv_reference_string(text: &str) -> (String, String) {
     (author.trim().to_string(), title.trim().to_string())
 }
 
-pub fn recursive_paper_search_by_references(paper_id: &str, max_depth: usize) -> Vec<Paper> {
+pub async fn recursive_paper_search_by_references(
+    paper_id: &str,
+    max_depth: usize,
+    downloader: &mut ArxivHTMLDownloader,
+) -> Vec<Paper> {
     let mut visited_papers = HashSet::new();
     let mut papers: Vec<Paper> = Vec::new();
     let mut depth = 1;
-    let mut referenced_paper_ids: Vec<String> = Vec::new();
+    let mut referenced_paper_ids: Vec<String> = vec![paper_id.to_string()];
     let mut new_referenced_papers: Vec<String> = Vec::new();
-    let mut arxiv_html_downloader = ArxivHTMLDownloader::new();
-    referenced_paper_ids.push(paper_id.to_string());
 
     while depth <= max_depth {
-        println!("Current depth: {}", depth);
-        println!(
-            "{} referenced papers on this level",
-            referenced_paper_ids.len()
+        info!(
+            depth,
+            count = referenced_paper_ids.len(),
+            "Processing depth level"
         );
         for paper_id in &referenced_paper_ids {
             let paper_id = strip_version_suffix(paper_id);
             if visited_papers.contains(&paper_id) {
-                println!(
-                    "Already encountered paper with id {}. Continue...",
-                    paper_id
-                );
+                debug!(paper_id, "Skipping already visited paper");
                 continue;
             }
             visited_papers.insert(paper_id.clone());
 
-            arxiv_html_downloader.rate_limit_check();
-            let fetched = get_paper_by_id(&paper_id);
+            downloader.rate_limit_check().await;
+            let fetched = get_paper_by_id(&paper_id).await;
             let mut paper = match fetched {
-                Ok(arxiv_paper) => Paper::from_arxiv_paper(&arxiv_paper),
+                Ok(arxiv_paper) => match Paper::from_arxiv_paper(&arxiv_paper) {
+                    Ok(p) => p,
+                    Err(e) => {
+                        warn!(paper_id, error = %e, "Failed to convert arXiv paper");
+                        continue;
+                    }
+                },
                 Err(e) => {
-                    println!("WARNING: Failed to fetch paper {}: {}", paper_id, e);
+                    warn!(paper_id, error = %e, "Failed to fetch paper");
                     continue;
                 }
             };
 
-            aggregate_references_for_arxiv_paper(&mut paper, &mut arxiv_html_downloader);
-            println!("Paper has {} references.", paper.references.len());
+            if let Err(e) = aggregate_references_for_arxiv_paper(&mut paper, downloader).await {
+                warn!(paper_id, error = %e, "Failed to aggregate references");
+            }
+            info!(
+                paper_id,
+                reference_count = paper.references.len(),
+                "Paper processed"
+            );
             let mut arxiv_paper_ids: Vec<String> = paper.get_arxiv_references_ids();
-
             new_referenced_papers.append(&mut arxiv_paper_ids);
-
             papers.push(paper);
         }
         referenced_paper_ids = new_referenced_papers.clone();
@@ -158,10 +162,28 @@ mod tests {
     }
 
     #[test]
-    fn test_strip_version_suffix() {
-        assert_eq!(strip_version_suffix("2301.12345v2"), "2301.12345");
-        assert_eq!(strip_version_suffix("2301.12345v12"), "2301.12345");
-        assert_eq!(strip_version_suffix("2301.12345"), "2301.12345");
-        assert_eq!(strip_version_suffix("hep-ph/0601234v1"), "hep-ph/0601234");
+    fn test_trim_and_split_empty_string() {
+        let (author, title) = trim_and_split_arxiv_reference_string("");
+        assert_eq!(author, "");
+        assert_eq!(title, "");
+    }
+
+    #[test]
+    fn test_trim_and_split_single_item() {
+        let (author, title) = trim_and_split_arxiv_reference_string("Just a Title.");
+        assert_eq!(author, "");
+        assert_eq!(title, "Just a Title");
+    }
+
+    #[test]
+    fn test_convert_pdf_url_to_html_url() {
+        assert_eq!(
+            convert_pdf_url_to_html_url("https://arxiv.org/pdf/2301.12345.pdf"),
+            "https://arxiv.org/html/2301.12345"
+        );
+        assert_eq!(
+            convert_pdf_url_to_html_url("https://arxiv.org/pdf/2301.12345"),
+            "https://arxiv.org/html/2301.12345"
+        );
     }
 }

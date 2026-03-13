@@ -1,3 +1,4 @@
+#[derive(Default)]
 pub struct SearchQueryHandler {
     title: String,
     author: String,
@@ -12,17 +13,7 @@ pub struct SearchQueryHandler {
 
 impl SearchQueryHandler {
     pub fn new() -> SearchQueryHandler {
-        SearchQueryHandler {
-            title: String::new(),
-            author: String::new(),
-            paper_abstract: String::new(),
-            comment: String::new(),
-            journal_reference: String::new(),
-            category: String::new(),
-            report_number: String::new(),
-            id: String::new(),
-            all_categories: String::new(),
-        }
+        SearchQueryHandler::default()
     }
     pub fn get_arxiv_search_query_string(&self) -> String {
         let mut search_query_vector: Vec<String> = Vec::new();
@@ -138,5 +129,42 @@ mod test {
         let search_query_handler = SearchQueryHandler::new().report_number("123").title("");
 
         assert!(search_query_handler.title.is_empty());
+    }
+
+    #[test]
+    fn test_empty_query() {
+        use super::SearchQueryHandler;
+
+        let search_query_handler = SearchQueryHandler::new();
+        assert_eq!(
+            search_query_handler.get_arxiv_search_query_string(),
+            String::new()
+        );
+    }
+
+    #[test]
+    fn test_all_fields() {
+        use super::SearchQueryHandler;
+
+        let query = SearchQueryHandler::new()
+            .title("test")
+            .author("author")
+            .paper_abstract("abstract")
+            .comment("comment")
+            .journal_reference("journal")
+            .category("cat")
+            .report_number("rn")
+            .id("id")
+            .all_categories("all");
+        let result = query.get_arxiv_search_query_string();
+        assert!(result.contains("ti:%22test%22"));
+        assert!(result.contains("au:%22author%22"));
+        assert!(result.contains("abs:%22abstract%22"));
+        assert!(result.contains("co:%22comment%22"));
+        assert!(result.contains("jr:%22journal%22"));
+        assert!(result.contains("cat:%22cat%22"));
+        assert!(result.contains("rn:%22rn%22"));
+        assert!(result.contains("id:%22id%22"));
+        assert!(result.contains("all:%22all%22"));
     }
 }

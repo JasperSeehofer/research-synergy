@@ -1,6 +1,6 @@
 use std::time::Instant;
 
-use crossbeam::channel::{unbounded, Receiver, Sender};
+use crossbeam::channel::{Receiver, Sender, unbounded};
 use drawers::ValuesSectionDebug;
 use eframe::{App, CreationContext};
 use egui::{CollapsingHeader, Context, Pos2, ScrollArea, Ui, Vec2};
@@ -9,8 +9,8 @@ use egui_graphs::{DefaultGraphView, Edge, Graph, Node};
 use fdg::fruchterman_reingold::{FruchtermanReingold, FruchtermanReingoldConfiguration};
 use fdg::nalgebra::{Const, OPoint};
 use fdg::{Force, ForceGraph};
-use petgraph::stable_graph::{DefaultIx, NodeIndex};
 use petgraph::Directed;
+use petgraph::stable_graph::{DefaultIx, NodeIndex};
 
 use crate::visualization::drawers;
 use crate::visualization::settings;
@@ -24,6 +24,7 @@ pub struct DemoApp {
 
     settings_simulation: settings::SettingsSimulation,
 
+    #[allow(dead_code)]
     settings_graph: settings::SettingsGraph,
     settings_interaction: settings::SettingsInteraction,
     settings_navigation: settings::SettingsNavigation,

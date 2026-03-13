@@ -4,6 +4,14 @@ use std::fmt::{self, Display};
 
 use crate::error::ResynError;
 
+#[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq)]
+pub enum DataSource {
+    #[default]
+    Arxiv,
+    InspireHep,
+    Merged,
+}
+
 #[derive(Clone, Debug, Default, Serialize, Deserialize)]
 pub struct Paper {
     pub title: String,
@@ -15,6 +23,10 @@ pub struct Paper {
     pub pdf_url: String,
     pub comment: Option<String>,
     pub references: Vec<Reference>,
+    pub doi: Option<String>,
+    pub inspire_id: Option<String>,
+    pub citation_count: Option<u32>,
+    pub source: DataSource,
 }
 
 impl Paper {
@@ -41,6 +53,7 @@ impl Paper {
             pdf_url: arxiv_paper.pdf_url.clone(),
             comment: arxiv_paper.comment.clone(),
             references: Vec::new(),
+            ..Default::default()
         })
     }
 
@@ -81,6 +94,10 @@ pub struct Reference {
     pub author: String,
     pub title: String,
     pub links: Vec<Link>,
+    pub doi: Option<String>,
+    pub arxiv_eprint: Option<String>,
+    pub inspire_record_id: Option<String>,
+    pub label: Option<String>,
 }
 
 impl Reference {
@@ -220,16 +237,19 @@ mod tests {
                 author: "Author".to_string(),
                 title: "Title".to_string(),
                 links: vec![Link::from_url("https://arxiv.org/abs/2301.11111")],
+                ..Default::default()
             },
             Reference {
                 author: "Author2".to_string(),
                 title: "Title2".to_string(),
                 links: vec![Link::from_url("https://nature.com/article/123")],
+                ..Default::default()
             },
             Reference {
                 author: "Author3".to_string(),
                 title: "Title3".to_string(),
                 links: vec![Link::from_url("https://arxiv.org/abs/2301.22222")],
+                ..Default::default()
             },
         ];
         let ids = paper.get_arxiv_references_ids();
@@ -244,6 +264,7 @@ mod tests {
             author: "Author".to_string(),
             title: "Title".to_string(),
             links: vec![Link::from_url("https://nature.com/article/123")],
+            ..Default::default()
         };
         assert!(reference.get_arxiv_id().is_err());
     }

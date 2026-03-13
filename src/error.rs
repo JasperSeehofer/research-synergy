@@ -8,6 +8,8 @@ pub enum ResynError {
     PaperNotFound(String),
     InvalidPaperId(String),
     NoArxivLink,
+    InspireHepApi(String),
+    Database(String),
 }
 
 impl fmt::Display for ResynError {
@@ -19,6 +21,8 @@ impl fmt::Display for ResynError {
             ResynError::PaperNotFound(id) => write!(f, "paper not found: {id}"),
             ResynError::InvalidPaperId(id) => write!(f, "invalid paper ID: {id}"),
             ResynError::NoArxivLink => write!(f, "no arXiv link found in reference"),
+            ResynError::InspireHepApi(msg) => write!(f, "InspireHEP API error: {msg}"),
+            ResynError::Database(msg) => write!(f, "database error: {msg}"),
         }
     }
 }

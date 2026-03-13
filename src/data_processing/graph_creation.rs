@@ -42,21 +42,15 @@ mod tests {
     fn make_paper(id: &str, ref_ids: &[&str]) -> Paper {
         Paper {
             title: format!("Paper {id}"),
-            authors: vec![],
-            summary: String::new(),
             id: id.to_string(),
-            last_updated: String::new(),
-            published: String::new(),
-            pdf_url: String::new(),
-            comment: None,
             references: ref_ids
                 .iter()
                 .map(|rid| Reference {
-                    author: String::new(),
-                    title: String::new(),
                     links: vec![Link::from_url(&format!("https://arxiv.org/abs/{rid}"))],
+                    ..Default::default()
                 })
                 .collect(),
+            ..Default::default()
         }
     }
 

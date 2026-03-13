@@ -1,12 +1,11 @@
 use crate::data_aggregation::html_parser::ArxivHTMLDownloader;
+use crate::data_aggregation::traits::PaperSource;
 use crate::datamodels::paper::{Link, Paper, Reference};
 use crate::error::ResynError;
 use crate::utils::strip_version_suffix;
 use scraper::{ElementRef, Selector};
 use std::collections::HashSet;
 use tracing::{debug, info, warn};
-
-use super::arxiv_api::get_paper_by_id;
 
 pub async fn aggregate_references_for_arxiv_paper(
     paper: &mut Paper,
@@ -61,6 +60,7 @@ pub async fn aggregate_references_for_arxiv_paper(
             author,
             title,
             links: links.iter().map(|x| Link::from_url(x)).collect(),
+            ..Default::default()
         });
     }
     paper.references = references;
@@ -87,7 +87,7 @@ fn trim_and_split_arxiv_reference_string(text: &str) -> (String, String) {
 pub async fn recursive_paper_search_by_references(
     paper_id: &str,
     max_depth: usize,
-    downloader: &mut ArxivHTMLDownloader,
+    source: &mut dyn PaperSource,
 ) -> Vec<Paper> {
     let mut visited_papers = HashSet::new();
     let mut papers: Vec<Paper> = Vec::new();
@@ -109,24 +109,16 @@ pub async fn recursive_paper_search_by_references(
             }
             visited_papers.insert(paper_id.clone());
 
-            downloader.rate_limit_check().await;
-            let fetched = get_paper_by_id(&paper_id).await;
-            let mut paper = match fetched {
-                Ok(arxiv_paper) => match Paper::from_arxiv_paper(&arxiv_paper) {
-                    Ok(p) => p,
-                    Err(e) => {
-                        warn!(paper_id, error = %e, "Failed to convert arXiv paper");
-                        continue;
-                    }
-                },
+            let mut paper = match source.fetch_paper(&paper_id).await {
+                Ok(p) => p,
                 Err(e) => {
                     warn!(paper_id, error = %e, "Failed to fetch paper");
                     continue;
                 }
             };
 
-            if let Err(e) = aggregate_references_for_arxiv_paper(&mut paper, downloader).await {
-                warn!(paper_id, error = %e, "Failed to aggregate references");
+            if let Err(e) = source.fetch_references(&mut paper).await {
+                warn!(paper_id, error = %e, "Failed to fetch references");
             }
             info!(
                 paper_id,

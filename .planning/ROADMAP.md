@@ -30,7 +30,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Papers without ar5iv HTML are flagged as `partial` and continue through the pipeline without error
   4. `--skip-fulltext` flag causes all papers to use abstract-only extraction
   5. New HTTP fetchers respect the shared rate limiter — no additional per-fetcher sleep logic required
-**Plans**: TBD
+**Plans:** 2 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Data models (TextExtractionResult, SectionMap) + DB migration system + ExtractionRepository
+- [ ] 01-02-PLAN.md — Ar5ivExtractor with section parsing + CLI flags (--analyze, --skip-fulltext) + pipeline wiring
 
 ### Phase 2: NLP Analysis + DB Schema
 **Goal**: Every paper in the corpus has keyword rankings and TF-IDF vectors stored in SurrealDB, computed offline without any API calls, and future schema changes apply via migrations rather than manual DDL
@@ -83,7 +87,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Text Extraction Foundation | 0/TBD | Not started | - |
+| 1. Text Extraction Foundation | 0/2 | Planning complete | - |
 | 2. NLP Analysis + DB Schema | 0/TBD | Not started | - |
 | 3. Pluggable LLM Backend | 0/TBD | Not started | - |
 | 4. Cross-Paper Gap Analysis | 0/TBD | Not started | - |

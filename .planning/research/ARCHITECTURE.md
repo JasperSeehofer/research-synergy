@@ -1,413 +1,455 @@
-# Architecture Patterns
+# Architecture Research
 
-**Domain:** Hybrid NLP + LLM text analysis pipeline with 3D multidimensional visualization on an existing Rust LBD citation graph tool
-**Researched:** 2026-03-14
-
----
-
-## Recommended Architecture
-
-The new milestone adds two independent capability tracks onto the existing pipeline:
-
-1. **Text Analysis Pipeline** — extracts structured insights from paper text, stores results in SurrealDB, runs cross-paper gap analysis
-2. **3D Visualization Layer** — projects high-dimensional paper embeddings into navigable 3D space using wgpu alongside the existing egui 2D view
-
-Both tracks share the existing data model (`Paper`) and SurrealDB schema (extended). Neither requires changes to the crawl or BFS layers.
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                          main.rs                                 │
-│  CLI args → validate → source → crawl → persist → graph → GUI   │
-└──────────────────────────┬──────────────────────────────────────┘
-                           │  Vec<Paper> (existing canonical state)
-          ┌────────────────┴────────────────┐
-          │                                 │
-          ▼                                 ▼
-┌─────────────────────┐          ┌──────────────────────┐
-│  TEXT ANALYSIS      │          │  VISUALIZATION        │
-│  PIPELINE (new)     │          │  (existing + new 3D)  │
-│                     │          │                        │
-│  text_extraction/   │          │  visualization/        │
-│    traits.rs        │          │    force_graph_app.rs  │
-│    arxiv_html.rs    │          │    drawers.rs          │
-│    arxiv_latex.rs   │          │    settings.rs         │
-│                     │          │                        │
-│  nlp_analysis/      │          │  visualization_3d/ (new)
-│    tfidf.rs         │          │    scatter_app.rs      │
-│    section_detect.rs│          │    camera.rs           │
-│    keywords.rs      │          │    wgpu_renderer.rs    │
-│                     │          └──────────────────────┘
-│  llm_backend/       │
-│    traits.rs        │
-│    claude.rs        │
-│    openai.rs        │
-│    ollama.rs        │
-│                     │
-│  gap_analysis/      │
-│    cross_paper.rs   │
-│    embeddings.rs    │
-│    projection.rs    │
-└─────────────────────┘
-          │
-          ▼
-┌─────────────────────┐
-│  database/ (extend) │
-│    schema.rs +      │
-│    analysis tables  │
-│    vector indexes   │
-│    queries.rs +     │
-│    analysis repo    │
-└─────────────────────┘
-```
+**Domain:** Leptos web UI migration + WebGL graph renderer + incremental crawl — integration with existing Rust LBD app
+**Researched:** 2026-03-15
+**Confidence:** MEDIUM (Leptos patterns HIGH; WebGL/WASM graph specifics MEDIUM; crawl queue pattern MEDIUM)
 
 ---
 
-## Component Boundaries
+## Standard Architecture
 
-### Existing Components (unchanged interface)
+### System Overview
 
-| Component | Responsibility | Communicates With |
-|-----------|---------------|-------------------|
-| `data_aggregation/` | Crawl papers via PaperSource trait | `main.rs`, `datamodels` |
-| `database/` | Persist papers and citation edges | `main.rs`, `datamodels` |
-| `data_processing/graph_creation.rs` | Build petgraph citation graph | `main.rs`, `datamodels` |
-| `visualization/force_graph_app.rs` | 2D force-directed interactive graph | `main.rs`, `petgraph` |
-| `datamodels/paper.rs` | Canonical paper domain model | All layers |
+The v1.1 migration replaces the egui/eframe desktop binary with a full-stack Leptos web application served by Axum. The existing 8-module Rust core (data_aggregation, database, datamodels, data_processing, nlp, llm, gap_analysis, visualization) becomes the server-side library. The browser receives a WASM bundle that renders graph and panels using Leptos signals plus a Canvas/WebGL renderer.
 
-### New Components
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                         BROWSER (WASM)                               │
+│  ┌────────────────┐  ┌──────────────────┐  ┌──────────────────────┐ │
+│  │  Leptos UI     │  │  Canvas Renderer │  │  Side Panels         │ │
+│  │  (signals,     │  │  (graph layout   │  │  (gap findings,      │ │
+│  │   server fns)  │  │   WebGL nodes)   │  │   open problems,     │ │
+│  └───────┬────────┘  └────────┬─────────┘  │   method matrix)     │ │
+│          │ server fn calls    │ graph data │                      │ │
+│          │ (typed RPC)        │ (JSON)     └──────────────────────┘ │
+└──────────┼────────────────────┼─────────────────────────────────────┘
+           │ HTTP / SSE         │
+┌──────────┼────────────────────┼─────────────────────────────────────┐
+│          │     AXUM SERVER    │                                      │
+│  ┌───────▼────────┐  ┌────────▼────────┐  ┌──────────────────────┐ │
+│  │ leptos_axum    │  │  /api/graph     │  │  /api/crawl/progress │ │
+│  │ (SSR + hydrate)│  │  (graph JSON)   │  │  (SSE stream)        │ │
+│  └───────┬────────┘  └────────┬────────┘  └──────────┬───────────┘ │
+│          │                   │                        │             │
+│  ┌───────▼────────────────────▼────────────────────────▼──────────┐ │
+│  │                     RESYN CORE LIBRARY                          │ │
+│  │  data_aggregation │ database │ datamodels │ data_processing     │ │
+│  │  nlp │ llm │ gap_analysis │ (visualization dropped)            │ │
+│  └───────────────────────────────────────────────────────────────┘ │
+│                                │                                    │
+│                    ┌───────────▼──────────┐                         │
+│                    │  SurrealDB (embedded) │                         │
+│                    │  + crawl_queue table  │                         │
+│                    └──────────────────────┘                         │
+└─────────────────────────────────────────────────────────────────────┘
+```
 
-| Component | Responsibility | Communicates With |
-|-----------|---------------|-------------------|
-| `text_extraction/` | Fetch and parse full paper text | `datamodels`, `database`, HTTP |
-| `nlp_analysis/` | Mechanical extraction: TF-IDF, sections, keywords | `text_extraction`, `datamodels` |
-| `llm_backend/` | Semantic extraction via pluggable LLM providers | `nlp_analysis`, HTTP (LLM APIs) |
-| `gap_analysis/` | Cross-paper contradiction and gap detection | `database`, `llm_backend`, `datamodels` |
-| `visualization_3d/` | 3D scatter of paper embeddings in wgpu | `gap_analysis` (embeddings), `datamodels` |
+### Component Responsibilities
 
-### Extended Components
+| Component | Responsibility | Status |
+|-----------|----------------|--------|
+| `crates/app/` | Leptos components, server functions, routing | New |
+| `crates/server/` | Axum entry point, leptos_axum integration, SSE endpoints | New |
+| `crates/resyn-core/` | Existing 8 modules moved to shared library crate | Restructured |
+| Canvas/WebGL renderer | Force-directed graph at 1000+ nodes in browser | New (JS or WASM) |
+| `crawl_queue` DB table | Persistent BFS frontier for resumable crawling | New (DB migration 7) |
+| `CrawlService` | Async tokio task spawning BFS workers with queue | New in server |
 
-| Component | Extension | Reason |
-|-----------|-----------|--------|
-| `database/schema.rs` | Add `paper_analysis` table, `similarity` relation, vector indexes | Store NLP/LLM results and embedding vectors |
-| `database/queries.rs` | Add `AnalysisRepository` (upsert analysis, get embeddings, similarity search) | Analysis results need CRUD separate from paper records |
-| `datamodels/` | Add `PaperAnalysis`, `TextExtractionResult`, `GapFinding` structs | New domain objects for analysis pipeline |
-| `error.rs` | Add `TextExtraction`, `LlmApi`, `GapAnalysis` variants | New error sources across pipeline |
+---
+
+## Recommended Project Structure
+
+The single-crate `research_synergy` binary becomes a cargo workspace. `cargo-leptos` handles the dual server/WASM build.
+
+```
+research-synergy/
+├── Cargo.toml                    # workspace root
+├── Cargo.lock
+├── leptos.toml                   # cargo-leptos config
+│
+├── crates/
+│   ├── resyn-core/               # existing logic, server-only
+│   │   ├── Cargo.toml            # no wasm32 targets; surrealdb, reqwest, etc.
+│   │   └── src/
+│   │       ├── lib.rs            # re-exports all existing modules
+│   │       ├── data_aggregation/ # unchanged
+│   │       ├── database/         # +migration 7 (crawl_queue)
+│   │       ├── datamodels/       # +CrawlItem, +api response types
+│   │       ├── data_processing/
+│   │       ├── nlp/
+│   │       ├── llm/
+│   │       ├── gap_analysis/
+│   │       └── [error, utils, validation]
+│   │
+│   ├── app/                      # Leptos isomorphic crate (compiles to WASM + native)
+│   │   ├── Cargo.toml            # leptos, serde; no native-only deps
+│   │   └── src/
+│   │       ├── lib.rs            # App component, router
+│   │       ├── components/
+│   │       │   ├── graph_canvas.rs   # <canvas> wrapper; posts messages to worker
+│   │       │   ├── gap_panel.rs      # contradiction + ABC-bridge list
+│   │       │   ├── open_problems.rs  # ranked open-problems panel
+│   │       │   ├── method_matrix.rs  # method-combination gap matrix
+│   │       │   └── crawl_progress.rs # SSE-driven progress bar
+│   │       └── server_fns/
+│   │           ├── papers.rs     # get_graph_data(), get_gap_findings()
+│   │           ├── crawl.rs      # start_crawl(), get_crawl_status()
+│   │           └── analysis.rs   # trigger_analysis()
+│   │
+│   └── server/                   # native binary crate
+│       ├── Cargo.toml            # axum, tokio, leptos_axum, resyn-core
+│       └── src/
+│           ├── main.rs           # Axum router, leptos_axum::generate_route_list
+│           ├── api/
+│           │   ├── graph.rs      # GET /api/graph → GraphResponse JSON
+│           │   └── crawl_sse.rs  # GET /api/crawl/progress → SSE stream
+│           └── services/
+│               └── crawl_service.rs  # CrawlService (tokio task + queue)
+│
+├── public/                       # static assets served by Axum
+│   └── graph-worker.js           # Web Worker wrapping force layout JS (or WASM)
+│
+└── src/                          # REMOVED — content migrated to crates/
+```
+
+### Structure Rationale
+
+- **crates/resyn-core/**: Isolates all code with native-only dependencies (SurrealDB embedded, reqwest, scraper). Nothing here compiles to WASM. This is the clean boundary.
+- **crates/app/**: The isomorphic Leptos crate. Must compile to both `wasm32-unknown-unknown` (browser) and the server's native target. Server functions live here and are called transparently from components.
+- **crates/server/**: Thin binary wiring Axum to Leptos SSR and providing custom SSE/REST endpoints the app crate cannot own (because app must be WASM-compatible).
+- **public/graph-worker.js**: The force layout runs in a dedicated Web Worker off the main thread, eliminating UI jank during simulation ticks. This is a JS file, not Rust/WASM, for maximum browser compatibility.
+
+---
+
+## Architectural Patterns
+
+### Pattern 1: Server Functions for Data Access
+
+**What:** Leptos `#[server]` functions annotated in `crates/app/` compile to typed RPC stubs on the client and full Rust implementations on the server. The client calls them like regular async functions.
+
+**When to use:** All data fetching that requires SurrealDB access: loading the graph, gap findings, analysis results.
+
+**Trade-offs:** Eliminates manual REST API maintenance. The cost is that server functions must be registered with the Axum router via `leptos_axum::generate_route_list`. Breaking the WASM compilation boundary (e.g., accidentally importing surrealdb in app crate) fails at compile time, which is good.
+
+**Example:**
+```rust
+// crates/app/src/server_fns/papers.rs
+#[server(GetGraphData, "/api")]
+pub async fn get_graph_data(paper_id: String, depth: usize) -> Result<GraphResponse, ServerFnError> {
+    // server-only: use resyn-core
+    use resyn_core::database::queries::PaperRepository;
+    let db = use_context::<Arc<Db>>().ok_or_else(|| ServerFnError::new("no db"))?;
+    let repo = PaperRepository::new(&db);
+    let (papers, edges) = repo.get_citation_graph(&paper_id, depth).await?;
+    Ok(GraphResponse::from(papers, edges))
+}
+```
+
+### Pattern 2: SSE for Crawl Progress Streaming
+
+**What:** Crawl progress (papers fetched, queue depth, current BFS level) streams from server to browser via Server-Sent Events. The Axum handler streams a `tokio::sync::broadcast` channel; the Leptos component subscribes with `leptos_use::use_event_source` or a direct `EventSource` JS binding.
+
+**When to use:** Long-running operations where the user needs progress feedback: crawls at depth 5+, full analysis pipeline runs.
+
+**Trade-offs:** SSE is one-directional and simpler than WebSocket. Sufficient here because the browser only needs to receive progress updates, not send messages during a crawl. Axum's `axum::response::Sse` handles keep-alive automatically.
+
+**Example:**
+```rust
+// crates/server/src/api/crawl_sse.rs
+pub async fn crawl_progress_sse(
+    State(tx): State<Arc<broadcast::Sender<CrawlEvent>>>,
+) -> Sse<impl Stream<Item = Result<Event, Infallible>>> {
+    let rx = tx.subscribe();
+    let stream = BroadcastStream::new(rx).map(|msg| {
+        Ok(Event::default().json_data(msg.unwrap()).unwrap())
+    });
+    Sse::new(stream).keep_alive(KeepAlive::default())
+}
+```
+
+### Pattern 3: Web Worker + postMessage for Force Layout
+
+**What:** The graph force simulation runs in a dedicated Web Worker (`public/graph-worker.js`). The Leptos graph component (`graph_canvas.rs`) posts the adjacency list to the worker on mount, then receives updated node positions at each simulation tick via `postMessage`. The component writes those positions to a `<canvas>` via `web_sys`.
+
+**When to use:** Any computation that would block the browser main thread for >16ms. Force simulation with 500+ nodes at 60fps qualifies.
+
+**Trade-offs:** JS Web Workers are universally supported. The alternative — running Barnes-Hut in a Rust/WASM thread — requires `SharedArrayBuffer` and cross-origin isolation headers (`COOP`/`COEP`), adding server configuration overhead. The JS worker approach is simpler to deploy. For rendering, a Canvas 2D context (via `web_sys::CanvasRenderingContext2d`) handles up to ~1000 nodes smoothly; switching the draw calls to WebGL2 is a contained change inside the worker when needed.
+
+**Example structure:**
+```
+graph_canvas.rs (Leptos component)
+    on_mount: create Worker("graph-worker.js")
+              post { nodes, edges } to worker
+    on_message: receive { positions } from worker
+                draw nodes + edges to <canvas>
+
+graph-worker.js
+    on_message({ nodes, edges }): initialize Barnes-Hut simulation
+    setInterval(60fps): tick simulation, postMessage({ positions })
+```
+
+### Pattern 4: DB-Backed Crawl Queue (Incremental BFS)
+
+**What:** A `crawl_queue` table in SurrealDB replaces the in-memory `Vec<String>` BFS frontier in `recursive_paper_search_by_references`. Each queue item has a status (`pending` | `in_progress` | `done` | `failed`), the paper ID, the BFS depth level, and a `session_id`. Workers claim items atomically using a SurrealQL `UPDATE ... WHERE status = 'pending' LIMIT 1`.
+
+**When to use:** Any crawl at depth 4+, or when the user wants to resume an interrupted crawl without refetching already-done papers.
+
+**Trade-offs:** Atomic row claim in SurrealDB requires a `RETURN BEFORE` pattern to ensure only one worker claims a given item. Single-embedded SurrealDB instance is not multi-process, so concurrent writes from multiple tokio tasks to the same DB handle are safe (SurrealDB Rust SDK serializes ops on the embedded handle). The persistent queue means re-running the crawl command resumes from where it left off rather than starting over.
+
+**DB Schema (migration 7):**
+```surql
+DEFINE TABLE IF NOT EXISTS crawl_queue SCHEMAFULL;
+DEFINE FIELD IF NOT EXISTS session_id ON crawl_queue TYPE string;
+DEFINE FIELD IF NOT EXISTS paper_id   ON crawl_queue TYPE string;
+DEFINE FIELD IF NOT EXISTS depth      ON crawl_queue TYPE int;
+DEFINE FIELD IF NOT EXISTS status     ON crawl_queue TYPE string;  -- pending|in_progress|done|failed
+DEFINE FIELD IF NOT EXISTS enqueued_at ON crawl_queue TYPE string;
+DEFINE FIELD IF NOT EXISTS claimed_at  ON crawl_queue TYPE option<string>;
+DEFINE INDEX IF NOT EXISTS idx_crawl_status ON crawl_queue FIELDS session_id, status;
+```
 
 ---
 
 ## Data Flow
 
-### Text Analysis Pipeline
+### Leptos Request Flow (graph load)
 
 ```
-Vec<Paper> (from crawl or DB load)
-    │
-    ▼
-text_extraction::fetch_full_text(paper)
-    │  Strategy (in priority order):
-    │    1. ar5iv HTML at https://ar5iv.labs.arxiv.org/html/{id}
-    │       → scraper parses <section>, <h2>, <p> semantic tags
-    │    2. arXiv LaTeX source at https://arxiv.org/e-print/{id}
-    │       → tar.gz download, extract .tex, strip macros
-    │    3. Abstract only (already in Paper.summary)
-    │  Rate limiting: reuse existing ArxivHTMLDownloader rate limit config
-    │
-    ▼
-TextExtractionResult { sections: Vec<Section>, raw_text: String, source: ExtractionMethod }
-    │
-    ▼
-nlp_analysis::analyze(result)
-    │  Runs offline (no network):
-    │    - Section boundary detection (heading heuristics on HTML or LaTeX structure)
-    │    - TF-IDF term weighting across paper corpus (rust-tfidf or custom)
-    │    - Keyword extraction per section
-    │    - Term frequency vectors for embedding basis
-    │
-    ▼
-NlpResult { keywords: Vec<String>, tfidf_vector: Vec<f32>, section_map: HashMap<SectionType, String> }
-    │
-    ▼
-llm_backend::extract_semantics(section_map)    [optional, requires API key]
-    │  LlmBackend trait (same pattern as PaperSource):
-    │    - prompt: structured JSON schema for methods, findings, open_problems, datasets
-    │    - impl: ClaudeBackend, OpenAiBackend, OllamaBackend
-    │    - cache: skip if paper already has LLM analysis in DB
-    │
-    ▼
-SemanticExtraction { methods: Vec<String>, findings: Vec<String>, open_problems: Vec<String>, datasets: Vec<String> }
-    │
-    ▼
-database::AnalysisRepository::upsert_analysis(paper_id, nlp_result, semantic_extraction)
-    │  Stored as:
-    │    - paper_analysis:⟨arxiv_id⟩ record (NLP + LLM fields)
-    │    - embedding vector stored in paper_analysis.tfidf_embedding (SurrealDB vector field)
-    │    - HNSW vector index for similarity search
-    │
-    ▼
-gap_analysis::find_gaps(Vec<PaperAnalysis>)
-    │  Cross-paper analysis:
-    │    - Contradiction detection: compare findings across papers via LLM pairwise calls
-    │    - Method gap detection: methods used in cited papers but absent in citing paper
-    │    - Unexplored combinations: method sets that appear disjoint in citation subgraph
-    │  Uses SurrealDB graph traversal + vector similarity in combined SurrealQL query
-    │
-    ▼
-Vec<GapFinding> { paper_ids: Vec<String>, gap_type: GapType, description: String, confidence: f32 }
+Browser: user visits /?paper=2503.18887&depth=3
+    ↓ Axum SSR renders App component
+    ↓ Leptos Resource<GetGraphData> suspends
+    ↓ Server function runs on server: PaperRepository::get_citation_graph()
+    ↓ Returns GraphResponse { nodes: Vec<NodeData>, edges: Vec<EdgeData> }
+    ↓ HTML streamed to browser with embedded JSON
+    ↓ WASM hydrates, graph_canvas.rs reads signal
+    ↓ posts { nodes, edges } to Web Worker
+    ↓ Worker runs force layout ticks
+    ↓ postMessage positions back → canvas draw
 ```
 
-### 3D Visualization Pipeline
+### Incremental Crawl Flow
 
 ```
-Vec<PaperAnalysis> + Vec<GapFinding>
-    │
-    ▼
-gap_analysis::projection::compute_embeddings(papers)
-    │  Dimensionality reduction:
-    │    - Input: tfidf_vector per paper (from NLP step above)
-    │    - Algorithm: PCA via linfa-reduction (pure Rust, no Python dependency)
-    │      → project to 3 principal components
-    │    - Output: Vec<(paper_id, [x, y, z])>
-    │  Note: UMAP (fast-umap crate) is available but depends on burn ML framework —
-    │        prefer PCA for simplicity unless cluster separation is inadequate
-    │
-    ▼
-visualization_3d::ScatterApp::new(points, gap_findings)
-    │  Rendering stack:
-    │    - wgpu for GPU-accelerated 3D rendering (Vulkan/Metal/DX12/WebGPU)
-    │    - egui-wgpu integration crate for UI panels alongside 3D viewport
-    │    - Camera: orbit + zoom with mouse drag (custom implementation, ~200 LOC)
-    │    - Nodes: instanced sphere rendering, colored by topic cluster or gap type
-    │    - Edges: line primitives for citation edges in 3D space
-    │    - Sidebar: egui panel with paper metadata on node hover/click
-    │
-    ▼
-Interactive 3D scatter with:
-    - Orbit/zoom camera controls
-    - Node hover → paper title + key finding tooltip
-    - Gap finding highlights (colored edges or halos)
-    - Toggle: show/hide citation edges in 3D space
-    - Axis labels for principal components
+User triggers crawl (via server fn start_crawl)
+    ↓ CrawlService::start(session_id, paper_id, max_depth)
+    ↓ Insert seed into crawl_queue (status=pending, depth=0)
+    ↓ Spawn tokio task loop:
+        while pending items exist:
+            claim item (UPDATE crawl_queue SET status='in_progress' WHERE status='pending' LIMIT 1)
+            fetch paper via PaperSource trait
+            upsert paper + citations to DB
+            enqueue all arXiv references at depth+1 (if depth < max_depth, not already done/in_progress)
+            mark item done
+            broadcast CrawlEvent { fetched, queued, depth } via broadcast::Sender
+    ↓ SSE endpoint streams CrawlEvents to browser
+    ↓ crawl_progress.rs Leptos component updates progress bar
 ```
 
-### GUI Mode Selection
-
-The application will launch one of two visualization modes based on CLI flag:
+### Gap Findings Data Flow (existing → UI)
 
 ```
---view 2d   → existing force_graph_app (default, preserves current behavior)
---view 3d   → new visualization_3d::ScatterApp (requires analysis to have run)
---analyze   → run text analysis pipeline then launch selected view
+Existing gap_analysis module writes GapFinding records to SurrealDB (unchanged)
+    ↓
+GetGapFindings server fn: GapFindingRepository::get_all_gap_findings()
+    ↓
+Leptos signal in gap_panel.rs
+    ↓ rendered as sorted list (contradictions, then ABC-bridges)
+    ↓ click finding → provenance text segment shown (future: source text lookup)
 ```
 
 ---
 
-## Key Abstractions
+## Integration Points: New vs Modified vs Deleted
 
-### LlmBackend Trait (new, mirrors PaperSource pattern)
+### New Components
 
-```rust
-#[async_trait]
-pub trait LlmBackend: Send + Sync {
-    async fn extract_semantics(
-        &self,
-        sections: &HashMap<SectionType, String>,
-    ) -> Result<SemanticExtraction, ResynError>;
+| Component | Location | Interfaces |
+|-----------|----------|------------|
+| Leptos App crate | `crates/app/` | Depends on `resyn-core` (server side only via server fns) |
+| Axum Server binary | `crates/server/` | Wraps leptos_axum; imports resyn-core |
+| `graph_canvas.rs` | `crates/app/src/components/` | Communicates with Web Worker via postMessage |
+| `gap_panel.rs` | `crates/app/src/components/` | Reads `GetGapFindings` server fn |
+| `open_problems.rs` | `crates/app/src/components/` | Reads `GetGapFindings`, ranks by recurrence |
+| `method_matrix.rs` | `crates/app/src/components/` | Reads `GetGapFindings` + paper annotations |
+| `crawl_progress.rs` | `crates/app/src/components/` | Subscribes to SSE `/api/crawl/progress` |
+| `CrawlService` | `crates/server/src/services/` | Spawns tokio task; holds `broadcast::Sender` |
+| SSE endpoint | `crates/server/src/api/crawl_sse.rs` | Streams from `broadcast::Receiver` |
+| `crawl_queue` table | `database/schema.rs` migration 7 | SurrealDB; read/written by CrawlService |
+| `CrawlRepository` | `database/queries.rs` | claim_item, enqueue, mark_done |
+| Web Worker | `public/graph-worker.js` | JS Barnes-Hut simulation; postMessage API |
 
-    fn backend_name(&self) -> &'static str;
-    fn is_available(&self) -> bool; // check env var / connectivity
-}
-```
+### Modified Components
 
-Implementations: `ClaudeBackend` (Anthropic Messages API), `OpenAiBackend` (chat completions), `OllamaBackend` (local HTTP at localhost:11434). Trait object dispatched at runtime via `Box<dyn LlmBackend>`.
+| Component | Change | Reason |
+|-----------|--------|--------|
+| `data_aggregation/arxiv_utils.rs` | `recursive_paper_search_by_references` replaced by queue-backed version | Incremental crawl |
+| `database/schema.rs` | Add migration 7 for `crawl_queue` | Persistent queue |
+| `database/queries.rs` | Add `CrawlRepository` | Queue operations |
+| `datamodels/` | Add `GraphResponse`, `NodeData`, `EdgeData`, `CrawlEvent` | API response types (must be Serde + no native-only deps) |
+| `Cargo.toml` → `Cargo.toml` (workspace) | Convert to workspace; add crates/app, crates/server, crates/resyn-core | Workspace migration |
+| `src/main.rs` | Replaced by `crates/server/src/main.rs` | Axum replaces tokio::main + eframe::run_native |
 
-Structured output: prompt includes JSON schema definition; response parsed with serde_json. If LLM returns malformed JSON, retry once with stricter prompt, then fall back to NLP-only result.
+### Deleted Components
 
-### TextExtractor Trait (new)
-
-```rust
-#[async_trait]
-pub trait TextExtractor: Send + Sync {
-    async fn extract(&self, paper: &Paper) -> Result<TextExtractionResult, ResynError>;
-    fn extraction_method(&self) -> ExtractionMethod;
-}
-```
-
-Implementations: `Ar5ivExtractor` (HTML scraping, preferred), `LatexSourceExtractor` (tar.gz download + parsing), `AbstractOnlyExtractor` (fallback, always available).
-
-The analysis pipeline tries extractors in order and takes the first successful result. No changes to existing `ArxivHTMLDownloader` — `Ar5ivExtractor` creates its own instance with the same rate limiting infrastructure.
-
-### PaperAnalysis Domain Model (new in `datamodels/`)
-
-```rust
-pub struct PaperAnalysis {
-    pub paper_id: String,           // normalized arxiv ID
-    pub extraction_method: ExtractionMethod,
-    pub keywords: Vec<String>,
-    pub tfidf_vector: Vec<f32>,     // stored in SurrealDB as vector field
-    pub section_map: HashMap<SectionType, String>,
-    pub methods: Vec<String>,       // LLM-extracted (optional)
-    pub findings: Vec<String>,      // LLM-extracted (optional)
-    pub open_problems: Vec<String>, // LLM-extracted (optional)
-    pub datasets: Vec<String>,      // LLM-extracted (optional)
-    pub analyzed_at: DateTime<Utc>,
-    pub llm_backend_used: Option<String>,
-}
-```
-
-### SurrealDB Schema Extensions
-
-```surql
--- New table: paper analysis results
-DEFINE TABLE paper_analysis SCHEMAFULL;
-DEFINE FIELD paper_id ON paper_analysis TYPE string;
-DEFINE FIELD tfidf_vector ON paper_analysis TYPE array<float>;
-DEFINE FIELD keywords ON paper_analysis TYPE array<string>;
-DEFINE FIELD methods ON paper_analysis TYPE array<string>;
-DEFINE FIELD findings ON paper_analysis TYPE array<string>;
-DEFINE FIELD open_problems ON paper_analysis TYPE array<string>;
-DEFINE FIELD analyzed_at ON paper_analysis TYPE datetime;
-
--- Vector index for similarity search
-DEFINE INDEX paper_analysis_vector
-  ON paper_analysis FIELDS tfidf_vector
-  MTREE DIMENSION 512 DIST COSINE;
-
--- Gap findings table
-DEFINE TABLE gap_finding SCHEMAFULL;
-DEFINE FIELD paper_ids ON gap_finding TYPE array<string>;
-DEFINE FIELD gap_type ON gap_finding TYPE string;   -- contradiction | method_gap | unexplored_combination
-DEFINE FIELD description ON gap_finding TYPE string;
-DEFINE FIELD confidence ON gap_finding TYPE float;
-```
+| Component | Replacement |
+|-----------|-------------|
+| `src/visualization/` (entire module) | Leptos `graph_canvas.rs` component + Web Worker |
+| `eframe`, `egui`, `egui_graphs`, `fdg`, `crossbeam` deps | Removed from resyn-core; add `leptos`, `leptos_axum`, `axum`, `web-sys` |
+| `src/main.rs` CLI binary | Replaced by `crates/server/src/main.rs` with Axum |
 
 ---
 
-## Suggested Build Order
+## Build Order
 
-Component dependencies determine phase ordering. Each phase produces a working, testable deliverable.
+Build order respects the dependency chain: core library → DB layer → server functions → UI components → WebGL renderer.
 
-### Phase 1: Text Extraction Layer
+### Step 1: Workspace restructure (no behavior change)
 
-Build first because all analysis depends on having text.
+Move `src/` into `crates/resyn-core/src/`. Create workspace `Cargo.toml`. Add minimal `crates/server/src/main.rs` that calls the existing CLI pipeline. All 153 tests still pass. No feature change.
 
-- `text_extraction/traits.rs` — `TextExtractor` trait
-- `text_extraction/arxiv_html.rs` — ar5iv scraper (reuse scraper crate already in tree)
-- `text_extraction/arxiv_latex.rs` — tar.gz download + .tex strip
-- `text_extraction/abstract_only.rs` — always-available fallback
-- Extend `error.rs` with `TextExtraction` variant
-- Unit tests with wiremock (same pattern as existing arXiv HTML tests)
+**Deliverable:** Green CI on workspace structure. Confirms no regressions before UI work begins.
 
-No DB changes yet. Output: `TextExtractionResult` in memory.
+### Step 2: Incremental crawl queue (DB migration 7 + CrawlRepository + CrawlService)
 
-### Phase 2: NLP Analysis
+Add `crawl_queue` schema, `CrawlRepository` (claim, enqueue, mark_done), and `CrawlService` (tokio task loop). Replace the in-memory BFS in `arxiv_utils.rs`. Add SSE endpoint. Test with a depth-5 crawl that can be interrupted and resumed.
 
-Build on top of Phase 1 text. Pure offline, no API calls, fast iteration.
+**Deliverable:** CLI `--incremental` flag that uses the persistent queue; progress visible via `curl /api/crawl/progress`.
 
-- `nlp_analysis/section_detect.rs` — heading-based section boundary parser
-- `nlp_analysis/tfidf.rs` — TF-IDF scoring using `rust-tfidf` crate
-- `nlp_analysis/keywords.rs` — top-N keywords per section and per paper
-- Add `NlpResult` to `datamodels/`
-- Extend `database/schema.rs` with `paper_analysis` table (no vector index yet)
-- Extend `database/queries.rs` with `AnalysisRepository::upsert_nlp`
-- Integration tests against in-memory SurrealDB
+**Why before Leptos UI:** The crawl service is pure server logic. Validate it independently before adding UI complexity.
 
-### Phase 3: LLM Backend
+### Step 3: Leptos app skeleton + server functions for existing data
 
-Build after NLP so the LLM receives pre-processed structured sections, not raw text.
+Scaffold `crates/app/` with `cargo leptos new --git leptos-rs/start-axum`. Wire up `GetGraphData` and `GetGapFindings` server functions that return JSON for data already in DB. Render a static HTML table of papers to verify SSR + hydration works.
 
-- `llm_backend/traits.rs` — `LlmBackend` trait
-- `llm_backend/claude.rs` — Anthropic Messages API via reqwest
-- `llm_backend/openai.rs` — OpenAI chat completions
-- `llm_backend/ollama.rs` — Ollama local HTTP
-- Extend `database/schema.rs` with LLM result fields on `paper_analysis`
-- Extend `AnalysisRepository` with `upsert_semantic` method
-- Cache check: skip LLM call if `paper_analysis.analyzed_at` exists and `llm_backend_used` matches
-- Integration tests: wiremock for LLM API responses
+**Deliverable:** Browser shows paper list from SurrealDB via Leptos server function. No graph rendering yet.
 
-### Phase 4: Gap Analysis + Embeddings
+### Step 4: Gap analysis UI panels (gap_panel, open_problems, method_matrix)
 
-Depends on both NLP (for tfidf_vector) and LLM (for findings/methods). Adds vector indexing.
+Implement the three sidebar panels consuming existing gap findings data. These are pure reactive Leptos components reading server function results — no new backend work. Style with Tailwind CSS (cargo-leptos integrates it natively).
 
-- `gap_analysis/embeddings.rs` — normalize and store tfidf vectors, add HNSW index
-- `gap_analysis/cross_paper.rs` — contradiction and method gap detection logic
-- `gap_analysis/projection.rs` — PCA via `linfa-reduction` to produce 3D coordinates
-- Extend DB schema with `gap_finding` table and HNSW vector index on `paper_analysis`
-- Output: `Vec<GapFinding>` + `Vec<(String, [f32; 3])>` coordinates
+**Deliverable:** Browser shows gap findings, open-problems ranking, method matrix. This is the primary v1.1 value-add surface.
 
-### Phase 5: 3D Visualization
+### Step 5: Canvas graph renderer + Web Worker
 
-Depends on Phase 4 for 3D coordinates. Can be developed alongside Phase 4 with mock data.
+Add `graph_canvas.rs` wrapping a `<canvas>` element. Implement `graph-worker.js` with a Barnes-Hut force simulation (use the existing `d3-force` npm package via a bundled script, or a pure-JS implementation). Wire node positions back to canvas draw calls via postMessage. Add node-click events to show paper detail in a side panel.
 
-- `visualization_3d/wgpu_renderer.rs` — wgpu device setup, shader compilation, instanced sphere rendering
-- `visualization_3d/camera.rs` — orbit + zoom camera with mouse input
-- `visualization_3d/scatter_app.rs` — main app struct integrating wgpu + egui panels
-- Extend CLI with `--view 2d|3d` and `--analyze` flags
-- Existing 2D visualization remains untouched
+**Deliverable:** Interactive force-directed graph in browser. Validates that the worker approach achieves 60fps at 300-node graphs.
+
+### Step 6: WebGL upgrade (conditional)
+
+If Canvas 2D performance is inadequate at the target node count (>500 nodes, <30fps), upgrade the draw calls inside `graph-worker.js` to WebGL2 using `OffscreenCanvas`. The Leptos component is unchanged; only the worker internals change.
+
+**Deliverable:** Graph maintains 60fps at 1000 nodes.
+
+### Step 7: Gap findings wired into graph visualization
+
+Add visual overlays: contradiction edges (red), ABC-bridge edges (orange), badge counts on nodes. The graph worker receives gap findings alongside graph data and emits colored draw commands.
+
+**Deliverable:** Gap findings visible in graph without navigating to a separate panel.
 
 ---
 
-## Anti-Patterns to Avoid
+## Anti-Patterns
 
-### Anti-Pattern 1: Using rsnltk or rust-bert for Core NLP
-**What:** Importing Python-binding NLP toolkits (rsnltk) or transformer model runners (rust-bert) for keyword/TF-IDF tasks.
-**Why bad:** rsnltk requires a Python runtime. rust-bert requires libtorch (1+ GB download, C++ build). Both are heavyweight for what TF-IDF needs.
-**Instead:** Use `rust-tfidf` crate for term frequency calculations. Reserve heavy model inference to the LLM backend trait — the LLM API already provides semantic understanding over HTTP.
+### Anti-Pattern 1: Importing resyn-core directly in app crate
 
-### Anti-Pattern 2: Single Visualization Process for Both 2D and 3D
-**What:** Embedding wgpu into the existing eframe event loop.
-**Why bad:** eframe owns the window and event loop; wgpu needs its own surface. Mixing them requires unsafe GPU resource sharing.
-**Instead:** Launch visualization_3d as a separate window via wgpu + winit directly, using the `egui-wgpu` crate for UI panels embedded in the 3D viewport. Keep the existing eframe 2D app completely separate.
+**What people do:** Add `resyn-core` as a dependency of `crates/app/`, then call SurrealDB/reqwest functions from Leptos component code.
 
-### Anti-Pattern 3: Running LLM Calls on Full Paper Text
-**What:** Sending entire PDF text or HTML dump to the LLM API.
-**Why bad:** Expensive (large token counts), slow, and LLMs perform worse on unstructured walls of text than on focused section excerpts.
-**Instead:** NLP section detection runs first. LLM receives only the structured section map (`methods_section`, `results_section`, `conclusion_section`), typically 1–3k tokens per paper.
+**Why it's wrong:** `crates/app/` compiles to WASM. SurrealDB embedded and reqwest use native OS syscalls that have no WASM polyfill. The build fails with linker errors, and the fix is non-trivial.
 
-### Anti-Pattern 4: Storing Embeddings Outside SurrealDB
-**What:** Writing a separate vector store (Qdrant, Pinecone) alongside SurrealDB.
-**Why bad:** Adds operational complexity, breaks the "single DB" constraint, and SurrealDB 3.0 natively supports HNSW vector indexes with combined graph + vector queries in SurrealQL.
-**Instead:** Store `tfidf_vector` as a `array<float>` field on `paper_analysis` with an MTREE/HNSW index. Use SurrealQL `<|k|>` nearest-neighbor operator for similarity search.
+**Do this instead:** All resyn-core calls live in `#[server]` functions in `crates/app/src/server_fns/`. Server functions are stripped from the WASM bundle automatically by the Leptos macro system. The compile-time boundary is the primary safety mechanism.
 
-### Anti-Pattern 5: Rewriting PCA from Scratch
-**What:** Implementing eigenvector decomposition manually.
-**Why bad:** Numerically fragile, high implementation cost for a well-solved problem.
-**Instead:** Use `linfa-reduction` (part of linfa, the Rust scikit-learn equivalent). It provides PCA with optional BLAS backend and is actively maintained.
+### Anti-Pattern 2: Running force layout on the browser main thread
+
+**What people do:** Implement the force simulation in the Leptos component's `create_effect` or `use_interval`, ticking every 16ms.
+
+**Why it's wrong:** JavaScript (and WASM) on the main thread blocks rendering. 500-node Barnes-Hut ticks take 5–20ms each, causing visible jank and dropped frames.
+
+**Do this instead:** Delegate all simulation ticks to a Web Worker. The Leptos component only receives position arrays via `postMessage` and issues canvas draw calls — both are fast (<1ms).
+
+### Anti-Pattern 3: Rewriting BFS from scratch for the queue-backed version
+
+**What people do:** Discard `recursive_paper_search_by_references` entirely and write a new queue-driven BFS that duplicates the PaperSource trait dispatch and rate-limiting logic.
+
+**Why it's wrong:** The existing BFS already handles visited-set deduplication, version-suffix stripping, and `PaperSource` trait dispatch correctly. Duplicating it introduces divergence and doubles test surface.
+
+**Do this instead:** Extract the inner fetch-and-enqueue logic from `recursive_paper_search_by_references` into a `process_crawl_item(item: CrawlItem, source: &mut dyn PaperSource, db: &Db)` function. The queue-backed loop calls this function; the existing in-memory BFS (kept for tests) also calls it. Single implementation, two drivers.
+
+### Anti-Pattern 4: SSE for the graph data payload
+
+**What people do:** Stream the graph JSON through the SSE crawl progress endpoint rather than through a server function.
+
+**Why it's wrong:** SSE is a unidirectional text stream designed for incremental events, not for returning a large structured payload. Graph JSON (potentially 1MB+ for 1000 nodes) should be a single HTTP response, benefiting from compression and browser caching.
+
+**Do this instead:** `GetGraphData` server function returns the full graph as a single typed response. SSE carries only lightweight progress events (paper fetched, queue depth, current depth level). Keep concerns separated.
+
+### Anti-Pattern 5: Replacing the Leptos SSR app with a pure SPA
+
+**What people do:** Configure Leptos in CSR-only mode (no SSR), serve a blank `index.html`, and load everything via client-side data fetching.
+
+**Why it's wrong:** CSR-only means the initial page load shows nothing until WASM downloads (~500KB+ gzipped) and executes. SSR with hydration gives an immediately-useful HTML page (paper list, gap count) while the WASM finishes loading. For a research tool opened infrequently, first-load UX matters.
+
+**Do this instead:** Use the standard `cargo leptos` SSR+hydration mode with `leptos_axum`. The cost is a slightly more complex build setup, which cargo-leptos fully manages.
+
+---
+
+## Integration Boundaries
+
+### External Services
+
+| Service | Integration Pattern | Notes |
+|---------|---------------------|-------|
+| arXiv API | Unchanged via `ArxivSource` in resyn-core | Rate limit 3s, no change |
+| InspireHEP API | Unchanged via `InspireHepClient` in resyn-core | Rate limit 350ms, no change |
+| Claude / Ollama | Unchanged via `LlmProvider` trait in resyn-core | Called from server only |
+| ar5iv HTML | Unchanged via `Ar5ivExtractor` in resyn-core | No WASM boundary contact |
+
+### Internal Module Boundaries
+
+| Boundary | Communication | Notes |
+|----------|---------------|-------|
+| `app` ↔ `resyn-core` | Server functions only (no direct import from WASM) | Compile-time enforced |
+| `server` ↔ `resyn-core` | Direct Rust imports (both native) | Standard |
+| `graph_canvas.rs` ↔ `graph-worker.js` | `postMessage` (structured clone) | Types: `{ nodes, edges }` in, `{ positions }` out |
+| `CrawlService` ↔ SSE endpoint | `tokio::sync::broadcast` channel | Unbounded capacity; buffer 256 events |
+| `CrawlService` ↔ SurrealDB | `CrawlRepository` (claim/enqueue/mark_done) | Atomic claim via SurrealQL `UPDATE ... LIMIT 1` |
+| Server functions ↔ SurrealDB | Via `Arc<Db>` in Axum state, extracted with `use_context()` | Leptos pattern for sharing server state |
 
 ---
 
 ## Scalability Considerations
 
-| Concern | At 50 papers (typical crawl) | At 500 papers | At 5000 papers |
-|---------|------------------------------|---------------|----------------|
-| Text extraction | Sequential with rate limiting, fine | Fine | May need parallelism with semaphore |
-| TF-IDF computation | In-memory across corpus, <100ms | In-memory, <1s | Batch processing, stream from DB |
-| LLM API calls | ~$0.05–0.50 depending on provider | Budget becomes significant | Cache strictly; add `--reanalyze` flag |
-| PCA projection | Trivial at 50×512 matrix | <100ms | May need incremental PCA |
-| SurrealDB vector search | Instant | <10ms | <100ms with HNSW index |
-| 3D rendering | 50 nodes instant | 500 nodes fine | 5000 needs LOD or culling |
+| Scale | Architecture Adjustments |
+|-------|--------------------------|
+| 50–300 nodes (typical crawl depth 3) | Canvas 2D renderer in Web Worker is sufficient |
+| 300–1000 nodes (depth 5–7) | Switch Web Worker draw calls to WebGL2 via OffscreenCanvas |
+| 1000+ nodes (depth 8+) | Add level-of-detail: render clusters at far zoom, expand on zoom-in; node clustering by citation community |
+| Crawl queue concurrency | Single embedded SurrealDB allows safe concurrent tokio tasks; scale to ~4 parallel fetch tasks before hitting arXiv rate limits |
 
-At typical ReSyn crawl depth (3 BFS levels from one seed), 50–200 papers is the expected corpus. All approaches above are valid at this scale with no modifications.
+### Scaling Priorities
+
+1. **First bottleneck:** Force layout CPU time at >500 nodes. Fix: Web Worker already decouples from main thread; switch to Barnes-Hut O(n log n) in the worker.
+2. **Second bottleneck:** Canvas draw calls at >1000 nodes (~60ms per frame). Fix: WebGL2 instanced rendering via OffscreenCanvas; batch nodes into typed arrays.
 
 ---
 
 ## Sources
 
-- [egui_graphs — petgraph-based graph widget](https://github.com/blitzarx1/egui_graphs) — MEDIUM confidence (WebSearch)
-- [egui-wgpu integration crate](https://docs.rs/egui-wgpu) — MEDIUM confidence (WebSearch, official docs.rs)
-- [wgpu cross-platform graphics](https://wgpu.rs/) — HIGH confidence (official site)
-- [rend3-egui 3D renderer + egui](https://crates.io/crates/rend3-egui) — MEDIUM confidence (WebSearch)
-- [rust-tfidf crate](https://crates.io/crates/rust-tfidf) — MEDIUM confidence (crates.io)
-- [linfa-reduction PCA](https://crates.io/crates/linfa-reduction) — MEDIUM confidence (crates.io, docs.rs)
-- [fast-umap Rust UMAP](https://github.com/eugenehp/fast-umap) — LOW confidence (WebSearch only; depends on burn ML framework)
-- [SurrealDB vector embeddings + HNSW](https://surrealdb.com/docs/surrealdb/models/vector) — HIGH confidence (official docs)
-- [SurrealDB 3.0 multi-model + vector](https://venturebeat.com/data/surrealdb-3-0-wants-to-replace-your-five-database-rag-stack-with-one/) — MEDIUM confidence (WebSearch)
-- [ar5iv HTML arXiv papers](https://ar5iv.labs.arxiv.org/) — HIGH confidence (official arXiv initiative)
-- [arXiv LaTeX source e-print download](https://info.arxiv.org/help/view.html) — HIGH confidence (official arXiv docs)
-- [arXiv HTML accessibility initiative](https://arxiv.org/html/2402.08954v1) — HIGH confidence (arXiv paper)
-- [LLM structured output for scientific papers](https://arxiv.org/abs/2510.04749) — MEDIUM confidence (academic paper)
-- [cloudllm pluggable LLM providers Rust](https://lib.rs/crates/cloudllm) — LOW confidence (WebSearch only)
-- [Rust AI agent trait-based LLM abstraction](https://dev.to/rajmandaliya/building-a-rust-ai-agent-framework-from-scratch-what-i-learned-3o23) — MEDIUM confidence (WebSearch)
+- [Leptos documentation — server functions](https://book.leptos.dev/) — HIGH confidence (official)
+- [leptos_axum crate docs](https://docs.rs/leptos_axum/latest/leptos_axum/) — HIGH confidence (official)
+- [cargo-leptos build tool](https://github.com/leptos-rs/cargo-leptos) — HIGH confidence (official)
+- [Leptos start-axum workspace template](https://github.com/leptos-rs/start-axum) — HIGH confidence (official)
+- [Leptos 0.8.0 release — WebSocket server functions](https://github.com/leptos-rs/leptos/releases/tag/v0.8.0) — HIGH confidence (official)
+- [axum::response::Sse](https://docs.rs/axum/latest/axum/response/sse/) — HIGH confidence (official)
+- [leptos_use use_event_source](https://leptos-use.rs/network/use_event_source.html) — MEDIUM confidence (WebSearch, official leptos-use docs)
+- [Canvas 2D vs WebGL performance benchmark 2025](https://www.svggenie.com/blog/svg-vs-canvas-vs-webgl-performance-2025) — MEDIUM confidence (WebSearch)
+- [Graph visualization performance comparison (PMC)](https://pmc.ncbi.nlm.nih.gov/articles/PMC12061801/) — MEDIUM confidence (academic, peer-reviewed)
+- [Web Workers postMessage API](https://developer.mozilla.org/en-US/docs/Web/API/Worker/postMessage) — HIGH confidence (MDN official)
+- [wgpu cross-platform Rust graphics](https://wgpu.rs/) — HIGH confidence (official); noted as alternative to Canvas/WebGL if full WASM renderer needed
+- [SurrealDB Rust SDK concurrency](https://surrealdb.com/docs/sdk/rust/concepts/concurrency) — HIGH confidence (official)
+- [Leptos + SurrealDB + Axum example](https://github.com/oxide-byte/rust-berlin-leptos) — MEDIUM confidence (community, Leptos 0.6)
 
 ---
 
-*Architecture research: 2026-03-14*
+*Architecture research for: ReSyn v1.1 — Leptos web UI, WebGL graph, incremental crawling*
+*Researched: 2026-03-15*

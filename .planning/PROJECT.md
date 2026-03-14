@@ -2,7 +2,7 @@
 
 ## What This Is
 
-A Rust-powered Literature Based Discovery tool that aggregates academic papers from arXiv and InspireHEP, builds citation graphs, and surfaces hidden connections between research. It crawls paper references via BFS, persists them to SurrealDB, and visualizes citation networks as interactive force-directed graphs. The next evolution adds full text analysis — extracting structured insights from abstracts and PDFs, then performing cross-paper gap analysis to identify contradictions, unexplored method combinations, and open problems across a citation network.
+A Rust-powered Literature Based Discovery tool that aggregates academic papers from arXiv and InspireHEP, builds citation graphs, extracts structured insights via NLP and LLM analysis, surfaces cross-paper research gaps (contradictions and hidden connections), and visualizes enriched citation networks as interactive force-directed graphs.
 
 ## Core Value
 
@@ -24,19 +24,28 @@ Surface research gaps and unexplored connections that no single paper reveals �
 - ✓ Rate limiting for arXiv (3s) and InspireHEP (350ms) — existing
 - ✓ Pluggable data source architecture via PaperSource trait — existing
 - ✓ Version suffix deduplication across all layers — existing
+- ✓ Extract full text from arXiv HTML (ar5iv) with section detection — v1.0
+- ✓ Graceful abstract-only fallback when full text unavailable — v1.0
+- ✓ DB migration system for safe schema evolution — v1.0
+- ✓ CLI flags for analysis pipeline control (--analyze, --skip-fulltext, --llm-provider, --llm-model, --full-corpus, --verbose) — v1.0
+- ✓ Offline TF-IDF keyword extraction with corpus fingerprint caching — v1.0
+- ✓ Analysis results cached in SurrealDB per paper — v1.0
+- ✓ Pluggable LLM backend via trait (Claude, Ollama, Noop) — v1.0
+- ✓ Structured semantic annotations (methods, findings, open problems) via LLM — v1.0
+- ✓ Cross-paper contradiction detection — v1.0
+- ✓ ABC-bridge discovery (hidden connections via shared intermediaries) — v1.0
+- ✓ Citation graph nodes colored/sized by analysis dimensions — v1.0
+- ✓ Toggle between raw citation view and enriched view — v1.0
 
 ### Active
 
-- [ ] Extract text from paper abstracts (already available in Paper model)
-- [ ] Extract full text from paper PDFs/source (best available method per paper)
-- [ ] NLP-based extraction: section detection, keyword extraction, TF-IDF
-- [ ] LLM-powered semantic extraction: methods, findings, open problems, datasets/tools
-- [ ] Pluggable LLM backend trait (Claude, OpenAI, local models)
-- [ ] Store structured analysis results in SurrealDB (extend paper schema)
-- [ ] Cross-paper gap analysis: contradictions, method gaps, unexplored combinations
-- [ ] Enrich citation graph with analysis dimensions (color/size by category)
-- [ ] Multidimensional analysis with 3D projection visualization
-- [ ] Per-data-source analysis pipeline (arXiv text vs InspireHEP text)
+- [ ] Open-problems aggregation across citation graph ranked by recurrence frequency
+- [ ] Method-combination gap matrix showing existing vs absent method pairings
+- [ ] Section-aware LLM extraction using detected section boundaries
+- [ ] Analysis provenance tracking (store which text segment sourced each extraction)
+- [ ] 3D multidimensional projection of paper embeddings (PCA/UMAP)
+- [ ] Temporal evolution view layering the graph by publication year
+- [ ] Gap findings visualized in the citation graph (edges/badges for contradictions and bridges)
 
 ### Out of Scope
 
@@ -44,39 +53,43 @@ Surface research gaps and unexplored connections that no single paper reveals �
 - Citation prediction / paper recommendation — focus is on gap surfacing, not suggesting new papers
 - Full-text indexing / search engine — analysis is structured extraction, not free-text search
 - Non-arXiv PDF sources — only papers reachable through existing data sources
+- Fine-tuning custom models — use off-the-shelf LLM APIs with prompt engineering
+- LaTeX source parsing — ar5iv HTML is simpler and sufficient; LaTeX parsing in Rust is high complexity for marginal gain
 
 ## Context
 
-ReSyn is a brownfield Rust project with ~25 source files across 8 modules. The existing pipeline (crawl → persist → graph → visualize) is stable with 44 tests. The `Paper` model already contains abstracts (`summary` field) from both arXiv and InspireHEP, so abstract analysis can begin immediately without new data fetching.
+ReSyn is a brownfield Rust project with 8,749 LOC across ~40 source files in 10 modules. The full pipeline (crawl → extract text → NLP keywords → LLM annotations → gap analysis → enriched visualization) is operational with 153 tests.
 
-For full text, arXiv offers three extraction paths: LaTeX source archives (.tar.gz), HTML renderings (ar5iv, already partially scraped for references), and PDF downloads. The best approach should be researched considering availability, structure preservation, and performance.
+The v1.0 milestone delivered the complete analysis pipeline on top of the existing citation graph foundation. Key architectural patterns established:
+- **Data source trait** (`PaperSource`) for pluggable paper sources
+- **LLM provider trait** (`LlmProvider`) for pluggable semantic extraction backends
+- **DB migration system** with versioned schema changes (6 migrations)
+- **Corpus fingerprint caching** to skip redundant NLP and gap analysis recomputation
+- **One-frame-lag enrichment** pattern for visualization overlay without restructuring the render loop
 
-The hybrid NLP + LLM approach means: NLP handles mechanical extraction (section boundaries, keywords, term frequencies) while LLM handles semantic understanding (interpreting findings, categorizing open problems, identifying methodological approaches). This keeps LLM API costs proportional to insight value rather than text volume.
-
-The LLM backend should be trait-based (similar to existing `PaperSource` pattern) so users can plug in Claude, OpenAI, local models (Ollama), or future providers.
-
-Cross-paper analysis is the core differentiator — individual paper annotations are a means to the end of surfacing gaps across the citation network.
-
-The 3D visualization for multidimensional analysis is a significant new capability beyond the existing 2D force-directed graph. Papers would be positioned based on extracted dimensions (topic similarity, methodological overlap, temporal evolution) and projected into navigable 3D space.
+Tech stack: Rust (edition 2024), SurrealDB v3 (embedded), petgraph, egui/eframe, reqwest, tokio.
 
 ## Constraints
 
 - **Language**: Rust — maintain consistency with existing codebase
 - **Database**: SurrealDB — extend existing schema rather than introducing new storage
-- **API costs**: LLM calls should be batched/cached to avoid redundant analysis of already-processed papers
-- **Rate limits**: Respect arXiv and InspireHEP rate limits during text extraction (same as crawling)
-- **Offline capability**: NLP extraction should work fully offline; LLM analysis requires API access
+- **API costs**: LLM calls batched/cached; re-runs skip already-analyzed papers
+- **Rate limits**: Respect arXiv (3s) and InspireHEP (350ms) rate limits
+- **Offline capability**: NLP extraction works fully offline; LLM analysis requires API access
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Hybrid NLP + LLM analysis | NLP for structure/cost efficiency, LLM for semantic depth | — Pending |
-| Pluggable LLM backend via trait | Same pattern as PaperSource; future-proofs provider choice | — Pending |
-| SurrealDB for analysis storage | Extend existing schema; graph queries natural for cross-paper analysis | — Pending |
-| Cross-paper over per-paper focus | Per-paper extraction is a stepping stone; gap analysis is the real value | — Pending |
-| 3D visualization for multidimensional analysis | 2D force-directed graph insufficient for multi-category comparison | — Pending |
-| Best-available text extraction per paper | Research LaTeX source vs HTML vs PDF; availability varies by paper | — Pending |
+| Hybrid NLP + LLM analysis | NLP for structure/cost efficiency, LLM for semantic depth | ✓ Good — clear separation of concerns |
+| Pluggable LLM backend via trait | Same pattern as PaperSource; future-proofs provider choice | ✓ Good — Claude, Ollama, Noop all work |
+| SurrealDB for analysis storage | Extend existing schema; graph queries natural for cross-paper analysis | ✓ Good — migrations work, 6 versioned |
+| ar5iv HTML as primary full-text source | Best structure preservation, already partially scraped | ✓ Good — section detection works |
+| DB migration system (version guards) | Idempotent, re-runnable, no data loss | ✓ Good — replaced init_schema cleanly |
+| Corpus fingerprint caching | Avoid redundant NLP recomputation on unchanged corpus | ✓ Good — independent fingerprints for NLP and gap analysis |
+| TintedEdgeShape custom DisplayEdge | Edge::set_color() absent in egui_graphs 0.25.0 | ✓ Good — required workaround, clean implementation |
+| GapFinding uses CREATE not UPSERT | History preservation: multiple runs create separate records | ✓ Good — enables temporal gap tracking |
+| SurrealDB FLEXIBLE TYPE for complex fields | JSON strings for methods/findings/tfidf_vector | ⚠ Revisit — works but limits server-side querying |
 
 ---
-*Last updated: 2026-03-14 after initialization*
+*Last updated: 2026-03-14 after v1.0 milestone*

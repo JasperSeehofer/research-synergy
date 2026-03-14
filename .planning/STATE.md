@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 05-01-PLAN.md
-last_updated: "2026-03-14T18:11:26.940Z"
+stopped_at: Completed 05-02-PLAN.md
+last_updated: "2026-03-14T21:41:18.063Z"
 last_activity: "2026-03-14 — Plan 04-01 complete: GapFinding foundation (data model, migration 6, repository, LLM trait extension, prompt templates)"
 progress:
   total_phases: 5
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 12
-  completed_plans: 11
+  completed_plans: 12
   percent: 80
 ---
 
@@ -61,6 +61,7 @@ Progress: [████████░░] 80%
 | Phase 04-cross-paper-gap-analysis P02 | 8min | 2 tasks | 6 files |
 | Phase 04 P03 | 6min | 2 tasks | 3 files |
 | Phase 05-visualization-enrichment P01 | 4min | 2 tasks | 5 files |
+| Phase 05-visualization-enrichment P02 | 209min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -104,6 +105,9 @@ Recent decisions affecting current work:
 - [Phase 05-visualization-enrichment]: New DemoApp fields annotated with #[allow(dead_code)] — Plan 02 rendering logic consumes them
 - [Phase 05-visualization-enrichment]: load_analysis_data() extracted as async helper — keeps launch_visualization sync, called at both call sites
 - [Phase 05-visualization-enrichment]: Weight stripping moved inside DemoApp::new to preserve Paper.title access for node_title_map
+- [Phase Phase 05-visualization-enrichment]: TintedEdgeShape wraps DefaultEdgeShape with Option<Color32> color_override — Edge::set_color() absent in egui_graphs 0.25.0 so custom DisplayEdge is the required fallback
+- [Phase Phase 05-visualization-enrichment]: apply_enrichment() uses one-frame lag (called after sync at end of update()) — imperceptible at 60fps, avoids restructuring update order
+- [Phase Phase 05-visualization-enrichment]: find_hovered_node() uses 1.5x hit radius tolerance for pointer-to-graph-space transform imprecision
 
 ### Pending Todos
 
@@ -117,6 +121,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-14T18:11:26.932Z
-Stopped at: Completed 05-01-PLAN.md
+Last session: 2026-03-14T21:41:18.055Z
+Stopped at: Completed 05-02-PLAN.md
 Resume file: None

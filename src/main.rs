@@ -25,10 +25,15 @@ use data_aggregation::arxiv_source::ArxivSource;
 use data_aggregation::inspirehep_api::InspireHepClient;
 use data_aggregation::traits::PaperSource;
 use database::client::Db;
+use database::queries::LlmAnnotationRepository;
 use datamodels::analysis::{AnalysisMetadata, PaperAnalysis};
 use datamodels::paper::Paper;
 use eframe::run_native;
-use tracing::{error, info};
+use llm::claude::ClaudeProvider;
+use llm::noop::NoopProvider;
+use llm::ollama::OllamaProvider;
+use llm::traits::LlmProvider;
+use tracing::{error, info, warn};
 use visualization::force_graph_app::DemoApp;
 
 #[derive(Parser, Debug)]
@@ -68,6 +73,14 @@ struct Cli {
     /// Skip full-text extraction; all papers use abstract only
     #[arg(long, default_value_t = false)]
     skip_fulltext: bool,
+
+    /// LLM provider for semantic extraction: claude, ollama, noop
+    #[arg(long)]
+    llm_provider: Option<String>,
+
+    /// LLM model override (e.g. claude-sonnet-4-20250514, llama3.2)
+    #[arg(long)]
+    llm_model: Option<String>,
 }
 
 #[tokio::main]
@@ -113,7 +126,14 @@ async fn main() {
         };
         info!(count = papers.len(), "Loaded papers from database");
         if cli.analyze {
-            run_analysis(db, cli.rate_limit_secs, cli.skip_fulltext).await;
+            run_analysis(
+                db,
+                cli.rate_limit_secs,
+                cli.skip_fulltext,
+                cli.llm_provider.as_deref(),
+                cli.llm_model.as_deref(),
+            )
+            .await;
         }
         launch_visualization(&papers);
         return;
@@ -165,13 +185,26 @@ async fn main() {
             error!("--analyze requires --db to be specified");
             std::process::exit(1);
         };
-        run_analysis(db, cli.rate_limit_secs, cli.skip_fulltext).await;
+        run_analysis(
+            db,
+            cli.rate_limit_secs,
+            cli.skip_fulltext,
+            cli.llm_provider.as_deref(),
+            cli.llm_model.as_deref(),
+        )
+        .await;
     }
 
     launch_visualization(&papers);
 }
 
-async fn run_analysis(db: &Db, rate_limit_secs: u64, skip_fulltext: bool) {
+async fn run_analysis(
+    db: &Db,
+    rate_limit_secs: u64,
+    skip_fulltext: bool,
+    llm_provider: Option<&str>,
+    llm_model: Option<&str>,
+) {
     let extraction_repo = database::queries::ExtractionRepository::new(db);
     let paper_repo = database::queries::PaperRepository::new(db);
     let all_papers = paper_repo.get_all_papers().await.unwrap_or_else(|e| {
@@ -223,6 +256,84 @@ async fn run_analysis(db: &Db, rate_limit_secs: u64, skip_fulltext: bool) {
     // NLP analysis step runs after text extraction (locked decision: extract -> analyze order)
     // Reads from the text_extraction table (all papers in DB, not just current crawl)
     run_nlp_analysis(db).await;
+
+    // LLM analysis step — only runs when --llm-provider is specified
+    if let Some(provider_name) = llm_provider {
+        let client = utils::create_http_client();
+        let mut provider: Box<dyn LlmProvider> = match provider_name {
+            "claude" => {
+                let p = ClaudeProvider::new(client).unwrap_or_else(|e| {
+                    error!(error = %e, "Failed to initialize Claude provider");
+                    std::process::exit(1);
+                });
+                Box::new(if let Some(m) = llm_model {
+                    p.with_model(m.to_string())
+                } else {
+                    p
+                })
+            }
+            "ollama" => {
+                let p = OllamaProvider::new(client);
+                Box::new(if let Some(m) = llm_model {
+                    p.with_model(m.to_string())
+                } else {
+                    p
+                })
+            }
+            "noop" => Box::new(NoopProvider),
+            other => {
+                error!(provider = other, "Unknown LLM provider. Use: claude, ollama, noop");
+                std::process::exit(1);
+            }
+        };
+        run_llm_analysis(db, provider.as_mut()).await;
+    }
+}
+
+async fn run_llm_analysis(db: &Db, provider: &mut dyn LlmProvider) {
+    let paper_repo = database::queries::PaperRepository::new(db);
+    let llm_repo = LlmAnnotationRepository::new(db);
+
+    let all_papers = paper_repo.get_all_papers().await.unwrap_or_else(|e| {
+        error!(error = %e, "Failed to load papers for LLM analysis");
+        std::process::exit(1);
+    });
+
+    let (mut annotated, mut skipped, mut failed) = (0usize, 0usize, 0usize);
+
+    for paper in &all_papers {
+        let id = utils::strip_version_suffix(&paper.id);
+        if llm_repo.annotation_exists(&id).await.unwrap_or(false) {
+            skipped += 1;
+            continue;
+        }
+        match provider.annotate_paper(&id, &paper.summary).await {
+            Ok(ann) => {
+                if let Err(e) = llm_repo.upsert_annotation(&ann).await {
+                    error!(paper_id = id.as_str(), error = %e, "Failed to persist LLM annotation");
+                }
+                annotated += 1;
+            }
+            Err(e) => {
+                warn!(paper_id = id.as_str(), error = %e, "LLM annotation failed, skipping paper");
+                failed += 1;
+            }
+        }
+    }
+
+    info!(
+        annotated,
+        skipped,
+        failed,
+        total = all_papers.len(),
+        provider = provider.provider_name(),
+        "LLM analysis: {}/{} papers annotated ({} cached, {} failed), provider: {}",
+        annotated,
+        all_papers.len(),
+        skipped,
+        failed,
+        provider.provider_name()
+    );
 }
 
 async fn run_nlp_analysis(db: &Db) {

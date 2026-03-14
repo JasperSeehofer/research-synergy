@@ -76,7 +76,12 @@ Plans:
   2. Running `--analyze` on a corpus produces `abc_bridge` gap findings where a non-obvious A-C connection exists via a shared B intermediary
   3. Gap findings are printed to stdout at analysis completion, grouped by type (contradiction / abc_bridge)
   4. Each gap finding includes the paper IDs involved and a human-readable justification string
-**Plans**: TBD
+**Plans:** 3 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — GapFinding data model + migration 6 + GapFindingRepository + LlmProvider verify_gap trait extension + gap prompts
+- [ ] 04-02-PLAN.md — Similarity module + contradiction detector + ABC-bridge discoverer with graph distance
+- [ ] 04-03-PLAN.md — Output formatter + CLI flags (--full-corpus, --verbose) + run_gap_analysis() pipeline wiring
 
 ### Phase 5: Visualization Enrichment
 **Goal**: The citation graph visually encodes analysis dimensions so users can see paper type, primary method, and finding strength at a glance, and can switch between the raw citation view and the enriched view
@@ -99,5 +104,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 1. Text Extraction Foundation | 2/2 | Complete   | 2026-03-14 |
 | 2. NLP Analysis + DB Schema | 1/2 | In Progress|  |
 | 3. Pluggable LLM Backend | 1/3 | In Progress|  |
-| 4. Cross-Paper Gap Analysis | 0/TBD | Not started | - |
+| 4. Cross-Paper Gap Analysis | 0/3 | Not started | - |
 | 5. Visualization Enrichment | 0/TBD | Not started | - |

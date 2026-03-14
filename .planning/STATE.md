@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 04-02-PLAN.md
-last_updated: "2026-03-14T14:23:28.602Z"
+stopped_at: Completed 04-03-PLAN.md
+last_updated: "2026-03-14T14:32:28.580Z"
 last_activity: "2026-03-14 — Plan 04-01 complete: GapFinding foundation (data model, migration 6, repository, LLM trait extension, prompt templates)"
 progress:
   total_phases: 5
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 10
-  completed_plans: 9
+  completed_plans: 10
   percent: 80
 ---
 
@@ -59,6 +59,7 @@ Progress: [████████░░] 80%
 | Phase 03-pluggable-llm-backend P03 | 12 | 1 tasks | 1 files |
 | Phase 04-cross-paper-gap-analysis P01 | 6min | 2 tasks | 10 files |
 | Phase 04-cross-paper-gap-analysis P02 | 8min | 2 tasks | 6 files |
+| Phase 04 P03 | 6min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -96,6 +97,9 @@ Recent decisions affecting current work:
 - [Phase 04-cross-paper-gap-analysis]: Cosine similarity threshold 0.3 for contradiction stage-1 filter; finding strength divergence detects strong/established vs weak/preliminary pairs
 - [Phase 04-cross-paper-gap-analysis]: ABC-bridge MIN_SHARED_TERMS=3 and bidirectional dijkstra for undirected reachability on directed citation graph
 - [Phase 04-cross-paper-gap-analysis]: pub use re-exports removed from gap_analysis/mod.rs — clippy -D warnings rejects unused imports in bin target
+- [Phase 04-cross-paper-gap-analysis]: format_gap_table uses manual format! with computed column widths — no tabled crate per RESEARCH.md
+- [Phase 04-cross-paper-gap-analysis]: run_gap_analysis falls through to display cached findings even when corpus fingerprint matches unchanged
+- [Phase 04-cross-paper-gap-analysis]: Corpus fingerprint key 'gap_analysis' distinct from 'corpus_tfidf' for independent invalidation
 
 ### Pending Todos
 
@@ -109,6 +113,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-14T14:23:28.580Z
-Stopped at: Completed 04-02-PLAN.md
+Last session: 2026-03-14T14:32:28.560Z
+Stopped at: Completed 04-03-PLAN.md
 Resume file: None

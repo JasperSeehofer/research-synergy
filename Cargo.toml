@@ -30,6 +30,8 @@ tracing-subscriber = "0.3"
 async-trait = "0.1"
 surrealdb = { version = "3", features = ["kv-mem", "kv-surrealkv"] }
 chrono = { version = "0.4", features = ["serde"] }
+sha2 = "0.10"
+stop-words = "0.8"
 
 [dev-dependencies]
 wiremock = "0.6"

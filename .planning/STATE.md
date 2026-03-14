@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 03-pluggable-llm-backend 03-02-PLAN.md
-last_updated: "2026-03-14T12:27:03.061Z"
+stopped_at: Completed 03-pluggable-llm-backend 03-03-PLAN.md
+last_updated: "2026-03-14T12:43:33.839Z"
 last_activity: 2026-03-14 — Roadmap created, 12/12 v1 requirements mapped to 5 phases
 progress:
   total_phases: 5
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 7
-  completed_plans: 6
+  completed_plans: 7
   percent: 0
 ---
 
@@ -56,6 +56,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 02-nlp-analysis-db-schema P02 | 5 | 2 tasks | 4 files |
 | Phase 03-pluggable-llm-backend P01 | 17 | 2 tasks | 11 files |
 | Phase 03-pluggable-llm-backend PP02 | 12 | 2 tasks | 4 files |
+| Phase 03-pluggable-llm-backend P03 | 12 | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -84,6 +85,8 @@ Recent decisions affecting current work:
 - [Phase 03-pluggable-llm-backend]: reqwest json feature added as feature flag on existing dep to enable .json() method — no new crate
 - [Phase 03-pluggable-llm-backend]: LlmAnnotationRaw defined once in claude.rs as pub(crate), reused by ollama.rs — single source of truth for LLM output shape
 - [Phase 03-pluggable-llm-backend]: with_base_url builder pattern on both providers enables wiremock injection without env var manipulation
+- [Phase 03-pluggable-llm-backend]: NoopProvider is a unit struct without new() — constructed directly as NoopProvider literal
+- [Phase 03-pluggable-llm-backend]: LLM step disabled by default — only runs when --llm-provider is explicitly specified (Option<String>)
 
 ### Pending Todos
 
@@ -97,6 +100,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-14T12:27:03.053Z
-Stopped at: Completed 03-pluggable-llm-backend 03-02-PLAN.md
+Last session: 2026-03-14T12:43:33.831Z
+Stopped at: Completed 03-pluggable-llm-backend 03-03-PLAN.md
 Resume file: None

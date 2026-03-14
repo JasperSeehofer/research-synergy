@@ -4,4 +4,5 @@ pub mod arxiv_utils;
 pub mod html_parser;
 pub mod inspirehep_api;
 pub mod search_query_handler;
+pub mod text_extractor;
 pub mod traits;

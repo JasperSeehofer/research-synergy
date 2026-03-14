@@ -1,8 +1,6 @@
 #[allow(dead_code)]
 mod data_aggregation;
 #[allow(dead_code)]
-mod nlp;
-#[allow(dead_code)]
 mod data_processing;
 #[allow(dead_code)]
 mod database;
@@ -11,17 +9,21 @@ mod datamodels;
 #[allow(dead_code)]
 mod error;
 #[allow(dead_code)]
+mod nlp;
+#[allow(dead_code)]
 mod utils;
 #[allow(dead_code)]
 mod validation;
 #[allow(dead_code)]
 mod visualization;
 
+use chrono::Utc;
 use clap::Parser;
 use data_aggregation::arxiv_source::ArxivSource;
 use data_aggregation::inspirehep_api::InspireHepClient;
 use data_aggregation::traits::PaperSource;
 use database::client::Db;
+use datamodels::analysis::{AnalysisMetadata, PaperAnalysis};
 use datamodels::paper::Paper;
 use eframe::run_native;
 use tracing::{error, info};
@@ -215,6 +217,128 @@ async fn run_analysis(db: &Db, rate_limit_secs: u64, skip_fulltext: bool) {
         analyzed,
         skipped_count
     );
+
+    // NLP analysis step runs after text extraction (locked decision: extract -> analyze order)
+    // Reads from the text_extraction table (all papers in DB, not just current crawl)
+    run_nlp_analysis(db).await;
+}
+
+async fn run_nlp_analysis(db: &Db) {
+    let extraction_repo = database::queries::ExtractionRepository::new(db);
+    let analysis_repo = database::queries::AnalysisRepository::new(db);
+
+    // Step 1: Load ALL extractions from DB before any IDF computation (RESEARCH.md Pitfall 2)
+    let extractions = match extraction_repo.get_all_extractions().await {
+        Ok(e) => e,
+        Err(err) => {
+            error!(error = %err, "Failed to load extractions for NLP analysis");
+            return;
+        }
+    };
+
+    if extractions.is_empty() {
+        info!("No extractions found, skipping NLP analysis");
+        return;
+    }
+
+    // Step 2: Corpus fingerprint check (INFR-02)
+    let arxiv_ids: Vec<String> = extractions.iter().map(|e| e.arxiv_id.clone()).collect();
+    let fingerprint = nlp::tfidf::corpus_fingerprint(&arxiv_ids);
+    let paper_count = extractions.len() as u64;
+
+    if let Ok(Some(existing_meta)) = analysis_repo.get_metadata("corpus_tfidf").await
+        && existing_meta.corpus_fingerprint == fingerprint
+        && existing_meta.paper_count == paper_count
+    {
+        info!(
+            count = paper_count,
+            "Corpus unchanged ({} papers), skipping NLP analysis", paper_count
+        );
+        return;
+    }
+
+    // Step 3: Compute TF-IDF for all documents (IDF is corpus-level, computed once)
+    let tfidf_results = nlp::tfidf::TfIdfEngine::compute_corpus(&extractions);
+
+    // Step 4: Extract top-5, persist, and log per-paper keywords
+    for (arxiv_id, tfidf_vector) in &tfidf_results {
+        let (top_terms, top_scores) = nlp::tfidf::TfIdfEngine::get_top_n(tfidf_vector, 5);
+
+        // Build log string for top keywords
+        let keywords_display: Vec<String> = top_terms
+            .iter()
+            .zip(top_scores.iter())
+            .map(|(term, score)| format!("{term} ({score:.2})"))
+            .collect();
+        info!(
+            paper = arxiv_id.as_str(),
+            "Paper {}: {}",
+            arxiv_id,
+            keywords_display.join(", ")
+        );
+
+        let analysis = PaperAnalysis {
+            arxiv_id: arxiv_id.clone(),
+            tfidf_vector: tfidf_vector.clone(),
+            top_terms,
+            top_scores,
+            analyzed_at: Utc::now().to_rfc3339(),
+            corpus_fingerprint: fingerprint.clone(),
+        };
+
+        if let Err(err) = analysis_repo.upsert_analysis(&analysis).await {
+            error!(paper_id = arxiv_id.as_str(), error = %err, "Failed to persist analysis");
+        }
+    }
+
+    // Step 5: Update corpus metadata
+    let metadata = AnalysisMetadata {
+        key: "corpus_tfidf".to_string(),
+        paper_count,
+        corpus_fingerprint: fingerprint,
+        last_analyzed: Utc::now().to_rfc3339(),
+    };
+    if let Err(err) = analysis_repo.upsert_metadata(&metadata).await {
+        error!(error = %err, "Failed to persist analysis metadata");
+    }
+
+    // Step 6: Corpus-level summary
+    // Compute document frequencies for top corpus terms
+    let mut doc_freq: std::collections::HashMap<String, usize> = std::collections::HashMap::new();
+    for (_, tfidf_vector) in &tfidf_results {
+        for term in tfidf_vector.keys() {
+            *doc_freq.entry(term.clone()).or_insert(0) += 1;
+        }
+    }
+
+    // Top 10 corpus terms by document frequency
+    let mut df_pairs: Vec<(String, usize)> = doc_freq.into_iter().collect();
+    df_pairs.sort_by(|a, b| b.1.cmp(&a.1).then(a.0.cmp(&b.0)));
+    df_pairs.truncate(10);
+
+    let corpus_terms_display: Vec<String> = df_pairs
+        .iter()
+        .map(|(term, count)| format!("{term} (in {count} papers)"))
+        .collect();
+
+    let avg_keywords = if tfidf_results.is_empty() {
+        0.0
+    } else {
+        tfidf_results
+            .iter()
+            .map(|(_, v)| v.len().min(5))
+            .sum::<usize>() as f64
+            / tfidf_results.len() as f64
+    };
+
+    info!(
+        papers_analyzed = paper_count,
+        avg_keywords = avg_keywords,
+        "NLP analysis complete: {} papers analyzed, avg {:.1} keywords/paper",
+        paper_count,
+        avg_keywords
+    );
+    info!("Top corpus terms: {}", corpus_terms_display.join(", "));
 }
 
 fn launch_visualization(papers: &[Paper]) {

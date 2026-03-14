@@ -39,13 +39,16 @@ Surface research gaps and unexplored connections that no single paper reveals �
 
 ### Active
 
-- [ ] Open-problems aggregation across citation graph ranked by recurrence frequency
-- [ ] Method-combination gap matrix showing existing vs absent method pairings
+- [ ] Wire gap findings into graph visualization (edges/badges for contradictions and bridges)
 - [ ] Section-aware LLM extraction using detected section boundaries
-- [ ] Analysis provenance tracking (store which text segment sourced each extraction)
-- [ ] 3D multidimensional projection of paper embeddings (PCA/UMAP)
-- [ ] Temporal evolution view layering the graph by publication year
-- [ ] Gap findings visualized in the citation graph (edges/badges for contradictions and bridges)
+- [ ] Incremental/resumable crawling with DB-backed crawl queue for high-depth runs
+- [ ] Leptos web migration replacing egui desktop GUI
+- [ ] WebGL/Canvas graph renderer with Barnes-Hut O(n log n) force layout
+- [ ] Analysis provenance tracking (click a finding, see source text segment)
+- [ ] Open-problems aggregation panel ranked by recurrence frequency
+- [ ] Method-combination gap matrix showing existing vs absent method pairings
+- [ ] Temporal filtering by publication year
+- [ ] Node clustering / level-of-detail for 1000+ node graphs
 
 ### Out of Scope
 
@@ -55,6 +58,19 @@ Surface research gaps and unexplored connections that no single paper reveals �
 - Non-arXiv PDF sources — only papers reachable through existing data sources
 - Fine-tuning custom models — use off-the-shelf LLM APIs with prompt engineering
 - LaTeX source parsing — ar5iv HTML is simpler and sufficient; LaTeX parsing in Rust is high complexity for marginal gain
+- 3D paper embedding projections (PCA/UMAP) — deferred to v1.2+ after web platform stabilizes
+
+## Current Milestone: v1.1 Scale & Surface
+
+**Goal:** Make ReSyn usable at real research scale (depth 10+) and move gap insights from stdout into the primary interface, migrating to a Leptos web UI.
+
+**Target features:**
+- Tech debt cleanup (nlp export, stale stubs, gap findings wiring)
+- Section-aware LLM extraction
+- Incremental/resumable high-depth crawling with progress reporting
+- Full Leptos web migration replacing egui
+- Enriched web visualization (gap findings, provenance, open-problems panel, method matrix)
+- Scale testing and UX polish at 1000+ nodes
 
 ## Context
 
@@ -92,4 +108,4 @@ Tech stack: Rust (edition 2024), SurrealDB v3 (embedded), petgraph, egui/eframe,
 | SurrealDB FLEXIBLE TYPE for complex fields | JSON strings for methods/findings/tfidf_vector | ⚠ Revisit — works but limits server-side querying |
 
 ---
-*Last updated: 2026-03-14 after v1.0 milestone*
+*Last updated: 2026-03-15 after v1.1 milestone start*

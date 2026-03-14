@@ -1,38 +1,51 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: Analysis Pipeline
-status: completed
-stopped_at: Milestone v1.0 shipped
-last_updated: "2026-03-14T23:00:00.000Z"
-last_activity: "2026-03-14 — Milestone v1.0 Analysis Pipeline shipped (5 phases, 12 plans)"
+milestone: v1.1
+milestone_name: Scale & Surface
+status: active
+stopped_at: null
+last_updated: "2026-03-15T00:00:00.000Z"
+last_activity: "2026-03-15 — Milestone v1.1 Scale & Surface started"
 progress:
-  total_phases: 5
-  completed_phases: 5
-  total_plans: 12
-  completed_plans: 12
-  percent: 100
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-03-14)
+See: .planning/PROJECT.md (updated 2026-03-15)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Planning next milestone
+**Current focus:** Defining requirements for v1.1
 
 ## Current Position
 
-Milestone: v1.0 Analysis Pipeline — SHIPPED 2026-03-14
-Status: Complete
-Next: `/gsd:new-milestone` to start v2.0
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-03-15 — Milestone v1.1 started
 
-Progress: [██████████] 100%
+Progress: [░░░░░░░░░░] 0%
+
+## Accumulated Context
+
+### From v1.0
+
+- Hybrid NLP + LLM analysis pattern works well
+- Pluggable trait pattern (PaperSource, LlmProvider) is extensible
+- DB migration system handles schema evolution cleanly
+- Corpus fingerprint caching avoids redundant recomputation
+- Gap findings currently stdout-only — needs visualization wiring
+- `nlp` module not exported in `lib.rs`
+- Stale stub comment in `src/llm/ollama.rs:2`
 
 ## Session Continuity
 
-Last session: 2026-03-14
-Stopped at: Milestone v1.0 shipped
+Last session: 2026-03-15
+Stopped at: Defining requirements
 Resume file: None

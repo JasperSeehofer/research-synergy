@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 03-pluggable-llm-backend 03-01-PLAN.md
-last_updated: "2026-03-14T12:13:52.541Z"
+stopped_at: Completed 03-pluggable-llm-backend 03-02-PLAN.md
+last_updated: "2026-03-14T12:27:03.061Z"
 last_activity: 2026-03-14 — Roadmap created, 12/12 v1 requirements mapped to 5 phases
 progress:
   total_phases: 5
   completed_phases: 2
   total_plans: 7
-  completed_plans: 5
+  completed_plans: 6
   percent: 0
 ---
 
@@ -55,6 +55,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 02-nlp-analysis-db-schema P01 | 36 | 2 tasks | 5 files |
 | Phase 02-nlp-analysis-db-schema P02 | 5 | 2 tasks | 4 files |
 | Phase 03-pluggable-llm-backend P01 | 17 | 2 tasks | 11 files |
+| Phase 03-pluggable-llm-backend PP02 | 12 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -80,6 +81,9 @@ Recent decisions affecting current work:
 - [Phase 02-nlp-analysis-db-schema]: Corpus fingerprint skip guard uses let-chain syntax (Rust edition 2024) to collapse nested if-let
 - [Phase 03-pluggable-llm-backend]: Methods/findings stored as JSON strings (TYPE string) in SurrealDB SCHEMAFULL — avoids nested-object field enforcement; consistent with tfidf_vector lesson
 - [Phase 03-pluggable-llm-backend]: LlmProvider uses &mut self for rate-limit state mutation in future providers (mirrors InspireHepClient)
+- [Phase 03-pluggable-llm-backend]: reqwest json feature added as feature flag on existing dep to enable .json() method — no new crate
+- [Phase 03-pluggable-llm-backend]: LlmAnnotationRaw defined once in claude.rs as pub(crate), reused by ollama.rs — single source of truth for LLM output shape
+- [Phase 03-pluggable-llm-backend]: with_base_url builder pattern on both providers enables wiremock injection without env var manipulation
 
 ### Pending Todos
 
@@ -93,6 +97,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-14T12:13:52.533Z
-Stopped at: Completed 03-pluggable-llm-backend 03-01-PLAN.md
+Last session: 2026-03-14T12:27:03.053Z
+Stopped at: Completed 03-pluggable-llm-backend 03-02-PLAN.md
 Resume file: None

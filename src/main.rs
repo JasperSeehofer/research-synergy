@@ -9,6 +9,8 @@ mod datamodels;
 #[allow(dead_code)]
 mod error;
 #[allow(dead_code)]
+mod llm;
+#[allow(dead_code)]
 mod nlp;
 #[allow(dead_code)]
 mod utils;

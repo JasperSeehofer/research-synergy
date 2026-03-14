@@ -3,6 +3,7 @@ pub mod data_processing;
 pub mod database;
 pub mod datamodels;
 pub mod error;
+pub mod llm;
 pub mod utils;
 pub mod validation;
 pub mod visualization;

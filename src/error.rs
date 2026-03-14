@@ -10,6 +10,7 @@ pub enum ResynError {
     NoArxivLink,
     InspireHepApi(String),
     Database(String),
+    LlmApi(String),
 }
 
 impl fmt::Display for ResynError {
@@ -23,6 +24,7 @@ impl fmt::Display for ResynError {
             ResynError::NoArxivLink => write!(f, "no arXiv link found in reference"),
             ResynError::InspireHepApi(msg) => write!(f, "InspireHEP API error: {msg}"),
             ResynError::Database(msg) => write!(f, "database error: {msg}"),
+            ResynError::LlmApi(msg) => write!(f, "LLM API error: {msg}"),
         }
     }
 }
@@ -39,5 +41,16 @@ impl std::error::Error for ResynError {
 impl From<reqwest::Error> for ResynError {
     fn from(e: reqwest::Error) -> Self {
         ResynError::HttpRequest(e)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_llm_api_error_display() {
+        let err = ResynError::LlmApi("connection refused".to_string());
+        assert_eq!(format!("{err}"), "LLM API error: connection refused");
     }
 }

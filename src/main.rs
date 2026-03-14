@@ -1,6 +1,8 @@
 #[allow(dead_code)]
 mod data_aggregation;
 #[allow(dead_code)]
+mod nlp;
+#[allow(dead_code)]
 mod data_processing;
 #[allow(dead_code)]
 mod database;
@@ -174,9 +176,8 @@ async fn run_analysis(db: &Db, rate_limit_secs: u64, skip_fulltext: bool) {
     });
 
     let client = utils::create_http_client();
-    let mut extractor =
-        data_aggregation::text_extractor::Ar5ivExtractor::new(client)
-            .with_rate_limit(std::time::Duration::from_secs(rate_limit_secs));
+    let mut extractor = data_aggregation::text_extractor::Ar5ivExtractor::new(client)
+        .with_rate_limit(std::time::Duration::from_secs(rate_limit_secs));
 
     let mut abstract_only_count: usize = 0;
     let mut skipped_count: usize = 0;

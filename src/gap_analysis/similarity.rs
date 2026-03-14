@@ -36,7 +36,7 @@ pub fn shared_high_weight_terms(
 ) -> Vec<String> {
     let mut terms: Vec<String> = a
         .iter()
-        .filter(|(key, val)| **val >= min_weight && b.get(*key).map_or(false, |bv| *bv >= min_weight))
+        .filter(|(key, val)| **val >= min_weight && b.get(*key).is_some_and(|bv| *bv >= min_weight))
         .map(|(key, _)| key.clone())
         .collect();
 

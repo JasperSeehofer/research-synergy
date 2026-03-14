@@ -60,7 +60,7 @@ Plans:
   2. `--llm-provider ollama` produces the same structured output using a local model, no internet required beyond the Ollama endpoint
   3. Re-running analysis on an already-annotated corpus skips LLM calls for cached papers (verified by zero API requests in logs)
   4. `--llm-provider noop` runs the full pipeline without any LLM calls, producing empty-but-valid annotation records
-**Plans:** 3 plans
+**Plans:** 1/3 plans executed
 
 Plans:
 - [ ] 03-01-PLAN.md — Data models (LlmAnnotation, Finding, Method) + LLM trait + NoopProvider + migration 5 + LlmAnnotationRepository
@@ -98,6 +98,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 |-------|----------------|--------|-----------|
 | 1. Text Extraction Foundation | 2/2 | Complete   | 2026-03-14 |
 | 2. NLP Analysis + DB Schema | 1/2 | In Progress|  |
-| 3. Pluggable LLM Backend | 0/3 | Not started | - |
+| 3. Pluggable LLM Backend | 1/3 | In Progress|  |
 | 4. Cross-Paper Gap Analysis | 0/TBD | Not started | - |
 | 5. Visualization Enrichment | 0/TBD | Not started | - |

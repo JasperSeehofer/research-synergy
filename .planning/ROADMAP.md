@@ -79,7 +79,7 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
-- [ ] 04-01-PLAN.md — GapFinding data model + migration 6 + GapFindingRepository + LlmProvider verify_gap trait extension + gap prompts
+- [x] 04-01-PLAN.md — GapFinding data model + migration 6 + GapFindingRepository + LlmProvider verify_gap trait extension + gap prompts (completed 2026-03-14)
 - [ ] 04-02-PLAN.md — Similarity module + contradiction detector + ABC-bridge discoverer with graph distance
 - [ ] 04-03-PLAN.md — Output formatter + CLI flags (--full-corpus, --verbose) + run_gap_analysis() pipeline wiring
 

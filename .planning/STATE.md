@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Phase 4 context gathered
-last_updated: "2026-03-14T13:45:16.452Z"
-last_activity: 2026-03-14 — Roadmap created, 12/12 v1 requirements mapped to 5 phases
+stopped_at: "Completed 04-01-PLAN.md"
+last_updated: "2026-03-14T14:00:00.000Z"
+last_activity: 2026-03-14 — Plan 04-01 complete: GapFinding foundation (data model, migration 6, repository, LLM trait extension, prompt templates)
 progress:
   total_phases: 5
   completed_phases: 3
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-03-14)
 
 ## Current Position
 
-Phase: 1 of 5 (Text Extraction Foundation)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-03-14 — Roadmap created, 12/12 v1 requirements mapped to 5 phases
+Phase: 4 of 5 (Cross-Paper Gap Analysis)
+Plan: 1 of TBD in current phase
+Status: In progress
+Last activity: 2026-03-14 — Plan 04-01 complete: GapFinding foundation (data model, migration 6, repository, LLM trait extension, prompt templates)
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [████████░░] 80%
 
 ## Performance Metrics
 
@@ -57,6 +57,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 03-pluggable-llm-backend P01 | 17 | 2 tasks | 11 files |
 | Phase 03-pluggable-llm-backend PP02 | 12 | 2 tasks | 4 files |
 | Phase 03-pluggable-llm-backend P03 | 12 | 1 tasks | 1 files |
+| Phase 04-cross-paper-gap-analysis P01 | 6min | 2 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -87,6 +88,10 @@ Recent decisions affecting current work:
 - [Phase 03-pluggable-llm-backend]: with_base_url builder pattern on both providers enables wiremock injection without env var manipulation
 - [Phase 03-pluggable-llm-backend]: NoopProvider is a unit struct without new() — constructed directly as NoopProvider literal
 - [Phase 03-pluggable-llm-backend]: LLM step disabled by default — only runs when --llm-provider is explicitly specified (Option<String>)
+- [Phase 04-cross-paper-gap-analysis]: GapFinding uses CREATE (not UPSERT) — history preservation: multiple gap detection runs for same paper pair create separate records
+- [Phase 04-cross-paper-gap-analysis]: paper_ids and shared_terms stored as JSON strings in SurrealDB SCHEMAFULL (consistent with LlmAnnotation lesson from Phase 3)
+- [Phase 04-cross-paper-gap-analysis]: verify_gap returns raw String (no JSON parsing) — gap verification is a yes/no judgment per RESEARCH.md
+- [Phase 04-cross-paper-gap-analysis]: NoopProvider::verify_gap returns "NO" — noop never confirms gaps (consistent with producing empty-but-valid results)
 
 ### Pending Todos
 

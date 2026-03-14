@@ -3,7 +3,7 @@ use surrealdb::engine::any::Any;
 
 use crate::error::ResynError;
 
-use super::schema::init_schema;
+use super::schema::migrate_schema;
 
 pub type Db = Surreal<Any>;
 
@@ -12,7 +12,7 @@ async fn setup(db: &Db) -> Result<(), ResynError> {
         .use_db("resyn")
         .await
         .map_err(|e| ResynError::Database(format!("namespace/db setup failed: {e}")))?;
-    init_schema(db).await?;
+    migrate_schema(db).await?;
     Ok(())
 }
 

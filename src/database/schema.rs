@@ -1,9 +1,33 @@
+use chrono::Utc;
 use surrealdb::Surreal;
 use surrealdb::engine::any::Any;
 
 use crate::error::ResynError;
 
-pub async fn init_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
+async fn get_schema_version(db: &Surreal<Any>) -> Result<u32, ResynError> {
+    let mut response = db
+        .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
+        .await
+        .map_err(|e| ResynError::Database(format!("get schema version failed: {e}")))?;
+
+    let versions: Vec<u32> = response
+        .take("version")
+        .map_err(|e| ResynError::Database(format!("parse schema version failed: {e}")))?;
+
+    Ok(versions.into_iter().next().unwrap_or(0))
+}
+
+async fn record_migration(db: &Surreal<Any>, version: u32) -> Result<(), ResynError> {
+    let now = Utc::now().to_rfc3339();
+    db.query("CREATE schema_migrations CONTENT { version: $version, applied_at: $now }")
+        .bind(("version", version))
+        .bind(("now", now))
+        .await
+        .map_err(|e| ResynError::Database(format!("record migration {version} failed: {e}")))?;
+    Ok(())
+}
+
+async fn apply_migration_1(db: &Surreal<Any>) -> Result<(), ResynError> {
     db.query(
         "
         DEFINE TABLE IF NOT EXISTS paper SCHEMAFULL;
@@ -28,7 +52,54 @@ pub async fn init_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
         ",
     )
     .await
-    .map_err(|e| ResynError::Database(format!("schema init failed: {e}")))?;
+    .map_err(|e| ResynError::Database(format!("migration 1 DDL failed: {e}")))?;
+    Ok(())
+}
+
+async fn apply_migration_2(db: &Surreal<Any>) -> Result<(), ResynError> {
+    db.query(
+        "
+        DEFINE TABLE IF NOT EXISTS text_extraction SCHEMAFULL;
+        DEFINE FIELD IF NOT EXISTS arxiv_id ON text_extraction TYPE string;
+        DEFINE FIELD IF NOT EXISTS extraction_method ON text_extraction TYPE string;
+        DEFINE FIELD IF NOT EXISTS abstract_text ON text_extraction TYPE option<string>;
+        DEFINE FIELD IF NOT EXISTS introduction ON text_extraction TYPE option<string>;
+        DEFINE FIELD IF NOT EXISTS methods ON text_extraction TYPE option<string>;
+        DEFINE FIELD IF NOT EXISTS results ON text_extraction TYPE option<string>;
+        DEFINE FIELD IF NOT EXISTS conclusion ON text_extraction TYPE option<string>;
+        DEFINE FIELD IF NOT EXISTS is_partial ON text_extraction TYPE bool;
+        DEFINE FIELD IF NOT EXISTS extracted_at ON text_extraction TYPE string;
+        DEFINE INDEX IF NOT EXISTS idx_extraction_arxiv_id ON text_extraction FIELDS arxiv_id UNIQUE;
+        ",
+    )
+    .await
+    .map_err(|e| ResynError::Database(format!("migration 2 DDL failed: {e}")))?;
+    Ok(())
+}
+
+pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
+    // Ensure migrations table exists first
+    db.query(
+        "
+        DEFINE TABLE IF NOT EXISTS schema_migrations SCHEMAFULL;
+        DEFINE FIELD IF NOT EXISTS version ON schema_migrations TYPE int;
+        DEFINE FIELD IF NOT EXISTS applied_at ON schema_migrations TYPE string;
+        ",
+    )
+    .await
+    .map_err(|e| ResynError::Database(format!("create schema_migrations table failed: {e}")))?;
+
+    let version = get_schema_version(db).await?;
+
+    if version < 1 {
+        apply_migration_1(db).await?;
+        record_migration(db, 1).await?;
+    }
+
+    if version < 2 {
+        apply_migration_2(db).await?;
+        record_migration(db, 2).await?;
+    }
 
     Ok(())
 }

@@ -1,4 +1,7 @@
-use egui::Color32;
+use egui::{Color32, Shape, Stroke};
+use egui_graphs::{DefaultEdgeShape, DisplayEdge, DisplayNode, DrawContext, EdgeProps, Node};
+use petgraph::EdgeType;
+use petgraph::stable_graph::IndexType;
 
 use crate::datamodels::llm_annotation::Finding;
 
@@ -44,6 +47,86 @@ pub fn finding_strength_radius(findings: &[Finding], base: f32) -> f32 {
         })
         .fold(1.0_f32, f32::max);
     base * multiplier
+}
+
+/// A custom edge display shape that delegates to [`DefaultEdgeShape`] but allows an optional
+/// color override. When `color_override` is `Some(c)`, the edge is drawn in color `c` instead of
+/// the default theme color. This is used to tint edges by their source node's paper type color in
+/// enriched view.
+#[derive(Clone, Debug)]
+pub struct TintedEdgeShape {
+    inner: DefaultEdgeShape,
+    /// When set, overrides the default edge stroke color.
+    pub color_override: Option<Color32>,
+}
+
+impl<E: Clone> From<EdgeProps<E>> for TintedEdgeShape {
+    fn from(props: EdgeProps<E>) -> Self {
+        Self {
+            inner: DefaultEdgeShape::from(props),
+            color_override: None,
+        }
+    }
+}
+
+impl<N, E, Ty, Ix, D> DisplayEdge<N, E, Ty, Ix, D> for TintedEdgeShape
+where
+    N: Clone,
+    E: Clone,
+    Ty: EdgeType,
+    Ix: IndexType,
+    D: DisplayNode<N, E, Ty, Ix>,
+{
+    fn shapes(
+        &mut self,
+        start: &Node<N, E, Ty, Ix, D>,
+        end: &Node<N, E, Ty, Ix, D>,
+        ctx: &DrawContext,
+    ) -> Vec<Shape> {
+        if let Some(color) = self.color_override {
+            // Build shapes using the default implementation, then patch the stroke color.
+            let mut shapes = self.inner.shapes(start, end, ctx);
+            patch_stroke_color(&mut shapes, color);
+            shapes
+        } else {
+            self.inner.shapes(start, end, ctx)
+        }
+    }
+
+    fn update(&mut self, state: &EdgeProps<E>) {
+        <DefaultEdgeShape as DisplayEdge<N, E, Ty, Ix, D>>::update(&mut self.inner, state);
+    }
+
+    fn is_inside(
+        &self,
+        start: &Node<N, E, Ty, Ix, D>,
+        end: &Node<N, E, Ty, Ix, D>,
+        pos: egui::Pos2,
+    ) -> bool {
+        self.inner.is_inside(start, end, pos)
+    }
+}
+
+/// Patches every [`Shape::LineSegment`] and [`Shape::Path`] stroke color in a shape list.
+/// Used by [`TintedEdgeShape`] to override the edge color without duplicating the rendering logic.
+fn patch_stroke_color(shapes: &mut [Shape], color: Color32) {
+    for shape in shapes.iter_mut() {
+        match shape {
+            Shape::LineSegment { stroke, .. } => {
+                *stroke = Stroke::new(stroke.width, color);
+            }
+            Shape::Path(path) => {
+                path.stroke = egui::epaint::PathStroke::new(path.stroke.width, color);
+            }
+            Shape::CubicBezier(b) => {
+                b.stroke = egui::epaint::PathStroke::new(b.stroke.width, color);
+            }
+            Shape::QuadraticBezier(q) => {
+                q.stroke = egui::epaint::PathStroke::new(q.stroke.width, color);
+            }
+            _ => {}
+        }
+    }
 }
 
 #[cfg(test)]
@@ -231,9 +314,6 @@ mod tests {
         }];
         let custom_base = 10.0_f32;
         let radius = finding_strength_radius(&findings, custom_base);
-        assert!(
-            (radius - 20.0).abs() < 1e-6,
-            "Expected 20.0, got {radius}"
-        );
+        assert!((radius - 20.0).abs() < 1e-6, "Expected 20.0, got {radius}");
     }
 }

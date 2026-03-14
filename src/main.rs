@@ -26,8 +26,9 @@ use clap::Parser;
 use data_aggregation::arxiv_source::ArxivSource;
 use data_aggregation::inspirehep_api::InspireHepClient;
 use data_aggregation::traits::PaperSource;
+use data_processing::graph_creation::create_graph_from_papers;
 use database::client::Db;
-use database::queries::LlmAnnotationRepository;
+use database::queries::{AnalysisRepository, GapFindingRepository, LlmAnnotationRepository};
 use datamodels::analysis::{AnalysisMetadata, PaperAnalysis};
 use datamodels::paper::Paper;
 use eframe::run_native;
@@ -83,6 +84,14 @@ struct Cli {
     /// LLM model override (e.g. claude-sonnet-4-20250514, llama3.2)
     #[arg(long)]
     llm_model: Option<String>,
+
+    /// Expand ABC-bridge scope to all papers in SurrealDB (not just current crawl)
+    #[arg(long, default_value_t = false)]
+    full_corpus: bool,
+
+    /// Show full justifications in gap output table (default: truncated at 60 chars)
+    #[arg(long, default_value_t = false)]
+    verbose: bool,
 }
 
 #[tokio::main]
@@ -134,6 +143,8 @@ async fn main() {
                 cli.skip_fulltext,
                 cli.llm_provider.as_deref(),
                 cli.llm_model.as_deref(),
+                cli.full_corpus,
+                cli.verbose,
             )
             .await;
         }
@@ -193,6 +204,8 @@ async fn main() {
             cli.skip_fulltext,
             cli.llm_provider.as_deref(),
             cli.llm_model.as_deref(),
+            cli.full_corpus,
+            cli.verbose,
         )
         .await;
     }
@@ -206,6 +219,8 @@ async fn run_analysis(
     skip_fulltext: bool,
     llm_provider: Option<&str>,
     llm_model: Option<&str>,
+    full_corpus: bool,
+    verbose: bool,
 ) {
     let extraction_repo = database::queries::ExtractionRepository::new(db);
     let paper_repo = database::queries::PaperRepository::new(db);
@@ -289,6 +304,7 @@ async fn run_analysis(
             }
         };
         run_llm_analysis(db, provider.as_mut()).await;
+        run_gap_analysis(db, provider.as_mut(), full_corpus, verbose).await;
     }
 }
 
@@ -454,6 +470,120 @@ async fn run_nlp_analysis(db: &Db) {
         avg_keywords
     );
     info!("Top corpus terms: {}", corpus_terms_display.join(", "));
+}
+
+async fn run_gap_analysis(
+    db: &Db,
+    provider: &mut dyn LlmProvider,
+    full_corpus: bool,
+    verbose: bool,
+) {
+    let analysis_repo = AnalysisRepository::new(db);
+    let llm_repo = LlmAnnotationRepository::new(db);
+    let paper_repo = database::queries::PaperRepository::new(db);
+    let gap_repo = GapFindingRepository::new(db);
+
+    // Load all analyses and annotations
+    let analyses = match analysis_repo.get_all_analyses().await {
+        Ok(a) => a,
+        Err(e) => {
+            warn!(error = %e, "Failed to load analyses for gap analysis");
+            return;
+        }
+    };
+    let annotations = match llm_repo.get_all_annotations().await {
+        Ok(a) => a,
+        Err(e) => {
+            warn!(error = %e, "Failed to load annotations for gap analysis");
+            return;
+        }
+    };
+
+    if analyses.is_empty() || annotations.is_empty() {
+        info!("No analyses/annotations found, skipping gap analysis");
+        return;
+    }
+
+    // Corpus fingerprint cache guard
+    let annotation_ids: Vec<String> = annotations.iter().map(|a| a.arxiv_id.clone()).collect();
+    let fingerprint = nlp::tfidf::corpus_fingerprint(&annotation_ids);
+
+    let skip_analysis = if let Ok(Some(existing_meta)) = analysis_repo.get_metadata("gap_analysis").await {
+        existing_meta.corpus_fingerprint == fingerprint
+    } else {
+        false
+    };
+
+    if skip_analysis {
+        info!("Gap corpus unchanged, skipping gap analysis");
+    } else {
+        // Build citation graph
+        let papers = match paper_repo.get_all_papers().await {
+            Ok(p) => p,
+            Err(e) => {
+                warn!(error = %e, "Failed to load papers for gap analysis graph");
+                return;
+            }
+        };
+
+        if full_corpus && papers.len() == annotation_ids.len() {
+            info!("--full-corpus specified but no additional papers in DB beyond current crawl");
+        }
+
+        let graph = create_graph_from_papers(&papers);
+
+        // Run contradiction detection
+        let contradictions = gap_analysis::contradiction::find_contradictions(
+            &analyses,
+            &annotations,
+            provider,
+        )
+        .await;
+
+        // Run ABC-bridge discovery
+        let abc_bridges = gap_analysis::abc_bridge::find_abc_bridges(
+            &analyses,
+            &annotations,
+            &graph,
+            provider,
+            full_corpus,
+        )
+        .await;
+
+        // Persist all findings
+        for finding in contradictions.iter().chain(abc_bridges.iter()) {
+            if let Err(e) = gap_repo.insert_gap_finding(finding).await {
+                warn!(error = %e, "Failed to persist gap finding");
+            }
+        }
+
+        // Update corpus metadata
+        let paper_count = annotation_ids.len() as u64;
+        let metadata = AnalysisMetadata {
+            key: "gap_analysis".to_string(),
+            paper_count,
+            corpus_fingerprint: fingerprint,
+            last_analyzed: Utc::now().to_rfc3339(),
+        };
+        if let Err(e) = analysis_repo.upsert_metadata(&metadata).await {
+            warn!(error = %e, "Failed to persist gap analysis metadata");
+        }
+    }
+
+    // Always display findings (including historical / cached)
+    let all_findings = match gap_repo.get_all_gap_findings().await {
+        Ok(f) => f,
+        Err(e) => {
+            warn!(error = %e, "Failed to load gap findings for display");
+            return;
+        }
+    };
+
+    let table = gap_analysis::output::format_gap_table(&all_findings, verbose);
+    print!("{table}");
+
+    let summary = gap_analysis::output::format_gap_summary(&all_findings);
+    info!("{summary}");
 }
 
 fn launch_visualization(papers: &[Paper]) {

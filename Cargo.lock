@@ -5375,6 +5375,7 @@ dependencies = [
  "anyhow",
  "arxiv-rs",
  "async-trait",
+ "chrono",
  "clap",
  "crossbeam",
  "eframe",

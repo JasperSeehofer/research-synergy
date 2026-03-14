@@ -38,14 +38,14 @@ created: 2026-03-14
 
 | Task ID | Plan | Wave | Requirement | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|-----------|-------------------|-------------|--------|
-| 02-01-01 | 01 | 1 | TEXT-02 | unit | `cargo test nlp::tfidf::test_section_weighting` | ❌ W0 | ⬜ pending |
-| 02-01-02 | 01 | 1 | TEXT-02 | unit | `cargo test nlp::preprocessing::test_stop_words_excluded` | ❌ W0 | ⬜ pending |
-| 02-01-03 | 01 | 1 | TEXT-02 | unit | `cargo test nlp::tfidf::test_smooth_idf` | ❌ W0 | ⬜ pending |
-| 02-01-04 | 01 | 1 | TEXT-02 | unit | `cargo test nlp::tfidf::test_top_n_ranking` | ❌ W0 | ⬜ pending |
-| 02-02-01 | 02 | 1 | TEXT-02 | integration | `cargo test database::queries::test_analysis_upsert_and_get` | ❌ W0 | ⬜ pending |
-| 02-02-02 | 02 | 1 | INFR-02 | integration | `cargo test database::queries::test_corpus_fingerprint_skip` | ❌ W0 | ⬜ pending |
-| 02-02-03 | 02 | 1 | INFR-02 | integration | `cargo test database::queries::test_migrate_schema_v3_v4` | ❌ W0 | ⬜ pending |
-| 02-02-04 | 02 | 1 | INFR-02 | unit | `cargo test database::queries::test_analysis_exists` | ❌ W0 | ⬜ pending |
+| 02-01-01 | 01 | 1 | INFR-02 | integration | `cargo test database::queries::test_analysis_upsert_and_get` | ❌ W0 | ⬜ pending |
+| 02-01-02 | 01 | 1 | INFR-02 | integration | `cargo test database::queries::test_corpus_fingerprint_skip` | ❌ W0 | ⬜ pending |
+| 02-01-03 | 01 | 1 | INFR-02 | integration | `cargo test database::queries::test_migrate_schema_v3_v4` | ❌ W0 | ⬜ pending |
+| 02-01-04 | 01 | 1 | INFR-02 | unit | `cargo test database::queries::test_analysis_exists` | ❌ W0 | ⬜ pending |
+| 02-02-01 | 02 | 2 | TEXT-02 | unit | `cargo test nlp::tfidf::test_section_weighting` | ❌ W0 | ⬜ pending |
+| 02-02-02 | 02 | 2 | TEXT-02 | unit | `cargo test nlp::preprocessing::test_stop_words_excluded` | ❌ W0 | ⬜ pending |
+| 02-02-03 | 02 | 2 | TEXT-02 | unit | `cargo test nlp::tfidf::test_smooth_idf` | ❌ W0 | ⬜ pending |
+| 02-02-04 | 02 | 2 | TEXT-02 | unit | `cargo test nlp::tfidf::test_top_n_ranking` | ❌ W0 | ⬜ pending |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
 

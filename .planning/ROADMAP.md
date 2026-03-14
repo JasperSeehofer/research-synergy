@@ -92,7 +92,11 @@ Plans:
   2. A toggle control in the graph UI switches between raw citation view (current behavior) and analysis-enriched view
   3. Switching to enriched view with no analysis data present shows the raw graph unchanged, not an error
   4. Hovering a node in enriched view shows extracted keywords and primary method in the tooltip
-**Plans**: TBD
+**Plans:** 2 plans
+
+Plans:
+- [ ] 05-01-PLAN.md — Enrichment logic functions + SettingsAnalysis + DemoApp data wiring + launch_visualization DB loading
+- [ ] 05-02-PLAN.md — Node/edge visual encoding + Analysis panel + toggle + legend + hover tooltips + visual verification
 
 ## Progress
 
@@ -105,4 +109,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 2. NLP Analysis + DB Schema | 1/2 | In Progress|  |
 | 3. Pluggable LLM Backend | 1/3 | In Progress|  |
 | 4. Cross-Paper Gap Analysis | 3/3 | Complete   | 2026-03-14 |
-| 5. Visualization Enrichment | 0/TBD | Not started | - |
+| 5. Visualization Enrichment | 0/2 | Not started | - |

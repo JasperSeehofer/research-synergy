@@ -80,36 +80,36 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DEBT-01 | — | Pending |
-| DEBT-02 | — | Pending |
-| DEBT-03 | — | Pending |
-| DEBT-04 | — | Pending |
-| CRAWL-01 | — | Pending |
-| CRAWL-02 | — | Pending |
-| CRAWL-03 | — | Pending |
-| CRAWL-04 | — | Pending |
-| WEB-01 | — | Pending |
-| WEB-02 | — | Pending |
-| WEB-03 | — | Pending |
-| WEB-04 | — | Pending |
-| WEB-05 | — | Pending |
-| GRAPH-01 | — | Pending |
-| GRAPH-02 | — | Pending |
-| GRAPH-03 | — | Pending |
-| GRAPH-04 | — | Pending |
-| AUI-01 | — | Pending |
-| AUI-02 | — | Pending |
-| AUI-03 | — | Pending |
-| AUI-04 | — | Pending |
-| SCALE-01 | — | Pending |
-| SCALE-02 | — | Pending |
-| SCALE-03 | — | Pending |
+| DEBT-01 | Phase 6 | Pending |
+| DEBT-02 | Phase 6 | Pending |
+| DEBT-03 | Phase 6 | Pending |
+| WEB-01 | Phase 6 | Pending |
+| WEB-02 | Phase 6 | Pending |
+| WEB-05 | Phase 6 | Pending |
+| CRAWL-01 | Phase 7 | Pending |
+| CRAWL-02 | Phase 7 | Pending |
+| CRAWL-03 | Phase 7 | Pending |
+| CRAWL-04 | Phase 7 | Pending |
+| WEB-03 | Phase 8 | Pending |
+| WEB-04 | Phase 8 | Pending |
+| AUI-01 | Phase 8 | Pending |
+| AUI-02 | Phase 8 | Pending |
+| AUI-03 | Phase 8 | Pending |
+| GRAPH-01 | Phase 9 | Pending |
+| GRAPH-02 | Phase 9 | Pending |
+| GRAPH-03 | Phase 9 | Pending |
+| GRAPH-04 | Phase 9 | Pending |
+| AUI-04 | Phase 10 | Pending |
+| DEBT-04 | Phase 10 | Pending |
+| SCALE-01 | Phase 10 | Pending |
+| SCALE-02 | Phase 10 | Pending |
+| SCALE-03 | Phase 10 | Pending |
 
 **Coverage:**
 - v1.1 requirements: 24 total
-- Mapped to phases: 0
-- Unmapped: 24 ⚠️
+- Mapped to phases: 24
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-03-15*
-*Last updated: 2026-03-15 after initial definition*
+*Last updated: 2026-03-15 — traceability populated after roadmap creation*

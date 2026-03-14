@@ -62,24 +62,24 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| TEXT-01 | — | Pending |
-| TEXT-02 | — | Pending |
-| TEXT-03 | — | Pending |
-| TEXT-04 | — | Pending |
-| INFR-01 | — | Pending |
-| INFR-02 | — | Pending |
-| INFR-03 | — | Pending |
-| INFR-04 | — | Pending |
-| GAPS-01 | — | Pending |
-| GAPS-02 | — | Pending |
-| VIS-01 | — | Pending |
-| VIS-02 | — | Pending |
+| TEXT-01 | Phase 3 | Pending |
+| TEXT-02 | Phase 2 | Pending |
+| TEXT-03 | Phase 1 | Pending |
+| TEXT-04 | Phase 1 | Pending |
+| INFR-01 | Phase 3 | Pending |
+| INFR-02 | Phase 2 | Pending |
+| INFR-03 | Phase 1 | Pending |
+| INFR-04 | Phase 1 | Pending |
+| GAPS-01 | Phase 4 | Pending |
+| GAPS-02 | Phase 4 | Pending |
+| VIS-01 | Phase 5 | Pending |
+| VIS-02 | Phase 5 | Pending |
 
 **Coverage:**
 - v1 requirements: 12 total
-- Mapped to phases: 0
-- Unmapped: 12 ⚠️
+- Mapped to phases: 12
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-14*
-*Last updated: 2026-03-14 after initial definition*
+*Last updated: 2026-03-14 — all 12 v1 requirements mapped to phases 1-5*

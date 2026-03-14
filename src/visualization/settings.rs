@@ -1,3 +1,8 @@
+#[derive(Default)]
+pub struct SettingsAnalysis {
+    pub enriched_view: bool,
+}
+
 pub struct SettingsGraph {
     pub count_node: usize,
     pub count_edge: usize,

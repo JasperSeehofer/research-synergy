@@ -21,6 +21,8 @@ mod validation;
 #[allow(dead_code)]
 mod visualization;
 
+use std::collections::HashMap;
+
 use chrono::Utc;
 use clap::Parser;
 use data_aggregation::arxiv_source::ArxivSource;
@@ -30,6 +32,7 @@ use data_processing::graph_creation::create_graph_from_papers;
 use database::client::Db;
 use database::queries::{AnalysisRepository, GapFindingRepository, LlmAnnotationRepository};
 use datamodels::analysis::{AnalysisMetadata, PaperAnalysis};
+use datamodels::llm_annotation::LlmAnnotation;
 use datamodels::paper::Paper;
 use eframe::run_native;
 use llm::claude::ClaudeProvider;
@@ -148,7 +151,8 @@ async fn main() {
             )
             .await;
         }
-        launch_visualization(&papers);
+        let (annotations, analyses) = load_analysis_data(Some(db)).await;
+        launch_visualization(&papers, annotations, analyses);
         return;
     }
 
@@ -210,7 +214,30 @@ async fn main() {
         .await;
     }
 
-    launch_visualization(&papers);
+    let (annotations, analyses) = load_analysis_data(db.as_ref()).await;
+    launch_visualization(&papers, annotations, analyses);
+}
+
+/// Loads LLM annotations and TF-IDF analyses from the database into lookup maps.
+/// Returns empty maps when no DB is available.
+async fn load_analysis_data(
+    db: Option<&Db>,
+) -> (
+    HashMap<String, LlmAnnotation>,
+    HashMap<String, PaperAnalysis>,
+) {
+    let Some(db) = db else {
+        return (HashMap::new(), HashMap::new());
+    };
+    let ann_repo = LlmAnnotationRepository::new(db);
+    let ana_repo = AnalysisRepository::new(db);
+    let anns = ann_repo.get_all_annotations().await.unwrap_or_default();
+    let anas = ana_repo.get_all_analyses().await.unwrap_or_default();
+    let ann_map: HashMap<String, LlmAnnotation> =
+        anns.into_iter().map(|a| (a.arxiv_id.clone(), a)).collect();
+    let ana_map: HashMap<String, PaperAnalysis> =
+        anas.into_iter().map(|a| (a.arxiv_id.clone(), a)).collect();
+    (ann_map, ana_map)
 }
 
 async fn run_analysis(
@@ -299,7 +326,10 @@ async fn run_analysis(
             }
             "noop" => Box::new(NoopProvider),
             other => {
-                error!(provider = other, "Unknown LLM provider. Use: claude, ollama, noop");
+                error!(
+                    provider = other,
+                    "Unknown LLM provider. Use: claude, ollama, noop"
+                );
                 std::process::exit(1);
             }
         };
@@ -508,11 +538,12 @@ async fn run_gap_analysis(
     let annotation_ids: Vec<String> = annotations.iter().map(|a| a.arxiv_id.clone()).collect();
     let fingerprint = nlp::tfidf::corpus_fingerprint(&annotation_ids);
 
-    let skip_analysis = if let Ok(Some(existing_meta)) = analysis_repo.get_metadata("gap_analysis").await {
-        existing_meta.corpus_fingerprint == fingerprint
-    } else {
-        false
-    };
+    let skip_analysis =
+        if let Ok(Some(existing_meta)) = analysis_repo.get_metadata("gap_analysis").await {
+            existing_meta.corpus_fingerprint == fingerprint
+        } else {
+            false
+        };
 
     if skip_analysis {
         info!("Gap corpus unchanged, skipping gap analysis");
@@ -533,12 +564,9 @@ async fn run_gap_analysis(
         let graph = create_graph_from_papers(&papers);
 
         // Run contradiction detection
-        let contradictions = gap_analysis::contradiction::find_contradictions(
-            &analyses,
-            &annotations,
-            provider,
-        )
-        .await;
+        let contradictions =
+            gap_analysis::contradiction::find_contradictions(&analyses, &annotations, provider)
+                .await;
 
         // Run ABC-bridge discovery
         let abc_bridges = gap_analysis::abc_bridge::find_abc_bridges(
@@ -586,7 +614,11 @@ async fn run_gap_analysis(
     info!("{summary}");
 }
 
-fn launch_visualization(papers: &[Paper]) {
+fn launch_visualization(
+    papers: &[Paper],
+    annotations: HashMap<String, LlmAnnotation>,
+    analyses: HashMap<String, PaperAnalysis>,
+) {
     let paper_graph = data_processing::graph_creation::create_graph_from_papers(papers);
     info!(
         nodes = paper_graph.node_count(),
@@ -594,14 +626,19 @@ fn launch_visualization(papers: &[Paper]) {
         "Graph created"
     );
 
-    let graph_without_weights = paper_graph.map(|_, _| (), |_, _| ());
-
     let native_options = eframe::NativeOptions::default();
 
     run_native(
         "Paper graph interactive",
         native_options,
-        Box::new(|cc| Ok(Box::new(DemoApp::new(cc, graph_without_weights)))),
+        Box::new(|cc| {
+            Ok(Box::new(DemoApp::new(
+                cc,
+                paper_graph,
+                annotations,
+                analyses,
+            )))
+        }),
     )
     .expect("failed to launch GUI");
 }

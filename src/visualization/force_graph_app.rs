@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::time::Instant;
 
 use crossbeam::channel::{Receiver, Sender, unbounded};
@@ -12,6 +13,10 @@ use fdg::{Force, ForceGraph};
 use petgraph::Directed;
 use petgraph::stable_graph::{DefaultIx, NodeIndex};
 
+use crate::datamodels::analysis::PaperAnalysis;
+use crate::datamodels::llm_annotation::LlmAnnotation;
+use crate::datamodels::paper::Paper;
+use crate::utils::strip_version_suffix;
 use crate::visualization::drawers;
 use crate::visualization::settings;
 
@@ -29,6 +34,9 @@ pub struct DemoApp {
     settings_interaction: settings::SettingsInteraction,
     settings_navigation: settings::SettingsNavigation,
     settings_style: settings::SettingsStyle,
+    // Analysis settings and data fields — used by Plan 02 rendering logic.
+    #[allow(dead_code)]
+    settings_analysis: settings::SettingsAnalysis,
 
     last_events: Vec<String>,
 
@@ -43,14 +51,40 @@ pub struct DemoApp {
 
     pan: [f32; 2],
     zoom: f32,
+
+    /// Maps NodeIndex to arxiv_id for enrichment lookups.
+    #[allow(dead_code)]
+    node_id_map: HashMap<NodeIndex<u32>, String>,
+    /// Maps arxiv_id to paper title for tooltip display.
+    #[allow(dead_code)]
+    node_title_map: HashMap<String, String>,
+    /// LLM annotations keyed by arxiv_id.
+    #[allow(dead_code)]
+    annotations: HashMap<String, LlmAnnotation>,
+    /// TF-IDF analyses keyed by arxiv_id.
+    #[allow(dead_code)]
+    analyses: HashMap<String, PaperAnalysis>,
 }
 
 impl DemoApp {
     pub fn new(
         _: &CreationContext<'_>,
-        petgraph_graph: petgraph::stable_graph::StableGraph<(), ()>,
+        petgraph_graph: petgraph::stable_graph::StableGraph<Paper, f32>,
+        annotations: HashMap<String, LlmAnnotation>,
+        analyses: HashMap<String, PaperAnalysis>,
     ) -> Self {
-        let mut g = Graph::from(&petgraph_graph);
+        // Build lookup maps from the weighted graph (while Paper data is still available).
+        let mut node_id_map: HashMap<NodeIndex<u32>, String> = HashMap::new();
+        let mut node_title_map: HashMap<String, String> = HashMap::new();
+        for idx in petgraph_graph.node_indices() {
+            let arxiv_id = strip_version_suffix(&petgraph_graph[idx].id);
+            node_id_map.insert(idx, arxiv_id.clone());
+            node_title_map.insert(arxiv_id, petgraph_graph[idx].title.clone());
+        }
+
+        // Strip weights to produce the lightweight graph expected by egui_graphs.
+        let stripped = petgraph_graph.map(|_, _| (), |_, _| ());
+        let mut g = Graph::from(&stripped);
 
         let settings_graph = settings::SettingsGraph::default();
         let settings_simulation = settings::SettingsSimulation::default();
@@ -79,6 +113,7 @@ impl DemoApp {
             settings_interaction: settings::SettingsInteraction::default(),
             settings_navigation: settings::SettingsNavigation::default(),
             settings_style: settings::SettingsStyle::default(),
+            settings_analysis: settings::SettingsAnalysis::default(),
 
             last_events: Vec::default(),
 
@@ -90,6 +125,11 @@ impl DemoApp {
 
             pan: [0., 0.],
             zoom: 0.,
+
+            node_id_map,
+            node_title_map,
+            annotations,
+            analyses,
         }
     }
 

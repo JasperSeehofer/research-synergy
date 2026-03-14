@@ -77,6 +77,40 @@ async fn apply_migration_2(db: &Surreal<Any>) -> Result<(), ResynError> {
     Ok(())
 }
 
+async fn apply_migration_3(db: &Surreal<Any>) -> Result<(), ResynError> {
+    db.query(
+        "
+        DEFINE TABLE IF NOT EXISTS paper_analysis SCHEMAFULL;
+        DEFINE FIELD IF NOT EXISTS arxiv_id ON paper_analysis TYPE string;
+        DEFINE FIELD IF NOT EXISTS tfidf_vector ON paper_analysis TYPE object FLEXIBLE;
+        DEFINE FIELD IF NOT EXISTS top_terms ON paper_analysis TYPE array<string>;
+        DEFINE FIELD IF NOT EXISTS top_scores ON paper_analysis TYPE array<float>;
+        DEFINE FIELD IF NOT EXISTS analyzed_at ON paper_analysis TYPE string;
+        DEFINE FIELD IF NOT EXISTS corpus_fingerprint ON paper_analysis TYPE string;
+        DEFINE INDEX IF NOT EXISTS idx_analysis_arxiv_id ON paper_analysis FIELDS arxiv_id UNIQUE;
+        ",
+    )
+    .await
+    .map_err(|e| ResynError::Database(format!("migration 3 DDL failed: {e}")))?;
+    Ok(())
+}
+
+async fn apply_migration_4(db: &Surreal<Any>) -> Result<(), ResynError> {
+    db.query(
+        "
+        DEFINE TABLE IF NOT EXISTS analysis_metadata SCHEMAFULL;
+        DEFINE FIELD IF NOT EXISTS key ON analysis_metadata TYPE string;
+        DEFINE FIELD IF NOT EXISTS paper_count ON analysis_metadata TYPE int;
+        DEFINE FIELD IF NOT EXISTS corpus_fingerprint ON analysis_metadata TYPE string;
+        DEFINE FIELD IF NOT EXISTS last_analyzed ON analysis_metadata TYPE string;
+        DEFINE INDEX IF NOT EXISTS idx_metadata_key ON analysis_metadata FIELDS key UNIQUE;
+        ",
+    )
+    .await
+    .map_err(|e| ResynError::Database(format!("migration 4 DDL failed: {e}")))?;
+    Ok(())
+}
+
 pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
     // Ensure migrations table exists first
     db.query(
@@ -99,6 +133,16 @@ pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
     if version < 2 {
         apply_migration_2(db).await?;
         record_migration(db, 2).await?;
+    }
+
+    if version < 3 {
+        apply_migration_3(db).await?;
+        record_migration(db, 3).await?;
+    }
+
+    if version < 4 {
+        apply_migration_4(db).await?;
+        record_migration(db, 4).await?;
     }
 
     Ok(())

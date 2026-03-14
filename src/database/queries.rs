@@ -1,5 +1,6 @@
 use surrealdb::types::{RecordId, SurrealValue};
 
+use crate::datamodels::analysis::{AnalysisMetadata, PaperAnalysis};
 use crate::datamodels::extraction::{ExtractionMethod, TextExtractionResult};
 use crate::datamodels::paper::{DataSource, Paper};
 use crate::error::ResynError;
@@ -387,6 +388,158 @@ impl<'a> ExtractionRepository<'a> {
     }
 }
 
+// --- AnalysisRepository ---
+
+#[derive(Debug, Clone, SurrealValue)]
+#[surreal(crate = "surrealdb::types")]
+struct AnalysisRecord {
+    arxiv_id: String,
+    tfidf_vector: serde_json::Value,
+    top_terms: Vec<String>,
+    top_scores: Vec<f32>,
+    analyzed_at: String,
+    corpus_fingerprint: String,
+}
+
+impl From<&PaperAnalysis> for AnalysisRecord {
+    fn from(a: &PaperAnalysis) -> Self {
+        let tfidf_value = serde_json::to_value(&a.tfidf_vector)
+            .unwrap_or(serde_json::Value::Object(serde_json::Map::new()));
+        AnalysisRecord {
+            arxiv_id: strip_version_suffix(&a.arxiv_id),
+            tfidf_vector: tfidf_value,
+            top_terms: a.top_terms.clone(),
+            top_scores: a.top_scores.clone(),
+            analyzed_at: a.analyzed_at.clone(),
+            corpus_fingerprint: a.corpus_fingerprint.clone(),
+        }
+    }
+}
+
+impl AnalysisRecord {
+    fn to_analysis(&self) -> PaperAnalysis {
+        use std::collections::HashMap;
+        let tfidf_vector: HashMap<String, f32> =
+            serde_json::from_value(self.tfidf_vector.clone()).unwrap_or_default();
+        PaperAnalysis {
+            arxiv_id: self.arxiv_id.clone(),
+            tfidf_vector,
+            top_terms: self.top_terms.clone(),
+            top_scores: self.top_scores.clone(),
+            analyzed_at: self.analyzed_at.clone(),
+            corpus_fingerprint: self.corpus_fingerprint.clone(),
+        }
+    }
+}
+
+fn analysis_record_id(arxiv_id: &str) -> RecordId {
+    RecordId::new("paper_analysis", strip_version_suffix(arxiv_id))
+}
+
+#[derive(Debug, Clone, SurrealValue)]
+#[surreal(crate = "surrealdb::types")]
+struct MetadataRecord {
+    key: String,
+    paper_count: i64,
+    corpus_fingerprint: String,
+    last_analyzed: String,
+}
+
+impl From<&AnalysisMetadata> for MetadataRecord {
+    fn from(m: &AnalysisMetadata) -> Self {
+        MetadataRecord {
+            key: m.key.clone(),
+            paper_count: m.paper_count as i64,
+            corpus_fingerprint: m.corpus_fingerprint.clone(),
+            last_analyzed: m.last_analyzed.clone(),
+        }
+    }
+}
+
+impl MetadataRecord {
+    fn to_metadata(&self) -> AnalysisMetadata {
+        AnalysisMetadata {
+            key: self.key.clone(),
+            paper_count: self.paper_count as u64,
+            corpus_fingerprint: self.corpus_fingerprint.clone(),
+            last_analyzed: self.last_analyzed.clone(),
+        }
+    }
+}
+
+fn metadata_record_id(key: &str) -> RecordId {
+    RecordId::new("analysis_metadata", key)
+}
+
+pub struct AnalysisRepository<'a> {
+    db: &'a Db,
+}
+
+impl<'a> AnalysisRepository<'a> {
+    pub fn new(db: &'a Db) -> Self {
+        Self { db }
+    }
+
+    pub async fn upsert_analysis(&self, result: &PaperAnalysis) -> Result<(), ResynError> {
+        let arxiv_id = strip_version_suffix(&result.arxiv_id);
+        let record = AnalysisRecord::from(result);
+
+        self.db
+            .query("UPSERT type::record('paper_analysis', $id) CONTENT $record")
+            .bind(("id", arxiv_id))
+            .bind(("record", record.into_value()))
+            .await
+            .map_err(|e| ResynError::Database(format!("upsert analysis failed: {e}")))?;
+
+        Ok(())
+    }
+
+    pub async fn get_analysis(&self, arxiv_id: &str) -> Result<Option<PaperAnalysis>, ResynError> {
+        let id = strip_version_suffix(arxiv_id);
+        let result: Option<AnalysisRecord> = self
+            .db
+            .select(analysis_record_id(&id))
+            .await
+            .map_err(|e| ResynError::Database(format!("get analysis failed: {e}")))?;
+        Ok(result.map(|r| r.to_analysis()))
+    }
+
+    pub async fn analysis_exists(&self, arxiv_id: &str) -> Result<bool, ResynError> {
+        Ok(self.get_analysis(arxiv_id).await?.is_some())
+    }
+
+    pub async fn get_all_analyses(&self) -> Result<Vec<PaperAnalysis>, ResynError> {
+        let records: Vec<AnalysisRecord> = self
+            .db
+            .select("paper_analysis")
+            .await
+            .map_err(|e| ResynError::Database(format!("get all analyses failed: {e}")))?;
+        Ok(records.iter().map(|r| r.to_analysis()).collect())
+    }
+
+    pub async fn upsert_metadata(&self, meta: &AnalysisMetadata) -> Result<(), ResynError> {
+        let record = MetadataRecord::from(meta);
+
+        self.db
+            .query("UPSERT type::record('analysis_metadata', $id) CONTENT $record")
+            .bind(("id", meta.key.clone()))
+            .bind(("record", record.into_value()))
+            .await
+            .map_err(|e| ResynError::Database(format!("upsert metadata failed: {e}")))?;
+
+        Ok(())
+    }
+
+    pub async fn get_metadata(&self, key: &str) -> Result<Option<AnalysisMetadata>, ResynError> {
+        let result: Option<MetadataRecord> = self
+            .db
+            .select(metadata_record_id(key))
+            .await
+            .map_err(|e| ResynError::Database(format!("get metadata failed: {e}")))?;
+        Ok(result.map(|r| r.to_metadata()))
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -528,27 +681,27 @@ mod tests {
         let repo = ExtractionRepository::new(&db);
         let extraction = make_extraction("2301.12345");
         repo.upsert_extraction(&extraction).await.unwrap();
-        // Also check schema_migrations has version 2
+        // Also check schema_migrations has version 4 (migrations 1-4 applied)
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 2);
+        assert_eq!(versions[0], 4);
     }
 
     #[tokio::test]
     async fn test_migrate_schema_is_idempotent() {
         use crate::database::schema::migrate_schema;
         let db = crate::database::client::connect("mem://").await.unwrap();
-        // Run migrate_schema again — should not error and version stays at 2
+        // Run migrate_schema again — should not error and version stays at 4
         migrate_schema(&db).await.unwrap();
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 2);
+        assert_eq!(versions[0], 4);
     }
 
     #[tokio::test]
@@ -604,11 +757,154 @@ mod tests {
         let db = connect_memory().await.unwrap();
         let repo = ExtractionRepository::new(&db);
 
-        repo.upsert_extraction(&make_extraction("2301.11111")).await.unwrap();
-        repo.upsert_extraction(&make_extraction("2301.22222")).await.unwrap();
-        repo.upsert_extraction(&make_extraction("2301.33333")).await.unwrap();
+        repo.upsert_extraction(&make_extraction("2301.11111"))
+            .await
+            .unwrap();
+        repo.upsert_extraction(&make_extraction("2301.22222"))
+            .await
+            .unwrap();
+        repo.upsert_extraction(&make_extraction("2301.33333"))
+            .await
+            .unwrap();
 
         let all = repo.get_all_extractions().await.unwrap();
         assert_eq!(all.len(), 3);
+    }
+
+    // --- AnalysisRepository tests ---
+
+    fn make_analysis(arxiv_id: &str) -> PaperAnalysis {
+        use std::collections::HashMap;
+        let mut tfidf = HashMap::new();
+        tfidf.insert("quantum".to_string(), 0.85_f32);
+        tfidf.insert("entanglement".to_string(), 0.72_f32);
+        PaperAnalysis {
+            arxiv_id: arxiv_id.to_string(),
+            tfidf_vector: tfidf,
+            top_terms: vec!["quantum".to_string(), "entanglement".to_string()],
+            top_scores: vec![0.85_f32, 0.72_f32],
+            analyzed_at: "2026-03-14T10:00:00Z".to_string(),
+            corpus_fingerprint: "abc123".to_string(),
+        }
+    }
+
+    #[tokio::test]
+    async fn test_migrate_schema_applies_all_migrations() {
+        let db = crate::database::client::connect("mem://").await.unwrap();
+        // connect() already runs migrate_schema; verify version is now 4
+        let mut resp = db
+            .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
+            .await
+            .unwrap();
+        let versions: Vec<u32> = resp.take("version").unwrap();
+        assert_eq!(
+            versions[0], 4,
+            "Expected schema version 4 after all migrations"
+        );
+    }
+
+    #[tokio::test]
+    async fn test_migrate_schema_idempotent_from_v2() {
+        use crate::database::schema::migrate_schema;
+        let db = crate::database::client::connect("mem://").await.unwrap();
+        // Run migrate_schema again — should not error and version stays at 4
+        migrate_schema(&db).await.unwrap();
+        let mut resp = db
+            .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
+            .await
+            .unwrap();
+        let versions: Vec<u32> = resp.take("version").unwrap();
+        assert_eq!(versions[0], 4);
+    }
+
+    #[tokio::test]
+    async fn test_analysis_upsert_and_get() {
+        let db = connect_memory().await.unwrap();
+        let repo = AnalysisRepository::new(&db);
+
+        let analysis = make_analysis("2301.12345");
+        repo.upsert_analysis(&analysis).await.unwrap();
+
+        let fetched = repo.get_analysis("2301.12345").await.unwrap();
+        assert!(fetched.is_some());
+        let fetched = fetched.unwrap();
+        assert_eq!(fetched.arxiv_id, "2301.12345");
+        assert_eq!(fetched.top_terms, vec!["quantum", "entanglement"]);
+        assert_eq!(fetched.top_scores.len(), 2);
+        assert!((fetched.top_scores[0] - 0.85_f32).abs() < 1e-5);
+        assert!((fetched.top_scores[1] - 0.72_f32).abs() < 1e-5);
+        assert_eq!(fetched.tfidf_vector.len(), 2);
+        let q_score = fetched.tfidf_vector.get("quantum").copied().unwrap_or(0.0);
+        assert!((q_score - 0.85_f32).abs() < 1e-5);
+        assert_eq!(fetched.corpus_fingerprint, "abc123");
+    }
+
+    #[tokio::test]
+    async fn test_analysis_exists() {
+        let db = connect_memory().await.unwrap();
+        let repo = AnalysisRepository::new(&db);
+
+        assert!(!repo.analysis_exists("2301.12345").await.unwrap());
+
+        let analysis = make_analysis("2301.12345");
+        repo.upsert_analysis(&analysis).await.unwrap();
+
+        assert!(repo.analysis_exists("2301.12345").await.unwrap());
+    }
+
+    #[tokio::test]
+    async fn test_get_all_analyses() {
+        let db = connect_memory().await.unwrap();
+        let repo = AnalysisRepository::new(&db);
+
+        repo.upsert_analysis(&make_analysis("2301.11111"))
+            .await
+            .unwrap();
+        repo.upsert_analysis(&make_analysis("2301.22222"))
+            .await
+            .unwrap();
+        repo.upsert_analysis(&make_analysis("2301.33333"))
+            .await
+            .unwrap();
+
+        let all = repo.get_all_analyses().await.unwrap();
+        assert_eq!(all.len(), 3);
+    }
+
+    #[tokio::test]
+    async fn test_upsert_and_get_metadata() {
+        let db = connect_memory().await.unwrap();
+        let repo = AnalysisRepository::new(&db);
+
+        let meta = AnalysisMetadata {
+            key: "corpus_tfidf".to_string(),
+            paper_count: 42,
+            corpus_fingerprint: "deadbeef".to_string(),
+            last_analyzed: "2026-03-14T10:00:00Z".to_string(),
+        };
+        repo.upsert_metadata(&meta).await.unwrap();
+
+        let fetched = repo.get_metadata("corpus_tfidf").await.unwrap();
+        assert!(fetched.is_some());
+        let fetched = fetched.unwrap();
+        assert_eq!(fetched.key, "corpus_tfidf");
+        assert_eq!(fetched.paper_count, 42);
+        assert_eq!(fetched.corpus_fingerprint, "deadbeef");
+        assert_eq!(fetched.last_analyzed, "2026-03-14T10:00:00Z");
+    }
+
+    #[tokio::test]
+    async fn test_analysis_version_suffix_stripped() {
+        let db = connect_memory().await.unwrap();
+        let repo = AnalysisRepository::new(&db);
+
+        // Upsert with versioned arxiv_id
+        let analysis = make_analysis("2301.12345v3");
+        repo.upsert_analysis(&analysis).await.unwrap();
+
+        // Get by bare ID — should find it
+        let fetched = repo.get_analysis("2301.12345").await.unwrap();
+        assert!(fetched.is_some());
+        assert_eq!(fetched.unwrap().arxiv_id, "2301.12345");
     }
 }

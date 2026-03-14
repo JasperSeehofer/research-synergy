@@ -33,8 +33,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans:** 2/2 plans complete
 
 Plans:
-- [ ] 01-01-PLAN.md — Data models (TextExtractionResult, SectionMap) + DB migration system + ExtractionRepository
-- [ ] 01-02-PLAN.md — Ar5ivExtractor with section parsing + CLI flags (--analyze, --skip-fulltext) + pipeline wiring
+- [x] 01-01-PLAN.md — Data models (TextExtractionResult, SectionMap) + DB migration system + ExtractionRepository
+- [x] 01-02-PLAN.md — Ar5ivExtractor with section parsing + CLI flags (--analyze, --skip-fulltext) + pipeline wiring
 
 ### Phase 2: NLP Analysis + DB Schema
 **Goal**: Every paper in the corpus has keyword rankings and TF-IDF vectors stored in SurrealDB, computed offline without any API calls, and future schema changes apply via migrations rather than manual DDL
@@ -45,7 +45,11 @@ Plans:
   2. Re-running `--analyze` on an already-analyzed corpus skips existing records without re-computing them
   3. Applying the migration to an existing populated SurrealDB database succeeds without data loss
   4. Keyword rankings are visible in CLI output (e.g., top-5 keywords per paper logged at info level)
-**Plans**: TBD
+**Plans:** 2 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — PaperAnalysis/AnalysisMetadata data models + DB migrations 3+4 + AnalysisRepository
+- [ ] 02-02-PLAN.md — NLP preprocessing + TF-IDF engine + pipeline wiring with corpus fingerprint caching
 
 ### Phase 3: Pluggable LLM Backend
 **Goal**: Each paper receives structured semantic annotations (methods, findings, open problems) extracted by an LLM, the backend is swappable via CLI flag, and results are cached so re-runs never re-bill API costs for already-analyzed papers
@@ -88,7 +92,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Text Extraction Foundation | 2/2 | Complete   | 2026-03-14 |
-| 2. NLP Analysis + DB Schema | 0/TBD | Not started | - |
+| 2. NLP Analysis + DB Schema | 0/2 | Planning complete | - |
 | 3. Pluggable LLM Backend | 0/TBD | Not started | - |
 | 4. Cross-Paper Gap Analysis | 0/TBD | Not started | - |
 | 5. Visualization Enrichment | 0/TBD | Not started | - |

@@ -111,6 +111,26 @@ async fn apply_migration_4(db: &Surreal<Any>) -> Result<(), ResynError> {
     Ok(())
 }
 
+async fn apply_migration_5(db: &Surreal<Any>) -> Result<(), ResynError> {
+    db.query(
+        "
+        DEFINE TABLE IF NOT EXISTS llm_annotation SCHEMAFULL;
+        DEFINE FIELD IF NOT EXISTS arxiv_id ON llm_annotation TYPE string;
+        DEFINE FIELD IF NOT EXISTS paper_type ON llm_annotation TYPE string;
+        DEFINE FIELD IF NOT EXISTS methods ON llm_annotation TYPE string;
+        DEFINE FIELD IF NOT EXISTS findings ON llm_annotation TYPE string;
+        DEFINE FIELD IF NOT EXISTS open_problems ON llm_annotation TYPE array<string>;
+        DEFINE FIELD IF NOT EXISTS provider ON llm_annotation TYPE string;
+        DEFINE FIELD IF NOT EXISTS model_name ON llm_annotation TYPE string;
+        DEFINE FIELD IF NOT EXISTS annotated_at ON llm_annotation TYPE string;
+        DEFINE INDEX IF NOT EXISTS idx_llm_annotation_arxiv_id ON llm_annotation FIELDS arxiv_id UNIQUE;
+        ",
+    )
+    .await
+    .map_err(|e| ResynError::Database(format!("migration 5 DDL failed: {e}")))?;
+    Ok(())
+}
+
 pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
     // Ensure migrations table exists first
     db.query(
@@ -143,6 +163,11 @@ pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
     if version < 4 {
         apply_migration_4(db).await?;
         record_migration(db, 4).await?;
+    }
+
+    if version < 5 {
+        apply_migration_5(db).await?;
+        record_migration(db, 5).await?;
     }
 
     Ok(())

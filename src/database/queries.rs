@@ -2,6 +2,7 @@ use surrealdb::types::{RecordId, SurrealValue};
 
 use crate::datamodels::analysis::{AnalysisMetadata, PaperAnalysis};
 use crate::datamodels::extraction::{ExtractionMethod, TextExtractionResult};
+use crate::datamodels::llm_annotation::LlmAnnotation;
 use crate::datamodels::paper::{DataSource, Paper};
 use crate::error::ResynError;
 use crate::utils::strip_version_suffix;
@@ -540,6 +541,113 @@ impl<'a> AnalysisRepository<'a> {
     }
 }
 
+// --- LlmAnnotationRepository ---
+
+// Methods and findings are stored as JSON strings in SurrealDB SCHEMAFULL to avoid
+// the nested-object field enforcement pitfall (Phase 2 lesson applied to arrays).
+#[derive(Debug, Clone, SurrealValue)]
+#[surreal(crate = "surrealdb::types")]
+struct LlmAnnotationRecord {
+    arxiv_id: String,
+    paper_type: String,
+    methods: String,
+    findings: String,
+    open_problems: Vec<String>,
+    provider: String,
+    model_name: String,
+    annotated_at: String,
+}
+
+impl From<&LlmAnnotation> for LlmAnnotationRecord {
+    fn from(ann: &LlmAnnotation) -> Self {
+        let methods_json = serde_json::to_string(&ann.methods).unwrap_or_else(|_| "[]".to_string());
+        let findings_json =
+            serde_json::to_string(&ann.findings).unwrap_or_else(|_| "[]".to_string());
+        LlmAnnotationRecord {
+            arxiv_id: strip_version_suffix(&ann.arxiv_id),
+            paper_type: ann.paper_type.clone(),
+            methods: methods_json,
+            findings: findings_json,
+            open_problems: ann.open_problems.clone(),
+            provider: ann.provider.clone(),
+            model_name: ann.model_name.clone(),
+            annotated_at: ann.annotated_at.clone(),
+        }
+    }
+}
+
+impl LlmAnnotationRecord {
+    fn to_annotation(&self) -> LlmAnnotation {
+        use crate::datamodels::llm_annotation::{Finding, Method};
+        let methods: Vec<Method> = serde_json::from_str(&self.methods).unwrap_or_default();
+        let findings: Vec<Finding> = serde_json::from_str(&self.findings).unwrap_or_default();
+        LlmAnnotation {
+            arxiv_id: self.arxiv_id.clone(),
+            paper_type: self.paper_type.clone(),
+            methods,
+            findings,
+            open_problems: self.open_problems.clone(),
+            provider: self.provider.clone(),
+            model_name: self.model_name.clone(),
+            annotated_at: self.annotated_at.clone(),
+        }
+    }
+}
+
+fn annotation_record_id(arxiv_id: &str) -> RecordId {
+    RecordId::new("llm_annotation", strip_version_suffix(arxiv_id))
+}
+
+pub struct LlmAnnotationRepository<'a> {
+    db: &'a Db,
+}
+
+impl<'a> LlmAnnotationRepository<'a> {
+    pub fn new(db: &'a Db) -> Self {
+        Self { db }
+    }
+
+    pub async fn upsert_annotation(&self, ann: &LlmAnnotation) -> Result<(), ResynError> {
+        let arxiv_id = strip_version_suffix(&ann.arxiv_id);
+        let record = LlmAnnotationRecord::from(ann);
+
+        self.db
+            .query("UPSERT type::record('llm_annotation', $id) CONTENT $record")
+            .bind(("id", arxiv_id))
+            .bind(("record", record.into_value()))
+            .await
+            .map_err(|e| ResynError::Database(format!("upsert annotation failed: {e}")))?;
+
+        Ok(())
+    }
+
+    pub async fn get_annotation(
+        &self,
+        arxiv_id: &str,
+    ) -> Result<Option<LlmAnnotation>, ResynError> {
+        let id = strip_version_suffix(arxiv_id);
+        let result: Option<LlmAnnotationRecord> =
+            self.db
+                .select(annotation_record_id(&id))
+                .await
+                .map_err(|e| ResynError::Database(format!("get annotation failed: {e}")))?;
+        Ok(result.map(|r| r.to_annotation()))
+    }
+
+    pub async fn annotation_exists(&self, arxiv_id: &str) -> Result<bool, ResynError> {
+        Ok(self.get_annotation(arxiv_id).await?.is_some())
+    }
+
+    pub async fn get_all_annotations(&self) -> Result<Vec<LlmAnnotation>, ResynError> {
+        let records: Vec<LlmAnnotationRecord> = self
+            .db
+            .select("llm_annotation")
+            .await
+            .map_err(|e| ResynError::Database(format!("get all annotations failed: {e}")))?;
+        Ok(records.iter().map(|r| r.to_annotation()).collect())
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -681,27 +789,27 @@ mod tests {
         let repo = ExtractionRepository::new(&db);
         let extraction = make_extraction("2301.12345");
         repo.upsert_extraction(&extraction).await.unwrap();
-        // Also check schema_migrations has version 4 (migrations 1-4 applied)
+        // Also check schema_migrations has version 5 (migrations 1-5 applied)
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 4);
+        assert_eq!(versions[0], 5);
     }
 
     #[tokio::test]
     async fn test_migrate_schema_is_idempotent() {
         use crate::database::schema::migrate_schema;
         let db = crate::database::client::connect("mem://").await.unwrap();
-        // Run migrate_schema again — should not error and version stays at 4
+        // Run migrate_schema again — should not error and version stays at 5
         migrate_schema(&db).await.unwrap();
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 4);
+        assert_eq!(versions[0], 5);
     }
 
     #[tokio::test]
@@ -791,15 +899,15 @@ mod tests {
     #[tokio::test]
     async fn test_migrate_schema_applies_all_migrations() {
         let db = crate::database::client::connect("mem://").await.unwrap();
-        // connect() already runs migrate_schema; verify version is now 4
+        // connect() already runs migrate_schema; verify version is now 5
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
         assert_eq!(
-            versions[0], 4,
-            "Expected schema version 4 after all migrations"
+            versions[0], 5,
+            "Expected schema version 5 after all migrations"
         );
     }
 
@@ -807,14 +915,14 @@ mod tests {
     async fn test_migrate_schema_idempotent_from_v2() {
         use crate::database::schema::migrate_schema;
         let db = crate::database::client::connect("mem://").await.unwrap();
-        // Run migrate_schema again — should not error and version stays at 4
+        // Run migrate_schema again — should not error and version stays at 5
         migrate_schema(&db).await.unwrap();
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 4);
+        assert_eq!(versions[0], 5);
     }
 
     #[tokio::test]
@@ -904,6 +1012,123 @@ mod tests {
 
         // Get by bare ID — should find it
         let fetched = repo.get_analysis("2301.12345").await.unwrap();
+        assert!(fetched.is_some());
+        assert_eq!(fetched.unwrap().arxiv_id, "2301.12345");
+    }
+
+    // --- LlmAnnotationRepository tests ---
+
+    fn make_annotation(arxiv_id: &str) -> LlmAnnotation {
+        use crate::datamodels::llm_annotation::{Finding, Method};
+        LlmAnnotation {
+            arxiv_id: arxiv_id.to_string(),
+            paper_type: "theoretical".to_string(),
+            methods: vec![Method {
+                name: "variational".to_string(),
+                category: "analytical".to_string(),
+            }],
+            findings: vec![Finding {
+                text: "Energy gap non-zero".to_string(),
+                strength: "strong_evidence".to_string(),
+            }],
+            open_problems: vec!["Extension to 3D".to_string()],
+            provider: "noop".to_string(),
+            model_name: "noop".to_string(),
+            annotated_at: "2026-03-14T10:00:00Z".to_string(),
+        }
+    }
+
+    #[tokio::test]
+    async fn test_migrate_schema_applies_migration_5() {
+        let db = crate::database::client::connect("mem://").await.unwrap();
+        let mut resp = db
+            .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
+            .await
+            .unwrap();
+        let versions: Vec<u32> = resp.take("version").unwrap();
+        assert_eq!(
+            versions[0], 5,
+            "Expected schema version 5 after all migrations"
+        );
+    }
+
+    #[tokio::test]
+    async fn test_migrate_schema_idempotent_v5() {
+        use crate::database::schema::migrate_schema;
+        let db = crate::database::client::connect("mem://").await.unwrap();
+        migrate_schema(&db).await.unwrap();
+        let mut resp = db
+            .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
+            .await
+            .unwrap();
+        let versions: Vec<u32> = resp.take("version").unwrap();
+        assert_eq!(versions[0], 5);
+    }
+
+    #[tokio::test]
+    async fn test_annotation_upsert_and_get() {
+        let db = connect_memory().await.unwrap();
+        let repo = LlmAnnotationRepository::new(&db);
+
+        let ann = make_annotation("2301.12345");
+        repo.upsert_annotation(&ann).await.unwrap();
+
+        let fetched = repo.get_annotation("2301.12345").await.unwrap();
+        assert!(fetched.is_some());
+        let fetched = fetched.unwrap();
+        assert_eq!(fetched.arxiv_id, "2301.12345");
+        assert_eq!(fetched.paper_type, "theoretical");
+        assert_eq!(fetched.methods.len(), 1);
+        assert_eq!(fetched.methods[0].name, "variational");
+        assert_eq!(fetched.findings.len(), 1);
+        assert_eq!(fetched.findings[0].strength, "strong_evidence");
+        assert_eq!(fetched.open_problems.len(), 1);
+        assert_eq!(fetched.provider, "noop");
+    }
+
+    #[tokio::test]
+    async fn test_annotation_exists() {
+        let db = connect_memory().await.unwrap();
+        let repo = LlmAnnotationRepository::new(&db);
+
+        assert!(!repo.annotation_exists("2301.12345").await.unwrap());
+
+        let ann = make_annotation("2301.12345");
+        repo.upsert_annotation(&ann).await.unwrap();
+
+        assert!(repo.annotation_exists("2301.12345").await.unwrap());
+    }
+
+    #[tokio::test]
+    async fn test_get_all_annotations() {
+        let db = connect_memory().await.unwrap();
+        let repo = LlmAnnotationRepository::new(&db);
+
+        repo.upsert_annotation(&make_annotation("2301.11111"))
+            .await
+            .unwrap();
+        repo.upsert_annotation(&make_annotation("2301.22222"))
+            .await
+            .unwrap();
+        repo.upsert_annotation(&make_annotation("2301.33333"))
+            .await
+            .unwrap();
+
+        let all = repo.get_all_annotations().await.unwrap();
+        assert_eq!(all.len(), 3);
+    }
+
+    #[tokio::test]
+    async fn test_annotation_version_suffix_dedup() {
+        let db = connect_memory().await.unwrap();
+        let repo = LlmAnnotationRepository::new(&db);
+
+        // Upsert with versioned ID
+        let ann = make_annotation("2301.12345v2");
+        repo.upsert_annotation(&ann).await.unwrap();
+
+        // Get by bare ID — should find it
+        let fetched = repo.get_annotation("2301.12345").await.unwrap();
         assert!(fetched.is_some());
         assert_eq!(fetched.unwrap().arxiv_id, "2301.12345");
     }

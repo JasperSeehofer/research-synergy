@@ -9,15 +9,15 @@
 
 - [ ] **TEXT-01**: System extracts structured fields (methods, findings, open problems, paper type) from paper abstracts via LLM
 - [ ] **TEXT-02**: System computes corpus-relative keywords per paper using TF-IDF (offline, no API cost)
-- [ ] **TEXT-03**: System fetches full text from arXiv HTML (ar5iv) with section detection for papers that have HTML available
-- [ ] **TEXT-04**: System falls back gracefully to abstract-only analysis when full text is unavailable, flagging the paper as partial
+- [x] **TEXT-03**: System fetches full text from arXiv HTML (ar5iv) with section detection for papers that have HTML available
+- [x] **TEXT-04**: System falls back gracefully to abstract-only analysis when full text is unavailable, flagging the paper as partial
 
 ### Infrastructure
 
 - [ ] **INFR-01**: LLM backend is pluggable via a trait, supporting at least two providers (e.g., Claude API and Ollama)
 - [ ] **INFR-02**: Analysis results are cached in SurrealDB per paper; re-runs skip already-analyzed papers
 - [x] **INFR-03**: Database schema changes use a migration system to safely extend the existing paper schema
-- [ ] **INFR-04**: System provides CLI flags to control analysis pipeline (e.g., `--analyze`, `--llm-provider`, `--skip-fulltext`)
+- [x] **INFR-04**: System provides CLI flags to control analysis pipeline (e.g., `--analyze`, `--llm-provider`, `--skip-fulltext`)
 
 ### Cross-Paper Analysis
 
@@ -64,12 +64,12 @@
 |-------------|-------|--------|
 | TEXT-01 | Phase 3 | Pending |
 | TEXT-02 | Phase 2 | Pending |
-| TEXT-03 | Phase 1 | Pending |
-| TEXT-04 | Phase 1 | Pending |
+| TEXT-03 | Phase 1 | Complete |
+| TEXT-04 | Phase 1 | Complete |
 | INFR-01 | Phase 3 | Pending |
 | INFR-02 | Phase 2 | Pending |
 | INFR-03 | Phase 1 | Complete |
-| INFR-04 | Phase 1 | Pending |
+| INFR-04 | Phase 1 | Complete |
 | GAPS-01 | Phase 4 | Pending |
 | GAPS-02 | Phase 4 | Pending |
 | VIS-01 | Phase 5 | Pending |

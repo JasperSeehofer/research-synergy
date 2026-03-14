@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 01-text-extraction-foundation/01-01-PLAN.md
-last_updated: "2026-03-14T02:03:59.888Z"
+stopped_at: Completed 01-text-extraction-foundation/01-02-PLAN.md
+last_updated: "2026-03-14T03:41:24.835Z"
 last_activity: 2026-03-14 — Roadmap created, 12/12 v1 requirements mapped to 5 phases
 progress:
   total_phases: 5
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 2
-  completed_plans: 1
+  completed_plans: 2
   percent: 0
 ---
 
@@ -51,6 +51,7 @@ Progress: [░░░░░░░░░░] 0%
 
 *Updated after each plan completion*
 | Phase 01-text-extraction-foundation P01 | 20 | 2 tasks | 6 files |
+| Phase 01-text-extraction-foundation P02 | 94min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -66,6 +67,9 @@ Recent decisions affecting current work:
 - [Phase 01-text-extraction-foundation]: Sections stored as flat fields on text_extraction table (not nested OBJECT) for SurrealDB SCHEMAFULL compatibility
 - [Phase 01-text-extraction-foundation]: ExtractionMethod serialized as string in DB (AbstractOnly / Ar5ivHtml) matching PaperRecord DataSource pattern
 - [Phase 01-text-extraction-foundation]: migrate_schema uses version guards (if version < N) so re-running applies only missing migrations — idempotent by design
+- [Phase 01-text-extraction-foundation]: Delimiter-guarded Roman numeral stripping: only strip I/II/... when followed by delimiter to avoid consuming word-starts
+- [Phase 01-text-extraction-foundation]: Abstract text extracted from .ltx_para children (not all text) to exclude the 'Abstract' heading element in LaTeXML output
+- [Phase 01-text-extraction-foundation]: run_analysis() extracted as async helper reused from both db_only and normal flows
 
 ### Pending Todos
 
@@ -79,6 +83,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-14T02:03:59.884Z
-Stopped at: Completed 01-text-extraction-foundation/01-01-PLAN.md
+Last session: 2026-03-14T03:41:24.830Z
+Stopped at: Completed 01-text-extraction-foundation/01-02-PLAN.md
 Resume file: None

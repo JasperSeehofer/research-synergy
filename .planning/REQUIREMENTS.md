@@ -26,8 +26,8 @@
 
 ### Visualization
 
-- [ ] **VIS-01**: Citation graph nodes are colored/sized by extracted analysis dimensions (paper type, primary method, finding strength)
-- [ ] **VIS-02**: User can toggle between raw citation view and analysis-enriched view
+- [x] **VIS-01**: Citation graph nodes are colored/sized by extracted analysis dimensions (paper type, primary method, finding strength)
+- [x] **VIS-02**: User can toggle between raw citation view and analysis-enriched view
 
 ## v2 Requirements
 
@@ -72,8 +72,8 @@
 | INFR-04 | Phase 1 | Complete |
 | GAPS-01 | Phase 4 | Complete |
 | GAPS-02 | Phase 4 | Complete |
-| VIS-01 | Phase 5 | Pending |
-| VIS-02 | Phase 5 | Pending |
+| VIS-01 | Phase 5 | Complete |
+| VIS-02 | Phase 5 | Complete |
 
 **Coverage:**
 - v1 requirements: 12 total

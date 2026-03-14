@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 5 context gathered
-last_updated: "2026-03-14T17:38:46.915Z"
+stopped_at: Completed 05-01-PLAN.md
+last_updated: "2026-03-14T18:11:26.940Z"
 last_activity: "2026-03-14 — Plan 04-01 complete: GapFinding foundation (data model, migration 6, repository, LLM trait extension, prompt templates)"
 progress:
   total_phases: 5
   completed_phases: 4
-  total_plans: 10
-  completed_plans: 10
+  total_plans: 12
+  completed_plans: 11
   percent: 80
 ---
 
@@ -60,6 +60,7 @@ Progress: [████████░░] 80%
 | Phase 04-cross-paper-gap-analysis P01 | 6min | 2 tasks | 10 files |
 | Phase 04-cross-paper-gap-analysis P02 | 8min | 2 tasks | 6 files |
 | Phase 04 P03 | 6min | 2 tasks | 3 files |
+| Phase 05-visualization-enrichment P01 | 4min | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -100,6 +101,9 @@ Recent decisions affecting current work:
 - [Phase 04-cross-paper-gap-analysis]: format_gap_table uses manual format! with computed column widths — no tabled crate per RESEARCH.md
 - [Phase 04-cross-paper-gap-analysis]: run_gap_analysis falls through to display cached findings even when corpus fingerprint matches unchanged
 - [Phase 04-cross-paper-gap-analysis]: Corpus fingerprint key 'gap_analysis' distinct from 'corpus_tfidf' for independent invalidation
+- [Phase 05-visualization-enrichment]: New DemoApp fields annotated with #[allow(dead_code)] — Plan 02 rendering logic consumes them
+- [Phase 05-visualization-enrichment]: load_analysis_data() extracted as async helper — keeps launch_visualization sync, called at both call sites
+- [Phase 05-visualization-enrichment]: Weight stripping moved inside DemoApp::new to preserve Paper.title access for node_title_map
 
 ### Pending Todos
 
@@ -113,6 +117,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-14T17:38:46.910Z
-Stopped at: Phase 5 context gathered
-Resume file: .planning/phases/05-visualization-enrichment/05-CONTEXT.md
+Last session: 2026-03-14T18:11:26.932Z
+Stopped at: Completed 05-01-PLAN.md
+Resume file: None

@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 02-nlp-analysis-db-schema 02-01-PLAN.md
-last_updated: "2026-03-14T10:55:38.503Z"
+stopped_at: Completed 02-nlp-analysis-db-schema 02-02-PLAN.md
+last_updated: "2026-03-14T11:04:00.339Z"
 last_activity: 2026-03-14 — Roadmap created, 12/12 v1 requirements mapped to 5 phases
 progress:
   total_phases: 5
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 4
-  completed_plans: 3
+  completed_plans: 4
   percent: 0
 ---
 
@@ -53,6 +53,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 01-text-extraction-foundation P01 | 20 | 2 tasks | 6 files |
 | Phase 01-text-extraction-foundation P02 | 94min | 2 tasks | 3 files |
 | Phase 02-nlp-analysis-db-schema P01 | 36 | 2 tasks | 5 files |
+| Phase 02-nlp-analysis-db-schema P02 | 5 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -73,6 +74,9 @@ Recent decisions affecting current work:
 - [Phase 01-text-extraction-foundation]: run_analysis() extracted as async helper reused from both db_only and normal flows
 - [Phase 02-nlp-analysis-db-schema]: SurrealDB FLEXIBLE TYPE syntax is TYPE object FLEXIBLE (FLEXIBLE comes after type name)
 - [Phase 02-nlp-analysis-db-schema]: AnalysisRecord uses serde_json::Value for tfidf_vector to bridge HashMap into SurrealDB FLEXIBLE object
+- [Phase 02-nlp-analysis-db-schema]: Unigrams only for TF-IDF (bigrams deferred to v2 per CONTEXT.md)
+- [Phase 02-nlp-analysis-db-schema]: Stop word filtering at compute_weighted_tf() stage, not tokenize() — keeps tokenize() a pure utility
+- [Phase 02-nlp-analysis-db-schema]: Corpus fingerprint skip guard uses let-chain syntax (Rust edition 2024) to collapse nested if-let
 
 ### Pending Todos
 
@@ -86,6 +90,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-14T10:55:38.494Z
-Stopped at: Completed 02-nlp-analysis-db-schema 02-01-PLAN.md
+Last session: 2026-03-14T11:04:00.329Z
+Stopped at: Completed 02-nlp-analysis-db-schema 02-02-PLAN.md
 Resume file: None

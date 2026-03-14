@@ -8,7 +8,7 @@
 ### Text Extraction
 
 - [ ] **TEXT-01**: System extracts structured fields (methods, findings, open problems, paper type) from paper abstracts via LLM
-- [ ] **TEXT-02**: System computes corpus-relative keywords per paper using TF-IDF (offline, no API cost)
+- [x] **TEXT-02**: System computes corpus-relative keywords per paper using TF-IDF (offline, no API cost)
 - [x] **TEXT-03**: System fetches full text from arXiv HTML (ar5iv) with section detection for papers that have HTML available
 - [x] **TEXT-04**: System falls back gracefully to abstract-only analysis when full text is unavailable, flagging the paper as partial
 
@@ -63,7 +63,7 @@
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | TEXT-01 | Phase 3 | Pending |
-| TEXT-02 | Phase 2 | Pending |
+| TEXT-02 | Phase 2 | Complete |
 | TEXT-03 | Phase 1 | Complete |
 | TEXT-04 | Phase 1 | Complete |
 | INFR-01 | Phase 3 | Pending |

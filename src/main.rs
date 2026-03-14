@@ -19,6 +19,7 @@ use clap::Parser;
 use data_aggregation::arxiv_source::ArxivSource;
 use data_aggregation::inspirehep_api::InspireHepClient;
 use data_aggregation::traits::PaperSource;
+use database::client::Db;
 use datamodels::paper::Paper;
 use eframe::run_native;
 use tracing::{error, info};
@@ -53,6 +54,14 @@ struct Cli {
     /// Skip crawling, load graph from database only
     #[arg(long, default_value_t = false)]
     db_only: bool,
+
+    /// Run text extraction analysis after crawl and persist
+    #[arg(long, default_value_t = false)]
+    analyze: bool,
+
+    /// Skip full-text extraction; all papers use abstract only
+    #[arg(long, default_value_t = false)]
+    skip_fulltext: bool,
 }
 
 #[tokio::main]
@@ -97,6 +106,9 @@ async fn main() {
             }
         };
         info!(count = papers.len(), "Loaded papers from database");
+        if cli.analyze {
+            run_analysis(db, cli.rate_limit_secs, cli.skip_fulltext).await;
+        }
         launch_visualization(&papers);
         return;
     }
@@ -141,7 +153,67 @@ async fn main() {
         info!(count = papers.len(), "Persisted papers to database");
     }
 
+    // Run analysis pipeline if requested
+    if cli.analyze {
+        let Some(ref db) = db else {
+            error!("--analyze requires --db to be specified");
+            std::process::exit(1);
+        };
+        run_analysis(db, cli.rate_limit_secs, cli.skip_fulltext).await;
+    }
+
     launch_visualization(&papers);
+}
+
+async fn run_analysis(db: &Db, rate_limit_secs: u64, skip_fulltext: bool) {
+    let extraction_repo = database::queries::ExtractionRepository::new(db);
+    let paper_repo = database::queries::PaperRepository::new(db);
+    let all_papers = paper_repo.get_all_papers().await.unwrap_or_else(|e| {
+        error!(error = %e, "Failed to load papers for analysis");
+        std::process::exit(1);
+    });
+
+    let client = utils::create_http_client();
+    let mut extractor =
+        data_aggregation::text_extractor::Ar5ivExtractor::new(client)
+            .with_rate_limit(std::time::Duration::from_secs(rate_limit_secs));
+
+    let mut abstract_only_count: usize = 0;
+    let mut skipped_count: usize = 0;
+    for paper in &all_papers {
+        let stripped_id = utils::strip_version_suffix(&paper.id);
+        if extraction_repo
+            .extraction_exists(&stripped_id)
+            .await
+            .unwrap_or(false)
+        {
+            skipped_count += 1;
+            continue;
+        }
+        let result = if skip_fulltext {
+            datamodels::extraction::TextExtractionResult::from_abstract(paper)
+        } else {
+            extractor.extract(paper).await
+        };
+        if result.is_partial {
+            abstract_only_count += 1;
+        }
+        if let Err(e) = extraction_repo.upsert_extraction(&result).await {
+            error!(paper_id = paper.id, error = %e, "Failed to store extraction");
+        }
+    }
+
+    let analyzed = all_papers.len() - skipped_count;
+    info!(
+        abstract_only = abstract_only_count,
+        analyzed = analyzed,
+        skipped = skipped_count,
+        total = all_papers.len(),
+        "{}/{} papers used abstract-only extraction ({} skipped, already cached)",
+        abstract_only_count,
+        analyzed,
+        skipped_count
+    );
 }
 
 fn launch_visualization(papers: &[Paper]) {

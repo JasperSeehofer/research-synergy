@@ -21,8 +21,8 @@
 
 ### Cross-Paper Analysis
 
-- [ ] **GAPS-01**: System detects contradictions between papers (divergent findings on the same topic across connected papers)
-- [ ] **GAPS-02**: System discovers ABC-model bridges (hidden A↔C connections via shared B intermediaries with semantic justification)
+- [x] **GAPS-01**: System detects contradictions between papers (divergent findings on the same topic across connected papers)
+- [x] **GAPS-02**: System discovers ABC-model bridges (hidden A↔C connections via shared B intermediaries with semantic justification)
 
 ### Visualization
 
@@ -70,8 +70,8 @@
 | INFR-02 | Phase 2 | Complete |
 | INFR-03 | Phase 1 | Complete |
 | INFR-04 | Phase 1 | Complete |
-| GAPS-01 | Phase 4 | Pending |
-| GAPS-02 | Phase 4 | Pending |
+| GAPS-01 | Phase 4 | Complete |
+| GAPS-02 | Phase 4 | Complete |
 | VIS-01 | Phase 5 | Pending |
 | VIS-02 | Phase 5 | Pending |
 

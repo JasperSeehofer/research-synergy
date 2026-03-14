@@ -42,7 +42,10 @@ Full details: `.planning/milestones/v1.0-ROADMAP.md`
   3. `use resyn_core::nlp` is accessible from test and library contexts (DEBT-01 resolved)
   4. egui, eframe, egui_graphs, and fdg dependencies are removed from Cargo.toml (WEB-05)
   5. Stale stub comment in `src/llm/ollama.rs` and stale ROADMAP plan checkboxes are gone
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 06-01-PLAN.md — Workspace skeleton, source migration, ssr feature gate, WASM boundary verification
+- [ ] 06-02-PLAN.md — Visualization removal, egui dep cleanup, CLI subcommand rewrite, tech debt fixes
 
 ### Phase 7: Incremental Crawl Infrastructure
 **Goal**: High-depth crawls survive crashes and can be monitored in real time, with a DB-backed queue replacing the in-memory BFS frontier
@@ -102,7 +105,7 @@ Full details: `.planning/milestones/v1.0-ROADMAP.md`
 | 3. Pluggable LLM Backend | v1.0 | 3/3 | Complete | 2026-03-14 |
 | 4. Cross-Paper Gap Analysis | v1.0 | 3/3 | Complete | 2026-03-14 |
 | 5. Visualization Enrichment | v1.0 | 2/2 | Complete | 2026-03-14 |
-| 6. Tech Debt + Workspace Restructure | v1.1 | 0/? | Not started | - |
+| 6. Tech Debt + Workspace Restructure | v1.1 | 0/2 | Not started | - |
 | 7. Incremental Crawl Infrastructure | v1.1 | 0/? | Not started | - |
 | 8. Leptos Web Shell + Analysis Panels | v1.1 | 0/? | Not started | - |
 | 9. Graph Renderer (Canvas to WebGL) | v1.1 | 0/? | Not started | - |

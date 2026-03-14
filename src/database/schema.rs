@@ -131,6 +131,23 @@ async fn apply_migration_5(db: &Surreal<Any>) -> Result<(), ResynError> {
     Ok(())
 }
 
+async fn apply_migration_6(db: &Surreal<Any>) -> Result<(), ResynError> {
+    db.query(
+        "
+        DEFINE TABLE IF NOT EXISTS gap_finding SCHEMAFULL;
+        DEFINE FIELD IF NOT EXISTS gap_type ON gap_finding TYPE string;
+        DEFINE FIELD IF NOT EXISTS paper_ids ON gap_finding TYPE string;
+        DEFINE FIELD IF NOT EXISTS shared_terms ON gap_finding TYPE string;
+        DEFINE FIELD IF NOT EXISTS justification ON gap_finding TYPE string;
+        DEFINE FIELD IF NOT EXISTS confidence ON gap_finding TYPE float;
+        DEFINE FIELD IF NOT EXISTS found_at ON gap_finding TYPE string;
+        ",
+    )
+    .await
+    .map_err(|e| ResynError::Database(format!("migration 6 DDL failed: {e}")))?;
+    Ok(())
+}
+
 pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
     // Ensure migrations table exists first
     db.query(
@@ -168,6 +185,11 @@ pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
     if version < 5 {
         apply_migration_5(db).await?;
         record_migration(db, 5).await?;
+    }
+
+    if version < 6 {
+        apply_migration_6(db).await?;
+        record_migration(db, 6).await?;
     }
 
     Ok(())

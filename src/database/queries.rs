@@ -2,6 +2,7 @@ use surrealdb::types::{RecordId, SurrealValue};
 
 use crate::datamodels::analysis::{AnalysisMetadata, PaperAnalysis};
 use crate::datamodels::extraction::{ExtractionMethod, TextExtractionResult};
+use crate::datamodels::gap_finding::{GapFinding, GapType};
 use crate::datamodels::llm_annotation::LlmAnnotation;
 use crate::datamodels::paper::{DataSource, Paper};
 use crate::error::ResynError;
@@ -648,6 +649,92 @@ impl<'a> LlmAnnotationRepository<'a> {
     }
 }
 
+// --- GapFindingRepository ---
+
+// paper_ids and shared_terms stored as JSON strings per SurrealDB SCHEMAFULL pattern
+// (avoids nested-object field enforcement; consistent with LlmAnnotation lesson).
+// gap_finding records use auto-generated IDs (CREATE not UPSERT) for history preservation.
+#[derive(Debug, Clone, SurrealValue)]
+#[surreal(crate = "surrealdb::types")]
+struct GapFindingRecord {
+    gap_type: String,
+    paper_ids: String,
+    shared_terms: String,
+    justification: String,
+    confidence: f32,
+    found_at: String,
+}
+
+impl From<&GapFinding> for GapFindingRecord {
+    fn from(g: &GapFinding) -> Self {
+        let paper_ids_json =
+            serde_json::to_string(&g.paper_ids).unwrap_or_else(|_| "[]".to_string());
+        let shared_terms_json =
+            serde_json::to_string(&g.shared_terms).unwrap_or_else(|_| "[]".to_string());
+        GapFindingRecord {
+            gap_type: g.gap_type.as_str().to_string(),
+            paper_ids: paper_ids_json,
+            shared_terms: shared_terms_json,
+            justification: g.justification.clone(),
+            confidence: g.confidence,
+            found_at: g.found_at.clone(),
+        }
+    }
+}
+
+impl GapFindingRecord {
+    fn to_gap_finding(&self) -> GapFinding {
+        let gap_type = match self.gap_type.as_str() {
+            "abc_bridge" => GapType::AbcBridge,
+            _ => GapType::Contradiction,
+        };
+        let paper_ids: Vec<String> = serde_json::from_str(&self.paper_ids).unwrap_or_default();
+        let shared_terms: Vec<String> =
+            serde_json::from_str(&self.shared_terms).unwrap_or_default();
+        GapFinding {
+            gap_type,
+            paper_ids,
+            shared_terms,
+            justification: self.justification.clone(),
+            confidence: self.confidence,
+            found_at: self.found_at.clone(),
+        }
+    }
+}
+
+pub struct GapFindingRepository<'a> {
+    db: &'a Db,
+}
+
+impl<'a> GapFindingRepository<'a> {
+    pub fn new(db: &'a Db) -> Self {
+        Self { db }
+    }
+
+    /// INSERT (not UPSERT) — each gap finding gets an auto-generated ID.
+    /// This preserves history: multiple runs for the same paper pair create separate records.
+    pub async fn insert_gap_finding(&self, finding: &GapFinding) -> Result<(), ResynError> {
+        let record = GapFindingRecord::from(finding);
+
+        self.db
+            .query("CREATE gap_finding CONTENT $record")
+            .bind(("record", record.into_value()))
+            .await
+            .map_err(|e| ResynError::Database(format!("insert gap finding failed: {e}")))?;
+
+        Ok(())
+    }
+
+    pub async fn get_all_gap_findings(&self) -> Result<Vec<GapFinding>, ResynError> {
+        let records: Vec<GapFindingRecord> = self
+            .db
+            .select("gap_finding")
+            .await
+            .map_err(|e| ResynError::Database(format!("get all gap findings failed: {e}")))?;
+        Ok(records.iter().map(|r| r.to_gap_finding()).collect())
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -789,27 +876,27 @@ mod tests {
         let repo = ExtractionRepository::new(&db);
         let extraction = make_extraction("2301.12345");
         repo.upsert_extraction(&extraction).await.unwrap();
-        // Also check schema_migrations has version 5 (migrations 1-5 applied)
+        // Also check schema_migrations has version 6 (migrations 1-6 applied)
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 5);
+        assert_eq!(versions[0], 6);
     }
 
     #[tokio::test]
     async fn test_migrate_schema_is_idempotent() {
         use crate::database::schema::migrate_schema;
         let db = crate::database::client::connect("mem://").await.unwrap();
-        // Run migrate_schema again — should not error and version stays at 5
+        // Run migrate_schema again — should not error and version stays at 6
         migrate_schema(&db).await.unwrap();
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 5);
+        assert_eq!(versions[0], 6);
     }
 
     #[tokio::test]
@@ -899,15 +986,15 @@ mod tests {
     #[tokio::test]
     async fn test_migrate_schema_applies_all_migrations() {
         let db = crate::database::client::connect("mem://").await.unwrap();
-        // connect() already runs migrate_schema; verify version is now 5
+        // connect() already runs migrate_schema; verify version is now 6
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
         assert_eq!(
-            versions[0], 5,
-            "Expected schema version 5 after all migrations"
+            versions[0], 6,
+            "Expected schema version 6 after all migrations"
         );
     }
 
@@ -915,14 +1002,14 @@ mod tests {
     async fn test_migrate_schema_idempotent_from_v2() {
         use crate::database::schema::migrate_schema;
         let db = crate::database::client::connect("mem://").await.unwrap();
-        // Run migrate_schema again — should not error and version stays at 5
+        // Run migrate_schema again — should not error and version stays at 6
         migrate_schema(&db).await.unwrap();
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 5);
+        assert_eq!(versions[0], 6);
     }
 
     #[tokio::test]
@@ -1047,8 +1134,8 @@ mod tests {
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
         assert_eq!(
-            versions[0], 5,
-            "Expected schema version 5 after all migrations"
+            versions[0], 6,
+            "Expected schema version 6 after all migrations"
         );
     }
 
@@ -1062,7 +1149,7 @@ mod tests {
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 5);
+        assert_eq!(versions[0], 6);
     }
 
     #[tokio::test]
@@ -1131,5 +1218,84 @@ mod tests {
         let fetched = repo.get_annotation("2301.12345").await.unwrap();
         assert!(fetched.is_some());
         assert_eq!(fetched.unwrap().arxiv_id, "2301.12345");
+    }
+
+    // --- GapFindingRepository tests ---
+
+    fn make_gap_finding(gap_type: crate::datamodels::gap_finding::GapType) -> GapFinding {
+        GapFinding {
+            gap_type,
+            paper_ids: vec!["2301.11111".to_string(), "2301.22222".to_string()],
+            shared_terms: vec!["quantum".to_string(), "entanglement".to_string()],
+            justification: "These papers contradict each other on quantum state collapse."
+                .to_string(),
+            confidence: 0.85,
+            found_at: "2026-03-14T10:00:00Z".to_string(),
+        }
+    }
+
+    #[tokio::test]
+    async fn test_migrate_schema_creates_gap_finding_table() {
+        let db = crate::database::client::connect("mem://").await.unwrap();
+        // connect() runs migrate_schema — verify schema version is now 6
+        let mut resp = db
+            .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
+            .await
+            .unwrap();
+        let versions: Vec<u32> = resp.take("version").unwrap();
+        assert_eq!(
+            versions[0], 6,
+            "Expected schema version 6 after migration 6"
+        );
+    }
+
+    #[tokio::test]
+    async fn test_gap_finding_insert_and_get_all() {
+        let db = connect_memory().await.unwrap();
+        let repo = GapFindingRepository::new(&db);
+
+        let finding = make_gap_finding(GapType::Contradiction);
+        repo.insert_gap_finding(&finding).await.unwrap();
+
+        let all = repo.get_all_gap_findings().await.unwrap();
+        assert_eq!(all.len(), 1);
+        let fetched = &all[0];
+        assert_eq!(fetched.gap_type, GapType::Contradiction);
+        assert_eq!(fetched.paper_ids, vec!["2301.11111", "2301.22222"]);
+        assert_eq!(fetched.shared_terms, vec!["quantum", "entanglement"]);
+        assert_eq!(
+            fetched.justification,
+            "These papers contradict each other on quantum state collapse."
+        );
+        assert!((fetched.confidence - 0.85).abs() < 1e-5);
+        assert_eq!(fetched.found_at, "2026-03-14T10:00:00Z");
+    }
+
+    #[tokio::test]
+    async fn test_gap_finding_multiple_inserts_preserve_history() {
+        let db = connect_memory().await.unwrap();
+        let repo = GapFindingRepository::new(&db);
+
+        // Two inserts for the same paper pair — both must be stored separately
+        let finding1 = make_gap_finding(GapType::Contradiction);
+        let finding2 = make_gap_finding(GapType::Contradiction);
+        repo.insert_gap_finding(&finding1).await.unwrap();
+        repo.insert_gap_finding(&finding2).await.unwrap();
+
+        let all = repo.get_all_gap_findings().await.unwrap();
+        assert_eq!(all.len(), 2, "Both records should be stored (no upsert dedup)");
+    }
+
+    #[tokio::test]
+    async fn test_gap_finding_abc_bridge_stored_correctly() {
+        let db = connect_memory().await.unwrap();
+        let repo = GapFindingRepository::new(&db);
+
+        let finding = make_gap_finding(GapType::AbcBridge);
+        repo.insert_gap_finding(&finding).await.unwrap();
+
+        let all = repo.get_all_gap_findings().await.unwrap();
+        assert_eq!(all.len(), 1);
+        assert_eq!(all[0].gap_type, GapType::AbcBridge);
     }
 }

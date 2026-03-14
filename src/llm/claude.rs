@@ -200,6 +200,17 @@ impl LlmProvider for ClaudeProvider {
         })
     }
 
+    async fn verify_gap(
+        &mut self,
+        prompt: &str,
+        context: &str,
+    ) -> Result<String, ResynError> {
+        self.rate_limit_check().await;
+        let text = self.call_api(prompt, context).await?;
+        debug!(raw = text.as_str(), "Claude verify_gap response");
+        Ok(text)
+    }
+
     fn provider_name(&self) -> &'static str {
         "claude"
     }

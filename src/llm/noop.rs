@@ -35,6 +35,16 @@ impl LlmProvider for NoopProvider {
         })
     }
 
+    async fn verify_gap(
+        &mut self,
+        _prompt: &str,
+        _context: &str,
+    ) -> Result<String, ResynError> {
+        // Noop never confirms gaps — returns "NO" consistent with producing
+        // empty-but-valid results for all operations.
+        Ok("NO".to_string())
+    }
+
     fn provider_name(&self) -> &'static str {
         "noop"
     }

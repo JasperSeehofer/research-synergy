@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Phase 2 context gathered
-last_updated: "2026-03-14T09:53:53.692Z"
+stopped_at: Completed 02-nlp-analysis-db-schema 02-01-PLAN.md
+last_updated: "2026-03-14T10:55:38.503Z"
 last_activity: 2026-03-14 — Roadmap created, 12/12 v1 requirements mapped to 5 phases
 progress:
   total_phases: 5
   completed_phases: 1
-  total_plans: 2
-  completed_plans: 2
+  total_plans: 4
+  completed_plans: 3
   percent: 0
 ---
 
@@ -52,6 +52,7 @@ Progress: [░░░░░░░░░░] 0%
 *Updated after each plan completion*
 | Phase 01-text-extraction-foundation P01 | 20 | 2 tasks | 6 files |
 | Phase 01-text-extraction-foundation P02 | 94min | 2 tasks | 3 files |
+| Phase 02-nlp-analysis-db-schema P01 | 36 | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -70,6 +71,8 @@ Recent decisions affecting current work:
 - [Phase 01-text-extraction-foundation]: Delimiter-guarded Roman numeral stripping: only strip I/II/... when followed by delimiter to avoid consuming word-starts
 - [Phase 01-text-extraction-foundation]: Abstract text extracted from .ltx_para children (not all text) to exclude the 'Abstract' heading element in LaTeXML output
 - [Phase 01-text-extraction-foundation]: run_analysis() extracted as async helper reused from both db_only and normal flows
+- [Phase 02-nlp-analysis-db-schema]: SurrealDB FLEXIBLE TYPE syntax is TYPE object FLEXIBLE (FLEXIBLE comes after type name)
+- [Phase 02-nlp-analysis-db-schema]: AnalysisRecord uses serde_json::Value for tfidf_vector to bridge HashMap into SurrealDB FLEXIBLE object
 
 ### Pending Todos
 
@@ -83,6 +86,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-14T09:53:53.683Z
-Stopped at: Phase 2 context gathered
-Resume file: .planning/phases/02-nlp-analysis-db-schema/02-CONTEXT.md
+Last session: 2026-03-14T10:55:38.494Z
+Stopped at: Completed 02-nlp-analysis-db-schema 02-01-PLAN.md
+Resume file: None

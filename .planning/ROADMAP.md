@@ -45,7 +45,7 @@ Plans:
   2. Re-running `--analyze` on an already-analyzed corpus skips existing records without re-computing them
   3. Applying the migration to an existing populated SurrealDB database succeeds without data loss
   4. Keyword rankings are visible in CLI output (e.g., top-5 keywords per paper logged at info level)
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 
 Plans:
 - [ ] 02-01-PLAN.md — PaperAnalysis/AnalysisMetadata data models + DB migrations 3+4 + AnalysisRepository
@@ -92,7 +92,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Text Extraction Foundation | 2/2 | Complete   | 2026-03-14 |
-| 2. NLP Analysis + DB Schema | 0/2 | Planning complete | - |
+| 2. NLP Analysis + DB Schema | 1/2 | In Progress|  |
 | 3. Pluggable LLM Backend | 0/TBD | Not started | - |
 | 4. Cross-Paper Gap Analysis | 0/TBD | Not started | - |
 | 5. Visualization Enrichment | 0/TBD | Not started | - |

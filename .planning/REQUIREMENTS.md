@@ -15,7 +15,7 @@
 ### Infrastructure
 
 - [ ] **INFR-01**: LLM backend is pluggable via a trait, supporting at least two providers (e.g., Claude API and Ollama)
-- [ ] **INFR-02**: Analysis results are cached in SurrealDB per paper; re-runs skip already-analyzed papers
+- [x] **INFR-02**: Analysis results are cached in SurrealDB per paper; re-runs skip already-analyzed papers
 - [x] **INFR-03**: Database schema changes use a migration system to safely extend the existing paper schema
 - [x] **INFR-04**: System provides CLI flags to control analysis pipeline (e.g., `--analyze`, `--llm-provider`, `--skip-fulltext`)
 
@@ -67,7 +67,7 @@
 | TEXT-03 | Phase 1 | Complete |
 | TEXT-04 | Phase 1 | Complete |
 | INFR-01 | Phase 3 | Pending |
-| INFR-02 | Phase 2 | Pending |
+| INFR-02 | Phase 2 | Complete |
 | INFR-03 | Phase 1 | Complete |
 | INFR-04 | Phase 1 | Complete |
 | GAPS-01 | Phase 4 | Pending |

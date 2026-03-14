@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Phase 1 context gathered
-last_updated: "2026-03-14T01:24:17.413Z"
+stopped_at: Completed 01-text-extraction-foundation/01-01-PLAN.md
+last_updated: "2026-03-14T02:03:59.888Z"
 last_activity: 2026-03-14 — Roadmap created, 12/12 v1 requirements mapped to 5 phases
 progress:
   total_phases: 5
   completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
+  total_plans: 2
+  completed_plans: 1
   percent: 0
 ---
 
@@ -50,6 +50,7 @@ Progress: [░░░░░░░░░░] 0%
 - Trend: —
 
 *Updated after each plan completion*
+| Phase 01-text-extraction-foundation P01 | 20 | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -62,6 +63,9 @@ Recent decisions affecting current work:
 - Pre-roadmap: Pluggable LLM backend via trait (mirrors existing PaperSource pattern)
 - Pre-roadmap: Extend SurrealDB schema with migrations rather than auto-init DDL
 - Pre-roadmap: ar5iv HTML as primary full-text source; LaTeX source deferred to v2
+- [Phase 01-text-extraction-foundation]: Sections stored as flat fields on text_extraction table (not nested OBJECT) for SurrealDB SCHEMAFULL compatibility
+- [Phase 01-text-extraction-foundation]: ExtractionMethod serialized as string in DB (AbstractOnly / Ar5ivHtml) matching PaperRecord DataSource pattern
+- [Phase 01-text-extraction-foundation]: migrate_schema uses version guards (if version < N) so re-running applies only missing migrations — idempotent by design
 
 ### Pending Todos
 
@@ -75,6 +79,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-14T01:24:17.410Z
-Stopped at: Phase 1 context gathered
-Resume file: .planning/phases/01-text-extraction-foundation/01-CONTEXT.md
+Last session: 2026-03-14T02:03:59.884Z
+Stopped at: Completed 01-text-extraction-foundation/01-01-PLAN.md
+Resume file: None

@@ -5369,19 +5369,22 @@ dependencies = [
 ]
 
 [[package]]
-name = "research_synergy"
+name = "resyn-app"
+version = "0.1.0"
+dependencies = [
+ "getrandom 0.3.4",
+ "resyn-core",
+ "wasm-bindgen",
+]
+
+[[package]]
+name = "resyn-core"
 version = "0.1.0"
 dependencies = [
  "anyhow",
  "arxiv-rs",
  "async-trait",
  "chrono",
- "clap",
- "crossbeam",
- "eframe",
- "egui",
- "egui_graphs",
- "fdg",
  "futures",
  "petgraph",
  "rand 0.9.2",
@@ -5395,8 +5398,27 @@ dependencies = [
  "tokio",
  "tokio-test",
  "tracing",
- "tracing-subscriber",
  "wiremock",
+]
+
+[[package]]
+name = "resyn-server"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "chrono",
+ "clap",
+ "crossbeam",
+ "eframe",
+ "egui",
+ "egui_graphs",
+ "fdg",
+ "resyn-core",
+ "serde",
+ "serde_json",
+ "tokio",
+ "tracing",
+ "tracing-subscriber",
 ]
 
 [[package]]

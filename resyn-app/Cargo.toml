@@ -1,0 +1,12 @@
+[package]
+name = "resyn-app"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+resyn-core = { path = "../resyn-core" }
+wasm-bindgen = "0.2"
+getrandom = { workspace = true, features = ["wasm_js"] }

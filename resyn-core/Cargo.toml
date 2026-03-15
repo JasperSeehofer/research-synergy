@@ -1,0 +1,41 @@
+[package]
+name = "resyn-core"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+ssr = [
+    "dep:surrealdb",
+    "dep:reqwest",
+    "dep:async-trait",
+    "dep:scraper",
+    "dep:arxiv-rs",
+    "dep:futures",
+    "dep:tokio",
+]
+
+[dependencies]
+# Always available (WASM-safe)
+serde = { workspace = true }
+serde_json = { workspace = true }
+petgraph = { workspace = true }
+chrono = { workspace = true }
+sha2 = { workspace = true }
+stop-words = { workspace = true }
+tracing = { workspace = true }
+rand = { workspace = true }
+anyhow = { workspace = true }
+
+# Server-only (optional, behind ssr feature)
+surrealdb = { workspace = true, optional = true }
+reqwest = { workspace = true, optional = true }
+async-trait = { workspace = true, optional = true }
+scraper = { workspace = true, optional = true }
+arxiv-rs = { workspace = true, optional = true }
+futures = { workspace = true, optional = true }
+tokio = { workspace = true, optional = true }
+
+[dev-dependencies]
+wiremock = { workspace = true }
+tokio-test = { workspace = true }
+tokio = { workspace = true }

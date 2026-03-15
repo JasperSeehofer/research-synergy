@@ -1,0 +1,24 @@
+[package]
+name = "resyn-server"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "resyn"
+path = "src/main.rs"
+
+[dependencies]
+resyn-core = { path = "../resyn-core", features = ["ssr"] }
+tokio = { workspace = true }
+clap = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+eframe = { workspace = true }
+egui = { workspace = true }
+egui_graphs = { workspace = true }
+crossbeam = { workspace = true }
+fdg = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+anyhow = { workspace = true }

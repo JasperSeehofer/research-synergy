@@ -1,10 +1,34 @@
 use clap::Args;
 use resyn_core::data_aggregation::arxiv_source::ArxivSource;
+use resyn_core::data_aggregation::html_parser::ArxivHTMLDownloader;
 use resyn_core::data_aggregation::inspirehep_api::InspireHepClient;
+use resyn_core::data_aggregation::rate_limiter::{
+    SharedRateLimiter, make_arxiv_limiter, make_inspirehep_limiter, wait_for_token,
+};
 use resyn_core::data_aggregation::traits::PaperSource;
-use tracing::{error, info};
+use resyn_core::database::crawl_queue::CrawlQueueRepository;
+use resyn_core::database::queries::PaperRepository;
+use std::sync::Arc;
+use std::sync::atomic::{AtomicU64, Ordering};
+use std::time::Duration;
+use tokio::sync::Semaphore;
+use tracing::{error, info, warn};
 
 use crate::commands::analyze::{AnalyzeArgs, run_analysis_pipeline};
+
+/// A progress event broadcast to SSE clients (consumed by Plan 03).
+#[derive(Clone, Debug, serde::Serialize)]
+pub struct ProgressEvent {
+    pub event_type: String,
+    pub papers_found: u64,
+    pub papers_pending: u64,
+    pub papers_failed: u64,
+    pub current_depth: usize,
+    pub max_depth: usize,
+    pub elapsed_secs: f64,
+    pub current_paper_id: Option<String>,
+    pub current_paper_title: Option<String>,
+}
 
 #[derive(Args, Debug)]
 pub struct CrawlArgs {
@@ -16,9 +40,9 @@ pub struct CrawlArgs {
     #[arg(short = 'd', long, default_value_t = 3)]
     pub max_depth: usize,
 
-    /// Rate limit delay between requests in seconds
-    #[arg(short = 'r', long, default_value_t = 3)]
-    pub rate_limit_secs: u64,
+    /// Enable parallel crawling; optional value sets max concurrency (default: 4)
+    #[arg(long, num_args = 0..=1, default_missing_value = "4")]
+    pub parallel: Option<usize>,
 
     /// Data source: "arxiv" or "inspirehep"
     #[arg(long, default_value = "arxiv")]
@@ -53,6 +77,20 @@ pub struct CrawlArgs {
     pub verbose: bool,
 }
 
+fn make_source(source_name: &str) -> Box<dyn PaperSource> {
+    let client = resyn_core::utils::create_http_client();
+    match source_name {
+        "inspirehep" => {
+            let inspire = InspireHepClient::new(client).with_rate_limit(Duration::ZERO);
+            Box::new(inspire)
+        }
+        _ => {
+            let downloader = ArxivHTMLDownloader::new(client).with_rate_limit(Duration::ZERO);
+            Box::new(ArxivSource::new(downloader))
+        }
+    }
+}
+
 pub async fn run(args: CrawlArgs) -> anyhow::Result<()> {
     if let Err(e) = resyn_core::validation::validate_arxiv_id(&args.paper_id) {
         error!(error = %e, "Invalid paper ID");
@@ -70,41 +108,228 @@ pub async fn run(args: CrawlArgs) -> anyhow::Result<()> {
         }
     };
 
-    let client = resyn_core::utils::create_http_client();
-    let mut source: Box<dyn PaperSource> = match args.source.as_str() {
-        "inspirehep" => {
-            let inspire_client = InspireHepClient::new(client);
-            Box::new(inspire_client)
-        }
-        _ => {
-            let downloader =
-                resyn_core::data_aggregation::html_parser::ArxivHTMLDownloader::new(client)
-                    .with_rate_limit(std::time::Duration::from_secs(args.rate_limit_secs));
-            Box::new(ArxivSource::new(downloader))
-        }
+    let queue_repo = CrawlQueueRepository::new(&db);
+    let paper_repo = PaperRepository::new(&db);
+
+    // Crash recovery: reset stale 'fetching' entries from a previous interrupted run.
+    let reset_count = queue_repo.reset_stale_fetching().await?;
+    if reset_count > 0 {
+        info!(
+            count = reset_count,
+            "Reset stale fetching entries to pending (crash recovery)"
+        );
+    }
+
+    // Resume from existing queue or enqueue seed.
+    let pending = queue_repo.pending_count().await?;
+    if pending > 0 {
+        info!(pending, "Resuming crawl from existing queue");
+    } else {
+        info!(paper_id = args.paper_id.as_str(), "Enqueuing seed paper");
+        queue_repo
+            .enqueue_if_absent(&args.paper_id, &args.paper_id, 0)
+            .await?;
+    }
+
+    // Shared crawl resources.
+    let rate_limiter: SharedRateLimiter = if args.source == "inspirehep" {
+        make_inspirehep_limiter()
+    } else {
+        make_arxiv_limiter()
     };
+    let concurrency = args.parallel.unwrap_or(4);
+    let sem = Arc::new(Semaphore::new(concurrency));
+    let (progress_tx, _) = tokio::sync::broadcast::channel::<ProgressEvent>(256);
+    let start = std::time::Instant::now();
+    let papers_found = Arc::new(AtomicU64::new(0));
+    let papers_failed = Arc::new(AtomicU64::new(0));
 
-    let papers = resyn_core::data_aggregation::arxiv_utils::recursive_paper_search_by_references(
-        &args.paper_id,
-        args.max_depth,
-        source.as_mut(),
-    )
-    .await;
+    info!(
+        concurrency,
+        source = args.source.as_str(),
+        "Starting queue-driven crawl"
+    );
 
-    info!(count = papers.len(), "Recursive search completed");
+    let mut join_set: tokio::task::JoinSet<()> = tokio::task::JoinSet::new();
+    let mut retried = false;
 
-    let repo = resyn_core::database::queries::PaperRepository::new(&db);
-    for paper in &papers {
-        if let Err(e) = repo.upsert_paper(paper).await {
-            error!(paper_id = paper.id, error = %e, "Failed to upsert paper");
+    loop {
+        let entry = queue_repo.claim_next_pending().await?;
+
+        let Some(entry) = entry else {
+            // No pending — wait for all in-flight tasks to finish.
+            while let Some(res) = join_set.join_next().await {
+                if let Err(e) = res {
+                    warn!(error = %e, "Worker task panicked");
+                }
+            }
+
+            // One automatic retry of failed entries.
+            if !retried {
+                retried = true;
+                let retry_count = queue_repo.retry_failed().await?;
+                if retry_count > 0 {
+                    info!(count = retry_count, "Retrying failed entries");
+                    continue; // re-enter loop to process retried entries
+                }
+            }
+
+            break;
+        };
+
+        // Skip entries beyond max_depth.
+        if entry.depth_level > args.max_depth {
+            queue_repo
+                .mark_done(&entry.paper_id, &entry.seed_paper_id)
+                .await?;
+            continue;
         }
-    }
-    for paper in &papers {
-        if let Err(e) = repo.upsert_citations(paper).await {
-            error!(paper_id = paper.id, error = %e, "Failed to upsert citations");
+
+        // Skip if paper already in DB (references were already enqueued in a prior run).
+        if paper_repo
+            .paper_exists(&entry.paper_id)
+            .await
+            .unwrap_or(false)
+        {
+            queue_repo
+                .mark_done(&entry.paper_id, &entry.seed_paper_id)
+                .await?;
+            papers_found.fetch_add(1, Ordering::Relaxed);
+            continue;
         }
+
+        // Acquire a semaphore permit before spawning to bound concurrency.
+        let permit = Arc::clone(&sem).acquire_owned().await.unwrap();
+        let db_clone = db.clone();
+        let limiter = Arc::clone(&rate_limiter);
+        let tx = progress_tx.clone();
+        let seed_id = args.paper_id.clone();
+        let source_name = args.source.clone();
+        let found_counter = Arc::clone(&papers_found);
+        let failed_counter = Arc::clone(&papers_failed);
+        let max_depth = args.max_depth;
+        let elapsed_at_spawn = start.elapsed().as_secs_f64();
+
+        join_set.spawn(async move {
+            let _permit = permit;
+
+            let mut source = make_source(&source_name);
+            let queue = CrawlQueueRepository::new(&db_clone);
+            let paper_repo_task = PaperRepository::new(&db_clone);
+
+            // Rate limit before fetch.
+            wait_for_token(&limiter).await;
+
+            match source.fetch_paper(&entry.paper_id).await {
+                Ok(mut paper) => {
+                    let title = if paper.title.is_empty() {
+                        None
+                    } else {
+                        Some(paper.title.clone())
+                    };
+
+                    // Fetch references into the paper (mutates paper.references).
+                    if let Err(e) = source.fetch_references(&mut paper).await {
+                        warn!(
+                            paper_id = entry.paper_id.as_str(),
+                            error = %e,
+                            "Failed to fetch references"
+                        );
+                    }
+
+                    // Enqueue all discovered arXiv references (depth filter happens at claim time).
+                    let ref_ids = paper.get_arxiv_references_ids();
+                    for arxiv_id in &ref_ids {
+                        if let Err(e) = queue
+                            .enqueue_if_absent(arxiv_id, &seed_id, entry.depth_level + 1)
+                            .await
+                        {
+                            warn!(
+                                arxiv_id = arxiv_id.as_str(),
+                                error = %e,
+                                "Failed to enqueue reference"
+                            );
+                        }
+                    }
+
+                    if let Err(e) = paper_repo_task.upsert_paper(&paper).await {
+                        warn!(
+                            paper_id = entry.paper_id.as_str(),
+                            error = %e,
+                            "Failed to upsert paper"
+                        );
+                    }
+                    if let Err(e) = paper_repo_task.upsert_citations(&paper).await {
+                        warn!(
+                            paper_id = entry.paper_id.as_str(),
+                            error = %e,
+                            "Failed to upsert citations"
+                        );
+                    }
+
+                    let found = found_counter.fetch_add(1, Ordering::Relaxed) + 1;
+                    queue.mark_done(&entry.paper_id, &seed_id).await.ok();
+
+                    let _ = tx.send(ProgressEvent {
+                        event_type: "paper_fetched".to_string(),
+                        papers_found: found,
+                        papers_pending: 0,
+                        papers_failed: failed_counter.load(Ordering::Relaxed),
+                        current_depth: entry.depth_level,
+                        max_depth,
+                        elapsed_secs: elapsed_at_spawn,
+                        current_paper_id: Some(entry.paper_id.clone()),
+                        current_paper_title: title,
+                    });
+                }
+                Err(e) => {
+                    warn!(
+                        paper_id = entry.paper_id.as_str(),
+                        error = %e,
+                        "Failed to fetch paper"
+                    );
+                    let failed = failed_counter.fetch_add(1, Ordering::Relaxed) + 1;
+                    queue.mark_failed(&entry.paper_id, &seed_id).await.ok();
+
+                    let _ = tx.send(ProgressEvent {
+                        event_type: "paper_failed".to_string(),
+                        papers_found: found_counter.load(Ordering::Relaxed),
+                        papers_pending: 0,
+                        papers_failed: failed,
+                        current_depth: entry.depth_level,
+                        max_depth,
+                        elapsed_secs: elapsed_at_spawn,
+                        current_paper_id: Some(entry.paper_id.clone()),
+                        current_paper_title: None,
+                    });
+                }
+            }
+        });
     }
-    info!(count = papers.len(), "Persisted papers to database");
+
+    // Final stats.
+    let elapsed = start.elapsed();
+    let found = papers_found.load(Ordering::Relaxed);
+    let failed = papers_failed.load(Ordering::Relaxed);
+    info!(
+        papers_found = found,
+        papers_failed = failed,
+        elapsed_secs = elapsed.as_secs_f64(),
+        "Crawl complete"
+    );
+
+    // Broadcast completion event.
+    let _ = progress_tx.send(ProgressEvent {
+        event_type: "complete".to_string(),
+        papers_found: found,
+        papers_pending: 0,
+        papers_failed: failed,
+        current_depth: 0,
+        max_depth: args.max_depth,
+        elapsed_secs: elapsed.as_secs_f64(),
+        current_paper_id: None,
+        current_paper_title: None,
+    });
 
     if args.analyze {
         run_analysis_pipeline(
@@ -117,7 +342,7 @@ pub async fn run(args: CrawlArgs) -> anyhow::Result<()> {
                 full_corpus: args.full_corpus,
                 verbose: args.verbose,
             },
-            args.rate_limit_secs,
+            3,
             args.skip_fulltext,
         )
         .await?;

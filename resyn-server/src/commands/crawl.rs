@@ -1,4 +1,4 @@
-use clap::Args;
+use clap::{Args, Subcommand};
 use resyn_core::data_aggregation::arxiv_source::ArxivSource;
 use resyn_core::data_aggregation::html_parser::ArxivHTMLDownloader;
 use resyn_core::data_aggregation::inspirehep_api::InspireHepClient;
@@ -28,6 +28,17 @@ pub struct ProgressEvent {
     pub elapsed_secs: f64,
     pub current_paper_id: Option<String>,
     pub current_paper_title: Option<String>,
+}
+
+/// Queue management subcommands for `resyn crawl`
+#[derive(Subcommand, Debug)]
+pub enum CrawlSubcommand {
+    /// Show crawl queue summary (pending/done/failed counts)
+    Status,
+    /// Clear the crawl queue entirely
+    Clear,
+    /// Mark all failed entries as pending for retry
+    Retry,
 }
 
 #[derive(Args, Debug)]
@@ -75,6 +86,14 @@ pub struct CrawlArgs {
     /// Show full justifications in gap output table (default: truncated at 60 chars)
     #[arg(long, default_value_t = false)]
     pub verbose: bool,
+
+    /// Start SSE progress server on this port (default: 3001 if flag given without value)
+    #[arg(long, num_args = 0..=1, default_missing_value = "3001")]
+    pub progress: Option<u16>,
+
+    /// Queue management subcommand (status, clear, retry)
+    #[command(subcommand)]
+    pub subcmd: Option<CrawlSubcommand>,
 }
 
 fn make_source(source_name: &str) -> Box<dyn PaperSource> {
@@ -92,6 +111,41 @@ fn make_source(source_name: &str) -> Box<dyn PaperSource> {
 }
 
 pub async fn run(args: CrawlArgs) -> anyhow::Result<()> {
+    // Handle queue management subcommands before any crawl logic.
+    if let Some(subcmd) = &args.subcmd {
+        let db = match resyn_core::database::client::connect(&args.db).await {
+            Ok(db) => {
+                info!(endpoint = args.db.as_str(), "Connected to database");
+                db
+            }
+            Err(e) => {
+                error!(error = %e, "Failed to connect to database");
+                std::process::exit(1);
+            }
+        };
+        let queue = CrawlQueueRepository::new(&db);
+        match subcmd {
+            CrawlSubcommand::Status => {
+                let counts = queue.get_counts().await?;
+                println!("Crawl Queue Status:");
+                println!("  Total:    {}", counts.total);
+                println!("  Pending:  {}", counts.pending);
+                println!("  Fetching: {}", counts.fetching);
+                println!("  Done:     {}", counts.done);
+                println!("  Failed:   {}", counts.failed);
+            }
+            CrawlSubcommand::Clear => {
+                queue.clear_queue().await?;
+                println!("Crawl queue cleared.");
+            }
+            CrawlSubcommand::Retry => {
+                let count = queue.retry_failed().await?;
+                println!("Marked {count} failed entries as pending for retry.");
+            }
+        }
+        return Ok(());
+    }
+
     if let Err(e) = resyn_core::validation::validate_arxiv_id(&args.paper_id) {
         error!(error = %e, "Invalid paper ID");
         std::process::exit(1);
@@ -143,6 +197,45 @@ pub async fn run(args: CrawlArgs) -> anyhow::Result<()> {
     let start = std::time::Instant::now();
     let papers_found = Arc::new(AtomicU64::new(0));
     let papers_failed = Arc::new(AtomicU64::new(0));
+
+    // Start SSE progress server if --progress flag was given.
+    if let Some(port) = args.progress {
+        let tx_for_sse = progress_tx.clone();
+        tokio::spawn(async move {
+            use axum::Router;
+            use axum::extract::State;
+            use axum::response::sse::{Event, KeepAlive, Sse};
+            use axum::routing::get;
+            use futures::StreamExt;
+            use tokio_stream::wrappers::BroadcastStream;
+
+            async fn sse_handler(
+                State(tx): State<tokio::sync::broadcast::Sender<ProgressEvent>>,
+            ) -> Sse<impl futures::Stream<Item = Result<Event, std::convert::Infallible>>>
+            {
+                let rx = tx.subscribe();
+                let stream = BroadcastStream::new(rx).filter_map(|msg| async move {
+                    msg.ok().and_then(|e| {
+                        serde_json::to_string(&e)
+                            .ok()
+                            .map(|data| Ok(Event::default().data(data)))
+                    })
+                });
+                Sse::new(stream)
+                    .keep_alive(KeepAlive::new().interval(std::time::Duration::from_secs(5)))
+            }
+
+            let app = Router::new()
+                .route("/progress", get(sse_handler))
+                .with_state(tx_for_sse);
+
+            let listener = tokio::net::TcpListener::bind(format!("127.0.0.1:{port}"))
+                .await
+                .expect("Failed to bind SSE server");
+            tracing::info!(port, "SSE progress server started");
+            axum::serve(listener, app).await.ok();
+        });
+    }
 
     info!(
         concurrency,

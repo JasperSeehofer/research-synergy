@@ -18,3 +18,5 @@ serde_json = { workspace = true }
 chrono = { workspace = true }
 anyhow = { workspace = true }
 futures = { workspace = true }
+axum = { workspace = true }
+tokio-stream = { workspace = true }

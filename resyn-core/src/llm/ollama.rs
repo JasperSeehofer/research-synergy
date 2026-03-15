@@ -1,5 +1,3 @@
-// OllamaProvider — implemented in Task 2
-// Stub to allow Task 1 compilation
 use async_trait::async_trait;
 use chrono::Utc;
 use serde::{Deserialize, Serialize};

@@ -32,13 +32,6 @@ tokio = { version = "1.44.1", features = ["full"] }
 clap = { version = "4", features = ["derive"] }
 tracing-subscriber = "0.3"
 
-# Visualization (plan 02 removes these)
-egui = "0.31.1"
-eframe = "0.31.1"
-egui_graphs = { version = "0.25.0", features = ["events"] }
-crossbeam = "0.8.4"
-fdg = { git = "https://github.com/grantshandy/fdg" }
-
 # getrandom - listed explicitly to enable wasm_js feature via resyn-app
 getrandom = "0.3"
 

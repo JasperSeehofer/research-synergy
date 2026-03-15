@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
-status: planning
-stopped_at: Phase 6 context gathered
-last_updated: "2026-03-14T23:40:22.549Z"
-last_activity: 2026-03-15 — Roadmap created, ready to plan Phase 6
+status: in_progress
+stopped_at: "Completed 06-01-PLAN.md"
+last_updated: "2026-03-15T07:29:32Z"
+last_activity: "2026-03-15 — Phase 6 Plan 01 complete: 3-crate workspace restructure"
 progress:
   total_phases: 5
   completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
-  percent: 0
+  total_plans: 1
+  completed_plans: 1
+  percent: 20
 ---
 
 # Project State
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-03-15)
 ## Current Position
 
 Phase: 6 of 10 (Phase 6: Tech Debt + Workspace Restructure)
-Plan: 0 of ? in current phase
-Status: Ready to plan
-Last activity: 2026-03-15 — Roadmap created, ready to plan Phase 6
+Plan: 1 of 4 in current phase (06-01 complete)
+Status: In progress
+Last activity: 2026-03-15 — Plan 06-01 complete: 3-crate workspace with WASM boundary verified
 
 Progress: [░░░░░░░░░░] 0% (v1.1)
 
@@ -43,6 +43,10 @@ Progress: [░░░░░░░░░░] 0% (v1.1)
 - [v1.1] CSR-only (Trunk, not cargo-leptos) — single-user local tool, no SSR/hydration complexity needed
 - [v1.1] SurrealDB must be feature-gated behind `ssr` from day one of workspace restructure (Pitfall 1)
 - [v1.1] Barnes-Hut force layout implemented in Rust/WASM Web Worker, not JS ForceAtlas2
+- [06-01] tokio added as ssr-gated dep in resyn-core (used by data_aggregation, llm modules)
+- [06-01] getrandom wasm_js backend via .cargo/config.toml rustflags + wasm_js feature for WASM compat
+- [06-01] error.rs HttpRequest variant gated behind ssr to make ResynError WASM-safe
+- [06-01] gap_analysis LLM-dependent functions gated behind ssr; pure graph fns always available
 
 ### Pending Todos
 
@@ -55,6 +59,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-14T23:40:22.545Z
-Stopped at: Phase 6 context gathered
-Resume file: .planning/phases/06-tech-debt-workspace-restructure/06-CONTEXT.md
+Last session: 2026-03-15T07:29:32Z
+Stopped at: Completed 06-01-PLAN.md
+Resume file: .planning/phases/06-tech-debt-workspace-restructure/06-01-SUMMARY.md

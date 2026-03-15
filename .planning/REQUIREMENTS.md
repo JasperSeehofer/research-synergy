@@ -9,7 +9,7 @@ Requirements for the Scale & Surface milestone. Each maps to roadmap phases.
 
 ### Tech Debt
 
-- [ ] **DEBT-01**: Export `nlp` module in `lib.rs` for test/library access
+- [x] **DEBT-01**: Export `nlp` module in `lib.rs` for test/library access
 - [ ] **DEBT-02**: Remove stale stub comment in `src/llm/ollama.rs`
 - [ ] **DEBT-03**: Clean up stale ROADMAP plan checkboxes from v1.0
 - [ ] **DEBT-04**: Section-aware LLM extraction using detected section boundaries
@@ -23,8 +23,8 @@ Requirements for the Scale & Surface milestone. Each maps to roadmap phases.
 
 ### Web Migration
 
-- [ ] **WEB-01**: Cargo workspace restructure into 3-crate layout (core/app/server)
-- [ ] **WEB-02**: WASM compilation boundary — SurrealDB feature-gated behind `ssr`
+- [x] **WEB-01**: Cargo workspace restructure into 3-crate layout (core/app/server)
+- [x] **WEB-02**: WASM compilation boundary — SurrealDB feature-gated behind `ssr`
 - [ ] **WEB-03**: Leptos CSR shell with Trunk build pipeline and routing
 - [ ] **WEB-04**: Axum server functions exposing analysis pipeline to frontend
 - [ ] **WEB-05**: Remove egui/eframe/fdg dependencies
@@ -80,11 +80,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DEBT-01 | Phase 6 | Pending |
+| DEBT-01 | Phase 6 | Complete |
 | DEBT-02 | Phase 6 | Pending |
 | DEBT-03 | Phase 6 | Pending |
-| WEB-01 | Phase 6 | Pending |
-| WEB-02 | Phase 6 | Pending |
+| WEB-01 | Phase 6 | Complete |
+| WEB-02 | Phase 6 | Complete |
 | WEB-05 | Phase 6 | Pending |
 | CRAWL-01 | Phase 7 | Pending |
 | CRAWL-02 | Phase 7 | Pending |

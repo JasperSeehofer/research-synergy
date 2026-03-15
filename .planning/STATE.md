@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
 status: in_progress
-stopped_at: "Completed 06-01-PLAN.md"
-last_updated: "2026-03-15T07:29:32Z"
-last_activity: "2026-03-15 — Phase 6 Plan 01 complete: 3-crate workspace restructure"
+stopped_at: "Completed 06-02-PLAN.md"
+last_updated: "2026-03-15T09:45:00Z"
+last_activity: "2026-03-15 — Phase 6 Plan 02 complete: egui removal, subcommand CLI, all tech debt resolved"
 progress:
   total_phases: 5
   completed_phases: 0
-  total_plans: 1
-  completed_plans: 1
-  percent: 20
+  total_plans: 2
+  completed_plans: 2
+  percent: 40
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-15)
 ## Current Position
 
 Phase: 6 of 10 (Phase 6: Tech Debt + Workspace Restructure)
-Plan: 1 of 4 in current phase (06-01 complete)
+Plan: 2 of 4 in current phase (06-02 complete)
 Status: In progress
-Last activity: 2026-03-15 — Plan 06-01 complete: 3-crate workspace with WASM boundary verified
+Last activity: 2026-03-15 — Plan 06-02 complete: egui removed, subcommand CLI, DEBT-02+03 resolved
 
-Progress: [░░░░░░░░░░] 0% (v1.1)
+Progress: [██░░░░░░░░] 40% (v1.1)
 
 ## Accumulated Context
 
@@ -47,6 +47,9 @@ Progress: [░░░░░░░░░░] 0% (v1.1)
 - [06-01] getrandom wasm_js backend via .cargo/config.toml rustflags + wasm_js feature for WASM compat
 - [06-01] error.rs HttpRequest variant gated behind ssr to make ResynError WASM-safe
 - [06-01] gap_analysis LLM-dependent functions gated behind ssr; pure graph fns always available
+- [06-02] DB argument is REQUIRED (default surrealkv://./data) — no more Option<String> in CLI
+- [06-02] TODO.md deleted entirely — .planning/ROADMAP.md is sole canonical roadmap
+- [06-02] AnalyzeArgs struct serves as both CLI arg type and pipeline config type for crawl --analyze
 
 ### Pending Todos
 
@@ -59,6 +62,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-15T07:29:32Z
-Stopped at: Completed 06-01-PLAN.md
-Resume file: .planning/phases/06-tech-debt-workspace-restructure/06-01-SUMMARY.md
+Last session: 2026-03-15T09:45:00Z
+Stopped at: Completed 06-02-PLAN.md
+Resume file: .planning/phases/06-tech-debt-workspace-restructure/06-02-SUMMARY.md

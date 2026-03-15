@@ -24,7 +24,7 @@ Full details: `.planning/milestones/v1.0-ROADMAP.md`
 
 **Milestone Goal:** Make ReSyn usable at real research scale (depth 10+) and move gap insights from stdout into the primary interface, migrating to a Leptos web UI with full Rust/WASM graph rendering.
 
-- [ ] **Phase 6: Tech Debt + Workspace Restructure** — Clean debt, split into 3-crate workspace, establish WASM boundary
+- [x] **Phase 6: Tech Debt + Workspace Restructure** — Clean debt, split into 3-crate workspace, establish WASM boundary (completed 2026-03-15)
 - [ ] **Phase 7: Incremental Crawl Infrastructure** — DB-backed resumable crawl queue with progress reporting and parallel fetching
 - [ ] **Phase 8: Leptos Web Shell + Analysis Panels** — CSR Leptos app, Axum server functions, gap analysis panels
 - [ ] **Phase 9: Graph Renderer (Canvas to WebGL)** — Rust/WASM Canvas 2D renderer, Barnes-Hut force layout, WebGL upgrade
@@ -42,7 +42,7 @@ Full details: `.planning/milestones/v1.0-ROADMAP.md`
   3. `use resyn_core::nlp` is accessible from test and library contexts (DEBT-01 resolved)
   4. egui, eframe, egui_graphs, and fdg dependencies are removed from Cargo.toml (WEB-05)
   5. Stale stub comment in `src/llm/ollama.rs` and stale ROADMAP plan checkboxes are gone
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans complete
 Plans:
 - [ ] 06-01-PLAN.md — Workspace skeleton, source migration, ssr feature gate, WASM boundary verification
 - [ ] 06-02-PLAN.md — Visualization removal, egui dep cleanup, CLI subcommand rewrite, tech debt fixes
@@ -105,7 +105,7 @@ Plans:
 | 3. Pluggable LLM Backend | v1.0 | 3/3 | Complete | 2026-03-14 |
 | 4. Cross-Paper Gap Analysis | v1.0 | 3/3 | Complete | 2026-03-14 |
 | 5. Visualization Enrichment | v1.0 | 2/2 | Complete | 2026-03-14 |
-| 6. Tech Debt + Workspace Restructure | 1/2 | In Progress|  | - |
+| 6. Tech Debt + Workspace Restructure | 2/2 | Complete   | 2026-03-15 | - |
 | 7. Incremental Crawl Infrastructure | v1.1 | 0/? | Not started | - |
 | 8. Leptos Web Shell + Analysis Panels | v1.1 | 0/? | Not started | - |
 | 9. Graph Renderer (Canvas to WebGL) | v1.1 | 0/? | Not started | - |

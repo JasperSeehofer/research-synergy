@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
 status: executing
-stopped_at: Phase 7 context gathered
-last_updated: "2026-03-15T16:01:29.740Z"
+stopped_at: Completed 07-01-PLAN.md
+last_updated: "2026-03-15T20:43:34.216Z"
 last_activity: "2026-03-15 — Plan 06-02 complete: egui removed, subcommand CLI, DEBT-02+03 resolved"
 progress:
   total_phases: 5
   completed_phases: 1
-  total_plans: 2
-  completed_plans: 2
+  total_plans: 5
+  completed_plans: 3
   percent: 40
 ---
 
@@ -50,6 +50,8 @@ Progress: [██░░░░░░░░] 40% (v1.1)
 - [06-02] DB argument is REQUIRED (default surrealkv://./data) — no more Option<String> in CLI
 - [06-02] TODO.md deleted entirely — .planning/ROADMAP.md is sole canonical roadmap
 - [06-02] AnalyzeArgs struct serves as both CLI arg type and pipeline config type for crawl --analyze
+- [Phase 07-01]: Named record IDs for idempotent SurrealDB enqueue (CREATE on same ID is a no-op)
+- [Phase 07-01]: UPDATE ONLY $let_var (not WHERE id = $bound_var) required for atomic claim in SurrealDB embedded
 
 ### Pending Todos
 
@@ -62,6 +64,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-15T16:01:29.732Z
-Stopped at: Phase 7 context gathered
-Resume file: .planning/phases/07-incremental-crawl-infrastructure/07-CONTEXT.md
+Last session: 2026-03-15T20:43:34.209Z
+Stopped at: Completed 07-01-PLAN.md
+Resume file: None

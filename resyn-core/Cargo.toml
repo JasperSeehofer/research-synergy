@@ -12,6 +12,7 @@ ssr = [
     "dep:arxiv-rs",
     "dep:futures",
     "dep:tokio",
+    "dep:governor",
 ]
 
 [dependencies]
@@ -27,6 +28,7 @@ rand = { workspace = true }
 anyhow = { workspace = true }
 
 # Server-only (optional, behind ssr feature)
+governor = { optional = true, version = "0.10" }
 surrealdb = { workspace = true, optional = true }
 reqwest = { workspace = true, optional = true }
 async-trait = { workspace = true, optional = true }

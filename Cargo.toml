@@ -20,6 +20,7 @@ rand = "0.9.0"
 anyhow = "1.0.97"
 
 # Server-only (ssr-gated in resyn-core, direct in resyn-server)
+governor = "0.10"
 surrealdb = { version = "3", features = ["kv-mem", "kv-surrealkv"] }
 reqwest = { version = "0.12.15", features = ["json"] }
 async-trait = "0.1"

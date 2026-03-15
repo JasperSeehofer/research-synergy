@@ -18,7 +18,7 @@ Requirements for the Scale & Surface milestone. Each maps to roadmap phases.
 
 - [x] **CRAWL-01**: DB-backed crawl queue replacing in-memory BFS frontier for resumability
 - [x] **CRAWL-02**: Crash recovery — resume interrupted crawls from last checkpoint
-- [ ] **CRAWL-03**: Crawl progress reporting via SSE (papers found, queue depth, estimated time)
+- [x] **CRAWL-03**: Crawl progress reporting via SSE (papers found, queue depth, estimated time)
 - [x] **CRAWL-04**: Parallel reference fetching where rate limits allow
 
 ### Web Migration
@@ -88,7 +88,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | WEB-05 | Phase 6 | Complete |
 | CRAWL-01 | Phase 7 | Complete |
 | CRAWL-02 | Phase 7 | Complete |
-| CRAWL-03 | Phase 7 | Pending |
+| CRAWL-03 | Phase 7 | Complete |
 | CRAWL-04 | Phase 7 | Complete |
 | WEB-03 | Phase 8 | Pending |
 | WEB-04 | Phase 8 | Pending |

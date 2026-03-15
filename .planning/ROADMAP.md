@@ -25,7 +25,7 @@ Full details: `.planning/milestones/v1.0-ROADMAP.md`
 **Milestone Goal:** Make ReSyn usable at real research scale (depth 10+) and move gap insights from stdout into the primary interface, migrating to a Leptos web UI with full Rust/WASM graph rendering.
 
 - [x] **Phase 6: Tech Debt + Workspace Restructure** — Clean debt, split into 3-crate workspace, establish WASM boundary (completed 2026-03-15)
-- [ ] **Phase 7: Incremental Crawl Infrastructure** — DB-backed resumable crawl queue with progress reporting and parallel fetching
+- [x] **Phase 7: Incremental Crawl Infrastructure** — DB-backed resumable crawl queue with progress reporting and parallel fetching (completed 2026-03-15)
 - [ ] **Phase 8: Leptos Web Shell + Analysis Panels** — CSR Leptos app, Axum server functions, gap analysis panels
 - [ ] **Phase 9: Graph Renderer (Canvas to WebGL)** — Rust/WASM Canvas 2D renderer, Barnes-Hut force layout, WebGL upgrade
 - [ ] **Phase 10: Analysis UI Polish + Scale** — Provenance tracking, section-aware LLM, scale testing, LOD, temporal filter
@@ -56,7 +56,7 @@ Plans:
   2. Running `--progress` with `--db` shows a live progress stream (papers found, queue depth) via SSE, readable via `curl`
   3. A depth-3 crawl with `--parallel` completes faster than sequential while respecting the global arXiv 3s rate limit across all concurrent tasks
   4. Papers already in the DB are skipped without network requests when resuming a completed crawl
-**Plans:** 2/3 plans executed
+**Plans:** 3/3 plans complete
 Plans:
 - [ ] 07-01-PLAN.md — DB migration, CrawlQueueRepository, governor rate limiter
 - [ ] 07-02-PLAN.md — Queue-driven crawl loop with parallel workers
@@ -110,7 +110,7 @@ Plans:
 | 4. Cross-Paper Gap Analysis | v1.0 | 3/3 | Complete | 2026-03-14 |
 | 5. Visualization Enrichment | v1.0 | 2/2 | Complete | 2026-03-14 |
 | 6. Tech Debt + Workspace Restructure | 2/2 | Complete   | 2026-03-15 | - |
-| 7. Incremental Crawl Infrastructure | 2/3 | In Progress|  | - |
+| 7. Incremental Crawl Infrastructure | 3/3 | Complete   | 2026-03-15 | - |
 | 8. Leptos Web Shell + Analysis Panels | v1.1 | 0/? | Not started | - |
 | 9. Graph Renderer (Canvas to WebGL) | v1.1 | 0/? | Not started | - |
 | 10. Analysis UI Polish + Scale | v1.1 | 0/? | Not started | - |

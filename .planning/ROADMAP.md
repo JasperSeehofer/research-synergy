@@ -56,7 +56,7 @@ Plans:
   2. Running `--progress` with `--db` shows a live progress stream (papers found, queue depth) via SSE, readable via `curl`
   3. A depth-3 crawl with `--parallel` completes faster than sequential while respecting the global arXiv 3s rate limit across all concurrent tasks
   4. Papers already in the DB are skipped without network requests when resuming a completed crawl
-**Plans:** 3 plans
+**Plans:** 2/3 plans executed
 Plans:
 - [ ] 07-01-PLAN.md — DB migration, CrawlQueueRepository, governor rate limiter
 - [ ] 07-02-PLAN.md — Queue-driven crawl loop with parallel workers
@@ -110,7 +110,7 @@ Plans:
 | 4. Cross-Paper Gap Analysis | v1.0 | 3/3 | Complete | 2026-03-14 |
 | 5. Visualization Enrichment | v1.0 | 2/2 | Complete | 2026-03-14 |
 | 6. Tech Debt + Workspace Restructure | 2/2 | Complete   | 2026-03-15 | - |
-| 7. Incremental Crawl Infrastructure | v1.1 | 0/3 | Not started | - |
+| 7. Incremental Crawl Infrastructure | 2/3 | In Progress|  | - |
 | 8. Leptos Web Shell + Analysis Panels | v1.1 | 0/? | Not started | - |
 | 9. Graph Renderer (Canvas to WebGL) | v1.1 | 0/? | Not started | - |
 | 10. Analysis UI Polish + Scale | v1.1 | 0/? | Not started | - |

@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
 status: executing
-stopped_at: Completed 07-01-PLAN.md
-last_updated: "2026-03-15T20:43:34.216Z"
-last_activity: "2026-03-15 — Plan 06-02 complete: egui removed, subcommand CLI, DEBT-02+03 resolved"
+stopped_at: Completed 07-02-PLAN.md
+last_updated: "2026-03-15T21:00:00.000Z"
+last_activity: "2026-03-15 — Plan 07-02 complete: queue-driven parallel crawl loop, ProgressEvent, crash recovery"
 progress:
   total_phases: 5
   completed_phases: 1
   total_plans: 5
-  completed_plans: 3
-  percent: 40
+  completed_plans: 4
+  percent: 44
 ---
 
 # Project State
@@ -25,10 +25,10 @@ See: .planning/PROJECT.md (updated 2026-03-15)
 
 ## Current Position
 
-Phase: 6 of 10 (Phase 6: Tech Debt + Workspace Restructure)
-Plan: 2 of 4 in current phase (06-02 complete)
+Phase: 7 of 10 (Phase 7: Incremental Crawl Infrastructure)
+Plan: 2 of 3 in current phase (07-02 complete)
 Status: In progress
-Last activity: 2026-03-15 — Plan 06-02 complete: egui removed, subcommand CLI, DEBT-02+03 resolved
+Last activity: 2026-03-15 — Plan 07-02 complete: queue-driven parallel crawl loop, ProgressEvent, crash recovery
 
 Progress: [██░░░░░░░░] 40% (v1.1)
 
@@ -52,6 +52,9 @@ Progress: [██░░░░░░░░] 40% (v1.1)
 - [06-02] AnalyzeArgs struct serves as both CLI arg type and pipeline config type for crawl --analyze
 - [Phase 07-01]: Named record IDs for idempotent SurrealDB enqueue (CREATE on same ID is a no-op)
 - [Phase 07-01]: UPDATE ONLY $let_var (not WHERE id = $bound_var) required for atomic claim in SurrealDB embedded
+- [Phase 07-02]: PaperSource is not Clone — each spawned task must create its own instance via make_source() factory
+- [Phase 07-02]: fetch_references(&mut self, paper: &mut Paper) mutates paper.references in-place; use paper.get_arxiv_references_ids() to extract arXiv IDs
+- [Phase 07-02]: Semaphore::acquire_owned before spawn (not inside task) — bounds total in-flight tasks naturally in main loop
 
 ### Pending Todos
 
@@ -64,6 +67,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-15T20:43:34.209Z
-Stopped at: Completed 07-01-PLAN.md
+Last session: 2026-03-15T21:00:00.000Z
+Stopped at: Completed 07-02-PLAN.md
 Resume file: None

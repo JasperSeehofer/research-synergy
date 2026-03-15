@@ -876,27 +876,27 @@ mod tests {
         let repo = ExtractionRepository::new(&db);
         let extraction = make_extraction("2301.12345");
         repo.upsert_extraction(&extraction).await.unwrap();
-        // Also check schema_migrations has version 6 (migrations 1-6 applied)
+        // Also check schema_migrations has version 7 (migrations 1-7 applied)
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 6);
+        assert_eq!(versions[0], 7);
     }
 
     #[tokio::test]
     async fn test_migrate_schema_is_idempotent() {
         use crate::database::schema::migrate_schema;
         let db = crate::database::client::connect("mem://").await.unwrap();
-        // Run migrate_schema again — should not error and version stays at 6
+        // Run migrate_schema again — should not error and version stays at 7
         migrate_schema(&db).await.unwrap();
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 6);
+        assert_eq!(versions[0], 7);
     }
 
     #[tokio::test]
@@ -986,15 +986,15 @@ mod tests {
     #[tokio::test]
     async fn test_migrate_schema_applies_all_migrations() {
         let db = crate::database::client::connect("mem://").await.unwrap();
-        // connect() already runs migrate_schema; verify version is now 6
+        // connect() already runs migrate_schema; verify version is now 7
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
         assert_eq!(
-            versions[0], 6,
-            "Expected schema version 6 after all migrations"
+            versions[0], 7,
+            "Expected schema version 7 after all migrations"
         );
     }
 
@@ -1002,14 +1002,14 @@ mod tests {
     async fn test_migrate_schema_idempotent_from_v2() {
         use crate::database::schema::migrate_schema;
         let db = crate::database::client::connect("mem://").await.unwrap();
-        // Run migrate_schema again — should not error and version stays at 6
+        // Run migrate_schema again — should not error and version stays at 7
         migrate_schema(&db).await.unwrap();
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 6);
+        assert_eq!(versions[0], 7);
     }
 
     #[tokio::test]
@@ -1134,8 +1134,8 @@ mod tests {
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
         assert_eq!(
-            versions[0], 6,
-            "Expected schema version 6 after all migrations"
+            versions[0], 7,
+            "Expected schema version 7 after all migrations"
         );
     }
 
@@ -1149,7 +1149,7 @@ mod tests {
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 6);
+        assert_eq!(versions[0], 7);
     }
 
     #[tokio::test]
@@ -1237,15 +1237,15 @@ mod tests {
     #[tokio::test]
     async fn test_migrate_schema_creates_gap_finding_table() {
         let db = crate::database::client::connect("mem://").await.unwrap();
-        // connect() runs migrate_schema — verify schema version is now 6
+        // connect() runs migrate_schema — verify schema version is now 7
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
         assert_eq!(
-            versions[0], 6,
-            "Expected schema version 6 after migration 6"
+            versions[0], 7,
+            "Expected schema version 7 after all migrations"
         );
     }
 

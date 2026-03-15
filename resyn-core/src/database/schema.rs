@@ -148,6 +148,29 @@ async fn apply_migration_6(db: &Surreal<Any>) -> Result<(), ResynError> {
     Ok(())
 }
 
+async fn apply_migration_7(db: &Surreal<Any>) -> Result<(), ResynError> {
+    db.query(
+        "
+        DEFINE TABLE IF NOT EXISTS crawl_queue SCHEMAFULL;
+        DEFINE FIELD IF NOT EXISTS paper_id ON crawl_queue TYPE string;
+        DEFINE FIELD IF NOT EXISTS seed_paper_id ON crawl_queue TYPE string;
+        DEFINE FIELD IF NOT EXISTS depth_level ON crawl_queue TYPE int;
+        DEFINE FIELD IF NOT EXISTS status ON crawl_queue TYPE string;
+        DEFINE FIELD IF NOT EXISTS retry_count ON crawl_queue TYPE int DEFAULT 0;
+        DEFINE FIELD IF NOT EXISTS created_at ON crawl_queue TYPE string;
+        DEFINE FIELD IF NOT EXISTS claimed_at ON crawl_queue TYPE option<string>;
+        DEFINE FIELD IF NOT EXISTS completed_at ON crawl_queue TYPE option<string>;
+        DEFINE INDEX IF NOT EXISTS idx_queue_paper_seed
+            ON crawl_queue FIELDS paper_id, seed_paper_id UNIQUE;
+        DEFINE INDEX IF NOT EXISTS idx_queue_status
+            ON crawl_queue FIELDS status;
+        ",
+    )
+    .await
+    .map_err(|e| ResynError::Database(format!("migration 7 DDL failed: {e}")))?;
+    Ok(())
+}
+
 pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
     // Ensure migrations table exists first
     db.query(
@@ -190,6 +213,11 @@ pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
     if version < 6 {
         apply_migration_6(db).await?;
         record_migration(db, 6).await?;
+    }
+
+    if version < 7 {
+        apply_migration_7(db).await?;
+        record_migration(db, 7).await?;
     }
 
     Ok(())

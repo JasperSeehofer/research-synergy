@@ -209,9 +209,11 @@ pub async fn find_abc_bridges(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::datamodels::paper::{Link, Reference};
+    use crate::datamodels::paper::{Link, Paper, Reference};
     #[cfg(feature = "ssr")]
     use crate::llm::noop::NoopProvider;
+    use petgraph::Directed;
+    use petgraph::stable_graph::StableGraph;
 
     fn make_paper(id: &str, ref_ids: &[&str]) -> Paper {
         Paper {

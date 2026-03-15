@@ -1,24 +1,18 @@
 #[cfg(feature = "ssr")]
-use petgraph::Directed;
+use super::similarity;
 #[cfg(feature = "ssr")]
-use petgraph::stable_graph::StableGraph;
+use crate::datamodels::llm_annotation::LlmAnnotation;
 #[cfg(feature = "ssr")]
 use crate::datamodels::paper::Paper;
+#[cfg(feature = "ssr")]
+use petgraph::Directed;
 #[cfg(feature = "ssr")]
 use petgraph::algo::dijkstra;
 #[cfg(feature = "ssr")]
 use petgraph::prelude::NodeIndex;
 #[cfg(feature = "ssr")]
-use crate::datamodels::llm_annotation::LlmAnnotation;
-#[cfg(feature = "ssr")]
-use super::similarity;
+use petgraph::stable_graph::StableGraph;
 
-#[cfg(feature = "ssr")]
-use std::collections::HashMap;
-#[cfg(feature = "ssr")]
-use chrono::Utc;
-#[cfg(feature = "ssr")]
-use tracing::warn;
 #[cfg(feature = "ssr")]
 use crate::datamodels::analysis::PaperAnalysis;
 #[cfg(feature = "ssr")]
@@ -27,6 +21,12 @@ use crate::datamodels::gap_finding::{GapFinding, GapType};
 use crate::llm::gap_prompt::ABC_BRIDGE_SYSTEM_PROMPT;
 #[cfg(feature = "ssr")]
 use crate::llm::traits::LlmProvider;
+#[cfg(feature = "ssr")]
+use chrono::Utc;
+#[cfg(feature = "ssr")]
+use std::collections::HashMap;
+#[cfg(feature = "ssr")]
+use tracing::warn;
 
 /// Minimum number of shared high-weight terms to consider a potential bridge.
 #[cfg(feature = "ssr")]

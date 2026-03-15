@@ -4,7 +4,7 @@ use resyn_core::data_aggregation::inspirehep_api::InspireHepClient;
 use resyn_core::data_aggregation::traits::PaperSource;
 use tracing::{error, info};
 
-use crate::commands::analyze::{run_analysis_pipeline, AnalyzeArgs};
+use crate::commands::analyze::{AnalyzeArgs, run_analysis_pipeline};
 
 #[derive(Args, Debug)]
 pub struct CrawlArgs {

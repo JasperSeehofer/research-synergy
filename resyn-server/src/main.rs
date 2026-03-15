@@ -4,7 +4,10 @@ use clap::{Parser, Subcommand};
 use commands::{analyze::AnalyzeArgs, crawl::CrawlArgs, serve::ServeArgs};
 
 #[derive(Parser, Debug)]
-#[command(name = "resyn", about = "Research Synergy - Literature Based Discovery")]
+#[command(
+    name = "resyn",
+    about = "Research Synergy - Literature Based Discovery"
+)]
 struct Cli {
     #[command(subcommand)]
     command: Commands,

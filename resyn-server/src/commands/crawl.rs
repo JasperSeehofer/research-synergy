@@ -34,11 +34,23 @@ pub struct ProgressEvent {
 #[derive(Subcommand, Debug)]
 pub enum CrawlSubcommand {
     /// Show crawl queue summary (pending/done/failed counts)
-    Status,
+    Status {
+        /// Database connection string (e.g. "surrealkv://./data")
+        #[arg(long, default_value = "surrealkv://./data")]
+        db: String,
+    },
     /// Clear the crawl queue entirely
-    Clear,
+    Clear {
+        /// Database connection string (e.g. "surrealkv://./data")
+        #[arg(long, default_value = "surrealkv://./data")]
+        db: String,
+    },
     /// Mark all failed entries as pending for retry
-    Retry,
+    Retry {
+        /// Database connection string (e.g. "surrealkv://./data")
+        #[arg(long, default_value = "surrealkv://./data")]
+        db: String,
+    },
 }
 
 #[derive(Args, Debug)]
@@ -113,9 +125,14 @@ fn make_source(source_name: &str) -> Box<dyn PaperSource> {
 pub async fn run(args: CrawlArgs) -> anyhow::Result<()> {
     // Handle queue management subcommands before any crawl logic.
     if let Some(subcmd) = &args.subcmd {
-        let db = match resyn_core::database::client::connect(&args.db).await {
+        let db_str = match subcmd {
+            CrawlSubcommand::Status { db } => db,
+            CrawlSubcommand::Clear { db } => db,
+            CrawlSubcommand::Retry { db } => db,
+        };
+        let db = match resyn_core::database::client::connect(db_str).await {
             Ok(db) => {
-                info!(endpoint = args.db.as_str(), "Connected to database");
+                info!(endpoint = db_str.as_str(), "Connected to database");
                 db
             }
             Err(e) => {
@@ -125,7 +142,7 @@ pub async fn run(args: CrawlArgs) -> anyhow::Result<()> {
         };
         let queue = CrawlQueueRepository::new(&db);
         match subcmd {
-            CrawlSubcommand::Status => {
+            CrawlSubcommand::Status { .. } => {
                 let counts = queue.get_counts().await?;
                 println!("Crawl Queue Status:");
                 println!("  Total:    {}", counts.total);
@@ -134,11 +151,11 @@ pub async fn run(args: CrawlArgs) -> anyhow::Result<()> {
                 println!("  Done:     {}", counts.done);
                 println!("  Failed:   {}", counts.failed);
             }
-            CrawlSubcommand::Clear => {
+            CrawlSubcommand::Clear { .. } => {
                 queue.clear_queue().await?;
                 println!("Crawl queue cleared.");
             }
-            CrawlSubcommand::Retry => {
+            CrawlSubcommand::Retry { .. } => {
                 let count = queue.retry_failed().await?;
                 println!("Marked {count} failed entries as pending for retry.");
             }

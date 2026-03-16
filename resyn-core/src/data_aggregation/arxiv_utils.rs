@@ -11,7 +11,11 @@ pub async fn aggregate_references_for_arxiv_paper(
     paper: &mut Paper,
     downloader: &mut ArxivHTMLDownloader,
 ) -> Result<(), ResynError> {
-    let html_url = convert_pdf_url_to_html_url(&paper.pdf_url);
+    let html_url = if paper.pdf_url.is_empty() {
+        format!("https://arxiv.org/html/{}", paper.id)
+    } else {
+        convert_pdf_url_to_html_url(&paper.pdf_url)
+    };
     let html_content = downloader.download_and_parse(&html_url).await?;
     let mut references: Vec<Reference> = Vec::new();
     let reference_selector =

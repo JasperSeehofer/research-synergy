@@ -178,4 +178,35 @@ mod tests {
             "https://arxiv.org/html/2301.12345"
         );
     }
+
+    #[test]
+    fn test_convert_pdf_url_to_html_url_empty_returns_empty() {
+        // convert_pdf_url_to_html_url itself has no guard — empty in, empty out
+        assert_eq!(convert_pdf_url_to_html_url(""), "");
+    }
+
+    #[test]
+    fn test_html_url_fallback_for_empty_pdf_url() {
+        // Validates the fallback logic used in aggregate_references_for_arxiv_paper
+        let paper_id = "2503.18887";
+        let pdf_url = "";
+        let html_url = if pdf_url.is_empty() {
+            format!("https://arxiv.org/html/{}", paper_id)
+        } else {
+            convert_pdf_url_to_html_url(pdf_url)
+        };
+        assert_eq!(html_url, "https://arxiv.org/html/2503.18887");
+    }
+
+    #[test]
+    fn test_html_url_uses_pdf_url_when_non_empty() {
+        let paper_id = "2503.18887";
+        let pdf_url = "https://arxiv.org/pdf/2503.18887.pdf";
+        let html_url = if pdf_url.is_empty() {
+            format!("https://arxiv.org/html/{}", paper_id)
+        } else {
+            convert_pdf_url_to_html_url(pdf_url)
+        };
+        assert_eq!(html_url, "https://arxiv.org/html/2503.18887");
+    }
 }

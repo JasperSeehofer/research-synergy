@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
 status: completed
-stopped_at: Completed 07-05 — CrawlSubcommand --db fix
-last_updated: "2026-03-16T18:19:57.363Z"
+stopped_at: Completed 07-04 — empty pdf_url guard + ID-based fallback in aggregate_references_for_arxiv_paper
+last_updated: "2026-03-16T18:21:44.946Z"
 last_activity: "2026-03-16 — Plan 07-03 complete: SSE progress server, queue management CLI, human-verified"
 progress:
   total_phases: 5
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 7
-  completed_plans: 6
+  completed_plans: 7
   percent: 100
 ---
 
@@ -59,6 +59,7 @@ Progress: [██████████] 100% (v1.1 — all 5 Phase 07 plans d
 - [Phase 07]: SSE handler defined inline in tokio::spawn to avoid module-level scope pollution
 - [Phase 07]: Queue management subcommands dispatch before paper_id validation — they only need --db arg
 - [Phase 07-incremental-crawl-infrastructure]: Each CrawlSubcommand variant owns its --db arg; clap subcommand context stops parent arg parsing so each variant needs its own field
+- [Phase 07-incremental-crawl-infrastructure]: Empty pdf_url guard placed at call site in aggregate_references_for_arxiv_paper (not in convert_pdf_url_to_html_url) — paper.id only available at call site
 
 ### Pending Todos
 
@@ -71,6 +72,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-16T18:19:57.354Z
-Stopped at: Completed 07-05 — CrawlSubcommand --db fix
+Last session: 2026-03-16T18:21:44.939Z
+Stopped at: Completed 07-04 — empty pdf_url guard + ID-based fallback in aggregate_references_for_arxiv_paper
 Resume file: None

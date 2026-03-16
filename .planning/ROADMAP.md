@@ -56,11 +56,13 @@ Plans:
   2. Running `--progress` with `--db` shows a live progress stream (papers found, queue depth) via SSE, readable via `curl`
   3. A depth-3 crawl with `--parallel` completes faster than sequential while respecting the global arXiv 3s rate limit across all concurrent tasks
   4. Papers already in the DB are skipped without network requests when resuming a completed crawl
-**Plans:** 3/3 plans complete
+**Plans:** 5 plans (3 original + 2 gap closure)
 Plans:
 - [ ] 07-01-PLAN.md — DB migration, CrawlQueueRepository, governor rate limiter
 - [ ] 07-02-PLAN.md — Queue-driven crawl loop with parallel workers
 - [ ] 07-03-PLAN.md — SSE progress server, queue management subcommands, end-to-end verification
+- [ ] 07-04-PLAN.md — Gap closure: fix empty pdf_url fallback for reference fetching (UAT Test 1)
+- [ ] 07-05-PLAN.md — Gap closure: fix --db flag on crawl subcommands (UAT Tests 2-5)
 
 ### Phase 8: Leptos Web Shell + Analysis Panels
 **Goal**: The browser app serves the analysis pipeline's output — contradiction findings, bridge connections, open-problems, and method gaps — without touching the graph canvas
@@ -110,7 +112,7 @@ Plans:
 | 4. Cross-Paper Gap Analysis | v1.0 | 3/3 | Complete | 2026-03-14 |
 | 5. Visualization Enrichment | v1.0 | 2/2 | Complete | 2026-03-14 |
 | 6. Tech Debt + Workspace Restructure | 2/2 | Complete   | 2026-03-15 | - |
-| 7. Incremental Crawl Infrastructure | 3/3 | Complete   | 2026-03-16 | - |
+| 7. Incremental Crawl Infrastructure | 3+2/5 | Gap closure in progress | 2026-03-16 | - |
 | 8. Leptos Web Shell + Analysis Panels | v1.1 | 0/? | Not started | - |
 | 9. Graph Renderer (Canvas to WebGL) | v1.1 | 0/? | Not started | - |
 | 10. Analysis UI Polish + Scale | v1.1 | 0/? | Not started | - |

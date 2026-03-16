@@ -1,5 +1,5 @@
 ---
-status: complete
+status: diagnosed
 phase: 07-incremental-crawl-infrastructure
 source: [07-01-SUMMARY.md, 07-02-SUMMARY.md, 07-03-SUMMARY.md]
 started: 2026-03-16T12:00:00Z
@@ -64,16 +64,25 @@ skipped: 5
   reason: "User reported: 1 paper is found but HTML download failed for references with 'builder error' — fetch_references fails for seed paper 2503.18887"
   severity: major
   test: 1
-  root_cause: ""
-  artifacts: []
-  missing: []
-  debug_session: ""
+  root_cause: "paper.pdf_url is empty string for papers from arxiv-rs. Empty string flows through convert_pdf_url_to_html_url (no guard) → reqwest refuses to build request for empty URL → 'builder error'. The crawl loop's make_source() creates ArxivSource with zero rate limit but the ArxivHTMLDownloader gets an empty URL because Paper::from_arxiv_paper copies pdf_url from arxiv-rs without validation."
+  artifacts:
+    - path: "resyn-core/src/data_aggregation/arxiv_utils.rs"
+      issue: "convert_pdf_url_to_html_url has no empty-string guard (line 14, line 71)"
+    - path: "resyn-core/src/datamodels/paper.rs"
+      issue: "Paper::from_arxiv_paper copies pdf_url without validating non-empty"
+  missing:
+    - "Guard in aggregate_references_for_arxiv_paper: return Err if pdf_url is empty"
+    - "Fallback: construct HTML URL from paper ID when pdf_url is empty (https://arxiv.org/html/{id})"
+  debug_session: ".planning/debug/fetch-references-empty-url.md"
 - truth: "Queue status subcommand accepts --db flag and prints queue counts"
   status: failed
   reason: "User reported: error: unexpected argument '--db' found"
   severity: major
   test: 2
-  root_cause: ""
-  artifacts: []
-  missing: []
-  debug_session: ""
+  root_cause: "clap subcommand dispatch closes parent arg scanner once subcommand token is consumed. CrawlSubcommand variants (Status/Clear/Retry) are unit variants with zero fields, so --db placed after subcommand name has no parser to match against. --db is only reachable when placed before the subcommand name."
+  artifacts:
+    - path: "resyn-server/src/commands/crawl.rs"
+      issue: "CrawlSubcommand variants are unit structs (lines 34-42) — need --db field on each variant, or use clap's flatten/global arg"
+  missing:
+    - "Add --db field to each CrawlSubcommand variant, or use #[arg(global = true)] on CrawlArgs.db"
+  debug_session: ".planning/debug/crawl-subcommand-db-flag.md"

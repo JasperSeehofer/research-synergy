@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
 status: completed
-stopped_at: Completed 07-03 — Phase 07 Incremental Crawl Infrastructure complete
-last_updated: "2026-03-16T17:08:17.018Z"
+stopped_at: Completed 07-05 — CrawlSubcommand --db fix
+last_updated: "2026-03-16T18:19:57.363Z"
 last_activity: "2026-03-16 — Plan 07-03 complete: SSE progress server, queue management CLI, human-verified"
 progress:
   total_phases: 5
-  completed_phases: 2
-  total_plans: 5
-  completed_plans: 5
+  completed_phases: 1
+  total_plans: 7
+  completed_plans: 6
   percent: 100
 ---
 
@@ -58,6 +58,7 @@ Progress: [██████████] 100% (v1.1 — all 5 Phase 07 plans d
 - [Phase 07]: axum and tokio-stream added at workspace level for future reuse by other crates
 - [Phase 07]: SSE handler defined inline in tokio::spawn to avoid module-level scope pollution
 - [Phase 07]: Queue management subcommands dispatch before paper_id validation — they only need --db arg
+- [Phase 07-incremental-crawl-infrastructure]: Each CrawlSubcommand variant owns its --db arg; clap subcommand context stops parent arg parsing so each variant needs its own field
 
 ### Pending Todos
 
@@ -70,6 +71,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-16T07:59:58.347Z
-Stopped at: Completed 07-03 — Phase 07 Incremental Crawl Infrastructure complete
+Last session: 2026-03-16T18:19:57.354Z
+Stopped at: Completed 07-05 — CrawlSubcommand --db fix
 Resume file: None

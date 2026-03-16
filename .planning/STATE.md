@@ -4,7 +4,7 @@ milestone: v1.1
 milestone_name: Scale & Surface
 status: completed
 stopped_at: Completed 07-04 — empty pdf_url guard + ID-based fallback in aggregate_references_for_arxiv_paper
-last_updated: "2026-03-16T18:21:44.946Z"
+last_updated: "2026-03-16T20:29:59.001Z"
 last_activity: "2026-03-16 — Plan 07-03 complete: SSE progress server, queue management CLI, human-verified"
 progress:
   total_phases: 5

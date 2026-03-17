@@ -26,6 +26,7 @@ leptos_axum = { version = "0.8", optional = true }
 tokio = { workspace = true, optional = true }
 tracing = { workspace = true, optional = true }
 js-sys = "0.3"
+gloo-worker = { version = "0.5", features = ["futures"] }
 resyn-worker = { path = "../resyn-worker" }
 
 [dependencies.web-sys]

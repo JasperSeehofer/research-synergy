@@ -1,3 +1,5 @@
+use futures::{SinkExt, StreamExt};
+use gloo_worker::reactor::{reactor, ReactorScope};
 use serde::{Deserialize, Serialize};
 
 pub mod barnes_hut;
@@ -27,4 +29,14 @@ pub struct LayoutInput {
 pub struct LayoutOutput {
     pub positions: Vec<(f64, f64)>,
     pub converged: bool,
+}
+
+/// gloo-worker reactor — receives LayoutInput messages and responds with LayoutOutput.
+/// This function runs inside a Web Worker thread, keeping the UI responsive.
+#[reactor]
+pub async fn ForceLayoutWorker(mut scope: ReactorScope<LayoutInput, LayoutOutput>) {
+    while let Some(input) = scope.next().await {
+        let output = forces::run_ticks(&input);
+        let _ = scope.send(output).await;
+    }
 }

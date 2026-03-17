@@ -1,4 +1,5 @@
 // Always available (WASM-safe)
+pub mod analysis;
 pub mod data_processing;
 pub mod datamodels;
 pub mod error;

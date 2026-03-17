@@ -74,7 +74,13 @@ Plans:
   3. Open-problems panel shows problems ranked by recurrence count across the crawled corpus
   4. Method-combination gap matrix renders as a heatmap showing existing vs absent method pairings
   5. Crawl progress bar updates in real time from the SSE endpoint established in Phase 7
-**Plans**: TBD
+**Plans:** 5 plans
+Plans:
+- [ ] 08-01-PLAN.md — Workspace deps, Trunk config, CSS design system, Leptos app shell with Router, Axum serve command
+- [ ] 08-02-PLAN.md — Server functions (all data access), Dashboard summary cards, Papers sortable table, Paper detail drawer
+- [ ] 08-03-PLAN.md — Gap findings panel with filterable cards, Open problems ranked list
+- [ ] 08-04-PLAN.md — Method-combination heatmap with drill-down, Crawl progress SSE + launcher form
+- [ ] 08-05-PLAN.md — Final verification: automated compilation checks + human browser verification
 
 ### Phase 9: Graph Renderer (Canvas to WebGL)
 **Goal**: The citation graph renders interactively in the browser using a full Rust/WASM pipeline — Canvas 2D initially, WebGL2 when scale demands it — with Barnes-Hut force layout computed in a Web Worker
@@ -113,6 +119,6 @@ Plans:
 | 5. Visualization Enrichment | v1.0 | 2/2 | Complete | 2026-03-14 |
 | 6. Tech Debt + Workspace Restructure | 2/2 | Complete   | 2026-03-15 | - |
 | 7. Incremental Crawl Infrastructure | 5/5 | Complete   | 2026-03-16 | - |
-| 8. Leptos Web Shell + Analysis Panels | v1.1 | 0/? | Not started | - |
+| 8. Leptos Web Shell + Analysis Panels | v1.1 | 0/5 | Planning complete | - |
 | 9. Graph Renderer (Canvas to WebGL) | v1.1 | 0/? | Not started | - |
 | 10. Analysis UI Polish + Scale | v1.1 | 0/? | Not started | - |

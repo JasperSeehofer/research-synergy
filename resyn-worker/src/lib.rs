@@ -1,5 +1,11 @@
 use serde::{Deserialize, Serialize};
 
+pub mod barnes_hut;
+pub mod forces;
+
+// Re-export for testing and external use.
+pub use barnes_hut::{barnes_hut_repulsion, QuadTree};
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct NodeData {
     pub x: f64,
@@ -22,6 +28,3 @@ pub struct LayoutOutput {
     pub positions: Vec<(f64, f64)>,
     pub converged: bool,
 }
-
-// Barnes-Hut force layout implementation — Plan 02.
-// This crate compiles as cdylib for wasm32-unknown-unknown.

@@ -94,7 +94,13 @@ Plans:
   3. Contradiction edges render in red and ABC-bridge edges render in orange/dashed, overlaid on the same graph
   4. A 1000-node graph maintains interactive frame rate (30+ fps) under the WebGL2 renderer with Barnes-Hut force layout
   5. Force layout converges and stops visibly oscillating within 10 seconds on a 500-node graph
-**Plans**: TBD
+**Plans:** 5 plans
+Plans:
+- [ ] 09-01-PLAN.md — Foundation types, server fn, worker crate scaffold, Renderer trait, interaction math
+- [ ] 09-02-PLAN.md — Barnes-Hut force layout worker with gloo-worker reactor
+- [ ] 09-03-PLAN.md — Canvas 2D renderer with full draw pipeline
+- [ ] 09-04-PLAN.md — GraphPage component, interaction wiring, controls overlay, sidebar/route, CSS
+- [ ] 09-05-PLAN.md — WebGL2 renderer, auto-switch logic, browser verification
 
 ### Phase 10: Analysis UI Polish + Scale
 **Goal**: The full analysis surface is complete — provenance traces findings back to source text, section-aware LLM extraction improves annotation quality, and the app is verified usable at 1000+ node scale with temporal and LOD controls
@@ -121,6 +127,6 @@ Plans:
 | 5. Visualization Enrichment | v1.0 | 2/2 | Complete | 2026-03-14 |
 | 6. Tech Debt + Workspace Restructure | 2/2 | Complete   | 2026-03-15 | - |
 | 7. Incremental Crawl Infrastructure | 5/5 | Complete   | 2026-03-16 | - |
-| 8. Leptos Web Shell + Analysis Panels | 6/7 | In Progress|  | - |
-| 9. Graph Renderer (Canvas to WebGL) | v1.1 | 0/? | Not started | - |
+| 8. Leptos Web Shell + Analysis Panels | 7/7 | Complete | 2026-03-17 | - |
+| 9. Graph Renderer (Canvas to WebGL) | v1.1 | 0/5 | Planned | - |
 | 10. Analysis UI Polish + Scale | v1.1 | 0/? | Not started | - |

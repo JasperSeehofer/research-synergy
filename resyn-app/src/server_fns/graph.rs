@@ -42,6 +42,7 @@ pub async fn get_graph_data() -> Result<GraphData, ServerFnError> {
         use resyn_core::data_processing::graph_creation::create_graph_from_papers;
         use resyn_core::database::queries::{GapFindingRepository, PaperRepository};
         use resyn_core::datamodels::gap_finding::GapType;
+        use resyn_core::petgraph::visit::{EdgeRef, IntoEdgeReferences};
         let db = use_context::<std::sync::Arc<resyn_core::database::client::Db>>()
             .ok_or_else(|| ServerFnError::new("Database not available"))?;
 

@@ -1,4 +1,8 @@
+use wasm_bindgen::JsCast;
+
+use super::canvas_renderer::Canvas2DRenderer;
 use super::layout_state::GraphState;
+use super::webgl_renderer::WebGL2Renderer;
 
 pub struct Viewport {
     pub offset_x: f64,
@@ -35,6 +39,32 @@ pub trait Renderer {
 }
 
 pub const WEBGL_THRESHOLD: usize = 300;
+
+/// Select the best renderer for the given canvas and node count.
+/// Probes WebGL2 on a temporary canvas to avoid contaminating the main canvas
+/// context (once "2d" is called, WebGL2 returns null on the same canvas).
+pub fn make_renderer(
+    canvas: &web_sys::HtmlCanvasElement,
+    node_count: usize,
+) -> Box<dyn Renderer> {
+    // Probe WebGL2 availability on a disposable canvas
+    let document = web_sys::window().unwrap().document().unwrap();
+    let probe: web_sys::HtmlCanvasElement = document
+        .create_element("canvas")
+        .unwrap()
+        .dyn_into()
+        .unwrap();
+    let can_use_webgl = probe.get_context("webgl2").ok().flatten().is_some();
+
+    if node_count > WEBGL_THRESHOLD && can_use_webgl {
+        Box::new(WebGL2Renderer::new(canvas))
+    } else {
+        if node_count > WEBGL_THRESHOLD {
+            web_sys::console::warn_1(&"WebGL2 unavailable, falling back to Canvas 2D".into());
+        }
+        Box::new(Canvas2DRenderer::new(canvas))
+    }
+}
 
 #[cfg(test)]
 mod tests {

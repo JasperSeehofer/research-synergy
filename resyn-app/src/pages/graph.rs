@@ -10,9 +10,9 @@ use wasm_bindgen::JsCast;
 
 use crate::app::SelectedPaper;
 use crate::components::graph_controls::GraphControls;
-use crate::graph::canvas_renderer::Canvas2DRenderer;
 use crate::graph::interaction::{self, InteractionState};
 use crate::graph::layout_state::GraphState;
+use crate::graph::make_renderer;
 use crate::graph::renderer::{Renderer, Viewport};
 use crate::graph::worker_bridge::WorkerBridge;
 use crate::server_fns::graph::get_graph_data;
@@ -89,9 +89,9 @@ pub fn GraphPage() -> impl IntoView {
         canvas.set_width(width);
         canvas.set_height(height);
 
-        let renderer = Canvas2DRenderer::new(&canvas);
         let viewport = Viewport::new(width as f64, height as f64);
         let mut graph_state = GraphState::from_graph_data(data);
+        let renderer = make_renderer(&canvas, graph_state.nodes.len());
         // Sync initial toggle values from Leptos signals
         graph_state.show_contradictions = show_contradictions.get_untracked();
         graph_state.show_bridges = show_bridges.get_untracked();
@@ -107,8 +107,8 @@ pub fn GraphPage() -> impl IntoView {
 
         // Renderer is stored separately from RenderState to avoid borrow conflicts
         // when calling draw(&graph, &viewport) while mutably borrowing renderer.
-        let renderer_rc: Rc<RefCell<Box<dyn Renderer>>> =
-            Rc::new(RefCell::new(Box::new(renderer)));
+        // make_renderer already returns Box<dyn Renderer>, so no extra boxing needed.
+        let renderer_rc: Rc<RefCell<Box<dyn Renderer>>> = Rc::new(RefCell::new(renderer));
 
         // Create worker bridge and pin it for Stream polling in the RAF loop.
         // ReactorBridge<ForceLayoutWorker> implements Stream<Item = LayoutOutput>.

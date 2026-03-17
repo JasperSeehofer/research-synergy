@@ -94,7 +94,7 @@ Plans:
   3. Contradiction edges render in red and ABC-bridge edges render in orange/dashed, overlaid on the same graph
   4. A 1000-node graph maintains interactive frame rate (30+ fps) under the WebGL2 renderer with Barnes-Hut force layout
   5. Force layout converges and stops visibly oscillating within 10 seconds on a 500-node graph
-**Plans:** 1/5 plans executed
+**Plans:** 2/5 plans executed
 Plans:
 - [ ] 09-01-PLAN.md — Foundation types, server fn, worker crate scaffold, Renderer trait, interaction math
 - [ ] 09-02-PLAN.md — Barnes-Hut force layout worker with gloo-worker reactor
@@ -128,5 +128,5 @@ Plans:
 | 6. Tech Debt + Workspace Restructure | 2/2 | Complete   | 2026-03-15 | - |
 | 7. Incremental Crawl Infrastructure | 5/5 | Complete   | 2026-03-16 | - |
 | 8. Leptos Web Shell + Analysis Panels | 7/7 | Complete | 2026-03-17 | - |
-| 9. Graph Renderer (Canvas to WebGL) | 1/5 | In Progress|  | - |
+| 9. Graph Renderer (Canvas to WebGL) | 2/5 | In Progress|  | - |
 | 10. Analysis UI Polish + Scale | v1.1 | 0/? | Not started | - |

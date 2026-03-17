@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
 status: completed
-stopped_at: Completed 09-01-PLAN.md
-last_updated: "2026-03-17T18:25:12.820Z"
-last_activity: "2026-03-17 — Plan 08-07 complete: browser verification of all 5 panels with real data"
+stopped_at: Completed 09-03-PLAN.md
+last_updated: "2026-03-17T18:29:15.908Z"
+last_activity: "2026-03-17 — Plan 09-01 complete: graph module scaffold, resyn-worker crate, GraphData server fn, Renderer trait, 24 tests passing"
 progress:
   total_phases: 5
   completed_phases: 3
   total_plans: 19
-  completed_plans: 15
+  completed_plans: 16
   percent: 79
 ---
 
@@ -76,6 +76,7 @@ Progress: [████████░░] 79% (v1.1 — 15 of 19 plans done)
 - [Phase 08-07]: connect() accepts any connection string as-is; connect_local() prepends surrealkv:// prefix (use connect() when user supplies full string)
 - [Phase 09-graph-renderer-canvas-to-webgl]: Viewport struct is pure math (no web-sys) so transform tests run natively without wasm-bindgen-test
 - [Phase 09-graph-renderer-canvas-to-webgl]: GraphData DTO separate from GraphState: server returns serializable DTO; client converts to mutable simulation state
+- [Phase 09-graph-renderer-canvas-to-webgl]: JsCast trait must be imported explicitly for dyn_into in canvas_renderer — not available via wasm-bindgen prelude
 
 ### Pending Todos
 
@@ -88,6 +89,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-17T18:25:12.811Z
-Stopped at: Completed 09-01-PLAN.md
+Last session: 2026-03-17T18:29:15.899Z
+Stopped at: Completed 09-03-PLAN.md
 Resume file: None

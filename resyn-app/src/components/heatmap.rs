@@ -65,7 +65,7 @@ pub fn Heatmap(
             let row_label = row_cat.clone();
             let col_cats = categories.clone();
             let pair_counts_ref = pair_counts.clone();
-            let on_click = on_cell_click.clone();
+            let on_click = on_cell_click;
 
             let cells_view = col_cats.into_iter().map(move |col_cat| {
                 // Normalize key: always store with alphabetically smaller category first.
@@ -79,7 +79,7 @@ pub fn Heatmap(
                 let title = format!("{} × {} : {} paper(s)", row_cat, col_cat, count);
                 let row_for_click = row_cat.clone();
                 let col_for_click = col_cat.clone();
-                let on_click_inner = on_click.clone();
+                let on_click_inner = on_click;
 
                 if count > 0 {
                     view! {

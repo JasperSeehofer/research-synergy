@@ -2,7 +2,7 @@ use leptos::prelude::*;
 use leptos::web_sys;
 
 use crate::app::SelectedPaper;
-use crate::server_fns::papers::{get_paper_detail, PaperDetail};
+use crate::server_fns::papers::{PaperDetail, get_paper_detail};
 
 /// Paper detail side drawer. Slides in from the right when a paper is selected.
 ///
@@ -57,10 +57,7 @@ fn DrawerContent(
     #[prop(into)] on_close: Callback<web_sys::MouseEvent>,
 ) -> impl IntoView {
     let id = paper_id.clone();
-    let detail_resource = Resource::new(
-        move || id.clone(),
-        |id| get_paper_detail(id),
-    );
+    let detail_resource = Resource::new(move || id.clone(), get_paper_detail);
 
     view! {
         <Suspense fallback=move || view! {
@@ -101,7 +98,11 @@ fn DrawerBody(
     let paper = detail.paper;
     let annotation = detail.annotation;
 
-    let year = if paper.published.len() >= 4 { paper.published[..4].to_string() } else { String::new() };
+    let year = if paper.published.len() >= 4 {
+        paper.published[..4].to_string()
+    } else {
+        String::new()
+    };
     let authors_str = paper.authors.join(", ");
     let meta = if year.is_empty() {
         authors_str.clone()

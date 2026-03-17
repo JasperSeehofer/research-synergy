@@ -49,8 +49,11 @@ pub fn OpenProblemsPanel() -> impl IntoView {
 #[component]
 fn RankedList(items: Vec<RankedProblem>) -> impl IntoView {
     // Assign rank numbers (1-based) before moving into the reactive closure.
-    let ranked: Vec<(usize, RankedProblem)> =
-        items.into_iter().enumerate().map(|(i, p)| (i + 1, p)).collect();
+    let ranked: Vec<(usize, RankedProblem)> = items
+        .into_iter()
+        .enumerate()
+        .map(|(i, p)| (i + 1, p))
+        .collect();
 
     view! {
         <ul class="ranked-list" style="list-style: none; padding: 0; margin: 0;">

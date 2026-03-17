@@ -1,6 +1,6 @@
 use leptos::prelude::*;
 
-use crate::server_fns::papers::{get_dashboard_stats, DashboardStats};
+use crate::server_fns::papers::{DashboardStats, get_dashboard_stats};
 
 /// Dashboard page — summary cards for the research corpus.
 #[component]

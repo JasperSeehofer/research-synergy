@@ -170,14 +170,14 @@ pub async fn start_crawl(
             use std::sync::Arc;
             use std::time::Duration;
             use tokio::sync::Semaphore;
-            use tracing::{warn, info};
+            use tracing::{info, warn};
 
             fn make_source_bg(name: &str) -> Box<dyn PaperSource> {
                 let client = resyn_core::utils::create_http_client();
                 match name {
-                    "inspirehep" => {
-                        Box::new(InspireHepClient::new(client).with_rate_limit(Duration::from_millis(350)))
-                    }
+                    "inspirehep" => Box::new(
+                        InspireHepClient::new(client).with_rate_limit(Duration::from_millis(350)),
+                    ),
                     _ => {
                         let downloader = ArxivHTMLDownloader::new(client)
                             .with_rate_limit(Duration::from_secs(3));
@@ -229,15 +229,25 @@ pub async fn start_crawl(
                 // Skip entries beyond max_depth.
                 if entry.depth_level > max_depth {
                     let queue2 = CrawlQueueRepository::new(&db_bg);
-                    queue2.mark_done(&entry.paper_id, &entry.seed_paper_id).await.ok();
+                    queue2
+                        .mark_done(&entry.paper_id, &entry.seed_paper_id)
+                        .await
+                        .ok();
                     continue;
                 }
 
                 // Skip papers already in DB.
                 let paper_repo = PaperRepository::new(&db_bg);
-                if paper_repo.paper_exists(&entry.paper_id).await.unwrap_or(false) {
+                if paper_repo
+                    .paper_exists(&entry.paper_id)
+                    .await
+                    .unwrap_or(false)
+                {
                     let queue2 = CrawlQueueRepository::new(&db_bg);
-                    queue2.mark_done(&entry.paper_id, &entry.seed_paper_id).await.ok();
+                    queue2
+                        .mark_done(&entry.paper_id, &entry.seed_paper_id)
+                        .await
+                        .ok();
                     continue;
                 }
 

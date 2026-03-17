@@ -6,8 +6,8 @@ use leptos_router::{
 
 use crate::layout::{drawer::Drawer, sidebar::Sidebar};
 use crate::pages::{
-    dashboard::Dashboard, gaps::GapsPanel, methods::MethodsPanel,
-    open_problems::OpenProblemsPanel, papers::PapersPanel,
+    dashboard::Dashboard, gaps::GapsPanel, methods::MethodsPanel, open_problems::OpenProblemsPanel,
+    papers::PapersPanel,
 };
 
 /// App-level context: selected paper ID drives the detail drawer.

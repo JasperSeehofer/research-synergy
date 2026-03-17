@@ -30,7 +30,10 @@ pub async fn get_method_matrix() -> Result<MethodMatrix, ServerFnError> {
 /// Filters annotations to those that have methods in both cat_a and cat_b,
 /// then returns the matrix for those annotations only.
 #[server(GetMethodDrilldown, "/api")]
-pub async fn get_method_drilldown(cat_a: String, cat_b: String) -> Result<MethodMatrix, ServerFnError> {
+pub async fn get_method_drilldown(
+    cat_a: String,
+    cat_b: String,
+) -> Result<MethodMatrix, ServerFnError> {
     #[cfg(feature = "ssr")]
     {
         use resyn_core::analysis::aggregation::build_method_matrix;

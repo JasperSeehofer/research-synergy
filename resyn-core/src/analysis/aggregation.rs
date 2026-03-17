@@ -48,7 +48,11 @@ pub fn aggregate_open_problems(annotations: &[LlmAnnotation]) -> Vec<RankedProbl
         .collect();
 
     // Sort descending by count, then alphabetically by problem text for stability.
-    ranked.sort_by(|a, b| b.count.cmp(&a.count).then_with(|| a.problem.cmp(&b.problem)));
+    ranked.sort_by(|a, b| {
+        b.count
+            .cmp(&a.count)
+            .then_with(|| a.problem.cmp(&b.problem))
+    });
     ranked
 }
 
@@ -97,12 +101,25 @@ mod tests {
     use super::*;
     use crate::datamodels::llm_annotation::{Finding, LlmAnnotation, Method};
 
-    fn make_annotation(arxiv_id: &str, open_problems: Vec<&str>, methods: Vec<(&str, &str)>) -> LlmAnnotation {
+    fn make_annotation(
+        arxiv_id: &str,
+        open_problems: Vec<&str>,
+        methods: Vec<(&str, &str)>,
+    ) -> LlmAnnotation {
         LlmAnnotation {
             arxiv_id: arxiv_id.to_string(),
             paper_type: "theoretical".to_string(),
-            methods: methods.into_iter().map(|(name, cat)| Method { name: name.to_string(), category: cat.to_string() }).collect(),
-            findings: vec![Finding { text: "some finding".to_string(), strength: "strong".to_string() }],
+            methods: methods
+                .into_iter()
+                .map(|(name, cat)| Method {
+                    name: name.to_string(),
+                    category: cat.to_string(),
+                })
+                .collect(),
+            findings: vec![Finding {
+                text: "some finding".to_string(),
+                strength: "strong".to_string(),
+            }],
             open_problems: open_problems.into_iter().map(String::from).collect(),
             provider: "noop".to_string(),
             model_name: "noop".to_string(),
@@ -145,14 +162,44 @@ mod tests {
         ];
         let result = build_method_matrix(&annotations);
         // ML-ML: 2 (each annotation has one ML method, so i==j self-pair counts once per annotation)
-        assert_eq!(*result.pair_counts.get(&("ML".to_string(), "ML".to_string())).unwrap_or(&0), 2);
+        assert_eq!(
+            *result
+                .pair_counts
+                .get(&("ML".to_string(), "ML".to_string()))
+                .unwrap_or(&0),
+            2
+        );
         // ML-Stats: 1 (only annotation a)
-        assert_eq!(*result.pair_counts.get(&("ML".to_string(), "Stats".to_string())).unwrap_or(&0), 1);
+        assert_eq!(
+            *result
+                .pair_counts
+                .get(&("ML".to_string(), "Stats".to_string()))
+                .unwrap_or(&0),
+            1
+        );
         // ML-Physics: 1 (only annotation b)
-        assert_eq!(*result.pair_counts.get(&("ML".to_string(), "Physics".to_string())).unwrap_or(&0), 1);
+        assert_eq!(
+            *result
+                .pair_counts
+                .get(&("ML".to_string(), "Physics".to_string()))
+                .unwrap_or(&0),
+            1
+        );
         // Physics-Stats: 0 (no annotation has both)
-        assert_eq!(*result.pair_counts.get(&("Physics".to_string(), "Stats".to_string())).unwrap_or(&0), 0);
+        assert_eq!(
+            *result
+                .pair_counts
+                .get(&("Physics".to_string(), "Stats".to_string()))
+                .unwrap_or(&0),
+            0
+        );
         // Stats-Stats: 1 (annotation a has one Stats method, self-pair)
-        assert_eq!(*result.pair_counts.get(&("Stats".to_string(), "Stats".to_string())).unwrap_or(&0), 1);
+        assert_eq!(
+            *result
+                .pair_counts
+                .get(&("Stats".to_string(), "Stats".to_string()))
+                .unwrap_or(&0),
+            1
+        );
     }
 }

@@ -208,11 +208,16 @@ fn PapersTableRows(
         sorted.sort_by(|a, b| {
             let ord = match col {
                 SortColumn::Title => a.title.to_lowercase().cmp(&b.title.to_lowercase()),
-                SortColumn::Authors => a.authors.join(", ").to_lowercase().cmp(&b.authors.join(", ").to_lowercase()),
+                SortColumn::Authors => a
+                    .authors
+                    .join(", ")
+                    .to_lowercase()
+                    .cmp(&b.authors.join(", ").to_lowercase()),
                 SortColumn::Year => a.published.cmp(&b.published),
-                SortColumn::Citations => {
-                    a.citation_count.unwrap_or(0).cmp(&b.citation_count.unwrap_or(0))
-                }
+                SortColumn::Citations => a
+                    .citation_count
+                    .unwrap_or(0)
+                    .cmp(&b.citation_count.unwrap_or(0)),
             };
             match dir {
                 SortDir::Asc => ord,
@@ -240,10 +245,7 @@ fn PapersTableRows(
 
 /// A single paper row.
 #[component]
-fn PaperRow(
-    paper: Paper,
-    #[prop(into)] on_click: Callback<web_sys::MouseEvent>,
-) -> impl IntoView {
+fn PaperRow(paper: Paper, #[prop(into)] on_click: Callback<web_sys::MouseEvent>) -> impl IntoView {
     let year = year_from_published(&paper.published).to_string();
     let authors_str = if paper.authors.is_empty() {
         "—".to_string()
@@ -253,8 +255,15 @@ fn PaperRow(
         format!("{} et al.", paper.authors[0])
     };
     let status = status_str(&paper);
-    let citations = paper.citation_count.map(|c| c.to_string()).unwrap_or_else(|| "—".to_string());
-    let status_class = if status == "Analyzed" { "status-analyzed" } else { "status-pending" };
+    let citations = paper
+        .citation_count
+        .map(|c| c.to_string())
+        .unwrap_or_else(|| "—".to_string());
+    let status_class = if status == "Analyzed" {
+        "status-analyzed"
+    } else {
+        "status-pending"
+    };
 
     view! {
         <tr on:click=move |e| on_click.run(e)>

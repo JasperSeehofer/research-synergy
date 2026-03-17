@@ -11,7 +11,11 @@ use resyn_core::datamodels::llm_annotation::{Finding, LlmAnnotation, Method};
 // Fixtures
 // ---------------------------------------------------------------------------
 
-fn make_annotation(arxiv_id: &str, open_problems: &[&str], methods: &[(&str, &str)]) -> LlmAnnotation {
+fn make_annotation(
+    arxiv_id: &str,
+    open_problems: &[&str],
+    methods: &[(&str, &str)],
+) -> LlmAnnotation {
     LlmAnnotation {
         arxiv_id: arxiv_id.to_string(),
         paper_type: "theoretical".to_string(),
@@ -56,7 +60,10 @@ fn test_aggregate_open_problems_ranking() {
     let result = aggregate_open_problems(&annotations);
 
     assert_eq!(result.len(), 2, "Expected 2 distinct problems");
-    assert_eq!(result[0].problem, "quantum gravity", "Most common problem first");
+    assert_eq!(
+        result[0].problem, "quantum gravity",
+        "Most common problem first"
+    );
     assert_eq!(result[0].count, 3, "quantum gravity appears 3 times");
     assert_eq!(result[1].problem, "dark matter", "Second most common");
     assert_eq!(result[1].count, 2, "dark matter appears 2 times");
@@ -119,30 +126,48 @@ fn test_build_method_matrix_pair_counts() {
         *result.pair_counts.get(&key).unwrap_or(&0)
     };
 
-    assert_eq!(get("ML", "ML"), 2, "ML-ML: both annotations contribute a self-pair");
+    assert_eq!(
+        get("ML", "ML"),
+        2,
+        "ML-ML: both annotations contribute a self-pair"
+    );
     assert_eq!(get("ML", "Stats"), 1, "ML-Stats: only annotation a");
     assert_eq!(get("ML", "Physics"), 1, "ML-Physics: only annotation b");
-    assert_eq!(get("Physics", "Stats"), 0, "Physics-Stats: no annotation has both");
-    assert_eq!(get("Stats", "Stats"), 1, "Stats-Stats: annotation a self-pair");
-    assert_eq!(get("Physics", "Physics"), 1, "Physics-Physics: annotation b self-pair");
+    assert_eq!(
+        get("Physics", "Stats"),
+        0,
+        "Physics-Stats: no annotation has both"
+    );
+    assert_eq!(
+        get("Stats", "Stats"),
+        1,
+        "Stats-Stats: annotation a self-pair"
+    );
+    assert_eq!(
+        get("Physics", "Physics"),
+        1,
+        "Physics-Physics: annotation b self-pair"
+    );
 }
 
 /// Category pairs are normalized alphabetically (row <= col).
 /// Passing ("Stats", "ML") should give the same result as ("ML", "Stats").
 #[test]
 fn test_build_method_matrix_alphabetical_normalization() {
-    let annotations = vec![
-        make_annotation("a", &[], &[("m1", "ML"), ("m2", "Stats")]),
-    ];
+    let annotations = vec![make_annotation("a", &[], &[("m1", "ML"), ("m2", "Stats")])];
     let result = build_method_matrix(&annotations);
 
     // ML < Stats alphabetically, so the key must be ("ML", "Stats"), not ("Stats", "ML").
     assert!(
-        result.pair_counts.contains_key(&("ML".to_string(), "Stats".to_string())),
+        result
+            .pair_counts
+            .contains_key(&("ML".to_string(), "Stats".to_string())),
         "Pair key should be alphabetically normalized (ML before Stats)"
     );
     assert!(
-        !result.pair_counts.contains_key(&("Stats".to_string(), "ML".to_string())),
+        !result
+            .pair_counts
+            .contains_key(&("Stats".to_string(), "ML".to_string())),
         "Reverse order key should not exist"
     );
 }

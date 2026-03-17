@@ -7,7 +7,7 @@ use std::sync::Arc;
 use tower_http::services::ServeDir;
 use tracing::info;
 
-use resyn_core::database::client::{connect_local, Db};
+use resyn_core::database::client::{Db, connect_local};
 
 #[derive(Args, Debug)]
 pub struct ServeArgs {

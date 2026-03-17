@@ -26,7 +26,7 @@ Full details: `.planning/milestones/v1.0-ROADMAP.md`
 
 - [x] **Phase 6: Tech Debt + Workspace Restructure** — Clean debt, split into 3-crate workspace, establish WASM boundary (completed 2026-03-15)
 - [x] **Phase 7: Incremental Crawl Infrastructure** — DB-backed resumable crawl queue with progress reporting and parallel fetching (completed 2026-03-15)
-- [ ] **Phase 8: Leptos Web Shell + Analysis Panels** — CSR Leptos app, Axum server functions, gap analysis panels
+- [x] **Phase 8: Leptos Web Shell + Analysis Panels** — CSR Leptos app, Axum server functions, gap analysis panels (completed 2026-03-17)
 - [ ] **Phase 9: Graph Renderer (Canvas to WebGL)** — Rust/WASM Canvas 2D renderer, Barnes-Hut force layout, WebGL upgrade
 - [ ] **Phase 10: Analysis UI Polish + Scale** — Provenance tracking, section-aware LLM, scale testing, LOD, temporal filter
 
@@ -74,15 +74,15 @@ Plans:
   3. Open-problems panel shows problems ranked by recurrence count across the crawled corpus
   4. Method-combination gap matrix renders as a heatmap showing existing vs absent method pairings
   5. Crawl progress bar updates in real time from the SSE endpoint established in Phase 7
-**Plans:** 6/7 plans executed
+**Plans:** 7/7 plans complete
 Plans:
-- [ ] 08-01-PLAN.md — ProgressEvent move to resyn-core, workspace Cargo.toml dependencies
-- [ ] 08-02-PLAN.md — Trunk config, CSS design system, Leptos app shell with Router and Layout
-- [ ] 08-03-PLAN.md — Page stubs, server function module stubs, Axum serve command
-- [ ] 08-04-PLAN.md — Server functions (all data access), Dashboard, Papers table, Paper drawer, aggregation unit tests
-- [ ] 08-05-PLAN.md — Gap findings panel with filterable cards, Open problems ranked list
-- [ ] 08-06-PLAN.md — Method-combination heatmap with drill-down, Crawl progress SSE + launcher form, wire start_crawl to CrawlQueue
-- [ ] 08-07-PLAN.md — Final verification: automated checks + human browser verification with seeded data
+- [x] 08-01-PLAN.md — ProgressEvent move to resyn-core, workspace Cargo.toml dependencies
+- [x] 08-02-PLAN.md — Trunk config, CSS design system, Leptos app shell with Router and Layout
+- [x] 08-03-PLAN.md — Page stubs, server function module stubs, Axum serve command
+- [x] 08-04-PLAN.md — Server functions (all data access), Dashboard, Papers table, Paper drawer, aggregation unit tests
+- [x] 08-05-PLAN.md — Gap findings panel with filterable cards, Open problems ranked list
+- [x] 08-06-PLAN.md — Method-combination heatmap with drill-down, Crawl progress SSE + launcher form, wire start_crawl to CrawlQueue
+- [x] 08-07-PLAN.md — Final verification: automated checks + human browser verification with seeded data
 
 ### Phase 9: Graph Renderer (Canvas to WebGL)
 **Goal**: The citation graph renders interactively in the browser using a full Rust/WASM pipeline — Canvas 2D initially, WebGL2 when scale demands it — with Barnes-Hut force layout computed in a Web Worker

@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
 status: completed
-stopped_at: Completed 08-05-PLAN.md
-last_updated: "2026-03-17T07:42:07.125Z"
-last_activity: "2026-03-16 — Plan 07-03 complete: SSE progress server, queue management CLI, human-verified"
+stopped_at: Completed 08-07-PLAN.md
+last_updated: "2026-03-17T09:00:00.000Z"
+last_activity: "2026-03-17 — Plan 08-07 complete: browser verification of all 5 panels with real data"
 progress:
   total_phases: 5
-  completed_phases: 2
-  total_plans: 14
-  completed_plans: 13
-  percent: 100
+  completed_phases: 3
+  total_plans: 21
+  completed_plans: 20
+  percent: 95
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-15)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Phase 6 — Tech Debt + Workspace Restructure
+**Current focus:** Phase 8 — Leptos Web Shell + Analysis Panels (COMPLETE)
 
 ## Current Position
 
-Phase: 7 of 10 (Phase 7: Incremental Crawl Infrastructure) — COMPLETE
-Plan: 3 of 3 in current phase (07-03 complete)
-Status: Phase complete, ready to advance to Phase 8
-Last activity: 2026-03-16 — Plan 07-03 complete: SSE progress server, queue management CLI, human-verified
+Phase: 8 of 10 (Phase 8: Leptos Web Shell + Analysis Panels) — COMPLETE
+Plan: 7 of 7 in current phase (08-07 complete)
+Status: Phase complete, ready to advance to Phase 9
+Last activity: 2026-03-17 — Plan 08-07 complete: browser verification of all 5 panels with real data
 
-Progress: [██████████] 100% (v1.1 — all 5 Phase 07 plans done)
+Progress: [█████████░] 95% (v1.1 — all 7 Phase 08 plans done)
 
 ## Accumulated Context
 
@@ -71,6 +71,9 @@ Progress: [██████████] 100% (v1.1 — all 5 Phase 07 plans d
 - [Phase 08]: start_crawl server fn spawns background tokio::spawn with own PaperSource factory (not Clone) — server fn returns immediately after queue seeding
 - [Phase 08]: StoredValue used to share immutable loaded Vec<GapFinding> across two closures in Suspense reactive branch
 - [Phase 08]: Sub-component pattern required for <For> inside view! macro match arms — move keyword causes Leptos parser errors when used directly in each= attribute inside a match arm
+- [Phase 08-07]: Trunk requires data-cargo-features="csr" in index.html link tag — not just Cargo.toml feature gate
+- [Phase 08-07]: register_explicit<T>() required for all server fns at startup — inventory auto-registration fails across crate boundaries (resyn-app -> resyn-server)
+- [Phase 08-07]: connect() accepts any connection string as-is; connect_local() prepends surrealkv:// prefix (use connect() when user supplies full string)
 
 ### Pending Todos
 
@@ -83,6 +86,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-17T07:42:07.121Z
-Stopped at: Completed 08-05-PLAN.md
+Last session: 2026-03-17T09:00:00.000Z
+Stopped at: Completed 08-07-PLAN.md
 Resume file: None

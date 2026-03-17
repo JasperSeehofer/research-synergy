@@ -1,7 +1,8 @@
 ---
 phase: 8
 slug: leptos-web-shell-analysis-panels
-status: draft
+status: approved
+reviewed_at: 2026-03-17
 shadcn_initialized: false
 preset: none
 created: 2026-03-17

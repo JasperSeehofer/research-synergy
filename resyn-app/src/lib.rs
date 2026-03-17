@@ -1,12 +1,14 @@
-// Minimal WASM compilation verification stub.
-// Importing from resyn-core confirms the WASM boundary compiles cleanly.
-use resyn_core::datamodels::paper::Paper;
+use leptos::mount::mount_to_body;
+use wasm_bindgen::prelude::wasm_bindgen;
 
-pub fn app_version() -> &'static str {
-    "0.1.0"
-}
+mod app;
+pub mod components;
+pub mod layout;
+pub mod pages;
+pub mod server_fns;
 
-// Ensure Paper is recognized as used for the WASM boundary check.
-pub fn get_paper_id(paper: &Paper) -> &str {
-    &paper.id
+#[wasm_bindgen(start)]
+pub fn main() {
+    console_error_panic_hook::set_once();
+    mount_to_body(app::App);
 }

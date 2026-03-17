@@ -6,8 +6,8 @@ use leptos_router::{
 
 use crate::layout::{drawer::Drawer, sidebar::Sidebar};
 use crate::pages::{
-    dashboard::Dashboard, gaps::GapsPanel, methods::MethodsPanel, open_problems::OpenProblemsPanel,
-    papers::PapersPanel,
+    dashboard::Dashboard, gaps::GapsPanel, graph::GraphPage, methods::MethodsPanel,
+    open_problems::OpenProblemsPanel, papers::PapersPanel,
 };
 
 /// App-level context: selected paper ID drives the detail drawer.
@@ -38,6 +38,7 @@ pub fn App() -> impl IntoView {
                         <Route path=path!("/gaps") view=GapsPanel/>
                         <Route path=path!("/problems") view=OpenProblemsPanel/>
                         <Route path=path!("/methods") view=MethodsPanel/>
+                        <Route path=path!("/graph") view=GraphPage/>
                     </Routes>
                 </main>
                 <Drawer/>

@@ -45,6 +45,7 @@ pub fn Sidebar() -> impl IntoView {
                 <NavItem href="/gaps" icon="⊘" label="Gaps"/>
                 <NavItem href="/problems" icon="?" label="Open Problems"/>
                 <NavItem href="/methods" icon="⊙" label="Methods"/>
+                <NavItem href="/graph" icon="◉" label="Graph"/>
             </div>
 
             <div class="sidebar-footer">

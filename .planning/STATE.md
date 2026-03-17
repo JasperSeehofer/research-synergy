@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
 status: completed
-stopped_at: Completed 08-02-PLAN.md
-last_updated: "2026-03-17T06:55:40.797Z"
+stopped_at: Completed 08-03-PLAN.md
+last_updated: "2026-03-17T07:02:07.551Z"
 last_activity: "2026-03-16 — Plan 07-03 complete: SSE progress server, queue management CLI, human-verified"
 progress:
   total_phases: 5
   completed_phases: 2
   total_plans: 14
-  completed_plans: 9
+  completed_plans: 10
   percent: 100
 ---
 
@@ -64,6 +64,7 @@ Progress: [██████████] 100% (v1.1 — all 5 Phase 07 plans d
 - [Phase 08-leptos-web-shell-analysis-panels]: tower-http added to resyn-server for static file serving and CORS (required for Leptos web shell)
 - [Phase 08]: Leptos 0.8 Callback uses .run() not .call() — reactive_graph Callable trait exposes run() and try_run()
 - [Phase 08]: Sidebar collapse state drives CSS via parent nav class — NavItem does not need collapsed prop
+- [Phase 08]: Axum wildcard route /api/{*fn_name} with handle_server_fns_with_context injects Arc<Db> context for all server functions
 
 ### Pending Todos
 
@@ -76,6 +77,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-17T06:55:40.789Z
-Stopped at: Completed 08-02-PLAN.md
+Last session: 2026-03-17T07:02:07.543Z
+Stopped at: Completed 08-03-PLAN.md
 Resume file: None

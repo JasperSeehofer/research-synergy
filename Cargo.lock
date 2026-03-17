@@ -4640,6 +4640,7 @@ dependencies = [
  "resyn-core",
  "serde",
  "serde_json",
+ "server_fn",
  "tokio",
  "tokio-stream",
  "tower-http",

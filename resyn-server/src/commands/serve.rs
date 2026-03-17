@@ -7,7 +7,7 @@ use std::sync::Arc;
 use tower_http::services::ServeDir;
 use tracing::info;
 
-use resyn_core::database::client::{Db, connect_local};
+use resyn_core::database::client::{Db, connect};
 
 #[derive(Args, Debug)]
 pub struct ServeArgs {
@@ -21,7 +21,20 @@ pub struct ServeArgs {
 }
 
 pub async fn run(args: ServeArgs) -> anyhow::Result<()> {
-    let db: Db = connect_local(&args.db)
+    // Register all Leptos server functions explicitly (inventory auto-registration
+    // doesn't work across crate boundaries in this setup).
+    use resyn_app::server_fns::{gaps, methods, papers, problems};
+    use server_fn::axum::register_explicit;
+    register_explicit::<papers::GetPapers>();
+    register_explicit::<papers::GetPaperDetail>();
+    register_explicit::<papers::GetDashboardStats>();
+    register_explicit::<papers::StartCrawl>();
+    register_explicit::<gaps::GetGapFindings>();
+    register_explicit::<problems::GetOpenProblemsRanked>();
+    register_explicit::<methods::GetMethodMatrix>();
+    register_explicit::<methods::GetMethodDrilldown>();
+
+    let db: Db = connect(&args.db)
         .await
         .with_context(|| format!("Failed to connect to database at {}", args.db))?;
     let db = Arc::new(db);

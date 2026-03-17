@@ -211,6 +211,7 @@ textarea:focus {
   height: 24px;
   border-radius: var(--radius-sm);
   color: var(--color-text-muted);
+  background-color: var(--color-surface-raised);
   flex-shrink: 0;
   transition: background-color 150ms ease, color 150ms ease;
 }

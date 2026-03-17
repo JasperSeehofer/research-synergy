@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
 status: completed
-stopped_at: Completed 09-02-PLAN.md
-last_updated: "2026-03-17T18:36:40.508Z"
-last_activity: "2026-03-17 — Plan 09-02 complete: Barnes-Hut O(n log n) quadtree, force simulation worker, 14 tests passing, WASM compile verified"
+stopped_at: Completed 09-04-PLAN.md
+last_updated: "2026-03-17T18:55:17.642Z"
+last_activity: "2026-03-17 — Plan 09-04 complete: GraphPage, RAF loop, event handlers, /graph route, CSS, 24 tests passing"
 progress:
   total_phases: 5
   completed_phases: 3
   total_plans: 19
-  completed_plans: 17
-  percent: 89
+  completed_plans: 18
+  percent: 95
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-15)
 ## Current Position
 
 Phase: 9 of 10 (Phase 9: Graph Renderer Canvas to WebGL) — In Progress
-Plan: 2 of 5 in current phase (09-02 complete)
-Status: Plan 09-02 complete — Barnes-Hut quadtree, force simulation, gloo-worker reactor; Canvas renderer (Plan 03) next
-Last activity: 2026-03-17 — Plan 09-02 complete: Barnes-Hut O(n log n), 14 tests passing, worker compiles for wasm32
+Plan: 4 of 5 in current phase (09-04 complete)
+Status: Plan 09-04 complete — GraphPage, GraphControls, RAF render loop, event handlers, sidebar nav, CSS; Trunk build (Plan 05) next
+Last activity: 2026-03-17 — Plan 09-04 complete: GraphPage wired, RAF loop, 6 event handlers, tooltip, /graph route, 24 tests passing
 
-Progress: [█████████░] 89% (v1.1 — 17 of 19 plans done)
+Progress: [██████████] 95% (v1.1 — 18 of 19 plans done)
 
 ## Accumulated Context
 
@@ -80,6 +80,9 @@ Progress: [█████████░] 89% (v1.1 — 17 of 19 plans done)
 - [Phase 09]: simulation_tick takes NodeData + parallel velocity slice — avoids SimNode wrapper leaking into public API
 - [Phase 09]: gloo-worker ReactorScope uses SinkExt for scope.send().await — Spawnable trait needed for spawner()
 - [Phase 09]: WorkerBridge wraps ReactorBridge<ForceLayoutWorker> with send_input(); responses received by polling bridge as Stream
+- [Phase 09-graph-renderer-canvas-to-webgl]: RenderState and Box<dyn Renderer> split into separate Rc<RefCell> — Rust borrow checker prevents mutable renderer borrow alongside immutable graph/viewport borrows from same struct
+- [Phase 09-graph-renderer-canvas-to-webgl]: Arc<AtomicBool> for RAF cancel flag — leptos::on_cleanup requires Send+Sync, Rc<RefCell<bool>> cannot satisfy this constraint
+- [Phase 09-graph-renderer-canvas-to-webgl]: Worker bridge polled synchronously per RAF frame via noop_waker_ref() + poll_next — avoids spawn_local async complexity and borrow-across-await issues
 
 ### Pending Todos
 
@@ -92,6 +95,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-17T18:36:40.499Z
-Stopped at: Completed 09-02-PLAN.md
+Last session: 2026-03-17T18:55:17.634Z
+Stopped at: Completed 09-04-PLAN.md
 Resume file: None

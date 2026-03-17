@@ -39,8 +39,8 @@ Requirements for the Scale & Surface milestone. Each maps to roadmap phases.
 ### Analysis UI
 
 - [ ] **AUI-01**: Gap findings rendered in graph (contradiction edges, bridge badges)
-- [ ] **AUI-02**: Open-problems aggregation panel ranked by recurrence frequency
-- [ ] **AUI-03**: Method-combination gap matrix showing existing vs absent method pairings
+- [x] **AUI-02**: Open-problems aggregation panel ranked by recurrence frequency
+- [x] **AUI-03**: Method-combination gap matrix showing existing vs absent method pairings
 - [ ] **AUI-04**: Analysis provenance tracking — click a finding, see source text segment
 
 ### Scale & Polish
@@ -93,8 +93,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | WEB-03 | Phase 8 | Complete |
 | WEB-04 | Phase 8 | Complete |
 | AUI-01 | Phase 8 | Pending |
-| AUI-02 | Phase 8 | Pending |
-| AUI-03 | Phase 8 | Pending |
+| AUI-02 | Phase 8 | Complete |
+| AUI-03 | Phase 8 | Complete |
 | GRAPH-01 | Phase 9 | Pending |
 | GRAPH-02 | Phase 9 | Pending |
 | GRAPH-03 | Phase 9 | Pending |

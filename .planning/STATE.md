@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
 status: completed
-stopped_at: Completed 08-03-PLAN.md
-last_updated: "2026-03-17T07:02:07.551Z"
+stopped_at: Completed 08-04-PLAN.md
+last_updated: "2026-03-17T07:24:23.630Z"
 last_activity: "2026-03-16 — Plan 07-03 complete: SSE progress server, queue management CLI, human-verified"
 progress:
   total_phases: 5
   completed_phases: 2
   total_plans: 14
-  completed_plans: 10
+  completed_plans: 11
   percent: 100
 ---
 
@@ -65,6 +65,8 @@ Progress: [██████████] 100% (v1.1 — all 5 Phase 07 plans d
 - [Phase 08]: Leptos 0.8 Callback uses .run() not .call() — reactive_graph Callable trait exposes run() and try_run()
 - [Phase 08]: Sidebar collapse state drives CSS via parent nav class — NavItem does not need collapsed prop
 - [Phase 08]: Axum wildcard route /api/{*fn_name} with handle_server_fns_with_context injects Arc<Db> context for all server functions
+- [Phase 08]: Aggregation helpers (aggregate_open_problems, build_method_matrix) placed in resyn-core/src/analysis/aggregation.rs — WASM-safe, no ssr gate, unit-testable without Leptos
+- [Phase 08]: SSR-only imports in server fn bodies must be inside #[cfg(feature = "ssr")] block — top-level imports cause unused-import warnings on WASM build
 
 ### Pending Todos
 
@@ -77,6 +79,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-17T07:02:07.543Z
-Stopped at: Completed 08-03-PLAN.md
+Last session: 2026-03-17T07:24:23.622Z
+Stopped at: Completed 08-04-PLAN.md
 Resume file: None

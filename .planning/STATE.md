@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
 status: completed
-stopped_at: Completed 08-06-PLAN.md
-last_updated: "2026-03-17T07:40:50.970Z"
+stopped_at: Completed 08-05-PLAN.md
+last_updated: "2026-03-17T07:42:07.125Z"
 last_activity: "2026-03-16 — Plan 07-03 complete: SSE progress server, queue management CLI, human-verified"
 progress:
   total_phases: 5
   completed_phases: 2
   total_plans: 14
-  completed_plans: 12
+  completed_plans: 13
   percent: 100
 ---
 
@@ -69,6 +69,8 @@ Progress: [██████████] 100% (v1.1 — all 5 Phase 07 plans d
 - [Phase 08]: SSR-only imports in server fn bodies must be inside #[cfg(feature = "ssr")] block — top-level imports cause unused-import warnings on WASM build
 - [Phase 08]: ProgressEvent gains PartialEq derive — leptos-use use_event_source requires PartialEq on the decoded type
 - [Phase 08]: start_crawl server fn spawns background tokio::spawn with own PaperSource factory (not Clone) — server fn returns immediately after queue seeding
+- [Phase 08]: StoredValue used to share immutable loaded Vec<GapFinding> across two closures in Suspense reactive branch
+- [Phase 08]: Sub-component pattern required for <For> inside view! macro match arms — move keyword causes Leptos parser errors when used directly in each= attribute inside a match arm
 
 ### Pending Todos
 
@@ -81,6 +83,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-17T07:40:50.966Z
-Stopped at: Completed 08-06-PLAN.md
+Last session: 2026-03-17T07:42:07.121Z
+Stopped at: Completed 08-05-PLAN.md
 Resume file: None

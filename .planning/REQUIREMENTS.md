@@ -38,7 +38,7 @@ Requirements for the Scale & Surface milestone. Each maps to roadmap phases.
 
 ### Analysis UI
 
-- [ ] **AUI-01**: Gap findings rendered in graph (contradiction edges, bridge badges)
+- [x] **AUI-01**: Gap findings rendered in graph (contradiction edges, bridge badges)
 - [x] **AUI-02**: Open-problems aggregation panel ranked by recurrence frequency
 - [x] **AUI-03**: Method-combination gap matrix showing existing vs absent method pairings
 - [ ] **AUI-04**: Analysis provenance tracking — click a finding, see source text segment
@@ -92,7 +92,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CRAWL-04 | Phase 7 | Complete |
 | WEB-03 | Phase 8 | Complete |
 | WEB-04 | Phase 8 | Complete |
-| AUI-01 | Phase 8 | Pending |
+| AUI-01 | Phase 8 | Complete |
 | AUI-02 | Phase 8 | Complete |
 | AUI-03 | Phase 8 | Complete |
 | GRAPH-01 | Phase 9 | Pending |

@@ -8,6 +8,7 @@ use resyn_core::data_aggregation::rate_limiter::{
 use resyn_core::data_aggregation::traits::PaperSource;
 use resyn_core::database::crawl_queue::CrawlQueueRepository;
 use resyn_core::database::queries::PaperRepository;
+use resyn_core::datamodels::progress::ProgressEvent;
 use std::sync::Arc;
 use std::sync::atomic::{AtomicU64, Ordering};
 use std::time::Duration;
@@ -15,20 +16,6 @@ use tokio::sync::Semaphore;
 use tracing::{error, info, warn};
 
 use crate::commands::analyze::{AnalyzeArgs, run_analysis_pipeline};
-
-/// A progress event broadcast to SSE clients (consumed by Plan 03).
-#[derive(Clone, Debug, serde::Serialize)]
-pub struct ProgressEvent {
-    pub event_type: String,
-    pub papers_found: u64,
-    pub papers_pending: u64,
-    pub papers_failed: u64,
-    pub current_depth: usize,
-    pub max_depth: usize,
-    pub elapsed_secs: f64,
-    pub current_paper_id: Option<String>,
-    pub current_paper_title: Option<String>,
-}
 
 /// Queue management subcommands for `resyn crawl`
 #[derive(Subcommand, Debug)]

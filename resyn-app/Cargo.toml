@@ -6,7 +6,20 @@ edition = "2024"
 [lib]
 crate-type = ["cdylib", "rlib"]
 
+[features]
+csr = ["leptos/csr"]
+ssr = ["leptos/ssr", "dep:leptos_axum", "resyn-core/ssr"]
+
 [dependencies]
 resyn-core = { path = "../resyn-core" }
+leptos = { version = "0.8" }
+leptos_router = { version = "0.8" }
+leptos_meta = { version = "0.8" }
+leptos-use = { version = "0.18" }
+codee = "0.3"
 wasm-bindgen = "0.2"
 getrandom = { workspace = true, features = ["wasm_js"] }
+console_error_panic_hook = "0.1"
+serde = { workspace = true }
+serde_json = { workspace = true }
+leptos_axum = { version = "0.8", optional = true }

@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
 status: completed
-stopped_at: Completed 08-01-PLAN.md
-last_updated: "2026-03-17T06:44:04.183Z"
+stopped_at: Completed 08-02-PLAN.md
+last_updated: "2026-03-17T06:55:40.797Z"
 last_activity: "2026-03-16 — Plan 07-03 complete: SSE progress server, queue management CLI, human-verified"
 progress:
   total_phases: 5
   completed_phases: 2
   total_plans: 14
-  completed_plans: 8
+  completed_plans: 9
   percent: 100
 ---
 
@@ -62,6 +62,8 @@ Progress: [██████████] 100% (v1.1 — all 5 Phase 07 plans d
 - [Phase 07-incremental-crawl-infrastructure]: Empty pdf_url guard placed at call site in aggregate_references_for_arxiv_paper (not in convert_pdf_url_to_html_url) — paper.id only available at call site
 - [Phase 08-leptos-web-shell-analysis-panels]: ProgressEvent gains Deserialize derive when moved to resyn-core (server only had Serialize; WASM client needs both)
 - [Phase 08-leptos-web-shell-analysis-panels]: tower-http added to resyn-server for static file serving and CORS (required for Leptos web shell)
+- [Phase 08]: Leptos 0.8 Callback uses .run() not .call() — reactive_graph Callable trait exposes run() and try_run()
+- [Phase 08]: Sidebar collapse state drives CSS via parent nav class — NavItem does not need collapsed prop
 
 ### Pending Todos
 
@@ -74,6 +76,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-17T06:44:04.175Z
-Stopped at: Completed 08-01-PLAN.md
+Last session: 2026-03-17T06:55:40.789Z
+Stopped at: Completed 08-02-PLAN.md
 Resume file: None

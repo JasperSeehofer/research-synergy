@@ -74,7 +74,7 @@ Plans:
   3. Open-problems panel shows problems ranked by recurrence count across the crawled corpus
   4. Method-combination gap matrix renders as a heatmap showing existing vs absent method pairings
   5. Crawl progress bar updates in real time from the SSE endpoint established in Phase 7
-**Plans:** 1/7 plans executed
+**Plans:** 2/7 plans executed
 Plans:
 - [ ] 08-01-PLAN.md — ProgressEvent move to resyn-core, workspace Cargo.toml dependencies
 - [ ] 08-02-PLAN.md — Trunk config, CSS design system, Leptos app shell with Router and Layout
@@ -121,6 +121,6 @@ Plans:
 | 5. Visualization Enrichment | v1.0 | 2/2 | Complete | 2026-03-14 |
 | 6. Tech Debt + Workspace Restructure | 2/2 | Complete   | 2026-03-15 | - |
 | 7. Incremental Crawl Infrastructure | 5/5 | Complete   | 2026-03-16 | - |
-| 8. Leptos Web Shell + Analysis Panels | 1/7 | In Progress|  | - |
+| 8. Leptos Web Shell + Analysis Panels | 2/7 | In Progress|  | - |
 | 9. Graph Renderer (Canvas to WebGL) | v1.1 | 0/? | Not started | - |
 | 10. Analysis UI Polish + Scale | v1.1 | 0/? | Not started | - |

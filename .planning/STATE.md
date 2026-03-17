@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
 status: completed
-stopped_at: Completed 09-03-PLAN.md
-last_updated: "2026-03-17T18:29:15.908Z"
-last_activity: "2026-03-17 — Plan 09-01 complete: graph module scaffold, resyn-worker crate, GraphData server fn, Renderer trait, 24 tests passing"
+stopped_at: Completed 09-02-PLAN.md
+last_updated: "2026-03-17T18:36:40.508Z"
+last_activity: "2026-03-17 — Plan 09-02 complete: Barnes-Hut O(n log n) quadtree, force simulation worker, 14 tests passing, WASM compile verified"
 progress:
   total_phases: 5
   completed_phases: 3
   total_plans: 19
-  completed_plans: 16
-  percent: 79
+  completed_plans: 17
+  percent: 89
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-15)
 ## Current Position
 
 Phase: 9 of 10 (Phase 9: Graph Renderer Canvas to WebGL) — In Progress
-Plan: 1 of 5 in current phase (09-01 complete)
-Status: Plan 09-01 complete — scaffold and types done; Barnes-Hut (Plan 02) next
-Last activity: 2026-03-17 — Plan 09-01 complete: graph module scaffold, resyn-worker crate, GraphData server fn, Renderer trait, 24 tests passing
+Plan: 2 of 5 in current phase (09-02 complete)
+Status: Plan 09-02 complete — Barnes-Hut quadtree, force simulation, gloo-worker reactor; Canvas renderer (Plan 03) next
+Last activity: 2026-03-17 — Plan 09-02 complete: Barnes-Hut O(n log n), 14 tests passing, worker compiles for wasm32
 
-Progress: [████████░░] 79% (v1.1 — 15 of 19 plans done)
+Progress: [█████████░] 89% (v1.1 — 17 of 19 plans done)
 
 ## Accumulated Context
 
@@ -77,6 +77,9 @@ Progress: [████████░░] 79% (v1.1 — 15 of 19 plans done)
 - [Phase 09-graph-renderer-canvas-to-webgl]: Viewport struct is pure math (no web-sys) so transform tests run natively without wasm-bindgen-test
 - [Phase 09-graph-renderer-canvas-to-webgl]: GraphData DTO separate from GraphState: server returns serializable DTO; client converts to mutable simulation state
 - [Phase 09-graph-renderer-canvas-to-webgl]: JsCast trait must be imported explicitly for dyn_into in canvas_renderer — not available via wasm-bindgen prelude
+- [Phase 09]: simulation_tick takes NodeData + parallel velocity slice — avoids SimNode wrapper leaking into public API
+- [Phase 09]: gloo-worker ReactorScope uses SinkExt for scope.send().await — Spawnable trait needed for spawner()
+- [Phase 09]: WorkerBridge wraps ReactorBridge<ForceLayoutWorker> with send_input(); responses received by polling bridge as Stream
 
 ### Pending Todos
 
@@ -89,6 +92,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-17T18:29:15.899Z
-Stopped at: Completed 09-03-PLAN.md
+Last session: 2026-03-17T18:36:40.499Z
+Stopped at: Completed 09-02-PLAN.md
 Resume file: None

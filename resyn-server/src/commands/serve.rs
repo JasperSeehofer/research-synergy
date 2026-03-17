@@ -23,7 +23,7 @@ pub struct ServeArgs {
 pub async fn run(args: ServeArgs) -> anyhow::Result<()> {
     // Register all Leptos server functions explicitly (inventory auto-registration
     // doesn't work across crate boundaries in this setup).
-    use resyn_app::server_fns::{gaps, methods, papers, problems};
+    use resyn_app::server_fns::{gaps, graph, methods, papers, problems};
     use server_fn::axum::register_explicit;
     register_explicit::<papers::GetPapers>();
     register_explicit::<papers::GetPaperDetail>();
@@ -33,6 +33,7 @@ pub async fn run(args: ServeArgs) -> anyhow::Result<()> {
     register_explicit::<problems::GetOpenProblemsRanked>();
     register_explicit::<methods::GetMethodMatrix>();
     register_explicit::<methods::GetMethodDrilldown>();
+    register_explicit::<graph::GetGraphData>();
 
     let db: Db = connect(&args.db)
         .await

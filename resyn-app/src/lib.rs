@@ -3,6 +3,7 @@ use wasm_bindgen::prelude::wasm_bindgen;
 
 mod app;
 pub mod components;
+pub mod graph;
 pub mod layout;
 pub mod pages;
 pub mod server_fns;

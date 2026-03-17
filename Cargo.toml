@@ -1,5 +1,5 @@
 [workspace]
-members = ["resyn-core", "resyn-app", "resyn-server"]
+members = ["resyn-core", "resyn-app", "resyn-server", "resyn-worker"]
 resolver = "2"
 
 [workspace.dependencies]

@@ -25,3 +25,30 @@ serde_json = { workspace = true }
 leptos_axum = { version = "0.8", optional = true }
 tokio = { workspace = true, optional = true }
 tracing = { workspace = true, optional = true }
+js-sys = "0.3"
+resyn-worker = { path = "../resyn-worker" }
+
+[dependencies.web-sys]
+version = "0.3"
+features = [
+  "CanvasRenderingContext2d",
+  "HtmlCanvasElement",
+  "TextMetrics",
+  "WebGl2RenderingContext",
+  "WebGlBuffer",
+  "WebGlProgram",
+  "WebGlShader",
+  "WebGlUniformLocation",
+  "WebGlVertexArrayObject",
+  "MouseEvent",
+  "PointerEvent",
+  "WheelEvent",
+  "EventTarget",
+  "Worker",
+  "WorkerGlobalScope",
+  "DedicatedWorkerGlobalScope",
+  "Document",
+  "Window",
+  "Element",
+  "DomRect",
+]

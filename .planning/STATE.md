@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
 status: completed
-stopped_at: Phase 8 context gathered
-last_updated: "2026-03-16T23:53:14.845Z"
+stopped_at: Completed 08-01-PLAN.md
+last_updated: "2026-03-17T06:44:04.183Z"
 last_activity: "2026-03-16 — Plan 07-03 complete: SSE progress server, queue management CLI, human-verified"
 progress:
   total_phases: 5
   completed_phases: 2
-  total_plans: 7
-  completed_plans: 7
+  total_plans: 14
+  completed_plans: 8
   percent: 100
 ---
 
@@ -60,6 +60,8 @@ Progress: [██████████] 100% (v1.1 — all 5 Phase 07 plans d
 - [Phase 07]: Queue management subcommands dispatch before paper_id validation — they only need --db arg
 - [Phase 07-incremental-crawl-infrastructure]: Each CrawlSubcommand variant owns its --db arg; clap subcommand context stops parent arg parsing so each variant needs its own field
 - [Phase 07-incremental-crawl-infrastructure]: Empty pdf_url guard placed at call site in aggregate_references_for_arxiv_paper (not in convert_pdf_url_to_html_url) — paper.id only available at call site
+- [Phase 08-leptos-web-shell-analysis-panels]: ProgressEvent gains Deserialize derive when moved to resyn-core (server only had Serialize; WASM client needs both)
+- [Phase 08-leptos-web-shell-analysis-panels]: tower-http added to resyn-server for static file serving and CORS (required for Leptos web shell)
 
 ### Pending Todos
 
@@ -72,6 +74,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-16T23:53:14.842Z
-Stopped at: Phase 8 context gathered
-Resume file: .planning/phases/08-leptos-web-shell-analysis-panels/08-CONTEXT.md
+Last session: 2026-03-17T06:44:04.175Z
+Stopped at: Completed 08-01-PLAN.md
+Resume file: None

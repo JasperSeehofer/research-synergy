@@ -25,8 +25,8 @@ Requirements for the Scale & Surface milestone. Each maps to roadmap phases.
 
 - [x] **WEB-01**: Cargo workspace restructure into 3-crate layout (core/app/server)
 - [x] **WEB-02**: WASM compilation boundary — SurrealDB feature-gated behind `ssr`
-- [ ] **WEB-03**: Leptos CSR shell with Trunk build pipeline and routing
-- [ ] **WEB-04**: Axum server functions exposing analysis pipeline to frontend
+- [x] **WEB-03**: Leptos CSR shell with Trunk build pipeline and routing
+- [x] **WEB-04**: Axum server functions exposing analysis pipeline to frontend
 - [x] **WEB-05**: Remove egui/eframe/fdg dependencies
 
 ### Graph Visualization
@@ -90,8 +90,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CRAWL-02 | Phase 7 | Complete |
 | CRAWL-03 | Phase 7 | Complete |
 | CRAWL-04 | Phase 7 | Complete |
-| WEB-03 | Phase 8 | Pending |
-| WEB-04 | Phase 8 | Pending |
+| WEB-03 | Phase 8 | Complete |
+| WEB-04 | Phase 8 | Complete |
 | AUI-01 | Phase 8 | Pending |
 | AUI-02 | Phase 8 | Pending |
 | AUI-03 | Phase 8 | Pending |

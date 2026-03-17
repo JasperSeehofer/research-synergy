@@ -121,19 +121,171 @@ pub async fn get_dashboard_stats() -> Result<DashboardStats, ServerFnError> {
     unreachable!()
 }
 
-/// Start a new crawl (placeholder stub — wired to CrawlQueue in Plan 06 Task 2).
+/// Start a new crawl by seeding the CrawlQueue and launching a background crawl task.
 ///
-/// TODO: Wire to CrawlQueue in Plan 06 Task 2.
+/// Implementation:
+/// 1. Validates the arXiv paper ID format.
+/// 2. Enqueues the seed paper via `CrawlQueueRepository::enqueue_if_absent`.
+/// 3. Spawns a background tokio task running the queue-driven crawl loop.
+/// 4. Returns immediately — SSE `/progress` endpoint reports live progress.
 #[server(StartCrawl, "/api")]
 pub async fn start_crawl(
-    _paper_id: String,
-    _max_depth: usize,
-    _source: String,
+    paper_id: String,
+    max_depth: usize,
+    source: String,
 ) -> Result<String, ServerFnError> {
     #[cfg(feature = "ssr")]
     {
-        // TODO: Wire to CrawlQueue in Plan 06 Task 2.
-        Ok("Crawl started.".to_string())
+        use resyn_core::database::crawl_queue::CrawlQueueRepository;
+        use resyn_core::validation::validate_arxiv_id;
+
+        // Validate paper ID format.
+        validate_arxiv_id(&paper_id)
+            .map_err(|e| ServerFnError::new(format!("Invalid paper ID: {e}")))?;
+
+        let db = use_context::<std::sync::Arc<resyn_core::database::client::Db>>()
+            .ok_or_else(|| ServerFnError::new("Database not available"))?;
+
+        // Seed the crawl queue with the root paper (depth 0).
+        let queue = CrawlQueueRepository::new(&db);
+        queue
+            .enqueue_if_absent(&paper_id, &paper_id, 0)
+            .await
+            .map_err(|e| ServerFnError::new(format!("Failed to enqueue seed paper: {e}")))?;
+
+        // Spawn a background crawl task. This task runs independently after the
+        // server function returns. The /progress SSE endpoint broadcasts updates.
+        let db_bg = db.clone();
+        let paper_id_bg = paper_id.clone();
+        tokio::spawn(async move {
+            use resyn_core::data_aggregation::arxiv_source::ArxivSource;
+            use resyn_core::data_aggregation::html_parser::ArxivHTMLDownloader;
+            use resyn_core::data_aggregation::inspirehep_api::InspireHepClient;
+            use resyn_core::data_aggregation::rate_limiter::{
+                make_arxiv_limiter, make_inspirehep_limiter, wait_for_token,
+            };
+            use resyn_core::data_aggregation::traits::PaperSource;
+            use resyn_core::database::crawl_queue::CrawlQueueRepository;
+            use resyn_core::database::queries::PaperRepository;
+            use std::sync::Arc;
+            use std::time::Duration;
+            use tokio::sync::Semaphore;
+            use tracing::{warn, info};
+
+            fn make_source_bg(name: &str) -> Box<dyn PaperSource> {
+                let client = resyn_core::utils::create_http_client();
+                match name {
+                    "inspirehep" => {
+                        Box::new(InspireHepClient::new(client).with_rate_limit(Duration::from_millis(350)))
+                    }
+                    _ => {
+                        let downloader = ArxivHTMLDownloader::new(client)
+                            .with_rate_limit(Duration::from_secs(3));
+                        Box::new(ArxivSource::new(downloader))
+                    }
+                }
+            }
+
+            let rate_limiter = if source == "inspirehep" {
+                make_inspirehep_limiter()
+            } else {
+                make_arxiv_limiter()
+            };
+            let sem = Arc::new(Semaphore::new(4));
+            let mut join_set: tokio::task::JoinSet<()> = tokio::task::JoinSet::new();
+            let mut retried = false;
+
+            loop {
+                let queue = CrawlQueueRepository::new(&db_bg);
+                let entry = match queue.claim_next_pending().await {
+                    Ok(e) => e,
+                    Err(e) => {
+                        warn!(error = %e, "claim_next_pending failed in web crawl task");
+                        break;
+                    }
+                };
+
+                let Some(entry) = entry else {
+                    // Wait for in-flight tasks before checking retry.
+                    while let Some(res) = join_set.join_next().await {
+                        if let Err(e) = res {
+                            warn!(error = %e, "Worker panicked in web crawl task");
+                        }
+                    }
+                    if !retried {
+                        retried = true;
+                        let queue2 = CrawlQueueRepository::new(&db_bg);
+                        match queue2.retry_failed().await {
+                            Ok(n) if n > 0 => {
+                                info!(count = n, "Retrying failed entries (web crawl)");
+                                continue;
+                            }
+                            _ => {}
+                        }
+                    }
+                    break;
+                };
+
+                // Skip entries beyond max_depth.
+                if entry.depth_level > max_depth {
+                    let queue2 = CrawlQueueRepository::new(&db_bg);
+                    queue2.mark_done(&entry.paper_id, &entry.seed_paper_id).await.ok();
+                    continue;
+                }
+
+                // Skip papers already in DB.
+                let paper_repo = PaperRepository::new(&db_bg);
+                if paper_repo.paper_exists(&entry.paper_id).await.unwrap_or(false) {
+                    let queue2 = CrawlQueueRepository::new(&db_bg);
+                    queue2.mark_done(&entry.paper_id, &entry.seed_paper_id).await.ok();
+                    continue;
+                }
+
+                let permit = Arc::clone(&sem).acquire_owned().await.unwrap();
+                let db_task = db_bg.clone();
+                let limiter = Arc::clone(&rate_limiter);
+                let src = source.clone();
+                let seed_id = paper_id_bg.clone();
+
+                join_set.spawn(async move {
+                    let _permit = permit;
+                    let mut source_impl = make_source_bg(&src);
+                    let queue = CrawlQueueRepository::new(&db_task);
+                    let paper_repo = PaperRepository::new(&db_task);
+
+                    wait_for_token(&limiter).await;
+
+                    match source_impl.fetch_paper(&entry.paper_id).await {
+                        Ok(mut paper) => {
+                            if let Err(e) = source_impl.fetch_references(&mut paper).await {
+                                warn!(paper_id = entry.paper_id.as_str(), error = %e, "fetch_references failed");
+                            }
+                            let ref_ids = paper.get_arxiv_references_ids();
+                            for arxiv_id in &ref_ids {
+                                if let Err(e) = queue
+                                    .enqueue_if_absent(arxiv_id, &seed_id, entry.depth_level + 1)
+                                    .await
+                                {
+                                    warn!(arxiv_id = arxiv_id.as_str(), error = %e, "enqueue ref failed");
+                                }
+                            }
+                            paper_repo.upsert_paper(&paper).await.ok();
+                            paper_repo.upsert_citations(&paper).await.ok();
+                            queue.mark_done(&entry.paper_id, &seed_id).await.ok();
+                        }
+                        Err(e) => {
+                            warn!(paper_id = entry.paper_id.as_str(), error = %e, "fetch_paper failed");
+                            queue.mark_failed(&entry.paper_id, &seed_id).await.ok();
+                        }
+                    }
+                });
+            }
+        });
+
+        Ok(format!(
+            "Crawl started for paper {} (max depth {})",
+            paper_id, max_depth
+        ))
     }
     #[cfg(not(feature = "ssr"))]
     unreachable!()

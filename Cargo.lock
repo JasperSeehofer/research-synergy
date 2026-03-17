@@ -4595,6 +4595,8 @@ dependencies = [
  "resyn-core",
  "serde",
  "serde_json",
+ "tokio",
+ "tracing",
  "wasm-bindgen",
 ]
 

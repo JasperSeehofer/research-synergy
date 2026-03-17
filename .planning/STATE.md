@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
 status: completed
-stopped_at: Phase 9 context gathered
-last_updated: "2026-03-17T17:04:10.001Z"
+stopped_at: Completed 09-01-PLAN.md
+last_updated: "2026-03-17T18:25:12.820Z"
 last_activity: "2026-03-17 — Plan 08-07 complete: browser verification of all 5 panels with real data"
 progress:
   total_phases: 5
   completed_phases: 3
-  total_plans: 14
-  completed_plans: 14
-  percent: 95
+  total_plans: 19
+  completed_plans: 15
+  percent: 79
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-15)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Phase 8 — Leptos Web Shell + Analysis Panels (COMPLETE)
+**Current focus:** Phase 9 — Graph Renderer Canvas to WebGL (In Progress)
 
 ## Current Position
 
-Phase: 8 of 10 (Phase 8: Leptos Web Shell + Analysis Panels) — COMPLETE
-Plan: 7 of 7 in current phase (08-07 complete)
-Status: Phase complete, ready to advance to Phase 9
-Last activity: 2026-03-17 — Plan 08-07 complete: browser verification of all 5 panels with real data
+Phase: 9 of 10 (Phase 9: Graph Renderer Canvas to WebGL) — In Progress
+Plan: 1 of 5 in current phase (09-01 complete)
+Status: Plan 09-01 complete — scaffold and types done; Barnes-Hut (Plan 02) next
+Last activity: 2026-03-17 — Plan 09-01 complete: graph module scaffold, resyn-worker crate, GraphData server fn, Renderer trait, 24 tests passing
 
-Progress: [█████████░] 95% (v1.1 — all 7 Phase 08 plans done)
+Progress: [████████░░] 79% (v1.1 — 15 of 19 plans done)
 
 ## Accumulated Context
 
@@ -74,6 +74,8 @@ Progress: [█████████░] 95% (v1.1 — all 7 Phase 08 plans do
 - [Phase 08-07]: Trunk requires data-cargo-features="csr" in index.html link tag — not just Cargo.toml feature gate
 - [Phase 08-07]: register_explicit<T>() required for all server fns at startup — inventory auto-registration fails across crate boundaries (resyn-app -> resyn-server)
 - [Phase 08-07]: connect() accepts any connection string as-is; connect_local() prepends surrealkv:// prefix (use connect() when user supplies full string)
+- [Phase 09-graph-renderer-canvas-to-webgl]: Viewport struct is pure math (no web-sys) so transform tests run natively without wasm-bindgen-test
+- [Phase 09-graph-renderer-canvas-to-webgl]: GraphData DTO separate from GraphState: server returns serializable DTO; client converts to mutable simulation state
 
 ### Pending Todos
 
@@ -86,6 +88,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-17T17:04:09.992Z
-Stopped at: Phase 9 context gathered
-Resume file: .planning/phases/09-graph-renderer-canvas-to-webgl/09-CONTEXT.md
+Last session: 2026-03-17T18:25:12.811Z
+Stopped at: Completed 09-01-PLAN.md
+Resume file: None

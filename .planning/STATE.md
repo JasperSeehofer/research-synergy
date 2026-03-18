@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
-status: in-progress
-stopped_at: Completed 10-01-PLAN.md
-last_updated: "2026-03-18T16:38:00Z"
+status: completed
+stopped_at: "Checkpoint: Task 2 human-verify — browser verification of Phase 10 features at scale"
+last_updated: "2026-03-18T15:59:26.259Z"
 last_activity: "2026-03-18 — Plan 10-01 complete: Finding/Method provenance fields, section-aware LLM prompt, find_highlight_range, PaperDetail+GraphData DTO extensions"
 progress:
   total_phases: 5
   completed_phases: 4
   total_plans: 23
-  completed_plans: 21
+  completed_plans: 22
   percent: 91
 ---
 
@@ -94,6 +94,8 @@ Progress: [█████████░] 91% (v1.1 — 21 of 23 plans done)
 - [10-02]: LOD thresholds: LOD_LEVEL_0=0.3 (depth<=1 only), LOD_LEVEL_1=0.6 (+citations>=50), LOD_LEVEL_2=1.0 (+depth<=2 or citations>=10); above 1.0 = all visible
 - [10-02]: Visibility flags (lod_visible, temporal_visible) on NodeState — renderer reads flags, lod.rs update functions mutate them; keeps renderer logic simple
 - [10-02]: Nodes with unparseable/empty year default to temporal_visible=true — missing metadata stays visible, not hidden
+- [Phase 10-04]: vis_count captured as local before state borrow closes to avoid Leptos RefCell + RwSignal conflict
+- [Phase 10-04]: TemporalSlider positioned as absolute bottom bar via CSS (bottom: 0) to overlay canvas without layout shifts
 
 ### Pending Todos
 
@@ -106,6 +108,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-18T16:38:00Z
-Stopped at: Completed 10-01-PLAN.md
-Resume file: .planning/phases/10-analysis-ui-polish-scale/10-01-SUMMARY.md
+Last session: 2026-03-18T15:59:26.251Z
+Stopped at: Checkpoint: Task 2 human-verify — browser verification of Phase 10 features at scale
+Resume file: None

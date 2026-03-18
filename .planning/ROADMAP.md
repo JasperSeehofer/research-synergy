@@ -112,7 +112,7 @@ Plans:
   3. Depth-2, depth-3, and depth-5 real crawl runs complete with performance metrics recorded and no regressions vs v1.0
   4. A 1000+ node graph switches to clustered/LOD rendering automatically, keeping the canvas readable
   5. The temporal filter slider narrows the visible graph to papers published within the selected year range
-**Plans:** 2/4 plans executed
+**Plans:** 3/4 plans executed
 Plans:
 - [ ] 10-01-PLAN.md — Data model + LLM prompt + highlight utility + server fn extensions (DEBT-04, AUI-04)
 - [ ] 10-02-PLAN.md — GraphState LOD/temporal fields + visibility computation module (SCALE-02, SCALE-03)
@@ -134,4 +134,4 @@ Plans:
 | 7. Incremental Crawl Infrastructure | 5/5 | Complete   | 2026-03-16 | - |
 | 8. Leptos Web Shell + Analysis Panels | 7/7 | Complete | 2026-03-17 | - |
 | 9. Graph Renderer (Canvas to WebGL) | 5/5 | Complete   | 2026-03-18 | - |
-| 10. Analysis UI Polish + Scale | 2/4 | In Progress|  | - |
+| 10. Analysis UI Polish + Scale | 3/4 | In Progress|  | - |

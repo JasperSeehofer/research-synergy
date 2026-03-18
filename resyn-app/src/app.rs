@@ -10,10 +10,28 @@ use crate::pages::{
     open_problems::OpenProblemsPanel, papers::PapersPanel,
 };
 
-/// App-level context: selected paper ID drives the detail drawer.
+/// Which tab is active in the paper detail drawer.
+#[derive(Clone, Debug, Default, PartialEq)]
+pub enum DrawerTab {
+    #[default]
+    Overview,
+    Source,
+}
+
+/// Request to open the drawer for a specific paper, optionally on a specific tab
+/// with provenance highlight context.
+#[derive(Clone, Debug, Default)]
+pub struct DrawerOpenRequest {
+    pub paper_id: String,
+    pub initial_tab: DrawerTab,
+    pub highlight_snippet: Option<String>,
+    pub highlight_section: Option<String>,
+}
+
+/// App-level context: selected paper drives the detail drawer.
 /// None = drawer closed.
 #[derive(Clone, Copy)]
-pub struct SelectedPaper(pub RwSignal<Option<String>>);
+pub struct SelectedPaper(pub RwSignal<Option<DrawerOpenRequest>>);
 
 /// App-level context: sidebar collapsed state.
 #[derive(Clone, Copy)]
@@ -21,7 +39,7 @@ pub struct SidebarCollapsed(pub RwSignal<bool>);
 
 #[component]
 pub fn App() -> impl IntoView {
-    let selected_paper: RwSignal<Option<String>> = RwSignal::new(None);
+    let selected_paper: RwSignal<Option<DrawerOpenRequest>> = RwSignal::new(None);
     let sidebar_collapsed: RwSignal<bool> = RwSignal::new(false);
 
     provide_context(SelectedPaper(selected_paper));

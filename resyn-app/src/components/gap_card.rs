@@ -1,7 +1,7 @@
 use leptos::prelude::*;
 use resyn_core::datamodels::gap_finding::{GapFinding, GapType};
 
-use crate::app::SelectedPaper;
+use crate::app::{DrawerOpenRequest, DrawerTab, SelectedPaper};
 
 /// A card displaying a single gap finding with type badge, confidence bar,
 /// shared terms, expandable justification, and clickable paper ID links.
@@ -32,7 +32,7 @@ pub fn GapCard(finding: GapFinding) -> impl IntoView {
                 <span class="text-label text-muted">{finding.found_at.clone()}</span>
             </div>
 
-            // Clickable paper IDs
+            // Clickable paper IDs — open drawer on Source tab with provenance context
             <div class="gap-card-titles">
                 <For
                     each=move || paper_ids.clone()
@@ -43,7 +43,13 @@ pub fn GapCard(finding: GapFinding) -> impl IntoView {
                         view! {
                             <button
                                 class="gap-card-paper-link"
-                                on:click=move |_| set_paper.set(Some(id_clone.clone()))
+                                title="View source in paper"
+                                on:click=move |_| set_paper.set(Some(DrawerOpenRequest {
+                                    paper_id: id_clone.clone(),
+                                    initial_tab: DrawerTab::Source,
+                                    highlight_snippet: None,
+                                    highlight_section: None,
+                                }))
                             >
                                 {paper_id.clone()}
                             </button>

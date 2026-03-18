@@ -8,8 +8,8 @@ use std::task::{Context, Poll};
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
 
-use crate::app::SelectedPaper;
-use crate::components::graph_controls::GraphControls;
+use crate::app::{DrawerOpenRequest, SelectedPaper};
+use crate::components::graph_controls::{GraphControls, TemporalSlider};
 use crate::graph::interaction::{self, InteractionState};
 use crate::graph::layout_state::GraphState;
 use crate::graph::make_renderer;
@@ -68,6 +68,12 @@ pub fn GraphPage() -> impl IntoView {
     let zoom_in_count: RwSignal<u32> = RwSignal::new(0);
     let zoom_out_count: RwSignal<u32> = RwSignal::new(0);
 
+    // Temporal filter signals
+    let temporal_min: RwSignal<u32> = RwSignal::new(2000);
+    let temporal_max: RwSignal<u32> = RwSignal::new(2026);
+    let year_bounds: RwSignal<(u32, u32)> = RwSignal::new((2000, 2026));
+    let visible_count: RwSignal<(usize, usize)> = RwSignal::new((0, 0));
+
     // Tooltip overlay signal
     let tooltip_signal: RwSignal<Option<TooltipData>> = RwSignal::new(None);
 
@@ -101,6 +107,13 @@ pub fn GraphPage() -> impl IntoView {
         graph_state.show_contradictions = show_contradictions.get_untracked();
         graph_state.show_bridges = show_bridges.get_untracked();
         graph_state.simulation_running = simulation_running.get_untracked();
+
+        // Initialize temporal signals from graph year bounds
+        let year_min = graph_state.temporal_min_year;
+        let year_max = graph_state.temporal_max_year;
+        temporal_min.set(year_min);
+        temporal_max.set(year_max);
+        year_bounds.set((year_min, year_max));
 
         let state = Rc::new(RefCell::new(RenderState {
             graph: graph_state,
@@ -147,6 +160,9 @@ pub fn GraphPage() -> impl IntoView {
             simulation_running,
             zoom_in_count,
             zoom_out_count,
+            temporal_min,
+            temporal_max,
+            visible_count,
         );
 
         on_cleanup(move || handle.cancel());
@@ -181,6 +197,15 @@ pub fn GraphPage() -> impl IntoView {
                                 simulation_running=simulation_running
                                 zoom_in_count=zoom_in_count
                                 zoom_out_count=zoom_out_count
+                                temporal_min=temporal_min
+                                temporal_max=temporal_max
+                                year_bounds=year_bounds
+                                visible_count=visible_count
+                            />
+                            <TemporalSlider
+                                temporal_min=temporal_min
+                                temporal_max=temporal_max
+                                year_bounds=year_bounds
                             />
                             {move || tooltip_signal.get().map(|t| view! {
                                 <div
@@ -284,6 +309,9 @@ fn start_render_loop(
     simulation_running: RwSignal<bool>,
     zoom_in_count: RwSignal<u32>,
     zoom_out_count: RwSignal<u32>,
+    temporal_min: RwSignal<u32>,
+    temporal_max: RwSignal<u32>,
+    visible_count: RwSignal<(usize, usize)>,
 ) -> RafHandle {
     let cancelled = Arc::new(AtomicBool::new(false));
     let cancelled_clone = cancelled.clone();
@@ -299,6 +327,8 @@ fn start_render_loop(
         if cancelled_clone.load(Ordering::Relaxed) {
             return;
         }
+
+        let mut vis_count = (0usize, 0usize);
 
         {
             let mut s = state.borrow_mut();
@@ -351,11 +381,39 @@ fn start_render_loop(
                 bridge.borrow().as_ref().get_ref().send_input(input);
             }
 
+            // Snapshot viewport scale
+            s.graph.current_scale = s.viewport.scale;
+            // Extract values before mutable borrow of nodes (borrow checker requires this)
+            let lod_scale = s.viewport.scale;
+            let seed_id = s.graph.seed_paper_id.clone();
+            // Update LOD visibility based on current zoom level
+            crate::graph::lod::update_lod_visibility(
+                &mut s.graph.nodes,
+                lod_scale,
+                &seed_id,
+            );
+            // Sync temporal range from signals
+            s.graph.temporal_min_year = temporal_min.get_untracked();
+            s.graph.temporal_max_year = temporal_max.get_untracked();
+            let t_min = s.graph.temporal_min_year;
+            let t_max = s.graph.temporal_max_year;
+            // Update temporal visibility
+            crate::graph::lod::update_temporal_visibility(
+                &mut s.graph.nodes,
+                t_min,
+                t_max,
+            );
+            // Compute visible count (captured before render for signal update)
+            vis_count = crate::graph::lod::compute_visible_count(&s.graph.nodes);
+
             // Render
             let graph = &s.graph;
             let viewport = &s.viewport;
             renderer.borrow_mut().draw(graph, viewport);
         }
+
+        // Update visible count signal outside the state borrow (avoids RefCell conflicts)
+        visible_count.set(vis_count);
 
         // Schedule next frame
         let window = web_sys::window().expect("no window");
@@ -441,7 +499,7 @@ fn attach_event_listeners(
     state: Rc<RefCell<RenderState>>,
     _bridge: PinnedBridge,
     tooltip_signal: RwSignal<Option<TooltipData>>,
-    selected_paper: RwSignal<Option<String>>,
+    selected_paper: RwSignal<Option<DrawerOpenRequest>>,
 ) {
     let canvas_el = canvas.clone();
 
@@ -569,7 +627,10 @@ fn attach_event_listeners(
                             let paper_id = s.graph.nodes[node_idx].id.clone();
                             s.graph.selected_node = Some(node_idx);
                             drop(s);
-                            selected_paper.set(Some(paper_id));
+                            selected_paper.set(Some(DrawerOpenRequest {
+                                paper_id,
+                                ..Default::default()
+                            }));
                             return;
                         }
                     }

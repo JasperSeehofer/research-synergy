@@ -2,7 +2,7 @@ use leptos::prelude::*;
 use leptos::web_sys;
 use resyn_core::datamodels::paper::Paper;
 
-use crate::app::SelectedPaper;
+use crate::app::{DrawerOpenRequest, SelectedPaper};
 use crate::server_fns::papers::get_papers;
 
 /// Sortable columns for the papers table.
@@ -108,7 +108,7 @@ pub fn PapersPanel() -> impl IntoView {
                                         papers=papers
                                         sort_col=sort_col
                                         sort_dir=sort_dir
-                                        on_row_click=move |id: String| selected_paper.set(Some(id))
+                                        on_row_click=move |id: String| selected_paper.set(Some(DrawerOpenRequest { paper_id: id, ..Default::default() }))
                                     />
                                 </tbody>
                             </table>

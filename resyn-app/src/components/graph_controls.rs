@@ -7,7 +7,14 @@ pub fn GraphControls(
     simulation_running: RwSignal<bool>,
     zoom_in_count: RwSignal<u32>,
     zoom_out_count: RwSignal<u32>,
+    visible_count: RwSignal<(usize, usize)>,
+    temporal_min: RwSignal<u32>,
+    temporal_max: RwSignal<u32>,
+    year_bounds: RwSignal<(u32, u32)>,
 ) -> impl IntoView {
+    let _ = temporal_min;
+    let _ = temporal_max;
+    let _ = year_bounds;
     view! {
         <div class="graph-controls-overlay">
             // Edge filter group
@@ -55,6 +62,62 @@ pub fn GraphControls(
                     "\u{2212}"
                 </button>
             </div>
+
+            // Node count indicator group
+            <div class="graph-controls-group">
+                <span class="node-count-indicator">
+                    {move || {
+                        let (v, t) = visible_count.get();
+                        format!("Showing {} of {} nodes", v, t)
+                    }}
+                </span>
+            </div>
+        </div>
+    }
+}
+
+#[component]
+pub fn TemporalSlider(
+    temporal_min: RwSignal<u32>,
+    temporal_max: RwSignal<u32>,
+    year_bounds: RwSignal<(u32, u32)>,
+) -> impl IntoView {
+    view! {
+        <div class="temporal-slider-row">
+            <label class="text-label">"Year range"</label>
+            <div class="dual-range-wrapper">
+                <input
+                    type="range"
+                    class="temporal-range temporal-range-min"
+                    min=move || year_bounds.get().0
+                    max=move || year_bounds.get().1
+                    prop:value=move || temporal_min.get()
+                    on:input=move |e| {
+                        use leptos::wasm_bindgen::JsCast;
+                        let val = e.target().unwrap()
+                            .dyn_into::<web_sys::HtmlInputElement>().unwrap()
+                            .value_as_number() as u32;
+                        temporal_min.set(val);
+                    }
+                />
+                <input
+                    type="range"
+                    class="temporal-range temporal-range-max"
+                    min=move || year_bounds.get().0
+                    max=move || year_bounds.get().1
+                    prop:value=move || temporal_max.get()
+                    on:input=move |e| {
+                        use leptos::wasm_bindgen::JsCast;
+                        let val = e.target().unwrap()
+                            .dyn_into::<web_sys::HtmlInputElement>().unwrap()
+                            .value_as_number() as u32;
+                        temporal_max.set(val);
+                    }
+                />
+            </div>
+            <span class="text-label">
+                {move || format!("{} \u{2013} {}", temporal_min.get(), temporal_max.get())}
+            </span>
         </div>
     }
 }

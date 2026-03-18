@@ -88,14 +88,15 @@ impl Renderer for Canvas2DRenderer {
                 None => continue,
             };
 
+            let from_vis = from.lod_visible && from.temporal_visible;
+            let to_vis = to.lod_visible && to.temporal_visible;
+            let edge_vis_alpha = if from_vis && to_vis { 1.0 } else { 0.05 };
+
             self.ctx.save();
             self.ctx.set_stroke_style_str("#404040");
             self.ctx.set_line_width(1.0);
-            if edge_both_dimmed(edge) {
-                self.ctx.set_global_alpha(0.1);
-            } else {
-                self.ctx.set_global_alpha(0.35);
-            }
+            let dim_alpha = if edge_both_dimmed(edge) { 0.1 } else { 0.35 };
+            self.ctx.set_global_alpha(dim_alpha * edge_vis_alpha);
             self.ctx.begin_path();
             self.ctx.move_to(from.x, from.y);
             self.ctx.line_to(to.x, to.y);
@@ -210,6 +211,15 @@ impl Renderer for Canvas2DRenderer {
             let is_hovered = state.hovered_node == Some(idx);
             let is_selected = state.selected_node == Some(idx);
 
+            let lod_alpha = if node.lod_visible { 1.0 } else { 0.03 };
+            let time_alpha = if node.temporal_visible { 1.0 } else { 0.10 };
+            let combined_alpha = lod_alpha * time_alpha;
+            if combined_alpha < 0.01 {
+                self.ctx.restore();
+                continue; // Skip drawing effectively invisible nodes
+            }
+            self.ctx.set_global_alpha(combined_alpha * (if dimmed { 0.5 } else { 1.0 }));
+
             let fill_color = if dimmed && !is_selected && !is_hovered {
                 "#2a3a4f"
             } else if is_hovered || is_selected {
@@ -245,12 +255,15 @@ impl Renderer for Canvas2DRenderer {
             self.ctx.restore();
         }
 
-        // 9. Draw labels (only if viewport.scale > 0.6)
+        // 9. Draw labels (only if viewport.scale > 0.6, and only for LOD+temporal visible nodes)
         if viewport.scale > 0.6 {
             self.ctx.set_font("11px monospace");
             self.ctx.set_fill_style_str("#cccccc");
 
             for node in &state.nodes {
+                if !node.lod_visible || !node.temporal_visible {
+                    continue;
+                }
                 let label = node.label();
                 let metrics = self.ctx.measure_text(&label).unwrap();
                 let text_half_width = metrics.width() / 2.0;

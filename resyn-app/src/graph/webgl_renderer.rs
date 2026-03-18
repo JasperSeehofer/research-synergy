@@ -209,7 +209,20 @@ impl Renderer for WebGL2Renderer {
             let both_dimmed =
                 neighbor_set.is_some() && is_dimmed(edge.from_idx) && is_dimmed(edge.to_idx);
 
-            let (r, g, b, alpha) = edge_color(edge.edge_type.clone(), both_dimmed);
+            let (r, g, b, base_alpha) = edge_color(edge.edge_type.clone(), both_dimmed);
+
+            let from_vis = state
+                .nodes
+                .get(edge.from_idx)
+                .map(|n| n.lod_visible && n.temporal_visible)
+                .unwrap_or(true);
+            let to_vis = state
+                .nodes
+                .get(edge.to_idx)
+                .map(|n| n.lod_visible && n.temporal_visible)
+                .unwrap_or(true);
+            let edge_vis_alpha = if from_vis && to_vis { 1.0_f32 } else { 0.05_f32 };
+            let alpha = base_alpha * edge_vis_alpha;
 
             // 2 vertices per line: from, to
             push_edge_vertex(&mut edge_data, from.x as f32, from.y as f32, r, g, b, alpha);
@@ -271,7 +284,10 @@ impl Renderer for WebGL2Renderer {
                 hex_to_rgb("#4a9eff")
             };
 
-            let alpha = if dimmed && !is_selected && !is_hovered { 0.5_f32 } else { 1.0_f32 };
+            let base_alpha = if dimmed && !is_selected && !is_hovered { 0.5_f32 } else { 1.0_f32 };
+            let lod_alpha = if node.lod_visible { 1.0_f32 } else { 0.03_f32 };
+            let time_alpha = if node.temporal_visible { 1.0_f32 } else { 0.10_f32 };
+            let alpha = base_alpha * lod_alpha * time_alpha;
 
             instance_data.extend_from_slice(&[
                 node.x as f32,

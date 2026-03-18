@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
 status: completed
-stopped_at: "Checkpoint: Task 2 human-verify — browser verification of Phase 10 features at scale"
-last_updated: "2026-03-18T15:59:26.259Z"
-last_activity: "2026-03-18 — Plan 10-01 complete: Finding/Method provenance fields, section-aware LLM prompt, find_highlight_range, PaperDetail+GraphData DTO extensions"
+stopped_at: "Completed 10-03-PLAN.md"
+last_updated: "2026-03-18T17:45:00Z"
+last_activity: "2026-03-18 — Plan 10-03 complete: tabbed drawer (Overview/Source), SourceTabBody with snippet highlighting, gap card provenance click"
 progress:
   total_phases: 5
   completed_phases: 4
   total_plans: 23
-  completed_plans: 22
-  percent: 91
+  completed_plans: 23
+  percent: 100
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-15)
 ## Current Position
 
 Phase: 10 of 10 (Phase 10: Analysis UI Polish & Scale) — In Progress
-Plan: 1 of 4 in current phase (10-01 complete — retroactive, executed after 10-02)
-Status: Plan 10-01 complete — provenance fields on Finding/Method, section-aware LLM prompt, highlight utility, PaperDetail+GraphData DTO extensions
-Last activity: 2026-03-18 — Plan 10-01 complete: Finding/Method provenance fields, section-aware LLM prompt, find_highlight_range, PaperDetail+GraphData DTO extensions
+Plan: 3 of 4 in current phase (10-03 complete)
+Status: Plan 10-03 complete — tabbed drawer with Overview/Source tabs, SourceTabBody with snippet highlighting, gap card provenance click
+Last activity: 2026-03-18 — Plan 10-03 complete: tabbed drawer (Overview/Source), SourceTabBody with snippet highlighting, gap card provenance click
 
-Progress: [█████████░] 91% (v1.1 — 21 of 23 plans done)
+Progress: [██████████] 100% (v1.1 — 23 of 23 plans done)
 
 ## Accumulated Context
 
@@ -96,6 +96,9 @@ Progress: [█████████░] 91% (v1.1 — 21 of 23 plans done)
 - [10-02]: Nodes with unparseable/empty year default to temporal_visible=true — missing metadata stays visible, not hidden
 - [Phase 10-04]: vis_count captured as local before state borrow closes to avoid Leptos RefCell + RwSignal conflict
 - [Phase 10-04]: TemporalSlider positioned as absolute bottom bar via CSS (bottom: 0) to overlay canvas without layout shifts
+- [10-03]: DrawerTab RwSignal initialized from DrawerOpenRequest.initial_tab — resets to Overview on each new open request (natural reset via new signal creation in DrawerContent)
+- [10-03]: SourceSectionText extracted as a named component for conditional AnyView branching in Leptos view! macro
+- [10-03]: DrawerOpenRequest uses #[derive(Default)] with DrawerTab::Overview default — graph/papers pages use ..Default::default() for no-provenance opens
 
 ### Pending Todos
 
@@ -108,6 +111,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-18T15:59:26.251Z
-Stopped at: Checkpoint: Task 2 human-verify — browser verification of Phase 10 features at scale
-Resume file: None
+Last session: 2026-03-18T17:45:00Z
+Stopped at: Completed 10-03-PLAN.md
+Resume file: .planning/phases/10-analysis-ui-polish-scale/10-03-SUMMARY.md

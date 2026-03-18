@@ -1,6 +1,7 @@
 pub mod canvas_renderer;
 pub mod interaction;
 pub mod layout_state;
+pub mod lod;
 pub mod renderer;
 pub mod webgl_renderer;
 pub mod worker_bridge;

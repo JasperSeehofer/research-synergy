@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
-status: verifying
-stopped_at: Phase 10 context gathered
-last_updated: "2026-03-18T14:34:03.254Z"
-last_activity: "2026-03-18 — Plan 09-05 complete: WebGL2Renderer, instanced drawing, auto-renderer selection, browser verification (17/17 checks passed), 7 bugs auto-fixed"
+status: in-progress
+stopped_at: Completed 10-02-PLAN.md
+last_updated: "2026-03-18T15:26:00Z"
+last_activity: "2026-03-18 — Plan 10-02 complete: LOD/temporal visibility state (NodeState/GraphState extensions + lod.rs module, 27 tests)"
 progress:
   total_phases: 5
   completed_phases: 4
-  total_plans: 19
-  completed_plans: 19
-  percent: 100
+  total_plans: 23
+  completed_plans: 20
+  percent: 87
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-15)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Phase 9 — Graph Renderer Canvas to WebGL (In Progress)
+**Current focus:** Phase 10 — Analysis UI Polish & Scale (In Progress)
 
 ## Current Position
 
-Phase: 9 of 10 (Phase 9: Graph Renderer Canvas to WebGL) — In Progress
-Plan: 5 of 5 in current phase (09-05 complete — phase complete)
-Status: Phase 9 complete — WebGL2Renderer, make_renderer factory, browser-verified full graph feature set
-Last activity: 2026-03-18 — Plan 09-05 complete: WebGL2Renderer, instanced drawing, auto-renderer selection, browser verification (17/17 checks passed), 7 bugs auto-fixed
+Phase: 10 of 10 (Phase 10: Analysis UI Polish & Scale) — In Progress
+Plan: 2 of 4 in current phase (10-02 complete)
+Status: Plan 10-02 complete — LOD/temporal visibility state fields and pure-logic computation module
+Last activity: 2026-03-18 — Plan 10-02 complete: LOD/temporal visibility state (NodeState/GraphState extensions + lod.rs module, 27 tests)
 
-Progress: [██████████] 100% (v1.1 — 19 of 19 plans done)
+Progress: [█████████░] 87% (v1.1 — 20 of 23 plans done)
 
 ## Accumulated Context
 
@@ -88,6 +88,9 @@ Progress: [██████████] 100% (v1.1 — 19 of 19 plans done)
 - [Phase 09-05]: Text labels rendered via Canvas 2D overlay stacked via CSS absolute positioning over WebGL canvas — WebGL has no native text
 - [Phase 09-05]: ResizeObserver + DPR-aware canvas sizing — canvas logical/physical size must track devicePixelRatio for crisp rendering
 - [Phase 09-05]: Worker crate needs bin entry point (src/bin/resyn_worker.rs) and no cdylib — Trunk spawns it as a WASM worker module via bin target
+- [10-02]: LOD thresholds: LOD_LEVEL_0=0.3 (depth<=1 only), LOD_LEVEL_1=0.6 (+citations>=50), LOD_LEVEL_2=1.0 (+depth<=2 or citations>=10); above 1.0 = all visible
+- [10-02]: Visibility flags (lod_visible, temporal_visible) on NodeState — renderer reads flags, lod.rs update functions mutate them; keeps renderer logic simple
+- [10-02]: Nodes with unparseable/empty year default to temporal_visible=true — missing metadata stays visible, not hidden
 
 ### Pending Todos
 
@@ -100,6 +103,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-18T14:34:03.243Z
-Stopped at: Phase 10 context gathered
-Resume file: .planning/phases/10-analysis-ui-polish-scale/10-CONTEXT.md
+Last session: 2026-03-18T15:26:00Z
+Stopped at: Completed 10-02-PLAN.md
+Resume file: .planning/phases/10-analysis-ui-polish-scale/10-02-SUMMARY.md

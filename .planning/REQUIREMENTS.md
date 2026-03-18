@@ -46,8 +46,8 @@ Requirements for the Scale & Surface milestone. Each maps to roadmap phases.
 ### Scale & Polish
 
 - [ ] **SCALE-01**: Real test runs at depth 2, 3, 5 with performance profiling
-- [ ] **SCALE-02**: Node clustering / level-of-detail for 1000+ node graphs
-- [ ] **SCALE-03**: Temporal filtering by publication year
+- [x] **SCALE-02**: Node clustering / level-of-detail for 1000+ node graphs
+- [x] **SCALE-03**: Temporal filtering by publication year
 
 ## Future Requirements
 
@@ -102,8 +102,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUI-04 | Phase 10 | Pending |
 | DEBT-04 | Phase 10 | Pending |
 | SCALE-01 | Phase 10 | Pending |
-| SCALE-02 | Phase 10 | Pending |
-| SCALE-03 | Phase 10 | Pending |
+| SCALE-02 | Phase 10 | Complete |
+| SCALE-03 | Phase 10 | Complete |
 
 **Coverage:**
 - v1.1 requirements: 24 total

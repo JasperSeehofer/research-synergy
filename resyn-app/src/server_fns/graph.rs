@@ -55,9 +55,31 @@ pub async fn get_graph_data() -> Result<GraphData, ServerFnError> {
 
         let graph = create_graph_from_papers(&papers);
 
+        // Compute BFS depths from the seed node (first node in the graph = crawl root).
+        let seed_idx = graph.node_indices().next();
+        let mut depths: std::collections::HashMap<resyn_core::petgraph::graph::NodeIndex, u32> =
+            std::collections::HashMap::new();
+        if let Some(seed) = seed_idx {
+            use std::collections::VecDeque;
+            let mut queue = VecDeque::new();
+            queue.push_back((seed, 0u32));
+            depths.insert(seed, 0);
+            while let Some((node, depth)) = queue.pop_front() {
+                for neighbor in graph.neighbors(node) {
+                    if !depths.contains_key(&neighbor) {
+                        depths.insert(neighbor, depth + 1);
+                        queue.push_back((neighbor, depth + 1));
+                    }
+                }
+            }
+        }
+
+        let seed_paper_id = seed_idx.map(|si| graph[si].id.clone());
+
         let nodes: Vec<GraphNode> = graph
-            .node_weights()
-            .map(|p| {
+            .node_indices()
+            .map(|ni| {
+                let p = &graph[ni];
                 let year = if p.published.len() >= 4 {
                     p.published[..4].to_string()
                 } else {
@@ -70,7 +92,7 @@ pub async fn get_graph_data() -> Result<GraphData, ServerFnError> {
                     year,
                     citation_count: p.citation_count,
                     abstract_text: p.summary.clone(),
-                    bfs_depth: None,
+                    bfs_depth: depths.get(&ni).copied(),
                 }
             })
             .collect();
@@ -114,7 +136,11 @@ pub async fn get_graph_data() -> Result<GraphData, ServerFnError> {
             }
         }
 
-        Ok(GraphData { nodes, edges, seed_paper_id: None })
+        Ok(GraphData {
+            nodes,
+            edges,
+            seed_paper_id,
+        })
     }
     #[cfg(not(feature = "ssr"))]
     unreachable!()

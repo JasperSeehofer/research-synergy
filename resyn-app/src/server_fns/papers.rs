@@ -17,6 +17,7 @@ pub struct DashboardStats {
 pub struct PaperDetail {
     pub paper: Paper,
     pub annotation: Option<resyn_core::datamodels::llm_annotation::LlmAnnotation>,
+    pub extraction: Option<resyn_core::datamodels::extraction::TextExtractionResult>,
 }
 
 /// Return all papers in the database.
@@ -42,7 +43,9 @@ pub async fn get_papers() -> Result<Vec<Paper>, ServerFnError> {
 pub async fn get_paper_detail(id: String) -> Result<PaperDetail, ServerFnError> {
     #[cfg(feature = "ssr")]
     {
-        use resyn_core::database::queries::{LlmAnnotationRepository, PaperRepository};
+        use resyn_core::database::queries::{
+            ExtractionRepository, LlmAnnotationRepository, PaperRepository,
+        };
         let db = use_context::<std::sync::Arc<resyn_core::database::client::Db>>()
             .ok_or_else(|| ServerFnError::new("Database not available"))?;
         let paper = PaperRepository::new(&db)
@@ -55,7 +58,15 @@ pub async fn get_paper_detail(id: String) -> Result<PaperDetail, ServerFnError> 
             .await
             .map_err(|e| ServerFnError::new(e.to_string()))?;
         let annotation = annotations.into_iter().find(|a| a.arxiv_id == id);
-        Ok(PaperDetail { paper, annotation })
+        let extraction = ExtractionRepository::new(&db)
+            .get_extraction(&id)
+            .await
+            .map_err(|e| ServerFnError::new(e.to_string()))?;
+        Ok(PaperDetail {
+            paper,
+            annotation,
+            extraction,
+        })
     }
     #[cfg(not(feature = "ssr"))]
     unreachable!()

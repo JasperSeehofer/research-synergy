@@ -215,6 +215,7 @@ mod tests {
                 .map(|(text, strength)| Finding {
                     text: text.to_string(),
                     strength: strength.to_string(),
+                    ..Default::default()
                 })
                 .collect(),
             open_problems: vec![],

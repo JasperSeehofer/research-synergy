@@ -160,6 +160,7 @@ mod tests {
         let findings = vec![Finding {
             text: "A finding".to_string(),
             strength: "strong_evidence".to_string(),
+            ..Default::default()
         }];
         let radius = finding_strength_radius(&findings, BASE_RADIUS);
         assert!(
@@ -174,6 +175,7 @@ mod tests {
         let findings = vec![Finding {
             text: "A finding".to_string(),
             strength: "moderate_evidence".to_string(),
+            ..Default::default()
         }];
         let radius = finding_strength_radius(&findings, BASE_RADIUS);
         assert!(
@@ -188,6 +190,7 @@ mod tests {
         let findings = vec![Finding {
             text: "A finding".to_string(),
             strength: "weak_evidence".to_string(),
+            ..Default::default()
         }];
         let radius = finding_strength_radius(&findings, BASE_RADIUS);
         assert!(
@@ -202,6 +205,7 @@ mod tests {
         let findings = vec![Finding {
             text: "A finding".to_string(),
             strength: "speculative".to_string(),
+            ..Default::default()
         }];
         let radius = finding_strength_radius(&findings, BASE_RADIUS);
         assert!(
@@ -217,14 +221,17 @@ mod tests {
             Finding {
                 text: "weak".to_string(),
                 strength: "weak_evidence".to_string(),
+                ..Default::default()
             },
             Finding {
                 text: "strong".to_string(),
                 strength: "strong_evidence".to_string(),
+                ..Default::default()
             },
             Finding {
                 text: "moderate".to_string(),
                 strength: "moderate_evidence".to_string(),
+                ..Default::default()
             },
         ];
         let radius = finding_strength_radius(&findings, BASE_RADIUS);
@@ -240,6 +247,7 @@ mod tests {
         let findings = vec![Finding {
             text: "Finding".to_string(),
             strength: "moderate_evidence".to_string(),
+            ..Default::default()
         }];
         let custom_base = 10.0_f32;
         let radius = finding_strength_radius(&findings, custom_base);

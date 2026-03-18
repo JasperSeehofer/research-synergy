@@ -1113,10 +1113,12 @@ mod tests {
             methods: vec![Method {
                 name: "variational".to_string(),
                 category: "analytical".to_string(),
+                ..Default::default()
             }],
             findings: vec![Finding {
                 text: "Energy gap non-zero".to_string(),
                 strength: "strong_evidence".to_string(),
+                ..Default::default()
             }],
             open_problems: vec!["Extension to 3D".to_string()],
             provider: "noop".to_string(),

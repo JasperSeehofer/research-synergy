@@ -114,11 +114,13 @@ mod tests {
                 .map(|(name, cat)| Method {
                     name: name.to_string(),
                     category: cat.to_string(),
+                    ..Default::default()
                 })
                 .collect(),
             findings: vec![Finding {
                 text: "some finding".to_string(),
                 strength: "strong".to_string(),
+                ..Default::default()
             }],
             open_problems: open_problems.into_iter().map(String::from).collect(),
             provider: "noop".to_string(),

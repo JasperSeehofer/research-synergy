@@ -4,12 +4,20 @@ use serde::{Deserialize, Serialize};
 pub struct Finding {
     pub text: String,
     pub strength: String,
+    #[serde(default)]
+    pub source_section: Option<String>,
+    #[serde(default)]
+    pub source_snippet: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct Method {
     pub name: String,
     pub category: String,
+    #[serde(default)]
+    pub source_section: Option<String>,
+    #[serde(default)]
+    pub source_snippet: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
@@ -36,10 +44,12 @@ mod tests {
             methods: vec![Method {
                 name: "variational method".to_string(),
                 category: "analytical".to_string(),
+                ..Default::default()
             }],
             findings: vec![Finding {
                 text: "Energy gap is non-zero".to_string(),
                 strength: "strong_evidence".to_string(),
+                ..Default::default()
             }],
             open_problems: vec!["Extension to 3D case".to_string()],
             provider: "noop".to_string(),
@@ -68,6 +78,7 @@ mod tests {
         let f = Finding {
             text: "Some finding".to_string(),
             strength: "moderate_evidence".to_string(),
+            ..Default::default()
         };
         let json = serde_json::to_string(&f).unwrap();
         let decoded: Finding = serde_json::from_str(&json).unwrap();
@@ -80,11 +91,50 @@ mod tests {
         let m = Method {
             name: "Monte Carlo".to_string(),
             category: "computational".to_string(),
+            ..Default::default()
         };
         let json = serde_json::to_string(&m).unwrap();
         let decoded: Method = serde_json::from_str(&json).unwrap();
         assert_eq!(decoded.name, m.name);
         assert_eq!(decoded.category, m.category);
+    }
+
+    #[test]
+    fn test_finding_with_provenance_fields_serializes() {
+        let f = Finding {
+            text: "Result found".to_string(),
+            strength: "strong_evidence".to_string(),
+            source_section: Some("results".to_string()),
+            source_snippet: Some("We found that the gap is non-zero.".to_string()),
+        };
+        let json = serde_json::to_string(&f).unwrap();
+        assert!(json.contains("source_section"), "JSON must contain source_section");
+        assert!(json.contains("source_snippet"), "JSON must contain source_snippet");
+        assert!(json.contains("results"), "JSON must contain section name");
+    }
+
+    #[test]
+    fn test_finding_backward_compat_no_provenance_fields() {
+        // Old JSON without source_section/source_snippet should deserialize with None values.
+        let old_json = r#"{"text":"Some finding","strength":"moderate_evidence"}"#;
+        let f: Finding = serde_json::from_str(old_json).unwrap();
+        assert_eq!(f.text, "Some finding");
+        assert!(f.source_section.is_none(), "source_section should be None for old records");
+        assert!(f.source_snippet.is_none(), "source_snippet should be None for old records");
+    }
+
+    #[test]
+    fn test_method_with_provenance_round_trips() {
+        let m = Method {
+            name: "Monte Carlo".to_string(),
+            category: "computational".to_string(),
+            source_section: Some("methods".to_string()),
+            source_snippet: Some("We apply Monte Carlo sampling.".to_string()),
+        };
+        let json = serde_json::to_string(&m).unwrap();
+        let decoded: Method = serde_json::from_str(&json).unwrap();
+        assert_eq!(decoded.source_section, Some("methods".to_string()));
+        assert_eq!(decoded.source_snippet, Some("We apply Monte Carlo sampling.".to_string()));
     }
 
     #[test]

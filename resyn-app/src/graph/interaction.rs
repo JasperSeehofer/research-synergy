@@ -94,8 +94,6 @@ mod tests {
             authors: vec![],
             x,
             y,
-            vx: 0.0,
-            vy: 0.0,
             radius,
             pinned: false,
         }
@@ -116,7 +114,7 @@ mod tests {
 
     #[test]
     fn test_screen_to_world_at_center() {
-        let vp = Viewport { offset_x: 400.0, offset_y: 300.0, scale: 1.0 };
+        let vp = Viewport { offset_x: 400.0, offset_y: 300.0, scale: 1.0, css_width: 800.0, css_height: 600.0 };
         let (wx, wy) = vp.screen_to_world(400.0, 300.0);
         assert!((wx).abs() < 1e-10, "expected 0, got {wx}");
         assert!((wy).abs() < 1e-10, "expected 0, got {wy}");
@@ -124,7 +122,7 @@ mod tests {
 
     #[test]
     fn test_screen_to_world_scale2() {
-        let vp = Viewport { offset_x: 400.0, offset_y: 300.0, scale: 2.0 };
+        let vp = Viewport { offset_x: 400.0, offset_y: 300.0, scale: 2.0, css_width: 800.0, css_height: 600.0 };
         let (wx, wy) = vp.screen_to_world(500.0, 400.0);
         assert!((wx - 50.0).abs() < 1e-10, "expected 50, got {wx}");
         assert!((wy - 50.0).abs() < 1e-10, "expected 50, got {wy}");
@@ -132,7 +130,7 @@ mod tests {
 
     #[test]
     fn test_world_to_screen_round_trip() {
-        let vp = Viewport { offset_x: 200.0, offset_y: 150.0, scale: 0.75 };
+        let vp = Viewport { offset_x: 200.0, offset_y: 150.0, scale: 0.75, css_width: 400.0, css_height: 300.0 };
         for (wx, wy) in [
             (0.0, 0.0),
             (100.0, -50.0),
@@ -197,7 +195,7 @@ mod tests {
 
     #[test]
     fn test_zoom_toward_cursor_preserves_world_point() {
-        let mut vp = Viewport { offset_x: 400.0, offset_y: 300.0, scale: 1.0 };
+        let mut vp = Viewport { offset_x: 400.0, offset_y: 300.0, scale: 1.0, css_width: 800.0, css_height: 600.0 };
         let (cx, cy) = (500.0, 400.0);
 
         // World coords under cursor before zoom
@@ -220,14 +218,14 @@ mod tests {
 
     #[test]
     fn test_zoom_clamps_scale() {
-        let mut vp = Viewport { offset_x: 400.0, offset_y: 300.0, scale: 3.9 };
+        let mut vp = Viewport { offset_x: 400.0, offset_y: 300.0, scale: 3.9, css_width: 800.0, css_height: 600.0 };
         // Zoom in repeatedly — should clamp at 4.0
         for _ in 0..20 {
             zoom_toward_cursor(&mut vp, 400.0, 300.0, -1.0);
         }
         assert!(vp.scale <= 4.0, "scale exceeded 4.0: {}", vp.scale);
 
-        let mut vp2 = Viewport { offset_x: 400.0, offset_y: 300.0, scale: 0.15 };
+        let mut vp2 = Viewport { offset_x: 400.0, offset_y: 300.0, scale: 0.15, css_width: 800.0, css_height: 600.0 };
         for _ in 0..20 {
             zoom_toward_cursor(&mut vp2, 400.0, 300.0, 1.0);
         }

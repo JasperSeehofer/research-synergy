@@ -93,8 +93,12 @@ pub fn simulation_tick(nodes: &mut [NodeData], vel: &mut [(f64, f64)], edges: &[
 /// Run `ticks` iterations of the force simulation and return positions + convergence flag.
 pub fn run_ticks(input: &LayoutInput) -> LayoutOutput {
     let mut nodes: Vec<NodeData> = input.nodes.clone();
-    let mut vel: Vec<(f64, f64)> = vec![(0.0, 0.0); nodes.len()];
-    let mut alpha = 1.0_f64;
+    let mut vel: Vec<(f64, f64)> = input
+        .nodes
+        .iter()
+        .map(|nd| (nd.vx, nd.vy))
+        .collect();
+    let mut alpha = input.alpha;
     let mut converged = false;
 
     for _ in 0..input.ticks {
@@ -105,7 +109,8 @@ pub fn run_ticks(input: &LayoutInput) -> LayoutOutput {
     }
 
     let positions = nodes.iter().map(|nd| (nd.x, nd.y)).collect();
-    LayoutOutput { positions, converged }
+    let velocities = vel;
+    LayoutOutput { positions, velocities, alpha, converged }
 }
 
 #[cfg(test)]
@@ -114,7 +119,7 @@ mod tests {
     use crate::NodeData;
 
     fn make_node(x: f64, y: f64) -> NodeData {
-        NodeData { x, y, mass: 1.0, pinned: false }
+        NodeData { x, y, vx: 0.0, vy: 0.0, mass: 1.0, pinned: false }
     }
 
     fn make_vel(n: usize) -> Vec<(f64, f64)> {
@@ -124,8 +129,8 @@ mod tests {
     #[test]
     fn test_simulation_tick_pinned_nodes_no_movement() {
         let mut nodes = vec![
-            NodeData { x: 0.0, y: 0.0, mass: 1.0, pinned: true },
-            NodeData { x: 50.0, y: 50.0, mass: 1.0, pinned: true },
+            NodeData { x: 0.0, y: 0.0, vx: 0.0, vy: 0.0, mass: 1.0, pinned: true },
+            NodeData { x: 50.0, y: 50.0, vx: 0.0, vy: 0.0, mass: 1.0, pinned: true },
         ];
         let mut vel = make_vel(2);
         let edges = vec![(0, 1)];
@@ -163,6 +168,7 @@ mod tests {
             nodes: node_data,
             edges,
             ticks: 500,
+            alpha: 1.0,
             width: 800.0,
             height: 600.0,
         };
@@ -177,6 +183,7 @@ mod tests {
             nodes: vec![make_node(0.0, 0.0), make_node(500.0, 0.0)],
             edges: vec![(0, 1)],
             ticks: 50,
+            alpha: 1.0,
             width: 1000.0,
             height: 1000.0,
         };
@@ -200,6 +207,7 @@ mod tests {
             nodes: vec![make_node(1000.0, 1000.0)],
             edges: vec![],
             ticks: 10,
+            alpha: 1.0,
             width: 800.0,
             height: 600.0,
         };
@@ -238,6 +246,7 @@ mod tests {
             nodes: vec![make_node(0.0, 0.0), make_node(100.0, 0.0), make_node(50.0, 100.0)],
             edges: vec![(0, 1), (1, 2)],
             ticks: 10,
+            alpha: 1.0,
             width: 800.0,
             height: 600.0,
         };
@@ -252,6 +261,7 @@ mod tests {
             nodes: vec![make_node(0.0, 0.0), make_node(1.0, 0.0)],
             edges: vec![],
             ticks: 5,
+            alpha: 1.0,
             width: 800.0,
             height: 600.0,
         };

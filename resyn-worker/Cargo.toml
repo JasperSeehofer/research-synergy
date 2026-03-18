@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [lib]
-crate-type = ["cdylib", "rlib"]
+crate-type = ["rlib"]
 
 [dependencies]
 serde = { workspace = true }
@@ -12,3 +12,4 @@ serde_json = { workspace = true }
 wasm-bindgen = "0.2"
 gloo-worker = { version = "0.5", features = ["futures"] }
 futures = { workspace = true }
+console_error_panic_hook = "0.1"

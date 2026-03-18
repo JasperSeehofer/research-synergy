@@ -29,13 +29,13 @@ pub struct TooltipData {
 }
 
 // ── Shared render state (outside Leptos reactive graph) ─────────────────────
-// Renderer is kept separate (in renderer_rc) so we can mutably borrow it
-// while immutably borrowing GraphState and Viewport in the same frame.
 
 struct RenderState {
     graph: GraphState,
     viewport: Viewport,
     interaction: InteractionState,
+    /// Whether the node under mousedown was already pinned before this interaction
+    was_already_pinned: bool,
     /// Canvas-space position at mousedown — used to distinguish click from drag
     drag_start_x: f64,
     drag_start_y: f64,
@@ -64,6 +64,10 @@ pub fn GraphPage() -> impl IntoView {
     let show_bridges: RwSignal<bool> = RwSignal::new(true);
     let simulation_running: RwSignal<bool> = RwSignal::new(true);
 
+    // Zoom button signals: increment a counter to trigger zoom from RAF loop
+    let zoom_in_count: RwSignal<u32> = RwSignal::new(0);
+    let zoom_out_count: RwSignal<u32> = RwSignal::new(0);
+
     // Tooltip overlay signal
     let tooltip_signal: RwSignal<Option<TooltipData>> = RwSignal::new(None);
 
@@ -83,13 +87,14 @@ pub fn GraphPage() -> impl IntoView {
             return;
         };
 
-        // Size canvas to its CSS container
-        let width = canvas.offset_width() as u32;
-        let height = canvas.offset_height() as u32;
-        canvas.set_width(width);
-        canvas.set_height(height);
+        // Size canvas to its CSS container (accounting for device pixel ratio)
+        let dpr = web_sys::window().unwrap().device_pixel_ratio();
+        let css_width = canvas.offset_width() as f64;
+        let css_height = canvas.offset_height() as f64;
+        canvas.set_width((css_width * dpr) as u32);
+        canvas.set_height((css_height * dpr) as u32);
 
-        let viewport = Viewport::new(width as f64, height as f64);
+        let viewport = Viewport::new(css_width, css_height);
         let mut graph_state = GraphState::from_graph_data(data);
         let renderer = make_renderer(&canvas, graph_state.nodes.len());
         // Sync initial toggle values from Leptos signals
@@ -101,18 +106,14 @@ pub fn GraphPage() -> impl IntoView {
             graph: graph_state,
             viewport,
             interaction: InteractionState::Idle,
+            was_already_pinned: false,
             drag_start_x: 0.0,
             drag_start_y: 0.0,
         }));
 
-        // Renderer is stored separately from RenderState to avoid borrow conflicts
-        // when calling draw(&graph, &viewport) while mutably borrowing renderer.
-        // make_renderer already returns Box<dyn Renderer>, so no extra boxing needed.
         let renderer_rc: Rc<RefCell<Box<dyn Renderer>>> = Rc::new(RefCell::new(renderer));
 
-        // Create worker bridge and pin it for Stream polling in the RAF loop.
-        // ReactorBridge<ForceLayoutWorker> implements Stream<Item = LayoutOutput>.
-        // We pin it in a Box so we can poll it with a noop waker each frame.
+        // Create worker bridge
         let bridge = WorkerBridge::new();
         let pinned_bridge: Rc<RefCell<std::pin::Pin<Box<gloo_worker::reactor::ReactorBridge<resyn_worker::ForceLayoutWorker>>>>> =
             Rc::new(RefCell::new(Box::pin(bridge.bridge)));
@@ -120,10 +121,12 @@ pub fn GraphPage() -> impl IntoView {
         // Send initial layout request
         {
             let s = state.borrow();
-            let input = build_layout_input(&s.graph, width as f64, height as f64);
-            // Use send_input directly on the pinned bridge (it takes &self)
+            let input = build_layout_input(&s.graph, css_width, css_height);
             pinned_bridge.borrow().as_ref().get_ref().send_input(input);
         }
+
+        // Set up ResizeObserver to handle canvas resize
+        setup_resize_observer(&canvas, state.clone(), renderer_rc.clone());
 
         // Attach event listeners to canvas
         attach_event_listeners(
@@ -132,8 +135,6 @@ pub fn GraphPage() -> impl IntoView {
             pinned_bridge.clone(),
             tooltip_signal,
             selected_paper,
-            width as f64,
-            height as f64,
         );
 
         // Start RAF render loop
@@ -144,8 +145,8 @@ pub fn GraphPage() -> impl IntoView {
             show_contradictions,
             show_bridges,
             simulation_running,
-            width as f64,
-            height as f64,
+            zoom_in_count,
+            zoom_out_count,
         );
 
         on_cleanup(move || handle.cancel());
@@ -178,6 +179,8 @@ pub fn GraphPage() -> impl IntoView {
                                 show_contradictions=show_contradictions
                                 show_bridges=show_bridges
                                 simulation_running=simulation_running
+                                zoom_in_count=zoom_in_count
+                                zoom_out_count=zoom_out_count
                             />
                             {move || tooltip_signal.get().map(|t| view! {
                                 <div
@@ -211,15 +214,18 @@ fn build_layout_input(graph: &GraphState, width: f64, height: f64) -> LayoutInpu
     let nodes: Vec<NodeData> = graph
         .nodes
         .iter()
-        .map(|n| NodeData { x: n.x, y: n.y, mass: 1.0, pinned: n.pinned })
+        .enumerate()
+        .map(|(i, n)| {
+            let (vx, vy) = graph.velocities.get(i).copied().unwrap_or((0.0, 0.0));
+            NodeData { x: n.x, y: n.y, vx, vy, mass: 1.0, pinned: n.pinned }
+        })
         .collect();
     let edges: Vec<(usize, usize)> =
         graph.edges.iter().map(|e| (e.from_idx, e.to_idx)).collect();
-    LayoutInput { nodes, edges, ticks: 1, width, height }
+    LayoutInput { nodes, edges, ticks: 1, alpha: graph.alpha, width, height }
 }
 
 /// Poll the bridge synchronously using a noop waker — drains any ready outputs.
-/// Returns the last received LayoutOutput if any were available.
 fn poll_bridge_sync(bridge: &mut std::pin::Pin<Box<gloo_worker::reactor::ReactorBridge<resyn_worker::ForceLayoutWorker>>>) -> Option<LayoutOutput> {
     let waker = futures::task::noop_waker_ref();
     let mut cx = Context::from_waker(waker);
@@ -235,6 +241,37 @@ fn poll_bridge_sync(bridge: &mut std::pin::Pin<Box<gloo_worker::reactor::Reactor
     last
 }
 
+// ── ResizeObserver setup ────────────────────────────────────────────────────
+
+fn setup_resize_observer(
+    canvas: &web_sys::HtmlCanvasElement,
+    state: Rc<RefCell<RenderState>>,
+    renderer: Rc<RefCell<Box<dyn Renderer>>>,
+) {
+    let canvas_clone = canvas.clone();
+    let cb = Closure::<dyn FnMut(js_sys::Array)>::new(move |_entries: js_sys::Array| {
+        let dpr = web_sys::window().unwrap().device_pixel_ratio();
+        let css_w = canvas_clone.offset_width() as f64;
+        let css_h = canvas_clone.offset_height() as f64;
+        let pixel_w = (css_w * dpr) as u32;
+        let pixel_h = (css_h * dpr) as u32;
+
+        if canvas_clone.width() != pixel_w || canvas_clone.height() != pixel_h {
+            canvas_clone.set_width(pixel_w);
+            canvas_clone.set_height(pixel_h);
+            renderer.borrow_mut().resize(pixel_w, pixel_h);
+            let mut s = state.borrow_mut();
+            s.viewport = Viewport::new(css_w, css_h);
+        }
+    });
+
+    let observer = web_sys::ResizeObserver::new(cb.as_ref().unchecked_ref()).unwrap();
+    observer.observe(canvas);
+    // Leak both to keep alive for page lifetime
+    std::mem::forget(cb);
+    std::mem::forget(observer);
+}
+
 // ── RAF render loop ──────────────────────────────────────────────────────────
 
 #[allow(clippy::too_many_arguments)]
@@ -245,13 +282,16 @@ fn start_render_loop(
     show_contradictions: RwSignal<bool>,
     show_bridges: RwSignal<bool>,
     simulation_running: RwSignal<bool>,
-    canvas_width: f64,
-    canvas_height: f64,
+    zoom_in_count: RwSignal<u32>,
+    zoom_out_count: RwSignal<u32>,
 ) -> RafHandle {
     let cancelled = Arc::new(AtomicBool::new(false));
     let cancelled_clone = cancelled.clone();
 
-    // Shared slot for the closure — required for self-referential RAF scheduling
+    // Track previous zoom counts to detect button presses
+    let prev_zoom_in = Rc::new(RefCell::new(0u32));
+    let prev_zoom_out = Rc::new(RefCell::new(0u32));
+
     let closure_slot: Rc<RefCell<Option<Closure<dyn FnMut()>>>> = Rc::new(RefCell::new(None));
     let closure_slot_inner = closure_slot.clone();
 
@@ -263,12 +303,30 @@ fn start_render_loop(
         {
             let mut s = state.borrow_mut();
 
-            // Sync Leptos toggle signals into graph state (untracked to avoid subscriptions)
+            // Sync Leptos toggle signals into graph state
             s.graph.show_contradictions = show_contradictions.get_untracked();
             s.graph.show_bridges = show_bridges.get_untracked();
             let sim_running = simulation_running.get_untracked();
 
-            // Drain any layout outputs from the worker bridge
+            // Handle zoom button presses
+            let zi = zoom_in_count.get_untracked();
+            let zo = zoom_out_count.get_untracked();
+            let pzi = *prev_zoom_in.borrow();
+            let pzo = *prev_zoom_out.borrow();
+            if zi != pzi {
+                *prev_zoom_in.borrow_mut() = zi;
+                let cx = s.viewport.width() / 2.0;
+                let cy = s.viewport.height() / 2.0;
+                interaction::zoom_toward_cursor(&mut s.viewport, cx, cy, -1.0);
+            }
+            if zo != pzo {
+                *prev_zoom_out.borrow_mut() = zo;
+                let cx = s.viewport.width() / 2.0;
+                let cy = s.viewport.height() / 2.0;
+                interaction::zoom_toward_cursor(&mut s.viewport, cx, cy, 1.0);
+            }
+
+            // Drain layout outputs from the worker bridge
             if let Some(output) = poll_bridge_sync(&mut bridge.borrow_mut()) {
                 for (i, (x, y)) in output.positions.into_iter().enumerate() {
                     if i < s.graph.nodes.len() && !s.graph.nodes[i].pinned {
@@ -276,19 +334,24 @@ fn start_render_loop(
                         s.graph.nodes[i].y = y;
                     }
                 }
+                // Persist velocities and alpha for next tick
+                s.graph.velocities = output.velocities;
+                s.graph.alpha = output.alpha;
                 if output.converged {
                     s.graph.simulation_running = false;
+                    simulation_running.set(false);
                 }
             }
 
-            // Send next layout tick to worker if simulation is running
-            if sim_running && !s.graph.nodes.is_empty() {
-                let input = build_layout_input(&s.graph, canvas_width, canvas_height);
+            // Send next layout tick if simulation is running
+            if sim_running && !s.graph.nodes.is_empty() && s.graph.alpha >= 0.001 {
+                let canvas_w = s.viewport.width();
+                let canvas_h = s.viewport.height();
+                let input = build_layout_input(&s.graph, canvas_w, canvas_h);
                 bridge.borrow().as_ref().get_ref().send_input(input);
             }
 
-            // Render this frame: renderer is borrowed separately to avoid
-            // conflict with the immutable borrows of graph and viewport
+            // Render
             let graph = &s.graph;
             let viewport = &s.viewport;
             renderer.borrow_mut().draw(graph, viewport);
@@ -304,7 +367,6 @@ fn start_render_loop(
 
     *closure_slot.borrow_mut() = Some(frame_closure);
 
-    // Kick off first frame
     let window = web_sys::window().expect("no window");
     {
         let slot = closure_slot.borrow();
@@ -314,10 +376,9 @@ fn start_render_loop(
     }
 
     RafHandle { cancelled }
-
 }
 
-// ── Tooltip text formatting per UI-SPEC copywriting contract ─────────────────
+// ── Tooltip text formatting ─────────────────────────────────────────────────
 
 fn node_tooltip(node: &crate::graph::layout_state::NodeState) -> String {
     let title = if node.title.len() > 60 {
@@ -365,8 +426,6 @@ fn canvas_coords(canvas: &web_sys::HtmlCanvasElement, event: &web_sys::MouseEven
     (sx, sy)
 }
 
-/// Closures must stay alive as long as event listeners are registered.
-/// We `forget` this struct so closures live for the page lifetime.
 struct EventListeners {
     _mousemove: Closure<dyn FnMut(web_sys::MouseEvent)>,
     _mousedown: Closure<dyn FnMut(web_sys::MouseEvent)>,
@@ -383,8 +442,6 @@ fn attach_event_listeners(
     _bridge: PinnedBridge,
     tooltip_signal: RwSignal<Option<TooltipData>>,
     selected_paper: RwSignal<Option<String>>,
-    canvas_width: f64,
-    canvas_height: f64,
 ) {
     let canvas_el = canvas.clone();
 
@@ -397,7 +454,6 @@ fn attach_event_listeners(
             let mut s = state_mm.borrow_mut();
             let (wx, wy) = s.viewport.screen_to_world(sx, sy);
 
-            // Handle active interaction (panning / node dragging) before hover detection
             match s.interaction.clone() {
                 InteractionState::Panning {
                     start_x,
@@ -463,6 +519,7 @@ fn attach_event_listeners(
             s.drag_start_y = sy;
 
             if let Some(node_idx) = interaction::find_node_at(&s.graph.nodes, wx, wy) {
+                s.was_already_pinned = s.graph.nodes[node_idx].pinned;
                 s.graph.nodes[node_idx].pinned = true;
                 let node = &s.graph.nodes[node_idx];
                 let offset_x = node.x - wx;
@@ -491,54 +548,64 @@ fn attach_event_listeners(
         Closure::<dyn FnMut(web_sys::MouseEvent)>::new(move |event: web_sys::MouseEvent| {
             let (sx, sy) = canvas_coords(&canvas_mu, &event);
             let mut s = state_mu.borrow_mut();
-            let (wx, wy) = s.viewport.screen_to_world(sx, sy);
 
             let dx = sx - s.drag_start_x;
             let dy = sy - s.drag_start_y;
-            let was_click = dx * dx + dy * dy < 4.0; // < 2px = click
+            let was_click = dx * dx + dy * dy < 9.0; // < 3px = click
 
             let prev_interaction = s.interaction.clone();
             s.interaction = InteractionState::Idle;
 
-            if was_click {
-                if let Some(node_idx) = interaction::find_node_at(&s.graph.nodes, wx, wy) {
-                    if matches!(prev_interaction, InteractionState::DraggingNode { .. }) {
-                        // Click on a dragged (pinned) node — unpin it
-                        s.graph.nodes[node_idx].pinned = false;
-                    } else {
-                        // Click on node — open paper drawer
-                        let paper_id = s.graph.nodes[node_idx].id.clone();
-                        s.graph.selected_node = Some(node_idx);
+            match prev_interaction {
+                InteractionState::DraggingNode { node_idx, .. } => {
+                    if was_click {
+                        // It was a click, not a drag
+                        if s.was_already_pinned {
+                            // Node was already pinned → unpin it
+                            s.graph.nodes[node_idx].pinned = false;
+                        } else {
+                            // Node was NOT pinned → unpin (undo mousedown pin) and open drawer
+                            s.graph.nodes[node_idx].pinned = false;
+                            let paper_id = s.graph.nodes[node_idx].id.clone();
+                            s.graph.selected_node = Some(node_idx);
+                            drop(s);
+                            selected_paper.set(Some(paper_id));
+                            return;
+                        }
+                    }
+                    // Real drag → node stays pinned (was set in mousedown)
+                }
+                InteractionState::Panning { .. } => {
+                    if was_click {
+                        // Click on background — deselect
+                        s.graph.selected_node = None;
                         drop(s);
-                        selected_paper.set(Some(paper_id));
+                        selected_paper.set(None);
                         return;
                     }
-                } else {
-                    // Click on background — deselect
-                    s.graph.selected_node = None;
-                    drop(s);
-                    selected_paper.set(None);
-                    return;
                 }
+                InteractionState::Idle => {}
             }
-            // End of drag/pan — no additional action needed
         });
 
     canvas.add_event_listener_with_callback("mouseup", mouseup.as_ref().unchecked_ref())
         .unwrap();
 
-    // ── dblclick — reset viewport to initial centered position ────────────────
+    // ── dblclick — reset viewport ────────────────────────────────────────────
     let state_dc = state.clone();
+    let canvas_dc = canvas_el.clone();
     let dblclick =
         Closure::<dyn FnMut(web_sys::MouseEvent)>::new(move |_event: web_sys::MouseEvent| {
             let mut s = state_dc.borrow_mut();
-            s.viewport = Viewport::new(canvas_width, canvas_height);
+            let w = canvas_dc.offset_width() as f64;
+            let h = canvas_dc.offset_height() as f64;
+            s.viewport = Viewport::new(w, h);
         });
 
     canvas.add_event_listener_with_callback("dblclick", dblclick.as_ref().unchecked_ref())
         .unwrap();
 
-    // ── wheel — zoom toward cursor ────────────────────────────────────────────
+    // ── wheel — zoom toward cursor (normalized delta) ────────────────────────
     let state_wh = state.clone();
     let canvas_wh = canvas_el.clone();
     let wheel =
@@ -547,14 +614,20 @@ fn attach_event_listeners(
             let rect = canvas_wh.get_bounding_client_rect();
             let cx = event.client_x() as f64 - rect.left();
             let cy = event.client_y() as f64 - rect.top();
-            let delta = event.delta_y();
+            // Normalize: most browsers send ~100 for one wheel notch
+            let raw_delta = event.delta_y();
+            let normalized = if raw_delta.abs() > 50.0 {
+                raw_delta.signum()
+            } else {
+                raw_delta / 50.0
+            };
             let mut s = state_wh.borrow_mut();
-            interaction::zoom_toward_cursor(&mut s.viewport, cx, cy, delta);
+            interaction::zoom_toward_cursor(&mut s.viewport, cx, cy, normalized);
         });
 
     canvas.add_event_listener_with_callback("wheel", wheel.as_ref().unchecked_ref()).unwrap();
 
-    // ── pointerleave — clear hover state and stop active interaction ──────────
+    // ── pointerleave — clear hover state ────────────────────────────────────
     let state_pl = state.clone();
     let pointerleave =
         Closure::<dyn FnMut(web_sys::PointerEvent)>::new(move |_event: web_sys::PointerEvent| {
@@ -570,7 +643,6 @@ fn attach_event_listeners(
         .add_event_listener_with_callback("pointerleave", pointerleave.as_ref().unchecked_ref())
         .unwrap();
 
-    // Keep closures alive for the page lifetime (single-user local tool — acceptable).
     let _listeners = EventListeners {
         _mousemove: mousemove,
         _mousedown: mousedown,

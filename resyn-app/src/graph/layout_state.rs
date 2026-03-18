@@ -11,8 +11,6 @@ pub struct NodeState {
     pub authors: Vec<String>,
     pub x: f64,
     pub y: f64,
-    pub vx: f64,
-    pub vy: f64,
     pub radius: f64,
     pub pinned: bool,
 }
@@ -40,13 +38,14 @@ pub struct EdgeData {
 pub struct GraphState {
     pub nodes: Vec<NodeState>,
     pub edges: Vec<EdgeData>,
+    pub velocities: Vec<(f64, f64)>,
+    pub alpha: f64,
     pub selected_node: Option<usize>,
     pub hovered_node: Option<usize>,
     pub hovered_edge: Option<usize>,
     pub show_contradictions: bool,
     pub show_bridges: bool,
     pub simulation_running: bool,
-    pub alpha: f64,
 }
 
 impl GraphState {
@@ -90,8 +89,6 @@ impl GraphState {
                     authors: n.authors,
                     x: r * angle.cos(),
                     y: r * angle.sin(),
-                    vx: 0.0,
-                    vy: 0.0,
                     radius: NodeState::radius_from_citations(citation_count),
                     pinned: false,
                 }
@@ -119,16 +116,18 @@ impl GraphState {
             })
             .collect();
 
+        let velocities = vec![(0.0, 0.0); nodes.len()];
         Self {
             nodes,
             edges,
+            velocities,
+            alpha: 1.0,
             selected_node: None,
             hovered_node: None,
             hovered_edge: None,
             show_contradictions: true,
             show_bridges: true,
             simulation_running: true,
-            alpha: 1.0,
         }
     }
 }
@@ -242,8 +241,6 @@ mod tests {
             authors: vec![],
             x: 0.0,
             y: 0.0,
-            vx: 0.0,
-            vy: 0.0,
             radius: 4.0,
             pinned: false,
         };

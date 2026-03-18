@@ -5,6 +5,8 @@ pub fn GraphControls(
     show_contradictions: RwSignal<bool>,
     show_bridges: RwSignal<bool>,
     simulation_running: RwSignal<bool>,
+    zoom_in_count: RwSignal<u32>,
+    zoom_out_count: RwSignal<u32>,
 ) -> impl IntoView {
     view! {
         <div class="graph-controls-overlay">
@@ -40,15 +42,15 @@ pub fn GraphControls(
                 </button>
                 <button
                     class="graph-control-btn"
+                    on:click=move |_| zoom_in_count.update(|v| *v = v.wrapping_add(1))
                     aria-label="Zoom in"
-                    data-action="zoom-in"
                 >
                     "+"
                 </button>
                 <button
                     class="graph-control-btn"
+                    on:click=move |_| zoom_out_count.update(|v| *v = v.wrapping_add(1))
                     aria-label="Zoom out"
-                    data-action="zoom-out"
                 >
                     "\u{2212}"
                 </button>

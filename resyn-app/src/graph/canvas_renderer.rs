@@ -31,13 +31,14 @@ impl Canvas2DRenderer {
 
 impl Renderer for Canvas2DRenderer {
     fn draw(&mut self, state: &GraphState, viewport: &Viewport) {
-        // 1. Reset transform and clear canvas
+        // 1. Reset transform and clear canvas (use actual pixel dimensions)
         self.ctx
             .set_transform(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)
             .unwrap();
         self.ctx.set_fill_style_str("#0d1117");
+        let canvas = self.ctx.canvas().unwrap();
         self.ctx
-            .fill_rect(0.0, 0.0, self.width as f64, self.height as f64);
+            .fill_rect(0.0, 0.0, canvas.width() as f64, canvas.height() as f64);
 
         // 2. Apply viewport transform
         viewport.apply(&self.ctx);
@@ -239,22 +240,6 @@ impl Renderer for Canvas2DRenderer {
                 self.ctx.set_stroke_style_str("#58a6ff");
                 self.ctx.set_line_width(2.0);
                 self.ctx.stroke();
-            }
-
-            // Pinned indicator: small dot near top-right of node
-            if node.pinned {
-                self.ctx.begin_path();
-                self.ctx
-                    .arc(
-                        node.x + node.radius - 2.0,
-                        node.y - node.radius + 2.0,
-                        3.0,
-                        0.0,
-                        std::f64::consts::TAU,
-                    )
-                    .unwrap();
-                self.ctx.set_fill_style_str("#ffffff");
-                self.ctx.fill();
             }
 
             self.ctx.restore();

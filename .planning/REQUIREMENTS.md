@@ -33,7 +33,7 @@ Requirements for the Scale & Surface milestone. Each maps to roadmap phases.
 
 - [x] **GRAPH-01**: Canvas 2D renderer via web-sys with Web Worker force layout (full Rust/WASM)
 - [x] **GRAPH-02**: Pan/zoom/hover interactions matching current egui feature set
-- [ ] **GRAPH-03**: WebGL2 upgrade via web-sys for 1000+ node rendering (full Rust)
+- [x] **GRAPH-03**: WebGL2 upgrade via web-sys for 1000+ node rendering (full Rust)
 - [x] **GRAPH-04**: Barnes-Hut O(n log n) force layout in Rust/WASM replacing fdg
 
 ### Analysis UI
@@ -97,7 +97,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUI-03 | Phase 8 | Complete |
 | GRAPH-01 | Phase 9 | Complete |
 | GRAPH-02 | Phase 9 | Complete |
-| GRAPH-03 | Phase 9 | Pending |
+| GRAPH-03 | Phase 9 | Complete |
 | GRAPH-04 | Phase 9 | Complete |
 | AUI-04 | Phase 10 | Pending |
 | DEBT-04 | Phase 10 | Pending |

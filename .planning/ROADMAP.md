@@ -27,7 +27,7 @@ Full details: `.planning/milestones/v1.0-ROADMAP.md`
 - [x] **Phase 6: Tech Debt + Workspace Restructure** — Clean debt, split into 3-crate workspace, establish WASM boundary (completed 2026-03-15)
 - [x] **Phase 7: Incremental Crawl Infrastructure** — DB-backed resumable crawl queue with progress reporting and parallel fetching (completed 2026-03-15)
 - [x] **Phase 8: Leptos Web Shell + Analysis Panels** — CSR Leptos app, Axum server functions, gap analysis panels (completed 2026-03-17)
-- [ ] **Phase 9: Graph Renderer (Canvas to WebGL)** — Rust/WASM Canvas 2D renderer, Barnes-Hut force layout, WebGL upgrade
+- [x] **Phase 9: Graph Renderer (Canvas to WebGL)** — Rust/WASM Canvas 2D renderer, Barnes-Hut force layout, WebGL upgrade (completed 2026-03-18)
 - [ ] **Phase 10: Analysis UI Polish + Scale** — Provenance tracking, section-aware LLM, scale testing, LOD, temporal filter
 
 ## Phase Details
@@ -94,7 +94,7 @@ Plans:
   3. Contradiction edges render in red and ABC-bridge edges render in orange/dashed, overlaid on the same graph
   4. A 1000-node graph maintains interactive frame rate (30+ fps) under the WebGL2 renderer with Barnes-Hut force layout
   5. Force layout converges and stops visibly oscillating within 10 seconds on a 500-node graph
-**Plans:** 4/5 plans executed
+**Plans:** 5/5 plans complete
 Plans:
 - [ ] 09-01-PLAN.md — Foundation types, server fn, worker crate scaffold, Renderer trait, interaction math
 - [ ] 09-02-PLAN.md — Barnes-Hut force layout worker with gloo-worker reactor
@@ -128,5 +128,5 @@ Plans:
 | 6. Tech Debt + Workspace Restructure | 2/2 | Complete   | 2026-03-15 | - |
 | 7. Incremental Crawl Infrastructure | 5/5 | Complete   | 2026-03-16 | - |
 | 8. Leptos Web Shell + Analysis Panels | 7/7 | Complete | 2026-03-17 | - |
-| 9. Graph Renderer (Canvas to WebGL) | 4/5 | In Progress|  | - |
+| 9. Graph Renderer (Canvas to WebGL) | 5/5 | Complete   | 2026-03-18 | - |
 | 10. Analysis UI Polish + Scale | v1.1 | 0/? | Not started | - |

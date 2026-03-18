@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
 status: completed
-stopped_at: Completed 09-04-PLAN.md
-last_updated: "2026-03-17T18:55:17.642Z"
-last_activity: "2026-03-17 — Plan 09-04 complete: GraphPage, RAF loop, event handlers, /graph route, CSS, 24 tests passing"
+stopped_at: Completed 09-05-PLAN.md
+last_updated: "2026-03-18T00:15:39Z"
+last_activity: "2026-03-18 — Plan 09-05 complete: WebGL2Renderer, make_renderer factory, browser verification (all 17 checks), 7 bugs auto-fixed"
 progress:
   total_phases: 5
   completed_phases: 3
   total_plans: 19
-  completed_plans: 18
-  percent: 95
+  completed_plans: 19
+  percent: 100
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-15)
 ## Current Position
 
 Phase: 9 of 10 (Phase 9: Graph Renderer Canvas to WebGL) — In Progress
-Plan: 4 of 5 in current phase (09-04 complete)
-Status: Plan 09-04 complete — GraphPage, GraphControls, RAF render loop, event handlers, sidebar nav, CSS; Trunk build (Plan 05) next
-Last activity: 2026-03-17 — Plan 09-04 complete: GraphPage wired, RAF loop, 6 event handlers, tooltip, /graph route, 24 tests passing
+Plan: 5 of 5 in current phase (09-05 complete — phase complete)
+Status: Phase 9 complete — WebGL2Renderer, make_renderer factory, browser-verified full graph feature set
+Last activity: 2026-03-18 — Plan 09-05 complete: WebGL2Renderer, instanced drawing, auto-renderer selection, browser verification (17/17 checks passed), 7 bugs auto-fixed
 
-Progress: [██████████] 95% (v1.1 — 18 of 19 plans done)
+Progress: [██████████] 100% (v1.1 — 19 of 19 plans done)
 
 ## Accumulated Context
 
@@ -83,6 +83,11 @@ Progress: [██████████] 95% (v1.1 — 18 of 19 plans done)
 - [Phase 09-graph-renderer-canvas-to-webgl]: RenderState and Box<dyn Renderer> split into separate Rc<RefCell> — Rust borrow checker prevents mutable renderer borrow alongside immutable graph/viewport borrows from same struct
 - [Phase 09-graph-renderer-canvas-to-webgl]: Arc<AtomicBool> for RAF cancel flag — leptos::on_cleanup requires Send+Sync, Rc<RefCell<bool>> cannot satisfy this constraint
 - [Phase 09-graph-renderer-canvas-to-webgl]: Worker bridge polled synchronously per RAF frame via noop_waker_ref() + poll_next — avoids spawn_local async complexity and borrow-across-await issues
+- [Phase 09-05]: WebGL2 probe uses a temporary canvas (document.createElement) — acquiring 2D context first makes WebGL2 return null on same canvas
+- [Phase 09-05]: Instanced drawing (draw_arrays_instanced + vertex_attrib_divisor) for nodes — one draw call scales to 1000+ nodes
+- [Phase 09-05]: Text labels rendered via Canvas 2D overlay stacked via CSS absolute positioning over WebGL canvas — WebGL has no native text
+- [Phase 09-05]: ResizeObserver + DPR-aware canvas sizing — canvas logical/physical size must track devicePixelRatio for crisp rendering
+- [Phase 09-05]: Worker crate needs bin entry point (src/bin/resyn_worker.rs) and no cdylib — Trunk spawns it as a WASM worker module via bin target
 
 ### Pending Todos
 
@@ -95,6 +100,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-17T18:55:17.634Z
-Stopped at: Completed 09-04-PLAN.md
+Last session: 2026-03-18T00:15:39Z
+Stopped at: Completed 09-05-PLAN.md
 Resume file: None

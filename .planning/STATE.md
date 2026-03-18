@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
 status: in-progress
-stopped_at: Completed 10-02-PLAN.md
-last_updated: "2026-03-18T15:26:00Z"
-last_activity: "2026-03-18 — Plan 10-02 complete: LOD/temporal visibility state (NodeState/GraphState extensions + lod.rs module, 27 tests)"
+stopped_at: Completed 10-01-PLAN.md
+last_updated: "2026-03-18T16:38:00Z"
+last_activity: "2026-03-18 — Plan 10-01 complete: Finding/Method provenance fields, section-aware LLM prompt, find_highlight_range, PaperDetail+GraphData DTO extensions"
 progress:
   total_phases: 5
   completed_phases: 4
   total_plans: 23
-  completed_plans: 20
-  percent: 87
+  completed_plans: 21
+  percent: 91
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-03-15)
 ## Current Position
 
 Phase: 10 of 10 (Phase 10: Analysis UI Polish & Scale) — In Progress
-Plan: 2 of 4 in current phase (10-02 complete)
-Status: Plan 10-02 complete — LOD/temporal visibility state fields and pure-logic computation module
-Last activity: 2026-03-18 — Plan 10-02 complete: LOD/temporal visibility state (NodeState/GraphState extensions + lod.rs module, 27 tests)
+Plan: 1 of 4 in current phase (10-01 complete — retroactive, executed after 10-02)
+Status: Plan 10-01 complete — provenance fields on Finding/Method, section-aware LLM prompt, highlight utility, PaperDetail+GraphData DTO extensions
+Last activity: 2026-03-18 — Plan 10-01 complete: Finding/Method provenance fields, section-aware LLM prompt, find_highlight_range, PaperDetail+GraphData DTO extensions
 
-Progress: [█████████░] 87% (v1.1 — 20 of 23 plans done)
+Progress: [█████████░] 91% (v1.1 — 21 of 23 plans done)
 
 ## Accumulated Context
 
@@ -88,6 +88,9 @@ Progress: [█████████░] 87% (v1.1 — 20 of 23 plans done)
 - [Phase 09-05]: Text labels rendered via Canvas 2D overlay stacked via CSS absolute positioning over WebGL canvas — WebGL has no native text
 - [Phase 09-05]: ResizeObserver + DPR-aware canvas sizing — canvas logical/physical size must track devicePixelRatio for crisp rendering
 - [Phase 09-05]: Worker crate needs bin entry point (src/bin/resyn_worker.rs) and no cdylib — Trunk spawns it as a WASM worker module via bin target
+- [10-01]: #[serde(default)] on new Option<T> struct fields enables zero-migration backward compat for existing DB records without provenance fields
+- [10-01]: ExtractionRepository (not TextExtractionRepository) is the correct name in queries.rs — plan's interface doc had a discrepancy
+- [10-01]: BFS depth computed server-side from petgraph NodeIndex; first node = seed (crawl root)
 - [10-02]: LOD thresholds: LOD_LEVEL_0=0.3 (depth<=1 only), LOD_LEVEL_1=0.6 (+citations>=50), LOD_LEVEL_2=1.0 (+depth<=2 or citations>=10); above 1.0 = all visible
 - [10-02]: Visibility flags (lod_visible, temporal_visible) on NodeState — renderer reads flags, lod.rs update functions mutate them; keeps renderer logic simple
 - [10-02]: Nodes with unparseable/empty year default to temporal_visible=true — missing metadata stays visible, not hidden
@@ -103,6 +106,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-18T15:26:00Z
-Stopped at: Completed 10-02-PLAN.md
-Resume file: .planning/phases/10-analysis-ui-polish-scale/10-02-SUMMARY.md
+Last session: 2026-03-18T16:38:00Z
+Stopped at: Completed 10-01-PLAN.md
+Resume file: .planning/phases/10-analysis-ui-polish-scale/10-01-SUMMARY.md

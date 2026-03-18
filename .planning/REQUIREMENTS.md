@@ -12,7 +12,7 @@ Requirements for the Scale & Surface milestone. Each maps to roadmap phases.
 - [x] **DEBT-01**: Export `nlp` module in `lib.rs` for test/library access
 - [x] **DEBT-02**: Remove stale stub comment in `src/llm/ollama.rs`
 - [x] **DEBT-03**: Clean up stale ROADMAP plan checkboxes from v1.0
-- [ ] **DEBT-04**: Section-aware LLM extraction using detected section boundaries
+- [x] **DEBT-04**: Section-aware LLM extraction using detected section boundaries
 
 ### Crawl Infrastructure
 
@@ -41,7 +41,7 @@ Requirements for the Scale & Surface milestone. Each maps to roadmap phases.
 - [x] **AUI-01**: Gap findings rendered in graph (contradiction edges, bridge badges)
 - [x] **AUI-02**: Open-problems aggregation panel ranked by recurrence frequency
 - [x] **AUI-03**: Method-combination gap matrix showing existing vs absent method pairings
-- [ ] **AUI-04**: Analysis provenance tracking — click a finding, see source text segment
+- [x] **AUI-04**: Analysis provenance tracking — click a finding, see source text segment
 
 ### Scale & Polish
 
@@ -99,8 +99,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | GRAPH-02 | Phase 9 | Complete |
 | GRAPH-03 | Phase 9 | Complete |
 | GRAPH-04 | Phase 9 | Complete |
-| AUI-04 | Phase 10 | Pending |
-| DEBT-04 | Phase 10 | Pending |
+| AUI-04 | Phase 10 | Complete |
+| DEBT-04 | Phase 10 | Complete |
 | SCALE-01 | Phase 10 | Pending |
 | SCALE-02 | Phase 10 | Complete |
 | SCALE-03 | Phase 10 | Complete |

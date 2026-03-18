@@ -9,6 +9,7 @@ pub struct GraphNode {
     pub year: String,
     pub citation_count: Option<u32>,
     pub abstract_text: String,
+    pub bfs_depth: Option<u32>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -33,6 +34,7 @@ pub struct GraphEdge {
 pub struct GraphData {
     pub nodes: Vec<GraphNode>,
     pub edges: Vec<GraphEdge>,
+    pub seed_paper_id: Option<String>,
 }
 
 #[server(GetGraphData, "/api")]
@@ -68,6 +70,7 @@ pub async fn get_graph_data() -> Result<GraphData, ServerFnError> {
                     year,
                     citation_count: p.citation_count,
                     abstract_text: p.summary.clone(),
+                    bfs_depth: None,
                 }
             })
             .collect();
@@ -111,7 +114,7 @@ pub async fn get_graph_data() -> Result<GraphData, ServerFnError> {
             }
         }
 
-        Ok(GraphData { nodes, edges })
+        Ok(GraphData { nodes, edges, seed_paper_id: None })
     }
     #[cfg(not(feature = "ssr"))]
     unreachable!()
@@ -132,6 +135,7 @@ mod tests {
                     year: "2023".to_string(),
                     citation_count: Some(42),
                     abstract_text: "Abstract A".to_string(),
+                    bfs_depth: Some(1),
                 },
                 GraphNode {
                     id: "2301.22222".to_string(),
@@ -140,6 +144,7 @@ mod tests {
                     year: "2022".to_string(),
                     citation_count: None,
                     abstract_text: "Abstract B".to_string(),
+                    bfs_depth: None,
                 },
             ],
             edges: vec![GraphEdge {
@@ -150,6 +155,7 @@ mod tests {
                 confidence: Some(0.9),
                 justification: Some("Because".to_string()),
             }],
+            seed_paper_id: Some("2301.11111".to_string()),
         };
 
         let json = serde_json::to_string(&data).unwrap();
@@ -185,6 +191,7 @@ mod tests {
             year: "2023".to_string(),
             citation_count: Some(100),
             abstract_text: "This is the abstract.".to_string(),
+            bfs_depth: Some(2),
         };
         let json = serde_json::to_string(&node).unwrap();
         let decoded: GraphNode = serde_json::from_str(&json).unwrap();

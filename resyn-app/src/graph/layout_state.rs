@@ -13,6 +13,9 @@ pub struct NodeState {
     pub y: f64,
     pub radius: f64,
     pub pinned: bool,
+    pub bfs_depth: Option<u32>,
+    pub lod_visible: bool,
+    pub temporal_visible: bool,
 }
 
 impl NodeState {
@@ -46,6 +49,10 @@ pub struct GraphState {
     pub show_contradictions: bool,
     pub show_bridges: bool,
     pub simulation_running: bool,
+    pub temporal_min_year: u32,
+    pub temporal_max_year: u32,
+    pub seed_paper_id: Option<String>,
+    pub current_scale: f64,
 }
 
 impl GraphState {
@@ -91,6 +98,9 @@ impl GraphState {
                     y: r * angle.sin(),
                     radius: NodeState::radius_from_citations(citation_count),
                     pinned: false,
+                    bfs_depth: n.bfs_depth,
+                    lod_visible: true,
+                    temporal_visible: true,
                 }
             })
             .collect();
@@ -117,6 +127,16 @@ impl GraphState {
             .collect();
 
         let velocities = vec![(0.0, 0.0); nodes.len()];
+
+        // Compute year bounds from valid years (1900–2100)
+        let year_values: Vec<u32> = nodes
+            .iter()
+            .filter_map(|n| n.year.parse::<u32>().ok())
+            .filter(|&y| y > 1900 && y < 2100)
+            .collect();
+        let year_min = year_values.iter().copied().min().unwrap_or(2000);
+        let year_max = year_values.iter().copied().max().unwrap_or(2026);
+
         Self {
             nodes,
             edges,
@@ -128,6 +148,10 @@ impl GraphState {
             show_contradictions: true,
             show_bridges: true,
             simulation_running: true,
+            temporal_min_year: year_min,
+            temporal_max_year: year_max,
+            seed_paper_id: data.seed_paper_id,
+            current_scale: 1.0,
         }
     }
 }
@@ -145,7 +169,104 @@ mod tests {
             year: "2023".to_string(),
             citation_count,
             abstract_text: "Abstract".to_string(),
+            bfs_depth: None,
         }
+    }
+
+    fn make_node_with_year(id: &str, year: &str) -> GraphNode {
+        GraphNode {
+            id: id.to_string(),
+            title: format!("Paper {id}"),
+            authors: vec!["Smith, John".to_string()],
+            year: year.to_string(),
+            citation_count: Some(0),
+            abstract_text: "Abstract".to_string(),
+            bfs_depth: None,
+        }
+    }
+
+    #[test]
+    fn test_node_state_bfs_depth_some_propagates() {
+        let mut node = make_node("A", Some(0));
+        node.bfs_depth = Some(2);
+        let data = GraphData { nodes: vec![node], edges: vec![], seed_paper_id: None };
+        let state = GraphState::from_graph_data(data);
+        assert_eq!(state.nodes[0].bfs_depth, Some(2));
+    }
+
+    #[test]
+    fn test_node_state_bfs_depth_none_propagates() {
+        let node = make_node("A", Some(0));
+        let data = GraphData { nodes: vec![node], edges: vec![], seed_paper_id: None };
+        let state = GraphState::from_graph_data(data);
+        assert_eq!(state.nodes[0].bfs_depth, None);
+    }
+
+    #[test]
+    fn test_node_state_lod_visible_defaults_true() {
+        let node = make_node("A", Some(0));
+        let data = GraphData { nodes: vec![node], edges: vec![], seed_paper_id: None };
+        let state = GraphState::from_graph_data(data);
+        assert!(state.nodes[0].lod_visible);
+    }
+
+    #[test]
+    fn test_node_state_temporal_visible_defaults_true() {
+        let node = make_node("A", Some(0));
+        let data = GraphData { nodes: vec![node], edges: vec![], seed_paper_id: None };
+        let state = GraphState::from_graph_data(data);
+        assert!(state.nodes[0].temporal_visible);
+    }
+
+    #[test]
+    fn test_graph_state_year_bounds_computed_correctly() {
+        let data = GraphData {
+            nodes: vec![
+                make_node_with_year("A", "2018"),
+                make_node_with_year("B", "2021"),
+                make_node_with_year("C", "2015"),
+            ],
+            edges: vec![],
+            seed_paper_id: None,
+        };
+        let state = GraphState::from_graph_data(data);
+        assert_eq!(state.temporal_min_year, 2015);
+        assert_eq!(state.temporal_max_year, 2021);
+    }
+
+    #[test]
+    fn test_graph_state_year_bounds_ignores_empty_years() {
+        let data = GraphData {
+            nodes: vec![
+                make_node_with_year("A", "2018"),
+                make_node_with_year("B", ""),
+                make_node_with_year("C", "invalid"),
+                make_node_with_year("D", "2020"),
+            ],
+            edges: vec![],
+            seed_paper_id: None,
+        };
+        let state = GraphState::from_graph_data(data);
+        assert_eq!(state.temporal_min_year, 2018);
+        assert_eq!(state.temporal_max_year, 2020);
+    }
+
+    #[test]
+    fn test_graph_state_seed_paper_id_propagates() {
+        let data = GraphData {
+            nodes: vec![make_node("seed-id", Some(10))],
+            edges: vec![],
+            seed_paper_id: Some("seed-id".to_string()),
+        };
+        let state = GraphState::from_graph_data(data);
+        assert_eq!(state.seed_paper_id, Some("seed-id".to_string()));
+    }
+
+    #[test]
+    fn test_graph_state_current_scale_initialized_to_1() {
+        let data = GraphData { nodes: vec![], edges: vec![], seed_paper_id: None };
+        let state = GraphState::from_graph_data(data);
+        assert!((state.current_scale - 1.0).abs() < 1e-10);
     }
 
     #[test]
@@ -178,6 +299,7 @@ mod tests {
                 make_node("2301.33333", None),
             ],
             edges: vec![],
+            seed_paper_id: None,
         };
 
         let state = GraphState::from_graph_data(data);
@@ -189,6 +311,7 @@ mod tests {
         let data = GraphData {
             nodes: vec![],
             edges: vec![],
+            seed_paper_id: None,
         };
 
         let state = GraphState::from_graph_data(data);
@@ -202,6 +325,7 @@ mod tests {
         let data = GraphData {
             nodes: vec![make_node("2301.11111", Some(0)), make_node("2301.22222", Some(3))],
             edges: vec![],
+            seed_paper_id: None,
         };
 
         let state = GraphState::from_graph_data(data);
@@ -221,6 +345,7 @@ mod tests {
                 confidence: None,
                 justification: None,
             }],
+            seed_paper_id: None,
         };
 
         let state = GraphState::from_graph_data(data);
@@ -243,6 +368,9 @@ mod tests {
             y: 0.0,
             radius: 4.0,
             pinned: false,
+            bfs_depth: None,
+            lod_visible: true,
+            temporal_visible: true,
         };
         assert_eq!(node.label(), "Doe 2023");
     }

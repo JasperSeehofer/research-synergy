@@ -96,6 +96,9 @@ mod tests {
             y,
             radius,
             pinned: false,
+            bfs_depth: None,
+            lod_visible: true,
+            temporal_visible: true,
         }
     }
 

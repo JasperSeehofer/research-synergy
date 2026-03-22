@@ -3,7 +3,7 @@
 ## Milestones
 
 - ✅ **v1.0 Analysis Pipeline** — Phases 1-5 (shipped 2026-03-14)
-- 🚧 **v1.1 Scale & Surface** — Phases 6-10 (in progress)
+- ✅ **v1.1 Scale & Surface** — Phases 6-10 (shipped 2026-03-22)
 
 ## Phases
 
@@ -20,108 +20,20 @@ Full details: `.planning/milestones/v1.0-ROADMAP.md`
 
 </details>
 
-### 🚧 v1.1 Scale & Surface (In Progress)
+<details>
+<summary>✅ v1.1 Scale & Surface (Phases 6-10) — SHIPPED 2026-03-22</summary>
 
-**Milestone Goal:** Make ReSyn usable at real research scale (depth 10+) and move gap insights from stdout into the primary interface, migrating to a Leptos web UI with full Rust/WASM graph rendering.
+- [x] Phase 6: Tech Debt + Workspace Restructure (2/2 plans) — completed 2026-03-15
+- [x] Phase 7: Incremental Crawl Infrastructure (5/5 plans) — completed 2026-03-16
+- [x] Phase 8: Leptos Web Shell + Analysis Panels (7/7 plans) — completed 2026-03-17
+- [x] Phase 9: Graph Renderer (Canvas to WebGL) (5/5 plans) — completed 2026-03-18
+- [x] Phase 10: Analysis UI Polish + Scale (4/4 plans) — completed 2026-03-18
 
-- [x] **Phase 6: Tech Debt + Workspace Restructure** — Clean debt, split into 3-crate workspace, establish WASM boundary (completed 2026-03-15)
-- [x] **Phase 7: Incremental Crawl Infrastructure** — DB-backed resumable crawl queue with progress reporting and parallel fetching (completed 2026-03-15)
-- [x] **Phase 8: Leptos Web Shell + Analysis Panels** — CSR Leptos app, Axum server functions, gap analysis panels (completed 2026-03-17)
-- [x] **Phase 9: Graph Renderer (Canvas to WebGL)** — Rust/WASM Canvas 2D renderer, Barnes-Hut force layout, WebGL upgrade (completed 2026-03-18)
-- [x] **Phase 10: Analysis UI Polish + Scale** — Provenance tracking, section-aware LLM, scale testing, LOD, temporal filter (completed 2026-03-18)
+Full details: `.planning/milestones/v1.1-ROADMAP.md`
 
-## Phase Details
-
-### Phase 6: Tech Debt + Workspace Restructure
-**Goal**: The codebase is cleanly split into a 3-crate Cargo workspace with SurrealDB feature-gated behind `ssr`, all 153 existing tests pass, and small v1.0 debt items are resolved before any migration work begins
-**Depends on**: Nothing (first v1.1 phase)
-**Requirements**: DEBT-01, DEBT-02, DEBT-03, WEB-01, WEB-02, WEB-05
-**Success Criteria** (what must be TRUE):
-  1. `cargo test` passes across all workspace crates with the same 153 tests from v1.0
-  2. `cargo build --target wasm32-unknown-unknown -p app` compiles without SurrealDB linker errors
-  3. `use resyn_core::nlp` is accessible from test and library contexts (DEBT-01 resolved)
-  4. egui, eframe, egui_graphs, and fdg dependencies are removed from Cargo.toml (WEB-05)
-  5. Stale stub comment in `src/llm/ollama.rs` and stale ROADMAP plan checkboxes are gone
-**Plans:** 2/2 plans complete
-Plans:
-- [ ] 06-01-PLAN.md — Workspace skeleton, source migration, ssr feature gate, WASM boundary verification
-- [ ] 06-02-PLAN.md — Visualization removal, egui dep cleanup, CLI subcommand rewrite, tech debt fixes
-
-### Phase 7: Incremental Crawl Infrastructure
-**Goal**: High-depth crawls survive crashes and can be monitored in real time, with a DB-backed queue replacing the in-memory BFS frontier
-**Depends on**: Phase 6
-**Requirements**: CRAWL-01, CRAWL-02, CRAWL-03, CRAWL-04
-**Success Criteria** (what must be TRUE):
-  1. A depth-5 crawl interrupted mid-run resumes from the last checkpoint on restart with no duplicate fetches
-  2. Running `--progress` with `--db` shows a live progress stream (papers found, queue depth) via SSE, readable via `curl`
-  3. A depth-3 crawl with `--parallel` completes faster than sequential while respecting the global arXiv 3s rate limit across all concurrent tasks
-  4. Papers already in the DB are skipped without network requests when resuming a completed crawl
-**Plans:** 5/5 plans complete
-Plans:
-- [ ] 07-01-PLAN.md — DB migration, CrawlQueueRepository, governor rate limiter
-- [ ] 07-02-PLAN.md — Queue-driven crawl loop with parallel workers
-- [ ] 07-03-PLAN.md — SSE progress server, queue management subcommands, end-to-end verification
-- [ ] 07-04-PLAN.md — Gap closure: fix empty pdf_url fallback for reference fetching (UAT Test 1)
-- [ ] 07-05-PLAN.md — Gap closure: fix --db flag on crawl subcommands (UAT Tests 2-5)
-
-### Phase 8: Leptos Web Shell + Analysis Panels
-**Goal**: The browser app serves the analysis pipeline's output — contradiction findings, bridge connections, open-problems, and method gaps — without touching the graph canvas
-**Depends on**: Phase 6
-**Requirements**: WEB-03, WEB-04, AUI-01, AUI-02, AUI-03
-**Success Criteria** (what must be TRUE):
-  1. `trunk serve` starts the app and the browser renders paper list data fetched from the Axum server via Leptos server functions
-  2. Contradiction findings and ABC-bridge connections from SurrealDB appear as labeled entries in the gap panel
-  3. Open-problems panel shows problems ranked by recurrence count across the crawled corpus
-  4. Method-combination gap matrix renders as a heatmap showing existing vs absent method pairings
-  5. Crawl progress bar updates in real time from the SSE endpoint established in Phase 7
-**Plans:** 7/7 plans complete
-Plans:
-- [x] 08-01-PLAN.md — ProgressEvent move to resyn-core, workspace Cargo.toml dependencies
-- [x] 08-02-PLAN.md — Trunk config, CSS design system, Leptos app shell with Router and Layout
-- [x] 08-03-PLAN.md — Page stubs, server function module stubs, Axum serve command
-- [x] 08-04-PLAN.md — Server functions (all data access), Dashboard, Papers table, Paper drawer, aggregation unit tests
-- [x] 08-05-PLAN.md — Gap findings panel with filterable cards, Open problems ranked list
-- [x] 08-06-PLAN.md — Method-combination heatmap with drill-down, Crawl progress SSE + launcher form, wire start_crawl to CrawlQueue
-- [x] 08-07-PLAN.md — Final verification: automated checks + human browser verification with seeded data
-
-### Phase 9: Graph Renderer (Canvas to WebGL)
-**Goal**: The citation graph renders interactively in the browser using a full Rust/WASM pipeline — Canvas 2D initially, WebGL2 when scale demands it — with Barnes-Hut force layout computed in a Web Worker
-**Depends on**: Phase 8
-**Requirements**: GRAPH-01, GRAPH-02, GRAPH-03, GRAPH-04
-**Success Criteria** (what must be TRUE):
-  1. The citation graph renders in the browser canvas with pan, zoom, and node-hover interactions matching the retired egui feature set
-  2. Clicking a node opens the paper detail sidebar populated with title, authors, abstract, and analysis results
-  3. Contradiction edges render in red and ABC-bridge edges render in orange/dashed, overlaid on the same graph
-  4. A 1000-node graph maintains interactive frame rate (30+ fps) under the WebGL2 renderer with Barnes-Hut force layout
-  5. Force layout converges and stops visibly oscillating within 10 seconds on a 500-node graph
-**Plans:** 5/5 plans complete
-Plans:
-- [ ] 09-01-PLAN.md — Foundation types, server fn, worker crate scaffold, Renderer trait, interaction math
-- [ ] 09-02-PLAN.md — Barnes-Hut force layout worker with gloo-worker reactor
-- [ ] 09-03-PLAN.md — Canvas 2D renderer with full draw pipeline
-- [ ] 09-04-PLAN.md — GraphPage component, interaction wiring, controls overlay, sidebar/route, CSS
-- [ ] 09-05-PLAN.md — WebGL2 renderer, auto-switch logic, browser verification
-
-### Phase 10: Analysis UI Polish + Scale
-**Goal**: The full analysis surface is complete — provenance traces findings back to source text, section-aware LLM extraction improves annotation quality, and the app is verified usable at 1000+ node scale with temporal and LOD controls
-**Depends on**: Phase 9
-**Requirements**: AUI-04, DEBT-04, SCALE-01, SCALE-02, SCALE-03
-**Success Criteria** (what must be TRUE):
-  1. Clicking a gap finding in the panel highlights the source text segment in a paper sidebar view (provenance tracking)
-  2. Re-running analysis on a paper with detected section boundaries produces LLM annotations that reference specific sections (e.g., "Methods", "Results")
-  3. Depth-2, depth-3, and depth-5 real crawl runs complete with performance metrics recorded and no regressions vs v1.0
-  4. A 1000+ node graph switches to clustered/LOD rendering automatically, keeping the canvas readable
-  5. The temporal filter slider narrows the visible graph to papers published within the selected year range
-**Plans:** 4/4 plans complete
-Plans:
-- [ ] 10-01-PLAN.md — Data model + LLM prompt + highlight utility + server fn extensions (DEBT-04, AUI-04)
-- [ ] 10-02-PLAN.md — GraphState LOD/temporal fields + visibility computation module (SCALE-02, SCALE-03)
-- [ ] 10-03-PLAN.md — Provenance drawer UI + gap card wiring (AUI-04)
-- [ ] 10-04-PLAN.md — Renderer LOD/temporal integration + controls UI + browser verification (SCALE-01, SCALE-02, SCALE-03)
+</details>
 
 ## Progress
-
-**Execution Order:** 6 → 7 → 8 → 9 → 10
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
@@ -130,8 +42,8 @@ Plans:
 | 3. Pluggable LLM Backend | v1.0 | 3/3 | Complete | 2026-03-14 |
 | 4. Cross-Paper Gap Analysis | v1.0 | 3/3 | Complete | 2026-03-14 |
 | 5. Visualization Enrichment | v1.0 | 2/2 | Complete | 2026-03-14 |
-| 6. Tech Debt + Workspace Restructure | 2/2 | Complete   | 2026-03-15 | - |
-| 7. Incremental Crawl Infrastructure | 5/5 | Complete   | 2026-03-16 | - |
-| 8. Leptos Web Shell + Analysis Panels | 7/7 | Complete | 2026-03-17 | - |
-| 9. Graph Renderer (Canvas to WebGL) | 5/5 | Complete   | 2026-03-18 | - |
-| 10. Analysis UI Polish + Scale | 4/4 | Complete   | 2026-03-18 | - |
+| 6. Tech Debt + Workspace Restructure | v1.1 | 2/2 | Complete | 2026-03-15 |
+| 7. Incremental Crawl Infrastructure | v1.1 | 5/5 | Complete | 2026-03-16 |
+| 8. Leptos Web Shell + Analysis Panels | v1.1 | 7/7 | Complete | 2026-03-17 |
+| 9. Graph Renderer (Canvas to WebGL) | v1.1 | 5/5 | Complete | 2026-03-18 |
+| 10. Analysis UI Polish + Scale | v1.1 | 4/4 | Complete | 2026-03-18 |

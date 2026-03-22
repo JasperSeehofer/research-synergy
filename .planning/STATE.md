@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Scale & Surface
 status: completed
-stopped_at: "Completed 10-03-PLAN.md"
-last_updated: "2026-03-18T17:45:00Z"
-last_activity: "2026-03-18 — Plan 10-03 complete: tabbed drawer (Overview/Source), SourceTabBody with snippet highlighting, gap card provenance click"
+stopped_at: "Milestone v1.1 complete"
+last_updated: "2026-03-22T12:08:04.095Z"
+last_activity: "2026-03-22 — Milestone v1.1 Scale & Surface archived"
 progress:
-  total_phases: 5
-  completed_phases: 4
-  total_plans: 23
-  completed_plans: 23
+  total_phases: 10
+  completed_phases: 10
+  total_plans: 35
+  completed_plans: 35
   percent: 100
 ---
 
@@ -18,99 +18,34 @@ progress:
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-03-15)
+See: .planning/PROJECT.md (updated 2026-03-22)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Phase 10 — Analysis UI Polish & Scale (In Progress)
+**Current focus:** Planning next milestone
 
 ## Current Position
 
-Phase: 10 of 10 (Phase 10: Analysis UI Polish & Scale) — In Progress
-Plan: 3 of 4 in current phase (10-03 complete)
-Status: Plan 10-03 complete — tabbed drawer with Overview/Source tabs, SourceTabBody with snippet highlighting, gap card provenance click
-Last activity: 2026-03-18 — Plan 10-03 complete: tabbed drawer (Overview/Source), SourceTabBody with snippet highlighting, gap card provenance click
+Milestone v1.1 Scale & Surface — SHIPPED 2026-03-22
+All milestones complete. Next step: `/gsd:new-milestone`
 
-Progress: [██████████] 100% (v1.1 — 23 of 23 plans done)
+Progress: [██████████] 100% (v1.0 + v1.1 — 35 of 35 plans done)
 
 ## Accumulated Context
 
 ### Decisions
 
-- [v1.0] Hybrid NLP + LLM analysis pattern works well; clear separation of concerns
-- [v1.0] Pluggable trait pattern (PaperSource, LlmProvider) is the right extensibility model
-- [v1.0] DB migration system (6 migrations) handles schema evolution cleanly
-- [v1.1] Full Rust/WASM graph stack chosen — web-sys Canvas2D/WebGL2, NO JavaScript graph libraries (sigma.js, d3)
-- [v1.1] CSR-only (Trunk, not cargo-leptos) — single-user local tool, no SSR/hydration complexity needed
-- [v1.1] SurrealDB must be feature-gated behind `ssr` from day one of workspace restructure (Pitfall 1)
-- [v1.1] Barnes-Hut force layout implemented in Rust/WASM Web Worker, not JS ForceAtlas2
-- [06-01] tokio added as ssr-gated dep in resyn-core (used by data_aggregation, llm modules)
-- [06-01] getrandom wasm_js backend via .cargo/config.toml rustflags + wasm_js feature for WASM compat
-- [06-01] error.rs HttpRequest variant gated behind ssr to make ResynError WASM-safe
-- [06-01] gap_analysis LLM-dependent functions gated behind ssr; pure graph fns always available
-- [06-02] DB argument is REQUIRED (default surrealkv://./data) — no more Option<String> in CLI
-- [06-02] TODO.md deleted entirely — .planning/ROADMAP.md is sole canonical roadmap
-- [06-02] AnalyzeArgs struct serves as both CLI arg type and pipeline config type for crawl --analyze
-- [Phase 07-01]: Named record IDs for idempotent SurrealDB enqueue (CREATE on same ID is a no-op)
-- [Phase 07-01]: UPDATE ONLY $let_var (not WHERE id = $bound_var) required for atomic claim in SurrealDB embedded
-- [Phase 07-02]: PaperSource is not Clone — each spawned task must create its own instance via make_source() factory
-- [Phase 07-02]: fetch_references(&mut self, paper: &mut Paper) mutates paper.references in-place; use paper.get_arxiv_references_ids() to extract arXiv IDs
-- [Phase 07-02]: Semaphore::acquire_owned before spawn (not inside task) — bounds total in-flight tasks naturally in main loop
-- [Phase 07]: axum and tokio-stream added at workspace level for future reuse by other crates
-- [Phase 07]: SSE handler defined inline in tokio::spawn to avoid module-level scope pollution
-- [Phase 07]: Queue management subcommands dispatch before paper_id validation — they only need --db arg
-- [Phase 07-incremental-crawl-infrastructure]: Each CrawlSubcommand variant owns its --db arg; clap subcommand context stops parent arg parsing so each variant needs its own field
-- [Phase 07-incremental-crawl-infrastructure]: Empty pdf_url guard placed at call site in aggregate_references_for_arxiv_paper (not in convert_pdf_url_to_html_url) — paper.id only available at call site
-- [Phase 08-leptos-web-shell-analysis-panels]: ProgressEvent gains Deserialize derive when moved to resyn-core (server only had Serialize; WASM client needs both)
-- [Phase 08-leptos-web-shell-analysis-panels]: tower-http added to resyn-server for static file serving and CORS (required for Leptos web shell)
-- [Phase 08]: Leptos 0.8 Callback uses .run() not .call() — reactive_graph Callable trait exposes run() and try_run()
-- [Phase 08]: Sidebar collapse state drives CSS via parent nav class — NavItem does not need collapsed prop
-- [Phase 08]: Axum wildcard route /api/{*fn_name} with handle_server_fns_with_context injects Arc<Db> context for all server functions
-- [Phase 08]: Aggregation helpers (aggregate_open_problems, build_method_matrix) placed in resyn-core/src/analysis/aggregation.rs — WASM-safe, no ssr gate, unit-testable without Leptos
-- [Phase 08]: SSR-only imports in server fn bodies must be inside #[cfg(feature = "ssr")] block — top-level imports cause unused-import warnings on WASM build
-- [Phase 08]: ProgressEvent gains PartialEq derive — leptos-use use_event_source requires PartialEq on the decoded type
-- [Phase 08]: start_crawl server fn spawns background tokio::spawn with own PaperSource factory (not Clone) — server fn returns immediately after queue seeding
-- [Phase 08]: StoredValue used to share immutable loaded Vec<GapFinding> across two closures in Suspense reactive branch
-- [Phase 08]: Sub-component pattern required for <For> inside view! macro match arms — move keyword causes Leptos parser errors when used directly in each= attribute inside a match arm
-- [Phase 08-07]: Trunk requires data-cargo-features="csr" in index.html link tag — not just Cargo.toml feature gate
-- [Phase 08-07]: register_explicit<T>() required for all server fns at startup — inventory auto-registration fails across crate boundaries (resyn-app -> resyn-server)
-- [Phase 08-07]: connect() accepts any connection string as-is; connect_local() prepends surrealkv:// prefix (use connect() when user supplies full string)
-- [Phase 09-graph-renderer-canvas-to-webgl]: Viewport struct is pure math (no web-sys) so transform tests run natively without wasm-bindgen-test
-- [Phase 09-graph-renderer-canvas-to-webgl]: GraphData DTO separate from GraphState: server returns serializable DTO; client converts to mutable simulation state
-- [Phase 09-graph-renderer-canvas-to-webgl]: JsCast trait must be imported explicitly for dyn_into in canvas_renderer — not available via wasm-bindgen prelude
-- [Phase 09]: simulation_tick takes NodeData + parallel velocity slice — avoids SimNode wrapper leaking into public API
-- [Phase 09]: gloo-worker ReactorScope uses SinkExt for scope.send().await — Spawnable trait needed for spawner()
-- [Phase 09]: WorkerBridge wraps ReactorBridge<ForceLayoutWorker> with send_input(); responses received by polling bridge as Stream
-- [Phase 09-graph-renderer-canvas-to-webgl]: RenderState and Box<dyn Renderer> split into separate Rc<RefCell> — Rust borrow checker prevents mutable renderer borrow alongside immutable graph/viewport borrows from same struct
-- [Phase 09-graph-renderer-canvas-to-webgl]: Arc<AtomicBool> for RAF cancel flag — leptos::on_cleanup requires Send+Sync, Rc<RefCell<bool>> cannot satisfy this constraint
-- [Phase 09-graph-renderer-canvas-to-webgl]: Worker bridge polled synchronously per RAF frame via noop_waker_ref() + poll_next — avoids spawn_local async complexity and borrow-across-await issues
-- [Phase 09-05]: WebGL2 probe uses a temporary canvas (document.createElement) — acquiring 2D context first makes WebGL2 return null on same canvas
-- [Phase 09-05]: Instanced drawing (draw_arrays_instanced + vertex_attrib_divisor) for nodes — one draw call scales to 1000+ nodes
-- [Phase 09-05]: Text labels rendered via Canvas 2D overlay stacked via CSS absolute positioning over WebGL canvas — WebGL has no native text
-- [Phase 09-05]: ResizeObserver + DPR-aware canvas sizing — canvas logical/physical size must track devicePixelRatio for crisp rendering
-- [Phase 09-05]: Worker crate needs bin entry point (src/bin/resyn_worker.rs) and no cdylib — Trunk spawns it as a WASM worker module via bin target
-- [10-01]: #[serde(default)] on new Option<T> struct fields enables zero-migration backward compat for existing DB records without provenance fields
-- [10-01]: ExtractionRepository (not TextExtractionRepository) is the correct name in queries.rs — plan's interface doc had a discrepancy
-- [10-01]: BFS depth computed server-side from petgraph NodeIndex; first node = seed (crawl root)
-- [10-02]: LOD thresholds: LOD_LEVEL_0=0.3 (depth<=1 only), LOD_LEVEL_1=0.6 (+citations>=50), LOD_LEVEL_2=1.0 (+depth<=2 or citations>=10); above 1.0 = all visible
-- [10-02]: Visibility flags (lod_visible, temporal_visible) on NodeState — renderer reads flags, lod.rs update functions mutate them; keeps renderer logic simple
-- [10-02]: Nodes with unparseable/empty year default to temporal_visible=true — missing metadata stays visible, not hidden
-- [Phase 10-04]: vis_count captured as local before state borrow closes to avoid Leptos RefCell + RwSignal conflict
-- [Phase 10-04]: TemporalSlider positioned as absolute bottom bar via CSS (bottom: 0) to overlay canvas without layout shifts
-- [10-03]: DrawerTab RwSignal initialized from DrawerOpenRequest.initial_tab — resets to Overview on each new open request (natural reset via new signal creation in DrawerContent)
-- [10-03]: SourceSectionText extracted as a named component for conditional AnyView branching in Leptos view! macro
-- [10-03]: DrawerOpenRequest uses #[derive(Default)] with DrawerTab::Overview default — graph/papers pages use ..Default::default() for no-provenance opens
+(Full decision log archived in PROJECT.md Key Decisions table)
 
 ### Pending Todos
 
-None yet.
+None.
 
 ### Blockers/Concerns
 
-- Phase 6: Verify `UPDATE ... LIMIT 1` atomicity in embedded SurrealDB under concurrent tokio tasks before committing crawl queue design (MEDIUM confidence gap from research)
-- Phase 9: sigma.js integration is research-recommended but user-overridden — use web-sys WebGL2 bindings; spike needed to validate Canvas 2D + Leptos NodeRef pattern before full implementation
+None — milestone complete.
 
 ## Session Continuity
 
-Last session: 2026-03-18T17:45:00Z
-Stopped at: Completed 10-03-PLAN.md
-Resume file: .planning/phases/10-analysis-ui-polish-scale/10-03-SUMMARY.md
+Last session: 2026-03-22
+Stopped at: Milestone v1.1 complete
+Resume file: N/A — start fresh with `/gsd:new-milestone`

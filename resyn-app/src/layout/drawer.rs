@@ -315,22 +315,31 @@ fn SourceTabBody(
                         view! { <div></div> }.into_any()
                     }}
 
-                    {sections.into_iter().filter_map(|(key, name, text_opt)| {
-                        let text = text_opt?;
-                        let snippet_clone = snippet.clone();
-                        let hl_section_clone = hl_section.clone();
-                        Some(view! {
-                            <div class="source-section">
-                                <div class="source-section-header">{name}</div>
-                                <SourceSectionText
-                                    section_key=key.to_string()
-                                    text=text
-                                    highlight_snippet=snippet_clone
-                                    highlight_section=hl_section_clone
-                                />
-                            </div>
-                        })
-                    }).collect_view()}
+                    {
+                        let section_views: Vec<_> = sections.into_iter().filter_map(|(key, name, text_opt)| {
+                            let text = text_opt?;
+                            let snippet_clone = snippet.clone();
+                            let hl_section_clone = hl_section.clone();
+                            Some(view! {
+                                <div class="source-section">
+                                    <div class="source-section-header">{name}</div>
+                                    <SourceSectionText
+                                        section_key=key.to_string()
+                                        text=text
+                                        highlight_snippet=snippet_clone
+                                        highlight_section=hl_section_clone
+                                    />
+                                </div>
+                            })
+                        }).collect();
+                        if section_views.is_empty() {
+                            view! {
+                                <p class="text-body text-muted">"No source text available for this paper."</p>
+                            }.into_any()
+                        } else {
+                            section_views.collect_view().into_any()
+                        }
+                    }
                 </div>
             }.into_any()
         }

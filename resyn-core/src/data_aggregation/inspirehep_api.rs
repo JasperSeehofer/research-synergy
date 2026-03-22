@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 use reqwest::Client;
-use serde::Deserialize;
+use serde::{Deserialize, Deserializer};
 use std::time::{Duration, Instant};
 use tokio::time::sleep;
 use tracing::debug;
@@ -265,8 +265,32 @@ pub(crate) struct InspireHits {
 
 #[derive(Debug, Deserialize)]
 pub(crate) struct InspireHit {
+    #[serde(default, deserialize_with = "deserialize_id_flexible")]
     pub id: Option<u64>,
     pub metadata: InspireMetadata,
+}
+
+fn deserialize_id_flexible<'de, D>(deserializer: D) -> Result<Option<u64>, D::Error>
+where
+    D: Deserializer<'de>,
+{
+    use serde::de;
+
+    #[derive(Deserialize)]
+    #[serde(untagged)]
+    enum IdValue {
+        Num(u64),
+        Str(String),
+    }
+
+    Option::<IdValue>::deserialize(deserializer).and_then(|opt| match opt {
+        None => Ok(None),
+        Some(IdValue::Num(n)) => Ok(Some(n)),
+        Some(IdValue::Str(s)) => s
+            .parse::<u64>()
+            .map(Some)
+            .map_err(|_| de::Error::custom(format!("invalid id string: {s}"))),
+    })
 }
 
 #[derive(Debug, Deserialize)]

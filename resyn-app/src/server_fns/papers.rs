@@ -217,24 +217,28 @@ pub async fn start_crawl(
                 };
 
                 let Some(entry) = entry else {
-                    // Wait for in-flight tasks before checking retry.
+                    if join_set.is_empty() {
+                        // No in-flight tasks and no pending entries.
+                        if !retried {
+                            retried = true;
+                            let queue2 = CrawlQueueRepository::new(&db_bg);
+                            match queue2.retry_failed().await {
+                                Ok(n) if n > 0 => {
+                                    info!(count = n, "Retrying failed entries (web crawl)");
+                                    continue;
+                                }
+                                _ => {}
+                            }
+                        }
+                        break;
+                    }
+                    // In-flight workers may enqueue new references — wait then re-check.
                     while let Some(res) = join_set.join_next().await {
                         if let Err(e) = res {
                             warn!(error = %e, "Worker panicked in web crawl task");
                         }
                     }
-                    if !retried {
-                        retried = true;
-                        let queue2 = CrawlQueueRepository::new(&db_bg);
-                        match queue2.retry_failed().await {
-                            Ok(n) if n > 0 => {
-                                info!(count = n, "Retrying failed entries (web crawl)");
-                                continue;
-                            }
-                            _ => {}
-                        }
-                    }
-                    break;
+                    continue;
                 };
 
                 // Skip entries beyond max_depth.

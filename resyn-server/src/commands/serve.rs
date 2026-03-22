@@ -16,7 +16,7 @@ pub struct ServeArgs {
     pub db: String,
 
     /// Port to listen on
-    #[arg(long, default_value_t = 3000)]
+    #[arg(long, default_value_t = 3100)]
     pub port: u16,
 }
 

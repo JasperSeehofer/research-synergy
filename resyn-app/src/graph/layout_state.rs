@@ -58,7 +58,13 @@ pub struct GraphState {
 impl GraphState {
     pub fn from_graph_data(data: GraphData) -> Self {
         let node_count = data.nodes.len();
-        let spread = (node_count as f64).sqrt() * 50.0;
+        let spread = (node_count as f64).sqrt() * 15.0;
+
+        // Simple deterministic hash for reproducible jitter (no rand dependency).
+        fn hash_jitter(seed: u64) -> f64 {
+            let h = seed.wrapping_mul(6364136223846793005).wrapping_add(1442695040888963407);
+            (h >> 33) as f64 / (u32::MAX as f64) - 0.5 // range [-0.5, 0.5]
+        }
 
         let nodes: Vec<NodeState> = data
             .nodes
@@ -75,6 +81,9 @@ impl GraphState {
                 } else {
                     0.0
                 };
+                // Add jitter so the force simulation has asymmetry to work with.
+                let jx = hash_jitter(i as u64 * 2) * spread * 0.8;
+                let jy = hash_jitter(i as u64 * 2 + 1) * spread * 0.8;
                 let first_author = n
                     .authors
                     .first()
@@ -94,8 +103,8 @@ impl GraphState {
                     citation_count,
                     abstract_text: n.abstract_text,
                     authors: n.authors,
-                    x: r * angle.cos(),
-                    y: r * angle.sin(),
+                    x: r * angle.cos() + jx,
+                    y: r * angle.sin() + jy,
                     radius: NodeState::radius_from_citations(citation_count),
                     pinned: false,
                     bfs_depth: n.bfs_depth,

@@ -4,7 +4,6 @@ use std::cell::RefCell;
 use std::rc::Rc;
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
-use std::task::{Context, Poll};
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
 
@@ -16,7 +15,6 @@ use crate::graph::make_renderer;
 use crate::graph::renderer::{Renderer, Viewport};
 use crate::graph::worker_bridge::WorkerBridge;
 use crate::server_fns::graph::get_graph_data;
-use futures::Stream;
 use resyn_worker::{LayoutInput, LayoutOutput, NodeData};
 
 // ── Tooltip data ────────────────────────────────────────────────────────────
@@ -88,7 +86,7 @@ pub fn GraphPage() -> impl IntoView {
         let Some(canvas_el) = canvas_ref.get() else {
             return;
         };
-        let canvas: web_sys::HtmlCanvasElement = canvas_el.into();
+        let canvas: web_sys::HtmlCanvasElement = canvas_el;
         let Some(Ok(data)) = graph_resource.get() else {
             return;
         };
@@ -100,8 +98,14 @@ pub fn GraphPage() -> impl IntoView {
         canvas.set_width((css_width * dpr) as u32);
         canvas.set_height((css_height * dpr) as u32);
 
-        let viewport = Viewport::new(css_width, css_height);
+        let mut viewport = Viewport::new(css_width, css_height);
         let mut graph_state = GraphState::from_graph_data(data);
+        // Fit initial spread into visible canvas area so nodes are on-screen
+        if !graph_state.nodes.is_empty() {
+            let spread = (graph_state.nodes.len() as f64).sqrt() * 15.0;
+            let fit_scale = (css_width.min(css_height) * 0.4 / spread).min(1.0);
+            viewport.scale = fit_scale;
+        }
         let renderer = make_renderer(&canvas, graph_state.nodes.len());
         // Sync initial toggle values from Leptos signals
         graph_state.show_contradictions = show_contradictions.get_untracked();
@@ -126,17 +130,16 @@ pub fn GraphPage() -> impl IntoView {
 
         let renderer_rc: Rc<RefCell<Box<dyn Renderer>>> = Rc::new(RefCell::new(renderer));
 
-        // Create worker bridge
-        let bridge = WorkerBridge::new();
-        let pinned_bridge: Rc<RefCell<std::pin::Pin<Box<gloo_worker::reactor::ReactorBridge<resyn_worker::ForceLayoutWorker>>>>> =
-            Rc::new(RefCell::new(Box::pin(bridge.bridge)));
-
-        // Send initial layout request
-        {
-            let s = state.borrow();
-            let input = build_layout_input(&s.graph, css_width, css_height);
-            pinned_bridge.borrow().as_ref().get_ref().send_input(input);
-        }
+        // Force layout runs inline on the main thread (1 tick per RAF frame).
+        // The Web Worker bridge has waker issues with gloo-worker's
+        // ReactorBridge that prevent outputs from being received. For 400+
+        // nodes, a single Barnes-Hut tick per frame is fast enough (<2ms).
+        // The bridge/worker infrastructure is kept for future off-thread use.
+        let pinned_bridge: PinnedBridge = {
+            let bridge = WorkerBridge::new();
+            Rc::new(RefCell::new(Box::pin(bridge.bridge)))
+        };
+        let output_buf: Rc<RefCell<Option<LayoutOutput>>> = Rc::new(RefCell::new(None));
 
         // Set up ResizeObserver to handle canvas resize
         setup_resize_observer(&canvas, state.clone(), renderer_rc.clone());
@@ -155,6 +158,7 @@ pub fn GraphPage() -> impl IntoView {
             state.clone(),
             renderer_rc.clone(),
             pinned_bridge.clone(),
+            output_buf.clone(),
             show_contradictions,
             show_bridges,
             simulation_running,
@@ -223,7 +227,9 @@ pub fn GraphPage() -> impl IntoView {
     }
 }
 
-// ── Pinned bridge type alias ─────────────────────────────────────────────────
+// ── Type aliases ─────────────────────────────────────────────────────────────
+
+type ClosureSlot = Rc<RefCell<Option<Closure<dyn FnMut()>>>>;
 
 type PinnedBridge = Rc<
     RefCell<
@@ -248,22 +254,6 @@ fn build_layout_input(graph: &GraphState, width: f64, height: f64) -> LayoutInpu
     let edges: Vec<(usize, usize)> =
         graph.edges.iter().map(|e| (e.from_idx, e.to_idx)).collect();
     LayoutInput { nodes, edges, ticks: 1, alpha: graph.alpha, width, height }
-}
-
-/// Poll the bridge synchronously using a noop waker — drains any ready outputs.
-fn poll_bridge_sync(bridge: &mut std::pin::Pin<Box<gloo_worker::reactor::ReactorBridge<resyn_worker::ForceLayoutWorker>>>) -> Option<LayoutOutput> {
-    let waker = futures::task::noop_waker_ref();
-    let mut cx = Context::from_waker(waker);
-    let mut last = None;
-    loop {
-        match bridge.as_mut().poll_next(&mut cx) {
-            Poll::Ready(Some(output)) => {
-                last = Some(output);
-            }
-            Poll::Ready(None) | Poll::Pending => break,
-        }
-    }
-    last
 }
 
 // ── ResizeObserver setup ────────────────────────────────────────────────────
@@ -303,7 +293,8 @@ fn setup_resize_observer(
 fn start_render_loop(
     state: Rc<RefCell<RenderState>>,
     renderer: Rc<RefCell<Box<dyn Renderer>>>,
-    bridge: PinnedBridge,
+    _bridge: PinnedBridge,
+    _output_buf: Rc<RefCell<Option<LayoutOutput>>>,
     show_contradictions: RwSignal<bool>,
     show_bridges: RwSignal<bool>,
     simulation_running: RwSignal<bool>,
@@ -320,7 +311,7 @@ fn start_render_loop(
     let prev_zoom_in = Rc::new(RefCell::new(0u32));
     let prev_zoom_out = Rc::new(RefCell::new(0u32));
 
-    let closure_slot: Rc<RefCell<Option<Closure<dyn FnMut()>>>> = Rc::new(RefCell::new(None));
+    let closure_slot: ClosureSlot = Rc::new(RefCell::new(None));
     let closure_slot_inner = closure_slot.clone();
 
     let frame_closure = Closure::new(move || {
@@ -328,7 +319,7 @@ fn start_render_loop(
             return;
         }
 
-        let mut vis_count = (0usize, 0usize);
+        let vis_count;
 
         {
             let mut s = state.borrow_mut();
@@ -356,29 +347,24 @@ fn start_render_loop(
                 interaction::zoom_toward_cursor(&mut s.viewport, cx, cy, 1.0);
             }
 
-            // Drain layout outputs from the worker bridge
-            if let Some(output) = poll_bridge_sync(&mut bridge.borrow_mut()) {
+            // Run one force simulation tick inline (main thread).
+            if sim_running && !s.graph.nodes.is_empty() && s.graph.alpha >= 0.001 {
+                let canvas_w = s.viewport.width();
+                let canvas_h = s.viewport.height();
+                let input = build_layout_input(&s.graph, canvas_w, canvas_h);
+                let output = resyn_worker::forces::run_ticks(&input);
                 for (i, (x, y)) in output.positions.into_iter().enumerate() {
                     if i < s.graph.nodes.len() && !s.graph.nodes[i].pinned {
                         s.graph.nodes[i].x = x;
                         s.graph.nodes[i].y = y;
                     }
                 }
-                // Persist velocities and alpha for next tick
                 s.graph.velocities = output.velocities;
                 s.graph.alpha = output.alpha;
                 if output.converged {
                     s.graph.simulation_running = false;
                     simulation_running.set(false);
                 }
-            }
-
-            // Send next layout tick if simulation is running
-            if sim_running && !s.graph.nodes.is_empty() && s.graph.alpha >= 0.001 {
-                let canvas_w = s.viewport.width();
-                let canvas_h = s.viewport.height();
-                let input = build_layout_input(&s.graph, canvas_w, canvas_h);
-                bridge.borrow().as_ref().get_ref().send_input(input);
             }
 
             // Snapshot viewport scale
@@ -631,7 +617,6 @@ fn attach_event_listeners(
                                 paper_id,
                                 ..Default::default()
                             }));
-                            return;
                         }
                     }
                     // Real drag → node stays pinned (was set in mousedown)
@@ -642,7 +627,6 @@ fn attach_event_listeners(
                         s.graph.selected_node = None;
                         drop(s);
                         selected_paper.set(None);
-                        return;
                     }
                 }
                 InteractionState::Idle => {}

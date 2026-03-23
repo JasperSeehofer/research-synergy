@@ -1,3 +1,17 @@
+//! # DPR Coordinate Convention
+//!
+//! All coordinate math uses CSS pixel space. DPR is only applied at two boundaries:
+//!
+//! 1. **Canvas physical size:** `canvas.set_width(css_width * dpr)` — sets pixel buffer
+//! 2. **GL viewport:** `gl.viewport(0, 0, physical_w, physical_h)` — renders to pixel buffer
+//!
+//! Everything else (Viewport offset, scale, screen_to_world, world_to_screen, shader
+//! u_resolution) operates in CSS pixels. The shader divides by `resolution = physical / dpr`
+//! which equals CSS size, keeping the formula in CSS space.
+//!
+//! **For pointer events (Phase 13):** `MouseEvent.offset_x / offset_y` are CSS pixels.
+//! Pass them directly to `screen_to_world()` — no DPR conversion needed.
+
 use wasm_bindgen::JsCast;
 
 use super::canvas_renderer::Canvas2DRenderer;

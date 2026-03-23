@@ -53,7 +53,18 @@ Surface research gaps and unexplored connections that no single paper reveals �
 
 ### Active
 
-(None — next milestone requirements defined via `/gsd:new-milestone`)
+(Defined in REQUIREMENTS.md for v1.1.1)
+
+## Current Milestone: v1.1.1 Bug Fix & Polish
+
+**Goal:** Fix all broken v1.1 web UI features — SPA routing, graph force layout, node interaction, temporal slider, and WebGL rendering.
+
+**Target features:**
+- SPA routing fallback (all routes serve index.html on direct navigation)
+- Force-directed graph animation producing visible node movement
+- Node drag, pan, zoom interaction working correctly
+- Temporal slider dual-range thumbs rendering properly
+- WebGL DPR fix verified (fuzzy/blurry nodes resolved)
 
 ### Out of Scope
 
@@ -101,5 +112,22 @@ ReSyn is a 3-crate Cargo workspace (resyn-core/resyn-app/resyn-server) with 15,8
 | Named record IDs for crawl queue | Idempotent enqueue (CREATE on same ID is no-op) | ✓ Good — natural dedup |
 | SurrealDB FLEXIBLE TYPE for complex fields | JSON strings for methods/findings/tfidf_vector | ⚠ Revisit — works but limits server-side querying |
 
+## Evolution
+
+This document evolves at phase transitions and milestone boundaries.
+
+**After each phase transition** (via `/gsd:transition`):
+1. Requirements invalidated? → Move to Out of Scope with reason
+2. Requirements validated? → Move to Validated with phase reference
+3. New requirements emerged? → Add to Active
+4. Decisions to log? → Add to Key Decisions
+5. "What This Is" still accurate? → Update if drifted
+
+**After each milestone** (via `/gsd:complete-milestone`):
+1. Full review of all sections
+2. Core Value check — still the right priority?
+3. Audit Out of Scope — reasons still valid?
+4. Update Context with current state
+
 ---
-*Last updated: 2026-03-22 after v1.1 milestone*
+*Last updated: 2026-03-23 after v1.1.1 milestone start*

@@ -44,21 +44,21 @@ None — this is a bugfix milestone.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ROUTE-01 | — | Pending |
-| ROUTE-02 | — | Pending |
-| GRAPH-01 | — | Pending |
-| GRAPH-02 | — | Pending |
-| GRAPH-03 | — | Pending |
-| INTERACT-01 | — | Pending |
-| INTERACT-02 | — | Pending |
-| INTERACT-03 | — | Pending |
-| TEMPORAL-01 | — | Pending |
+| ROUTE-01 | Phase 11 | Pending |
+| ROUTE-02 | Phase 11 | Pending |
+| GRAPH-01 | Phase 12 | Pending |
+| GRAPH-02 | Phase 12 | Pending |
+| GRAPH-03 | Phase 12 | Pending |
+| INTERACT-01 | Phase 13 | Pending |
+| INTERACT-02 | Phase 13 | Pending |
+| INTERACT-03 | Phase 13 | Pending |
+| TEMPORAL-01 | Phase 14 | Pending |
 
 **Coverage:**
 - v1.1.1 requirements: 9 total
-- Mapped to phases: 0
-- Unmapped: 9
+- Mapped to phases: 9
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-23*
-*Last updated: 2026-03-23 after initial definition*
+*Last updated: 2026-03-23 after roadmap creation*

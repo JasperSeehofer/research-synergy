@@ -2,8 +2,8 @@
 gsd_state_version: 1.0
 milestone: v1.1.1
 milestone_name: Bug Fix & Polish
-status: Phase complete — ready for verification
-stopped_at: "Phase 12-01: completed Tasks 1-2, awaiting visual verification at Task 3 checkpoint"
+status: Phase 12 in progress — force tuning needed
+stopped_at: "Phase 12-01: Tasks 1-2 committed. Force tuning attempted (damping, alpha floor, reheat) but graph explodes then freezes. Need agent-browser to debug live and tune coefficients."
 last_updated: "2026-03-23T13:15:48.895Z"
 progress:
   total_phases: 4
@@ -46,6 +46,7 @@ None.
 
 ### Blockers/Concerns
 
+- [Phase 12] **BLOCKING** Force layout coefficients broken: VELOCITY_DAMPING=0.6, ALPHA_MIN=0.005 causes graph to explode then freeze. Zoom/pan also stops working. Need to use agent-browser to observe live behavior and iteratively tune forces.rs constants + graph.rs RAF loop. The changes are in forces.rs (damping 0.4→0.6, alpha_min 0.001→0.005) and graph.rs (removed convergence stop, added alpha floor + reheat on drag). Revert or retune needed.
 - [Phase 12] DPR fix in webgl_renderer.rs may have broken screen_to_world coordinate conversion — verify before declaring GRAPH-02 done
 - [Phase 13] Canvas may be covered by an overlay element (z-index), blocking all pointer events — check first before debugging event listener logic
 - [Phase 13] Interaction coordinate transform must stay in sync with DPR fix outcome from Phase 12
@@ -53,6 +54,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-23T13:15:48.894Z
-Stopped at: Phase 12-01: completed Tasks 1-2, awaiting visual verification at Task 3 checkpoint
-Resume file: None
+Last session: 2026-03-23
+Stopped at: Phase 12-01 Task 3 checkpoint — force tuning broke graph, needs agent-browser debugging
+Resume file: .planning/phases/12-graph-force-rendering/12-01-PLAN.md

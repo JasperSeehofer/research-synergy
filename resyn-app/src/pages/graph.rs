@@ -348,7 +348,9 @@ fn start_render_loop(
             }
 
             // Run one force simulation tick inline (main thread).
-            if sim_running && !s.graph.nodes.is_empty() && s.graph.alpha >= 0.001 {
+            // Alpha decays toward ALPHA_MIN but never stops — the graph stays
+            // responsive so dragging a node always triggers rearrangement.
+            if sim_running && !s.graph.nodes.is_empty() {
                 let canvas_w = s.viewport.width();
                 let canvas_h = s.viewport.height();
                 let input = build_layout_input(&s.graph, canvas_w, canvas_h);
@@ -360,11 +362,8 @@ fn start_render_loop(
                     }
                 }
                 s.graph.velocities = output.velocities;
-                s.graph.alpha = output.alpha;
-                if output.converged {
-                    s.graph.simulation_running = false;
-                    simulation_running.set(false);
-                }
+                // Floor alpha at ALPHA_MIN instead of stopping — keeps forces alive
+                s.graph.alpha = output.alpha.max(resyn_worker::forces::ALPHA_MIN);
             }
 
             // Snapshot viewport scale
@@ -602,6 +601,8 @@ fn attach_event_listeners(
 
             match prev_interaction {
                 InteractionState::DraggingNode { node_idx, .. } => {
+                    // Reheat alpha so forces rearrange the graph around the moved node
+                    s.graph.alpha = 0.3_f64.max(s.graph.alpha);
                     if was_click {
                         // It was a click, not a drag
                         if s.was_already_pinned {

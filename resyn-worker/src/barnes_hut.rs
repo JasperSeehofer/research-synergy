@@ -159,14 +159,14 @@ pub fn barnes_hut_repulsion(tree: &QuadTree, x: f64, y: f64, mass: f64, theta: f
     }
 
     // Skip self-interaction for leaf nodes containing the queried point.
-    if tree.is_leaf() {
-        if let Some(ref leaf) = tree.leaf {
-            let dx = leaf.x - x;
-            let dy = leaf.y - y;
-            if dx.abs() < 1e-10 && dy.abs() < 1e-10 {
-                // This leaf IS the queried particle — skip.
-                return (0.0, 0.0);
-            }
+    if tree.is_leaf()
+        && let Some(ref leaf) = tree.leaf
+    {
+        let dx = leaf.x - x;
+        let dy = leaf.y - y;
+        if dx.abs() < 1e-10 && dy.abs() < 1e-10 {
+            // This leaf IS the queried particle — skip.
+            return (0.0, 0.0);
         }
     }
 

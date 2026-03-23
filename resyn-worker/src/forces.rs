@@ -1,14 +1,14 @@
-/// Force simulation using Barnes-Hut for repulsion.
+//! Force simulation using Barnes-Hut for repulsion.
 
 use crate::{barnes_hut, LayoutInput, LayoutOutput, NodeData};
 
-pub const REPULSION_STRENGTH: f64 = -30.0;
-pub const ATTRACTION_STRENGTH: f64 = 0.1;
-pub const CENTER_GRAVITY: f64 = 0.05;
-pub const ALPHA_DECAY: f64 = 0.92;
-pub const ALPHA_MIN: f64 = 0.001;
+pub const REPULSION_STRENGTH: f64 = -200.0;
+pub const ATTRACTION_STRENGTH: f64 = 0.3;
+pub const CENTER_GRAVITY: f64 = 0.02;
+pub const ALPHA_DECAY: f64 = 0.997;
+pub const ALPHA_MIN: f64 = 0.005;
 pub const THETA: f64 = 0.9;
-pub const IDEAL_DISTANCE: f64 = 50.0;
+pub const IDEAL_DISTANCE: f64 = 80.0;
 pub const VELOCITY_DAMPING: f64 = 0.6;
 
 /// Run one tick of the force simulation.
@@ -153,7 +153,7 @@ mod tests {
     }
 
     #[test]
-    fn test_convergence_100_node_graph_within_500_ticks() {
+    fn test_convergence_100_node_graph_within_5000_ticks() {
         // Generate 100 nodes in a grid pattern.
         let mut node_data = Vec::new();
         for i in 0..10 {
@@ -167,13 +167,13 @@ mod tests {
         let input = LayoutInput {
             nodes: node_data,
             edges,
-            ticks: 500,
+            ticks: 5000,
             alpha: 1.0,
             width: 800.0,
             height: 600.0,
         };
         let output = run_ticks(&input);
-        assert!(output.converged, "100-node graph should converge within 500 ticks");
+        assert!(output.converged, "100-node graph should converge within 5000 ticks");
     }
 
     #[test]

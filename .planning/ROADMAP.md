@@ -66,7 +66,9 @@ Plans:
   2. Citation edges (lines connecting nodes) are drawn between related papers
   3. Node circles and labels render with sharp, crisp edges at all display zoom levels (no blur or DPR mismatch)
   4. The simulation settles to a stable layout rather than collapsing all nodes to a point or exploding off screen
-**Plans**: TBD
+**Plans**: 1 plan
+Plans:
+- [ ] 12-01-PLAN.md — Fix initial spread, preallocate VBOs, verify rendering
 **UI hint**: yes
 
 ### Phase 13: Graph Interaction
@@ -78,7 +80,9 @@ Plans:
   2. User can click and drag empty canvas space to pan the entire graph viewport
   3. User can scroll the mouse wheel over the graph to zoom in and out smoothly
   4. After any interaction, node positions and viewport state remain consistent (no jump or reset)
-**Plans**: TBD
+**Plans**: 1 plan
+Plans:
+- [ ] 12-01-PLAN.md — Fix initial spread, preallocate VBOs, verify rendering
 **UI hint**: yes
 
 ### Phase 14: Temporal Controls
@@ -89,7 +93,9 @@ Plans:
   1. Both the start-year and end-year slider thumbs are visible on screen at the same time
   2. Each thumb can be dragged independently without the other thumb becoming hidden or inaccessible
   3. Moving either thumb updates the year range label and the graph filters accordingly
-**Plans**: TBD
+**Plans**: 1 plan
+Plans:
+- [ ] 12-01-PLAN.md — Fix initial spread, preallocate VBOs, verify rendering
 **UI hint**: yes
 
 ## Progress
@@ -107,6 +113,6 @@ Plans:
 | 9. Graph Renderer (Canvas to WebGL) | v1.1 | 5/5 | Complete | 2026-03-18 |
 | 10. Analysis UI Polish + Scale | v1.1 | 4/4 | Complete | 2026-03-18 |
 | 11. SPA Routing | v1.1.1 | 1/1 | Complete    | 2026-03-23 |
-| 12. Graph Force & Rendering | v1.1.1 | 0/TBD | Not started | - |
+| 12. Graph Force & Rendering | v1.1.1 | 0/1 | In Progress | - |
 | 13. Graph Interaction | v1.1.1 | 0/TBD | Not started | - |
 | 14. Temporal Controls | v1.1.1 | 0/TBD | Not started | - |

@@ -2,10 +2,10 @@
 gsd_state_version: 1.0
 milestone: v1.1.1
 milestone_name: Bug Fix & Polish
-status: active
-stopped_at: "Roadmap created — ready to plan Phase 11"
-last_updated: "2026-03-23"
-last_activity: "2026-03-23 — Roadmap written for v1.1.1 (4 phases, 9 requirements)"
+status: planning
+stopped_at: Phase 11 context gathered
+last_updated: "2026-03-23T10:43:34.860Z"
+last_activity: 2026-03-23 — Roadmap written, 4 phases defined (11-14), 9 requirements mapped
 progress:
   total_phases: 4
   completed_phases: 0
@@ -39,6 +39,7 @@ Progress: [░░░░░░░░░░] 0%
 (Full decision log in PROJECT.md Key Decisions table)
 
 Recent decisions affecting current work:
+
 - [v1.1 session] Inline force layout on main thread (worker bridge polling was broken with noop waker)
 - [v1.1 session] DPR fix attempted in webgl_renderer.rs — NOT yet verified, may have broken coordinate system
 
@@ -55,6 +56,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-23
-Stopped at: Roadmap created — starting Phase 11
-Resume file: None
+Last session: 2026-03-23T10:43:34.859Z
+Stopped at: Phase 11 context gathered
+Resume file: .planning/phases/11-spa-routing/11-CONTEXT.md

@@ -2,11 +2,11 @@
 
 use crate::{barnes_hut, LayoutInput, LayoutOutput, NodeData};
 
-pub const REPULSION_STRENGTH: f64 = -200.0;
-pub const ATTRACTION_STRENGTH: f64 = 0.3;
-pub const CENTER_GRAVITY: f64 = 0.02;
-pub const ALPHA_DECAY: f64 = 0.997;
-pub const ALPHA_MIN: f64 = 0.005;
+pub const REPULSION_STRENGTH: f64 = -300.0;
+pub const ATTRACTION_STRENGTH: f64 = 0.03;
+pub const CENTER_GRAVITY: f64 = 0.005;
+pub const ALPHA_DECAY: f64 = 0.995;
+pub const ALPHA_MIN: f64 = 0.001;
 pub const THETA: f64 = 0.9;
 pub const IDEAL_DISTANCE: f64 = 80.0;
 pub const VELOCITY_DAMPING: f64 = 0.6;
@@ -36,7 +36,7 @@ pub fn simulation_tick(nodes: &mut [NodeData], vel: &mut [(f64, f64)], edges: &[
         if nodes[i].pinned {
             continue;
         }
-        let (fx, fy) = barnes_hut::barnes_hut_repulsion(&tree, nodes[i].x, nodes[i].y, nodes[i].mass, THETA);
+        let (fx, fy) = barnes_hut::barnes_hut_repulsion(&tree, nodes[i].x, nodes[i].y, nodes[i].mass, THETA, REPULSION_STRENGTH);
         forces[i].0 += fx;
         forces[i].1 += fy;
     }

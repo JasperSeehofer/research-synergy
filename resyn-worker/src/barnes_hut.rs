@@ -153,7 +153,7 @@ impl QuadTree {
 ///
 /// `theta` — opening angle criterion. Smaller = more accurate, larger = faster.
 /// Returns (fx, fy) force vector.
-pub fn barnes_hut_repulsion(tree: &QuadTree, x: f64, y: f64, mass: f64, theta: f64) -> (f64, f64) {
+pub fn barnes_hut_repulsion(tree: &QuadTree, x: f64, y: f64, mass: f64, theta: f64, repulsion_strength: f64) -> (f64, f64) {
     if tree.total_mass == 0.0 {
         return (0.0, 0.0);
     }
@@ -179,8 +179,7 @@ pub fn barnes_hut_repulsion(tree: &QuadTree, x: f64, y: f64, mass: f64, theta: f
     let s = tree.bounds.width.max(tree.bounds.height);
     if tree.is_leaf() || (s / dist) < theta {
         // Repulsion: F = k * m1 * m2 / r^2, directed away from tree's CoM.
-        const REPULSION_K: f64 = -30.0;
-        let force = REPULSION_K * mass * tree.total_mass / dist_sq;
+        let force = repulsion_strength * mass * tree.total_mass / dist_sq;
         // Direction: from CoM toward our particle (negate dx/dy since dx = CoM - particle).
         let fx = -force * dx / dist;
         let fy = -force * dy / dist;
@@ -193,7 +192,7 @@ pub fn barnes_hut_repulsion(tree: &QuadTree, x: f64, y: f64, mass: f64, theta: f
     if let Some(ref children) = tree.children {
         for child in children.iter() {
             if child.total_mass > 0.0 {
-                let (cfx, cfy) = barnes_hut_repulsion(child, x, y, mass, theta);
+                let (cfx, cfy) = barnes_hut_repulsion(child, x, y, mass, theta, repulsion_strength);
                 fx += cfx;
                 fy += cfy;
             }
@@ -229,7 +228,7 @@ mod tests {
         let positions = vec![(0.0_f64, 0.0_f64), (100.0, 0.0)];
         let masses = vec![1.0_f64, 1.0_f64];
         let tree = QuadTree::build(&positions, &masses);
-        let (fx, fy) = barnes_hut_repulsion(&tree, 0.0, 0.0, 1.0, 0.9);
+        let (fx, fy) = barnes_hut_repulsion(&tree, 0.0, 0.0, 1.0, 0.9, -30.0);
         let mag = (fx * fx + fy * fy).sqrt();
         assert!(mag > 0.0, "repulsion force should be non-zero, got magnitude {}", mag);
     }
@@ -241,8 +240,8 @@ mod tests {
         let masses = vec![1.0_f64, 1.0_f64];
         let tree = QuadTree::build(&positions, &masses);
 
-        let (fx1, _) = barnes_hut_repulsion(&tree, 10.0, 0.0, 1.0, 0.9);
-        let (fx2, _) = barnes_hut_repulsion(&tree, 50.0, 0.0, 1.0, 0.9);
+        let (fx1, _) = barnes_hut_repulsion(&tree, 10.0, 0.0, 1.0, 0.9, -30.0);
+        let (fx2, _) = barnes_hut_repulsion(&tree, 50.0, 0.0, 1.0, 0.9, -30.0);
 
         let mag1 = fx1.abs();
         let mag2 = fx2.abs();

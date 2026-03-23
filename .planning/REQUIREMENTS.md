@@ -20,9 +20,9 @@ Bug fixes for v1.1 web UI features confirmed broken via agent-browser testing.
 
 ### Graph Interaction
 
-- [ ] **INTERACT-01**: User can drag individual nodes to reposition them
-- [ ] **INTERACT-02**: User can pan the graph viewport by dragging empty space
-- [ ] **INTERACT-03**: User can zoom in/out with scroll wheel
+- [x] **INTERACT-01**: User can drag individual nodes to reposition them
+- [x] **INTERACT-02**: User can pan the graph viewport by dragging empty space
+- [x] **INTERACT-03**: User can zoom in/out with scroll wheel
 
 ### Temporal Controls
 
@@ -49,9 +49,9 @@ None — this is a bugfix milestone.
 | GRAPH-01 | Phase 12 | Complete |
 | GRAPH-02 | Phase 12 | Complete |
 | GRAPH-03 | Phase 12 | Complete |
-| INTERACT-01 | Phase 13 | Pending |
-| INTERACT-02 | Phase 13 | Pending |
-| INTERACT-03 | Phase 13 | Pending |
+| INTERACT-01 | Phase 13 | Complete |
+| INTERACT-02 | Phase 13 | Complete |
+| INTERACT-03 | Phase 13 | Complete |
 | TEMPORAL-01 | Phase 14 | Pending |
 
 **Coverage:**

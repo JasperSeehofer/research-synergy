@@ -40,7 +40,7 @@ Full details: `.planning/milestones/v1.1-ROADMAP.md`
 
 - [x] **Phase 11: SPA Routing** - All routes load correctly on direct navigation and browser refresh (completed 2026-03-23)
 - [x] **Phase 12: Graph Force & Rendering** - Force layout animates and nodes render without blur (completed 2026-03-23)
-- [ ] **Phase 13: Graph Interaction** - Node drag, pan, and zoom all respond to user input
+- [x] **Phase 13: Graph Interaction** - Node drag, pan, and zoom all respond to user input (completed 2026-03-23)
 - [ ] **Phase 14: Temporal Controls** - Dual-range slider both thumbs visible and independently draggable
 
 ## Phase Details
@@ -80,9 +80,9 @@ Plans:
   2. User can click and drag empty canvas space to pan the entire graph viewport
   3. User can scroll the mouse wheel over the graph to zoom in and out smoothly
   4. After any interaction, node positions and viewport state remain consistent (no jump or reset)
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 Plans:
-- [ ] 13-01-PLAN.md — Fix CSS pointer-events passthrough on overlay containers
+- [x] 13-01-PLAN.md — Fix CSS pointer-events passthrough on overlay containers
 **UI hint**: yes
 
 ### Phase 14: Temporal Controls
@@ -114,5 +114,5 @@ Plans:
 | 10. Analysis UI Polish + Scale | v1.1 | 4/4 | Complete | 2026-03-18 |
 | 11. SPA Routing | v1.1.1 | 1/1 | Complete    | 2026-03-23 |
 | 12. Graph Force & Rendering | v1.1.1 | 1/1 | Complete   | 2026-03-23 |
-| 13. Graph Interaction | v1.1.1 | 0/1 | Not started | - |
+| 13. Graph Interaction | v1.1.1 | 1/1 | Complete   | 2026-03-23 |
 | 14. Temporal Controls | v1.1.1 | 0/TBD | Not started | - |

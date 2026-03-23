@@ -39,7 +39,7 @@ Full details: `.planning/milestones/v1.1-ROADMAP.md`
 **Milestone Goal:** Fix all broken v1.1 web UI features — SPA routing, graph force layout, node interaction, temporal slider, and WebGL rendering quality.
 
 - [x] **Phase 11: SPA Routing** - All routes load correctly on direct navigation and browser refresh (completed 2026-03-23)
-- [ ] **Phase 12: Graph Force & Rendering** - Force layout animates and nodes render without blur
+- [x] **Phase 12: Graph Force & Rendering** - Force layout animates and nodes render without blur (completed 2026-03-23)
 - [ ] **Phase 13: Graph Interaction** - Node drag, pan, and zoom all respond to user input
 - [ ] **Phase 14: Temporal Controls** - Dual-range slider both thumbs visible and independently draggable
 
@@ -68,7 +68,7 @@ Plans:
   4. The simulation settles to a stable layout rather than collapsing all nodes to a point or exploding off screen
 **Plans**: 1 plan
 Plans:
-- [ ] 12-01-PLAN.md — Fix initial spread, preallocate VBOs, verify rendering
+- [x] 12-01-PLAN.md — Fix initial spread, preallocate VBOs, verify rendering
 **UI hint**: yes
 
 ### Phase 13: Graph Interaction
@@ -113,6 +113,6 @@ Plans:
 | 9. Graph Renderer (Canvas to WebGL) | v1.1 | 5/5 | Complete | 2026-03-18 |
 | 10. Analysis UI Polish + Scale | v1.1 | 4/4 | Complete | 2026-03-18 |
 | 11. SPA Routing | v1.1.1 | 1/1 | Complete    | 2026-03-23 |
-| 12. Graph Force & Rendering | v1.1.1 | 0/1 | In Progress | - |
+| 12. Graph Force & Rendering | v1.1.1 | 1/1 | Complete   | 2026-03-23 |
 | 13. Graph Interaction | v1.1.1 | 0/TBD | Not started | - |
 | 14. Temporal Controls | v1.1.1 | 0/TBD | Not started | - |

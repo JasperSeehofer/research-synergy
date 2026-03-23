@@ -14,9 +14,9 @@ Bug fixes for v1.1 web UI features confirmed broken via agent-browser testing.
 
 ### Graph Rendering
 
-- [ ] **GRAPH-01**: Force-directed layout produces visible node animation spreading nodes apart
-- [ ] **GRAPH-02**: Graph nodes render with crisp edges (no DPR blur)
-- [ ] **GRAPH-03**: Graph edges (citation links) are visually rendered between connected nodes
+- [x] **GRAPH-01**: Force-directed layout produces visible node animation spreading nodes apart
+- [x] **GRAPH-02**: Graph nodes render with crisp edges (no DPR blur)
+- [x] **GRAPH-03**: Graph edges (citation links) are visually rendered between connected nodes
 
 ### Graph Interaction
 
@@ -46,9 +46,9 @@ None — this is a bugfix milestone.
 |-------------|-------|--------|
 | ROUTE-01 | Phase 11 | Pending |
 | ROUTE-02 | Phase 11 | Pending |
-| GRAPH-01 | Phase 12 | Pending |
-| GRAPH-02 | Phase 12 | Pending |
-| GRAPH-03 | Phase 12 | Pending |
+| GRAPH-01 | Phase 12 | Complete |
+| GRAPH-02 | Phase 12 | Complete |
+| GRAPH-03 | Phase 12 | Complete |
 | INTERACT-01 | Phase 13 | Pending |
 | INTERACT-02 | Phase 13 | Pending |
 | INTERACT-03 | Phase 13 | Pending |

@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.1.1
 milestone_name: Bug Fix & Polish
-status: Ready to plan
-stopped_at: Phase 12 context gathered
-last_updated: "2026-03-23T12:33:19.910Z"
+status: Phase complete — ready for verification
+stopped_at: "Phase 12-01: completed Tasks 1-2, awaiting visual verification at Task 3 checkpoint"
+last_updated: "2026-03-23T13:15:48.895Z"
 progress:
   total_phases: 4
-  completed_phases: 1
-  total_plans: 1
-  completed_plans: 1
+  completed_phases: 2
+  total_plans: 2
+  completed_plans: 2
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Phase 11 — spa-routing
+**Current focus:** Phase 12 — graph-force-rendering
 
 ## Current Position
 
-Phase: 12
-Plan: Not started
+Phase: 12 (graph-force-rendering) — EXECUTING
+Plan: 1 of 1
 
 ## Accumulated Context
 
@@ -36,6 +36,9 @@ Recent decisions affecting current work:
 
 - [v1.1 session] Inline force layout on main thread (worker bridge polling was broken with noop waker)
 - [v1.1 session] DPR fix attempted in webgl_renderer.rs — NOT yet verified, may have broken coordinate system
+- [Phase 12-graph-force-rendering]: Spread constant reduced 50→15 (nodes fit viewport without simulation changes)
+- [Phase 12-graph-force-rendering]: VBOs preallocated in WebGL2Renderer::new(), updated per-frame via DYNAMIC_DRAW (no GPU leak)
+- [Phase 12-graph-force-rendering]: DPR applied only at canvas size and GL viewport; all coordinate math in CSS pixels
 
 ### Pending Todos
 
@@ -50,6 +53,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-23T12:33:19.908Z
-Stopped at: Phase 12 context gathered
-Resume file: .planning/phases/12-graph-force-rendering/12-CONTEXT.md
+Last session: 2026-03-23T13:15:48.894Z
+Stopped at: Phase 12-01: completed Tasks 1-2, awaiting visual verification at Task 3 checkpoint
+Resume file: None

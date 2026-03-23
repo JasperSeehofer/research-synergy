@@ -89,6 +89,11 @@ pub struct WebGL2Renderer {
     edge_program: WebGlProgram,
     node_vao: WebGlVertexArrayObject,
     edge_vao: WebGlVertexArrayObject,
+    /// Preallocated quad vertex buffer. Kept alive so the node VAO binding remains valid.
+    #[allow(dead_code)]
+    quad_buf: WebGlBuffer,
+    instance_buf: WebGlBuffer,
+    edge_buf: WebGlBuffer,
     width: u32,
     height: u32,
 }
@@ -117,12 +122,49 @@ impl WebGL2Renderer {
         let node_vao = gl.create_vertex_array().expect("node VAO");
         let edge_vao = gl.create_vertex_array().expect("edge VAO");
 
+        // Preallocate VBOs — reused every frame via buffer_data updates (no per-frame create)
+        let quad_buf = gl.create_buffer().expect("quad buf");
+        let instance_buf = gl.create_buffer().expect("instance buf");
+        let edge_buf = gl.create_buffer().expect("edge buf");
+
+        // Upload static quad vertices once (unit square for instanced node rendering)
+        let quad_verts: [f32; 8] = [-1.0, -1.0, 1.0, -1.0, 1.0, 1.0, -1.0, 1.0];
+        gl.bind_buffer(WebGl2RenderingContext::ARRAY_BUFFER, Some(&quad_buf));
+        unsafe {
+            let view = js_sys::Float32Array::view(&quad_verts);
+            gl.buffer_data_with_array_buffer_view(
+                WebGl2RenderingContext::ARRAY_BUFFER,
+                &view,
+                WebGl2RenderingContext::STATIC_DRAW,
+            );
+        }
+
+        // Set up quad attribute pointer once in the node VAO
+        gl.bind_vertex_array(Some(&node_vao));
+        gl.bind_buffer(WebGl2RenderingContext::ARRAY_BUFFER, Some(&quad_buf));
+        let a_quad = gl.get_attrib_location(&node_program, "a_quad") as u32;
+        gl.enable_vertex_attrib_array(a_quad);
+        gl.vertex_attrib_pointer_with_i32(a_quad, 2, WebGl2RenderingContext::FLOAT, false, 0, 0);
+        gl.vertex_attrib_divisor(a_quad, 0); // shared per quad vertex
+        gl.bind_vertex_array(None);
+
         let width = canvas.width();
         let height = canvas.height();
 
         gl.viewport(0, 0, width as i32, height as i32);
 
-        Self { gl, node_program, edge_program, node_vao, edge_vao, width, height }
+        Self {
+            gl,
+            node_program,
+            edge_program,
+            node_vao,
+            edge_vao,
+            quad_buf,
+            instance_buf,
+            edge_buf,
+            width,
+            height,
+        }
     }
 
     /// Returns screen-space positions and labels for rendering text as a 2D
@@ -158,8 +200,12 @@ impl Renderer for WebGL2Renderer {
             WebGl2RenderingContext::ONE_MINUS_SRC_ALPHA,
         );
 
-        let res_x = self.width as f32;
-        let res_y = self.height as f32;
+        // Viewport offset/scale are in CSS coordinates. The shader maps
+        // world→clip via `(world * scale + offset) / resolution * 2 - 1`,
+        // so resolution must also be in CSS pixels to match.
+        let dpr = web_sys::window().unwrap().device_pixel_ratio() as f32;
+        let res_x = self.width as f32 / dpr;
+        let res_y = self.height as f32 / dpr;
         let offset_x = viewport.offset_x as f32;
         let offset_y = viewport.offset_y as f32;
         let scale = viewport.scale as f32;
@@ -239,6 +285,7 @@ impl Renderer for WebGL2Renderer {
             gl,
             &self.edge_program,
             &self.edge_vao,
+            &self.edge_buf,
             &edge_data,
             res_x,
             res_y,
@@ -253,6 +300,7 @@ impl Renderer for WebGL2Renderer {
             gl,
             &self.edge_program,
             &self.edge_vao,
+            &self.edge_buf,
             &arrow_data,
             res_x,
             res_y,
@@ -263,10 +311,6 @@ impl Renderer for WebGL2Renderer {
         );
 
         // ── Draw nodes (instanced) ───────────────────────────────────────────
-        // Quad vertices: unit square for instanced rendering
-        // (-1,-1), (1,-1), (1,1), (-1,1)
-        let quad_verts: [f32; 8] = [-1.0, -1.0, 1.0, -1.0, 1.0, 1.0, -1.0, 1.0];
-
         // Per-instance data: x, y, radius, alpha, r, g, b
         let mut instance_data: Vec<f32> = Vec::new();
         let node_count = state.nodes.len();
@@ -304,33 +348,8 @@ impl Renderer for WebGL2Renderer {
             gl.use_program(Some(&self.node_program));
             gl.bind_vertex_array(Some(&self.node_vao));
 
-            // Upload quad buffer (shared, non-instanced)
-            let quad_buf = gl.create_buffer().expect("quad buf");
-            gl.bind_buffer(WebGl2RenderingContext::ARRAY_BUFFER, Some(&quad_buf));
-            unsafe {
-                let view = js_sys::Float32Array::view(&quad_verts);
-                gl.buffer_data_with_array_buffer_view(
-                    WebGl2RenderingContext::ARRAY_BUFFER,
-                    &view,
-                    WebGl2RenderingContext::DYNAMIC_DRAW,
-                );
-            }
-
-            let a_quad = gl.get_attrib_location(&self.node_program, "a_quad") as u32;
-            gl.enable_vertex_attrib_array(a_quad);
-            gl.vertex_attrib_pointer_with_i32(
-                a_quad,
-                2,
-                WebGl2RenderingContext::FLOAT,
-                false,
-                0,
-                0,
-            );
-            gl.vertex_attrib_divisor(a_quad, 0); // shared per quad vertex
-
-            // Upload instance buffer
-            let inst_buf = gl.create_buffer().expect("instance buf");
-            gl.bind_buffer(WebGl2RenderingContext::ARRAY_BUFFER, Some(&inst_buf));
+            // Update preallocated instance buffer with this frame's per-node data
+            gl.bind_buffer(WebGl2RenderingContext::ARRAY_BUFFER, Some(&self.instance_buf));
             unsafe {
                 let view = js_sys::Float32Array::view(&instance_data);
                 gl.buffer_data_with_array_buffer_view(
@@ -476,6 +495,7 @@ fn draw_edge_pass(
     gl: &WebGl2RenderingContext,
     program: &WebGlProgram,
     vao: &WebGlVertexArrayObject,
+    edge_buf: &WebGlBuffer,
     data: &[f32],
     res_x: f32,
     res_y: f32,
@@ -493,8 +513,8 @@ fn draw_edge_pass(
     gl.use_program(Some(program));
     gl.bind_vertex_array(Some(vao));
 
-    let buf = gl.create_buffer().expect("edge buf");
-    gl.bind_buffer(WebGl2RenderingContext::ARRAY_BUFFER, Some(&buf));
+    // Update preallocated edge buffer with this pass's data
+    gl.bind_buffer(WebGl2RenderingContext::ARRAY_BUFFER, Some(edge_buf));
     unsafe {
         let view = js_sys::Float32Array::view(data);
         gl.buffer_data_with_array_buffer_view(

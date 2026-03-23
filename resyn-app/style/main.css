@@ -1336,6 +1336,7 @@ input[type="range"]::-moz-range-thumb {
   flex-direction: column;
   gap: var(--space-sm);
   z-index: 10;
+  pointer-events: none;
 }
 
 .graph-controls-group {
@@ -1345,6 +1346,7 @@ input[type="range"]::-moz-range-thumb {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: var(--space-xs);
+  pointer-events: auto;
 }
 
 .graph-control-btn {
@@ -1408,6 +1410,7 @@ input[type="range"]::-moz-range-thumb {
   left: 0;
   right: 0;
   z-index: 10;
+  pointer-events: none;
 }
 
 .dual-range-wrapper {
@@ -1425,7 +1428,7 @@ input[type="range"]::-moz-range-thumb {
   -webkit-appearance: none;
   appearance: none;
   background: transparent;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .temporal-range::-webkit-slider-thumb {

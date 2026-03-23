@@ -53,7 +53,9 @@ Full details: `.planning/milestones/v1.1-ROADMAP.md`
   1. User can click any sidebar link (Dashboard, Papers, Graph, Gaps) and the correct page loads without a full page reload
   2. User can type `/graph` or `/papers` directly into the browser address bar and the correct page renders
   3. User can press browser refresh on any route and land back on the same page instead of a 404 or blank screen
-**Plans**: TBD
+**Plans:** 1 plan
+Plans:
+- [ ] 11-01-PLAN.md — Add SPA fallback to Axum static file serving
 
 ### Phase 12: Graph Force & Rendering
 **Goal**: The citation graph renders all edges crisply and nodes visibly spread apart during force simulation
@@ -104,7 +106,7 @@ Full details: `.planning/milestones/v1.1-ROADMAP.md`
 | 8. Leptos Web Shell + Analysis Panels | v1.1 | 7/7 | Complete | 2026-03-17 |
 | 9. Graph Renderer (Canvas to WebGL) | v1.1 | 5/5 | Complete | 2026-03-18 |
 | 10. Analysis UI Polish + Scale | v1.1 | 4/4 | Complete | 2026-03-18 |
-| 11. SPA Routing | v1.1.1 | 0/TBD | Not started | - |
+| 11. SPA Routing | v1.1.1 | 0/1 | Planning | - |
 | 12. Graph Force & Rendering | v1.1.1 | 0/TBD | Not started | - |
 | 13. Graph Interaction | v1.1.1 | 0/TBD | Not started | - |
 | 14. Temporal Controls | v1.1.1 | 0/TBD | Not started | - |

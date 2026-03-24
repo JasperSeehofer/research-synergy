@@ -59,7 +59,19 @@ Surface research gaps and unexplored connections that no single paper reveals â€
 
 ### Active
 
-(No active requirements â€” next milestone not yet defined)
+(Defined in REQUIREMENTS.md for v1.2)
+
+## Current Milestone: v1.2 Graph Rendering Overhaul
+
+**Goal:** Make the citation graph a functional, visually clear force-directed layout with visible edges, sharp nodes, and proper structural clustering.
+
+**Target features:**
+- Fix force-directed layout coefficients so connected nodes form visible clusters instead of collapsing
+- Fix edge rendering with proper contrast on dark background
+- Sharp node rendering with fixed-pixel anti-aliasing
+- Seed node visual distinction
+- Smart label rendering (avoid overlap)
+- Auto fit-to-content viewport after layout stabilizes
 
 ### Out of Scope
 
@@ -129,4 +141,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-24 after v1.1.1 milestone*
+*Last updated: 2026-03-24 after v1.2 milestone start*

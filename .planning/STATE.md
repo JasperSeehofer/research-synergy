@@ -1,15 +1,15 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.1.1
-milestone_name: Bug Fix & Polish
-status: v1.1.1 milestone complete
-stopped_at: Milestone archived
-last_updated: "2026-03-24T11:30:00.000Z"
+milestone: v1.2
+milestone_name: Graph Rendering Overhaul
+status: Defining requirements
+stopped_at: Defining requirements
+last_updated: "2026-03-24T12:00:00.000Z"
 progress:
-  total_phases: 4
-  completed_phases: 4
-  total_plans: 4
-  completed_plans: 4
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
 ---
 
 # Project State
@@ -19,11 +19,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-24)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Planning next milestone
+**Current focus:** v1.2 Graph Rendering Overhaul
 
 ## Current Position
 
-Milestone v1.1.1 complete. Next milestone not yet defined.
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-03-24 — Milestone v1.2 started
 
 ## Accumulated Context
 
@@ -37,10 +40,10 @@ None.
 
 ### Blockers/Concerns
 
-None — all v1.1.1 blockers resolved.
+None.
 
 ## Session Continuity
 
 Last session: 2026-03-24
-Stopped at: Milestone v1.1.1 archived
+Stopped at: Defining requirements for v1.2
 Resume file: None

@@ -115,4 +115,4 @@ Plans:
 | 11. SPA Routing | v1.1.1 | 1/1 | Complete    | 2026-03-23 |
 | 12. Graph Force & Rendering | v1.1.1 | 1/1 | Complete   | 2026-03-23 |
 | 13. Graph Interaction | v1.1.1 | 1/1 | Complete    | 2026-03-23 |
-| 14. Temporal Controls | v1.1.1 | 1/1 | Complete   | 2026-03-24 |
+| 14. Temporal Controls | v1.1.1 | 1/1 | Complete    | 2026-03-24 |

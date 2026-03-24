@@ -1417,30 +1417,25 @@ input[type="range"]::-moz-range-thumb {
   position: relative;
   flex: 1;
   height: 20px;
+  background: linear-gradient(
+    var(--color-surface-raised),
+    var(--color-surface-raised)
+  ) center / 100% 4px no-repeat;
 }
 
-.dual-range-wrapper::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 4px;
-  transform: translateY(-50%);
-  background: var(--color-surface-raised);
-  border-radius: var(--radius-sm);
-  pointer-events: none;
-}
-
-.temporal-range {
+input[type="range"].temporal-range {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 20px;
+  margin: 0;
+  padding: 0;
   -webkit-appearance: none;
   appearance: none;
   background: transparent;
+  background-color: transparent;
+  border: none;
   pointer-events: none;
 }
 

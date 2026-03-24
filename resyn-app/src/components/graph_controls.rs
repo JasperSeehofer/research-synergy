@@ -97,7 +97,7 @@ pub fn TemporalSlider(
                         let val = e.target().unwrap()
                             .dyn_into::<web_sys::HtmlInputElement>().unwrap()
                             .value_as_number() as u32;
-                        temporal_min.set(val);
+                        temporal_min.set(val.min(temporal_max.get_untracked()));
                     }
                 />
                 <input
@@ -111,7 +111,7 @@ pub fn TemporalSlider(
                         let val = e.target().unwrap()
                             .dyn_into::<web_sys::HtmlInputElement>().unwrap()
                             .value_as_number() as u32;
-                        temporal_max.set(val);
+                        temporal_max.set(val.max(temporal_min.get_untracked()));
                     }
                 />
             </div>

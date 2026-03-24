@@ -93,9 +93,9 @@ Plans:
   1. Both the start-year and end-year slider thumbs are visible on screen at the same time
   2. Each thumb can be dragged independently without the other thumb becoming hidden or inaccessible
   3. Moving either thumb updates the year range label and the graph filters accordingly
-**Plans**: 1 plan
+**Plans:** 1 plan
 Plans:
-- [ ] 14-01-PLAN.md — TBD
+- [ ] 14-01-PLAN.md — Fix dual-range slider CSS pointer-events and add value clamping
 **UI hint**: yes
 
 ## Progress
@@ -115,4 +115,4 @@ Plans:
 | 11. SPA Routing | v1.1.1 | 1/1 | Complete    | 2026-03-23 |
 | 12. Graph Force & Rendering | v1.1.1 | 1/1 | Complete   | 2026-03-23 |
 | 13. Graph Interaction | v1.1.1 | 1/1 | Complete    | 2026-03-23 |
-| 14. Temporal Controls | v1.1.1 | 0/TBD | Not started | - |
+| 14. Temporal Controls | v1.1.1 | 0/1 | Not started | - |

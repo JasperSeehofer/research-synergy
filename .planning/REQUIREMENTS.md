@@ -56,25 +56,25 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FORCE-01 | — | Pending |
-| FORCE-02 | — | Pending |
-| FORCE-03 | — | Pending |
-| EDGE-01 | — | Pending |
-| EDGE-02 | — | Pending |
-| EDGE-03 | — | Pending |
-| NODE-01 | — | Pending |
-| NODE-02 | — | Pending |
-| NODE-03 | — | Pending |
-| VIEW-01 | — | Pending |
-| VIEW-02 | — | Pending |
-| LABEL-01 | — | Pending |
-| LABEL-02 | — | Pending |
+| FORCE-01 | Phase 15 | Pending |
+| FORCE-02 | Phase 15 | Pending |
+| FORCE-03 | Phase 15 | Pending |
+| EDGE-01 | Phase 16 | Pending |
+| EDGE-02 | Phase 16 | Pending |
+| EDGE-03 | Phase 16 | Pending |
+| NODE-01 | Phase 16 | Pending |
+| NODE-02 | Phase 16 | Pending |
+| NODE-03 | Phase 16 | Pending |
+| VIEW-01 | Phase 17 | Pending |
+| VIEW-02 | Phase 17 | Pending |
+| LABEL-01 | Phase 17 | Pending |
+| LABEL-02 | Phase 17 | Pending |
 
 **Coverage:**
 - v1.2 requirements: 13 total
-- Mapped to phases: 0
-- Unmapped: 13
+- Mapped to phases: 13
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-24*
-*Last updated: 2026-03-24 after initial definition*
+*Last updated: 2026-03-24 after roadmap creation*

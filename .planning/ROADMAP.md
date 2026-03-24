@@ -5,6 +5,7 @@
 - ✅ **v1.0 Analysis Pipeline** — Phases 1-5 (shipped 2026-03-14)
 - ✅ **v1.1 Scale & Surface** — Phases 6-10 (shipped 2026-03-22)
 - ✅ **v1.1.1 Bug Fix & Polish** — Phases 11-14 (shipped 2026-03-24)
+- 🚧 **v1.2 Graph Rendering Overhaul** — Phases 15-17 (in progress)
 
 ## Phases
 
@@ -46,6 +47,51 @@ Full details: `.planning/milestones/v1.1.1-ROADMAP.md`
 
 </details>
 
+### 🚧 v1.2 Graph Rendering Overhaul (In Progress)
+
+**Milestone Goal:** Make the citation graph a functional, visually clear force-directed layout with visible edges, sharp nodes, and proper structural clustering.
+
+- [ ] **Phase 15: Force Simulation Rebalancing** — Retune Barnes-Hut coefficients so nodes form visible citation clusters instead of collapsing to a blob
+- [ ] **Phase 16: Edge and Node Renderer Fixes** — Fix edge visibility and node sharpness in both Canvas 2D and WebGL2 renderers, and add seed node distinction
+- [ ] **Phase 17: Viewport Fit and Label Collision** — Auto-fit viewport after layout stabilizes, add priority-ordered label collision avoidance, and wire convergence indicator
+
+## Phase Details
+
+### Phase 15: Force Simulation Rebalancing
+**Goal**: Users see nodes spread into visible citation clusters when the graph loads, not collapsed into a central blob
+**Depends on**: Phase 14 (v1.1.1 complete)
+**Requirements**: FORCE-01, FORCE-02, FORCE-03
+**Success Criteria** (what must be TRUE):
+  1. On graph load, nodes spread outward into spatially distinct groups rather than converging to a tight central mass
+  2. Papers with many shared citations are visibly closer to each other than unrelated papers
+  3. Simulation reaches a stable layout (low node velocity) within approximately 30 seconds at normal graph sizes
+  4. Nodes initialized in concentric rings by BFS depth produce a better-organized starting position than random placement
+**Plans**: TBD
+
+### Phase 16: Edge and Node Renderer Fixes
+**Goal**: Citation edges are visible at a glance on the dark background and node circles are crisp at all zoom levels, with the seed paper clearly identified
+**Depends on**: Phase 15
+**Requirements**: EDGE-01, EDGE-02, EDGE-03, NODE-01, NODE-02, NODE-03
+**Success Criteria** (what must be TRUE):
+  1. Citation edges are legible at default zoom on the dark (#0d1117) background without needing to squint or zoom in
+  2. Node circles have sharp, clean borders when zoomed in (no pixelated or blurry edge bleed)
+  3. The seed paper node is immediately distinguishable from other nodes (gold/amber color with outer ring)
+  4. Edge appearance is visually consistent whether the graph renders via Canvas 2D (under 300 nodes) or WebGL2 (300+ nodes)
+**Plans**: TBD
+**UI hint**: yes
+
+### Phase 17: Viewport Fit and Label Collision
+**Goal**: The graph fits into the viewport automatically after layout stabilizes, and node labels are readable without overlap
+**Depends on**: Phase 16
+**Requirements**: VIEW-01, VIEW-02, LABEL-01, LABEL-02
+**Success Criteria** (what must be TRUE):
+  1. After the force layout stabilizes, the graph is automatically scaled and centered so all nodes are visible without manual pan or zoom
+  2. After manually panning or zooming, the auto-fit does not fire again and override the user's viewport position
+  3. At medium zoom levels, node labels are spread out without overlapping — high-citation papers and the seed paper are labeled first
+  4. The graph controls area shows whether the force simulation has converged or is still running
+**Plans**: TBD
+**UI hint**: yes
+
 ## Progress
 
 | Phase | Milestone | Plans Complete | Status | Completed |
@@ -64,3 +110,6 @@ Full details: `.planning/milestones/v1.1.1-ROADMAP.md`
 | 12. Graph Force & Rendering | v1.1.1 | 1/1 | Complete | 2026-03-23 |
 | 13. Graph Interaction | v1.1.1 | 1/1 | Complete | 2026-03-23 |
 | 14. Temporal Controls | v1.1.1 | 1/1 | Complete | 2026-03-24 |
+| 15. Force Simulation Rebalancing | v1.2 | 0/? | Not started | - |
+| 16. Edge and Node Renderer Fixes | v1.2 | 0/? | Not started | - |
+| 17. Viewport Fit and Label Collision | v1.2 | 0/? | Not started | - |

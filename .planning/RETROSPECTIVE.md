@@ -2,6 +2,45 @@
 
 *A living document updated after each milestone. Lessons feed forward into future planning.*
 
+## Milestone: v1.1.1 — Bug Fix & Polish
+
+**Shipped:** 2026-03-24
+**Phases:** 4 (11-14) | **Plans:** 4 | **Timeline:** 2 days (2026-03-23 → 2026-03-24)
+
+### What Was Built
+- SPA fallback routing via Axum ServeFile for all client-side routes
+- Graph rendering fix: node spread reduced, VBO leak eliminated, DPR convention established
+- Graph interaction restored via CSS pointer-events passthrough on overlay containers
+- Dual-range temporal slider fixed with track transparency and value clamping
+
+### What Worked
+- All four bugs were CSS or trivial config issues — no deep Rust logic changes needed
+- Phase 13 was a four-line CSS change that unblocked three requirements at once
+- DPR coordinate convention documented in Phase 12 carried cleanly into Phase 13 pointer event work
+- Auto-chain mode (yolo config) enabled fast execution across all four phases with no manual gates
+
+### What Was Inefficient
+- Force layout coefficients (Phase 12 blocker) required manual agent-browser debugging — would have been caught earlier with visual regression tests
+- ROUTE-01/ROUTE-02 completed in Phase 11 but not checked off in REQUIREMENTS.md — discrepancy between SUMMARY frontmatter and tracking doc
+- Several browser-verify checkpoints were auto-approved but should have been manually confirmed — visual bugs need visual confirmation
+
+### Patterns Established
+- Overlay passthrough pattern: `pointer-events: none` on overlay containers, `pointer-events: auto` on interactive children
+- Dual-range slider: transparent tracks + shared `::before` pseudo-element for visible track
+- `get_untracked()` for cross-signal reads in reactive handlers (avoids unnecessary reactivity chains)
+
+### Key Lessons
+1. CSS overlay stacking is the first thing to check when canvas interaction is broken — saves hours of debugging Rust event handlers
+2. Dual-range sliders are a known CSS challenge — the MDN pattern (pointer-events on tracks/thumbs) should be the default starting point
+3. Auto-chain is efficient for bugfix milestones but visual verification needs human eyes — auto-approve for structural tests, manual for rendering
+
+### Cost Observations
+- Model mix: ~30% opus (orchestration), ~70% sonnet (execution)
+- Sessions: ~3 (Phase 11-12, Phase 13-14, completion)
+- Notable: Smallest milestone yet (4 plans) — entire execution in 2 days with minimal context resets
+
+---
+
 ## Milestone: v1.1 — Scale & Surface
 
 **Shipped:** 2026-03-22
@@ -104,6 +143,7 @@
 |-----------|----------|--------|-------|----------|------------|
 | v1.0 | ~6 | 5 | 12 | ~2 days | First milestone — established migration, caching, and trait patterns |
 | v1.1 | ~8 | 5 | 23 | 4 days | Web migration — feature gating, WASM boundary, Leptos/WebGL stack |
+| v1.1.1 | ~3 | 4 | 4 | 2 days | Bugfix milestone — CSS fixes, yolo auto-chain, minimal scope |
 
 ### Cumulative Quality
 
@@ -111,6 +151,7 @@
 |-----------|----------|-------|----------------------|
 | v1.0 | 8,749 | ~40 | sha2, stop-words, chrono, regex |
 | v1.1 | 15,859 | 90 | leptos, trunk, axum, tower-http, gloo-worker, web-sys, governor |
+| v1.1.1 | ~16,000 | 90+ | (none — bugfix only) |
 
 ### Top Lessons (Verified Across Milestones)
 
@@ -119,3 +160,4 @@
 3. Feature-gate heavy deps at workspace restructure time — prevents cascading WASM compilation issues
 4. Separate DTOs from mutable state at boundaries — clean serialization, explicit mutation
 5. Spike unfamiliar frameworks early — discovering API gotchas during production phases adds friction
+6. CSS overlay stacking is the first diagnostic for canvas interaction bugs — verified across Phases 12-14

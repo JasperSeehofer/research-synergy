@@ -1,5 +1,18 @@
 # Milestones
 
+## v1.1.1 Bug Fix & Polish (Shipped: 2026-03-24)
+
+**Phases completed:** 4 phases, 4 plans, 5 tasks
+
+**Key accomplishments:**
+
+- Axum ServeDir fallback to index.html via ServeFile, enabling client-side Leptos Router for all routes on direct navigation and refresh
+- Reduced initial node spread from 968px to 290px and eliminated per-frame GPU VBO leak, with DPR convention documented for Phase 13
+- CSS pointer-events passthrough on overlay containers unblocks node drag (INTERACT-01), viewport pan (INTERACT-02), and scroll zoom (INTERACT-03) — four-line CSS change, no Rust modifications
+- Dual-range temporal slider fixed with pointer-events passthrough, transparent track backgrounds, and value clamping via get_untracked()
+
+---
+
 ## v1.1 Scale & Surface (Shipped: 2026-03-22)
 
 **Phases completed:** 5 phases (6-10), 23 plans, 36 tasks

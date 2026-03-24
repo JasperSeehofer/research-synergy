@@ -51,20 +51,15 @@ Surface research gaps and unexplored connections that no single paper reveals �
 - ✓ LOD progressive-reveal for 1000+ node graphs — v1.1
 - ✓ Temporal filtering by publication year — v1.1
 
+- ✓ SPA fallback routing — all client-side routes work on direct navigation and refresh — v1.1.1
+- ✓ Force-directed graph animation with visible node spreading — v1.1.1
+- ✓ Graph edges rendered crisply between connected nodes — v1.1.1
+- ✓ Node drag, viewport pan, scroll zoom all functional — v1.1.1
+- ✓ Dual-range temporal slider thumbs independently draggable — v1.1.1
+
 ### Active
 
-(Defined in REQUIREMENTS.md for v1.1.1)
-
-## Current Milestone: v1.1.1 Bug Fix & Polish
-
-**Goal:** Fix all broken v1.1 web UI features — SPA routing, graph force layout, node interaction, temporal slider, and WebGL rendering.
-
-**Target features:**
-- SPA routing fallback (all routes serve index.html on direct navigation)
-- Force-directed graph animation producing visible node movement
-- Node drag, pan, zoom interaction working correctly
-- Temporal slider dual-range thumbs rendering properly
-- WebGL DPR fix verified (fuzzy/blurry nodes resolved)
+(No active requirements — next milestone not yet defined)
 
 ### Out of Scope
 
@@ -80,10 +75,9 @@ Surface research gaps and unexplored connections that no single paper reveals �
 
 ## Current State
 
-**Shipped:** v1.1 Scale & Surface (2026-03-22)
-**v1.1.1 progress:** All 4 phases complete — Phase 11 (SPA routing), Phase 12 (graph rendering), Phase 13 (graph interaction), Phase 14 (temporal controls). Human verification pending for Phase 14 slider visibility.
+**Shipped:** v1.1.1 Bug Fix & Polish (2026-03-24)
 
-ReSyn is a 3-crate Cargo workspace (resyn-core/resyn-app/resyn-server) with 15,859 LOC Rust across 90 files. The full pipeline runs through a Leptos CSR web UI served by Axum, with interactive Canvas 2D / WebGL2 graph rendering powered by Barnes-Hut force layout in a WASM Web Worker.
+ReSyn is a 3-crate Cargo workspace (resyn-core/resyn-app/resyn-server) with ~16,000 LOC Rust across 90+ files. The full pipeline runs through a Leptos CSR web UI served by Axum, with interactive Canvas 2D / WebGL2 graph rendering powered by Barnes-Hut force layout in a WASM Web Worker. All core web UI features (routing, graph rendering, interaction, temporal filtering) are functional after v1.1.1 bug fixes.
 
 **Stack:** Rust (edition 2024), Leptos 0.8 (CSR), Trunk, Axum, SurrealDB v3 (embedded), petgraph, web-sys (Canvas 2D + WebGL2), gloo-worker, reqwest, tokio.
 
@@ -112,6 +106,10 @@ ReSyn is a 3-crate Cargo workspace (resyn-core/resyn-app/resyn-server) with 15,8
 | SurrealDB feature-gated behind `ssr` | WASM compilation boundary | ✓ Good — clean separation |
 | Named record IDs for crawl queue | Idempotent enqueue (CREATE on same ID is no-op) | ✓ Good — natural dedup |
 | SurrealDB FLEXIBLE TYPE for complex fields | JSON strings for methods/findings/tfidf_vector | ⚠ Revisit — works but limits server-side querying |
+| ServeFile SPA fallback | Single-line change, no new deps | ✓ Good — all client routes resolve |
+| CSS pointer-events overlay passthrough | No Rust interaction logic changes needed | ✓ Good — clean separation of concerns |
+| DPR convention: CSS pixels throughout | DPR only at canvas physical sizing and GL viewport | ✓ Good — documented for future phases |
+| Dual-range slider: pointer-events:none on track | Canonical MDN pattern for stacked range inputs | ✓ Good — both thumbs independently draggable |
 
 ## Evolution
 
@@ -131,4 +129,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-24 after Phase 14 completion*
+*Last updated: 2026-03-24 after v1.1.1 milestone*

@@ -26,7 +26,7 @@ Bug fixes for v1.1 web UI features confirmed broken via agent-browser testing.
 
 ### Temporal Controls
 
-- [ ] **TEMPORAL-01**: Both slider thumbs are visible and draggable independently
+- [x] **TEMPORAL-01**: Both slider thumbs are visible and draggable independently
 
 ## Future Requirements
 
@@ -52,7 +52,7 @@ None — this is a bugfix milestone.
 | INTERACT-01 | Phase 13 | Complete |
 | INTERACT-02 | Phase 13 | Complete |
 | INTERACT-03 | Phase 13 | Complete |
-| TEMPORAL-01 | Phase 14 | Pending |
+| TEMPORAL-01 | Phase 14 | Complete |
 
 **Coverage:**
 - v1.1.1 requirements: 9 total

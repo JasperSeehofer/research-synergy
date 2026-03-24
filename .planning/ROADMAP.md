@@ -41,7 +41,7 @@ Full details: `.planning/milestones/v1.1-ROADMAP.md`
 - [x] **Phase 11: SPA Routing** - All routes load correctly on direct navigation and browser refresh (completed 2026-03-23)
 - [x] **Phase 12: Graph Force & Rendering** - Force layout animates and nodes render without blur (completed 2026-03-23)
 - [x] **Phase 13: Graph Interaction** - Node drag, pan, and zoom all respond to user input (completed 2026-03-23)
-- [ ] **Phase 14: Temporal Controls** - Dual-range slider both thumbs visible and independently draggable
+- [x] **Phase 14: Temporal Controls** - Dual-range slider both thumbs visible and independently draggable (completed 2026-03-24)
 
 ## Phase Details
 
@@ -93,9 +93,9 @@ Plans:
   1. Both the start-year and end-year slider thumbs are visible on screen at the same time
   2. Each thumb can be dragged independently without the other thumb becoming hidden or inaccessible
   3. Moving either thumb updates the year range label and the graph filters accordingly
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 Plans:
-- [ ] 14-01-PLAN.md — Fix dual-range slider CSS pointer-events and add value clamping
+- [x] 14-01-PLAN.md — Fix dual-range slider CSS pointer-events and add value clamping
 **UI hint**: yes
 
 ## Progress
@@ -115,4 +115,4 @@ Plans:
 | 11. SPA Routing | v1.1.1 | 1/1 | Complete    | 2026-03-23 |
 | 12. Graph Force & Rendering | v1.1.1 | 1/1 | Complete   | 2026-03-23 |
 | 13. Graph Interaction | v1.1.1 | 1/1 | Complete    | 2026-03-23 |
-| 14. Temporal Controls | v1.1.1 | 0/1 | Not started | - |
+| 14. Temporal Controls | v1.1.1 | 1/1 | Complete   | 2026-03-24 |

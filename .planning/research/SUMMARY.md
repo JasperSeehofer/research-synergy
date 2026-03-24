@@ -1,209 +1,162 @@
 # Project Research Summary
 
-**Project:** Research Synergy (ReSyn) — v1.1 "Scale & Surface" Milestone
-**Domain:** Literature Based Discovery (LBD) — Leptos web migration, WebGL graph visualization, incremental crawling, enriched gap analysis UI
-**Researched:** 2026-03-15
-**Confidence:** HIGH (stack choices, architecture patterns), MEDIUM (WASM/JS interop specifics, Barnes-Hut convergence tuning)
+**Project:** Research Synergy (ReSyn) — v1.2 Graph Rendering Overhaul
+**Domain:** Rust/WASM WebGL2 + Canvas 2D force-directed citation graph visualization
+**Researched:** 2026-03-24
+**Confidence:** HIGH
 
 ## Executive Summary
 
-ReSyn v1.1 is a migration and surface-area milestone: the egui desktop binary becomes a Leptos-powered browser app, the force-directed graph moves to WebGL to handle 1000+ nodes, and the BFS crawler gains persistent resumability via a SurrealDB-backed queue. The underlying analysis pipeline (TF-IDF, LLM annotation, contradiction detection, ABC-bridge) is unchanged and already produces `GapFinding` records in SurrealDB — v1.1 wires that data into the primary UI rather than routing it to stdout. The key insight from research is that ReSyn's differentiator is analysis, not graph visualization: competitors (Connected Papers, Litmaps, ResearchRabbit) are citation-map tools; ReSyn uses citation maps as scaffolding for structural gap discovery. None of those competitors surface contradictions, ABC-bridge connections, or open-problems aggregations.
+ReSyn v1.2 is a targeted rendering overhaul of an existing, working Leptos/WASM citation graph visualizer. All six target improvements are achievable through algorithmic and shader changes within the existing `resyn-worker` and `resyn-app` crates — no new dependencies are required. Every pitfall identified traces to misapplied constants, incomplete implementations of already-designed features, or missing 5–30 line additions. The existing code already stores the necessary data (`seed_paper_id`, `converged`, `bfs_depth`, `lod_visible`, `temporal_visible`) — this milestone is primarily a wiring and calibration effort, not new design.
 
-The recommended approach is a Cargo workspace split into three crates: `resyn-core` (existing 8-module native library), `app` (Leptos isomorphic crate, compiles to both WASM and native), and `server` (Axum binary). Leptos server functions provide a type-safe, compile-time-enforced boundary between browser WASM and native-only code (SurrealDB, reqwest). Graph rendering uses sigma.js 3.0 + graphology 0.26 in a JavaScript Web Worker, with ForceAtlas2 for Barnes-Hut O(n log n) layout — avoiding the JS-WASM boundary overhead of a pure-Rust WebGL path. The incremental crawl queue requires only a new SurrealDB schema migration and no new Rust crates.
+The recommended approach is a sequenced six-step implementation ordered by dependency. Force coefficient rebalancing must come first: the current blob-collapse layout failure makes all other visual fixes impossible to validate. After the simulation produces spread clusters, the five rendering improvements (edge visibility, node sharpness, seed distinction, auto-fit, label collision avoidance) are independently implementable with one constraint — label collision avoidance should be tested against a stable spread layout. The only cross-cutting coordination requirement is that edge color constants must change in both `canvas_renderer.rs` and `webgl_renderer.rs` simultaneously, because the `WEBGL_THRESHOLD = 300` renderer switch would otherwise create a visible discrepancy at graph sizes near that boundary.
 
-The single most dangerous risk is the WASM compilation boundary: SurrealDB embedded (kv-surrealkv, kv-mem) uses native OS primitives that will not compile to wasm32-unknown-unknown. This must be addressed in the workspace restructure — before any Leptos component code is written — by feature-gating SurrealDB behind an `ssr` Cargo feature and confining all DB access to `#[server]` functions. A secondary risk is force layout convergence at scale: naive Barnes-Hut without a cooling schedule oscillates indefinitely at 1000+ nodes. Both risks are preventable at the design stage with well-understood mitigations documented in official sources.
+The primary implementation risks are force coefficient overshoot (two failure modes: collapse when attraction overwhelms repulsion in hub-heavy graphs, scatter when repulsion is raised without a velocity cap) and DPR coordinate misalignment for labels on HiDPI displays. Both are preventable with targeted tests: force changes must pass validation against both sparse-chain and dense-mesh topologies; label rendering must be confirmed at DPR=2 before sign-off. There is no architectural risk: the scope is bounded to six files across two crates, zero interface changes, and zero new public API surfaces.
 
 ## Key Findings
 
 ### Recommended Stack
 
-The v1.1 stack replaces egui/eframe/fdg with Leptos 0.8 (CSR mode via Trunk) + Axum 0.8 on the server side, and sigma.js 3.0 + graphology 0.26 + graphology-layout-forceatlas2 0.10 for graph visualization in the browser. CSR with Trunk is preferred over SSR cargo-leptos because ReSyn is a single-user local tool: SEO, TTFB, and hydration complexity are irrelevant, and CSR iteration cycles are faster. The Axum server is necessary regardless — it exposes the analysis pipeline as a REST API and serves the Trunk-built WASM bundle via `tower-http::ServeDir`. Incremental crawling requires no new crate: only a `crawl_queue` SurrealDB table and control-flow changes in `arxiv_utils.rs`.
+No new crate dependencies are required for any of the six target features. All are implemented via constant tuning, GLSL shader modifications, and pure-Rust algorithmic additions within the existing stack. The research examined every plausible addition — `rapier2d`, `lyon`, `glam`, `fdg`, `wasm-bindgen-rayon` — and none justify inclusion for this scope.
 
 **Core technologies:**
-- `leptos 0.8` (CSR via Trunk): Reactive Rust/WASM frontend — fine-grained reactivity, production-ready (1.8M+ downloads), Rust all the way through
-- `axum 0.8` + `tower-http 0.6`: REST API server and static bundle serving — Tokio-native, Leptos's recommended server, zero friction with existing runtime
-- `sigma.js 3.0` + `graphology 0.26`: WebGL graph renderer + graph data model — required pairing; WebGL-native, handles 1000+ nodes at interactive framerates with built-in spatial indexing
-- `graphology-layout-forceatlas2 0.10`: Barnes-Hut O(n log n) force layout in Web Worker — replaces fdg's O(n²) Fruchterman-Reingold; designed specifically for academic network graphs (Gephi heritage)
-- `leptos_axum 0.8`: Server function routing — typed RPC stubs auto-generated for client; must match leptos version exactly (same 0.8.x patch)
-- `js-sys 0.3` + `web-sys 0.3`: WASM-to-JS boundary glue for sigma.js interop and canvas access
-- Tailwind CSS 4: UI styling — Trunk integrates Tailwind CLI automatically; no Node.js required
-- `trunk` (CLI, not crate): WASM build tool — handles wasm-pack, asset bundling, live reload; installed once via `cargo install trunk`
+- `resyn-worker` Barnes-Hut force simulation: constant retuning + optional node-separation collision force — no interface changes, no new crates
+- `web-sys WebGL2` (`webgl_renderer.rs`): fragment shader `fwidth`-based AA + instance stride 7→8 floats to carry `is_seed` varying
+- `web-sys Canvas 2D` (`canvas_renderer.rs`): edge color/alpha fix, seed ring draw, label collision occupancy algorithm, auto-fit viewport trigger
+- `petgraph` 0.7.0, Leptos 0.8, Trunk, wasm-bindgen: all unchanged throughout this milestone
 
-**Key version constraints:** leptos + leptos_axum must share the same 0.8.x patch; axum 0.8 requires tower-http 0.6 (not 0.5); sigma.js 3.x requires graphology 0.25+.
-
-**Removals:** egui, eframe, egui_graphs, fdg, crossbeam — none compile cleanly to WASM and are replaced entirely.
+**Critical version note:** `fwidth` is GLSL ES 3.00 core — available in all WebGL2 contexts without any extension. The existing `#version 300 es` header already enables it. No `OES_standard_derivatives` extension needed.
 
 ### Expected Features
 
-ReSyn v1.1 targets researchers running depth-10+ crawls where the existing egui binary becomes impractical (no browser access, graph degrades above 300 nodes, gap findings buried in stdout).
+All six target improvements are table-stakes fixes for an already-built visualizer, not new capabilities. The data infrastructure for each is in place.
 
-**Must have (table stakes for v1.1 launch):**
-- Tech debt cleanup: wire existing gap findings into egui before migration; remove stale stubs — ensures no analysis data is lost in the transition
-- Incremental/resumable crawl with DB-backed queue — depth 10+ at 3s rate limits takes 30+ min; a crash without checkpoint means restarting from zero
-- Leptos web migration (shell + routing) — foundational; every other web feature depends on this
-- Graph rendering in browser (canvas initially, WebGL when needed) — the migration is not usable without it
-- Crawl progress via SSE — depth-10 crawl appears frozen without visibility; depth-5+ is the realistic threshold
-- Paper detail sidebar — click-a-node interaction is the minimum expected graph interaction
-- Gap findings surfaced in graph (contradiction edges red, bridge badges orange) — the core v1.1 promise: move gap insights into the primary interface
+**Must have (table stakes — currently broken or missing):**
+- Visible citation edges — `#404040` at 0.35 alpha on `#0d1117` composites to near-background; fix to `#6e7681` at 0.6 alpha
+- Nodes spread into clusters — force coefficients cause blob collapse; rebalance repulsion/attraction/damping constants
+- Sharp node circles at all zoom levels — fixed 1px Canvas 2D border ignores scale; WebGL smoothstep delta is fixed, not screen-adaptive; use `fwidth` in WebGL2 and `1.0/viewport.scale` in Canvas 2D
+- Seed node visual distinction — `seed_paper_id` exists in `GraphState` but is never read by renderers; add gold ring + amber fill
+- Non-overlapping labels — labels drawn unconditionally, pile up at medium zoom; replace loop with greedy AABB occupancy algorithm
+- Auto-fit viewport on load — graph may be outside viewport after simulation stabilises; trigger fit when `alpha < 0.1`
 
-**Should have (v1.1 polish, add after core works):**
-- WebGL renderer upgrade — swap canvas for WebGL when 1000+ node performance is observed to degrade; don't optimize prematurely
-- Open-problems aggregation panel — data already in SurrealDB from v1.0 `LlmAnnotation`; high analytical value, low implementation risk
-- Method-combination gap matrix — heatmap of untried method pairings; analytically unique vs all competitors
-- Temporal filtering slider — `published` field already exists on `Paper`; straightforward Leptos signal
-- URL-addressable graph state — Leptos router query params (`?paper=2301.12345&depth=3`); enables sharing
+**Should have (after table-stakes fixes are stable):**
+- BFS depth rings as initial node placement — `bfs_depth` field already on `NodeState`; better warm-start reduces simulation steps for readable layout
+- Simulation convergence indicator UI — `converged: bool` already returned from worker, unwired; one-line status label change
+- Runtime force parameter controls — only justified after default coefficient values are empirically validated through real use
 
-**Defer (v1.2+):**
-- Node clustering / level-of-detail — valuable at 1000+ nodes but requires real usage data to tune clustering heuristics
-- Analysis provenance (source text segments with click-to-highlight) — schema additions + extraction re-runs; defer until pipeline stabilizes post-migration
-- Section-aware LLM extraction — risks cache-invalidating existing `LlmAnnotation` records; defer until extraction pipeline is stable
-- 3D visualization — analytically inferior to 2D WebGL with good LOD; no demonstrated demand
-
-**Anti-features to reject:** multi-user collaboration, full-text keyword search (becomes a search engine, not a gap analyzer), auto-expanding by similarity, live paper alerts.
+**Defer to v2+:**
+- Edge bundling, curved/bezier edges, 3D rendering, per-edge weights, undo/redo for node drag, any JavaScript graph library (all explicit anti-features; out of scope per PROJECT.md)
+- Runtime force parameter sliders — premature until defaults are proven
 
 ### Architecture Approach
 
-The v1.1 architecture is a Cargo workspace of three crates sharing a single embedded SurrealDB instance. The non-negotiable boundary: `crates/resyn-core/` contains all native-only code and never targets WASM; `crates/app/` is isomorphic (WASM + native) and accesses resyn-core exclusively through Leptos `#[server]` functions (compile-time enforced — the Leptos macro system strips server function bodies from the WASM binary); `crates/server/` is the thin Axum binary that wires these together and owns SSE streaming endpoints. Graph visualization lives in a JavaScript Web Worker (`public/graph-worker.js`) running Barnes-Hut via ForceAtlas2 and posting position arrays to the Leptos canvas component via postMessage — this keeps force computation off the browser main thread without requiring `SharedArrayBuffer` COOP/COEP headers.
+The v1.2 changes touch exactly six files across two crates. No new public API surfaces, no data model changes, no crate exports, and no changes to the simulation-on-main-thread architecture (the gloo-worker waker issue that causes worker outputs to go unconsumed is unchanged — the inline simulation path remains the active one).
 
-**Major components:**
-1. `crates/resyn-core/` — existing 8-module analysis library, server-only, no WASM targets; extended with `CrawlRepository` + `crawl_queue` schema (migration 7)
-2. `crates/app/` — Leptos components (`graph_canvas`, `gap_panel`, `open_problems`, `method_matrix`, `crawl_progress`) + server functions (`GetGraphData`, `GetGapFindings`, `StartCrawl`); compiles to both WASM and native
-3. `crates/server/` — Axum entry point, `CrawlService` (tokio task loop + broadcast::Sender), SSE endpoint, leptos_axum routing, static file serving via tower-http ServeDir
-4. `public/graph-worker.js` — ForceAtlas2 Barnes-Hut simulation; postMessage API: `{ nodes, edges }` in, `{ positions }` out each tick; sigma.js handles WebGL rendering on the canvas
-5. `crawl_queue` SurrealDB table (migration 7) — persistent BFS frontier with `pending | in_progress | done | failed` states; atomic claim via `UPDATE ... WHERE status = 'pending' LIMIT 1`
+**Components and their v1.2 changes:**
+1. `resyn-worker/src/forces.rs` — five `pub const` coefficient values only; no interface changes
+2. `resyn-app/src/graph/canvas_renderer.rs` — edge color/alpha constants; seed node color branch; label loop replaced with `draw_labels_no_overlap()`
+3. `resyn-app/src/graph/webgl_renderer.rs` — `NODE_FRAG` shader (fwidth AA + seed ring varyings); `edge_color()` Regular arm; instance stride 7→8
+4. `resyn-app/src/graph/layout_state.rs` — add `graph_bounding_box()` utility function
+5. `resyn-app/src/graph/renderer.rs` — add `fit_to_bounds()` method on `Viewport`
+6. `resyn-app/src/pages/graph.rs` — add `fit_done: bool` to `RenderState`; wire fit trigger in RAF loop; update dblclick handler to call fit rather than reset to 1:1
 
-**Key patterns to follow:**
-- Server functions only for SurrealDB access — compile-time enforced, not a convention
-- SSE for crawl progress events (lightweight); server function for graph payload (single typed response with HTTP compression)
-- Atomic queue item claim prevents duplicate concurrent fetches without external locking
-- Offline force layout precomputation stored in SurrealDB as primary path; interactive simulation as enhancement
-
-**Anti-patterns to avoid:**
-- Importing resyn-core directly in app crate (WASM linker failures)
-- Running force simulation on browser main thread (UI jank at 500+ nodes)
-- Rewriting BFS from scratch (extract inner logic, reuse PaperSource trait dispatch)
-- Using SSE for the graph data payload (wrong tool; use single server function response)
+Unchanged: `barnes_hut.rs`, `interaction.rs`, `lod.rs`, `worker_bridge.rs`, all of `resyn-core/`, all of `resyn-server/`.
 
 ### Critical Pitfalls
 
-1. **SurrealDB embedded not WASM-compilable** — feature-gate surrealdb as `optional = true` behind `ssr` Cargo feature on day one of workspace restructure; verify with `cargo leptos build --release` before writing any Leptos component code; warning signs: compile errors mentioning `mio`, `timerfd`, or OS-level I/O
+1. **WebGL2 LINES primitive is always 1px — color tuning is useless before this is fixed** — Chrome/ANGLE enforces `lineWidth = 1.0` regardless of `gl.line_width()` input; this is a WebGL spec-level constraint. Replace `LINES` with quad triangle geometry (two triangles per edge, same approach already used for arrowheads). Apply this before any edge color changes or the color improvements will be invisible.
 
-2. **Leptos SSR hydration mismatches** — access browser APIs only inside `Effect::new(|| { ... })`, never in component body; avoid `cfg!()` inside view macros for structural branches; add `<tbody>` explicitly in all table elements; set up an SSR integration test before shipping the first component
+2. **Fixed smoothstep delta produces fuzzy large nodes** — `smoothstep(0.9, 1.0, d)` in the fragment shader maps to 3.6 physical pixels of feathering on an 18px-radius node at DPR=2. Replace with `float fw = fwidth(d); smoothstep(1.0 - fw, 1.0 + fw, d)` for screen-adaptive anti-aliasing. Two-line shader change; `fwidth` is WebGL2 core.
 
-3. **JS-WASM boundary overhead in render loop** — use `js_sys::Float32Array` backed by Rust `Vec<f32>` for node positions (pointer, not copy); batch all GPU buffer updates in a single `gl.buffer_sub_data` call; never call `JSON.stringify` in the animation frame path; warning: frame rate degrades linearly with node count before GPU is saturated
+3. **Force coefficient imbalance collapses or scatters** — Two failure modes: (a) collapse when sum of attractive forces across many edges overwhelms weak repulsion in hub-heavy graphs; (b) scatter when repulsion is raised too aggressively without a per-tick velocity cap. Always validate coefficient changes against both a sparse-chain topology and a dense-mesh topology. Add `vel = vel.clamp(-MAX_VEL, MAX_VEL)` where `MAX_VEL = IDEAL_DISTANCE / 2` to prevent scatter.
 
-4. **Force layout oscillation at scale** — implement a cooling schedule (geometrically decreasing temperature per tick); apply ForceAtlas2 anti-swinging (braking force when displacement direction reverses); precompute layout offline and store positions in SurrealDB as the primary path; warning: graph visibly wiggles without settling after 10+ seconds
+4. **Auto-fit computed before simulation stabilises** — Fitting at T=0 calibrates to initial jitter spread, not converged positions. Defer fit until `alpha < 0.1` (approximately 460 frames at 60fps with `ALPHA_DECAY = 0.995`). Store `fit_done: bool` in `RenderState` (created fresh per Leptos Effect invocation) so it resets automatically on data reload.
 
-5. **Duplicate crawl writes under concurrency** — design the DB queue state machine before writing any crawler code; use `INSERT IF NOT EXISTS` when enqueueing; share a single `Arc<RateLimiter>` across all concurrent fetch tasks (per-task rate limiting violates the global arXiv rate limit); on restart, reclaim all `in_progress` items back to `pending`
-
-6. **`usize`/`isize` crossing the 32-bit WASM boundary** — all server function argument and return types must use fixed-width integers (`u32`, `i64`, never `usize`); convert petgraph `NodeIndex` (wraps `usize`) to `u32` at the API boundary; add a CI grep lint on `#[server]` function signatures — explicitly called out in Leptos 0.8.0 release notes
+5. **DPR coordinate mismatch for Canvas 2D labels on HiDPI displays** — `world_to_screen()` returns CSS-pixel coordinates. Label drawing code must not apply an additional DPR transform; labels will appear offset by `radius * (DPR - 1)` on retina displays. Test at DPR=2 via Chrome DevTools device emulation before sign-off.
 
 ## Implications for Roadmap
 
-The feature dependency graph is unambiguous about ordering: workspace restructure is a prerequisite for everything; incremental crawl can be validated CLI-only before any Leptos work; gap analysis panels are data-ready and can be built in parallel with the graph renderer once the Leptos shell exists.
+Research is unusually directive for this milestone. Dependency ordering is clear, file boundaries are identified, and all six features have implementation specifications with line-count estimates. No phase requires a `/gsd:research-phase` pass — all patterns are well-documented. A three-phase grouping is recommended.
 
-### Phase 1: Workspace Restructure and WASM Boundary Setup
+### Phase 1: Force Simulation Rebalancing
 
-**Rationale:** The single-crate structure is incompatible with WASM compilation of any frontend code. This is the foundational change every other phase depends on. Establishing it with zero behavior change — all 44 existing tests pass — is the validation signal before any new work begins. Pitfalls 1 and 6 must be addressed here or they will corrupt every subsequent phase.
-**Delivers:** Cargo workspace (`resyn-core`, `app`, `server` crates); `ssr`/`hydrate` Cargo feature flags; SurrealDB feature-gated behind `ssr`; server function type audit (no `usize`); tech debt cleanup (gap findings wired in egui, stale stubs removed); CI confirms green before migration begins
-**Addresses:** Tech debt cleanup (P1)
-**Avoids:** Pitfall 1 (SurrealDB WASM compile failure), Pitfall 6 (usize boundary — establish API types here)
+**Rationale:** Blob collapse makes every other visual feature untestable. Label collision geometry is meaningless against a collapsed graph. Auto-fit is pointless when the settled AABB is near-zero. Force tuning is the prerequisite for the entire milestone — it must pass the existing convergence test suite before any rendering work begins.
+**Delivers:** Nodes spread into visible clusters; hub-degree papers separated; simulation converges within ~30 seconds of load; node-separation collision force prevents overlap at high degree
+**Addresses:** REPULSION_STRENGTH (raise from -300 to -500—-800), IDEAL_DISTANCE (raise from 80 to 120—150), VELOCITY_DAMPING (raise from 0.6 to 0.7—0.85), ATTRACTION_STRENGTH (lower from 0.03 to 0.01—0.015), CENTER_GRAVITY (reduce to 0.002—0.003)
+**Avoids:** Pitfall 3 (collapse/scatter) — validate with sparse chain AND dense mesh test cases; run `test_convergence_100_node_graph_within_5000_ticks` after any coefficient change
+**Files:** `resyn-worker/src/forces.rs` only
 
-### Phase 2: Incremental Crawl with DB-Backed Queue
+### Phase 2: Renderer Fixes (Edges, Nodes, Seed)
 
-**Rationale:** The crawl queue is pure server logic with no UI dependency. Validating it independently via CLI before adding Leptos complexity reduces risk surface. A depth-10 crawl that cannot resume is a blocker for real research use regardless of UI quality. Rate limiting under concurrency (Pitfall 5) must be designed here before parallel fetch tasks are introduced.
-**Delivers:** `crawl_queue` SurrealDB table (migration 7); `CrawlRepository` (claim/enqueue/mark_done); `CrawlService` (tokio task loop); CLI `--incremental` flag; SSE endpoint (curl-accessible even before UI); shared `Arc<RateLimiter>` across fetch tasks
-**Addresses:** Resumable crawl (P1 table stakes)
-**Avoids:** Pitfall 5 (duplicate writes — state machine designed here under no UI pressure)
+**Rationale:** These three rendering fixes are mutually independent and share no state, but both renderers must be changed together to prevent a visible discrepancy at the 300-node threshold. Grouping them enforces dual-renderer discipline and delivers all three improvements in one cohesive visual pass.
+**Delivers:** Citation edges visible at default zoom on dark background; crisp node borders at all zoom levels; seed paper identified with gold ring and amber fill
+**Addresses:** Edge color/alpha fix (both renderers), WebGL quad-triangle edge geometry (replace LINES), Canvas 2D `line_width = 1.0 / viewport.scale` for zoom-correct borders, WebGL fragment shader `fwidth` AA, seed instance data expansion (stride 7→8), seed ring in Canvas 2D arc path
+**Avoids:** Pitfall 1 (fixed smoothstep blurriness — use fwidth, not precision change); Pitfall 2 (LINES 1px cap — switch to quad triangles before tuning color); Pitfall 5 (divergent renderers — change both files in same commit); Pitfall 9 (seed distinction is visual only — no force modification)
+**Files:** `canvas_renderer.rs`, `webgl_renderer.rs`
 
-### Phase 3: Leptos Web Shell + Gap Analysis Panels
+### Phase 3: Viewport Fit and Label Collision Avoidance
 
-**Rationale:** The analysis panels (gap findings, open problems, method matrix) are data-ready — `GapFinding` and `LlmAnnotation` records already exist in SurrealDB from v1.0. Building these as the first Leptos UI validates SSR/hydration, server functions, and Axum integration with low rendering complexity — before tackling the harder graph canvas work. This produces immediate user-visible value: the gap analysis surface, which is the core differentiator.
-**Delivers:** Leptos app skeleton; Axum serving WASM bundle; URL routing with query params; paper list from SurrealDB via server function; gap findings panel (contradictions + bridges); open-problems aggregation panel; method-combination gap matrix; paper detail sidebar; crawl progress bar wired to SSE
-**Uses:** `leptos 0.8`, `leptos_axum 0.8`, `axum 0.8`, Tailwind CSS 4
-**Addresses:** Leptos web migration (P1), paper detail sidebar (P1), crawl progress UI (P1), open-problems panel (P2), method matrix (P2), URL-addressable state (P2)
-**Avoids:** Pitfall 2 (hydration mismatch — SSR integration test established here before shipping any component)
-
-### Phase 4: Graph Renderer in Browser (Canvas, then WebGL)
-
-**Rationale:** The graph canvas component is the most technically complex piece of v1.1. Starting with Canvas 2D in the Web Worker validates the postMessage architecture before committing to WebGL complexity. The WebGL upgrade via sigma.js is a contained change when 500+ node performance becomes an observed problem — the Leptos component is unchanged; only the worker internals change.
-**Delivers:** `graph_canvas.rs` Leptos component wrapping `<canvas>`; `graph-worker.js` with ForceAtlas2 Barnes-Hut force simulation; node-click events wired to paper detail sidebar; contradiction edges (red) and ABC-bridge edges (orange/dashed) overlaid on graph; temporal filtering slider
-**Uses:** sigma.js 3.0, graphology 0.26, graphology-layout-forceatlas2 0.10, js-sys, web-sys
-**Addresses:** Graph rendering in browser (P1), gap findings in graph (P1), WebGL renderer upgrade (P2), temporal filtering (P2)
-**Avoids:** Pitfall 3 (JS-WASM boundary overhead — memory model defined before render loop); Pitfall 4 (force layout oscillation — cooling schedule and offline precompute from the start)
-
-### Phase 5: Polish and v1.2 Preparation
-
-**Rationale:** Node clustering/LOD and analysis provenance are deferred because clustering heuristics require real usage data from real-scale crawls, and provenance storage risks cache-invalidating existing `LlmAnnotation` records. After v1.1 is stable, these are the highest-value additions.
-**Delivers:** Node clustering / level-of-detail at 1000+ nodes; analysis provenance (source text segments with click-to-highlight); WASM binary size optimization (`wasm-opt`, `opt-level = 'z'`); verify release binary < 5MB
-**Addresses:** P3 features from prioritization matrix
+**Rationale:** Auto-fit requires a spread layout (Phase 1) and the bounding box utilities built in this phase. Label collision avoidance is meaningful only with stable node positions. Both features share the `Viewport` coordinate math and benefit from being implemented together — `graph_bounding_box()` and `world_to_screen()` are shared building blocks.
+**Delivers:** Graph auto-fits to viewport when simulation converges; node labels visible without overlap at medium zoom, priority-ordered by citation count; double-click becomes "fit to content" rather than "reset to 1:1 at origin"
+**Addresses:** `graph_bounding_box()` in `layout_state.rs`; `fit_to_bounds()` on `Viewport`; `fit_done: bool` in `RenderState`; RAF-loop trigger at `alpha < 0.1`; greedy AABB occupancy algorithm in `canvas_renderer.rs` with `measureText` width cache; WebGL renderer labels remain deferred (LOD already reduces node count for large graphs)
+**Avoids:** Pitfall 4 (premature fit — trigger only at `alpha < 0.1`, never T=0); Pitfall 5 (DPR label mismatch — CSS-pixel convention throughout, test at DPR=2); Pitfall 6 (O(n²) collision — use occupancy bitmap + priority ordering + `measureText` cache from day one)
+**Files:** `layout_state.rs`, `renderer.rs`, `pages/graph.rs`, `canvas_renderer.rs`
 
 ### Phase Ordering Rationale
 
-- **Workspace first:** The WASM build boundary must exist before any code crosses it. Zero feature change with all tests green is the only safe starting point.
-- **Crawl before UI:** Incremental crawl is independently testable and represents the highest user-visible risk (lost work). Validating it before Leptos complexity means bugs are easier to isolate.
-- **Panels before graph:** Gap analysis panels are data-ready and test the server function pattern end-to-end with low rendering complexity. The graph renderer is the hardest piece — build it last when the rest of the stack is validated.
-- **Canvas before full WebGL:** The Web Worker + postMessage + draw call architecture is the same for both. Canvas 2D validates the architecture; WebGL is a contained upgrade inside the worker.
-- **Pitfall sequencing:** Pitfalls 1 and 6 (WASM boundary) addressed in Phase 1; Pitfall 5 (duplicate writes) in Phase 2; Pitfall 2 (hydration) in Phase 3; Pitfalls 3 and 4 (rendering performance) in Phase 4. Each phase addresses its pitfalls before they can affect downstream phases.
+- Phase 1 before everything: blob collapse blocks visual validation of all rendering changes; force tests are the earliest possible signal
+- Phase 2 before Phase 3: sharp nodes and correct edge geometry are prerequisites for accurate label bounding box calculations and for meaningful visual acceptance of auto-fit results
+- Phase 3 last: label collision testing requires stable node positions (Phase 1); auto-fit trigger calibration depends on observed convergence timing from Phase 1
+- The deferred differentiators (BFS depth rings, convergence indicator UI) are non-blocking additions: convergence indicator is a one-line status label that can be appended to Phase 3 with no additional planning
 
 ### Research Flags
 
-Phases likely needing deeper research during planning:
-- **Phase 2 (Incremental Crawl):** Validate SurrealDB embedded `UPDATE ... LIMIT 1` atomicity semantics in practice — official concurrency docs confirm embedded operations are serialized, but the specific claim queue pattern with concurrent tokio tasks needs a concurrency test before committing the design. MEDIUM confidence source.
-- **Phase 3 (Leptos Shell):** Tailwind CSS 4 + Trunk integration — the community guide used as source is MEDIUM confidence. Run a spike on `LEPTOS_TAILWIND_VERSION` config before building out the full component library. One session, not a full research pass.
-- **Phase 4 (Graph Renderer):** Two items need spikes before full implementation: (1) sigma.js + Leptos NodeRef canvas initialization in `use_effect` — confirmed conceptually in community discussion but not in official docs; (2) ForceAtlas2 cooling schedule parameters for citation graph topology (hub-and-spoke patterns typical in physics arXiv may require tuned `theta` and `scalingRatio`). A 500-node real graph benchmark is the validation target.
+No phases require a `/gsd:research-phase` call. All patterns are documented and implementation-ready.
 
-Phases with well-documented standard patterns (skip research):
-- **Phase 1 (Workspace Restructure):** Cargo workspace + leptos_axum Cargo feature flags are extensively documented in official Leptos docs and the start-axum template. No research needed.
-- **Phase 5 (Polish):** WASM binary size optimization has official Leptos guidance with specific flags. Provenance storage is a schema extension of known SurrealDB patterns.
+Phases with standard, well-documented patterns:
+- **Phase 1 (Force Coefficients):** D3-force defaults, ForceAtlas2 paper, and vis.js barnesHut reference values provide concrete numeric targets. Direct code inspection confirms the exact constants. HIGH confidence.
+- **Phase 2 (Renderer Fixes):** `fwidth` is GLSL ES 3.00 core spec; quad-line approach is an established WebGL pattern; seed instance data layout is a stride expansion. All verified against official sources. HIGH confidence.
+- **Phase 3 (Viewport + Labels):** Greedy AABB label placement is published algorithm (Vega/Vega-Lite); AABB fit math is elementary; alpha-threshold trigger is standard pattern. MEDIUM-HIGH confidence.
+
+The one area requiring empirical calibration during implementation (not a research gap): force coefficient exact values. Research provides reference ranges but optimal values for ReSyn's hub-heavy citation graph topology must be validated against the convergence test suite and visual inspection. Plan for one tuning iteration after initial values are applied.
 
 ## Confidence Assessment
 
 | Area | Confidence | Notes |
 |------|------------|-------|
-| Stack | HIGH | Leptos 0.8, Axum 0.8, sigma.js 3.0 all verified via official sources. Version compatibility matrix confirmed. JS interop approach (wasm-bindgen + NodeRef) confirmed via Leptos book and community discussion. CSR vs SSR decision well-reasoned for single-user tool. |
-| Features | MEDIUM-HIGH | P1 feature set grounded in explicit feature dependency analysis. Competitor comparison from Effortless Academic 2025 is MEDIUM confidence but directionally consistent with known tool capabilities. Anti-feature decisions are conservative and well-justified. |
-| Architecture | HIGH | Cargo workspace structure follows official leptos-rs/start-axum template. SSE pattern from official Axum docs. Web Worker postMessage pattern from MDN. SurrealDB concurrency from official SDK docs. Server function boundary is compile-time enforced — not a convention. |
-| Pitfalls | MEDIUM-HIGH | WASM boundary pitfalls (1, 2, 6) are from official Leptos docs with explicit callouts in 0.8.0 release notes. Force layout convergence (Pitfall 4) and JS-WASM overhead (Pitfall 3) from MEDIUM confidence sources (Rust WASM book, academic papers). Crawl queue concurrency (Pitfall 5) from SurrealDB official concurrency docs. |
+| Stack | HIGH | No new crates; all decisions from direct code inspection + verified spec documents; zero dependency risk |
+| Features | HIGH | All six features diagnosed from direct source inspection; implementation paths specified to file and line level |
+| Architecture | HIGH | File-level touch points identified; integration points mapped; data flows confirmed against actual source; unchanged components confirmed |
+| Pitfalls | HIGH (WebGL/DPR) / MEDIUM (force coefficients) | LINES width limit and fwidth: verified against WebGL2 spec and webgl2fundamentals. Force coefficient ranges: D3/vis.js/ForceAtlas2 community consensus — exact optimal values need empirical validation |
 
-**Overall confidence:** HIGH for the workspace restructure and server architecture; MEDIUM for the graph rendering details (sigma.js/Leptos integration specifics) and crawl queue atomicity guarantees. These gaps are bounded and addressable with targeted spikes rather than full research passes.
+**Overall confidence:** HIGH
 
 ### Gaps to Address
 
-- **SurrealDB `UPDATE ... LIMIT 1` atomicity in embedded mode:** Official concurrency docs confirm embedded SurrealDB serializes ops on the same handle, but the specific claim queue pattern under concurrent tokio tasks needs a concurrency test (not a research pass) before Phase 2 commits the design.
-- **sigma.js + Leptos NodeRef integration:** The pattern is documented generically in the Leptos book; sigma.js-specific initialization in `use_effect` is confirmed in a community discussion thread (MEDIUM). A working spike precedes full Phase 4 implementation.
-- **ForceAtlas2 convergence for citation graph topology:** Physics arXiv citation graphs have hub-and-spoke structure (a few papers with 100+ citations alongside many with 2-5). ForceAtlas2 cooling parameters from the original Gephi paper may need tuning. The Phase 4 spike validates convergence on a real 500-node graph before committing the architecture.
-- **Tailwind CSS 4 + Trunk integration:** The `LEPTOS_TAILWIND_VERSION` Trunk config approach is from a community source. Validate in a 30-minute spike before styling Phase 3 components.
+- **Force coefficient exact values require empirical calibration:** Research provides reference ranges (REPULSION -500 to -1800 across multiple sources, with -800 as a conservative starting point; IDEAL_DISTANCE 120–150; VELOCITY_DAMPING 0.7–0.85). Optimal values for ReSyn's specific citation graph density and degree distribution must be confirmed with real graphs. Plan one iteration of visual validation after Phase 1 constants are applied.
+- **`measureText` cache is required, not optional:** PITFALLS.md explicitly flags `ctx.measure_text()` as expensive per-frame across the wasm-bindgen bridge. The label collision implementation must cache widths at graph load time in a `HashMap<String, f64>`. This is implementation-level but must not be deferred as an optimization.
+- **WebGL quad edge geometry integration with existing arrowhead pass:** Switching from `LINES` to quad triangles (6 vertices per edge vs 2) requires a vertex buffer refactor. The established pattern is documented (wwwtyro.net instanced lines), but the concrete integration with the existing `TRIANGLES` arrowhead pass in `webgl_renderer.rs` needs care to avoid draw call reorganisation complexity. Budget extra time for this sub-task within Phase 2.
 
 ## Sources
 
-### Primary (HIGH confidence)
-- [Leptos Book](https://book.leptos.dev/) — server functions, hydration bugs, WASM binary size, wasm-bindgen integration
-- [Leptos 0.8.0 Release Notes](https://github.com/leptos-rs/leptos/releases/tag/v0.8.0) — breaking changes, usize/isize pitfall explicitly called out
-- [leptos-rs/start-axum template](https://github.com/leptos-rs/start-axum) — workspace structure reference implementation
-- [leptos_axum docs.rs](https://docs.rs/leptos_axum/latest/leptos_axum/) — Axum integration, route list generation, server function registration
-- [sigma.js GitHub v3.0.2](https://github.com/jacomyal/sigma.js/) — WebGL renderer, graphology requirement, API surface
-- [sigma.js v3.0 release announcement](https://www.ouestware.com/2024/03/21/sigma-js-3-0-en/) — breaking changes from v2, production status
-- [graphology-layout-forceatlas2 docs](https://graphology.github.io/standard-library/layout-forceatlas2.html) — Barnes-Hut parameters, Web Worker support
-- [axum::response::Sse docs.rs](https://docs.rs/axum/latest/axum/response/sse/) — SSE streaming pattern, keep-alive
-- [Web Workers postMessage MDN](https://developer.mozilla.org/en-US/docs/Web/API/Worker/postMessage) — structured clone semantics, OffscreenCanvas
-- [SurrealDB SDK Concurrency Docs](https://surrealdb.com/docs/sdk/rust/concepts/concurrency) — embedded engine concurrency model
-- [Rust WASM Book: Game of Life](https://rustwasm.github.io/book/game-of-life/implementing.html) — typed array / linear memory patterns for JS-WASM boundary overhead avoidance
+### Primary (HIGH confidence — direct code inspection or official spec)
+- Direct source read: `resyn-worker/src/forces.rs`, `resyn-app/src/graph/webgl_renderer.rs`, `canvas_renderer.rs`, `renderer.rs`, `layout_state.rs`, `pages/graph.rs` — confirmed all current constants, shader source, instance layout, data structures
+- GLSL ES 3.00 specification Section 8.13 — `fwidth` in core spec, no extension needed in WebGL2
+- WebGL2 Anti-Patterns (webgl2fundamentals.org) — LINES width limit confirmed
+- WebGL2 Cross Platform Issues (webgl2fundamentals.org) — line width clamping cross-platform confirmed
+- Khronos WebGL Wiki: HandlingHighDPI — DPR coordinate transformation patterns
 
-### Secondary (MEDIUM confidence)
-- [Leptos canvas/NodeRef community discussion](https://github.com/leptos-rs/leptos/discussions/2245) — NodeRef pattern for canvas confirmed; sigma.js specifics not covered
-- [Leptos + SurrealDB + Axum example](https://github.com/oxide-byte/rust-berlin-leptos) — real integration reference (Leptos 0.6; patterns still applicable)
-- [Webcola + WASM graph layout case study](https://cprimozic.net/blog/speeding-up-webcola-with-webassembly/) — JS-WASM boundary overhead in graph rendering quantified empirically
-- [ForceAtlas2 paper](https://medialab.sciencespo.fr/publications/Jacomy_Heymann_Venturini-Force_Atlas2.pdf) — anti-swinging mechanism and cooling schedule design
-- [Barnes-Hut algorithm reference](https://arborjs.org/docs/barnes-hut) — theta parameter and convergence behavior
-- [Litmaps vs ResearchRabbit vs Connected Papers 2025](https://effortlessacademic.com/litmaps-vs-researchrabbit-vs-connected-papers-the-best-literature-review-tool-in-2025/) — competitor feature analysis
-- [Graph visualization performance comparison (PMC 2025)](https://pmc.ncbi.nlm.nih.gov/articles/PMC12061801/) — canvas vs WebGL performance at scale
-- [leptos_use use_event_source](https://leptos-use.rs/network/use_event_source.html) — SSE client subscription pattern
+### Secondary (MEDIUM confidence — cross-referenced community sources)
+- D3-force simulation documentation (d3js.org) — alpha decay, velocity decay defaults; alphaDecay 0.0228/tick ≈ 300 iterations
+- vis.js Physics Documentation — barnesHut defaults: gravitationalConstant -2000, springLength 95, springConstant 0.04
+- ForceAtlas2 paper (PLOS One) — adaptive temperature, anti-swinging, cooling schedule rationale
+- Label occupancy bitmap algorithm — Vega/Vega-Lite Fast Labels paper (idl.cs.washington.edu/files/2021-FastLabels-VIS.pdf)
+- wwwtyro.net instanced lines — quad-based edge rendering approach
+- fwidth anti-aliasing technique (numb3r23.net, rubendv.be) — screen-adaptive smoothstep pattern
 
-### Tertiary (MEDIUM-LOW confidence)
-- [Leptos 0.8 + Tailwind 4 + DaisyUI 5 guide](https://8vi.cat/leptos-0-8-tailwind4-daisyui5-for-easy-websites/) — Tailwind + Trunk integration via `LEPTOS_TAILWIND_VERSION`; community source, needs validation
-- [LogRocket: Migrating JS frontend to Leptos](https://blog.logrocket.com/migrating-javascript-frontend-leptos-rust-framework/) — practical migration experience; version not specified
+### Tertiary (MEDIUM confidence — visual tool observation)
+- Connected Papers, Litmaps, VOSviewer feature baseline — live observation + 2025 comparison articles confirming seed distinction patterns and auto-fit behaviour
 
 ---
-*Research completed: 2026-03-15*
+*Research completed: 2026-03-24*
 *Ready for roadmap: yes*

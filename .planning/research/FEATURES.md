@@ -1,214 +1,268 @@
-# Feature Research
+# Feature Landscape: Graph Rendering Overhaul (v1.2)
 
-**Domain:** Literature Based Discovery (LBD) — Leptos web UI, WebGL graph visualization, incremental crawling, enriched gap analysis views
-**Project:** Research Synergy (ReSyn) — v1.1 "Scale & Surface" milestone
-**Researched:** 2026-03-15
-**Confidence:** MEDIUM–HIGH
-**Baseline:** v1.0 delivered full analysis pipeline: BFS crawl, arXiv/InspireHEP sources, SurrealDB, petgraph, egui force-directed viz with TF-IDF, LLM annotations, contradiction detection, ABC-bridge, graph enrichment overlays. This file covers ONLY new features for v1.1.
+**Domain:** Force-directed citation graph visualization — fixing and enhancing existing Rust/WASM renderer
+**Project:** Research Synergy (ReSyn) — v1.2 Graph Rendering Overhaul milestone
+**Researched:** 2026-03-24
+**Confidence:** HIGH (based on direct code inspection + cross-referenced research)
 
 ---
 
-## Feature Landscape
+## Context: What Already Exists
 
-### Table Stakes (Users Expect These)
+All of the following are implemented and working in v1.1.1. This milestone fixes problems within them, not replaces them.
 
-Features a researcher using this tool at depth 10+ expects. Missing any makes the tool feel broken or unusable at real scale.
+- Canvas 2D renderer (`canvas_renderer.rs`) with node circles, edge lines, arrowheads
+- WebGL2 renderer (`webgl_renderer.rs`) as alternate backend
+- Barnes-Hut force simulation in Web Worker (`resyn-worker/src/forces.rs`)
+- LOD progressive reveal and temporal year-range filtering
+- Hover/selection highlighting with neighbor dimming
+- Contradiction (`#f85149`) and ABC-bridge (`#d29922`) edge types with toggle visibility
+- Node radius scaled by citation count (4–18px via `radius_from_citations`)
+- Labels rendered below nodes when `viewport.scale > 0.6`
+- `seed_paper_id` field in `GraphState` (stored, never used in renderer)
+- `converged: bool` in `LayoutOutput` (returned from worker, not acted on in UI)
 
-| Feature | Why Expected | Complexity | Notes |
-|---------|--------------|------------|-------|
-| Web UI accessible in browser | egui is a desktop app binary; researchers expect shareable, bookmark-able, OS-agnostic access | HIGH | Full Leptos migration — significant but scoped. `leptos_axum` + `wasm-pack` is the standard pairing; existing Axum server work reuses the current tokio runtime |
-| Crawl progress visibility | Depth-10 crawls take minutes; blind wait is unacceptable; user needs to know it's working | MEDIUM | SSE stream from server to browser; Leptos `use_event_source` or `leptos_sse` crate handles client side; server pushes paper-fetched events as they happen |
-| Resumable crawl after interruption | At depth 10+ with rate limits, a crash means 30+ min lost; users expect retry-from-checkpoint | MEDIUM | DB-backed queue of pending arXiv IDs with `status: pending|in_progress|done`; on restart, pick up `pending` rows. SurrealDB graph queries already track what's been fetched |
-| Gap findings visible in graph (not just stdout) | v1.0 routes contradictions and bridges to stdout; the graph is where users are looking | MEDIUM | Edge/badge overlays on the force graph; requires wiring existing `GapFinding` records from SurrealDB into the renderer |
-| Responsive graph at 1000+ nodes | Citation graphs at depth 10 easily exceed 1000 nodes; canvas-based rendering degrades below usable FPS | HIGH | WebGL rendering path required; Barnes-Hut O(n log n) force layout for simulation; canvas is acceptable up to ~500 nodes, WebGL above that |
-| Paper detail panel / sidebar | Clicking a node and seeing its data is fundamental; currently requires egui hover tooltip | LOW | React-like side panel in Leptos; populate from server function fetching paper + analysis from SurrealDB |
-| URL-addressable graph state | Users need to share a specific graph view (seed paper, depth) via URL | LOW | Leptos router with query params: `?paper=2301.12345&depth=3&source=arxiv` — standard Leptos routing |
+## Identified Problems in Existing Code
 
-### Differentiators (Competitive Advantage)
+Diagnosed from direct source inspection — not hypothetical.
 
-Features beyond what Connected Papers, Litmaps, and ResearchRabbit offer. These are where ReSyn wins at depth 10+ research.
+**Force coefficient imbalance (the root cause of blob collapse):**
+Current values: `REPULSION_STRENGTH = -300.0`, `IDEAL_DISTANCE = 80.0`, `ATTRACTION_STRENGTH = 0.03`, `VELOCITY_DAMPING = 0.6`, `ALPHA_DECAY = 0.995`.
 
-| Feature | Value Proposition | Complexity | Notes |
-|---------|-------------------|------------|-------|
-| Open-problems aggregation panel | Ranked list of what the corpus collectively admits is unsolved; no existing tool surfaces this | MEDIUM | Aggregate `open_problems` from existing `LlmAnnotation` records; cluster by semantic similarity; count recurrence; render as sorted list with source paper links. Data already exists in SurrealDB |
-| Method-combination gap matrix | Visual matrix of method pairings that appear vs conspicuously absent; shows where no one has tried combining approaches | MEDIUM | Build method vocabulary from `methods` field in `LlmAnnotation`; compute pairwise co-occurrence; render as heatmap with absent cells highlighted |
-| Analysis provenance: click a finding, see source text | Trust and spot-checking: researcher must be able to verify an extracted claim against the original text | MEDIUM | Store `source_segment` + char offsets alongside extracted fields (schema already has stub); render in detail panel with scroll-to-highlight |
-| Contradiction edges on graph | Visual encoding of which paper pairs have detected contradictions; no existing citation tool shows this | MEDIUM | Load `GapFinding` records with type `contradiction` from SurrealDB; render as dashed red edges between conflicting nodes in the force graph |
-| ABC-bridge edges on graph | Visual encoding of hidden-connection pairs; exclusive to ReSyn among citation tools | MEDIUM | Same pattern as contradiction edges; load `GapFinding` type `bridge`; render as dashed green edges or node badges |
-| Temporal filtering slider | Filter the graph to papers before/after a year; see how the field evolved | MEDIUM | `published` field already on `Paper` model; slider signal in Leptos that filters the rendered node set; no new data fetching |
-| Node clustering / level-of-detail at scale | At 1000+ nodes, the graph is unreadable without grouping; cluster by primary method or paper type | HIGH | Barnes-Hut naturally handles layout at scale; visual clustering requires grouping nodes by extracted dimension and rendering cluster hulls. This is the hardest UX problem in this milestone |
-| Section-aware LLM extraction | Using section boundaries rather than full-text blob improves extraction precision; existing pipeline treats text as a flat string | MEDIUM | Section detection via heading patterns already partially implemented; route `methods_section`, `results_section` etc. as separate prompts |
+The vis.js barnesHut reference implementation uses gravitationalConstant -2000 for similar node sizes. At -300, repulsion is ~7x weaker than the reference. For a citation graph with hub nodes (high-citation papers attracting many edges), the spring attraction from multiple edges overwhelms the weak repulsion, causing dense clusters to collapse into a blob. Additionally, `VELOCITY_DAMPING = 0.6` kills momentum too aggressively — velocities halve every tick, which prevents nodes from reaching equilibrium positions.
 
-### Anti-Features (Commonly Requested, Often Problematic)
+**Edge invisibility:** Regular edges use `#404040` at alpha `0.35` against the `#0d1117` background. The effective luminance contrast is approximately 10:1 in isolation but the 0.35 alpha brings it down to near-invisible. Contradiction (`#f85149`) and bridge (`#d29922`) edges at full alpha are fine; regular citation edges are not.
 
-| Feature | Why Requested | Why Problematic | Alternative |
-|---------|---------------|-----------------|-------------|
-| Real-time collaborative multi-user graphs | "Can multiple researchers work on this simultaneously?" | Requires auth, session management, conflict resolution, WebSocket per-session state — disproportionate scope for a single-user tool | Accept single-user; make graph state shareable via URL params so researchers can reproduce each other's views |
-| Full-text keyword search across corpus | "I want to search for papers mentioning 'renormalization group'" | This becomes a search engine, duplicating Semantic Scholar; focus shifts from gap analysis to retrieval | Expose structured SurrealDB filter on extracted `methods` / `keywords` field; not free-text search |
-| Auto-expanding the graph based on similarity | "Add papers similar to these even if not cited" | Escapes the citation-graph anchor; user loses control of what's in the corpus; recommendation problem, not gap analysis | Keep corpus user-defined; let depth parameter control expansion |
-| 3D force graph | "The 3D view looks more impressive" | 3D force graphs are visually compelling but analytically confusing; camera orientation becomes a cognitive burden; WebXR dependency adds build complexity | 2D WebGL with good zoom, pan, and LOD is analytically superior; defer 3D to v1.2+ if demand exists |
-| Exporting to LaTeX / PDF citation report | "I want a formatted literature review" | Document generation is a separate product; ReSyn's value is in the visual analysis, not report writing | Export to JSON/CSV of gap findings for users who want to integrate with their own reporting workflow |
-| Live paper alerts ("new paper in my graph's topic") | "Notify me when a new arXiv paper cites X" | Requires a persistent server, polling arXiv API on schedule, user accounts and email — operational complexity far beyond current scope | Out of scope until v2 when multi-user / persistence layer matures |
+**Node border degradation at zoom:** `set_line_width(1.0)` is an absolute CSS-pixel value. When `viewport.scale` is > 2 (user zoomed in), the rendered border is 1 CSS pixel = correct. But the canvas transform has already scaled the coordinate system, so 1.0 in the transformed context becomes `1/scale` screen pixels — effectively thinner than 1px at high zoom. Fix: pass `1.0 / viewport.scale` to maintain apparent 1px border.
+
+**Seed node not distinguished:** `seed_paper_id: Option<String>` is stored in `GraphState` and populated from server data. The renderer never checks it — the seed paper gets the same `#4a9eff` fill as all other non-selected nodes.
+
+**Label pile-up at medium zoom:** Labels are drawn unconditionally for all `lod_visible && temporal_visible` nodes when `viewport.scale > 0.6`. No bounding box collision check. In dense clusters at zoom ~0.7, label text overlaps into unreadable stacks.
+
+**No auto-fit on load:** Nodes are positioned by initial jitter from `from_graph_data` then spread by simulation. After simulation stabilizes, the viewport remains at initial zoom/offset. User must manually pan and zoom to find the graph. The `converged: bool` from the worker is returned but the bridge callback does not trigger any viewport adjustment.
+
+---
+
+## Table Stakes
+
+Features users expect. Missing = graph feels broken.
+
+| Feature | Why Expected | Complexity | Current State | Notes |
+|---------|--------------|------------|---------------|-------|
+| Visible edges between nodes | A graph without visible edges is just dots | Low | Broken — `#404040` at 0.35 alpha on `#0d1117` is near-invisible | Color and alpha change only |
+| Nodes spread into clusters, not a blob | Core promise of force-directed layout | Medium | Broken — repulsion too weak for hub-heavy citation graphs | Coefficient rebalancing in `forces.rs` |
+| Sharp node circles at all zoom levels | Expected of any canvas graph renderer | Low | Degraded — fixed 1px border ignores zoom scale | Scale `line_width` by `1.0 / viewport.scale` |
+| Seed node visually distinct | User needs an anchor — "where did I start?" | Low | Not implemented — field exists, never rendered | Gold ring + distinct fill color |
+| Labels readable without overlap | Overlapping labels are worse than no labels | Medium | Broken — no collision avoidance at medium zoom | Greedy AABB skip, priority-ordered |
+| Auto-fit viewport after load | Graph should be visible without manual pan/zoom | Low | Not implemented — user must hunt for graph | Compute AABB on convergence, apply to viewport |
+
+## Differentiators
+
+Features that improve usability beyond the basics. Not strictly required, but high value.
+
+| Feature | Value Proposition | Complexity | Depends On | Notes |
+|---------|-------------------|------------|------------|-------|
+| BFS depth rings as initial placement | Citation graphs are tree-structured; placing nodes in concentric rings by BFS depth gives simulation a better warm start and produces more readable final layouts | Medium | `bfs_depth` field already on `NodeState` | Replace current radial jitter in `from_graph_data` with ring placement; reduces simulation steps needed for good layout |
+| Simulation convergence indicator | Users should know when the layout is stable vs still animating | Low | `converged` already in `LayoutOutput`, `simulation_running` already in `GraphState` | Show "Stabilizing..." / "Layout stable" text in controls; one-line UI change after convergence detection is wired |
+| Configurable force parameters at runtime | Advanced users can tune repulsion for their specific graph shape | High | Coefficient fix | Sliders for `REPULSION_STRENGTH` and `IDEAL_DISTANCE`; requires making constants runtime-configurable; defer until defaults are validated |
+| LOD label reveal tied to zoom region | Only show labels for nodes in the current viewport region, not all visible nodes | Medium | Label collision fix | Cull labels for nodes outside viewport AABB before running collision check; reduces work and clutter when panned in |
+
+## Anti-Features
+
+Features to explicitly NOT build in this milestone.
+
+| Anti-Feature | Why Avoid | What to Do Instead |
+|--------------|-----------|-------------------|
+| Edge bundling | Obscures individual citation paths; expensive to implement in Canvas 2D | Keep straight lines; they work for graphs under 500 nodes |
+| Curved / bezier edges | Separate tangent computation per tick; no analytical benefit for citation edges | Straight lines with arrowheads are sufficient |
+| 3D graph rendering | Unnecessary cognitive overhead; camera orientation adds complexity without benefit | Stay 2D; PROJECT.md already lists this as out-of-scope |
+| Label always-on (all nodes) | 200+ overlapping labels are unreadable at any zoom | Keep LOD/zoom gating, add collision skip within visible set |
+| Custom node shapes for types | Triangles or diamonds for different paper types add visual noise | Distinguish via color and ring, not shape |
+| Per-edge weight controls | Citation graphs are unweighted; weight UI is busywork | All citation edges equal weight |
+| Undo/redo for node drag | Users don't need drag history | Accept drag as permanent until new graph loads |
+| JavaScript graph libraries | Explicitly out of scope (PROJECT.md "Out of Scope" section) | Full Rust/WASM stack |
 
 ---
 
 ## Feature Dependencies
 
 ```
-[Leptos web migration]
-    └── provides UI shell for all other web features
-          ├──requires──> [Axum backend server]
-          │                   └── already exists (tokio runtime, SurrealDB connection)
-          ├──enables──> [URL-addressable graph state]
-          ├──enables──> [Paper detail sidebar]
-          └──enables──> [Crawl progress UI]
+Force coefficient fix
+  └── enables: cluster spreading (all other fixes are untestable against a blob)
+  └── enables: meaningful auto-fit (fitting a blob is pointless)
+  └── enables: meaningful label collision (labels only overlap when nodes are spread)
 
-[Crawl progress UI]
-    └──requires──> [Incremental/resumable crawl (DB-backed queue)]
-                        └──requires──> [SurrealDB crawl_queue table] (new schema)
+Edge visibility fix
+  └── independent — change color/alpha in canvas_renderer.rs
 
-[WebGL graph renderer]
-    └──requires──> [Graph data serialized to JSON for JS boundary]
-    └──requires──> [Leptos web migration] (rendered in browser)
-    └──enables──> [Node clustering / LOD at 1000+ nodes]
-    └──enables──> [Temporal filtering slider]
+Sharp node borders
+  └── independent — scale line_width by 1.0 / viewport.scale
 
-[Gap findings in graph]
-    └──requires──> [WebGL or Canvas graph renderer in browser]
-    └──requires──> [GapFinding records in SurrealDB] (already exists from v1.0)
-          ├──enables──> [Contradiction edges]
-          └──enables──> [ABC-bridge edges]
+Seed node distinction
+  └── independent rendering change — seed_paper_id already in GraphState
+  └── more useful after: coefficient fix (seed is invisible when graph is a blob)
 
-[Open-problems panel]
-    └──requires──> [LlmAnnotation.open_problems in SurrealDB] (exists from v1.0)
-    └──requires──> [Leptos web migration]
+Auto-fit viewport
+  └── requires: convergence signal wired from worker_bridge to viewport state
+  └── converged: bool already returned in LayoutOutput (not acted on yet)
 
-[Method-combination gap matrix]
-    └──requires──> [LlmAnnotation.methods in SurrealDB] (exists from v1.0)
-    └──requires──> [Leptos web migration]
+Label collision avoidance
+  └── requires: force coefficient fix (collision only useful with spread layout)
+  └── independent of: auto-fit, seed distinction, edge visibility
 
-[Analysis provenance]
-    └──requires──> [source_segment field stored at extraction time] (stub exists, needs population)
-    └──requires──> [Paper detail sidebar]
+BFS depth rings (differentiator)
+  └── requires: bfs_depth field on NodeState (already exists)
+  └── modifies: from_graph_data initial placement only (not simulation logic)
 
-[Section-aware LLM extraction]
-    └──requires──> [Full-text extraction] (exists from v1.0)
-    └──requires──> [NLP section detection] (exists from v1.0)
-    └──enhances──> [Analysis provenance]
+Convergence indicator (differentiator)
+  └── requires: convergence signal wired from worker to GraphState.simulation_running
+  └── simulation_running field already exists in GraphState
 ```
 
-### Dependency Notes
+---
 
-- **WebGL graph renderer requires Leptos migration first:** The graph renderer runs in a browser canvas/WebGL context; it cannot be ported until the Leptos shell exists to mount it into.
-- **Gap findings wiring requires v1.0 gap analysis data:** The `GapFinding` SurrealDB records already exist; this is a frontend wiring task, not a data generation task. Dependency is on the renderer, not on re-running analysis.
-- **Open-problems panel and method matrix are data-ready:** Both depend only on `LlmAnnotation` records already in SurrealDB and the Leptos shell. They can be built in parallel with the graph renderer.
-- **Incremental crawl is independent of web UI:** The DB-backed queue can be implemented and tested via CLI before the web UI exists; progress SSE is the only web-dependent part.
-- **Section-aware extraction conflicts with existing extraction:** Changing how extraction runs requires care not to invalidate cached `LlmAnnotation` records. Use a version field or separate `extraction_version` on the record.
+## Force Coefficient Analysis
+
+Evidence-based recommendations derived from code inspection and reference implementations.
+
+| Parameter | Current Value | Problem | Recommended Value | Rationale |
+|-----------|--------------|---------|-------------------|-----------|
+| `REPULSION_STRENGTH` | -300.0 | 7x weaker than vis.js barnesHut reference (-2000); insufficient to prevent hub collapse | -1200 to -1800 | Start at -1200; increase if graph still compresses. Hub nodes with many edges need strong repulsion to counteract multi-edge spring pull |
+| `IDEAL_DISTANCE` | 80.0 | Too short; node radii range 4–18px; at 80px nodes at max radius have edges touching their borders | 120–150 | 6–8x max node radius (18px) gives adequate edge-to-node clearance |
+| `ATTRACTION_STRENGTH` | 0.03 | Low but reasonable; re-evaluate after repulsion fix | 0.03–0.05 | May need slight increase to maintain cluster cohesion after repulsion is strengthened |
+| `VELOCITY_DAMPING` | 0.6 | Too aggressive; velocities halve every tick, nodes cannot reach equilibrium before cooling kills motion | 0.85 | Standard range 0.8–0.95; 0.85 allows nodes to travel further per tick toward equilibrium |
+| `CENTER_GRAVITY` | 0.005 | Appropriate; keeps graph centered | 0.005–0.01 | Increase only if graph drifts outside viewport after repulsion increase |
+| `ALPHA_DECAY` | 0.995 | Very slow decay (690 ticks to halve alpha); acceptable if tick batch size is appropriate | 0.99–0.995 | Depends on ticks-per-message in `LayoutInput.ticks`; verify batch size is 10–50 ticks per message |
+
+Source for reference values: vis.js barnesHut defaults (gravitationalConstant: -2000, springLength: 95, springConstant: 0.04). Confidence: MEDIUM — WebSearch result, vis.js docs URL confirmed but not directly fetched.
 
 ---
 
-## MVP Definition
+## Edge Rendering Requirements
 
-### Launch With (v1.1 milestone)
+**Current:** `#404040` stroke at alpha `0.35` on `#0d1117` background.
 
-Minimum set that makes ReSyn usable at real research scale in a browser.
+**Target:** Edges must be visible at-a-glance without competing with special edge colors.
 
-- [ ] **Tech debt cleanup** — wire existing gap findings into egui visualization before migration; remove stale stubs. Ensures nothing is lost in migration.
-- [ ] **Incremental/resumable crawl with DB queue** — depth 10+ requires this; without it, a rate-limit error means starting over. Essential for real use.
-- [ ] **Leptos web migration (shell + routing)** — replace egui binary with a browser-accessible app. The foundational change everything else depends on.
-- [ ] **Graph renderer in browser** — even canvas-based at first; the graph must render in the browser for the migration to be usable.
-- [ ] **Crawl progress via SSE** — visibility into depth-10 crawl; without this, the UI appears frozen.
-- [ ] **Paper detail sidebar** — click a node, see its data; this is the most basic graph interaction expectation.
-- [ ] **Gap findings surfaced in graph** — contradiction and bridge edges/badges; this is the core v1.1 promise ("move gap insights into primary interface").
+| Edge Type | Current | Problem | Recommended |
+|-----------|---------|---------|-------------|
+| Regular citation | `#404040` @ 0.35 | Near-invisible | `#5a6a7a` @ 0.55 (slate-blue gray, matches node color palette) |
+| Regular (dimmed neighbor) | any @ 0.10 | Fine | Keep 0.08–0.10 |
+| Regular (LOD/temporal hidden) | any @ 0.05 | Fine | Keep 0.05 |
+| Contradiction | `#f85149` @ 1.0 | Working | No change |
+| ABC-bridge | `#d29922` @ 1.0 dashed | Working | No change |
 
-### Add After Core Works (v1.1 polish)
-
-Features that add significant value once the foundation is stable.
-
-- [ ] **WebGL renderer upgrade** — replace canvas with WebGL when 1000+ node performance becomes an observed problem. Don't optimize prematurely.
-- [ ] **Open-problems aggregation panel** — data exists; wire into sidebar/panel. High value, low risk.
-- [ ] **Method-combination gap matrix** — heatmap of method pairings; medium effort, high analytical value.
-- [ ] **Temporal filtering slider** — `published` field already exists; filtering signal in Leptos is straightforward.
-- [ ] **URL-addressable graph state** — Leptos router query params; enables sharing.
-
-### Future Consideration (v1.2+)
-
-Defer until v1.1 is stable and user feedback is available.
-
-- [ ] **Node clustering / LOD** — valuable at 1000+ nodes but complex; needs real usage data to tune the clustering heuristics.
-- [ ] **Analysis provenance (source text segments)** — requires schema additions and extraction re-runs; do after migration stabilizes.
-- [ ] **Section-aware LLM extraction** — improves extraction quality but risks cache invalidation; defer until extraction pipeline is stable post-migration.
-- [ ] **3D visualization** — defer; 2D WebGL with good LOD is analytically superior.
+Arrowheads on regular edges: currently use same `#404040` color at 0.35 alpha — update to match edge line color.
 
 ---
 
-## Feature Prioritization Matrix
+## Node Rendering Requirements
 
-| Feature | User Value | Implementation Cost | Priority |
-|---------|------------|---------------------|----------|
-| Tech debt / gap wiring cleanup | HIGH | LOW | P1 |
-| Incremental/resumable crawl | HIGH | MEDIUM | P1 |
-| Leptos web migration (shell) | HIGH | HIGH | P1 |
-| Graph rendering in browser (canvas) | HIGH | MEDIUM | P1 |
-| Crawl progress SSE | HIGH | MEDIUM | P1 |
-| Paper detail sidebar | HIGH | LOW | P1 |
-| Gap findings in graph (edges/badges) | HIGH | MEDIUM | P1 |
-| WebGL renderer upgrade | MEDIUM | HIGH | P2 |
-| Open-problems aggregation panel | HIGH | LOW | P2 |
-| Method-combination gap matrix | MEDIUM | MEDIUM | P2 |
-| Temporal filtering slider | MEDIUM | LOW | P2 |
-| URL-addressable graph state | MEDIUM | LOW | P2 |
-| Node clustering / LOD | MEDIUM | HIGH | P3 |
-| Analysis provenance (source segments) | MEDIUM | MEDIUM | P3 |
-| Section-aware LLM extraction | MEDIUM | MEDIUM | P3 |
+**Sharp circles at zoom:**
+- Canvas 2D `arc()` is browser-antialiased — circles are already smooth
+- Problem is border `set_line_width(1.0)` — this is in the transformed coordinate space
+- When viewport scale > 1 (zoomed in), 1.0 in transformed space = `1/scale` screen pixels (too thin)
+- Fix: call `set_line_width(1.0 / viewport.scale)` before stroking node circles
+- DPR is already handled at canvas physical sizing per PROJECT.md convention; no change needed there
 
-**Priority key:**
-- P1: Must have for v1.1 launch — core migration and scale promises
-- P2: Should have, add when P1 is stable
-- P3: Nice to have, target v1.2
+**Seed node distinction:**
+- Check `state.seed_paper_id == Some(node.id)` in the node rendering loop
+- If seed: use fill color `#f5c542` (gold/amber) instead of `#4a9eff`
+- Draw an additional outer ring: `arc(node.x, node.y, node.radius + 5.0)` with `#f5c542` stroke at 0.8 alpha, `line_width = 2.0 / viewport.scale`
+- Seed node in hovered/selected state: use `#58a6ff` (same as current) — interaction highlighting overrides seed distinction
+- Research precedent: Connected Papers green for seed, Litmaps green for seed — bright distinguishing color is standard pattern (MEDIUM confidence, from search results)
 
 ---
 
-## Competitor Feature Analysis
+## Label Collision Avoidance
 
-This milestone's features are informed by what ResearchRabbit, Connected Papers, and Litmaps do — and where ReSyn intentionally diverges.
+**Greedy AABB skip algorithm (O(n) amortized):**
 
-| Feature | ResearchRabbit | Connected Papers | Litmaps | ReSyn v1.1 Approach |
-|---------|---------------|-----------------|---------|---------------------|
-| Graph visualization | Force graph, custom canvas | Force graph, D3 SVG | Timeline + citation graph | WebGL force graph, same data model |
-| Node interaction | Click for paper detail | Click for sidebar | Click for detail panel | Click for Leptos sidebar with full analysis |
-| Gap / contradiction surfacing | None | None | None | Contradiction edges + bridge badges (differentiator) |
-| Open problems aggregation | None | None | None | Panel ranked by recurrence (differentiator) |
-| Method matrix | None | None | None | Heatmap of pairings (differentiator) |
-| Temporal filtering | Year-axis layout | None | X-axis is publication year | Slider filters node set |
-| Progress on large crawls | N/A (uses their DB) | N/A | N/A | SSE stream with paper-by-paper progress |
-| Resumable crawl | N/A | N/A | N/A | DB-backed queue with checkpoint |
-| Offline/local LLM | No | No | No | Ollama backend (differentiator) |
+This is the standard approach used by charting libraries. O(n) per frame for the typical case.
 
-**Key competitive observation (MEDIUM confidence, source: Effortless Academic 2025 comparison):** None of the three major competitors surface structural research gaps, contradictions, or ABC-bridge connections. They are citation-map tools; ReSyn is an analysis tool that uses citation maps as scaffolding. This distinction should drive all UX decisions — the graph is the context, not the product.
+1. Sort visible nodes by priority: seed node first, then by `citation_count` descending
+2. Maintain `Vec<(f64, f64, f64, f64)>` of placed label AABBs (xmin, ymin, xmax, ymax)
+3. For each node in priority order:
+   - Compute label AABB: text centered at `(node.x, node.y + node.radius + 12.0)`, width from `ctx.measure_text()`, height fixed at 14px
+   - Check if AABB overlaps any placed AABB (iterate the placed list)
+   - If overlap: skip this node's label
+   - If no overlap: draw label, append AABB to placed list
+4. Only run when `viewport.scale > 0.6` (existing threshold)
+
+**Complexity note:** In the worst case (all nodes in view, dense graph) this is O(n²) comparison, but in practice: at `scale = 0.6` with 200 nodes, about 40–60 labels will fit without overlap, so the placed list stays short and comparisons are fast. Acceptable for Canvas 2D at 60fps.
+
+**Priority rationale:** Always show the seed paper label and top-cited hubs. Leaf nodes (low citation, deep BFS) are suppressed first.
+
+---
+
+## Auto-Fit Viewport
+
+**Trigger:** When worker returns `converged: true` for the first time after a graph load.
+
+**Implementation:**
+1. Detect convergence: in `worker_bridge` callback, when `output.converged` is true and this is the first convergence for current graph data, emit a fit-viewport signal
+2. Compute AABB over all `lod_visible && temporal_visible` nodes, including `radius` in bounds: `xmin = node.x - node.radius`, `xmax = node.x + node.radius`, etc.
+3. Scale calculation: `scale = min(canvas_width / (bbox_width + 100.0), canvas_height / (bbox_height + 100.0))` — 50px padding each side
+4. Offset calculation: center the bounding box in the canvas
+5. Apply to `Viewport` — either instant or with a smooth interpolation over ~20 animation frames
+
+**Constraints:**
+- Do not re-trigger on temporal filter changes (user has taken over zoom context)
+- Do not re-trigger if user has manually panned/zoomed since last fit
+- If graph has 0 visible nodes (all filtered out), skip fit
+
+**Source:** D3 force simulation "end" event pattern; vasturiano force-graph `zoomToFit()` + `getBoundingBox()` API pattern. Confidence: MEDIUM.
+
+---
+
+## MVP Build Order
+
+Build in this sequence — each step unblocks the next and is independently testable:
+
+1. **Force coefficients** (`forces.rs` constants) — must fix first; all other visual improvements are meaningless against a blob layout. Testable with existing convergence test.
+2. **Edge visibility** (`canvas_renderer.rs` color + alpha) — one-line change; immediate visual validation at current zoom level.
+3. **Sharp node borders** (`canvas_renderer.rs` line_width) — one-line change; visible at high zoom.
+4. **Seed node distinction** (`canvas_renderer.rs` fill + ring) — small renderer change; validates that `seed_paper_id` flows through correctly.
+5. **Auto-fit viewport** (`worker_bridge.rs` + `layout_state.rs`) — requires wiring convergence signal to viewport; tests that graph is visible on load.
+6. **Label collision avoidance** (`canvas_renderer.rs` sort + AABB check) — do last; layout must be stable before collision geometry is meaningful.
+
+Defer:
+- BFS depth rings (initial placement improvement) — only if coefficient fix alone is insufficient
+- Runtime force parameter controls — after defaults are empirically validated through real use
+- Convergence indicator UI — low effort but not blocking; add in same PR as auto-fit
+
+---
+
+## Competitor Feature Baseline
+
+What citation graph tools do for the six target features, for reference.
+
+| Feature | Connected Papers | Litmaps | VOSviewer | ReSyn v1.2 Target |
+|---------|-----------------|---------|-----------|-------------------|
+| Layout quality | Good clusters, no blob | Timeline-axis hybrid | Good, tuned for bibliometric networks | Fix coefficients to match Connected Papers quality |
+| Edge visibility | Visible light-gray on white | Visible on white | Visible | Dark-mode appropriate contrast |
+| Node rendering | Circle, smooth | Circle | Circle | Already smooth via Canvas 2D arc() |
+| Seed node | Green distinct node | Highlighted | No concept | Gold/amber ring + fill |
+| Label overlap | Suppressed at low zoom, visible at high | Always shown with zoom-linked font | Suppressed at low zoom | Greedy AABB skip, priority-ordered |
+| Auto-fit on load | Yes — always fits | Yes — always fits | Yes | Fit on first convergence |
+
+Source: Live tool observation + 2025 comparison articles. Confidence: MEDIUM.
 
 ---
 
 ## Sources
 
-- [Litmaps vs ResearchRabbit vs Connected Papers 2025 — The Effortless Academic](https://effortlessacademic.com/litmaps-vs-researchrabbit-vs-connected-papers-the-best-literature-review-tool-in-2025/)
-- [ResearchRabbit features page](https://www.researchrabbit.ai/features)
-- [ResearchRabbit 2025 revamp review — Aaron Tay](https://aarontay.substack.com/p/researchrabbits-2025-revamp-iterative)
-- [Leptos official documentation — leptos.dev](https://www.leptos.dev/)
-- [leptos_axum integration — docs.rs](https://docs.rs/leptos_axum/latest/leptos_axum/)
-- [Leptos 0.8 + Axum starter template — GitHub](https://github.com/leptos-rs/start-axum)
-- [Leptos reactive stores (0.7+) — book.leptos.dev](https://book.leptos.dev/15_global_state.html)
-- [Leptos SSE / use_event_source — leptos-use.rs](https://leptos-use.rs/network/use_event_source.html)
-- [cosmos.gl GPU-accelerated force graph — OpenJS Foundation](https://openjsf.org/blog/introducing-cosmos-gl)
-- [Cytoscape.js WebGL renderer preview (Jan 2025)](https://blog.js.cytoscape.org/2025/01/13/webgl-preview/)
-- [Graph visualization performance comparison (canvas vs WebGL) — Memgraph blog](https://memgraph.com/blog/you-want-a-fast-easy-to-use-and-popular-graph-visualization-tool)
-- [PMC study: graph viz library performance 2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC12061801/)
-- [Speeding up graph layout with Rust + WASM — cprimozic.net](https://cprimozic.net/blog/speeding-up-webcola-with-webassembly/)
-- [Leptos + SurrealDB + Axum reference project — GitHub](https://github.com/oxide-byte/rust-berlin-leptos)
-- [SurrealDB + Axum official docs](https://surrealdb.com/docs/sdk/rust/frameworks/axum)
-- [SSE for long-running task progress — auth0.com](https://auth0.com/blog/developing-real-time-web-applications-with-server-sent-events/)
-- [Provenance visualization in analysis tools — arXiv 2505.11784 (2025)](https://arxiv.org/html/2505.11784v1)
+- [Force-Directed Drawing Algorithms, Kobourov (Brown University)](https://cs.brown.edu/people/rtamassi/gdhandbook/chapters/force-directed.pdf) — coefficient recommendations c1=2, c2=1, c3=1; repulsion/attraction balance
+- [vis.js Physics Documentation — barnesHut defaults](https://visjs.github.io/vis-network/docs/network/physics.html) — gravitationalConstant -2000, springLength 95, springConstant 0.04
+- [D3 Force Simulation API](https://d3js.org/d3-force/simulation) — alpha cooling, end event, alphaMin convergence threshold
+- [Fields, Bridges, Foundations: Researcher Citation Graph Study (arXiv 2405.07267)](https://arxiv.org/html/2405.07267v1) — six researcher patterns for citation graph exploration; Fields/Bridges/Foundations taxonomy
+- [Minimizing Overlapping Labels in Interactive Visualizations (Towards Data Science)](https://towardsdatascience.com/minimizing-overlapping-labels-in-interactive-visualizations-b0eabd62ef0/) — greedy O(n) AABB label placement algorithm
+- [Litmaps vs Connected Papers 2025 comparison](https://effortlessacademic.com/litmaps-vs-researchrabbit-vs-connected-papers-the-best-literature-review-tool-in-2025/) — competitive feature baseline
+- [Connected Papers 2025 review](https://skywork.ai/skypage/ko/Connected-Papers:-My-Deep-Dive-into-the-Visual-Research-Tool-(2025-Review)/1972566882891395072) — seed node green color pattern
+- [vasturiano force-graph (GitHub)](https://github.com/vasturiano/force-graph) — zoomToFit() API, getBoundingBox() pattern for auto-fit
+- [Force-Directed Graph Layouts Revisited: T-Distribution (arXiv 2303.03964)](https://arxiv.org/abs/2303.03964) — bounded short-range force for better neighborhood preservation
 
 ---
-*Feature research for: ReSyn v1.1 — Leptos web migration, WebGL graph, incremental crawling, enriched gap analysis UI*
-*Researched: 2026-03-15*
+*Feature research for: ReSyn v1.2 — Graph Rendering Overhaul*
+*Researched: 2026-03-24*
+*Supersedes: v1.1 feature research (2026-03-15)*

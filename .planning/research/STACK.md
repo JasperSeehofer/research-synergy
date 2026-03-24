@@ -1,251 +1,441 @@
 # Technology Stack
 
-**Project:** Research Synergy (ReSyn) — v1.1 Scale & Surface Milestone
-**Researched:** 2026-03-15
-**Scope:** New libraries only for v1.1. Existing stack (tokio, petgraph, surrealdb, reqwest, scraper, serde, egui/eframe, clap, tracing, fastembed, keyword_extraction, genai, sha2, chrono) is not re-researched.
-**Confidence:** HIGH (Leptos, sigma.js), MEDIUM (JS interop approach, incremental crawl queue patterns)
+**Project:** Research Synergy (ReSyn) — v1.2 Graph Rendering Overhaul
+**Researched:** 2026-03-24
+**Scope:** Stack additions and technique recommendations for six specific rendering improvements. Does NOT re-research the validated base stack (Leptos 0.8, web-sys WebGL2, Barnes-Hut resyn-worker, petgraph, SurrealDB).
+**Overall confidence:** HIGH for shader techniques and force parameter math. MEDIUM for label collision avoidance implementation details.
 
 ---
 
-## Context: What Changes in v1.1
+## No New Crate Dependencies Required
 
-The v1.1 milestone replaces the egui desktop GUI with a Leptos web UI and introduces:
-1. **Leptos** — replaces egui/eframe as the UI framework (web, WASM)
-2. **Sigma.js + Graphology** — replaces fdg/egui_graphs for graph rendering (WebGL, 1000+ nodes)
-3. **ForceAtlas2 via graphology-layout-forceatlas2** — replaces fdg force layout (Barnes-Hut O(n log n))
-4. **Axum** — HTTP server to expose existing Rust analysis pipeline as a REST API
-5. **SurrealDB crawl queue schema** — no new crate; extend existing schema with queue records
-6. **Trunk** — WASM build tool for the Leptos frontend
+All six target features can be implemented as pure algorithmic and shader improvements within the existing `resyn-worker` and `resyn-app` crates. Adding crates would introduce WASM compilation risk, build complexity, and binary size overhead for problems that are solved by well-understood techniques entirely achievable in safe Rust and GLSL.
 
-The existing CLI binary continues to work. The web UI is a parallel serving mode activated via a new `--web` flag or a separate binary.
+The research examined every plausible addition — `rapier2d`, `lyon`, `glam`, `fdg`, `wasm-bindgen-rayon` — and none justify inclusion for this scope.
 
 ---
 
-## New Dependencies for This Milestone
+## Recommended Techniques by Feature
 
-### Web Framework (Frontend)
+### 1. Force Simulation Parameter Tuning
 
-| Technology | Version | Purpose | Why |
-|------------|---------|---------|-----|
-| `leptos` | 0.8.x (latest: 0.8.17) | Reactive Rust/WASM frontend framework | Fine-grained reactivity compiles to WASM; Rust all the way through — no JS framework to learn. Mature: 1.8M+ downloads, production-ready. CSR mode (Trunk) is simpler for a tool that talks to a local Axum server; no SSR hydration complexity needed for a single-user research tool. |
-| `leptos_axum` | 0.8.x (matches leptos) | Axum integration for server functions | Required for type-safe server → client communication if using Leptos server functions. Also provides static file serving for the WASM bundle. |
-| `trunk` | latest (CLI, not crate dep) | WASM build and dev server | The standard build tool for Leptos CSR. Handles: wasm-pack invocation, asset bundling, live reload, Tailwind integration. Installed once: `cargo install trunk`. Not a Cargo dependency. |
+**Problem in current code (`resyn-worker/src/forces.rs`):**
 
-**CSR vs SSR decision:**
+The combination of `ALPHA_DECAY = 0.995`, `ATTRACTION_STRENGTH = 0.03`, and `VELOCITY_DAMPING = 0.6` produces a simulation that spreads nodes but never clusters them. Alpha decays at 0.995 per tick × 60fps = ~200 seconds to reach `ALPHA_MIN` — far too slow for a visible clustering effect in the first viewing. The 0.6 damping is extreme compared to d3-force's default of 0.4 friction (equivalent to 0.6 retained, which would be our `1 - 0.4 = 0.6`... however d3 applies `velocity *= (1 - velocityDecay)` where default decay is 0.4, meaning 0.6 velocity is retained — this matches). The real problem is that `ATTRACTION_STRENGTH = 0.03` with `IDEAL_DISTANCE = 80.0` means the spring force is barely noticeable against the Barnes-Hut repulsion.
 
-Use **CSR with Trunk** — not full SSR with cargo-leptos.
+**Recommended constant changes (in `resyn-worker/src/forces.rs`):**
 
-Rationale:
-- ReSyn is a single-user local tool, not a public web app. SEO is irrelevant. Initial load time for a local tool is irrelevant.
-- CSR has faster iteration (only recompile the frontend WASM, not a server+client dual binary).
-- The Axum server is already needed to expose the analysis pipeline as a REST API. Serving the static WASM bundle from Axum is trivial (`tower_http::ServeDir`).
-- Full SSR (cargo-leptos) would require restructuring the entire project into a workspace with separate server/client crates and a dual-compilation target. Disproportionate complexity for a local-first tool.
+| Constant | Current | Recommended | Rationale |
+|----------|---------|-------------|-----------|
+| `REPULSION_STRENGTH` | -300.0 | -800.0 | Must clearly dominate at short range. Barnes-Hut at THETA=0.9 approximates distant repulsion cheaply so increasing magnitude does not tank performance. |
+| `ATTRACTION_STRENGTH` | 0.03 | 0.06 | Doubles spring strength so connected nodes actually cluster at `IDEAL_DISTANCE`. |
+| `IDEAL_DISTANCE` | 80.0 | 120.0 | 80px at default viewport scale causes label overlap. 120px provides readable separation. |
+| `VELOCITY_DAMPING` | 0.6 | 0.85 | 0.6 retention means momentum dies within 5-6 ticks. 0.85 (matching d3-force effective behavior) preserves convergence trajectory without oscillation. |
+| `ALPHA_DECAY` | 0.995 | 0.9975 | 0.995/tick at 60fps ≈ 200s to `ALPHA_MIN`. 0.9975/tick ≈ 90s, matching d3-force's ~300-iteration default at reasonable frame rates. Visible clustering occurs in the first 30s. |
+| `THETA` | 0.9 | 0.8 | Tighter Barnes-Hut threshold gives better accuracy on 50-400 node graphs. Performance cost is negligible when running 1 tick per RAF frame on the main thread. |
 
-Architecture: `cargo run -- --web` starts an Axum server on `localhost:3000`, serves the pre-built Leptos WASM SPA as static files, and exposes REST API endpoints for the analysis pipeline. During development, Trunk's dev server proxies API calls to Axum.
+**Add a node collision force (pure Rust, O(n²) only on close pairs):**
 
----
+The current simulation has no overlap prevention, so high-degree hub nodes collapse into each other. Add after the Barnes-Hut pass in `simulation_tick`:
 
-### HTTP Server (Backend for Web UI)
-
-| Technology | Version | Purpose | Why |
-|------------|---------|---------|-----|
-| `axum` | 0.8.x | REST API server exposing analysis pipeline to Leptos frontend | The standard Rust web framework for async APIs; Tokio-native; integrates with leptos_axum for static file serving. Already the Leptos-recommended server. Zero friction with existing tokio runtime. |
-| `tower-http` | 0.6.x | Static file serving, CORS, request logging | Provides `ServeDir` middleware for serving the Trunk-built WASM bundle. Also provides `CorsLayer` for the Trunk dev server proxy. Required alongside axum. |
-| `serde_json` (existing) | 1.x | JSON serialization for REST API responses | Already in use. REST endpoints return `Paper`, `GapFinding`, `AnalysisResult` structs as JSON via axum's `Json` extractor/responder. |
-
----
-
-### Graph Visualization (Frontend JS, loaded via Trunk)
-
-These are **JavaScript / TypeScript npm packages**, not Rust crates. They are loaded via a `<script>` tag in `index.html` or bundled by a JavaScript bundler invoked via Trunk's asset pipeline.
-
-| Technology | Version | Purpose | Why |
-|------------|---------|---------|-----|
-| `sigma` | 3.0.x (latest: 3.0.2) | WebGL graph renderer for 1000+ node citation graphs | WebGL-based rendering; handles large graphs (thousands of nodes/edges) at interactive framerates where Canvas/SVG fail. Built-in spatial index for hover/click hit testing. Actively maintained; used in production by Gephi Lite. The correct tool for this scale. |
-| `graphology` | 0.26.x | Graph data structure for sigma.js | sigma.js requires graphology as its graph data model. Handles directed/undirected graphs; node/edge attribute storage; provides the import/export interface. No alternative — sigma.js only accepts graphology graphs. |
-| `graphology-layout-forceatlas2` | 0.10.x | Barnes-Hut O(n log n) force layout | ForceAtlas2 with Barnes-Hut approximation handles 1000+ nodes where naive O(n²) fdg layouts stall. Runs in a Web Worker (non-blocking). The algorithm is designed for network visualization (Gephi heritage). Directly replaces the existing fdg Fruchterman-Reingold layout. |
-
-**Integration with Leptos:**
-
-sigma.js is a JavaScript library. Integration with Leptos WASM follows this pattern:
-1. A Leptos `<canvas>` element is created with a `NodeRef`.
-2. `use_effect` initializes the sigma.js `Sigma` instance on the canvas element after mount.
-3. `wasm-bindgen` / `js-sys` are used to call sigma.js and graphology APIs from Rust. The `#[wasm_bindgen]` attribute imports JS constructors and methods.
-4. Graph data (nodes, edges, colors from gap analysis) is serialized to a `JsValue` and passed to graphology's `Graph` constructor via `js-sys`.
-5. Layout computation (ForceAtlas2 web worker) runs independently; sigma.js renders whatever positions graphology currently holds.
-
-This is the **established pattern** for Leptos + WebGL visualization. Leptos discussions confirm canvas access via `NodeRef` works, and the Leptos book documents wasm-bindgen integration explicitly.
-
-**Alternative considered and rejected:** Rendering sigma.js purely from TypeScript/JS with Leptos calling it via postMessage. More decoupled but adds a TypeScript build step and complicates the data serialization boundary. The direct wasm-bindgen approach keeps everything in Rust.
-
----
-
-### WASM Build Support (Rust additions)
-
-| Library | Version | Purpose | When to Use |
-|---------|---------|---------|-------------|
-| `wasm-bindgen` | 0.2.x (managed by Trunk) | Rust ↔ JS boundary glue | Required for all Rust/WASM web apps. Trunk manages the exact version. No manual Cargo.toml entry needed for basic use; leptos already pulls it in. Add explicitly only if calling custom JS libraries (sigma.js interop). |
-| `js-sys` | 0.3.x (via wasm-bindgen) | Rust bindings for core JS types (Array, Object, Function) | Required to build graphology Graph objects and call sigma.js constructors from Rust. Added explicitly: `js-sys = "0.3"` with `wasm-bindgen` feature. |
-| `web-sys` | 0.3.x (via wasm-bindgen) | Rust bindings for DOM/Web APIs (canvas, events) | Required for canvas access, requestAnimationFrame, event handling in the Leptos graph component. leptos already depends on web-sys; may need additional features enabled (e.g., `HtmlCanvasElement`, `WebGl2RenderingContext`). |
-| `console_error_panic_hook` | 0.1.x | Panic messages forwarded to browser console | Development quality-of-life. Panic messages from Rust show as readable strings in browser devtools instead of `RuntimeError: unreachable`. Standard practice for Rust WASM. |
-| `gloo` | 0.11.x | High-level WASM utilities (timers, events, storage) | Optional. Provides ergonomic wrappers around web-sys for animation frames and event listeners in the graph canvas. Use if the raw web-sys APIs become verbose. leptos-use covers many of these use cases already. |
-
----
-
-### CSS / Styling
-
-| Technology | Version | Purpose | Why |
-|------------|---------|---------|-----|
-| Tailwind CSS | 4.x | Utility-first CSS for Leptos UI | Standard pairing with Leptos; Trunk downloads and runs the Tailwind CLI automatically via `LEPTOS_TAILWIND_VERSION` config. No Node.js required. Leptos 0.8 + Tailwind 4 is a documented combination. Suitable for the gap analysis panels, node inspector, control sidebars. |
-
----
-
-### Incremental Crawling (No New Crates — Schema Extension Only)
-
-Incremental/resumable crawling does **not** require a new crate. It requires:
-
-1. **A `crawl_queue` SurrealDB table** (new migration, extends existing schema):
-   - Records: `{ paper_id: String, depth: u32, status: "pending" | "in_progress" | "done" | "failed", enqueued_at, processed_at }`
-   - The BFS frontier is persisted here instead of an in-memory `VecDeque`.
-   - On restart, `SELECT * FROM crawl_queue WHERE status = "pending"` resumes the crawl.
-
-2. **tokio::sync::Semaphore** (already in tokio, no new dep) — limits concurrent in-flight requests to respect rate limits when processing queue entries concurrently.
-
-3. **tokio::time::sleep** (existing) — per-request rate limiting already implemented in `ArxivHTMLDownloader` and `InspireHepClient`. Incremental crawl reuses this.
-
-Pattern: Replace the existing `recursive_paper_search_by_references` VecDeque BFS with a DB-backed queue processor:
-```
-loop:
-  SELECT batch of pending items from crawl_queue
-  if empty: break
-  for each item (with semaphore permit):
-    mark in_progress
-    fetch + process paper
-    enqueue new references as pending (if not already crawled or enqueued)
-    mark done
+```rust
+// Node separation force — O(n²) but only fires when nodes are close.
+// Only needed for visible nodes; invisible nodes are already dimmed out.
+for i in 0..n {
+    for j in (i + 1)..n {
+        let dx = nodes[j].x - nodes[i].x;
+        let dy = nodes[j].y - nodes[i].y;
+        let dist2 = dx * dx + dy * dy;
+        // nodes[i].radius + nodes[j].radius requires adding radius to NodeData
+        let min_dist = 20.0_f64; // placeholder until radius is in NodeData
+        if dist2 < min_dist * min_dist && dist2 > 1e-6 {
+            let dist = dist2.sqrt();
+            let overlap = (min_dist - dist) * 0.5;
+            let nx = dx / dist * overlap;
+            let ny = dy / dist * overlap;
+            if !nodes[i].pinned { forces[i].0 -= nx; forces[i].1 -= ny; }
+            if !nodes[j].pinned { forces[j].0 += nx; forces[j].1 += ny; }
+        }
+    }
+}
 ```
 
-No new Rust crates needed. This is a query + control-flow change, not a library change.
+To use actual radii, add `radius: f64` to `NodeData` in `resyn-worker/src/lib.rs` and populate it from `NodeState::radius` when building `LayoutInput`. Then replace `20.0_f64` with `nodes[i].radius + nodes[j].radius + 8.0`.
+
+For 400 nodes this inner loop is 79,800 iterations per tick, most of which short-circuit immediately because `dist2 >= min_dist * min_dist`. Benchmark expectation: <2ms per tick. Acceptable for main-thread layout at 60fps.
+
+**Adaptive post-drag reheat (technique, ~5 lines):**
+
+The mouseup handler already reheats alpha to 0.3. Extend `LayoutInput` with a `post_drag_ticks: u32` field. In `simulation_tick`, if `post_drag_ticks > 0`, temporarily use `-1200.0` repulsion and decrement the counter. This is the ForceAtlas2 pattern for localized rearrangement after a manual node move. Reset to normal repulsion after 20 ticks.
+
+**Confidence:** HIGH — d3-force parameter defaults are documented at https://d3js.org/d3-force/simulation (alphaDecay ≈ 0.0228 per tick maps to ~300 iterations; velocityDecay default 0.4). The relative magnitudes of repulsion vs attraction follow standard Fruchterman-Reingold calibration.
 
 ---
 
-### Supporting Library Changes
+### 2. Sharp Circle Rendering in WebGL2
 
-| Library | Change | Reason |
-|---------|--------|--------|
-| `egui`, `eframe`, `egui_graphs`, `fdg` | **Remove** from default binary target | Replaced by Leptos + sigma.js. Keep behind a `--features desktop` flag during transition if needed, then fully remove. eframe and egui are desktop-only and do not compile to WASM. |
-| `crossbeam` | **Review need** | Currently used for graph data sharing between render thread and analysis. With Leptos web, replace with Leptos signals or `RwSignal`. May be removable. |
-| `rand` | **Keep** | Used in analysis pipeline; also needed for graph layout seed positions in WASM context (use `getrandom` with `wasm` feature flag if WASM target has issues). |
+**Problem in current fragment shader (`resyn-app/src/graph/webgl_renderer.rs`, `NODE_FRAG`):**
 
----
-
-## Installation
-
-```toml
-# Cargo.toml additions for v1.1
-
-[dependencies]
-# Web framework (server side)
-axum = "0.8"
-tower-http = { version = "0.6", features = ["fs", "cors"] }
-
-# Leptos frontend (CSR)
-leptos = { version = "0.8", features = ["csr"] }
-leptos_axum = "0.8"
-
-# WASM JS interop (for sigma.js calls)
-js-sys = "0.3"
-web-sys = { version = "0.3", features = [
-  "HtmlCanvasElement",
-  "Element",
-  "Window",
-  "Document",
-] }
-console_error_panic_hook = "0.1"
-
-# Optional: ergonomic WASM utilities
-gloo = "0.11"
-
-[target.'cfg(target_arch = "wasm32")'.dependencies]
-# Only compile WASM-specific deps for the frontend target
-wasm-bindgen = "0.2"
+```glsl
+float edge = 1.0 - smoothstep(0.9, 1.0, d);
 ```
 
-```bash
-# CLI tools (install once)
-cargo install trunk
-rustup target add wasm32-unknown-unknown
+The blend region is fixed at 10% of the circle radius in *local quad space*, regardless of screen size. A radius-4 node at scale=1.0 maps to 4px on screen — the 10% blend is 0.4px, which is sub-pixel and causes aliasing. A radius-18 node maps to 18px — the 10% blend is 1.8px of blurring. Neither is correct.
 
-# npm packages (in a /frontend or project root package.json)
-npm install sigma graphology graphology-layout-forceatlas2
+**Recommended fix — replace with `fwidth`-based adaptive anti-aliasing:**
+
+```glsl
+#version 300 es
+precision mediump float;
+in vec2 v_local;
+in float v_alpha;
+in vec3 v_color;
+in float v_is_seed;    // NEW: 0.0 = normal, 1.0 = seed node
+out vec4 fragColor;
+
+void main() {
+    float d = length(v_local);
+    float fw = fwidth(d);   // screen-space derivative: ~1px in screen space
+    float edge = 1.0 - smoothstep(1.0 - fw, 1.0 + fw, d);
+
+    vec3 color = v_color;
+
+    // Seed node gold ring at node border
+    if (v_is_seed > 0.5) {
+        float ring_outer = 1.0;
+        float ring_inner = 1.0 - 3.0 * fw;  // ~1.5px ring width
+        float ring = smoothstep(ring_inner - fw, ring_inner + fw, d)
+                   * (1.0 - smoothstep(ring_outer - fw, ring_outer + fw, d));
+        color = mix(color, vec3(0.96, 0.65, 0.14), ring);  // #f5a623 gold
+    }
+
+    fragColor = vec4(color, v_alpha * edge);
+}
 ```
 
----
+`fwidth(d)` returns `abs(dFdx(d)) + abs(dFdy(d))` — the maximum change in the normalized distance across adjacent pixels in screen space. When the circle is small (zoomed out), `fw` is larger, giving smooth anti-aliasing. When the circle is large (zoomed in), `fw` is tiny, giving a razor-sharp edge. This is viewport-scale-adaptive with no uniforms needed.
 
-## Alternatives Considered
+`fwidth` is in the GLSL ES 3.00 core spec — available in all WebGL2 contexts without any extension. The existing `#version 300 es` header already enables it. `mediump` precision is sufficient because `v_local` is in [0,1] and the derivative is a screen-space quantity well within mediump range.
 
-| Category | Recommended | Alternative | Why Not |
-|----------|-------------|-------------|---------|
-| Web framework | Leptos 0.8 | Yew | Leptos has finer-grained reactivity and better SSR/CSR flexibility; Yew uses a virtual DOM (less efficient). Leptos is now more active. |
-| Web framework | Leptos 0.8 | Dioxus | Dioxus targets desktop + web but has less mature web ecosystem. Leptos has better Axum integration docs and more examples. |
-| Graph renderer | sigma.js + graphology | Cytoscape.js | Cytoscape.js WebGL support is via optional plugin; sigma.js is WebGL-native. sigma.js has smaller bundle size for pure graph rendering. |
-| Graph renderer | sigma.js + graphology | D3.js force simulation | D3 uses Canvas/SVG (not WebGL); SVG degrades badly above 500 nodes. D3's API is imperative and hard to integrate with Leptos reactive model. |
-| Graph renderer | sigma.js + graphology | Pure Rust WebGL (web-sys) | Writing WebGL shaders + hit testing + spatial indexing from scratch in Rust is months of work. sigma.js provides all of this battle-tested. |
-| Force layout | ForceAtlas2 (graphology) | fdg (existing Fruchterman-Reingold) | fdg runs on desktop/native; does not compile to WASM cleanly (git dep, no WASM target validated). ForceAtlas2 has Barnes-Hut O(n log n) needed for 1000+ nodes. |
-| Force layout | ForceAtlas2 (graphology) | d3-force (JS) | d3-force is O(n²) without Barnes-Hut by default. ForceAtlas2 is purpose-built for network graphs and produces better academic citation graph layouts. |
-| HTTP server | Axum | Actix-web | Both are valid. Axum is Leptos's default recommendation; uses tower middleware (tower-http already needed); integrates cleanly with tokio ecosystem. |
-| CSS | Tailwind CSS | Plain CSS / CSS Modules | Tailwind pairs naturally with Leptos class attributes; Trunk handles Tailwind CLI automatically. Suitable for control panels and data tables in the UI. |
-| Build tool | Trunk (CSR) | cargo-leptos (SSR) | cargo-leptos optimizes for SSR hydration. ReSyn is a local single-user tool; SSR adds complexity (dual compilation, server rendering) with no benefit for this use case. |
-| Incremental crawl | SurrealDB queue table | External queue (Redis, SQLite) | Existing SurrealDB is already embedded and running; adding another store violates the single-database constraint in the project constraints. |
+The `v_is_seed` varying requires:
+1. Adding `a_is_seed: f32` to the per-instance data (stride expands from 7 to 8 floats)
+2. Passing it through the vertex shader: `out float v_is_seed; ... v_is_seed = a_is_seed;`
+3. Identifying the seed node when building instance data: compare `node.id == graph.seed_paper_id`
+
+**Confidence:** HIGH — fwidth is GLSL ES 3.00 core spec, universally supported in WebGL2. The mathematical correctness is established across multiple shader references.
 
 ---
+
+### 3. Edge Rendering Visibility
+
+**Problem:** Regular edge color is `#404040` at alpha 0.35 on background `#0d1117`. Perceptual luminance contrast is ~12% — effectively invisible on non-retina displays, and still weak on retina. The `LINES` WebGL2 primitive is capped at 1px width on Chrome/ANGLE regardless of `gl.lineWidth()` calls.
+
+**Fix 1 — Color and alpha (zero-effort, immediate improvement):**
+
+```rust
+// In edge_color() in webgl_renderer.rs:
+EdgeType::Regular => {
+    let (r, g, b) = hex_to_rgb("#5a6475");  // was #404040; blue-grey matches GitHub dark palette
+    let alpha = if both_dimmed { 0.08 } else { 0.50 };  // was 0.1 / 0.35
+    (r, g, b, alpha)
+}
+```
+
+This doubles perceived contrast with a single constant change. Do this first; it may be sufficient.
+
+**Fix 2 — Quad-based edges for sub-pixel thickness control (medium effort):**
+
+Chrome/ANGLE enforces `gl.lineWidth(1)` regardless of input. To draw 1.5-2px edges, render each edge as a screen-aligned quad (two triangles, 6 vertices) instead of a `LINES` primitive. The vertex shader extrudes the line in screen space:
+
+```glsl
+// Edge quad vertex shader (replace current EDGE_VERT):
+in vec2 a_from;       // world pos of edge start
+in vec2 a_to;         // world pos of edge end
+in float a_side;      // -1.0 or +1.0
+in vec3 a_color;
+in float a_alpha;
+uniform vec2 u_resolution;
+uniform vec2 u_offset;
+uniform float u_scale;
+uniform float u_line_half_width;  // e.g. 0.75 for 1.5px
+
+out vec3 v_color;
+out float v_alpha;
+
+void main() {
+    vec2 from_screen = (a_from * u_scale + u_offset) / u_resolution * 2.0 - 1.0;
+    vec2 to_screen   = (a_to   * u_scale + u_offset) / u_resolution * 2.0 - 1.0;
+
+    // Determine which endpoint this vertex represents based on its index (0..5)
+    bool is_from = gl_VertexID % 3 == 0 || (gl_VertexID % 6 == 4);
+    vec2 base = is_from ? from_screen : to_screen;
+
+    vec2 dir = normalize(to_screen - from_screen);
+    vec2 perp = vec2(-dir.y, dir.x);
+    vec2 pixel_offset = perp * u_line_half_width * 2.0 / u_resolution;
+    gl_Position = vec4(base + a_side * pixel_offset, 0.0, 1.0);
+
+    v_color = a_color;
+    v_alpha = a_alpha;
+}
+```
+
+The data layout change: each edge becomes 6 vertices instead of 2. For 500 edges, buffer size triples from ~12KB to ~36KB — negligible. Arrowheads continue to use the existing `TRIANGLES` path unchanged.
+
+**Recommendation:** Apply Fix 1 first (color change, 2 lines). Only implement Fix 2 if 1px lines remain unacceptably thin after testing on target hardware.
+
+**Confidence:** HIGH for color change. MEDIUM for quad approach (well-established WebGL pattern per Cesium blog; requires vertex buffer refactor).
+
+---
+
+### 4. Auto-Fit Viewport After Layout Stabilization
+
+**Problem:** Initial scale is computed from pre-simulation spread: `(css_width.min(css_height) * 0.4 / spread).min(1.0)`. After the simulation runs for 30-90 seconds, nodes may be well outside this viewport. Users must manually zoom/pan to see the full graph.
+
+**Recommended implementation (no new crates, ~40 lines):**
+
+Add `fit_triggered: bool` to `RenderState`. In the RAF loop, after the simulation tick, check if alpha has crossed `ALPHA_MIN * 10.0` for the first time and trigger a fit:
+
+```rust
+// In start_render_loop frame closure, after simulation tick:
+if sim_running
+    && !s.fit_triggered
+    && s.graph.alpha <= resyn_worker::forces::ALPHA_MIN * 10.0
+    && !s.graph.nodes.is_empty()
+{
+    fit_viewport_to_nodes(&mut s.viewport, &s.graph.nodes);
+    s.fit_triggered = true;
+}
+```
+
+The fit function computes the axis-aligned bounding box of all visible nodes, then sets scale and offset to center the bounding box with a 5% margin:
+
+```rust
+fn fit_viewport_to_nodes(viewport: &mut Viewport, nodes: &[NodeState]) {
+    let visible: Vec<_> = nodes.iter()
+        .filter(|n| n.lod_visible && n.temporal_visible)
+        .collect();
+    if visible.is_empty() { return; }
+
+    let min_x = visible.iter().map(|n| n.x - n.radius).fold(f64::INFINITY, f64::min);
+    let max_x = visible.iter().map(|n| n.x + n.radius).fold(f64::NEG_INFINITY, f64::max);
+    let min_y = visible.iter().map(|n| n.y - n.radius).fold(f64::INFINITY, f64::min);
+    let max_y = visible.iter().map(|n| n.y + n.radius).fold(f64::NEG_INFINITY, f64::max);
+
+    let graph_w = (max_x - min_x).max(1.0);
+    let graph_h = (max_y - min_y).max(1.0);
+
+    let margin = 0.90; // 5% padding on each side
+    let scale = (viewport.css_width / graph_w)
+        .min(viewport.css_height / graph_h)
+        * margin;
+    let cx = (min_x + max_x) / 2.0;
+    let cy = (min_y + max_y) / 2.0;
+
+    viewport.scale = scale.clamp(0.1, 5.0);
+    viewport.offset_x = viewport.css_width / 2.0 - cx * viewport.scale;
+    viewport.offset_y = viewport.css_height / 2.0 - cy * viewport.scale;
+}
+```
+
+Reset `fit_triggered = false` when new graph data is loaded. This is already handled: `Effect::new` rebuilds `RenderState` fresh on data arrival.
+
+The existing double-click handler already resets the viewport to `Viewport::new(w, h)` — this should be updated to call `fit_viewport_to_nodes` instead so double-click becomes "fit to graph" rather than "reset to default".
+
+**Confidence:** HIGH — AABB viewport fit is mathematically elementary and universally used (Cytoscape.js `fit()`, sigma.js `camera.animatedReset()`, Gephi zoom-to-fit). The alpha threshold for trigger timing is heuristic but well-motivated.
+
+---
+
+### 5. Label Collision Avoidance
+
+**Problem:** Labels are drawn at a fixed offset below each node with no overlap checking. When nodes cluster, labels pile up and become illegible. The Canvas 2D renderer draws all labels unconditionally when `scale > 0.6`; the WebGL renderer exposes positions via `node_screen_positions()` for a separate HTML overlay.
+
+**Recommended approach — greedy occupancy bitmap (pure Rust, WASM-safe):**
+
+Labels are approximately 70×12 CSS pixels at 11px monospace. Use a 4px grid cell occupancy map.
+
+```rust
+// In canvas_renderer.rs, replace the label drawing loop:
+fn draw_labels_with_collision(
+    ctx: &CanvasRenderingContext2d,
+    nodes: &[NodeState],
+    viewport: &Viewport,
+) {
+    let cell = 4.0_f64;
+    let grid_w = (viewport.css_width / cell).ceil() as usize + 1;
+    let grid_h = (viewport.css_height / cell).ceil() as usize + 1;
+    let mut occupied = vec![false; grid_w * grid_h];
+
+    // Mark node circles as occupied
+    for n in nodes.iter().filter(|n| n.lod_visible && n.temporal_visible) {
+        let (sx, sy) = viewport.world_to_screen(n.x, n.y);
+        let r = n.radius * viewport.scale;
+        let x0 = ((sx - r) / cell).floor() as isize;
+        let y0 = ((sy - r) / cell).floor() as isize;
+        let x1 = ((sx + r) / cell).ceil() as isize;
+        let y1 = ((sy + r) / cell).ceil() as isize;
+        mark_rect(&mut occupied, x0, y0, x1, y1, grid_w, grid_h);
+    }
+
+    ctx.set_font("11px monospace");
+    ctx.set_fill_style_str("#cccccc");
+
+    for n in nodes.iter().filter(|n| n.lod_visible && n.temporal_visible) {
+        let label = n.label();
+        let lw = ctx.measure_text(&label).map(|m| m.width()).unwrap_or(50.0);
+        let lh = 14.0_f64;
+        let (sx, sy) = viewport.world_to_screen(n.x, n.y);
+        let r = n.radius * viewport.scale;
+
+        // Candidate positions: below, above, right, left
+        let candidates = [
+            (sx - lw / 2.0, sy + r + 4.0),       // below
+            (sx - lw / 2.0, sy - r - lh - 2.0),  // above
+            (sx + r + 4.0,  sy - lh / 2.0),       // right
+            (sx - r - lw - 4.0, sy - lh / 2.0),  // left
+        ];
+
+        for (lx, ly) in candidates {
+            let x0 = (lx / cell).floor() as isize;
+            let y0 = (ly / cell).floor() as isize;
+            let x1 = ((lx + lw) / cell).ceil() as isize;
+            let y1 = ((ly + lh) / cell).ceil() as isize;
+
+            if !any_occupied(&occupied, x0, y0, x1, y1, grid_w, grid_h) {
+                ctx.fill_text(&label, lx, ly + lh - 2.0).ok();
+                mark_rect(&mut occupied, x0, y0, x1, y1, grid_w, grid_h);
+                break;
+            }
+        }
+        // If all candidates are occupied, skip the label (too crowded at this scale)
+    }
+}
+```
+
+The `mark_rect` and `any_occupied` helpers are simple loops over grid cells with bounds clamping. At 1200×800 with cell=4, the grid is 300×200 = 60,000 bools (~60KB stack, acceptable). For 400 visible nodes with 4 candidates each, the inner check loop runs at most 400×4×(70/4×14/4) ≈ 400×4×61 ≈ 97,600 cell checks. Under 1ms on WASM at typical clock speeds.
+
+For the **WebGL renderer** (labels rendered as HTML overlay via `node_screen_positions()`): apply the same occupancy logic in a new helper function that takes the Vec<(f64, f64, String)> from `node_screen_positions()` and returns a filtered/repositioned Vec. The overlay rendering in `graph.rs` already renders labels based on this data.
+
+The `web_sys::TextMetrics` API is already imported in `resyn-app/Cargo.toml` (`"TextMetrics"` feature present).
+
+**Confidence:** MEDIUM — the algorithm is well-established (Vega/Vega-Lite occupancy bitmap paper: https://idl.cs.washington.edu/files/2021-FastLabels-VIS.pdf). The WASM implementation is straightforward but involves some vec allocation per frame. Profile to verify it stays under 2ms on large graphs before enabling by default.
+
+---
+
+### 6. Seed Node Visual Distinction
+
+**Problem:** `seed_paper_id` is already present in `GraphState`. Neither renderer visually distinguishes the seed node. Users cannot tell where the BFS crawl originated.
+
+**WebGL renderer implementation:**
+
+Expand instance data from 7 to 8 floats per instance: add `is_seed: f32` (0.0 or 1.0). The stride becomes 8×4 = 32 bytes.
+
+In the vertex shader, add:
+```glsl
+in float a_is_seed;
+out float v_is_seed;
+// in main(): v_is_seed = a_is_seed;
+```
+
+The fragment shader uses `v_is_seed` for the gold ring as shown in Section 2.
+
+When building instance data in `webgl_renderer.rs`:
+```rust
+let is_seed = state.seed_paper_id.as_deref()
+    .map(|sid| if node.id == sid { 1.0_f32 } else { 0.0_f32 })
+    .unwrap_or(0.0_f32);
+
+instance_data.extend_from_slice(&[
+    node.x as f32, node.y as f32, node.radius as f32,
+    alpha, r, g, b,
+    is_seed,  // NEW 8th component
+]);
+```
+
+Update the `a_alpha` and `a_color` attribute pointer offsets accordingly (offsets increase by 0 for position/radius/alpha, unchanged; `a_color` moves from offset 4×4 to 4×4 as before; add new `a_is_seed` at offset 7×4).
+
+**Canvas 2D renderer implementation:**
+
+After drawing the node circle and before `ctx.restore()`:
+
+```rust
+let is_seed = state.seed_paper_id.as_deref()
+    .map(|sid| node.id == sid)
+    .unwrap_or(false);
+
+if is_seed {
+    self.ctx.begin_path();
+    self.ctx
+        .arc(node.x, node.y, node.radius + 5.0, 0.0, std::f64::consts::TAU)
+        .unwrap();
+    self.ctx.set_stroke_style_str("#f5a623"); // gold
+    self.ctx.set_line_width(2.5);
+    self.ctx.set_global_alpha(1.0);
+    self.ctx.stroke();
+}
+```
+
+The seed lookup is one string comparison per node per frame (400 comparisons ≈ 5µs — negligible).
+
+**Confidence:** HIGH — purely additive rendering logic with no structural changes. The visual design (gold ring) is a common pattern in graph visualization tools to indicate a focus/root node.
+
+---
+
+## Implementation Order
+
+These six features have a natural dependency ordering:
+
+| Order | Feature | Why This Position |
+|-------|---------|-------------------|
+| 1 | Sharp circles (fwidth shader) | One-line shader change; zero risk; improves everything else |
+| 2 | Seed node distinction | Piggybacks on shader change in step 1; add `a_is_seed` to instance data at the same time |
+| 3 | Force parameter tuning | Foundational: everything looks better once nodes actually cluster |
+| 4 | Edge visibility (color change) | Two-line constant change; do after layout looks correct |
+| 5 | Auto-fit viewport | Meaningful only after layout stabilizes from step 3 |
+| 6 | Label collision avoidance | Most code; stable layout from step 3 required for sensible label positions |
+
+---
+
+## Full Stack Summary
+
+| Component | Technology | Version | Changes for v1.2 |
+|-----------|-----------|---------|-----------------|
+| WASM runtime | wasm-bindgen | 0.2.x | None |
+| UI framework | Leptos CSR | 0.8 | None |
+| Force simulation | resyn-worker custom | internal | Constant tuning + collision force + radius in NodeData |
+| WebGL2 renderer | web-sys WebGL2 | 0.3.x | Fragment shader (fwidth + seed ring) + instance stride 7→8 |
+| Canvas 2D renderer | web-sys Canvas 2D | 0.3.x | Label collision algorithm + seed ring drawing |
+| Label measurement | web-sys TextMetrics | 0.3.x | Already available — use in collision avoidance |
+| Graph data structures | petgraph | 0.7.0 | None |
+| Build / CI | Trunk, cargo | existing | None |
 
 ## What NOT to Add
 
-| Avoid | Why | Use Instead |
-|-------|-----|-------------|
-| `cargo-leptos` build tool | Designed for SSR dual-compilation; overkill for local CSR SPA | `trunk` for CSR builds |
-| `Bevy` | ECS game engine; embedding in a web app requires bevy_egui and full ECS restructure | sigma.js for graph rendering |
-| `three-d` | OpenGL-based; conflicts with WASM targets | sigma.js WebGL |
-| `wasm-pack` directly | Trunk invokes wasm-pack internally; calling it separately creates duplicate build artifacts | Let Trunk manage wasm-pack |
-| React / Vue / Svelte | Foreign language from existing Rust codebase; loses type safety at the Rust/JS boundary | Leptos (Rust/WASM) |
-| `graphql` | Adds schema/resolver complexity for a single-user tool with simple data access needs | Axum REST JSON endpoints |
-| `getrandom` explicitly | Only needed if `rand` fails on WASM target due to missing entropy source; fix by adding `wasm` feature to rand instead | `rand = { version = "0.9", features = ["wasm"] }` if needed |
-
----
-
-## Version Compatibility Notes
-
-| Concern | Detail |
-|---------|--------|
-| leptos + leptos_axum versions must match | Both must be the same 0.8.x patch. Mismatching causes compile errors due to shared internal traits. |
-| wasm-bindgen version managed by Trunk | Trunk downloads a compatible wasm-bindgen CLI that matches the Cargo.lock version. Do not pin wasm-bindgen separately unless debugging binding issues. |
-| axum 0.8 requires tower-http 0.6 | tower-http 0.5 is incompatible with axum 0.8's tower types. Use 0.6. |
-| sigma.js 3.x requires graphology 0.25+ | sigma 3.0.x expects graphology 0.25.4+. Install both together: `npm install sigma graphology`. |
-| rand on WASM target | rand 0.9 uses `getrandom` under the hood. If the WASM build fails with entropy errors, add `getrandom = { version = "0.2", features = ["js"] }` as a dev/WASM dependency. |
-| eframe/egui removed | eframe depends on winit and wgpu, which do not compile cleanly to wasm32-unknown-unknown without significant configuration. Removing eframe simplifies the WASM build target. |
+| Candidate | Why Not |
+|-----------|---------|
+| `rapier2d` | Full 2D physics for node collision is overkill; a 30-line per-frame force term is sufficient and has no WASM compilation risk |
+| `lyon` (tessellation) | Needed for curved/thick paths via CPU tessellation; our edges are straight and the quad approach is trivial without a crate |
+| `glam` / `nalgebra` | 2D graph math is scalar arithmetic; no matrix operations needed |
+| `fdg` crate | Already replaced by custom Barnes-Hut in resyn-worker; would duplicate the simulation |
+| `wasm-bindgen-rayon` | Requires SharedArrayBuffer + COOP/COEP headers; significant server config change for marginal gain when 1 tick/frame is already fast enough |
+| `gloo-timers` | Not needed; settle detection is fully handled by alpha threshold comparison |
+| Any JS graph library | Explicitly out of scope per PROJECT.md |
 
 ---
 
 ## Sources
 
-- [Leptos crates.io — version 0.8.17 confirmed](https://crates.io/crates/leptos)
-- [Leptos book — Getting Started (CSR vs SSR)](https://book.leptos.dev/getting_started/index.html)
-- [Leptos book — Integrating with JavaScript: wasm-bindgen, web_sys, and HtmlElement](https://book.leptos.dev/web_sys.html)
-- [Leptos GitHub — start-axum template](https://github.com/leptos-rs/start-axum)
-- [leptos_axum docs.rs](https://docs.rs/leptos_axum/latest/leptos_axum/)
-- [sigma.js GitHub — version 3.0.2](https://github.com/jacomyal/sigma.js/)
-- [sigma.js Quickstart Guide](https://www.sigmajs.org/docs/quickstart/)
-- [sigma.js v3.0 release announcement](https://www.ouestware.com/2024/03/21/sigma-js-3-0-en/)
-- [graphology npm — version 0.26.0](https://graphology.github.io/)
-- [graphology-layout-forceatlas2 — Barnes-Hut docs](https://graphology.github.io/standard-library/layout-forceatlas2.html)
-- [Leptos canvas/WebGL discussion — confirmed NodeRef pattern](https://github.com/leptos-rs/leptos/discussions/2245)
-- [Leptos + Tailwind 4 + DaisyUI 5 guide](https://8vi.cat/leptos-0-8-tailwind4-daisyui5-for-easy-websites/) — MEDIUM confidence (community source)
-- [tokio::sync::Semaphore docs — rate limiting pattern](https://docs.rs/tokio/latest/tokio/sync/struct.Semaphore.html)
-- [cargo-leptos GitHub](https://github.com/leptos-rs/cargo-leptos)
-- [wasm-bindgen guide](https://rustwasm.github.io/docs/wasm-bindgen/)
+- D3-force simulation alpha/cooling defaults: [https://d3js.org/d3-force/simulation](https://d3js.org/d3-force/simulation)
+- ForceAtlas2 adaptive temperature: [https://medialab.sciencespo.fr/publications/Jacomy_Heymann_Venturini-Force_Atlas2.pdf](https://medialab.sciencespo.fr/publications/Jacomy_Heymann_Venturini-Force_Atlas2.pdf)
+- Node collision forces in force-directed graphs: [https://tomroth.dev/fdg-collision/](https://tomroth.dev/fdg-collision/)
+- fwidth anti-aliasing technique: [http://www.numb3r23.net/2015/08/17/using-fwidth-for-distance-based-anti-aliasing/](http://www.numb3r23.net/2015/08/17/using-fwidth-for-distance-based-anti-aliasing/)
+- GLSL fwidth for circles: [https://rubendv.be/posts/fwidth/](https://rubendv.be/posts/fwidth/)
+- WebGL LINES 1px cap (Chrome/ANGLE): [https://github.com/processing/p5.js/issues/6091](https://github.com/processing/p5.js/issues/6091)
+- Instanced quad line rendering: [https://wwwtyro.net/2019/11/18/instanced-lines.html](https://wwwtyro.net/2019/11/18/instanced-lines.html)
+- Label occupancy bitmap algorithm: [https://idl.cs.washington.edu/files/2021-FastLabels-VIS.pdf](https://idl.cs.washington.edu/files/2021-FastLabels-VIS.pdf)
+- GLSL ES 3.00 spec (fwidth in core): GLSL ES 3.00 specification Section 8.13
 
 ---
 
-*Stack research for: ReSyn v1.1 — Leptos web migration, WebGL graph, Barnes-Hut layout, incremental crawl*
-*Researched: 2026-03-15*
+*Stack research for: ReSyn v1.2 — Graph Rendering Overhaul*
+*Researched: 2026-03-24*

@@ -17,6 +17,7 @@ pub struct NodeData {
     pub mass: f64,
     pub pinned: bool,
     pub radius: f64,
+    pub bfs_depth: u32,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

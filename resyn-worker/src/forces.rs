@@ -2,14 +2,17 @@
 
 use crate::{barnes_hut, LayoutInput, LayoutOutput, NodeData};
 
-pub const REPULSION_STRENGTH: f64 = -1500.0;
-pub const ATTRACTION_STRENGTH: f64 = 0.06;
-pub const CENTER_GRAVITY: f64 = 0.005;
-pub const ALPHA_DECAY: f64 = 0.9945;
+pub const REPULSION_STRENGTH: f64 = -5000.0;
+pub const ATTRACTION_STRENGTH: f64 = 0.008;
+pub const CENTER_GRAVITY: f64 = 0.0;
+pub const ALPHA_DECAY: f64 = 0.995;
 pub const ALPHA_MIN: f64 = 0.001;
 pub const THETA: f64 = 0.8;
-pub const IDEAL_DISTANCE: f64 = 120.0;
-pub const VELOCITY_DAMPING: f64 = 0.85;
+pub const IDEAL_DISTANCE: f64 = 400.0;
+pub const VELOCITY_DAMPING: f64 = 0.7;
+/// Depth multiplier for ideal distance between nodes at different BFS depths.
+/// Edges spanning N depths get ideal distance = IDEAL_DISTANCE * (1 + DEPTH_DISTANCE_FACTOR * N).
+pub const DEPTH_DISTANCE_FACTOR: f64 = 0.5;
 
 /// Run one tick of the force simulation.
 ///
@@ -41,7 +44,15 @@ pub fn simulation_tick(nodes: &mut [NodeData], vel: &mut [(f64, f64)], edges: &[
         forces[i].1 += fy;
     }
 
-    // 2. Attractive forces (Hooke's law along edges).
+    // 2. Attractive forces (degree-normalized).
+    // Divide by sqrt(degree) so hub nodes don't collapse their neighborhood.
+    let mut degree = vec![0u32; n];
+    for &(a, b) in edges {
+        if a < n && b < n {
+            degree[a] += 1;
+            degree[b] += 1;
+        }
+    }
     for &(a, b) in edges {
         if a >= n || b >= n {
             continue;
@@ -49,8 +60,17 @@ pub fn simulation_tick(nodes: &mut [NodeData], vel: &mut [(f64, f64)], edges: &[
         let dx = nodes[b].x - nodes[a].x;
         let dy = nodes[b].y - nodes[a].y;
         let dist = (dx * dx + dy * dy).sqrt().max(1.0);
-        let stretch = dist - IDEAL_DISTANCE;
-        let force_mag = ATTRACTION_STRENGTH * stretch;
+        // Depth-aware ideal distance: edges spanning multiple BFS depths get
+        // longer rest lengths, naturally separating depth layers into rings.
+        // Cap depth_diff at 6 to avoid huge distances from orphan nodes (u32::MAX).
+        let depth_diff = (nodes[a].bfs_depth.abs_diff(nodes[b].bfs_depth)).min(6) as f64;
+        let ideal = IDEAL_DISTANCE * (1.0 + DEPTH_DISTANCE_FACTOR * depth_diff);
+        // One-sided spring: only attract when farther than ideal distance.
+        // When closer, repulsion alone handles separation. This removes the
+        // net inward bias that contracts connected components into a blob.
+        let stretch = (dist - ideal).max(0.0);
+        let deg_factor = ((degree[a].max(1) * degree[b].max(1)) as f64).sqrt();
+        let force_mag = ATTRACTION_STRENGTH * stretch / deg_factor;
         let fx = force_mag * dx / dist;
         let fy = force_mag * dy / dist;
 
@@ -64,56 +84,57 @@ pub fn simulation_tick(nodes: &mut [NodeData], vel: &mut [(f64, f64)], edges: &[
         }
     }
 
-    // 3. Center gravity — pull toward (0, 0).
-    for i in 0..n {
-        if nodes[i].pinned {
-            continue;
-        }
-        forces[i].0 -= CENTER_GRAVITY * nodes[i].x;
-        forces[i].1 -= CENTER_GRAVITY * nodes[i].y;
-    }
-
-    // 4. Collision separation — pushes overlapping nodes apart (per D-03).
-    // O(n^2) but short-circuits on non-overlapping pairs; <2ms for 400 nodes at 1 tick/frame.
-    const COLLISION_PADDING: f64 = 8.0;
-    for i in 0..n {
-        for j in (i + 1)..n {
-            let dx = nodes[j].x - nodes[i].x;
-            let dy = nodes[j].y - nodes[i].y;
-            let dist2 = dx * dx + dy * dy;
-            let min_dist = nodes[i].radius + nodes[j].radius + COLLISION_PADDING;
-            if dist2 < min_dist * min_dist && dist2 > 1e-6 {
-                let dist = dist2.sqrt();
-                let overlap = (min_dist - dist) * 0.5;
-                let nx = dx / dist * overlap;
-                let ny = dy / dist * overlap;
-                if !nodes[i].pinned {
-                    forces[i].0 -= nx;
-                    forces[i].1 -= ny;
-                }
-                if !nodes[j].pinned {
-                    forces[j].0 += nx;
-                    forces[j].1 += ny;
-                }
-            }
-        }
-    }
-
-    // Apply forces and update positions.
+    // Apply forces with alpha floor. All forces use max(alpha, 0.005) so the
+    // equilibrium layout is maintained even at convergence. This prevents
+    // repeated reheats from slowly compacting the graph — residual force at
+    // 0.005 keeps the repulsion/attraction balance active.
+    let effective_alpha = alpha.max(0.005);
     let max_vel = IDEAL_DISTANCE / 2.0;
     for i in 0..n {
         if nodes[i].pinned {
             continue;
         }
-        vel[i].0 += forces[i].0 * *alpha;
-        vel[i].1 += forces[i].1 * *alpha;
-        // Velocity clamping prevents scatter when repulsion is strong in early ticks
-        vel[i].0 = vel[i].0.clamp(-max_vel, max_vel);
-        vel[i].1 = vel[i].1.clamp(-max_vel, max_vel);
+        vel[i].0 += forces[i].0 * effective_alpha;
+        vel[i].1 += forces[i].1 * effective_alpha;
+        // Magnitude-based velocity clamping — preserves direction, prevents scatter.
+        // Per-axis clamping would create 45° artifacts (X-shape) when both axes saturate.
+        let speed2 = vel[i].0 * vel[i].0 + vel[i].1 * vel[i].1;
+        if speed2 > max_vel * max_vel {
+            let scale = max_vel / speed2.sqrt();
+            vel[i].0 *= scale;
+            vel[i].1 *= scale;
+        }
         nodes[i].x += vel[i].0;
         nodes[i].y += vel[i].1;
         vel[i].0 *= VELOCITY_DAMPING;
         vel[i].1 *= VELOCITY_DAMPING;
+    }
+
+    // 4. Collision resolution — hard constraint, resolves actual overlap only.
+    // Runs AFTER position integration. Nudges overlapping node pairs apart by
+    // exactly half the overlap distance. No padding, no force scaling — this is
+    // a geometric constraint, not a force, so it doesn't distort the layout.
+    for i in 0..n {
+        for j in (i + 1)..n {
+            let dx = nodes[j].x - nodes[i].x;
+            let dy = nodes[j].y - nodes[i].y;
+            let dist2 = dx * dx + dy * dy;
+            let min_dist = nodes[i].radius + nodes[j].radius;
+            if dist2 < min_dist * min_dist && dist2 > 1e-6 {
+                let dist = dist2.sqrt();
+                let half_overlap = (min_dist - dist) * 0.5;
+                let nx = dx / dist * half_overlap;
+                let ny = dy / dist * half_overlap;
+                if !nodes[i].pinned {
+                    nodes[i].x -= nx;
+                    nodes[i].y -= ny;
+                }
+                if !nodes[j].pinned {
+                    nodes[j].x += nx;
+                    nodes[j].y += ny;
+                }
+            }
+        }
     }
 
     *alpha *= ALPHA_DECAY;
@@ -149,7 +170,7 @@ mod tests {
     use crate::NodeData;
 
     fn make_node(x: f64, y: f64) -> NodeData {
-        NodeData { x, y, vx: 0.0, vy: 0.0, mass: 1.0, pinned: false, radius: 8.0 }
+        NodeData { x, y, vx: 0.0, vy: 0.0, mass: 1.0, pinned: false, radius: 8.0, bfs_depth: 0 }
     }
 
     fn make_vel(n: usize) -> Vec<(f64, f64)> {
@@ -159,8 +180,8 @@ mod tests {
     #[test]
     fn test_simulation_tick_pinned_nodes_no_movement() {
         let mut nodes = vec![
-            NodeData { x: 0.0, y: 0.0, vx: 0.0, vy: 0.0, mass: 1.0, pinned: true, radius: 8.0 },
-            NodeData { x: 50.0, y: 50.0, vx: 0.0, vy: 0.0, mass: 1.0, pinned: true, radius: 8.0 },
+            NodeData { x: 0.0, y: 0.0, vx: 0.0, vy: 0.0, mass: 1.0, pinned: true, radius: 8.0, bfs_depth: 0 },
+            NodeData { x: 50.0, y: 50.0, vx: 0.0, vy: 0.0, mass: 1.0, pinned: true, radius: 8.0, bfs_depth: 0 },
         ];
         let mut vel = make_vel(2);
         let edges = vec![(0, 1)];
@@ -231,8 +252,9 @@ mod tests {
     }
 
     #[test]
-    fn test_center_gravity_pulls_isolated_node_toward_origin() {
-        // Single isolated node far from origin — center gravity should pull it in.
+    fn test_isolated_node_stays_put_without_forces() {
+        // Single isolated node — no edges, no repulsion neighbors. With center
+        // gravity at zero, it should remain near its starting position.
         let input = LayoutInput {
             nodes: vec![make_node(1000.0, 1000.0)],
             edges: vec![],
@@ -244,13 +266,13 @@ mod tests {
         let output = run_ticks(&input);
         let (x, y) = output.positions[0];
         assert!(
-            x < 1000.0,
-            "node should be pulled toward origin in x; final x={}",
+            (x - 1000.0).abs() < 1.0,
+            "isolated node should stay near start; final x={}",
             x
         );
         assert!(
-            y < 1000.0,
-            "node should be pulled toward origin in y; final y={}",
+            (y - 1000.0).abs() < 1.0,
+            "isolated node should stay near start; final y={}",
             y
         );
     }
@@ -306,8 +328,8 @@ mod tests {
     fn test_collision_force_separates_overlapping_nodes() {
         // Two nodes with radius 8.0 at the same position — collision should push them apart.
         let mut nodes = vec![
-            NodeData { x: 0.0, y: 0.0, vx: 0.0, vy: 0.0, mass: 1.0, pinned: false, radius: 8.0 },
-            NodeData { x: 5.0, y: 0.0, vx: 0.0, vy: 0.0, mass: 1.0, pinned: false, radius: 8.0 },
+            NodeData { x: 0.0, y: 0.0, vx: 0.0, vy: 0.0, mass: 1.0, pinned: false, radius: 8.0, bfs_depth: 0 },
+            NodeData { x: 5.0, y: 0.0, vx: 0.0, vy: 0.0, mass: 1.0, pinned: false, radius: 8.0, bfs_depth: 0 },
         ];
         let mut vel = make_vel(2);
         let edges = vec![];

@@ -16,6 +16,13 @@ pub struct PaperRepository<'a> {
 
 #[derive(Debug, Clone, SurrealValue)]
 #[surreal(crate = "surrealdb::types")]
+struct CitationEdgeRow {
+    from_id: String,
+    to_id: String,
+}
+
+#[derive(Debug, Clone, SurrealValue)]
+#[surreal(crate = "surrealdb::types")]
 struct PaperRecord {
     title: String,
     authors: Vec<String>,
@@ -222,6 +229,21 @@ impl<'a> PaperRepository<'a> {
             .map_err(|e| ResynError::Database(format!("get all papers failed: {e}")))?;
 
         Ok(records.iter().map(|r| r.to_paper()).collect())
+    }
+
+    /// Return all citation edges as (from_arxiv_id, to_arxiv_id) pairs from the `cites` table.
+    pub async fn get_all_citation_edges(&self) -> Result<Vec<(String, String)>, ResynError> {
+        let mut response = self
+            .db
+            .query("SELECT in.arxiv_id AS from_id, out.arxiv_id AS to_id FROM cites")
+            .await
+            .map_err(|e| ResynError::Database(format!("citation edge query failed: {e}")))?;
+
+        let rows: Vec<CitationEdgeRow> = response
+            .take(0)
+            .map_err(|e| ResynError::Database(format!("parse citation edges failed: {e}")))?;
+
+        Ok(rows.into_iter().map(|r| (r.from_id, r.to_id)).collect())
     }
 
     pub async fn get_citation_graph(

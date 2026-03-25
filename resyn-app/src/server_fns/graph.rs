@@ -41,45 +41,78 @@ pub struct GraphData {
 pub async fn get_graph_data() -> Result<GraphData, ServerFnError> {
     #[cfg(feature = "ssr")]
     {
-        use resyn_core::data_processing::graph_creation::create_graph_from_papers;
         use resyn_core::database::queries::{GapFindingRepository, PaperRepository};
         use resyn_core::datamodels::gap_finding::GapType;
-        use resyn_core::petgraph::visit::{EdgeRef, IntoEdgeReferences};
         let db = use_context::<std::sync::Arc<resyn_core::database::client::Db>>()
             .ok_or_else(|| ServerFnError::new("Database not available"))?;
 
-        let papers = PaperRepository::new(&db)
+        let paper_repo = PaperRepository::new(&db);
+
+        // Load all papers from DB
+        let papers = paper_repo
             .get_all_papers()
             .await
             .map_err(|e| ServerFnError::new(e.to_string()))?;
 
-        let graph = create_graph_from_papers(&papers);
+        // Build paper ID set for fast lookup
+        let paper_id_set: std::collections::HashSet<String> =
+            papers.iter().map(|p| p.id.clone()).collect();
 
-        // Compute BFS depths from the seed node (first node in the graph = crawl root).
-        let seed_idx = graph.node_indices().next();
-        let mut depths: std::collections::HashMap<resyn_core::petgraph::graph::NodeIndex, u32> =
+        // Query citation edges directly from DB `cites` relations.
+        // Use get_citation_edges helper which returns (from_id, to_id) pairs.
+        let citation_pairs = paper_repo
+            .get_all_citation_edges()
+            .await
+            .map_err(|e| ServerFnError::new(e.to_string()))?;
+
+        // Build adjacency list for BFS depth computation
+        let mut adjacency: std::collections::HashMap<String, Vec<String>> =
             std::collections::HashMap::new();
-        if let Some(seed) = seed_idx {
+        let mut edge_set: Vec<(String, String)> = Vec::new();
+        for (from_id, to_id) in &citation_pairs {
+            if paper_id_set.contains(from_id) && paper_id_set.contains(to_id) {
+                adjacency.entry(from_id.clone()).or_default().push(to_id.clone());
+                // Also add reverse direction for undirected BFS
+                adjacency.entry(to_id.clone()).or_default().push(from_id.clone());
+                edge_set.push((from_id.clone(), to_id.clone()));
+            }
+        }
+
+        // Find seed paper: the paper with the most outgoing citations (crawl root).
+        // Ties broken by first in the list.
+        let mut out_degree: std::collections::HashMap<&str, usize> =
+            std::collections::HashMap::new();
+        for (from, _) in &edge_set {
+            *out_degree.entry(from.as_str()).or_insert(0) += 1;
+        }
+        let seed_paper_id = papers
+            .iter()
+            .max_by_key(|p| out_degree.get(p.id.as_str()).copied().unwrap_or(0))
+            .map(|p| p.id.clone());
+
+        // BFS depth from seed
+        let mut depths: std::collections::HashMap<String, u32> =
+            std::collections::HashMap::new();
+        if let Some(ref seed_id) = seed_paper_id {
             use std::collections::VecDeque;
             let mut queue = VecDeque::new();
-            queue.push_back((seed, 0u32));
-            depths.insert(seed, 0);
-            while let Some((node, depth)) = queue.pop_front() {
-                for neighbor in graph.neighbors(node) {
-                    if !depths.contains_key(&neighbor) {
-                        depths.insert(neighbor, depth + 1);
-                        queue.push_back((neighbor, depth + 1));
+            queue.push_back((seed_id.clone(), 0u32));
+            depths.insert(seed_id.clone(), 0);
+            while let Some((node_id, depth)) = queue.pop_front() {
+                if let Some(neighbors) = adjacency.get(&node_id) {
+                    for neighbor in neighbors {
+                        if !depths.contains_key(neighbor) {
+                            depths.insert(neighbor.clone(), depth + 1);
+                            queue.push_back((neighbor.clone(), depth + 1));
+                        }
                     }
                 }
             }
         }
 
-        let seed_paper_id = seed_idx.map(|si| graph[si].id.clone());
-
-        let nodes: Vec<GraphNode> = graph
-            .node_indices()
-            .map(|ni| {
-                let p = &graph[ni];
+        let nodes: Vec<GraphNode> = papers
+            .iter()
+            .map(|p| {
                 let year = if p.published.len() >= 4 {
                     p.published[..4].to_string()
                 } else {
@@ -92,26 +125,23 @@ pub async fn get_graph_data() -> Result<GraphData, ServerFnError> {
                     year,
                     citation_count: p.citation_count,
                     abstract_text: p.summary.clone(),
-                    bfs_depth: depths.get(&ni).copied(),
+                    bfs_depth: depths.get(&p.id).copied(),
                 }
             })
             .collect();
 
-        // Build regular citation edges from petgraph
-        let mut edges: Vec<GraphEdge> = Vec::new();
-
-        for edge_ref in graph.edge_references() {
-            let from = &graph[edge_ref.source()];
-            let to = &graph[edge_ref.target()];
-            edges.push(GraphEdge {
-                from: from.id.clone(),
-                to: to.id.clone(),
+        // Build regular citation edges from DB relations
+        let mut edges: Vec<GraphEdge> = edge_set
+            .into_iter()
+            .map(|(from, to)| GraphEdge {
+                from,
+                to,
                 edge_type: EdgeType::Regular,
                 shared_terms: vec![],
                 confidence: None,
                 justification: None,
-            });
-        }
+            })
+            .collect();
 
         // Overlay gap findings as special edges
         let findings = GapFindingRepository::new(&db)

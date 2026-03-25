@@ -80,7 +80,7 @@ impl GraphState {
 
         // Ring spacing: 1.5x IDEAL_DISTANCE (120) = 180px between depth rings.
         // Nodes start beyond equilibrium distance to produce visible spreading animation (D-04).
-        let base_ring_spacing: f64 = 180.0;
+        let base_ring_spacing: f64 = 400.0;
 
         let nodes: Vec<NodeState> = data
             .nodes
@@ -176,7 +176,7 @@ impl GraphState {
             nodes,
             edges,
             velocities,
-            alpha: 1.0,
+            alpha: 0.2,
             selected_node: None,
             hovered_node: None,
             hovered_edge: None,

@@ -100,16 +100,29 @@ pub fn GraphPage() -> impl IntoView {
 
         let mut viewport = Viewport::new(css_width, css_height);
         let mut graph_state = GraphState::from_graph_data(data);
-        // Fit initial BFS ring layout into visible canvas area so all rings are on-screen.
-        // Use the actual max node distance from origin as the spread radius.
+        // Fit connected component into visible canvas. Only use nodes WITH
+        // bfs_depth (connected nodes) — orphans at far outer ring would shrink
+        // the interesting structure to a dot.
         if !graph_state.nodes.is_empty() {
-            let max_dist = graph_state
+            let connected_dists: Vec<f64> = graph_state
                 .nodes
                 .iter()
+                .filter(|n| n.bfs_depth.is_some())
                 .map(|n| (n.x * n.x + n.y * n.y).sqrt())
-                .fold(0.0_f64, f64::max)
-                .max(1.0);
-            let fit_scale = (css_width.min(css_height) * 0.4 / max_dist).min(1.0);
+                .collect();
+            let spread = if connected_dists.is_empty() {
+                // Fallback: all nodes are orphans, use 90th percentile of all
+                let mut dists: Vec<f64> = graph_state.nodes.iter()
+                    .map(|n| (n.x * n.x + n.y * n.y).sqrt()).collect();
+                dists.sort_by(|a, b| a.partial_cmp(b).unwrap());
+                let idx = (dists.len() as f64 * 0.9) as usize;
+                dists[idx.min(dists.len() - 1)]
+            } else {
+                *connected_dists.iter()
+                    .max_by(|a, b| a.partial_cmp(b).unwrap())
+                    .unwrap()
+            }.max(1.0);
+            let fit_scale = (css_width.min(css_height) * 0.4 / spread).min(1.0);
             viewport.scale = fit_scale;
         }
         let renderer = make_renderer(&canvas, graph_state.nodes.len());
@@ -255,7 +268,7 @@ fn build_layout_input(graph: &GraphState, width: f64, height: f64) -> LayoutInpu
         .enumerate()
         .map(|(i, n)| {
             let (vx, vy) = graph.velocities.get(i).copied().unwrap_or((0.0, 0.0));
-            NodeData { x: n.x, y: n.y, vx, vy, mass: 1.0, pinned: n.pinned, radius: n.radius }
+            NodeData { x: n.x, y: n.y, vx, vy, mass: 1.0, pinned: n.pinned, radius: n.radius, bfs_depth: n.bfs_depth.unwrap_or(u32::MAX) }
         })
         .collect();
     let edges: Vec<(usize, usize)> =
@@ -612,11 +625,6 @@ fn attach_event_listeners(
             let mut reheat_simulation = false;
             match prev_interaction {
                 InteractionState::DraggingNode { node_idx, .. } => {
-                    // Reheat alpha so forces rearrange the graph around the moved node (D-05).
-                    // Also restart simulation in case it had fully stopped (D-09 full-stop).
-                    s.graph.alpha = 0.3_f64.max(s.graph.alpha);
-                    s.graph.simulation_running = true;
-                    reheat_simulation = true;
                     if was_click {
                         // It was a click, not a drag
                         if s.was_already_pinned {
@@ -635,8 +643,17 @@ fn attach_event_listeners(
                             simulation_running.set(true);
                             return;
                         }
+                    } else {
+                        // Real drag → unpin node so it settles naturally with neighbors.
+                        // Only keep pinned if it was already pinned before drag started.
+                        if !s.was_already_pinned {
+                            s.graph.nodes[node_idx].pinned = false;
+                        }
                     }
-                    // Real drag → node stays pinned (was set in mousedown)
+                    // Gentle local reheat — just enough for neighbors to adjust.
+                    s.graph.alpha = 0.02_f64.max(s.graph.alpha);
+                    s.graph.simulation_running = true;
+                    reheat_simulation = true;
                 }
                 InteractionState::Panning { .. } => {
                     if was_click {

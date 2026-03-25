@@ -80,8 +80,10 @@ Plans:
   2. Node circles have sharp, clean borders when zoomed in (no pixelated or blurry edge bleed)
   3. The seed paper node is immediately distinguishable from other nodes (gold/amber color with outer ring)
   4. Edge appearance is visually consistent whether the graph renders via Canvas 2D (under 300 nodes) or WebGL2 (300+ nodes)
-**Plans**: TBD
-**UI hint**: yes
+**Plans**: 2 plans
+Plans:
+- [ ] 16-01-PLAN.md — Add is_seed to NodeState, update Canvas 2D edge colors/alpha, node borders, seed ring
+- [ ] 16-02-PLAN.md — Update WebGL2 node shader (fwidth AA, borders, seed), edge quad geometry, depth alpha
 
 ### Phase 17: Viewport Fit and Label Collision
 **Goal**: The graph fits into the viewport automatically after layout stabilizes, and node labels are readable without overlap
@@ -114,5 +116,5 @@ Plans:
 | 13. Graph Interaction | v1.1.1 | 1/1 | Complete | 2026-03-23 |
 | 14. Temporal Controls | v1.1.1 | 1/1 | Complete | 2026-03-24 |
 | 15. Force Simulation Rebalancing | v1.2 | 2/2 | Complete   | 2026-03-25 |
-| 16. Edge and Node Renderer Fixes | v1.2 | 0/? | Not started | - |
+| 16. Edge and Node Renderer Fixes | v1.2 | 0/2 | Not started | - |
 | 17. Viewport Fit and Label Collision | v1.2 | 0/? | Not started | - |

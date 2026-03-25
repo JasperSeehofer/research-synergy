@@ -9,9 +9,9 @@ Requirements for v1.2 Graph Rendering Overhaul. Each maps to roadmap phases.
 
 ### Force Layout
 
-- [ ] **FORCE-01**: Graph nodes spread into visible clusters reflecting citation structure instead of collapsing to a central blob
-- [ ] **FORCE-02**: Force coefficients (repulsion, attraction, damping, ideal distance) tuned to produce readable layouts for 300-400 node citation graphs
-- [ ] **FORCE-03**: Nodes initialized in concentric rings by BFS depth from seed paper for better simulation warm start
+- [x] **FORCE-01**: Graph nodes spread into visible clusters reflecting citation structure instead of collapsing to a central blob
+- [x] **FORCE-02**: Force coefficients (repulsion, attraction, damping, ideal distance) tuned to produce readable layouts for 300-400 node citation graphs
+- [x] **FORCE-03**: Nodes initialized in concentric rings by BFS depth from seed paper for better simulation warm start
 
 ### Edge Rendering
 
@@ -56,9 +56,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FORCE-01 | Phase 15 | Pending |
-| FORCE-02 | Phase 15 | Pending |
-| FORCE-03 | Phase 15 | Pending |
+| FORCE-01 | Phase 15 | Complete |
+| FORCE-02 | Phase 15 | Complete |
+| FORCE-03 | Phase 15 | Complete |
 | EDGE-01 | Phase 16 | Pending |
 | EDGE-02 | Phase 16 | Pending |
 | EDGE-03 | Phase 16 | Pending |

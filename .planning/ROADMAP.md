@@ -51,7 +51,7 @@ Full details: `.planning/milestones/v1.1.1-ROADMAP.md`
 
 **Milestone Goal:** Make the citation graph a functional, visually clear force-directed layout with visible edges, sharp nodes, and proper structural clustering.
 
-- [ ] **Phase 15: Force Simulation Rebalancing** — Retune Barnes-Hut coefficients so nodes form visible citation clusters instead of collapsing to a blob
+- [x] **Phase 15: Force Simulation Rebalancing** — Retune Barnes-Hut coefficients so nodes form visible citation clusters instead of collapsing to a blob (completed 2026-03-25)
 - [ ] **Phase 16: Edge and Node Renderer Fixes** — Fix edge visibility and node sharpness in both Canvas 2D and WebGL2 renderers, and add seed node distinction
 - [ ] **Phase 17: Viewport Fit and Label Collision** — Auto-fit viewport after layout stabilizes, add priority-ordered label collision avoidance, and wire convergence indicator
 
@@ -68,8 +68,8 @@ Full details: `.planning/milestones/v1.1.1-ROADMAP.md`
   4. Nodes initialized in concentric rings by BFS depth produce a better-organized starting position than random placement
 **Plans**: 2 plans
 Plans:
-- [ ] 15-01-PLAN.md — Retune force coefficients, add collision force, add radius to NodeData
-- [ ] 15-02-PLAN.md — BFS ring placement, alpha full-stop, drag reheat fix, visual checkpoint
+- [x] 15-01-PLAN.md — Retune force coefficients, add collision force, add radius to NodeData
+- [x] 15-02-PLAN.md — BFS ring placement, alpha full-stop, drag reheat fix, visual checkpoint
 
 ### Phase 16: Edge and Node Renderer Fixes
 **Goal**: Citation edges are visible at a glance on the dark background and node circles are crisp at all zoom levels, with the seed paper clearly identified
@@ -113,6 +113,6 @@ Plans:
 | 12. Graph Force & Rendering | v1.1.1 | 1/1 | Complete | 2026-03-23 |
 | 13. Graph Interaction | v1.1.1 | 1/1 | Complete | 2026-03-23 |
 | 14. Temporal Controls | v1.1.1 | 1/1 | Complete | 2026-03-24 |
-| 15. Force Simulation Rebalancing | v1.2 | 0/2 | Not started | - |
+| 15. Force Simulation Rebalancing | v1.2 | 2/2 | Complete   | 2026-03-25 |
 | 16. Edge and Node Renderer Fixes | v1.2 | 0/? | Not started | - |
 | 17. Viewport Fit and Label Collision | v1.2 | 0/? | Not started | - |

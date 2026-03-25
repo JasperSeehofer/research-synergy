@@ -248,7 +248,7 @@ fn build_layout_input(graph: &GraphState, width: f64, height: f64) -> LayoutInpu
         .enumerate()
         .map(|(i, n)| {
             let (vx, vy) = graph.velocities.get(i).copied().unwrap_or((0.0, 0.0));
-            NodeData { x: n.x, y: n.y, vx, vy, mass: 1.0, pinned: n.pinned }
+            NodeData { x: n.x, y: n.y, vx, vy, mass: 1.0, pinned: n.pinned, radius: n.radius }
         })
         .collect();
     let edges: Vec<(usize, usize)> =

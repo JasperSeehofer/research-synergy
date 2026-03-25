@@ -38,17 +38,17 @@ created: 2026-03-24
 
 | Task ID | Plan | Wave | Requirement | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|-----------|-------------------|-------------|--------|
-| 15-01-01 | 01 | 0 | FORCE-01 | unit (new) | `cargo test -p resyn-worker forces::tests::test_collision_force_separates_overlapping_nodes` | ❌ W0 | ⬜ pending |
-| 15-01-02 | 01 | 0 | FORCE-03 | unit (new) | `cargo test -p resyn-app layout_state::tests::test_from_graph_data_bfs_ring_placement` | ❌ W0 | ⬜ pending |
-| 15-01-03 | 01 | 0 | FORCE-03 | unit (new) | `cargo test -p resyn-app layout_state::tests::test_from_graph_data_orphan_outer_ring` | ❌ W0 | ⬜ pending |
-| 15-01-04 | 01 | 0 | FORCE-03 | unit (new) | `cargo test -p resyn-app layout_state::tests::test_from_graph_data_seed_near_origin` | ❌ W0 | ⬜ pending |
-| 15-01-05 | 01 | 0 | FORCE-02 | unit (new) | `cargo test -p resyn-app layout_state::tests::test_alpha_stops_simulation` | ❌ W0 | ⬜ pending |
-| 15-02-01 | 02 | 1 | FORCE-01 | unit (regression) | `cargo test -p resyn-worker forces::tests::test_convergence_100_node_graph_within_5000_ticks` | ✅ | ⬜ pending |
-| 15-02-02 | 02 | 1 | FORCE-02 | unit (regression) | `cargo test -p resyn-worker forces::tests::test_repulsion_moves_close_nodes_apart` | ✅ | ⬜ pending |
-| 15-02-03 | 02 | 1 | FORCE-02 | unit (regression) | `cargo test -p resyn-worker forces::tests::test_attractive_force_pulls_connected_nodes_together` | ✅ | ⬜ pending |
-| 15-02-04 | 02 | 1 | FORCE-02 | unit (regression) | `cargo test -p resyn-worker forces::tests::test_simulation_tick_alpha_decays` | ✅ | ⬜ pending |
+| 15-01-01 | 01 | 0 | FORCE-01 | unit (new) | `cargo test -p resyn-worker forces::tests::test_collision_force_separates_overlapping_nodes` | W0 | pending |
+| 15-02-01 | 02 | 0 | FORCE-03 | unit (new) | `cargo test -p resyn-app layout_state::tests::test_from_graph_data_bfs_ring_placement` | W0 | pending |
+| 15-02-02 | 02 | 0 | FORCE-03 | unit (new) | `cargo test -p resyn-app layout_state::tests::test_from_graph_data_orphan_outer_ring` | W0 | pending |
+| 15-02-03 | 02 | 0 | FORCE-03 | unit (new) | `cargo test -p resyn-app layout_state::tests::test_from_graph_data_seed_near_origin` | W0 | pending |
+| 15-02-04 | 02 | 0 | FORCE-02 | unit (new) | `cargo test -p resyn-app layout_state::tests::test_alpha_stops_simulation` | W0 | pending |
+| 15-02-05 | 02 | 1 | FORCE-01 | unit (regression) | `cargo test -p resyn-worker forces::tests::test_convergence_100_node_graph_within_5000_ticks` | exists | pending |
+| 15-02-06 | 02 | 1 | FORCE-02 | unit (regression) | `cargo test -p resyn-worker forces::tests::test_repulsion_moves_close_nodes_apart` | exists | pending |
+| 15-02-07 | 02 | 1 | FORCE-02 | unit (regression) | `cargo test -p resyn-worker forces::tests::test_attractive_force_pulls_connected_nodes_together` | exists | pending |
+| 15-02-08 | 02 | 1 | FORCE-02 | unit (regression) | `cargo test -p resyn-worker forces::tests::test_simulation_tick_alpha_decays` | exists | pending |
 
-*Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
+*Status: pending / green / red / flaky*
 
 ---
 
@@ -58,7 +58,7 @@ created: 2026-03-24
 - [ ] `resyn-app/src/graph/layout_state.rs` — add `test_from_graph_data_bfs_ring_placement`: depth-0 node closer to origin than depth-1 nodes
 - [ ] `resyn-app/src/graph/layout_state.rs` — add `test_from_graph_data_orphan_outer_ring`: orphan node (bfs_depth=None) farther from origin than any depth-N node
 - [ ] `resyn-app/src/graph/layout_state.rs` — add `test_from_graph_data_seed_near_origin`: seed node (depth-0) x,y both < 20.0
-- [ ] `resyn-app/src/graph/layout_state.rs` — add `test_alpha_stops_simulation`: verify simulation_running=false after alpha drops below ALPHA_MIN
+- [ ] `resyn-app/src/graph/layout_state.rs` — add `test_alpha_stops_simulation`: create GraphState, set alpha below ALPHA_MIN, call check_alpha_convergence(), verify simulation_running=false
 
 *Note: All existing 14 resyn-worker tests (8 forces + 6 barnes_hut) must continue to pass. After adding `radius: f64` to `NodeData`, update `make_node()` helper in forces.rs tests to include `radius: 8.0`.*
 

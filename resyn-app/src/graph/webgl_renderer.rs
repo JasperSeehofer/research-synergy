@@ -16,6 +16,7 @@ in vec2 a_position;
 in float a_radius;
 in float a_alpha;
 in vec3 a_color;
+in float a_is_seed;
 
 uniform vec2 u_resolution;
 uniform vec2 u_offset;
@@ -24,11 +25,13 @@ uniform float u_scale;
 out vec2 v_local;
 out float v_alpha;
 out vec3 v_color;
+out float v_is_seed;
 
 void main() {
     v_local = a_quad;
     v_alpha = a_alpha;
     v_color = a_color;
+    v_is_seed = a_is_seed;
     vec2 world = a_position + a_quad * a_radius;
     vec2 screen = (world * u_scale + u_offset) / u_resolution * 2.0 - 1.0;
     gl_Position = vec4(screen.x, -screen.y, 0.0, 1.0);
@@ -40,13 +43,22 @@ precision mediump float;
 in vec2 v_local;
 in float v_alpha;
 in vec3 v_color;
+in float v_is_seed;
 out vec4 fragColor;
 
 void main() {
     float d = length(v_local);
-    if (d > 1.0) discard;
-    float edge = 1.0 - smoothstep(0.9, 1.0, d);
-    fragColor = vec4(v_color, v_alpha * edge);
+    float fw = fwidth(d);
+    float alpha_mask = 1.0 - smoothstep(1.0 - fw, 1.0 + fw, d);
+    if (alpha_mask < 0.001) discard;
+
+    // Border ring: bright band near node edge
+    float border_inner = 1.0 - 2.5 * fw;
+    float border_blend = smoothstep(border_inner, border_inner + fw, d);
+    vec3 border_color = clamp(v_color * 1.6, 0.0, 1.0);
+    vec3 final_color = mix(v_color, border_color, border_blend);
+
+    fragColor = vec4(final_color, v_alpha * alpha_mask);
 }
 "#;
 
@@ -311,7 +323,7 @@ impl Renderer for WebGL2Renderer {
         );
 
         // ── Draw nodes (instanced) ───────────────────────────────────────────
-        // Per-instance data: x, y, radius, alpha, r, g, b
+        // Per-instance data: x, y, radius, alpha, r, g, b, is_seed
         let mut instance_data: Vec<f32> = Vec::new();
         let node_count = state.nodes.len();
 
@@ -324,6 +336,8 @@ impl Renderer for WebGL2Renderer {
                 hex_to_rgb("#2a3a4f")
             } else if is_hovered || is_selected {
                 hex_to_rgb("#58a6ff")
+            } else if node.is_seed {
+                hex_to_rgb("#d29922")
             } else {
                 hex_to_rgb("#4a9eff")
             };
@@ -341,6 +355,7 @@ impl Renderer for WebGL2Renderer {
                 r,
                 g,
                 b,
+                if node.is_seed { 1.0 } else { 0.0 },
             ]);
         }
 
@@ -359,8 +374,8 @@ impl Renderer for WebGL2Renderer {
                 );
             }
 
-            // Stride: 7 floats per instance (x, y, radius, alpha, r, g, b)
-            let stride = 7 * 4; // bytes
+            // Stride: 8 floats per instance (x, y, radius, alpha, r, g, b, is_seed)
+            let stride = 8 * 4; // bytes
 
             let a_position = gl.get_attrib_location(&self.node_program, "a_position") as u32;
             gl.enable_vertex_attrib_array(a_position);
@@ -410,6 +425,18 @@ impl Renderer for WebGL2Renderer {
             );
             gl.vertex_attrib_divisor(a_color, 1);
 
+            let a_is_seed = gl.get_attrib_location(&self.node_program, "a_is_seed") as u32;
+            gl.enable_vertex_attrib_array(a_is_seed);
+            gl.vertex_attrib_pointer_with_i32(
+                a_is_seed,
+                1,
+                WebGl2RenderingContext::FLOAT,
+                false,
+                stride,
+                7 * 4, // byte offset: after x,y,radius,alpha,r,g,b
+            );
+            gl.vertex_attrib_divisor(a_is_seed, 1);
+
             // Set uniforms
             set_uniforms(gl, &self.node_program, res_x, res_y, offset_x, offset_y, scale);
 
@@ -422,6 +449,107 @@ impl Renderer for WebGL2Renderer {
             );
 
             gl.bind_vertex_array(None);
+
+            // Draw seed node outer ring (D-15)
+            if let Some(seed_idx) = state.nodes.iter().position(|n| n.is_seed) {
+                let seed = &state.nodes[seed_idx];
+                let dimmed = is_dimmed(seed_idx);
+                if !dimmed {
+                    // Screen-space constant gap and thickness, converted to world units
+                    let gap = 2.0 / scale;
+                    let ring_thickness = 3.0 / scale;
+                    let (ring_r, ring_g, ring_b) = hex_to_rgb("#d29922");
+
+                    let lod_alpha = if seed.lod_visible { 1.0_f32 } else { 0.03_f32 };
+                    let time_alpha = if seed.temporal_visible { 1.0_f32 } else { 0.10_f32 };
+                    let ring_alpha = lod_alpha * time_alpha;
+
+                    // Build ring annulus from triangle segments using edge buffer
+                    let mut ring_verts: Vec<f32> = Vec::new();
+                    let segments = 48_u32;
+                    let inner_r = (seed.radius as f32) + gap;
+                    let outer_r = (seed.radius as f32) + gap + ring_thickness;
+                    let cx = seed.x as f32;
+                    let cy = seed.y as f32;
+                    for i in 0..segments {
+                        let a0 = (i as f32) / (segments as f32) * std::f32::consts::TAU;
+                        let a1 = ((i + 1) as f32) / (segments as f32) * std::f32::consts::TAU;
+                        let (s0, c0) = (a0.sin(), a0.cos());
+                        let (s1, c1) = (a1.sin(), a1.cos());
+                        // Two triangles per segment
+                        // Triangle 1: inner0, outer0, outer1
+                        push_edge_vertex(
+                            &mut ring_verts,
+                            cx + inner_r * c0,
+                            cy + inner_r * s0,
+                            ring_r,
+                            ring_g,
+                            ring_b,
+                            ring_alpha,
+                        );
+                        push_edge_vertex(
+                            &mut ring_verts,
+                            cx + outer_r * c0,
+                            cy + outer_r * s0,
+                            ring_r,
+                            ring_g,
+                            ring_b,
+                            ring_alpha,
+                        );
+                        push_edge_vertex(
+                            &mut ring_verts,
+                            cx + outer_r * c1,
+                            cy + outer_r * s1,
+                            ring_r,
+                            ring_g,
+                            ring_b,
+                            ring_alpha,
+                        );
+                        // Triangle 2: inner0, outer1, inner1
+                        push_edge_vertex(
+                            &mut ring_verts,
+                            cx + inner_r * c0,
+                            cy + inner_r * s0,
+                            ring_r,
+                            ring_g,
+                            ring_b,
+                            ring_alpha,
+                        );
+                        push_edge_vertex(
+                            &mut ring_verts,
+                            cx + outer_r * c1,
+                            cy + outer_r * s1,
+                            ring_r,
+                            ring_g,
+                            ring_b,
+                            ring_alpha,
+                        );
+                        push_edge_vertex(
+                            &mut ring_verts,
+                            cx + inner_r * c1,
+                            cy + inner_r * s1,
+                            ring_r,
+                            ring_g,
+                            ring_b,
+                            ring_alpha,
+                        );
+                    }
+
+                    draw_edge_pass(
+                        gl,
+                        &self.edge_program,
+                        &self.edge_vao,
+                        &self.edge_buf,
+                        &ring_verts,
+                        res_x,
+                        res_y,
+                        offset_x,
+                        offset_y,
+                        scale,
+                        WebGl2RenderingContext::TRIANGLES,
+                    );
+                }
+            }
         }
     }
 

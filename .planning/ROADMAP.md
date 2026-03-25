@@ -116,5 +116,5 @@ Plans:
 | 13. Graph Interaction | v1.1.1 | 1/1 | Complete | 2026-03-23 |
 | 14. Temporal Controls | v1.1.1 | 1/1 | Complete | 2026-03-24 |
 | 15. Force Simulation Rebalancing | v1.2 | 2/2 | Complete   | 2026-03-25 |
-| 16. Edge and Node Renderer Fixes | v1.2 | 2/2 | Complete   | 2026-03-25 |
+| 16. Edge and Node Renderer Fixes | v1.2 | 2/2 | Complete    | 2026-03-25 |
 | 17. Viewport Fit and Label Collision | v1.2 | 0/? | Not started | - |

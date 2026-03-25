@@ -16,6 +16,7 @@ pub struct NodeState {
     pub bfs_depth: Option<u32>,
     pub lod_visible: bool,
     pub temporal_visible: bool,
+    pub is_seed: bool,
 }
 
 impl NodeState {
@@ -121,6 +122,7 @@ impl GraphState {
                     String::new()
                 };
                 let citation_count = n.citation_count.unwrap_or(0);
+                let is_seed = data.seed_paper_id.as_ref().map(|sid| sid == &n.id).unwrap_or(false);
                 NodeState {
                     id: n.id,
                     title: n.title,
@@ -136,6 +138,7 @@ impl GraphState {
                     bfs_depth: n.bfs_depth,
                     lod_visible: true,
                     temporal_visible: true,
+                    is_seed,
                 }
             })
             .collect();
@@ -319,6 +322,29 @@ mod tests {
         };
         let state = GraphState::from_graph_data(data);
         assert_eq!(state.seed_paper_id, Some("seed-id".to_string()));
+    }
+
+    #[test]
+    fn test_is_seed_set_for_seed_paper() {
+        let data = GraphData {
+            nodes: vec![make_node("seed-id", Some(10)), make_node("other", Some(5))],
+            edges: vec![],
+            seed_paper_id: Some("seed-id".to_string()),
+        };
+        let state = GraphState::from_graph_data(data);
+        assert!(state.nodes[0].is_seed, "seed node should have is_seed=true");
+        assert!(!state.nodes[1].is_seed, "non-seed node should have is_seed=false");
+    }
+
+    #[test]
+    fn test_is_seed_false_when_no_seed_id() {
+        let data = GraphData {
+            nodes: vec![make_node("A", Some(0))],
+            edges: vec![],
+            seed_paper_id: None,
+        };
+        let state = GraphState::from_graph_data(data);
+        assert!(!state.nodes[0].is_seed);
     }
 
     #[test]
@@ -530,6 +556,7 @@ mod tests {
             bfs_depth: None,
             lod_visible: true,
             temporal_visible: true,
+            is_seed: false,
         };
         assert_eq!(node.label(), "Doe 2023");
     }

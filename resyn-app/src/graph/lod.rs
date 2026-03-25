@@ -66,6 +66,7 @@ mod tests {
             bfs_depth,
             lod_visible: true,
             temporal_visible: true,
+            is_seed: false,
         }
     }
 
@@ -193,6 +194,7 @@ mod tests {
                 bfs_depth: None,
                 lod_visible: true,
                 temporal_visible: true,
+                is_seed: false,
             },
             NodeState {
                 id: "b".to_string(),
@@ -209,6 +211,7 @@ mod tests {
                 bfs_depth: None,
                 lod_visible: false,
                 temporal_visible: true,
+                is_seed: false,
             },
             NodeState {
                 id: "c".to_string(),
@@ -225,6 +228,7 @@ mod tests {
                 bfs_depth: None,
                 lod_visible: true,
                 temporal_visible: false,
+                is_seed: false,
             },
         ];
         let (visible, total) = compute_visible_count(&nodes);

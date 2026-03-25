@@ -99,6 +99,7 @@ mod tests {
             bfs_depth: None,
             lod_visible: true,
             temporal_visible: true,
+            is_seed: false,
         }
     }
 

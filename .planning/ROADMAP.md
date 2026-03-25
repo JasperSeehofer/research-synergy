@@ -66,7 +66,10 @@ Full details: `.planning/milestones/v1.1.1-ROADMAP.md`
   2. Papers with many shared citations are visibly closer to each other than unrelated papers
   3. Simulation reaches a stable layout (low node velocity) within approximately 30 seconds at normal graph sizes
   4. Nodes initialized in concentric rings by BFS depth produce a better-organized starting position than random placement
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 15-01-PLAN.md — Retune force coefficients, add collision force, add radius to NodeData
+- [ ] 15-02-PLAN.md — BFS ring placement, alpha full-stop, drag reheat fix, visual checkpoint
 
 ### Phase 16: Edge and Node Renderer Fixes
 **Goal**: Citation edges are visible at a glance on the dark background and node circles are crisp at all zoom levels, with the seed paper clearly identified
@@ -110,6 +113,6 @@ Full details: `.planning/milestones/v1.1.1-ROADMAP.md`
 | 12. Graph Force & Rendering | v1.1.1 | 1/1 | Complete | 2026-03-23 |
 | 13. Graph Interaction | v1.1.1 | 1/1 | Complete | 2026-03-23 |
 | 14. Temporal Controls | v1.1.1 | 1/1 | Complete | 2026-03-24 |
-| 15. Force Simulation Rebalancing | v1.2 | 0/? | Not started | - |
+| 15. Force Simulation Rebalancing | v1.2 | 0/2 | Not started | - |
 | 16. Edge and Node Renderer Fixes | v1.2 | 0/? | Not started | - |
 | 17. Viewport Fit and Label Collision | v1.2 | 0/? | Not started | - |

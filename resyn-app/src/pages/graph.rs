@@ -100,10 +100,16 @@ pub fn GraphPage() -> impl IntoView {
 
         let mut viewport = Viewport::new(css_width, css_height);
         let mut graph_state = GraphState::from_graph_data(data);
-        // Fit initial spread into visible canvas area so nodes are on-screen
+        // Fit initial BFS ring layout into visible canvas area so all rings are on-screen.
+        // Use the actual max node distance from origin as the spread radius.
         if !graph_state.nodes.is_empty() {
-            let spread = (graph_state.nodes.len() as f64).sqrt() * 15.0;
-            let fit_scale = (css_width.min(css_height) * 0.4 / spread).min(1.0);
+            let max_dist = graph_state
+                .nodes
+                .iter()
+                .map(|n| (n.x * n.x + n.y * n.y).sqrt())
+                .fold(0.0_f64, f64::max)
+                .max(1.0);
+            let fit_scale = (css_width.min(css_height) * 0.4 / max_dist).min(1.0);
             viewport.scale = fit_scale;
         }
         let renderer = make_renderer(&canvas, graph_state.nodes.len());

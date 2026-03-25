@@ -57,33 +57,59 @@ pub struct GraphState {
 
 impl GraphState {
     pub fn from_graph_data(data: GraphData) -> Self {
-        let node_count = data.nodes.len();
-        let spread = (node_count as f64).sqrt() * 15.0;
-
         // Simple deterministic hash for reproducible jitter (no rand dependency).
         fn hash_jitter(seed: u64) -> f64 {
             let h = seed.wrapping_mul(6364136223846793005).wrapping_add(1442695040888963407);
             (h >> 33) as f64 / (u32::MAX as f64) - 0.5 // range [-0.5, 0.5]
         }
 
+        // Pre-compute BFS depth groups for ring placement (D-07).
+        let max_bfs_depth = data.nodes.iter().filter_map(|n| n.bfs_depth).max().unwrap_or(0);
+        let orphan_ring = max_bfs_depth + 1;
+
+        // Count nodes at each depth for angular spacing within rings.
+        let mut depth_counts: std::collections::HashMap<u32, usize> =
+            std::collections::HashMap::new();
+        for n in &data.nodes {
+            let depth = n.bfs_depth.unwrap_or(orphan_ring);
+            *depth_counts.entry(depth).or_insert(0) += 1;
+        }
+        // Track position within each depth ring during iteration.
+        let mut depth_positions: std::collections::HashMap<u32, usize> =
+            std::collections::HashMap::new();
+
+        // Ring spacing: 1.5x IDEAL_DISTANCE (120) = 180px between depth rings.
+        // Nodes start beyond equilibrium distance to produce visible spreading animation (D-04).
+        let base_ring_spacing: f64 = 180.0;
+
         let nodes: Vec<NodeState> = data
             .nodes
             .into_iter()
             .enumerate()
             .map(|(i, n)| {
-                let angle = if node_count > 0 {
-                    2.0 * std::f64::consts::PI * (i as f64) / (node_count as f64)
+                let depth = n.bfs_depth.unwrap_or(orphan_ring);
+                let pos_in_ring = *depth_positions.entry(depth).or_insert(0);
+                *depth_positions.get_mut(&depth).unwrap() += 1;
+                let count_at_depth = *depth_counts.get(&depth).unwrap_or(&1);
+
+                let (x, y) = if depth == 0 {
+                    // Seed node: slight offset from origin to break symmetry (D-06).
+                    let jx = hash_jitter(i as u64 * 2) * 10.0;
+                    let jy = hash_jitter(i as u64 * 2 + 1) * 10.0;
+                    (5.0 + jx, 5.0 + jy)
                 } else {
-                    0.0
+                    // Depth-N nodes: concentric ring placement (D-07).
+                    let ring_radius = base_ring_spacing * depth as f64;
+                    let angle = 2.0 * std::f64::consts::PI * (pos_in_ring as f64)
+                        / (count_at_depth as f64);
+                    // 15% radial jitter to avoid perfect circle (gives force sim asymmetry).
+                    let radial_jitter = ring_radius * 0.15 * hash_jitter(i as u64 * 3);
+                    (
+                        (ring_radius + radial_jitter) * angle.cos(),
+                        (ring_radius + radial_jitter) * angle.sin(),
+                    )
                 };
-                let r = if node_count > 0 {
-                    spread * (i as f64 / node_count as f64).sqrt()
-                } else {
-                    0.0
-                };
-                // Add jitter so the force simulation has asymmetry to work with.
-                let jx = hash_jitter(i as u64 * 2) * spread * 0.8;
-                let jy = hash_jitter(i as u64 * 2 + 1) * spread * 0.8;
+
                 let first_author = n
                     .authors
                     .first()
@@ -103,8 +129,8 @@ impl GraphState {
                     citation_count,
                     abstract_text: n.abstract_text,
                     authors: n.authors,
-                    x: r * angle.cos() + jx,
-                    y: r * angle.sin() + jy,
+                    x,
+                    y,
                     radius: NodeState::radius_from_citations(citation_count),
                     pinned: false,
                     bfs_depth: n.bfs_depth,
@@ -179,6 +205,18 @@ mod tests {
             citation_count,
             abstract_text: "Abstract".to_string(),
             bfs_depth: None,
+        }
+    }
+
+    fn make_node_with_depth(id: &str, bfs_depth: Option<u32>) -> GraphNode {
+        GraphNode {
+            id: id.to_string(),
+            title: format!("Paper {id}"),
+            authors: vec!["Smith, John".to_string()],
+            year: "2023".to_string(),
+            citation_count: Some(0),
+            abstract_text: "Abstract".to_string(),
+            bfs_depth,
         }
     }
 
@@ -361,6 +399,79 @@ mod tests {
         assert_eq!(state.edges.len(), 1);
         assert_eq!(state.edges[0].from_idx, 0);
         assert_eq!(state.edges[0].to_idx, 1);
+    }
+
+    #[test]
+    fn test_from_graph_data_seed_near_origin() {
+        let data = GraphData {
+            nodes: vec![
+                make_node_with_depth("seed", Some(0)),
+                make_node_with_depth("child1", Some(1)),
+                make_node_with_depth("child2", Some(1)),
+            ],
+            edges: vec![],
+            seed_paper_id: Some("seed".to_string()),
+        };
+        let state = GraphState::from_graph_data(data);
+        let seed = &state.nodes[0];
+        assert!(
+            seed.x.abs() < 20.0 && seed.y.abs() < 20.0,
+            "seed node should be near origin; x={}, y={}",
+            seed.x,
+            seed.y
+        );
+    }
+
+    #[test]
+    fn test_from_graph_data_bfs_ring_placement() {
+        let data = GraphData {
+            nodes: vec![
+                make_node_with_depth("seed", Some(0)),
+                make_node_with_depth("d1a", Some(1)),
+                make_node_with_depth("d1b", Some(1)),
+                make_node_with_depth("d2a", Some(2)),
+            ],
+            edges: vec![],
+            seed_paper_id: Some("seed".to_string()),
+        };
+        let state = GraphState::from_graph_data(data);
+        let seed_dist = (state.nodes[0].x.powi(2) + state.nodes[0].y.powi(2)).sqrt();
+        let d1a_dist = (state.nodes[1].x.powi(2) + state.nodes[1].y.powi(2)).sqrt();
+        let d1b_dist = (state.nodes[2].x.powi(2) + state.nodes[2].y.powi(2)).sqrt();
+        assert!(
+            seed_dist < d1a_dist,
+            "seed (depth-0) should be closer to origin than depth-1; seed_dist={}, d1a_dist={}",
+            seed_dist,
+            d1a_dist
+        );
+        assert!(
+            seed_dist < d1b_dist,
+            "seed (depth-0) should be closer to origin than depth-1; seed_dist={}, d1b_dist={}",
+            seed_dist,
+            d1b_dist
+        );
+    }
+
+    #[test]
+    fn test_from_graph_data_orphan_outer_ring() {
+        let data = GraphData {
+            nodes: vec![
+                make_node_with_depth("seed", Some(0)),
+                make_node_with_depth("d1", Some(1)),
+                make_node_with_depth("orphan", None),
+            ],
+            edges: vec![],
+            seed_paper_id: Some("seed".to_string()),
+        };
+        let state = GraphState::from_graph_data(data);
+        let d1_dist = (state.nodes[1].x.powi(2) + state.nodes[1].y.powi(2)).sqrt();
+        let orphan_dist = (state.nodes[2].x.powi(2) + state.nodes[2].y.powi(2)).sqrt();
+        assert!(
+            orphan_dist > d1_dist,
+            "orphan should be farther from origin than depth-1; orphan_dist={}, d1_dist={}",
+            orphan_dist,
+            d1_dist
+        );
     }
 
     #[test]

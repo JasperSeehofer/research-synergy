@@ -3,7 +3,7 @@ use wasm_bindgen::JsCast;
 use wasm_bindgen::JsValue;
 use web_sys::CanvasRenderingContext2d;
 
-use super::layout_state::{EdgeData, GraphState};
+use super::layout_state::{EdgeData, GraphState, NodeState};
 use super::renderer::{Renderer, Viewport};
 use crate::server_fns::graph::EdgeType;
 
@@ -93,9 +93,10 @@ impl Renderer for Canvas2DRenderer {
             let edge_vis_alpha = if from_vis && to_vis { 1.0 } else { 0.05 };
 
             self.ctx.save();
-            self.ctx.set_stroke_style_str("#404040");
-            self.ctx.set_line_width(1.0);
-            let dim_alpha = if edge_both_dimmed(edge) { 0.1 } else { 0.35 };
+            self.ctx.set_stroke_style_str("#8b949e");
+            self.ctx.set_line_width(1.5 / viewport.scale);
+            let base_alpha = depth_alpha(edge, &state.nodes);
+            let dim_alpha = if edge_both_dimmed(edge) { 0.1 } else { base_alpha };
             self.ctx.set_global_alpha(dim_alpha * edge_vis_alpha);
             self.ctx.begin_path();
             self.ctx.move_to(from.x, from.y);
@@ -189,12 +190,15 @@ impl Renderer for Canvas2DRenderer {
             }
 
             let color = match edge.edge_type {
-                EdgeType::Regular => "#404040",
+                EdgeType::Regular => "#8b949e",
                 EdgeType::Contradiction => "#f85149",
                 EdgeType::AbcBridge => "#d29922",
             };
 
-            let alpha = if edge.edge_type == EdgeType::Regular { 0.35 } else { 1.0 };
+            let alpha = match edge.edge_type {
+                EdgeType::Regular => depth_alpha(edge, &state.nodes),
+                _ => 1.0,
+            };
 
             self.ctx.save();
             self.ctx.set_fill_style_str(color);
@@ -224,6 +228,8 @@ impl Renderer for Canvas2DRenderer {
                 "#2a3a4f"
             } else if is_hovered || is_selected {
                 "#58a6ff"
+            } else if node.is_seed {
+                "#d29922"
             } else {
                 "#4a9eff"
             };
@@ -237,9 +243,22 @@ impl Renderer for Canvas2DRenderer {
             self.ctx.fill();
 
             // Node border
-            self.ctx.set_stroke_style_str("#30363d");
-            self.ctx.set_line_width(1.0);
+            let border_color = if node.is_seed { "#e8b84b" } else { "#7cb8ff" };
+            self.ctx.set_stroke_style_str(border_color);
+            self.ctx.set_line_width(1.0 / viewport.scale);
             self.ctx.stroke();
+
+            // Seed node outer planetary ring
+            if node.is_seed && !dimmed {
+                self.ctx.begin_path();
+                let ring_radius = node.radius + 2.0 + 1.5; // 2px gap + ring center
+                self.ctx
+                    .arc(node.x, node.y, ring_radius, 0.0, std::f64::consts::TAU)
+                    .unwrap();
+                self.ctx.set_stroke_style_str("#d29922");
+                self.ctx.set_line_width(3.0 / viewport.scale);
+                self.ctx.stroke();
+            }
 
             // Selected outer ring
             if is_selected {
@@ -281,6 +300,20 @@ impl Renderer for Canvas2DRenderer {
             canvas.set_width(width);
             canvas.set_height(height);
         }
+    }
+}
+
+/// Compute depth-based alpha for regular citation edges (D-02).
+/// Uses max BFS depth of the two endpoints.
+fn depth_alpha(edge: &EdgeData, nodes: &[NodeState]) -> f64 {
+    let from_depth = nodes.get(edge.from_idx).and_then(|n| n.bfs_depth).unwrap_or(u32::MAX);
+    let to_depth = nodes.get(edge.to_idx).and_then(|n| n.bfs_depth).unwrap_or(u32::MAX);
+    let max_depth = from_depth.max(to_depth);
+    match max_depth {
+        0 | 1 => 0.50,
+        2 => 0.35,
+        3 => 0.25,
+        _ => 0.15,
     }
 }
 

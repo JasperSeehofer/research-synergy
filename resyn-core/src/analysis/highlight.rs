@@ -181,6 +181,9 @@ mod tests {
         let section = "The paper discusses quantum mechanics.";
         let snippet = "classical thermodynamics pressure volume";
         let result = find_highlight_range(section, snippet);
-        assert!(result.is_none(), "Expected None for completely unrelated snippet");
+        assert!(
+            result.is_none(),
+            "Expected None for completely unrelated snippet"
+        );
     }
 }

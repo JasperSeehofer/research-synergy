@@ -6,16 +6,14 @@ pub const LOD_LEVEL_1: f64 = 0.6; // + high-citation (>=50)
 pub const LOD_LEVEL_2: f64 = 1.0; // + medium-citation (>=10) and depth<=2
 // Above 1.0: all nodes visible
 
-pub fn update_lod_visibility(
-    nodes: &mut [NodeState],
-    scale: f64,
-    seed_paper_id: &Option<String>,
-) {
+pub fn update_lod_visibility(nodes: &mut [NodeState], scale: f64, seed_paper_id: &Option<String>) {
     for node in nodes.iter_mut() {
         let depth = node.bfs_depth.unwrap_or(u32::MAX);
         let cites = node.citation_count;
-        let is_seed =
-            seed_paper_id.as_ref().map(|sid| sid == &node.id).unwrap_or(false);
+        let is_seed = seed_paper_id
+            .as_ref()
+            .map(|sid| sid == &node.id)
+            .unwrap_or(false);
         node.lod_visible = if is_seed {
             true // seed always visible
         } else if scale < LOD_LEVEL_0 {
@@ -30,11 +28,7 @@ pub fn update_lod_visibility(
     }
 }
 
-pub fn update_temporal_visibility(
-    nodes: &mut [NodeState],
-    min_year: u32,
-    max_year: u32,
-) {
+pub fn update_temporal_visibility(nodes: &mut [NodeState], min_year: u32, max_year: u32) {
     for node in nodes.iter_mut() {
         let year: u32 = node.year.parse().unwrap_or(0);
         node.temporal_visible = year == 0 || (year >= min_year && year <= max_year);
@@ -42,7 +36,10 @@ pub fn update_temporal_visibility(
 }
 
 pub fn compute_visible_count(nodes: &[NodeState]) -> (usize, usize) {
-    let visible = nodes.iter().filter(|n| n.lod_visible && n.temporal_visible).count();
+    let visible = nodes
+        .iter()
+        .filter(|n| n.lod_visible && n.temporal_visible)
+        .count();
     (visible, nodes.len())
 }
 
@@ -78,7 +75,10 @@ mod tests {
         let mut nodes = vec![make_node("seed", Some(0), 0, "2020")];
         let seed = Some("seed".to_string());
         update_lod_visibility(&mut nodes, 0.1, &seed);
-        assert!(nodes[0].lod_visible, "seed node must be visible at low scale");
+        assert!(
+            nodes[0].lod_visible,
+            "seed node must be visible at low scale"
+        );
     }
 
     #[test]
@@ -87,7 +87,10 @@ mod tests {
         let mut nodes = vec![make_node("deep", Some(2), 100, "2020")];
         let seed = Some("seed".to_string());
         update_lod_visibility(&mut nodes, 0.1, &seed);
-        assert!(!nodes[0].lod_visible, "depth-2 node should not be visible at scale 0.1");
+        assert!(
+            !nodes[0].lod_visible,
+            "depth-2 node should not be visible at scale 0.1"
+        );
     }
 
     #[test]
@@ -96,7 +99,10 @@ mod tests {
         let mut nodes = vec![make_node("d1", Some(1), 0, "2020")];
         let seed = Some("seed".to_string());
         update_lod_visibility(&mut nodes, 0.1, &seed);
-        assert!(nodes[0].lod_visible, "depth-1 node should be visible at scale 0.1");
+        assert!(
+            nodes[0].lod_visible,
+            "depth-1 node should be visible at scale 0.1"
+        );
     }
 
     #[test]
@@ -105,7 +111,10 @@ mod tests {
         let mut nodes = vec![make_node("hc", Some(3), 100, "2020")];
         let seed = Some("seed".to_string());
         update_lod_visibility(&mut nodes, 0.4, &seed);
-        assert!(nodes[0].lod_visible, "high-citation node should be visible at scale 0.4");
+        assert!(
+            nodes[0].lod_visible,
+            "high-citation node should be visible at scale 0.4"
+        );
     }
 
     #[test]
@@ -114,7 +123,10 @@ mod tests {
         let mut nodes = vec![make_node("lc", Some(3), 5, "2020")];
         let seed = Some("seed".to_string());
         update_lod_visibility(&mut nodes, 0.4, &seed);
-        assert!(!nodes[0].lod_visible, "low-citation depth-3 node should not be visible at scale 0.4");
+        assert!(
+            !nodes[0].lod_visible,
+            "low-citation depth-3 node should not be visible at scale 0.4"
+        );
     }
 
     #[test]
@@ -123,7 +135,10 @@ mod tests {
         let mut nodes = vec![make_node("mc", Some(2), 15, "2020")];
         let seed = Some("seed".to_string());
         update_lod_visibility(&mut nodes, 0.8, &seed);
-        assert!(nodes[0].lod_visible, "medium-citation depth-2 node should be visible at scale 0.8");
+        assert!(
+            nodes[0].lod_visible,
+            "medium-citation depth-2 node should be visible at scale 0.8"
+        );
     }
 
     #[test]
@@ -132,7 +147,10 @@ mod tests {
         let mut nodes = vec![make_node("lc4", Some(4), 5, "2020")];
         let seed = Some("seed".to_string());
         update_lod_visibility(&mut nodes, 0.8, &seed);
-        assert!(!nodes[0].lod_visible, "low-citation depth-4 node should not be visible at scale 0.8");
+        assert!(
+            !nodes[0].lod_visible,
+            "low-citation depth-4 node should not be visible at scale 0.8"
+        );
     }
 
     #[test]
@@ -145,9 +163,18 @@ mod tests {
         ];
         let seed: Option<String> = None;
         update_lod_visibility(&mut nodes, 1.5, &seed);
-        assert!(nodes[0].lod_visible, "node a should be visible at scale 1.5");
-        assert!(nodes[1].lod_visible, "node b should be visible at scale 1.5");
-        assert!(nodes[2].lod_visible, "node c should be visible at scale 1.5");
+        assert!(
+            nodes[0].lod_visible,
+            "node a should be visible at scale 1.5"
+        );
+        assert!(
+            nodes[1].lod_visible,
+            "node b should be visible at scale 1.5"
+        );
+        assert!(
+            nodes[2].lod_visible,
+            "node c should be visible at scale 1.5"
+        );
     }
 
     // --- Temporal tests ---
@@ -156,14 +183,20 @@ mod tests {
     fn test_temporal_year_in_range_visible() {
         let mut nodes = vec![make_node("a", None, 0, "2020")];
         update_temporal_visibility(&mut nodes, 2018, 2022);
-        assert!(nodes[0].temporal_visible, "year 2020 should be visible in [2018, 2022]");
+        assert!(
+            nodes[0].temporal_visible,
+            "year 2020 should be visible in [2018, 2022]"
+        );
     }
 
     #[test]
     fn test_temporal_year_out_of_range_not_visible() {
         let mut nodes = vec![make_node("a", None, 0, "2015")];
         update_temporal_visibility(&mut nodes, 2018, 2022);
-        assert!(!nodes[0].temporal_visible, "year 2015 should not be visible in [2018, 2022]");
+        assert!(
+            !nodes[0].temporal_visible,
+            "year 2015 should not be visible in [2018, 2022]"
+        );
     }
 
     #[test]
@@ -171,7 +204,10 @@ mod tests {
         // Empty/unparseable year should always be visible (year == 0 => visible)
         let mut nodes = vec![make_node("a", None, 0, "")];
         update_temporal_visibility(&mut nodes, 2018, 2022);
-        assert!(nodes[0].temporal_visible, "node with empty year should always be visible");
+        assert!(
+            nodes[0].temporal_visible,
+            "node with empty year should always be visible"
+        );
     }
 
     // --- Visible count tests ---
@@ -233,6 +269,9 @@ mod tests {
         ];
         let (visible, total) = compute_visible_count(&nodes);
         assert_eq!(total, 3);
-        assert_eq!(visible, 1, "only node 'a' has both lod_visible and temporal_visible=true");
+        assert_eq!(
+            visible, 1,
+            "only node 'a' has both lod_visible and temporal_visible=true"
+        );
     }
 }

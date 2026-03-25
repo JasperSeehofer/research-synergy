@@ -108,8 +108,14 @@ mod tests {
             source_snippet: Some("We found that the gap is non-zero.".to_string()),
         };
         let json = serde_json::to_string(&f).unwrap();
-        assert!(json.contains("source_section"), "JSON must contain source_section");
-        assert!(json.contains("source_snippet"), "JSON must contain source_snippet");
+        assert!(
+            json.contains("source_section"),
+            "JSON must contain source_section"
+        );
+        assert!(
+            json.contains("source_snippet"),
+            "JSON must contain source_snippet"
+        );
         assert!(json.contains("results"), "JSON must contain section name");
     }
 
@@ -119,8 +125,14 @@ mod tests {
         let old_json = r#"{"text":"Some finding","strength":"moderate_evidence"}"#;
         let f: Finding = serde_json::from_str(old_json).unwrap();
         assert_eq!(f.text, "Some finding");
-        assert!(f.source_section.is_none(), "source_section should be None for old records");
-        assert!(f.source_snippet.is_none(), "source_snippet should be None for old records");
+        assert!(
+            f.source_section.is_none(),
+            "source_section should be None for old records"
+        );
+        assert!(
+            f.source_snippet.is_none(),
+            "source_snippet should be None for old records"
+        );
     }
 
     #[test]
@@ -134,7 +146,10 @@ mod tests {
         let json = serde_json::to_string(&m).unwrap();
         let decoded: Method = serde_json::from_str(&json).unwrap();
         assert_eq!(decoded.source_section, Some("methods".to_string()));
-        assert_eq!(decoded.source_snippet, Some("We apply Monte Carlo sampling.".to_string()));
+        assert_eq!(
+            decoded.source_snippet,
+            Some("We apply Monte Carlo sampling.".to_string())
+        );
     }
 
     #[test]

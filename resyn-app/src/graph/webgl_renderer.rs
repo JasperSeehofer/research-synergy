@@ -238,7 +238,10 @@ impl Renderer for WebGL2Renderer {
             });
 
         let is_dimmed = |idx: usize| -> bool {
-            neighbor_set.as_ref().map(|s| !s.contains(&idx)).unwrap_or(false)
+            neighbor_set
+                .as_ref()
+                .map(|s| !s.contains(&idx))
+                .unwrap_or(false)
         };
 
         // ── Draw edges ───────────────────────────────────────────────────────
@@ -267,7 +270,8 @@ impl Renderer for WebGL2Renderer {
             let both_dimmed =
                 neighbor_set.is_some() && is_dimmed(edge.from_idx) && is_dimmed(edge.to_idx);
 
-            let (r, g, b, base_alpha) = edge_color(edge.edge_type.clone(), both_dimmed);
+            let da = depth_alpha_f32(edge, &state.nodes);
+            let (r, g, b, base_alpha) = edge_color(edge.edge_type.clone(), both_dimmed, da);
 
             let from_vis = state
                 .nodes
@@ -279,12 +283,27 @@ impl Renderer for WebGL2Renderer {
                 .get(edge.to_idx)
                 .map(|n| n.lod_visible && n.temporal_visible)
                 .unwrap_or(true);
-            let edge_vis_alpha = if from_vis && to_vis { 1.0_f32 } else { 0.05_f32 };
+            let edge_vis_alpha = if from_vis && to_vis {
+                1.0_f32
+            } else {
+                0.05_f32
+            };
             let alpha = base_alpha * edge_vis_alpha;
 
-            // 2 vertices per line: from, to
-            push_edge_vertex(&mut edge_data, from.x as f32, from.y as f32, r, g, b, alpha);
-            push_edge_vertex(&mut edge_data, to.x as f32, to.y as f32, r, g, b, alpha);
+            // Compute half-width in world units for 1.5px screen-space (D-03)
+            let half_width = 0.75 / scale;
+
+            // 6 vertices per quad edge (2 triangles)
+            build_quad_edge(
+                &mut edge_data,
+                (from.x as f32, from.y as f32),
+                (to.x as f32, to.y as f32),
+                half_width,
+                r,
+                g,
+                b,
+                alpha,
+            );
 
             // Arrowhead triangles (3 vertices per arrowhead)
             let skip_arrow = edge.edge_type == EdgeType::Regular && both_dimmed;
@@ -304,7 +323,7 @@ impl Renderer for WebGL2Renderer {
             offset_x,
             offset_y,
             scale,
-            WebGl2RenderingContext::LINES,
+            WebGl2RenderingContext::TRIANGLES,
         );
 
         // Draw arrowhead triangles using same edge program
@@ -342,9 +361,17 @@ impl Renderer for WebGL2Renderer {
                 hex_to_rgb("#4a9eff")
             };
 
-            let base_alpha = if dimmed && !is_selected && !is_hovered { 0.5_f32 } else { 1.0_f32 };
+            let base_alpha = if dimmed && !is_selected && !is_hovered {
+                0.5_f32
+            } else {
+                1.0_f32
+            };
             let lod_alpha = if node.lod_visible { 1.0_f32 } else { 0.03_f32 };
-            let time_alpha = if node.temporal_visible { 1.0_f32 } else { 0.10_f32 };
+            let time_alpha = if node.temporal_visible {
+                1.0_f32
+            } else {
+                0.10_f32
+            };
             let alpha = base_alpha * lod_alpha * time_alpha;
 
             instance_data.extend_from_slice(&[
@@ -364,7 +391,10 @@ impl Renderer for WebGL2Renderer {
             gl.bind_vertex_array(Some(&self.node_vao));
 
             // Update preallocated instance buffer with this frame's per-node data
-            gl.bind_buffer(WebGl2RenderingContext::ARRAY_BUFFER, Some(&self.instance_buf));
+            gl.bind_buffer(
+                WebGl2RenderingContext::ARRAY_BUFFER,
+                Some(&self.instance_buf),
+            );
             unsafe {
                 let view = js_sys::Float32Array::view(&instance_data);
                 gl.buffer_data_with_array_buffer_view(
@@ -438,7 +468,15 @@ impl Renderer for WebGL2Renderer {
             gl.vertex_attrib_divisor(a_is_seed, 1);
 
             // Set uniforms
-            set_uniforms(gl, &self.node_program, res_x, res_y, offset_x, offset_y, scale);
+            set_uniforms(
+                gl,
+                &self.node_program,
+                res_x,
+                res_y,
+                offset_x,
+                offset_y,
+                scale,
+            );
 
             // Instanced draw: 4 quad vertices, N instances
             gl.draw_arrays_instanced(
@@ -461,7 +499,11 @@ impl Renderer for WebGL2Renderer {
                     let (ring_r, ring_g, ring_b) = hex_to_rgb("#d29922");
 
                     let lod_alpha = if seed.lod_visible { 1.0_f32 } else { 0.03_f32 };
-                    let time_alpha = if seed.temporal_visible { 1.0_f32 } else { 0.10_f32 };
+                    let time_alpha = if seed.temporal_visible {
+                        1.0_f32
+                    } else {
+                        0.10_f32
+                    };
                     let ring_alpha = lod_alpha * time_alpha;
 
                     // Build ring annulus from triangle segments using edge buffer
@@ -562,11 +604,11 @@ impl Renderer for WebGL2Renderer {
 
 // ── Helper: edge color ───────────────────────────────────────────────────────
 
-fn edge_color(edge_type: EdgeType, both_dimmed: bool) -> (f32, f32, f32, f32) {
+fn edge_color(edge_type: EdgeType, both_dimmed: bool, depth_alpha: f32) -> (f32, f32, f32, f32) {
     match edge_type {
         EdgeType::Regular => {
-            let (r, g, b) = hex_to_rgb("#404040");
-            let alpha = if both_dimmed { 0.1 } else { 0.35 };
+            let (r, g, b) = hex_to_rgb("#8b949e");
+            let alpha = if both_dimmed { 0.1 } else { depth_alpha };
             (r, g, b, alpha)
         }
         EdgeType::Contradiction => {
@@ -578,6 +620,66 @@ fn edge_color(edge_type: EdgeType, both_dimmed: bool) -> (f32, f32, f32, f32) {
             (r, g, b, 1.0)
         }
     }
+}
+
+// ── Helper: depth-based alpha for regular edges ──────────────────────────────
+
+/// Compute depth-based alpha for regular citation edges.
+/// Uses max BFS depth of the two endpoints. Matches Canvas 2D depth_alpha().
+fn depth_alpha_f32(edge: &super::layout_state::EdgeData, nodes: &[NodeState]) -> f32 {
+    let from_depth = nodes
+        .get(edge.from_idx)
+        .and_then(|n| n.bfs_depth)
+        .unwrap_or(u32::MAX);
+    let to_depth = nodes
+        .get(edge.to_idx)
+        .and_then(|n| n.bfs_depth)
+        .unwrap_or(u32::MAX);
+    let max_depth = from_depth.max(to_depth);
+    match max_depth {
+        0 | 1 => 0.50,
+        2 => 0.35,
+        3 => 0.25,
+        _ => 0.15,
+    }
+}
+
+// ── Helper: build quad edge (2 triangles = 6 vertices) ──────────────────────
+
+/// Build world-space quad vertices for a single edge (6 vertices = 2 triangles).
+/// half_width is in world units (= 0.75 / viewport_scale for 1.5px screen-space).
+#[allow(clippy::too_many_arguments)]
+fn build_quad_edge(
+    buf: &mut Vec<f32>,
+    from: (f32, f32),
+    to: (f32, f32),
+    half_width: f32,
+    r: f32,
+    g: f32,
+    b: f32,
+    alpha: f32,
+) {
+    let dx = to.0 - from.0;
+    let dy = to.1 - from.1;
+    let len = (dx * dx + dy * dy).sqrt().max(0.001);
+    // Perpendicular direction
+    let px = -dy / len * half_width;
+    let py = dx / len * half_width;
+
+    // 4 quad corners
+    let c0 = (from.0 + px, from.1 + py);
+    let c1 = (from.0 - px, from.1 - py);
+    let c2 = (to.0 + px, to.1 + py);
+    let c3 = (to.0 - px, to.1 - py);
+
+    // Triangle 1: c0, c1, c2
+    push_edge_vertex(buf, c0.0, c0.1, r, g, b, alpha);
+    push_edge_vertex(buf, c1.0, c1.1, r, g, b, alpha);
+    push_edge_vertex(buf, c2.0, c2.1, r, g, b, alpha);
+    // Triangle 2: c1, c3, c2
+    push_edge_vertex(buf, c1.0, c1.1, r, g, b, alpha);
+    push_edge_vertex(buf, c3.0, c3.1, r, g, b, alpha);
+    push_edge_vertex(buf, c2.0, c2.1, r, g, b, alpha);
 }
 
 // ── Helper: push edge vertex ─────────────────────────────────────────────────
@@ -718,11 +820,7 @@ fn set_uniforms(
 
 // ── Helper: compile shader ───────────────────────────────────────────────────
 
-fn compile_shader(
-    gl: &WebGl2RenderingContext,
-    shader_type: u32,
-    source: &str,
-) -> WebGlShader {
+fn compile_shader(gl: &WebGl2RenderingContext, shader_type: u32, source: &str) -> WebGlShader {
     let shader = gl.create_shader(shader_type).expect("create shader");
     gl.shader_source(&shader, source);
     gl.compile_shader(&shader);

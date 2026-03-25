@@ -60,12 +60,19 @@ impl GraphState {
     pub fn from_graph_data(data: GraphData) -> Self {
         // Simple deterministic hash for reproducible jitter (no rand dependency).
         fn hash_jitter(seed: u64) -> f64 {
-            let h = seed.wrapping_mul(6364136223846793005).wrapping_add(1442695040888963407);
+            let h = seed
+                .wrapping_mul(6364136223846793005)
+                .wrapping_add(1442695040888963407);
             (h >> 33) as f64 / (u32::MAX as f64) - 0.5 // range [-0.5, 0.5]
         }
 
         // Pre-compute BFS depth groups for ring placement (D-07).
-        let max_bfs_depth = data.nodes.iter().filter_map(|n| n.bfs_depth).max().unwrap_or(0);
+        let max_bfs_depth = data
+            .nodes
+            .iter()
+            .filter_map(|n| n.bfs_depth)
+            .max()
+            .unwrap_or(0);
         let orphan_ring = max_bfs_depth + 1;
 
         // Count nodes at each depth for angular spacing within rings.
@@ -101,8 +108,8 @@ impl GraphState {
                 } else {
                     // Depth-N nodes: concentric ring placement (D-07).
                     let ring_radius = base_ring_spacing * depth as f64;
-                    let angle = 2.0 * std::f64::consts::PI * (pos_in_ring as f64)
-                        / (count_at_depth as f64);
+                    let angle =
+                        2.0 * std::f64::consts::PI * (pos_in_ring as f64) / (count_at_depth as f64);
                     // 15% radial jitter to avoid perfect circle (gives force sim asymmetry).
                     let radial_jitter = ring_radius * 0.15 * hash_jitter(i as u64 * 3);
                     (
@@ -122,7 +129,11 @@ impl GraphState {
                     String::new()
                 };
                 let citation_count = n.citation_count.unwrap_or(0);
-                let is_seed = data.seed_paper_id.as_ref().map(|sid| sid == &n.id).unwrap_or(false);
+                let is_seed = data
+                    .seed_paper_id
+                    .as_ref()
+                    .map(|sid| sid == &n.id)
+                    .unwrap_or(false);
                 NodeState {
                     id: n.id,
                     title: n.title,
@@ -144,8 +155,11 @@ impl GraphState {
             .collect();
 
         // Build node id-to-index map for edge resolution
-        let id_to_idx: std::collections::HashMap<&str, usize> =
-            nodes.iter().enumerate().map(|(i, n)| (n.id.as_str(), i)).collect();
+        let id_to_idx: std::collections::HashMap<&str, usize> = nodes
+            .iter()
+            .enumerate()
+            .map(|(i, n)| (n.id.as_str(), i))
+            .collect();
 
         let edges: Vec<EdgeData> = data
             .edges
@@ -251,7 +265,11 @@ mod tests {
     fn test_node_state_bfs_depth_some_propagates() {
         let mut node = make_node("A", Some(0));
         node.bfs_depth = Some(2);
-        let data = GraphData { nodes: vec![node], edges: vec![], seed_paper_id: None };
+        let data = GraphData {
+            nodes: vec![node],
+            edges: vec![],
+            seed_paper_id: None,
+        };
         let state = GraphState::from_graph_data(data);
         assert_eq!(state.nodes[0].bfs_depth, Some(2));
     }
@@ -259,7 +277,11 @@ mod tests {
     #[test]
     fn test_node_state_bfs_depth_none_propagates() {
         let node = make_node("A", Some(0));
-        let data = GraphData { nodes: vec![node], edges: vec![], seed_paper_id: None };
+        let data = GraphData {
+            nodes: vec![node],
+            edges: vec![],
+            seed_paper_id: None,
+        };
         let state = GraphState::from_graph_data(data);
         assert_eq!(state.nodes[0].bfs_depth, None);
     }
@@ -267,7 +289,11 @@ mod tests {
     #[test]
     fn test_node_state_lod_visible_defaults_true() {
         let node = make_node("A", Some(0));
-        let data = GraphData { nodes: vec![node], edges: vec![], seed_paper_id: None };
+        let data = GraphData {
+            nodes: vec![node],
+            edges: vec![],
+            seed_paper_id: None,
+        };
         let state = GraphState::from_graph_data(data);
         assert!(state.nodes[0].lod_visible);
     }
@@ -275,7 +301,11 @@ mod tests {
     #[test]
     fn test_node_state_temporal_visible_defaults_true() {
         let node = make_node("A", Some(0));
-        let data = GraphData { nodes: vec![node], edges: vec![], seed_paper_id: None };
+        let data = GraphData {
+            nodes: vec![node],
+            edges: vec![],
+            seed_paper_id: None,
+        };
         let state = GraphState::from_graph_data(data);
         assert!(state.nodes[0].temporal_visible);
     }
@@ -333,7 +363,10 @@ mod tests {
         };
         let state = GraphState::from_graph_data(data);
         assert!(state.nodes[0].is_seed, "seed node should have is_seed=true");
-        assert!(!state.nodes[1].is_seed, "non-seed node should have is_seed=false");
+        assert!(
+            !state.nodes[1].is_seed,
+            "non-seed node should have is_seed=false"
+        );
     }
 
     #[test]
@@ -349,7 +382,11 @@ mod tests {
 
     #[test]
     fn test_graph_state_current_scale_initialized_to_1() {
-        let data = GraphData { nodes: vec![], edges: vec![], seed_paper_id: None };
+        let data = GraphData {
+            nodes: vec![],
+            edges: vec![],
+            seed_paper_id: None,
+        };
         let state = GraphState::from_graph_data(data);
         assert!((state.current_scale - 1.0).abs() < 1e-10);
     }
@@ -408,7 +445,10 @@ mod tests {
     #[test]
     fn test_from_graph_data_node_radius_uses_citation_count() {
         let data = GraphData {
-            nodes: vec![make_node("2301.11111", Some(0)), make_node("2301.22222", Some(3))],
+            nodes: vec![
+                make_node("2301.11111", Some(0)),
+                make_node("2301.22222", Some(3)),
+            ],
             edges: vec![],
             seed_paper_id: None,
         };
@@ -454,7 +494,10 @@ mod tests {
         state.alpha = 0.01;
         let converged = state.check_alpha_convergence();
         assert!(!converged, "should not converge when alpha > ALPHA_MIN");
-        assert!(state.simulation_running, "simulation should still be running");
+        assert!(
+            state.simulation_running,
+            "simulation should still be running"
+        );
 
         // Alpha below threshold — simulation stops.
         state.alpha = 0.0005; // Below ALPHA_MIN (0.001)

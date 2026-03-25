@@ -1,12 +1,12 @@
 use futures::{SinkExt, StreamExt};
-use gloo_worker::reactor::{reactor, ReactorScope};
+use gloo_worker::reactor::{ReactorScope, reactor};
 use serde::{Deserialize, Serialize};
 
 pub mod barnes_hut;
 pub mod forces;
 
 // Re-export for testing and external use.
-pub use barnes_hut::{barnes_hut_repulsion, QuadTree};
+pub use barnes_hut::{QuadTree, barnes_hut_repulsion};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct NodeData {

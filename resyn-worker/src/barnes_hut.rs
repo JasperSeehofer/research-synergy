@@ -18,10 +18,30 @@ impl Rect {
         let hw = self.width / 2.0;
         let hh = self.height / 2.0;
         [
-            Rect { x: self.x, y: self.y, width: hw, height: hh },
-            Rect { x: self.x + hw, y: self.y, width: hw, height: hh },
-            Rect { x: self.x, y: self.y + hh, width: hw, height: hh },
-            Rect { x: self.x + hw, y: self.y + hh, width: hw, height: hh },
+            Rect {
+                x: self.x,
+                y: self.y,
+                width: hw,
+                height: hh,
+            },
+            Rect {
+                x: self.x + hw,
+                y: self.y,
+                width: hw,
+                height: hh,
+            },
+            Rect {
+                x: self.x,
+                y: self.y + hh,
+                width: hw,
+                height: hh,
+            },
+            Rect {
+                x: self.x + hw,
+                y: self.y + hh,
+                width: hw,
+                height: hh,
+            },
         ]
     }
 
@@ -73,7 +93,12 @@ impl QuadTree {
     /// Build a QuadTree from a set of positions and masses.
     pub fn build(positions: &[(f64, f64)], masses: &[f64]) -> QuadTree {
         if positions.is_empty() {
-            return QuadTree::new(Rect { x: 0.0, y: 0.0, width: 1.0, height: 1.0 });
+            return QuadTree::new(Rect {
+                x: 0.0,
+                y: 0.0,
+                width: 1.0,
+                height: 1.0,
+            });
         }
 
         // Compute bounding rect.
@@ -82,16 +107,29 @@ impl QuadTree {
         let mut max_x = f64::MIN;
         let mut max_y = f64::MIN;
         for &(px, py) in positions {
-            if px < min_x { min_x = px; }
-            if py < min_y { min_y = py; }
-            if px > max_x { max_x = px; }
-            if py > max_y { max_y = py; }
+            if px < min_x {
+                min_x = px;
+            }
+            if py < min_y {
+                min_y = py;
+            }
+            if px > max_x {
+                max_x = px;
+            }
+            if py > max_y {
+                max_y = py;
+            }
         }
 
         // Make square and add padding to avoid degenerate zero-size cells.
         let pad = 1.0;
         let size = (max_x - min_x).max(max_y - min_y) + pad * 2.0;
-        let bounds = Rect { x: min_x - pad, y: min_y - pad, width: size, height: size };
+        let bounds = Rect {
+            x: min_x - pad,
+            y: min_y - pad,
+            width: size,
+            height: size,
+        };
 
         let mut tree = QuadTree::new(bounds);
         for (i, (&pos, &mass)) in positions.iter().zip(masses.iter()).enumerate() {
@@ -153,7 +191,14 @@ impl QuadTree {
 ///
 /// `theta` — opening angle criterion. Smaller = more accurate, larger = faster.
 /// Returns (fx, fy) force vector.
-pub fn barnes_hut_repulsion(tree: &QuadTree, x: f64, y: f64, mass: f64, theta: f64, repulsion_strength: f64) -> (f64, f64) {
+pub fn barnes_hut_repulsion(
+    tree: &QuadTree,
+    x: f64,
+    y: f64,
+    mass: f64,
+    theta: f64,
+    repulsion_strength: f64,
+) -> (f64, f64) {
     if tree.total_mass == 0.0 {
         return (0.0, 0.0);
     }
@@ -210,7 +255,11 @@ mod tests {
         let positions = vec![(0.0_f64, 0.0_f64), (100.0, 100.0)];
         let masses = vec![1.0_f64, 1.0_f64];
         let tree = QuadTree::build(&positions, &masses);
-        assert!((tree.total_mass - 2.0).abs() < 1e-10, "total_mass should be 2.0, got {}", tree.total_mass);
+        assert!(
+            (tree.total_mass - 2.0).abs() < 1e-10,
+            "total_mass should be 2.0, got {}",
+            tree.total_mass
+        );
     }
 
     #[test]
@@ -219,8 +268,16 @@ mod tests {
         let masses = vec![1.0_f64, 1.0_f64];
         let tree = QuadTree::build(&positions, &masses);
         let (cx, cy) = tree.center_of_mass;
-        assert!((cx - 50.0).abs() < 1e-6, "center_x should be 50.0, got {}", cx);
-        assert!((cy - 50.0).abs() < 1e-6, "center_y should be 50.0, got {}", cy);
+        assert!(
+            (cx - 50.0).abs() < 1e-6,
+            "center_x should be 50.0, got {}",
+            cx
+        );
+        assert!(
+            (cy - 50.0).abs() < 1e-6,
+            "center_y should be 50.0, got {}",
+            cy
+        );
     }
 
     #[test]
@@ -230,7 +287,11 @@ mod tests {
         let tree = QuadTree::build(&positions, &masses);
         let (fx, fy) = barnes_hut_repulsion(&tree, 0.0, 0.0, 1.0, 0.9, -30.0);
         let mag = (fx * fx + fy * fy).sqrt();
-        assert!(mag > 0.0, "repulsion force should be non-zero, got magnitude {}", mag);
+        assert!(
+            mag > 0.0,
+            "repulsion force should be non-zero, got magnitude {}",
+            mag
+        );
     }
 
     #[test]
@@ -245,7 +306,12 @@ mod tests {
 
         let mag1 = fx1.abs();
         let mag2 = fx2.abs();
-        assert!(mag1 > mag2, "force at distance 10 ({}) should be greater than at 50 ({})", mag1, mag2);
+        assert!(
+            mag1 > mag2,
+            "force at distance 10 ({}) should be greater than at 50 ({})",
+            mag1,
+            mag2
+        );
     }
 
     #[test]

@@ -1,6 +1,6 @@
 //! Force simulation using Barnes-Hut for repulsion.
 
-use crate::{barnes_hut, LayoutInput, LayoutOutput, NodeData};
+use crate::{LayoutInput, LayoutOutput, NodeData, barnes_hut};
 
 pub const REPULSION_STRENGTH: f64 = -5000.0;
 pub const ATTRACTION_STRENGTH: f64 = 0.008;
@@ -19,7 +19,12 @@ pub const DEPTH_DISTANCE_FACTOR: f64 = 0.5;
 /// `nodes` holds position/mass/pinned state and is mutated in place.
 /// Velocities are maintained via a parallel `vel` slice.
 /// Returns `true` if the simulation has converged (alpha < ALPHA_MIN).
-pub fn simulation_tick(nodes: &mut [NodeData], vel: &mut [(f64, f64)], edges: &[(usize, usize)], alpha: &mut f64) -> bool {
+pub fn simulation_tick(
+    nodes: &mut [NodeData],
+    vel: &mut [(f64, f64)],
+    edges: &[(usize, usize)],
+    alpha: &mut f64,
+) -> bool {
     let n = nodes.len();
     if n == 0 {
         *alpha *= ALPHA_DECAY;
@@ -39,7 +44,14 @@ pub fn simulation_tick(nodes: &mut [NodeData], vel: &mut [(f64, f64)], edges: &[
         if nodes[i].pinned {
             continue;
         }
-        let (fx, fy) = barnes_hut::barnes_hut_repulsion(&tree, nodes[i].x, nodes[i].y, nodes[i].mass, THETA, REPULSION_STRENGTH);
+        let (fx, fy) = barnes_hut::barnes_hut_repulsion(
+            &tree,
+            nodes[i].x,
+            nodes[i].y,
+            nodes[i].mass,
+            THETA,
+            REPULSION_STRENGTH,
+        );
         forces[i].0 += fx;
         forces[i].1 += fy;
     }
@@ -144,11 +156,7 @@ pub fn simulation_tick(nodes: &mut [NodeData], vel: &mut [(f64, f64)], edges: &[
 /// Run `ticks` iterations of the force simulation and return positions + convergence flag.
 pub fn run_ticks(input: &LayoutInput) -> LayoutOutput {
     let mut nodes: Vec<NodeData> = input.nodes.clone();
-    let mut vel: Vec<(f64, f64)> = input
-        .nodes
-        .iter()
-        .map(|nd| (nd.vx, nd.vy))
-        .collect();
+    let mut vel: Vec<(f64, f64)> = input.nodes.iter().map(|nd| (nd.vx, nd.vy)).collect();
     let mut alpha = input.alpha;
     let mut converged = false;
 
@@ -161,7 +169,12 @@ pub fn run_ticks(input: &LayoutInput) -> LayoutOutput {
 
     let positions = nodes.iter().map(|nd| (nd.x, nd.y)).collect();
     let velocities = vel;
-    LayoutOutput { positions, velocities, alpha, converged }
+    LayoutOutput {
+        positions,
+        velocities,
+        alpha,
+        converged,
+    }
 }
 
 #[cfg(test)]
@@ -170,7 +183,16 @@ mod tests {
     use crate::NodeData;
 
     fn make_node(x: f64, y: f64) -> NodeData {
-        NodeData { x, y, vx: 0.0, vy: 0.0, mass: 1.0, pinned: false, radius: 8.0, bfs_depth: 0 }
+        NodeData {
+            x,
+            y,
+            vx: 0.0,
+            vy: 0.0,
+            mass: 1.0,
+            pinned: false,
+            radius: 8.0,
+            bfs_depth: 0,
+        }
     }
 
     fn make_vel(n: usize) -> Vec<(f64, f64)> {
@@ -180,17 +202,47 @@ mod tests {
     #[test]
     fn test_simulation_tick_pinned_nodes_no_movement() {
         let mut nodes = vec![
-            NodeData { x: 0.0, y: 0.0, vx: 0.0, vy: 0.0, mass: 1.0, pinned: true, radius: 8.0, bfs_depth: 0 },
-            NodeData { x: 50.0, y: 50.0, vx: 0.0, vy: 0.0, mass: 1.0, pinned: true, radius: 8.0, bfs_depth: 0 },
+            NodeData {
+                x: 0.0,
+                y: 0.0,
+                vx: 0.0,
+                vy: 0.0,
+                mass: 1.0,
+                pinned: true,
+                radius: 8.0,
+                bfs_depth: 0,
+            },
+            NodeData {
+                x: 50.0,
+                y: 50.0,
+                vx: 0.0,
+                vy: 0.0,
+                mass: 1.0,
+                pinned: true,
+                radius: 8.0,
+                bfs_depth: 0,
+            },
         ];
         let mut vel = make_vel(2);
         let edges = vec![(0, 1)];
         let mut alpha = 1.0;
         simulation_tick(&mut nodes, &mut vel, &edges, &mut alpha);
-        assert!((nodes[0].x - 0.0).abs() < 1e-10, "pinned node x should not change");
-        assert!((nodes[0].y - 0.0).abs() < 1e-10, "pinned node y should not change");
-        assert!((nodes[1].x - 50.0).abs() < 1e-10, "pinned node x should not change");
-        assert!((nodes[1].y - 50.0).abs() < 1e-10, "pinned node y should not change");
+        assert!(
+            (nodes[0].x - 0.0).abs() < 1e-10,
+            "pinned node x should not change"
+        );
+        assert!(
+            (nodes[0].y - 0.0).abs() < 1e-10,
+            "pinned node y should not change"
+        );
+        assert!(
+            (nodes[1].x - 50.0).abs() < 1e-10,
+            "pinned node x should not change"
+        );
+        assert!(
+            (nodes[1].y - 50.0).abs() < 1e-10,
+            "pinned node y should not change"
+        );
     }
 
     #[test]
@@ -200,7 +252,10 @@ mod tests {
         let edges = vec![];
         let mut alpha = ALPHA_MIN * 0.5; // Already below threshold.
         let converged = simulation_tick(&mut nodes, &mut vel, &edges, &mut alpha);
-        assert!(converged, "should report converged when alpha is below ALPHA_MIN");
+        assert!(
+            converged,
+            "should report converged when alpha is below ALPHA_MIN"
+        );
     }
 
     #[test]
@@ -224,7 +279,10 @@ mod tests {
             height: 600.0,
         };
         let output = run_ticks(&input);
-        assert!(output.converged, "100-node graph should converge within 5000 ticks");
+        assert!(
+            output.converged,
+            "100-node graph should converge within 5000 ticks"
+        );
     }
 
     #[test]
@@ -295,7 +353,11 @@ mod tests {
     #[test]
     fn test_run_ticks_positions_length_matches_input() {
         let input = LayoutInput {
-            nodes: vec![make_node(0.0, 0.0), make_node(100.0, 0.0), make_node(50.0, 100.0)],
+            nodes: vec![
+                make_node(0.0, 0.0),
+                make_node(100.0, 0.0),
+                make_node(50.0, 100.0),
+            ],
             edges: vec![(0, 1), (1, 2)],
             ticks: 10,
             alpha: 1.0,
@@ -303,7 +365,11 @@ mod tests {
             height: 600.0,
         };
         let output = run_ticks(&input);
-        assert_eq!(output.positions.len(), 3, "output positions should match input node count");
+        assert_eq!(
+            output.positions.len(),
+            3,
+            "output positions should match input node count"
+        );
     }
 
     #[test]
@@ -321,15 +387,37 @@ mod tests {
         let (x0, _) = output.positions[0];
         let (x1, _) = output.positions[1];
         let final_dist = (x1 - x0).abs();
-        assert!(final_dist > 1.0, "repulsion should push close nodes apart; final dist={}", final_dist);
+        assert!(
+            final_dist > 1.0,
+            "repulsion should push close nodes apart; final dist={}",
+            final_dist
+        );
     }
 
     #[test]
     fn test_collision_force_separates_overlapping_nodes() {
         // Two nodes with radius 8.0 at the same position — collision should push them apart.
         let mut nodes = vec![
-            NodeData { x: 0.0, y: 0.0, vx: 0.0, vy: 0.0, mass: 1.0, pinned: false, radius: 8.0, bfs_depth: 0 },
-            NodeData { x: 5.0, y: 0.0, vx: 0.0, vy: 0.0, mass: 1.0, pinned: false, radius: 8.0, bfs_depth: 0 },
+            NodeData {
+                x: 0.0,
+                y: 0.0,
+                vx: 0.0,
+                vy: 0.0,
+                mass: 1.0,
+                pinned: false,
+                radius: 8.0,
+                bfs_depth: 0,
+            },
+            NodeData {
+                x: 5.0,
+                y: 0.0,
+                vx: 0.0,
+                vy: 0.0,
+                mass: 1.0,
+                pinned: false,
+                radius: 8.0,
+                bfs_depth: 0,
+            },
         ];
         let mut vel = make_vel(2);
         let edges = vec![];

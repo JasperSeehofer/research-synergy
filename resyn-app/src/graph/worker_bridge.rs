@@ -1,7 +1,7 @@
 //! Bridge to the force layout Web Worker.
 
-use gloo_worker::reactor::ReactorBridge;
 use gloo_worker::Spawnable;
+use gloo_worker::reactor::ReactorBridge;
 use resyn_worker::{ForceLayoutWorker, LayoutInput};
 
 /// A typed bridge to the ForceLayoutWorker Web Worker.

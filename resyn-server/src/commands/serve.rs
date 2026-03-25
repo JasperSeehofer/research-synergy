@@ -90,7 +90,10 @@ pub async fn run(args: ServeArgs) -> anyhow::Result<()> {
             }),
         )
         // Serve WASM/JS dist files as a fallback (production mode)
-        .fallback_service(ServeDir::new("resyn-app/dist").not_found_service(ServeFile::new("resyn-app/dist/index.html")));
+        .fallback_service(
+            ServeDir::new("resyn-app/dist")
+                .not_found_service(ServeFile::new("resyn-app/dist/index.html")),
+        );
 
     let addr = format!("127.0.0.1:{}", args.port);
     let listener = tokio::net::TcpListener::bind(&addr)

@@ -2,10 +2,10 @@ use leptos::html::Canvas;
 use leptos::prelude::*;
 use std::cell::RefCell;
 use std::rc::Rc;
-use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
-use wasm_bindgen::prelude::*;
+use std::sync::atomic::{AtomicBool, Ordering};
 use wasm_bindgen::JsCast;
+use wasm_bindgen::prelude::*;
 
 use crate::app::{DrawerOpenRequest, SelectedPaper};
 use crate::components::graph_controls::{GraphControls, TemporalSlider};
@@ -112,16 +112,21 @@ pub fn GraphPage() -> impl IntoView {
                 .collect();
             let spread = if connected_dists.is_empty() {
                 // Fallback: all nodes are orphans, use 90th percentile of all
-                let mut dists: Vec<f64> = graph_state.nodes.iter()
-                    .map(|n| (n.x * n.x + n.y * n.y).sqrt()).collect();
+                let mut dists: Vec<f64> = graph_state
+                    .nodes
+                    .iter()
+                    .map(|n| (n.x * n.x + n.y * n.y).sqrt())
+                    .collect();
                 dists.sort_by(|a, b| a.partial_cmp(b).unwrap());
                 let idx = (dists.len() as f64 * 0.9) as usize;
                 dists[idx.min(dists.len() - 1)]
             } else {
-                *connected_dists.iter()
+                *connected_dists
+                    .iter()
                     .max_by(|a, b| a.partial_cmp(b).unwrap())
                     .unwrap()
-            }.max(1.0);
+            }
+            .max(1.0);
             let fit_scale = (css_width.min(css_height) * 0.4 / spread).min(1.0);
             viewport.scale = fit_scale;
         }
@@ -253,9 +258,7 @@ type ClosureSlot = Rc<RefCell<Option<Closure<dyn FnMut()>>>>;
 
 type PinnedBridge = Rc<
     RefCell<
-        std::pin::Pin<
-            Box<gloo_worker::reactor::ReactorBridge<resyn_worker::ForceLayoutWorker>>,
-        >,
+        std::pin::Pin<Box<gloo_worker::reactor::ReactorBridge<resyn_worker::ForceLayoutWorker>>>,
     >,
 >;
 
@@ -268,12 +271,27 @@ fn build_layout_input(graph: &GraphState, width: f64, height: f64) -> LayoutInpu
         .enumerate()
         .map(|(i, n)| {
             let (vx, vy) = graph.velocities.get(i).copied().unwrap_or((0.0, 0.0));
-            NodeData { x: n.x, y: n.y, vx, vy, mass: 1.0, pinned: n.pinned, radius: n.radius, bfs_depth: n.bfs_depth.unwrap_or(u32::MAX) }
+            NodeData {
+                x: n.x,
+                y: n.y,
+                vx,
+                vy,
+                mass: 1.0,
+                pinned: n.pinned,
+                radius: n.radius,
+                bfs_depth: n.bfs_depth.unwrap_or(u32::MAX),
+            }
         })
         .collect();
-    let edges: Vec<(usize, usize)> =
-        graph.edges.iter().map(|e| (e.from_idx, e.to_idx)).collect();
-    LayoutInput { nodes, edges, ticks: 1, alpha: graph.alpha, width, height }
+    let edges: Vec<(usize, usize)> = graph.edges.iter().map(|e| (e.from_idx, e.to_idx)).collect();
+    LayoutInput {
+        nodes,
+        edges,
+        ticks: 1,
+        alpha: graph.alpha,
+        width,
+        height,
+    }
 }
 
 // ── ResizeObserver setup ────────────────────────────────────────────────────
@@ -394,22 +412,14 @@ fn start_render_loop(
             let lod_scale = s.viewport.scale;
             let seed_id = s.graph.seed_paper_id.clone();
             // Update LOD visibility based on current zoom level
-            crate::graph::lod::update_lod_visibility(
-                &mut s.graph.nodes,
-                lod_scale,
-                &seed_id,
-            );
+            crate::graph::lod::update_lod_visibility(&mut s.graph.nodes, lod_scale, &seed_id);
             // Sync temporal range from signals
             s.graph.temporal_min_year = temporal_min.get_untracked();
             s.graph.temporal_max_year = temporal_max.get_untracked();
             let t_min = s.graph.temporal_min_year;
             let t_max = s.graph.temporal_max_year;
             // Update temporal visibility
-            crate::graph::lod::update_temporal_visibility(
-                &mut s.graph.nodes,
-                t_min,
-                t_max,
-            );
+            crate::graph::lod::update_temporal_visibility(&mut s.graph.nodes, t_min, t_max);
             // Compute visible count (captured before render for signal update)
             vis_count = crate::graph::lod::compute_visible_count(&s.graph.nodes);
 
@@ -426,7 +436,9 @@ fn start_render_loop(
         let window = web_sys::window().expect("no window");
         let slot = closure_slot_inner.borrow();
         if let Some(cb) = slot.as_ref() {
-            window.request_animation_frame(cb.as_ref().unchecked_ref()).unwrap();
+            window
+                .request_animation_frame(cb.as_ref().unchecked_ref())
+                .unwrap();
         }
     });
 
@@ -436,7 +448,9 @@ fn start_render_loop(
     {
         let slot = closure_slot.borrow();
         if let Some(cb) = slot.as_ref() {
-            window.request_animation_frame(cb.as_ref().unchecked_ref()).unwrap();
+            window
+                .request_animation_frame(cb.as_ref().unchecked_ref())
+                .unwrap();
         }
     }
 
@@ -468,14 +482,22 @@ fn edge_tooltip(graph: &GraphState, edge_idx: usize) -> String {
         }
         EdgeType::Contradiction => {
             let confidence = edge.confidence.map(|c| (c * 100.0) as u32).unwrap_or(0);
-            let terms: Vec<&str> =
-                edge.shared_terms.iter().take(3).map(|s| s.as_str()).collect();
+            let terms: Vec<&str> = edge
+                .shared_terms
+                .iter()
+                .take(3)
+                .map(|s| s.as_str())
+                .collect();
             format!("Contradiction · {}% · {}", confidence, terms.join(", "))
         }
         EdgeType::AbcBridge => {
             let confidence = edge.confidence.map(|c| (c * 100.0) as u32).unwrap_or(0);
-            let terms: Vec<&str> =
-                edge.shared_terms.iter().take(3).map(|s| s.as_str()).collect();
+            let terms: Vec<&str> = edge
+                .shared_terms
+                .iter()
+                .take(3)
+                .map(|s| s.as_str())
+                .collect();
             format!("ABC-Bridge · {}% · {}", confidence, terms.join(", "))
         }
     }
@@ -533,7 +555,11 @@ fn attach_event_listeners(
                     tooltip_signal.set(None);
                     return;
                 }
-                InteractionState::DraggingNode { node_idx, offset_x, offset_y } => {
+                InteractionState::DraggingNode {
+                    node_idx,
+                    offset_x,
+                    offset_y,
+                } => {
                     if node_idx < s.graph.nodes.len() {
                         s.graph.nodes[node_idx].x = wx + offset_x;
                         s.graph.nodes[node_idx].y = wy + offset_y;
@@ -569,7 +595,8 @@ fn attach_event_listeners(
             }
         });
 
-    canvas.add_event_listener_with_callback("mousemove", mousemove.as_ref().unchecked_ref())
+    canvas
+        .add_event_listener_with_callback("mousemove", mousemove.as_ref().unchecked_ref())
         .unwrap();
 
     // ── mousedown ────────────────────────────────────────────────────────────
@@ -590,8 +617,11 @@ fn attach_event_listeners(
                 let node = &s.graph.nodes[node_idx];
                 let offset_x = node.x - wx;
                 let offset_y = node.y - wy;
-                s.interaction =
-                    InteractionState::DraggingNode { node_idx, offset_x, offset_y };
+                s.interaction = InteractionState::DraggingNode {
+                    node_idx,
+                    offset_x,
+                    offset_y,
+                };
             } else {
                 let start_offset_x = s.viewport.offset_x;
                 let start_offset_y = s.viewport.offset_y;
@@ -604,7 +634,8 @@ fn attach_event_listeners(
             }
         });
 
-    canvas.add_event_listener_with_callback("mousedown", mousedown.as_ref().unchecked_ref())
+    canvas
+        .add_event_listener_with_callback("mousedown", mousedown.as_ref().unchecked_ref())
         .unwrap();
 
     // ── mouseup ──────────────────────────────────────────────────────────────
@@ -672,7 +703,8 @@ fn attach_event_listeners(
             }
         });
 
-    canvas.add_event_listener_with_callback("mouseup", mouseup.as_ref().unchecked_ref())
+    canvas
+        .add_event_listener_with_callback("mouseup", mouseup.as_ref().unchecked_ref())
         .unwrap();
 
     // ── dblclick — reset viewport ────────────────────────────────────────────
@@ -686,7 +718,8 @@ fn attach_event_listeners(
             s.viewport = Viewport::new(w, h);
         });
 
-    canvas.add_event_listener_with_callback("dblclick", dblclick.as_ref().unchecked_ref())
+    canvas
+        .add_event_listener_with_callback("dblclick", dblclick.as_ref().unchecked_ref())
         .unwrap();
 
     // ── wheel — zoom toward cursor (normalized delta) ────────────────────────
@@ -709,7 +742,9 @@ fn attach_event_listeners(
             interaction::zoom_toward_cursor(&mut s.viewport, cx, cy, normalized);
         });
 
-    canvas.add_event_listener_with_callback("wheel", wheel.as_ref().unchecked_ref()).unwrap();
+    canvas
+        .add_event_listener_with_callback("wheel", wheel.as_ref().unchecked_ref())
+        .unwrap();
 
     // ── pointerleave — clear hover state ────────────────────────────────────
     let state_pl = state.clone();

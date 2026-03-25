@@ -386,7 +386,8 @@ fn SourceSectionText(
     } else {
         view! {
             <p class="source-section-text">{text}</p>
-        }.into_any()
+        }
+        .into_any()
     }
 }
 

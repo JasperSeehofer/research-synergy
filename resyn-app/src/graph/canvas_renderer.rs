@@ -96,7 +96,11 @@ impl Renderer for Canvas2DRenderer {
             self.ctx.set_stroke_style_str("#8b949e");
             self.ctx.set_line_width(1.5 / viewport.scale);
             let base_alpha = depth_alpha(edge, &state.nodes);
-            let dim_alpha = if edge_both_dimmed(edge) { 0.1 } else { base_alpha };
+            let dim_alpha = if edge_both_dimmed(edge) {
+                0.1
+            } else {
+                base_alpha
+            };
             self.ctx.set_global_alpha(dim_alpha * edge_vis_alpha);
             self.ctx.begin_path();
             self.ctx.move_to(from.x, from.y);
@@ -222,7 +226,8 @@ impl Renderer for Canvas2DRenderer {
                 self.ctx.restore();
                 continue; // Skip drawing effectively invisible nodes
             }
-            self.ctx.set_global_alpha(combined_alpha * (if dimmed { 0.5 } else { 1.0 }));
+            self.ctx
+                .set_global_alpha(combined_alpha * (if dimmed { 0.5 } else { 1.0 }));
 
             let fill_color = if dimmed && !is_selected && !is_hovered {
                 "#2a3a4f"
@@ -264,7 +269,13 @@ impl Renderer for Canvas2DRenderer {
             if is_selected {
                 self.ctx.begin_path();
                 self.ctx
-                    .arc(node.x, node.y, node.radius + 4.0, 0.0, std::f64::consts::TAU)
+                    .arc(
+                        node.x,
+                        node.y,
+                        node.radius + 4.0,
+                        0.0,
+                        std::f64::consts::TAU,
+                    )
                     .unwrap();
                 self.ctx.set_stroke_style_str("#58a6ff");
                 self.ctx.set_line_width(2.0);
@@ -287,7 +298,11 @@ impl Renderer for Canvas2DRenderer {
                 let metrics = self.ctx.measure_text(&label).unwrap();
                 let text_half_width = metrics.width() / 2.0;
                 self.ctx
-                    .fill_text(&label, node.x - text_half_width, node.y + node.radius + 14.0)
+                    .fill_text(
+                        &label,
+                        node.x - text_half_width,
+                        node.y + node.radius + 14.0,
+                    )
                     .unwrap();
             }
         }
@@ -306,8 +321,14 @@ impl Renderer for Canvas2DRenderer {
 /// Compute depth-based alpha for regular citation edges (D-02).
 /// Uses max BFS depth of the two endpoints.
 fn depth_alpha(edge: &EdgeData, nodes: &[NodeState]) -> f64 {
-    let from_depth = nodes.get(edge.from_idx).and_then(|n| n.bfs_depth).unwrap_or(u32::MAX);
-    let to_depth = nodes.get(edge.to_idx).and_then(|n| n.bfs_depth).unwrap_or(u32::MAX);
+    let from_depth = nodes
+        .get(edge.from_idx)
+        .and_then(|n| n.bfs_depth)
+        .unwrap_or(u32::MAX);
+    let to_depth = nodes
+        .get(edge.to_idx)
+        .and_then(|n| n.bfs_depth)
+        .unwrap_or(u32::MAX);
     let max_depth = from_depth.max(to_depth);
     match max_depth {
         0 | 1 => 0.50,

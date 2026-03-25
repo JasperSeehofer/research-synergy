@@ -119,7 +119,7 @@ pub fn build_section_aware_user_message(extraction: &TextExtractionResult) -> St
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::datamodels::extraction::{SectionMap, TextExtractionResult, ExtractionMethod};
+    use crate::datamodels::extraction::{ExtractionMethod, SectionMap, TextExtractionResult};
 
     fn make_extraction(
         abstract_text: Option<&str>,
@@ -179,24 +179,24 @@ mod tests {
         assert!(msg.contains("[ABSTRACT]"), "Must contain [ABSTRACT] header");
         assert!(msg.contains("[METHODS]"), "Must contain [METHODS] header");
         assert!(msg.contains("[RESULTS]"), "Must contain [RESULTS] header");
-        assert!(msg.contains("[CONCLUSION]"), "Must contain [CONCLUSION] header");
+        assert!(
+            msg.contains("[CONCLUSION]"),
+            "Must contain [CONCLUSION] header"
+        );
         assert!(msg.contains("Abstract text."));
         assert!(msg.contains("Results text."));
     }
 
     #[test]
     fn test_section_aware_message_partial_sections() {
-        let extraction = make_extraction(
-            Some("Only abstract available."),
-            None,
-            None,
-            None,
-            None,
-        );
+        let extraction = make_extraction(Some("Only abstract available."), None, None, None, None);
         let msg = build_section_aware_user_message(&extraction);
         assert!(msg.contains("[ABSTRACT]"), "Must contain [ABSTRACT] header");
         assert!(msg.contains("Only abstract available."));
-        assert!(msg.contains("[METHODS]\n[EMPTY]"), "Missing methods should be [EMPTY]");
+        assert!(
+            msg.contains("[METHODS]\n[EMPTY]"),
+            "Missing methods should be [EMPTY]"
+        );
     }
 
     #[test]

@@ -71,9 +71,15 @@ pub async fn get_graph_data() -> Result<GraphData, ServerFnError> {
         let mut edge_set: Vec<(String, String)> = Vec::new();
         for (from_id, to_id) in &citation_pairs {
             if paper_id_set.contains(from_id) && paper_id_set.contains(to_id) {
-                adjacency.entry(from_id.clone()).or_default().push(to_id.clone());
+                adjacency
+                    .entry(from_id.clone())
+                    .or_default()
+                    .push(to_id.clone());
                 // Also add reverse direction for undirected BFS
-                adjacency.entry(to_id.clone()).or_default().push(from_id.clone());
+                adjacency
+                    .entry(to_id.clone())
+                    .or_default()
+                    .push(from_id.clone());
                 edge_set.push((from_id.clone(), to_id.clone()));
             }
         }
@@ -91,8 +97,7 @@ pub async fn get_graph_data() -> Result<GraphData, ServerFnError> {
             .map(|p| p.id.clone());
 
         // BFS depth from seed
-        let mut depths: std::collections::HashMap<String, u32> =
-            std::collections::HashMap::new();
+        let mut depths: std::collections::HashMap<String, u32> = std::collections::HashMap::new();
         if let Some(ref seed_id) = seed_paper_id {
             use std::collections::VecDeque;
             let mut queue = VecDeque::new();

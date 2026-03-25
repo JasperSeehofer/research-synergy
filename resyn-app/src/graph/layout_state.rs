@@ -189,6 +189,18 @@ impl GraphState {
             current_scale: 1.0,
         }
     }
+
+    /// Check if the simulation has converged (alpha below threshold).
+    /// Returns `true` if the simulation was stopped (i.e., it just converged).
+    /// Called after each force tick to implement D-09 full-stop behavior.
+    pub fn check_alpha_convergence(&mut self) -> bool {
+        if self.alpha < resyn_worker::forces::ALPHA_MIN {
+            self.simulation_running = false;
+            true
+        } else {
+            false
+        }
+    }
 }
 
 #[cfg(test)]
@@ -399,6 +411,33 @@ mod tests {
         assert_eq!(state.edges.len(), 1);
         assert_eq!(state.edges[0].from_idx, 0);
         assert_eq!(state.edges[0].to_idx, 1);
+    }
+
+    #[test]
+    fn test_alpha_stops_simulation() {
+        // Verify D-09: simulation_running becomes false when alpha < ALPHA_MIN.
+        let data = GraphData {
+            nodes: vec![make_node("A", Some(0))],
+            edges: vec![],
+            seed_paper_id: None,
+        };
+        let mut state = GraphState::from_graph_data(data);
+        assert!(state.simulation_running, "simulation should start running");
+
+        // Alpha above threshold — simulation stays running.
+        state.alpha = 0.01;
+        let converged = state.check_alpha_convergence();
+        assert!(!converged, "should not converge when alpha > ALPHA_MIN");
+        assert!(state.simulation_running, "simulation should still be running");
+
+        // Alpha below threshold — simulation stops.
+        state.alpha = 0.0005; // Below ALPHA_MIN (0.001)
+        let converged = state.check_alpha_convergence();
+        assert!(converged, "should converge when alpha < ALPHA_MIN");
+        assert!(
+            !state.simulation_running,
+            "simulation_running should be false after alpha drops below ALPHA_MIN"
+        );
     }
 
     #[test]

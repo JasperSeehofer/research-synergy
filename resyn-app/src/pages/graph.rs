@@ -157,6 +157,7 @@ pub fn GraphPage() -> impl IntoView {
             pinned_bridge.clone(),
             tooltip_signal,
             selected_paper,
+            simulation_running,
         );
 
         // Start RAF render loop
@@ -354,8 +355,8 @@ fn start_render_loop(
             }
 
             // Run one force simulation tick inline (main thread).
-            // Alpha decays toward ALPHA_MIN but never stops — the graph stays
-            // responsive so dragging a node always triggers rearrangement.
+            // Simulation fully stops when alpha drops below ALPHA_MIN (D-09).
+            // Drag reheat restarts it temporarily for local rearrangement (D-05).
             if sim_running && !s.graph.nodes.is_empty() {
                 let canvas_w = s.viewport.width();
                 let canvas_h = s.viewport.height();
@@ -368,8 +369,10 @@ fn start_render_loop(
                     }
                 }
                 s.graph.velocities = output.velocities;
-                // Floor alpha at ALPHA_MIN instead of stopping — keeps forces alive
-                s.graph.alpha = output.alpha.max(resyn_worker::forces::ALPHA_MIN);
+                s.graph.alpha = output.alpha;
+                if s.graph.check_alpha_convergence() {
+                    simulation_running.set(false);
+                }
             }
 
             // Snapshot viewport scale
@@ -491,6 +494,7 @@ fn attach_event_listeners(
     _bridge: PinnedBridge,
     tooltip_signal: RwSignal<Option<TooltipData>>,
     selected_paper: RwSignal<Option<DrawerOpenRequest>>,
+    simulation_running: RwSignal<bool>,
 ) {
     let canvas_el = canvas.clone();
 
@@ -605,10 +609,14 @@ fn attach_event_listeners(
             let prev_interaction = s.interaction.clone();
             s.interaction = InteractionState::Idle;
 
+            let mut reheat_simulation = false;
             match prev_interaction {
                 InteractionState::DraggingNode { node_idx, .. } => {
-                    // Reheat alpha so forces rearrange the graph around the moved node
+                    // Reheat alpha so forces rearrange the graph around the moved node (D-05).
+                    // Also restart simulation in case it had fully stopped (D-09 full-stop).
                     s.graph.alpha = 0.3_f64.max(s.graph.alpha);
+                    s.graph.simulation_running = true;
+                    reheat_simulation = true;
                     if was_click {
                         // It was a click, not a drag
                         if s.was_already_pinned {
@@ -624,6 +632,8 @@ fn attach_event_listeners(
                                 paper_id,
                                 ..Default::default()
                             }));
+                            simulation_running.set(true);
+                            return;
                         }
                     }
                     // Real drag → node stays pinned (was set in mousedown)
@@ -634,9 +644,14 @@ fn attach_event_listeners(
                         s.graph.selected_node = None;
                         drop(s);
                         selected_paper.set(None);
+                        return;
                     }
                 }
                 InteractionState::Idle => {}
+            }
+            drop(s);
+            if reheat_simulation {
+                simulation_running.set(true);
             }
         });
 

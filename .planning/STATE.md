@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Graph Rendering Overhaul
-status: Phase complete — ready for verification
-stopped_at: Phase 16 context gathered
-last_updated: "2026-03-25T17:29:58.585Z"
+status: Ready to execute
+stopped_at: Completed 16-01-PLAN.md
+last_updated: "2026-03-25T18:39:48.301Z"
 progress:
   total_phases: 3
   completed_phases: 1
-  total_plans: 2
-  completed_plans: 2
+  total_plans: 4
+  completed_plans: 3
 ---
 
 # Project State
@@ -19,11 +19,11 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-24)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Phase 15 — force-simulation-rebalancing
+**Current focus:** Phase 16 — edge-and-node-renderer-fixes
 
 ## Current Position
 
-Phase: 15 (force-simulation-rebalancing) — EXECUTING
+Phase: 16 (edge-and-node-renderer-fixes) — EXECUTING
 Plan: 2 of 2
 
 ## Performance Metrics
@@ -43,6 +43,7 @@ Plan: 2 of 2
 *Updated after each plan completion*
 | Phase 15-force-simulation-rebalancing P01 | 2 | 1 tasks | 3 files |
 | Phase 15-force-simulation-rebalancing P02 | 6min | 2 tasks | 2 files |
+| Phase 16-edge-and-node-renderer-fixes P01 | 8min | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -58,6 +59,8 @@ Recent decisions affecting v1.2:
 - [Phase 15-force-simulation-rebalancing]: NodeData.radius wired from NodeState.radius (citation-count-scaled 4-18px) through LayoutInput to collision force
 - [Phase 15-force-simulation-rebalancing]: base_ring_spacing = 180px (1.5x IDEAL_DISTANCE) for BFS ring placement so nodes start beyond equilibrium for visible spreading animation
 - [Phase 15-force-simulation-rebalancing]: check_alpha_convergence() extracted to GraphState method for testability — avoids testing within WASM/Leptos RAF closure
+- [Phase 16-edge-and-node-renderer-fixes]: depth_alpha uses max BFS depth of edge endpoints for progressive hierarchy dimming
+- [Phase 16-edge-and-node-renderer-fixes]: All Canvas 2D line widths divided by viewport.scale for screen-space consistency at all zoom levels
 
 ### Pending Todos
 
@@ -71,6 +74,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-25T17:29:58.584Z
-Stopped at: Phase 16 context gathered
-Resume file: .planning/phases/16-edge-and-node-renderer-fixes/16-CONTEXT.md
+Last session: 2026-03-25T18:39:48.300Z
+Stopped at: Completed 16-01-PLAN.md
+Resume file: None

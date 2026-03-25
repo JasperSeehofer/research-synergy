@@ -15,15 +15,15 @@ Requirements for v1.2 Graph Rendering Overhaul. Each maps to roadmap phases.
 
 ### Edge Rendering
 
-- [ ] **EDGE-01**: Regular citation edges visible at-a-glance on the dark (#0d1117) background
+- [x] **EDGE-01**: Regular citation edges visible at-a-glance on the dark (#0d1117) background
 - [ ] **EDGE-02**: WebGL2 edges rendered via quad-based triangle geometry instead of 1px-capped LINES primitive
-- [ ] **EDGE-03**: Edge color and alpha consistent between Canvas 2D and WebGL2 renderers
+- [x] **EDGE-03**: Edge color and alpha consistent between Canvas 2D and WebGL2 renderers
 
 ### Node Rendering
 
 - [ ] **NODE-01**: Node circles sharp at all sizes using resolution-independent anti-aliasing (fwidth in WebGL2)
-- [ ] **NODE-02**: Node borders crisp at all zoom levels (line width scaled by inverse viewport scale)
-- [ ] **NODE-03**: Seed paper node visually distinct with gold/amber color and outer ring
+- [x] **NODE-02**: Node borders crisp at all zoom levels (line width scaled by inverse viewport scale)
+- [x] **NODE-03**: Seed paper node visually distinct with gold/amber color and outer ring
 
 ### Viewport & Labels
 
@@ -59,12 +59,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FORCE-01 | Phase 15 | Complete |
 | FORCE-02 | Phase 15 | Complete |
 | FORCE-03 | Phase 15 | Complete |
-| EDGE-01 | Phase 16 | Pending |
+| EDGE-01 | Phase 16 | Complete |
 | EDGE-02 | Phase 16 | Pending |
-| EDGE-03 | Phase 16 | Pending |
+| EDGE-03 | Phase 16 | Complete |
 | NODE-01 | Phase 16 | Pending |
-| NODE-02 | Phase 16 | Pending |
-| NODE-03 | Phase 16 | Pending |
+| NODE-02 | Phase 16 | Complete |
+| NODE-03 | Phase 16 | Complete |
 | VIEW-01 | Phase 17 | Pending |
 | VIEW-02 | Phase 17 | Pending |
 | LABEL-01 | Phase 17 | Pending |

@@ -52,7 +52,7 @@ Full details: `.planning/milestones/v1.1.1-ROADMAP.md`
 **Milestone Goal:** Make the citation graph a functional, visually clear force-directed layout with visible edges, sharp nodes, and proper structural clustering.
 
 - [x] **Phase 15: Force Simulation Rebalancing** — Retune Barnes-Hut coefficients so nodes form visible citation clusters instead of collapsing to a blob (completed 2026-03-25)
-- [ ] **Phase 16: Edge and Node Renderer Fixes** — Fix edge visibility and node sharpness in both Canvas 2D and WebGL2 renderers, and add seed node distinction
+- [x] **Phase 16: Edge and Node Renderer Fixes** — Fix edge visibility and node sharpness in both Canvas 2D and WebGL2 renderers, and add seed node distinction (completed 2026-03-25)
 - [ ] **Phase 17: Viewport Fit and Label Collision** — Auto-fit viewport after layout stabilizes, add priority-ordered label collision avoidance, and wire convergence indicator
 
 ## Phase Details
@@ -83,7 +83,7 @@ Plans:
 **Plans**: 2 plans
 Plans:
 - [x] 16-01-PLAN.md — Add is_seed to NodeState, update Canvas 2D edge colors/alpha, node borders, seed ring
-- [ ] 16-02-PLAN.md — Update WebGL2 node shader (fwidth AA, borders, seed), edge quad geometry, depth alpha
+- [x] 16-02-PLAN.md — Update WebGL2 node shader (fwidth AA, borders, seed), edge quad geometry, depth alpha
 
 ### Phase 17: Viewport Fit and Label Collision
 **Goal**: The graph fits into the viewport automatically after layout stabilizes, and node labels are readable without overlap
@@ -116,5 +116,5 @@ Plans:
 | 13. Graph Interaction | v1.1.1 | 1/1 | Complete | 2026-03-23 |
 | 14. Temporal Controls | v1.1.1 | 1/1 | Complete | 2026-03-24 |
 | 15. Force Simulation Rebalancing | v1.2 | 2/2 | Complete   | 2026-03-25 |
-| 16. Edge and Node Renderer Fixes | v1.2 | 1/2 | In Progress|  |
+| 16. Edge and Node Renderer Fixes | v1.2 | 2/2 | Complete   | 2026-03-25 |
 | 17. Viewport Fit and Label Collision | v1.2 | 0/? | Not started | - |

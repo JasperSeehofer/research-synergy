@@ -16,12 +16,12 @@ Requirements for v1.2 Graph Rendering Overhaul. Each maps to roadmap phases.
 ### Edge Rendering
 
 - [x] **EDGE-01**: Regular citation edges visible at-a-glance on the dark (#0d1117) background
-- [ ] **EDGE-02**: WebGL2 edges rendered via quad-based triangle geometry instead of 1px-capped LINES primitive
+- [x] **EDGE-02**: WebGL2 edges rendered via quad-based triangle geometry instead of 1px-capped LINES primitive
 - [x] **EDGE-03**: Edge color and alpha consistent between Canvas 2D and WebGL2 renderers
 
 ### Node Rendering
 
-- [ ] **NODE-01**: Node circles sharp at all sizes using resolution-independent anti-aliasing (fwidth in WebGL2)
+- [x] **NODE-01**: Node circles sharp at all sizes using resolution-independent anti-aliasing (fwidth in WebGL2)
 - [x] **NODE-02**: Node borders crisp at all zoom levels (line width scaled by inverse viewport scale)
 - [x] **NODE-03**: Seed paper node visually distinct with gold/amber color and outer ring
 
@@ -60,9 +60,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FORCE-02 | Phase 15 | Complete |
 | FORCE-03 | Phase 15 | Complete |
 | EDGE-01 | Phase 16 | Complete |
-| EDGE-02 | Phase 16 | Pending |
+| EDGE-02 | Phase 16 | Complete |
 | EDGE-03 | Phase 16 | Complete |
-| NODE-01 | Phase 16 | Pending |
+| NODE-01 | Phase 16 | Complete |
 | NODE-02 | Phase 16 | Complete |
 | NODE-03 | Phase 16 | Complete |
 | VIEW-01 | Phase 17 | Pending |

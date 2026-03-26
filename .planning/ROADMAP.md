@@ -99,6 +99,17 @@ Plans:
 - [x] 17-01-PLAN.md — Viewport auto-fit animation, user interaction latch, Fit button, convergence status badge
 - [x] 17-02-PLAN.md — Priority-ordered label collision avoidance with pill/badge rendering
 
+## Backlog
+
+### Phase 999.1: Keyword-Based Graph Labels (BACKLOG)
+
+**Goal:** Replace author/year labels with TF-IDF keyword pills (e.g. "Monte Carlo simulation", "Bayesian inference") so users can visually identify paper topics at a glance. Two tiers: (1) hover labels showing top 2-3 keywords per node, (2) cluster-level floating labels showing dominant topic of a graph region (like map labels over geographic areas). Requires wiring TF-IDF/LLM analysis results to frontend GraphData.
+**Requirements:** TBD
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (promote with /gsd:review-backlog when ready)
+
 ## Progress
 
 | Phase | Milestone | Plans Complete | Status | Completed |

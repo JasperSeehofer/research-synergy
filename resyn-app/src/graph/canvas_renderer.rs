@@ -3,7 +3,6 @@ use wasm_bindgen::JsCast;
 use wasm_bindgen::JsValue;
 use web_sys::CanvasRenderingContext2d;
 
-use super::label_collision::LabelCache;
 use super::layout_state::{EdgeData, GraphState, NodeState};
 use super::renderer::{Renderer, Viewport};
 use crate::server_fns::graph::EdgeType;
@@ -12,10 +11,6 @@ pub struct Canvas2DRenderer {
     ctx: CanvasRenderingContext2d,
     width: u32,
     height: u32,
-    /// Cached label collision result. None = no labels drawn (e.g. during fit animation).
-    label_cache: Option<LabelCache>,
-    /// Whether the fit animation is currently active (suppress labels during animation).
-    fit_anim_active: bool,
 }
 
 impl Canvas2DRenderer {
@@ -30,17 +25,7 @@ impl Canvas2DRenderer {
             width: canvas.width(),
             height: canvas.height(),
             ctx,
-            label_cache: None,
-            fit_anim_active: false,
         }
-    }
-
-    pub fn set_label_cache(&mut self, cache: Option<LabelCache>) {
-        self.label_cache = cache;
-    }
-
-    pub fn set_fit_anim_active(&mut self, active: bool) {
-        self.fit_anim_active = active;
     }
 }
 
@@ -300,79 +285,8 @@ impl Renderer for Canvas2DRenderer {
             self.ctx.restore();
         }
 
-        // ── Screen-space label rendering ──────────────────────────────────────
-        // Labels are drawn in screen space (not world space) to avoid scaling
-        // with zoom. Per D-14/D-15/D-16: pill badges with rgba(13,17,23,0.85)
-        // bg, #30363d border, #cccccc text.
-        // Per 17-RESEARCH Pitfall 6: suppress labels during fit animation.
-        if !self.fit_anim_active && viewport.scale > 0.3 {
-            // Reset transform to screen space
-            self.ctx.save();
-            let dpr = web_sys::window().unwrap().device_pixel_ratio();
-            self.ctx
-                .set_transform(dpr, 0.0, 0.0, dpr, 0.0, 0.0)
-                .unwrap();
-
-            self.ctx.set_font("11px monospace");
-
-            if let Some(ref cache) = self.label_cache {
-                use crate::graph::label_collision::{
-                    LABEL_NODE_GAP, PILL_CORNER_RADIUS, PILL_H_PAD, PILL_HEIGHT,
-                };
-
-                for &i in &cache.visible_indices {
-                    let node = &state.nodes[i];
-                    let (sx, sy) = viewport.world_to_screen(node.x, node.y);
-                    let text_w = cache.text_widths.get(i).copied().unwrap_or(40.0);
-                    let pill_w = text_w + PILL_H_PAD * 2.0;
-                    let label_x = sx - pill_w / 2.0;
-                    let label_y = sy + node.radius * viewport.scale + LABEL_NODE_GAP;
-
-                    draw_label_pill(
-                        &self.ctx,
-                        label_x,
-                        label_y,
-                        pill_w,
-                        PILL_HEIGHT,
-                        PILL_CORNER_RADIUS,
-                        &node.label(),
-                        PILL_H_PAD,
-                    );
-                }
-
-                // Hover label override (D-11): if hovered node's label was culled,
-                // draw it anyway so the user always sees the label for what they hover.
-                if let Some(hi) = state.hovered_node
-                    && hi < state.nodes.len()
-                    && !cache.visible_indices.contains(&hi)
-                {
-                    let node = &state.nodes[hi];
-                    if node.lod_visible && node.temporal_visible {
-                        use crate::graph::label_collision::{
-                            LABEL_NODE_GAP, PILL_CORNER_RADIUS, PILL_H_PAD, PILL_HEIGHT,
-                        };
-                        let (sx, sy) = viewport.world_to_screen(node.x, node.y);
-                        let text_w = cache.text_widths.get(hi).copied().unwrap_or(40.0);
-                        let pill_w = text_w + PILL_H_PAD * 2.0;
-                        let label_x = sx - pill_w / 2.0;
-                        let label_y = sy + node.radius * viewport.scale + LABEL_NODE_GAP;
-
-                        draw_label_pill(
-                            &self.ctx,
-                            label_x,
-                            label_y,
-                            pill_w,
-                            PILL_HEIGHT,
-                            PILL_CORNER_RADIUS,
-                            &node.label(),
-                            PILL_H_PAD,
-                        );
-                    }
-                }
-            }
-
-            self.ctx.restore();
-        }
+        // Labels are drawn on the overlay canvas in graph.rs (works for both
+        // Canvas2D and WebGL2 renderers).
     }
 
     fn resize(&mut self, width: u32, height: u32) {
@@ -384,13 +298,6 @@ impl Renderer for Canvas2DRenderer {
         }
     }
 
-    fn set_label_cache(&mut self, cache: Option<crate::graph::label_collision::LabelCache>) {
-        self.label_cache = cache;
-    }
-
-    fn set_fit_anim_active(&mut self, active: bool) {
-        self.fit_anim_active = active;
-    }
 }
 
 /// Compute depth-based alpha for regular citation edges (D-02).
@@ -413,48 +320,6 @@ fn depth_alpha(edge: &EdgeData, nodes: &[NodeState]) -> f64 {
     }
 }
 
-/// Draw a rounded-rectangle pill label with opaque background, border, and text.
-///
-/// Uses `arc_to` calls for rounded corners (fallback for older web-sys bindings
-/// that may not expose `round_rect_with_f64`). The Canvas 2D Level 2 `round_rect`
-/// API is standard since Chrome 99 / Firefox 112 / Safari 15.4, but we use the
-/// arc_to path to guarantee compatibility with any web-sys version.
-#[allow(clippy::too_many_arguments)]
-fn draw_label_pill(
-    ctx: &CanvasRenderingContext2d,
-    x: f64,
-    y: f64,
-    w: f64,
-    h: f64,
-    r: f64,
-    text: &str,
-    h_pad: f64,
-) {
-    // Background fill
-    ctx.set_fill_style_str("rgba(13,17,23,0.85)");
-    ctx.begin_path();
-    // Rounded rect via arc_to (compatible with all web-sys versions)
-    ctx.move_to(x + r, y);
-    ctx.line_to(x + w - r, y);
-    ctx.arc_to(x + w, y, x + w, y + r, r).unwrap();
-    ctx.line_to(x + w, y + h - r);
-    ctx.arc_to(x + w, y + h, x + w - r, y + h, r).unwrap();
-    ctx.line_to(x + r, y + h);
-    ctx.arc_to(x, y + h, x, y + h - r, r).unwrap();
-    ctx.line_to(x, y + r);
-    ctx.arc_to(x, y, x + r, y, r).unwrap();
-    ctx.close_path();
-    ctx.fill();
-
-    // Border stroke
-    ctx.set_stroke_style_str("#30363d");
-    ctx.set_line_width(1.0);
-    ctx.stroke();
-
-    // Text
-    ctx.set_fill_style_str("#cccccc");
-    ctx.fill_text(text, x + h_pad, y + 14.0).unwrap();
-}
 
 fn draw_arrowhead(
     ctx: &CanvasRenderingContext2d,

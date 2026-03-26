@@ -33,10 +33,7 @@ pub struct LabelCache {
 ///
 /// This is a browser-only function. It is NOT callable from `cargo test`.
 /// Widths are cached at graph load time; never recomputed per frame.
-pub fn build_text_widths(
-    ctx: &web_sys::CanvasRenderingContext2d,
-    nodes: &[NodeState],
-) -> Vec<f64> {
+pub fn build_text_widths(ctx: &web_sys::CanvasRenderingContext2d, nodes: &[NodeState]) -> Vec<f64> {
     ctx.set_font("11px monospace");
     nodes
         .iter()
@@ -97,9 +94,9 @@ pub fn build_label_cache(
         let rw = pill_w + COLLISION_PAD * 2.0;
         let rh = PILL_HEIGHT + COLLISION_PAD * 2.0;
 
-        let overlaps = placed.iter().any(|p| {
-            rx < p[0] + p[2] && rx + rw > p[0] && ry < p[1] + p[3] && ry + rh > p[1]
-        });
+        let overlaps = placed
+            .iter()
+            .any(|p| rx < p[0] + p[2] && rx + rw > p[0] && ry < p[1] + p[3] && ry + rh > p[1]);
 
         if !overlaps {
             placed.push([label_x, label_y, pill_w, PILL_HEIGHT]);
@@ -111,6 +108,44 @@ pub fn build_label_cache(
         visible_indices,
         text_widths: text_widths.to_vec(),
     }
+}
+
+// ── Pill drawing ─────────────────────────────────────────────────────────────
+
+/// Draw a rounded-rectangle pill label with opaque background, border, and text.
+///
+/// Uses `arc_to` calls for rounded corners (compatible with all web-sys versions).
+#[allow(clippy::too_many_arguments)]
+pub fn draw_label_pill(
+    ctx: &web_sys::CanvasRenderingContext2d,
+    x: f64,
+    y: f64,
+    w: f64,
+    h: f64,
+    r: f64,
+    text: &str,
+    h_pad: f64,
+) {
+    ctx.set_fill_style_str("rgba(13,17,23,0.85)");
+    ctx.begin_path();
+    ctx.move_to(x + r, y);
+    ctx.line_to(x + w - r, y);
+    ctx.arc_to(x + w, y, x + w, y + r, r).unwrap();
+    ctx.line_to(x + w, y + h - r);
+    ctx.arc_to(x + w, y + h, x + w - r, y + h, r).unwrap();
+    ctx.line_to(x + r, y + h);
+    ctx.arc_to(x, y + h, x, y + h - r, r).unwrap();
+    ctx.line_to(x, y + r);
+    ctx.arc_to(x, y, x + r, y, r).unwrap();
+    ctx.close_path();
+    ctx.fill();
+
+    ctx.set_stroke_style_str("#30363d");
+    ctx.set_line_width(1.0);
+    ctx.stroke();
+
+    ctx.set_fill_style_str("#cccccc");
+    ctx.fill_text(text, x + h_pad, y + 14.0).unwrap();
 }
 
 // ── Tests ─────────────────────────────────────────────────────────────────────

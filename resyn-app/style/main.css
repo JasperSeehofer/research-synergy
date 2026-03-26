@@ -1328,6 +1328,13 @@ input[type="range"]::-moz-range-thumb {
   cursor: grabbing;
 }
 
+.graph-label-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
 .graph-controls-overlay {
   position: absolute;
   top: var(--space-md);

@@ -91,7 +91,13 @@ mod tests {
     use super::*;
     use crate::graph::layout_state::NodeState;
 
-    fn make_node(x: f64, y: f64, radius: f64, lod_visible: bool, temporal_visible: bool) -> NodeState {
+    fn make_node(
+        x: f64,
+        y: f64,
+        radius: f64,
+        lod_visible: bool,
+        temporal_visible: bool,
+    ) -> NodeState {
         NodeState {
             id: String::new(),
             title: String::new(),

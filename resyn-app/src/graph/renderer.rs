@@ -77,12 +77,6 @@ impl Viewport {
 pub trait Renderer {
     fn draw(&mut self, state: &GraphState, viewport: &Viewport);
     fn resize(&mut self, width: u32, height: u32);
-    /// Store a pre-computed label collision cache for the next draw call.
-    /// Default no-op — only Canvas2DRenderer uses this.
-    fn set_label_cache(&mut self, _cache: Option<crate::graph::label_collision::LabelCache>) {}
-    /// Inform the renderer whether a fit animation is in progress (suppresses labels).
-    /// Default no-op — only Canvas2DRenderer uses this.
-    fn set_fit_anim_active(&mut self, _active: bool) {}
 }
 
 pub const WEBGL_THRESHOLD: usize = 300;

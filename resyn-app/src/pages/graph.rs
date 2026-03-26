@@ -17,6 +17,8 @@ use crate::graph::worker_bridge::WorkerBridge;
 use crate::server_fns::graph::get_graph_data;
 use resyn_worker::{LayoutInput, LayoutOutput, NodeData};
 
+use crate::graph::label_collision::draw_label_pill;
+
 // ── Tooltip data ────────────────────────────────────────────────────────────
 
 #[derive(Clone, Debug)]
@@ -44,6 +46,8 @@ struct RenderState {
     label_cache_dirty: bool,
     /// Cached text widths per node (measured once at graph load via measureText).
     text_widths: Vec<f64>,
+    /// Cached label collision result (stored here so it works for both Canvas2D and WebGL2).
+    label_cache: Option<crate::graph::label_collision::LabelCache>,
 }
 
 // ── RAF handle with cancel support ──────────────────────────────────────────
@@ -63,6 +67,7 @@ impl RafHandle {
 #[component]
 pub fn GraphPage() -> impl IntoView {
     let canvas_ref = NodeRef::<Canvas>::new();
+    let label_canvas_ref = NodeRef::<Canvas>::new();
 
     // Overlay toggle signals — Leptos reactive (drive UI buttons)
     let show_contradictions: RwSignal<bool> = RwSignal::new(true);
@@ -108,6 +113,19 @@ pub fn GraphPage() -> impl IntoView {
         let css_height = canvas.offset_height() as f64;
         canvas.set_width((css_width * dpr) as u32);
         canvas.set_height((css_height * dpr) as u32);
+
+        // Set up label overlay canvas (2D context for text, works with both Canvas2D and WebGL2)
+        let label_ctx: Rc<RefCell<Option<web_sys::CanvasRenderingContext2d>>> =
+            Rc::new(RefCell::new(None));
+        if let Some(label_el) = label_canvas_ref.get() {
+            let label_canvas: web_sys::HtmlCanvasElement = label_el;
+            label_canvas.set_width((css_width * dpr) as u32);
+            label_canvas.set_height((css_height * dpr) as u32);
+            if let Ok(Some(ctx)) = label_canvas.get_context("2d") {
+                let ctx: web_sys::CanvasRenderingContext2d = ctx.dyn_into().unwrap();
+                *label_ctx.borrow_mut() = Some(ctx);
+            }
+        }
 
         let mut viewport = Viewport::new(css_width, css_height);
         let mut graph_state = GraphState::from_graph_data(data);
@@ -187,6 +205,7 @@ pub fn GraphPage() -> impl IntoView {
             fit_has_fired_once: false,
             label_cache_dirty: true,
             text_widths,
+            label_cache: None,
         }));
 
         let renderer_rc: Rc<RefCell<Box<dyn Renderer>>> = Rc::new(RefCell::new(renderer));
@@ -203,7 +222,7 @@ pub fn GraphPage() -> impl IntoView {
         let output_buf: Rc<RefCell<Option<LayoutOutput>>> = Rc::new(RefCell::new(None));
 
         // Set up ResizeObserver to handle canvas resize
-        setup_resize_observer(&canvas, state.clone(), renderer_rc.clone());
+        setup_resize_observer(&canvas, state.clone(), renderer_rc.clone(), label_ctx.clone());
 
         // Attach event listeners to canvas
         attach_event_listeners(
@@ -231,6 +250,7 @@ pub fn GraphPage() -> impl IntoView {
             visible_count,
             fit_count,
             simulation_settled,
+            label_ctx.clone(),
         );
 
         on_cleanup(move || handle.cancel());
@@ -258,6 +278,10 @@ pub fn GraphPage() -> impl IntoView {
                                 class="graph-canvas"
                                 role="img"
                                 aria-label="Citation graph"
+                            />
+                            <canvas
+                                node_ref=label_canvas_ref
+                                class="graph-canvas graph-label-overlay"
                             />
                             <GraphControls
                                 show_contradictions=show_contradictions
@@ -341,6 +365,7 @@ fn setup_resize_observer(
     canvas: &web_sys::HtmlCanvasElement,
     state: Rc<RefCell<RenderState>>,
     renderer: Rc<RefCell<Box<dyn Renderer>>>,
+    label_ctx: Rc<RefCell<Option<web_sys::CanvasRenderingContext2d>>>,
 ) {
     let canvas_clone = canvas.clone();
     let cb = Closure::<dyn FnMut(js_sys::Array)>::new(move |_entries: js_sys::Array| {
@@ -354,8 +379,16 @@ fn setup_resize_observer(
             canvas_clone.set_width(pixel_w);
             canvas_clone.set_height(pixel_h);
             renderer.borrow_mut().resize(pixel_w, pixel_h);
+            // Resize label overlay canvas to match
+            if let Some(ref ctx) = *label_ctx.borrow()
+                && let Some(c) = ctx.canvas()
+            {
+                c.set_width(pixel_w);
+                c.set_height(pixel_h);
+            }
             let mut s = state.borrow_mut();
             s.viewport = Viewport::new(css_w, css_h);
+            s.label_cache_dirty = true;
         }
     });
 
@@ -384,6 +417,7 @@ fn start_render_loop(
     visible_count: RwSignal<(usize, usize)>,
     fit_count: RwSignal<u32>,
     simulation_settled: RwSignal<bool>,
+    label_ctx: Rc<RefCell<Option<web_sys::CanvasRenderingContext2d>>>,
 ) -> RafHandle {
     let cancelled = Arc::new(AtomicBool::new(false));
     let cancelled_clone = cancelled.clone();
@@ -530,29 +564,63 @@ fn start_render_loop(
             *prev_offset_x.borrow_mut() = s.viewport.offset_x;
             *prev_offset_y.borrow_mut() = s.viewport.offset_y;
 
-            // Manage label cache lifecycle
+            // Rebuild label cache when dirty and not animating
             if s.fit_anim.active {
-                // Suppress labels entirely during fit animation (Pitfall 6)
-                renderer.borrow_mut().set_fit_anim_active(true);
-                renderer.borrow_mut().set_label_cache(None);
-            } else {
-                renderer.borrow_mut().set_fit_anim_active(false);
-                if s.label_cache_dirty {
-                    let cache = crate::graph::label_collision::build_label_cache(
-                        &s.graph.nodes,
-                        &s.text_widths,
-                        &s.viewport,
-                    );
-                    renderer.borrow_mut().set_label_cache(Some(cache));
-                    s.label_cache_dirty = false;
-                }
+                s.label_cache = None;
+            } else if s.label_cache_dirty {
+                let cache = crate::graph::label_collision::build_label_cache(
+                    &s.graph.nodes,
+                    &s.text_widths,
+                    &s.viewport,
+                );
+                s.label_cache = Some(cache);
+                s.label_cache_dirty = false;
             }
 
-            // Render
+            // Render main scene
             let graph = &s.graph;
             let viewport = &s.viewport;
             renderer.borrow_mut().draw(graph, viewport);
-        }
+
+            // Draw labels on the overlay canvas (works for both Canvas2D and WebGL2)
+            if let Some(ref ctx) = *label_ctx.borrow() {
+                let dpr = web_sys::window().unwrap().device_pixel_ratio();
+                let cw = s.viewport.css_width * dpr;
+                let ch = s.viewport.css_height * dpr;
+                // Clear overlay
+                ctx.set_transform(1.0, 0.0, 0.0, 1.0, 0.0, 0.0).unwrap();
+                ctx.clear_rect(0.0, 0.0, cw, ch);
+
+                // Hover-only label: show pill for the hovered node
+                if !s.fit_anim.active && s.viewport.scale > 0.3
+                    && let Some(hi) = s.graph.hovered_node
+                    && hi < s.graph.nodes.len()
+                {
+                    let node = &s.graph.nodes[hi];
+                    if node.lod_visible && node.temporal_visible {
+                        ctx.set_transform(dpr, 0.0, 0.0, dpr, 0.0, 0.0).unwrap();
+                        ctx.set_global_alpha(1.0);
+                        ctx.set_font("11px monospace");
+
+                        use crate::graph::label_collision::{
+                            LABEL_NODE_GAP, PILL_CORNER_RADIUS, PILL_H_PAD, PILL_HEIGHT,
+                        };
+
+                        let (sx, sy) = s.viewport.world_to_screen(node.x, node.y);
+                        let text_w = s.text_widths.get(hi).copied().unwrap_or(40.0);
+                        let pill_w = text_w + PILL_H_PAD * 2.0;
+                        let label_x = sx - pill_w / 2.0;
+                        let label_y =
+                            sy + node.radius * s.viewport.scale + LABEL_NODE_GAP;
+
+                        draw_label_pill(
+                            ctx, label_x, label_y, pill_w, PILL_HEIGHT,
+                            PILL_CORNER_RADIUS, &node.label(), PILL_H_PAD,
+                        );
+                    }
+                }
+            }
+        }  // end state borrow scope
 
         // Update visible count signal outside the state borrow (avoids RefCell conflicts)
         visible_count.set(vis_count);

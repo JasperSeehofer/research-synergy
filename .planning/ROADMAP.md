@@ -94,8 +94,10 @@ Plans:
   2. After manually panning or zooming, the auto-fit does not fire again and override the user's viewport position
   3. At medium zoom levels, node labels are spread out without overlapping — high-citation papers and the seed paper are labeled first
   4. The graph controls area shows whether the force simulation has converged or is still running
-**Plans**: TBD
-**UI hint**: yes
+**Plans**: 2 plans
+Plans:
+- [ ] 17-01-PLAN.md — Viewport auto-fit animation, user interaction latch, Fit button, convergence status badge
+- [ ] 17-02-PLAN.md — Priority-ordered label collision avoidance with pill/badge rendering
 
 ## Progress
 
@@ -117,4 +119,4 @@ Plans:
 | 14. Temporal Controls | v1.1.1 | 1/1 | Complete | 2026-03-24 |
 | 15. Force Simulation Rebalancing | v1.2 | 2/2 | Complete   | 2026-03-25 |
 | 16. Edge and Node Renderer Fixes | v1.2 | 2/2 | Complete    | 2026-03-25 |
-| 17. Viewport Fit and Label Collision | v1.2 | 0/? | Not started | - |
+| 17. Viewport Fit and Label Collision | v1.2 | 0/2 | Planning complete | - |

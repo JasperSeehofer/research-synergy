@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Graph Rendering Overhaul
 status: Ready to plan
-stopped_at: Phase 17 context gathered
-last_updated: "2026-03-25T19:32:43.455Z"
+stopped_at: Phase 17 UI-SPEC approved
+last_updated: "2026-03-26T09:46:17.806Z"
 progress:
   total_phases: 3
   completed_phases: 2
@@ -78,6 +78,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-25T19:32:43.454Z
-Stopped at: Phase 17 context gathered
-Resume file: .planning/phases/17-viewport-fit-and-label-collision/17-CONTEXT.md
+Last session: 2026-03-26T09:46:17.804Z
+Stopped at: Phase 17 UI-SPEC approved
+Resume file: .planning/phases/17-viewport-fit-and-label-collision/17-UI-SPEC.md

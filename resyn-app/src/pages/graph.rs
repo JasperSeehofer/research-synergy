@@ -37,6 +37,11 @@ struct RenderState {
     /// Canvas-space position at mousedown — used to distinguish click from drag
     drag_start_x: f64,
     drag_start_y: f64,
+    // NEW — Phase 17
+    fit_anim: crate::graph::viewport_fit::FitAnimState,
+    user_has_interacted: bool,
+    fit_has_fired_once: bool,
+    label_cache_dirty: bool,
 }
 
 // ── RAF handle with cancel support ──────────────────────────────────────────
@@ -65,6 +70,10 @@ pub fn GraphPage() -> impl IntoView {
     // Zoom button signals: increment a counter to trigger zoom from RAF loop
     let zoom_in_count: RwSignal<u32> = RwSignal::new(0);
     let zoom_out_count: RwSignal<u32> = RwSignal::new(0);
+
+    // Fit button and simulation convergence signals
+    let fit_count: RwSignal<u32> = RwSignal::new(0);
+    let simulation_settled: RwSignal<bool> = RwSignal::new(false);
 
     // Temporal filter signals
     let temporal_min: RwSignal<u32> = RwSignal::new(2000);
@@ -150,6 +159,10 @@ pub fn GraphPage() -> impl IntoView {
             was_already_pinned: false,
             drag_start_x: 0.0,
             drag_start_y: 0.0,
+            fit_anim: crate::graph::viewport_fit::FitAnimState::default(),
+            user_has_interacted: false,
+            fit_has_fired_once: false,
+            label_cache_dirty: true,
         }));
 
         let renderer_rc: Rc<RefCell<Box<dyn Renderer>>> = Rc::new(RefCell::new(renderer));
@@ -192,6 +205,8 @@ pub fn GraphPage() -> impl IntoView {
             temporal_min,
             temporal_max,
             visible_count,
+            fit_count,
+            simulation_settled,
         );
 
         on_cleanup(move || handle.cancel());
@@ -230,6 +245,8 @@ pub fn GraphPage() -> impl IntoView {
                                 temporal_max=temporal_max
                                 year_bounds=year_bounds
                                 visible_count=visible_count
+                                fit_count=fit_count
+                                simulation_settled=simulation_settled
                             />
                             <TemporalSlider
                                 temporal_min=temporal_min
@@ -341,13 +358,16 @@ fn start_render_loop(
     temporal_min: RwSignal<u32>,
     temporal_max: RwSignal<u32>,
     visible_count: RwSignal<(usize, usize)>,
+    fit_count: RwSignal<u32>,
+    simulation_settled: RwSignal<bool>,
 ) -> RafHandle {
     let cancelled = Arc::new(AtomicBool::new(false));
     let cancelled_clone = cancelled.clone();
 
-    // Track previous zoom counts to detect button presses
+    // Track previous zoom/fit counts to detect button presses
     let prev_zoom_in = Rc::new(RefCell::new(0u32));
     let prev_zoom_out = Rc::new(RefCell::new(0u32));
+    let prev_fit: Rc<RefCell<u32>> = Rc::new(RefCell::new(0));
 
     let closure_slot: ClosureSlot = Rc::new(RefCell::new(None));
     let closure_slot_inner = closure_slot.clone();
@@ -374,15 +394,31 @@ fn start_render_loop(
             let pzo = *prev_zoom_out.borrow();
             if zi != pzi {
                 *prev_zoom_in.borrow_mut() = zi;
+                s.user_has_interacted = true;
                 let cx = s.viewport.width() / 2.0;
                 let cy = s.viewport.height() / 2.0;
                 interaction::zoom_toward_cursor(&mut s.viewport, cx, cy, -1.0);
             }
             if zo != pzo {
                 *prev_zoom_out.borrow_mut() = zo;
+                s.user_has_interacted = true;
                 let cx = s.viewport.width() / 2.0;
                 let cy = s.viewport.height() / 2.0;
                 interaction::zoom_toward_cursor(&mut s.viewport, cx, cy, 1.0);
+            }
+
+            // Handle fit button press
+            let fi = fit_count.get_untracked();
+            let pfi = *prev_fit.borrow();
+            if fi != pfi {
+                *prev_fit.borrow_mut() = fi;
+                if let Some(fit) = crate::graph::viewport_fit::compute_fit_target(
+                    &s.graph.nodes,
+                    s.viewport.css_width,
+                    s.viewport.css_height,
+                ) {
+                    s.fit_anim = fit;
+                }
             }
 
             // Run one force simulation tick inline (main thread).
@@ -403,6 +439,37 @@ fn start_render_loop(
                 s.graph.alpha = output.alpha;
                 if s.graph.check_alpha_convergence() {
                     simulation_running.set(false);
+                    simulation_settled.set(true);
+                    if !s.user_has_interacted
+                        && !s.fit_has_fired_once
+                        && let Some(fit) = crate::graph::viewport_fit::compute_fit_target(
+                            &s.graph.nodes,
+                            s.viewport.css_width,
+                            s.viewport.css_height,
+                        )
+                    {
+                        s.fit_anim = fit;
+                        s.fit_has_fired_once = true;
+                    }
+                }
+            }
+
+            // Animate viewport fit (D-01: ~0.5s lerp)
+            if s.fit_anim.active {
+                use crate::graph::viewport_fit::lerp;
+                let t = 0.12; // exponential decay ease-out at 60fps
+                s.viewport.scale = lerp(s.viewport.scale, s.fit_anim.target_scale, t);
+                s.viewport.offset_x = lerp(s.viewport.offset_x, s.fit_anim.target_offset_x, t);
+                s.viewport.offset_y = lerp(s.viewport.offset_y, s.fit_anim.target_offset_y, t);
+                let close = (s.viewport.scale - s.fit_anim.target_scale).abs() < 0.001
+                    && (s.viewport.offset_x - s.fit_anim.target_offset_x).abs() < 0.5
+                    && (s.viewport.offset_y - s.fit_anim.target_offset_y).abs() < 0.5;
+                if close {
+                    s.viewport.scale = s.fit_anim.target_scale;
+                    s.viewport.offset_x = s.fit_anim.target_offset_x;
+                    s.viewport.offset_y = s.fit_anim.target_offset_y;
+                    s.fit_anim.active = false;
+                    s.label_cache_dirty = true;
                 }
             }
 
@@ -549,6 +616,7 @@ fn attach_event_listeners(
                     start_offset_x,
                     start_offset_y,
                 } => {
+                    s.user_has_interacted = true;
                     s.viewport.offset_x = start_offset_x + (sx - start_x);
                     s.viewport.offset_y = start_offset_y + (sy - start_y);
                     drop(s);
@@ -739,6 +807,7 @@ fn attach_event_listeners(
                 raw_delta / 50.0
             };
             let mut s = state_wh.borrow_mut();
+            s.user_has_interacted = true;
             interaction::zoom_toward_cursor(&mut s.viewport, cx, cy, normalized);
         });
 

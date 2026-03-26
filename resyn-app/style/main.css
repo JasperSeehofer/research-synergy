@@ -1481,6 +1481,25 @@ input[type="range"].temporal-range {
   white-space: nowrap;
 }
 
+/* Simulation status badge */
+.sim-status-badge {
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-semibold);
+  white-space: nowrap;
+}
+
+.sim-status-badge.sim-running {
+  color: var(--color-text-muted);
+}
+
+.sim-status-badge.sim-paused {
+  color: var(--color-text-muted);
+}
+
+.sim-status-badge.sim-settled {
+  color: var(--color-success);
+}
+
 /* =============================================================================
    Drawer Tab Strip
    ============================================================================= */

@@ -11,6 +11,8 @@ pub fn GraphControls(
     temporal_min: RwSignal<u32>,
     temporal_max: RwSignal<u32>,
     year_bounds: RwSignal<(u32, u32)>,
+    fit_count: RwSignal<u32>,
+    simulation_settled: RwSignal<bool>,
 ) -> impl IntoView {
     let _ = temporal_min;
     let _ = temporal_max;
@@ -61,10 +63,36 @@ pub fn GraphControls(
                 >
                     "\u{2212}"
                 </button>
+                <button
+                    class="graph-control-btn"
+                    on:click=move |_| fit_count.update(|v| *v = v.wrapping_add(1))
+                    aria-label="Fit graph to viewport"
+                >
+                    "\u{2922}"
+                </button>
             </div>
 
             // Node count indicator group
             <div class="graph-controls-group">
+                <span
+                    class=move || {
+                        if simulation_running.get() { "sim-status-badge sim-running" }
+                        else if simulation_settled.get() { "sim-status-badge sim-settled" }
+                        else { "sim-status-badge sim-paused" }
+                    }
+                    aria-label=move || {
+                        let state = if simulation_running.get() { "Simulating" }
+                            else if simulation_settled.get() { "Settled" }
+                            else { "Paused" };
+                        format!("Simulation status: {}", state)
+                    }
+                >
+                    {move || {
+                        if simulation_running.get() { "Simulating..." }
+                        else if simulation_settled.get() { "Settled" }
+                        else { "Paused" }
+                    }}
+                </span>
                 <span class="node-count-indicator">
                     {move || {
                         let (v, t) = visible_count.get();

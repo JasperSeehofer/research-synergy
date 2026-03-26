@@ -56,6 +56,9 @@ Surface research gaps and unexplored connections that no single paper reveals �
 - ✓ Graph edges rendered crisply between connected nodes — v1.1.1
 - ✓ Node drag, viewport pan, scroll zoom all functional — v1.1.1
 - ✓ Dual-range temporal slider thumbs independently draggable — v1.1.1
+- ✓ Force coefficients retuned for visible citation cluster spreading — v1.2 Phase 15
+- ✓ BFS concentric ring placement for simulation warm start — v1.2 Phase 15
+- ✓ Alpha full-stop convergence halts CPU when simulation settles — v1.2 Phase 15
 - ✓ Citation edges visible on dark background (#8b949e with depth-based alpha) — v1.2 Phase 16
 - ✓ Node circles crisp at all zoom levels (fwidth AA in WebGL2, viewport-compensated Canvas 2D) — v1.2 Phase 16
 - ✓ Seed paper visually distinct (amber fill, bright border, planetary ring) — v1.2 Phase 16
@@ -67,19 +70,7 @@ Surface research gaps and unexplored connections that no single paper reveals �
 
 ### Active
 
-(Defined in REQUIREMENTS.md for v1.2)
-
-## Current Milestone: v1.2 Graph Rendering Overhaul
-
-**Goal:** Make the citation graph a functional, visually clear force-directed layout with visible edges, sharp nodes, and proper structural clustering.
-
-**Target features:**
-- Fix force-directed layout coefficients so connected nodes form visible clusters instead of collapsing
-- Fix edge rendering with proper contrast on dark background
-- Sharp node rendering with fixed-pixel anti-aliasing
-- Seed node visual distinction
-- Smart label rendering (avoid overlap)
-- Auto fit-to-content viewport after layout stabilizes
+(No active milestone — run `/gsd:new-milestone` to define next)
 
 ### Out of Scope
 
@@ -95,9 +86,9 @@ Surface research gaps and unexplored connections that no single paper reveals �
 
 ## Current State
 
-**Shipped:** v1.1.1 Bug Fix & Polish (2026-03-24), Phase 16 Edge & Node Renderer Fixes (2026-03-25), Phase 17 Viewport Fit & Label Collision (2026-03-26)
+**Shipped:** v1.2 Graph Rendering Overhaul (2026-03-26)
 
-ReSyn is a 3-crate Cargo workspace (resyn-core/resyn-app/resyn-server) with ~16,000 LOC Rust across 90+ files. The full pipeline runs through a Leptos CSR web UI served by Axum, with interactive Canvas 2D / WebGL2 graph rendering powered by Barnes-Hut force layout in a WASM Web Worker. All core web UI features (routing, graph rendering, interaction, temporal filtering) are functional after v1.1.1 bug fixes.
+ReSyn is a 3-crate Cargo workspace (resyn-core/resyn-app/resyn-server) with ~25,000 LOC Rust across 90+ files. The full pipeline runs through a Leptos CSR web UI served by Axum, with interactive Canvas 2D / WebGL2 graph rendering powered by Barnes-Hut force layout in a WASM Web Worker. The graph renderer now produces visually clear force-directed layouts with retuned coefficients, visible edges on dark backgrounds, crisp anti-aliased nodes, seed node distinction, auto-fit viewport animation, and collision-free priority-ordered labels.
 
 **Stack:** Rust (edition 2024), Leptos 0.8 (CSR), Trunk, Axum, SurrealDB v3 (embedded), petgraph, web-sys (Canvas 2D + WebGL2), gloo-worker, reqwest, tokio.
 
@@ -130,6 +121,16 @@ ReSyn is a 3-crate Cargo workspace (resyn-core/resyn-app/resyn-server) with ~16,
 | CSS pointer-events overlay passthrough | No Rust interaction logic changes needed | ✓ Good — clean separation of concerns |
 | DPR convention: CSS pixels throughout | DPR only at canvas physical sizing and GL viewport | ✓ Good — documented for future phases |
 | Dual-range slider: pointer-events:none on track | Canonical MDN pattern for stacked range inputs | ✓ Good — both thumbs independently draggable |
+| REPULSION_STRENGTH = -1500 (5x stronger) | vis.js uses -2000; prevents hub node collapse | ✓ Good — visible cluster separation |
+| BFS ring placement with 180px spacing | 1.5x IDEAL_DISTANCE; nodes start beyond equilibrium | ✓ Good — organized warm start |
+| Alpha full-stop convergence | Halt CPU simulation when settled | ✓ Good — zero idle CPU usage |
+| depth_alpha using max BFS depth of endpoints | Progressive hierarchy dimming | ✓ Good — consistent Canvas 2D and WebGL2 |
+| Quad-based WebGL2 edges | Replace 1px-capped GL.LINES | ✓ Good — visible edges at all zoom levels |
+| fwidth AA for WebGL2 nodes | Resolution-independent anti-aliasing | ✓ Good — crisp circles at all sizes |
+| Seed outer ring reuses edge shader program | Triangle annulus, no new VAO/shader | ✓ Good — minimal GPU overhead |
+| Viewport fit margin_factor=0.80 with lerp t=0.12 | 10% margin each side, ~0.5s ease-out | ✓ Good — smooth animation |
+| User interaction latch for auto-fit | Permanent latch on pan/wheel/zoom | ✓ Good — respects user viewport |
+| Offscreen canvas for measureText cache | Load-time text width measurement | ✓ Good — works for both renderers |
 
 ## Evolution
 
@@ -151,4 +152,4 @@ This document evolves at phase transitions and milestone boundaries.
 Last updated: 2026-03-26
 
 ---
-*Last updated: 2026-03-26 after Phase 17 completion*
+*Last updated: 2026-03-26 after v1.2 milestone*

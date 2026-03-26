@@ -2,6 +2,49 @@
 
 *A living document updated after each milestone. Lessons feed forward into future planning.*
 
+## Milestone: v1.2 — Graph Rendering Overhaul
+
+**Shipped:** 2026-03-26
+**Phases:** 3 (15-17) | **Plans:** 6 | **Timeline:** 2 days (2026-03-25 → 2026-03-26)
+
+### What Was Built
+- Force simulation retuned with 5x stronger repulsion, collision separation, velocity clamping, and BFS concentric ring placement
+- Canvas 2D and WebGL2 edge rendering with #8b949e color, depth-based alpha, and quad-based geometry for WebGL2
+- Crisp node circles (fwidth AA in WebGL2, viewport-compensated borders in Canvas 2D) with amber seed node distinction
+- Auto-fit viewport animation with lerp ease-out after force convergence, user interaction latch, and Fit button
+- Priority-ordered label collision avoidance with pill/badge rendering and three-state convergence badge
+
+### What Worked
+- Pure logic modules (viewport_fit.rs, label_collision.rs) with no web-sys dependencies enabled native unit testing — 14 tests total without wasm-bindgen-test
+- Renderer trait with default no-op methods (set_label_cache, set_fit_anim_active) avoided downcasting and kept renderers decoupled
+- Consistent depth_alpha formula across Canvas 2D and WebGL2 — implemented once, mirrored exactly, no visual divergence
+- Reusing edge shader program for seed outer ring saved a VAO/shader allocation and simplified WebGL2 state management
+- UI-SPEC design contracts (new in v1.2) front-loaded visual decisions before execution — eliminated mid-plan design pivots
+
+### What Was Inefficient
+- SUMMARY.md one_liner fields for phases 16-17 were poorly structured — summary-extract couldn't parse them, requiring manual accomplishment extraction at milestone completion
+- Phase 16-02 touched 18 files but 15 were pre-existing cargo fmt fixes — the commit conflated formatting cleanup with feature work
+- WebGL2 quad edge geometry required understanding existing shader pipeline deeply — the research phase covered this but execution still took 12min (longest plan in milestone)
+
+### Patterns Established
+- Offscreen canvas for measureText at load time — works regardless of active renderer (Canvas2D or WebGL2)
+- User interaction latch pattern (permanent boolean set on pan/wheel/zoom) for preventing auto-behavior re-trigger
+- arc_to rounded rect path for web-sys compatibility instead of round_rect_with_f64
+- Screen-space label rendering with dirty-flag per-frame viewport diff for performance
+
+### Key Lessons
+1. Pure logic modules (no web-sys) for graph algorithms enable fast native testing — this pattern should be the default for all graph-related features
+2. UI-SPEC design contracts reduce execution friction by resolving visual decisions upfront — continue for all frontend phases
+3. Separate formatting fixes from feature commits — a pre-phase `cargo fmt` pass prevents inflated diffs
+4. SUMMARY.md one_liner quality matters for downstream tooling — ensure clear single-sentence summaries
+
+### Cost Observations
+- Model mix: ~20% opus (orchestration), ~80% sonnet (execution)
+- Sessions: ~3 (Phase 15, Phase 16, Phase 17 + completion)
+- Notable: Smallest feature milestone yet (3 phases, 6 plans) — focused scope enabled 2-day execution with no rework
+
+---
+
 ## Milestone: v1.1.1 — Bug Fix & Polish
 
 **Shipped:** 2026-03-24
@@ -144,6 +187,7 @@
 | v1.0 | ~6 | 5 | 12 | ~2 days | First milestone — established migration, caching, and trait patterns |
 | v1.1 | ~8 | 5 | 23 | 4 days | Web migration — feature gating, WASM boundary, Leptos/WebGL stack |
 | v1.1.1 | ~3 | 4 | 4 | 2 days | Bugfix milestone — CSS fixes, yolo auto-chain, minimal scope |
+| v1.2 | ~3 | 3 | 6 | 2 days | Graph polish — UI-SPEC contracts, pure logic modules, renderer parity |
 
 ### Cumulative Quality
 
@@ -152,6 +196,7 @@
 | v1.0 | 8,749 | ~40 | sha2, stop-words, chrono, regex |
 | v1.1 | 15,859 | 90 | leptos, trunk, axum, tower-http, gloo-worker, web-sys, governor |
 | v1.1.1 | ~16,000 | 90+ | (none — bugfix only) |
+| v1.2 | ~25,000 | 90+ | (none — new modules, no new deps) |
 
 ### Top Lessons (Verified Across Milestones)
 
@@ -161,3 +206,4 @@
 4. Separate DTOs from mutable state at boundaries — clean serialization, explicit mutation
 5. Spike unfamiliar frameworks early — discovering API gotchas during production phases adds friction
 6. CSS overlay stacking is the first diagnostic for canvas interaction bugs — verified across Phases 12-14
+7. UI-SPEC design contracts before frontend execution — eliminates mid-plan visual decision pivots (verified v1.2)

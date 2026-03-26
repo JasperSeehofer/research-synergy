@@ -1,5 +1,23 @@
 # Milestones
 
+## v1.2 Graph Rendering Overhaul (Shipped: 2026-03-26)
+
+**Phases completed:** 3 phases (15-17), 6 plans
+**Stats:** 50 commits, 60 files changed, +9,036/-334 lines
+**Timeline:** 2 days (2026-03-25 → 2026-03-26)
+
+**Delivered:** Overhauled the citation graph renderer with retuned force simulation, visible edges, crisp nodes, seed node distinction, auto-fit viewport, and collision-free labels.
+
+**Key accomplishments:**
+
+- Force coefficients retuned 5x stronger with collision separation and BFS ring placement so citation clusters visibly spread instead of collapsing to a blob
+- Canvas 2D and WebGL2 edges rendered with #8b949e color and depth-based alpha, WebGL2 upgraded to quad-based geometry replacing 1px GL.LINES
+- Node circles crisp at all zoom levels (fwidth AA in WebGL2, viewport-compensated borders in Canvas 2D) with amber seed node distinction
+- Auto-fit viewport with lerp animation after force layout converges, user interaction latch prevents re-trigger
+- Priority-ordered label collision avoidance with pill/badge rendering (seed first, then citation count) and three-state convergence badge
+
+---
+
 ## v1.1.1 Bug Fix & Polish (Shipped: 2026-03-24)
 
 **Phases completed:** 4 phases, 4 plans, 5 tasks

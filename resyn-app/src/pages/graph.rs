@@ -37,11 +37,13 @@ struct RenderState {
     /// Canvas-space position at mousedown — used to distinguish click from drag
     drag_start_x: f64,
     drag_start_y: f64,
-    // NEW — Phase 17
+    // Phase 17 — viewport fit
     fit_anim: crate::graph::viewport_fit::FitAnimState,
     user_has_interacted: bool,
     fit_has_fired_once: bool,
     label_cache_dirty: bool,
+    /// Cached text widths per node (measured once at graph load via measureText).
+    text_widths: Vec<f64>,
 }
 
 // ── RAF handle with cancel support ──────────────────────────────────────────
@@ -140,6 +142,27 @@ pub fn GraphPage() -> impl IntoView {
             viewport.scale = fit_scale;
         }
         let renderer = make_renderer(&canvas, graph_state.nodes.len());
+
+        // Measure text widths for all node labels once at graph load time.
+        // Uses a temporary 2D canvas context (measureText is a browser API that
+        // works regardless of which renderer was selected for actual drawing).
+        let text_widths = {
+            use wasm_bindgen::JsCast;
+            let document = web_sys::window().unwrap().document().unwrap();
+            let temp_canvas: web_sys::HtmlCanvasElement = document
+                .create_element("canvas")
+                .unwrap()
+                .dyn_into()
+                .unwrap();
+            let temp_ctx = temp_canvas
+                .get_context("2d")
+                .unwrap()
+                .unwrap()
+                .dyn_into::<web_sys::CanvasRenderingContext2d>()
+                .unwrap();
+            crate::graph::label_collision::build_text_widths(&temp_ctx, &graph_state.nodes)
+        };
+
         // Sync initial toggle values from Leptos signals
         graph_state.show_contradictions = show_contradictions.get_untracked();
         graph_state.show_bridges = show_bridges.get_untracked();
@@ -163,6 +186,7 @@ pub fn GraphPage() -> impl IntoView {
             user_has_interacted: false,
             fit_has_fired_once: false,
             label_cache_dirty: true,
+            text_widths,
         }));
 
         let renderer_rc: Rc<RefCell<Box<dyn Renderer>>> = Rc::new(RefCell::new(renderer));
@@ -369,6 +393,11 @@ fn start_render_loop(
     let prev_zoom_out = Rc::new(RefCell::new(0u32));
     let prev_fit: Rc<RefCell<u32>> = Rc::new(RefCell::new(0));
 
+    // Track previous viewport for label cache dirty detection (D-12)
+    let prev_scale = Rc::new(RefCell::new(1.0_f64));
+    let prev_offset_x = Rc::new(RefCell::new(0.0_f64));
+    let prev_offset_y = Rc::new(RefCell::new(0.0_f64));
+
     let closure_slot: ClosureSlot = Rc::new(RefCell::new(None));
     let closure_slot_inner = closure_slot.clone();
 
@@ -489,6 +518,35 @@ fn start_render_loop(
             crate::graph::lod::update_temporal_visibility(&mut s.graph.nodes, t_min, t_max);
             // Compute visible count (captured before render for signal update)
             vis_count = crate::graph::lod::compute_visible_count(&s.graph.nodes);
+
+            // Detect viewport changes for label cache dirty flag (D-12)
+            let vp_changed = (s.viewport.scale - *prev_scale.borrow()).abs() > 0.0001
+                || (s.viewport.offset_x - *prev_offset_x.borrow()).abs() > 0.1
+                || (s.viewport.offset_y - *prev_offset_y.borrow()).abs() > 0.1;
+            if vp_changed {
+                s.label_cache_dirty = true;
+            }
+            *prev_scale.borrow_mut() = s.viewport.scale;
+            *prev_offset_x.borrow_mut() = s.viewport.offset_x;
+            *prev_offset_y.borrow_mut() = s.viewport.offset_y;
+
+            // Manage label cache lifecycle
+            if s.fit_anim.active {
+                // Suppress labels entirely during fit animation (Pitfall 6)
+                renderer.borrow_mut().set_fit_anim_active(true);
+                renderer.borrow_mut().set_label_cache(None);
+            } else {
+                renderer.borrow_mut().set_fit_anim_active(false);
+                if s.label_cache_dirty {
+                    let cache = crate::graph::label_collision::build_label_cache(
+                        &s.graph.nodes,
+                        &s.text_widths,
+                        &s.viewport,
+                    );
+                    renderer.borrow_mut().set_label_cache(Some(cache));
+                    s.label_cache_dirty = false;
+                }
+            }
 
             // Render
             let graph = &s.graph;

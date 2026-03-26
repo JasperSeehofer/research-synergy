@@ -110,6 +110,26 @@ Plans:
 Plans:
 - [ ] TBD (promote with /gsd:review-backlog when ready)
 
+### Phase 999.2: Topic Ring Node Borders (BACKLOG)
+
+**Goal:** Encode each node's top-3 TF-IDF keywords as colored arc segments on its border ring, creating a visual topic fingerprint. Global corpus keywords each get a fixed color (e.g. "Monte Carlo" = teal, "Bayesian inference" = orange). Arc length proportional to normalized TF-IDF score — a keyword scoring 0.5 takes half the circumference. Enables instant visual topology: clusters of same-colored rings reveal topic groupings, mixed rings reveal bridging papers.
+
+**Design notes:**
+- Global palette: top N discriminative keywords (high inter-paper variance, not ubiquitous terms) each assigned a distinct color
+- Per-node: top 3 keywords from that paper's TF-IDF vector → 3 arc segments on the border ring, lengths proportional to normalized scores
+- Remaining border (scores < 1.0 total) rendered in neutral/default border color
+- Small node threshold: only show topic rings above minimum radius; use fixed ring width (e.g. 3px) regardless of node size
+- Legend panel mapping keyword → color, with click-to-highlight (topic filter)
+- Requires: normalized TF-IDF scores in GraphData, corpus-level keyword palette computation, WebGL2 arc segment shader or Canvas2D arc drawing
+
+**Synergy with 999.1:** Topic rings show the "what" visually; keyword labels (999.1) provide the textual detail on hover. Together they create a complete topic navigation layer.
+
+**Requirements:** TBD
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (promote with /gsd:review-backlog when ready)
+
 ## Progress
 
 | Phase | Milestone | Plans Complete | Status | Completed |

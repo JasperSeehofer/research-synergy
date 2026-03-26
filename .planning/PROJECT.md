@@ -60,6 +60,10 @@ Surface research gaps and unexplored connections that no single paper reveals �
 - ✓ Node circles crisp at all zoom levels (fwidth AA in WebGL2, viewport-compensated Canvas 2D) — v1.2 Phase 16
 - ✓ Seed paper visually distinct (amber fill, bright border, planetary ring) — v1.2 Phase 16
 - ✓ WebGL2 quad-based edge geometry replacing GL.LINES — v1.2 Phase 16
+- ✓ Auto-fit viewport after force layout converges with lerp animation — v1.2 Phase 17
+- ✓ User interaction latch prevents auto-fit re-trigger after pan/zoom — v1.2 Phase 17
+- ✓ Priority-ordered label collision avoidance (seed first, then citation count) — v1.2 Phase 17
+- ✓ Three-state convergence badge (Simulating/Paused/Settled) — v1.2 Phase 17
 
 ### Active
 
@@ -91,7 +95,7 @@ Surface research gaps and unexplored connections that no single paper reveals �
 
 ## Current State
 
-**Shipped:** v1.1.1 Bug Fix & Polish (2026-03-24), Phase 16 Edge & Node Renderer Fixes (2026-03-25)
+**Shipped:** v1.1.1 Bug Fix & Polish (2026-03-24), Phase 16 Edge & Node Renderer Fixes (2026-03-25), Phase 17 Viewport Fit & Label Collision (2026-03-26)
 
 ReSyn is a 3-crate Cargo workspace (resyn-core/resyn-app/resyn-server) with ~16,000 LOC Rust across 90+ files. The full pipeline runs through a Leptos CSR web UI served by Axum, with interactive Canvas 2D / WebGL2 graph rendering powered by Barnes-Hut force layout in a WASM Web Worker. All core web UI features (routing, graph rendering, interaction, temporal filtering) are functional after v1.1.1 bug fixes.
 
@@ -144,7 +148,7 @@ This document evolves at phase transitions and milestone boundaries.
 3. Audit Out of Scope — reasons still valid?
 4. Update Context with current state
 
-Last updated: 2026-03-25
+Last updated: 2026-03-26
 
 ---
-*Last updated: 2026-03-24 after v1.2 milestone start*
+*Last updated: 2026-03-26 after Phase 17 completion*

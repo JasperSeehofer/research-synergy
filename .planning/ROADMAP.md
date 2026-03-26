@@ -96,7 +96,7 @@ Plans:
   4. The graph controls area shows whether the force simulation has converged or is still running
 **Plans**: 2 plans
 Plans:
-- [ ] 17-01-PLAN.md — Viewport auto-fit animation, user interaction latch, Fit button, convergence status badge
+- [x] 17-01-PLAN.md — Viewport auto-fit animation, user interaction latch, Fit button, convergence status badge
 - [ ] 17-02-PLAN.md — Priority-ordered label collision avoidance with pill/badge rendering
 
 ## Progress
@@ -119,4 +119,4 @@ Plans:
 | 14. Temporal Controls | v1.1.1 | 1/1 | Complete | 2026-03-24 |
 | 15. Force Simulation Rebalancing | v1.2 | 2/2 | Complete   | 2026-03-25 |
 | 16. Edge and Node Renderer Fixes | v1.2 | 2/2 | Complete    | 2026-03-25 |
-| 17. Viewport Fit and Label Collision | v1.2 | 0/2 | Planning complete | - |
+| 17. Viewport Fit and Label Collision | v1.2 | 1/2 | In Progress|  |

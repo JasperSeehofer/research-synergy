@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Graph Rendering Overhaul
-status: Ready to plan
-stopped_at: Phase 17 UI-SPEC approved
-last_updated: "2026-03-26T09:46:17.806Z"
+status: Ready to execute
+stopped_at: Completed 17-01-PLAN.md
+last_updated: "2026-03-26T10:05:18.773Z"
 progress:
   total_phases: 3
   completed_phases: 2
-  total_plans: 4
-  completed_plans: 4
+  total_plans: 6
+  completed_plans: 5
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-24)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Phase 16 — edge-and-node-renderer-fixes
+**Current focus:** Phase 17 — viewport-fit-and-label-collision
 
 ## Current Position
 
-Phase: 17
-Plan: Not started
+Phase: 17 (viewport-fit-and-label-collision) — EXECUTING
+Plan: 2 of 2
 
 ## Performance Metrics
 
@@ -45,6 +45,7 @@ Plan: Not started
 | Phase 15-force-simulation-rebalancing P02 | 6min | 2 tasks | 2 files |
 | Phase 16-edge-and-node-renderer-fixes P01 | 8min | 2 tasks | 4 files |
 | Phase 16-edge-and-node-renderer-fixes P02 | 12min | 2 tasks | 18 files |
+| Phase 17-viewport-fit-and-label-collision P01 | 8min | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -65,6 +66,8 @@ Recent decisions affecting v1.2:
 - [Phase 16-edge-and-node-renderer-fixes]: build_quad_edge uses world-space perpendicular offset (half_width = 0.75/scale) so existing EDGE_VERT shader needs no changes
 - [Phase 16-edge-and-node-renderer-fixes]: depth_alpha_f32 mirrors Canvas 2D depth_alpha() exactly: max(from_depth, to_depth) with 0.50/0.35/0.25/0.15 thresholds for consistent dimming across renderers
 - [Phase 16-edge-and-node-renderer-fixes]: Seed outer ring reuses edge shader program (triangle annulus) - no new VAO or shader needed
+- [Phase 17-viewport-fit-and-label-collision]: Viewport fit uses margin_factor=0.80 (10% margin each side) with scale clamped 0.1-4.0; lerp t=0.12 for ~0.5s ease-out animation
+- [Phase 17-viewport-fit-and-label-collision]: user_has_interacted latch set on pan/wheel/zoom-buttons permanently prevents auto-fit re-trigger; fit button bypasses latch
 
 ### Pending Todos
 
@@ -78,6 +81,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-26T09:46:17.804Z
-Stopped at: Phase 17 UI-SPEC approved
-Resume file: .planning/phases/17-viewport-fit-and-label-collision/17-UI-SPEC.md
+Last session: 2026-03-26T10:05:18.772Z
+Stopped at: Completed 17-01-PLAN.md
+Resume file: None

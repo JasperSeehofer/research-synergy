@@ -53,7 +53,7 @@ Full details: `.planning/milestones/v1.1.1-ROADMAP.md`
 
 - [x] **Phase 15: Force Simulation Rebalancing** — Retune Barnes-Hut coefficients so nodes form visible citation clusters instead of collapsing to a blob (completed 2026-03-25)
 - [x] **Phase 16: Edge and Node Renderer Fixes** — Fix edge visibility and node sharpness in both Canvas 2D and WebGL2 renderers, and add seed node distinction (completed 2026-03-25)
-- [ ] **Phase 17: Viewport Fit and Label Collision** — Auto-fit viewport after layout stabilizes, add priority-ordered label collision avoidance, and wire convergence indicator
+- [x] **Phase 17: Viewport Fit and Label Collision** — Auto-fit viewport after layout stabilizes, add priority-ordered label collision avoidance, and wire convergence indicator (completed 2026-03-26)
 
 ## Phase Details
 
@@ -97,7 +97,7 @@ Plans:
 **Plans**: 2 plans
 Plans:
 - [x] 17-01-PLAN.md — Viewport auto-fit animation, user interaction latch, Fit button, convergence status badge
-- [ ] 17-02-PLAN.md — Priority-ordered label collision avoidance with pill/badge rendering
+- [x] 17-02-PLAN.md — Priority-ordered label collision avoidance with pill/badge rendering
 
 ## Progress
 
@@ -119,4 +119,4 @@ Plans:
 | 14. Temporal Controls | v1.1.1 | 1/1 | Complete | 2026-03-24 |
 | 15. Force Simulation Rebalancing | v1.2 | 2/2 | Complete   | 2026-03-25 |
 | 16. Edge and Node Renderer Fixes | v1.2 | 2/2 | Complete    | 2026-03-25 |
-| 17. Viewport Fit and Label Collision | v1.2 | 1/2 | In Progress|  |
+| 17. Viewport Fit and Label Collision | v1.2 | 2/2 | Complete   | 2026-03-26 |

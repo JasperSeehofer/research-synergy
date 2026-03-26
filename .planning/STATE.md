@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Graph Rendering Overhaul
-status: Ready to execute
-stopped_at: Completed 17-01-PLAN.md
-last_updated: "2026-03-26T10:05:18.773Z"
+status: Phase complete — ready for verification
+stopped_at: Completed 17-02-PLAN.md
+last_updated: "2026-03-26T10:12:06.006Z"
 progress:
   total_phases: 3
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 6
-  completed_plans: 5
+  completed_plans: 6
 ---
 
 # Project State
@@ -46,6 +46,7 @@ Plan: 2 of 2
 | Phase 16-edge-and-node-renderer-fixes P01 | 8min | 2 tasks | 4 files |
 | Phase 16-edge-and-node-renderer-fixes P02 | 12min | 2 tasks | 18 files |
 | Phase 17-viewport-fit-and-label-collision P01 | 8min | 2 tasks | 5 files |
+| Phase 17-viewport-fit-and-label-collision P02 | 4min | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -68,6 +69,9 @@ Recent decisions affecting v1.2:
 - [Phase 16-edge-and-node-renderer-fixes]: Seed outer ring reuses edge shader program (triangle annulus) - no new VAO or shader needed
 - [Phase 17-viewport-fit-and-label-collision]: Viewport fit uses margin_factor=0.80 (10% margin each side) with scale clamped 0.1-4.0; lerp t=0.12 for ~0.5s ease-out animation
 - [Phase 17-viewport-fit-and-label-collision]: user_has_interacted latch set on pan/wheel/zoom-buttons permanently prevents auto-fit re-trigger; fit button bypasses latch
+- [Phase 17-viewport-fit-and-label-collision]: arc_to rounded rect path used instead of round_rect_with_f64 for web-sys version compatibility
+- [Phase 17-viewport-fit-and-label-collision]: Renderer trait extended with default no-op set_label_cache/set_fit_anim_active — no downcasting needed
+- [Phase 17-viewport-fit-and-label-collision]: Temporary offscreen canvas measures text widths at load time, works regardless of Canvas2D vs WebGL2 renderer selection
 
 ### Pending Todos
 
@@ -81,6 +85,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-26T10:05:18.772Z
-Stopped at: Completed 17-01-PLAN.md
+Last session: 2026-03-26T10:12:06.004Z
+Stopped at: Completed 17-02-PLAN.md
 Resume file: None

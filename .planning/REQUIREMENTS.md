@@ -29,7 +29,7 @@ Requirements for v1.2 Graph Rendering Overhaul. Each maps to roadmap phases.
 
 - [x] **VIEW-01**: Graph auto-fits into viewport after force layout stabilizes
 - [x] **VIEW-02**: Auto-fit does not re-trigger after user manually pans or zooms
-- [ ] **LABEL-01**: Labels rendered with priority-ordered collision avoidance (seed first, then by citation count)
+- [x] **LABEL-01**: Labels rendered with priority-ordered collision avoidance (seed first, then by citation count)
 - [x] **LABEL-02**: Convergence indicator shows stabilization status in graph controls
 
 ## Future Requirements
@@ -67,7 +67,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | NODE-03 | Phase 16 | Complete |
 | VIEW-01 | Phase 17 | Complete |
 | VIEW-02 | Phase 17 | Complete |
-| LABEL-01 | Phase 17 | Pending |
+| LABEL-01 | Phase 17 | Complete |
 | LABEL-02 | Phase 17 | Complete |
 
 **Coverage:**

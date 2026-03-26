@@ -43,10 +43,10 @@ Declared values inherited from existing design system (`--space-*` tokens in `ma
 | 3xl | 64px (`--space-3xl`) | Page-level spacing (not used in this phase) |
 
 Exceptions:
-- Label pill height: 18px (non-token — derived from 11px font + 3.5px top + 3.5px bottom padding, rounded to even number). Use literal `18.0f64` in Canvas 2D code.
-- Label pill horizontal padding: 6px per side (non-token — half of `--space-sm`). Use literal `6.0f64`.
+- Label pill height: 20px (11px font + 4.5px top + 4.5px bottom padding, rounded to nearest multiple of 4). Use literal `20.0f64` in Canvas 2D code.
+- Label pill horizontal padding: 8px per side (equals `--space-sm`). Use literal `8.0f64`. Pill width formula: `text_w + 16.0` (8px each side).
 - Label collision clearance: 8px between placed bounding boxes (literal `8.0f64` in `label_collision.rs`).
-- Label-to-node gap: 6px below node bottom in screen space (literal `6.0f64`).
+- Label-to-node gap: 8px below node bottom in screen space (`8.0f64`, equals `--space-sm`).
 - Fit button: 32px × 32px (matches existing `.graph-control-btn` `min-width: 32px; height: 32px`).
 - Status badge touch-/click-target: not interactive — display only.
 

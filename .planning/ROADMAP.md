@@ -59,7 +59,7 @@ Full details: `.planning/milestones/v1.2-ROADMAP.md`
 
 </details>
 
-### 🚧 v1.3 Data Pipeline Fixes (In Progress)
+### v1.3 Data Pipeline Fixes (In Progress)
 
 **Milestone Goal:** Fix the broken arXiv crawl pipeline, eliminate orphan nodes in InspireHEP crawls, and verify the LLM analysis pipeline works end-to-end in the web UI.
 
@@ -77,10 +77,11 @@ Full details: `.planning/milestones/v1.2-ROADMAP.md`
   1. User can crawl a seed paper via arXiv source and sees citation edges stored for references that only appear as plain text in the HTML bibliography (no hyperlink)
   2. User can compare an arXiv crawl and an InspireHEP crawl for the same seed paper and observes comparable edge density (not a fraction of InspireHEP)
   3. The arXiv HTML parser extracts arXiv IDs from `arXiv:YYMM.NNNNN` patterns in reference text, not only from `<a>` tags
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] TBD
+- [ ] 18-01-PLAN.md — Add regex dependency, implement text-based arXiv ID/DOI extraction, update get_arxiv_id() fallback
+- [ ] 18-02-PLAN.md — Integration test with real HTML fixture validating edge density
 
 ### Phase 19: Data Quality Cleanup
 **Goal**: Users see a fully connected citation graph after any crawl, with published dates present on all papers so temporal filtering works
@@ -161,6 +162,6 @@ Plans:
 | 15. Force Simulation Rebalancing | v1.2 | 2/2 | Complete | 2026-03-25 |
 | 16. Edge and Node Renderer Fixes | v1.2 | 2/2 | Complete | 2026-03-25 |
 | 17. Viewport Fit and Label Collision | v1.2 | 2/2 | Complete | 2026-03-26 |
-| 18. arXiv Crawl Repair | v1.3 | 0/TBD | Not started | - |
+| 18. arXiv Crawl Repair | v1.3 | 0/2 | Not started | - |
 | 19. Data Quality Cleanup | v1.3 | 0/TBD | Not started | - |
 | 20. LLM Analysis Pipeline Verification | v1.3 | 0/TBD | Not started | - |

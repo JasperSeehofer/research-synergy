@@ -2,13 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: Data Pipeline Fixes
-status: Ready to plan
-last_updated: "2026-03-28T00:00:00.000Z"
+status: planning
+stopped_at: Phase 18 context gathered
+last_updated: "2026-03-27T23:25:14.237Z"
+last_activity: 2026-03-28 — v1.3 roadmap created, phases 18-20 defined
 progress:
-  total_phases: 3
+  total_phases: 5
   completed_phases: 0
   total_plans: 0
   completed_plans: 0
+  percent: 0
 ---
 
 # Project State
@@ -49,6 +52,7 @@ Progress: [░░░░░░░░░░░░░░░░░░░░] 0% (v1.
 (Full decision log in PROJECT.md Key Decisions table)
 
 Recent decisions relevant to v1.3:
+
 - [Memory]: arXiv crawls silently fail to store citation edges — use InspireHEP for reliable edge data (see project_arxiv_edge_bug.md)
 - [Memory]: Most papers have empty published fields — temporal filtering needs data backfill (see project_data_enrichment_needed.md)
 
@@ -64,6 +68,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-28
-Stopped at: Roadmap created for v1.3, Phase 18 ready to plan
-Resume file: None
+Last session: 2026-03-27T23:25:14.235Z
+Stopped at: Phase 18 context gathered
+Resume file: .planning/phases/18-arxiv-crawl-repair/18-CONTEXT.md

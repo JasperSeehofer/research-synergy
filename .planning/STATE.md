@@ -2,10 +2,10 @@
 gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: Data Pipeline Fixes
-status: Defining requirements
-last_updated: "2026-03-27T00:00:00.000Z"
+status: Ready to plan
+last_updated: "2026-03-28T00:00:00.000Z"
 progress:
-  total_phases: 0
+  total_phases: 3
   completed_phases: 0
   total_plans: 0
   completed_plans: 0
@@ -18,14 +18,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-27)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** v1.3 Data Pipeline Fixes
+**Current focus:** Phase 18 — arXiv Crawl Repair
 
 ## Current Position
 
-Phase: Not started (defining requirements)
-Plan: —
-Status: Defining requirements
-Last activity: 2026-03-27 — Milestone v1.3 started
+Phase: 18 of 20 (arXiv Crawl Repair)
+Plan: — (not yet planned)
+Status: Ready to plan
+Last activity: 2026-03-28 — v1.3 roadmap created, phases 18-20 defined
+
+Progress: [░░░░░░░░░░░░░░░░░░░░] 0% (v1.3: 0/3 phases)
 
 ## Performance Metrics
 
@@ -46,16 +48,22 @@ Last activity: 2026-03-27 — Milestone v1.3 started
 
 (Full decision log in PROJECT.md Key Decisions table)
 
+Recent decisions relevant to v1.3:
+- [Memory]: arXiv crawls silently fail to store citation edges — use InspireHEP for reliable edge data (see project_arxiv_edge_bug.md)
+- [Memory]: Most papers have empty published fields — temporal filtering needs data backfill (see project_data_enrichment_needed.md)
+
 ### Pending Todos
 
 None.
 
 ### Blockers/Concerns
 
-None.
+- Phase 18: arXiv HTML parser bug is the primary known issue — `<span class="ltx_bibblock">` parsing drops references without `<a>` tags
+- Phase 19: Orphan node root cause unknown — investigation (ORPH-01) must precede fix (ORPH-02)
+- Phase 20: LLM analysis pipeline was built in v1.0/v1.1 but not verified against the current Leptos web UI
 
 ## Session Continuity
 
-Last session: 2026-03-27
-Stopped at: Defining v1.3 requirements
+Last session: 2026-03-28
+Stopped at: Roadmap created for v1.3, Phase 18 ready to plan
 Resume file: None

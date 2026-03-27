@@ -6,6 +6,7 @@
 - ✅ **v1.1 Scale & Surface** — Phases 6-10 (shipped 2026-03-22)
 - ✅ **v1.1.1 Bug Fix & Polish** — Phases 11-14 (shipped 2026-03-24)
 - ✅ **v1.2 Graph Rendering Overhaul** — Phases 15-17 (shipped 2026-03-26)
+- 🚧 **v1.3 Data Pipeline Fixes** — Phases 18-20 (in progress)
 
 ## Phases
 
@@ -57,6 +58,56 @@ Full details: `.planning/milestones/v1.1.1-ROADMAP.md`
 Full details: `.planning/milestones/v1.2-ROADMAP.md`
 
 </details>
+
+### 🚧 v1.3 Data Pipeline Fixes (In Progress)
+
+**Milestone Goal:** Fix the broken arXiv crawl pipeline, eliminate orphan nodes in InspireHEP crawls, and verify the LLM analysis pipeline works end-to-end in the web UI.
+
+- [ ] **Phase 18: arXiv Crawl Repair** — Fix HTML reference parser to extract arXiv IDs from plain text, restoring edge-comparable crawl output
+- [ ] **Phase 19: Data Quality Cleanup** — Diagnose and eliminate orphan nodes in InspireHEP crawls; backfill missing publication dates for all crawled papers
+- [ ] **Phase 20: LLM Analysis Pipeline Verification** — Restore end-to-end LLM analysis in the web UI with all result panels functional
+
+## Phase Details
+
+### Phase 18: arXiv Crawl Repair
+**Goal**: Users can run an arXiv crawl and get a densely connected citation graph with the same edge coverage as InspireHEP for the same seed paper
+**Depends on**: Phase 17 (v1.2 complete)
+**Requirements**: ARXIV-01, ARXIV-03
+**Success Criteria** (what must be TRUE):
+  1. User can crawl a seed paper via arXiv source and sees citation edges stored for references that only appear as plain text in the HTML bibliography (no hyperlink)
+  2. User can compare an arXiv crawl and an InspireHEP crawl for the same seed paper and observes comparable edge density (not a fraction of InspireHEP)
+  3. The arXiv HTML parser extracts arXiv IDs from `arXiv:YYMM.NNNNN` patterns in reference text, not only from `<a>` tags
+**Plans**: TBD
+
+Plans:
+- [ ] TBD
+
+### Phase 19: Data Quality Cleanup
+**Goal**: Users see a fully connected citation graph after any crawl, with published dates present on all papers so temporal filtering works
+**Depends on**: Phase 18
+**Requirements**: ARXIV-02, ORPH-01, ORPH-02
+**Success Criteria** (what must be TRUE):
+  1. User can inspect a specific disconnected node from a previous InspireHEP crawl and identify the root cause (missing edge, ID mismatch, dedup error, or crawl boundary)
+  2. User runs a depth-2+ InspireHEP crawl and sees zero orphan nodes in the resulting graph — every node has at least one visible edge
+  3. User can run the temporal year-range slider and see papers filter in/out — all crawled papers have non-null published dates including those fetched via reference parsing
+**Plans**: TBD
+
+Plans:
+- [ ] TBD
+
+### Phase 20: LLM Analysis Pipeline Verification
+**Goal**: Users can trigger LLM analysis from the web UI and view all analysis results (gap findings, open problems, method heatmap) populated with real data
+**Depends on**: Phase 19
+**Requirements**: LLM-01, LLM-02, LLM-03, LLM-04
+**Success Criteria** (what must be TRUE):
+  1. User can click the analysis trigger in the web UI, watch it run, and see it complete without errors
+  2. User can view the gap findings panel and see contradiction edges and ABC-bridge badges rendered for papers where contradictions and bridges were detected
+  3. User can view the open problems panel and see problems ranked by recurrence frequency across the crawled paper set
+  4. User can view the method heatmap and see a populated matrix distinguishing existing method combinations from absent ones
+**Plans**: TBD
+
+Plans:
+- [ ] TBD
 
 ## Backlog
 
@@ -110,3 +161,6 @@ Plans:
 | 15. Force Simulation Rebalancing | v1.2 | 2/2 | Complete | 2026-03-25 |
 | 16. Edge and Node Renderer Fixes | v1.2 | 2/2 | Complete | 2026-03-25 |
 | 17. Viewport Fit and Label Collision | v1.2 | 2/2 | Complete | 2026-03-26 |
+| 18. arXiv Crawl Repair | v1.3 | 0/TBD | Not started | - |
+| 19. Data Quality Cleanup | v1.3 | 0/TBD | Not started | - |
+| 20. LLM Analysis Pipeline Verification | v1.3 | 0/TBD | Not started | - |

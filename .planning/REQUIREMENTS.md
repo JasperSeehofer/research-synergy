@@ -45,21 +45,21 @@ Requirements for v1.3 Data Pipeline Fixes. Each maps to roadmap phases.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ARXIV-01 | TBD | Pending |
-| ARXIV-02 | TBD | Pending |
-| ARXIV-03 | TBD | Pending |
-| ORPH-01 | TBD | Pending |
-| ORPH-02 | TBD | Pending |
-| LLM-01 | TBD | Pending |
-| LLM-02 | TBD | Pending |
-| LLM-03 | TBD | Pending |
-| LLM-04 | TBD | Pending |
+| ARXIV-01 | Phase 18 | Pending |
+| ARXIV-02 | Phase 19 | Pending |
+| ARXIV-03 | Phase 18 | Pending |
+| ORPH-01 | Phase 19 | Pending |
+| ORPH-02 | Phase 19 | Pending |
+| LLM-01 | Phase 20 | Pending |
+| LLM-02 | Phase 20 | Pending |
+| LLM-03 | Phase 20 | Pending |
+| LLM-04 | Phase 20 | Pending |
 
 **Coverage:**
 - v1.3 requirements: 9 total
-- Mapped to phases: 0
-- Unmapped: 9 ⚠️
+- Mapped to phases: 9
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-03-27*
-*Last updated: 2026-03-27 after initial definition*
+*Last updated: 2026-03-28 — traceability mapped to phases 18-20*

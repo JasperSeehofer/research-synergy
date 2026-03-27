@@ -70,7 +70,15 @@ Surface research gaps and unexplored connections that no single paper reveals �
 
 ### Active
 
-(No active milestone — run `/gsd:new-milestone` to define next)
+## Current Milestone: v1.3 Data Pipeline Fixes
+
+**Goal:** Fix the broken arXiv crawl pipeline, eliminate orphan nodes, and verify LLM analysis works end-to-end in the web UI.
+
+**Target features:**
+- Fix arXiv HTML parser to extract arXiv IDs from reference text (not just `<a>` tags)
+- Investigate and fix orphan nodes in InspireHEP crawls
+- Verify/fix LLM analysis pipeline integration with the Leptos web UI
+- Backfill missing paper metadata (published dates) so temporal filtering works
 
 ### Out of Scope
 
@@ -149,7 +157,7 @@ This document evolves at phase transitions and milestone boundaries.
 3. Audit Out of Scope — reasons still valid?
 4. Update Context with current state
 
-Last updated: 2026-03-26
+Last updated: 2026-03-27
 
 ---
-*Last updated: 2026-03-26 after v1.2 milestone*
+*Last updated: 2026-03-27 after v1.3 milestone start*

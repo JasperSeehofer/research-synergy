@@ -108,20 +108,22 @@ impl Reference {
     }
 
     pub fn get_arxiv_id(&self) -> Result<String, ResynError> {
-        let link = self
+        // Primary: check Links for a Journal::Arxiv entry
+        if let Some(link) = self
             .links
             .iter()
-            .find(|link| matches!(link.journal, Journal::Arxiv));
-        match link {
-            Some(existing_link) => existing_link
+            .find(|l| matches!(l.journal, Journal::Arxiv))
+        {
+            return link
                 .url
-                .split("/")
-                .last()
+                .split('/')
+                .next_back()
                 .filter(|s| !s.is_empty())
                 .map(|s| s.to_string())
-                .ok_or(ResynError::NoArxivLink),
-            None => Err(ResynError::NoArxivLink),
+                .ok_or(ResynError::NoArxivLink);
         }
+        // Fallback: check arxiv_eprint field (populated by text extraction)
+        self.arxiv_eprint.clone().ok_or(ResynError::NoArxivLink)
     }
 }
 
@@ -290,5 +292,54 @@ mod tests {
         paper.summary = "Short".to_string();
         let display = format!("{}", paper);
         assert!(display.contains("Short"));
+    }
+
+    #[test]
+    fn test_get_arxiv_id_fallback_to_eprint() {
+        let reference = Reference {
+            author: "Author".to_string(),
+            title: "Title".to_string(),
+            links: vec![Link::from_url("https://nature.com/article/123")],
+            arxiv_eprint: Some("2301.12345".to_string()),
+            ..Default::default()
+        };
+        assert_eq!(reference.get_arxiv_id().unwrap(), "2301.12345");
+    }
+
+    #[test]
+    fn test_get_arxiv_id_prefers_link_over_eprint() {
+        let reference = Reference {
+            author: "Author".to_string(),
+            title: "Title".to_string(),
+            links: vec![Link::from_url("https://arxiv.org/abs/2301.99999")],
+            arxiv_eprint: Some("2301.11111".to_string()),
+            ..Default::default()
+        };
+        // Link takes priority over eprint
+        assert_eq!(reference.get_arxiv_id().unwrap(), "2301.99999");
+    }
+
+    #[test]
+    fn test_get_arxiv_id_eprint_only_no_links() {
+        let reference = Reference {
+            author: "Author".to_string(),
+            title: "Title".to_string(),
+            links: vec![],
+            arxiv_eprint: Some("hep-ph/0601234".to_string()),
+            ..Default::default()
+        };
+        assert_eq!(reference.get_arxiv_id().unwrap(), "hep-ph/0601234");
+    }
+
+    #[test]
+    fn test_get_arxiv_id_no_link_no_eprint() {
+        let reference = Reference {
+            author: "Author".to_string(),
+            title: "Title".to_string(),
+            links: vec![Link::from_url("https://nature.com/article/123")],
+            arxiv_eprint: None,
+            ..Default::default()
+        };
+        assert!(reference.get_arxiv_id().is_err());
     }
 }

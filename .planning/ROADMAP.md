@@ -80,7 +80,7 @@ Full details: `.planning/milestones/v1.2-ROADMAP.md`
 **Plans**: 2 plans
 
 Plans:
-- [ ] 18-01-PLAN.md — Add regex dependency, implement text-based arXiv ID/DOI extraction, update get_arxiv_id() fallback
+- [x] 18-01-PLAN.md — Add regex dependency, implement text-based arXiv ID/DOI extraction, update get_arxiv_id() fallback
 - [ ] 18-02-PLAN.md — Integration test with real HTML fixture validating edge density
 
 ### Phase 19: Data Quality Cleanup
@@ -116,7 +116,7 @@ Plans:
 
 **Goal:** Replace author/year labels with TF-IDF keyword pills (e.g. "Monte Carlo simulation", "Bayesian inference") so users can visually identify paper topics at a glance. Two tiers: (1) hover labels showing top 2-3 keywords per node, (2) cluster-level floating labels showing dominant topic of a graph region (like map labels over geographic areas). Requires wiring TF-IDF/LLM analysis results to frontend GraphData.
 **Requirements:** TBD
-**Plans:** 0 plans
+**Plans:** 1/2 plans executed
 
 Plans:
 - [ ] TBD (promote with /gsd:review-backlog when ready)
@@ -162,6 +162,6 @@ Plans:
 | 15. Force Simulation Rebalancing | v1.2 | 2/2 | Complete | 2026-03-25 |
 | 16. Edge and Node Renderer Fixes | v1.2 | 2/2 | Complete | 2026-03-25 |
 | 17. Viewport Fit and Label Collision | v1.2 | 2/2 | Complete | 2026-03-26 |
-| 18. arXiv Crawl Repair | v1.3 | 0/2 | Not started | - |
+| 18. arXiv Crawl Repair | v1.3 | 1/2 | In Progress|  |
 | 19. Data Quality Cleanup | v1.3 | 0/TBD | Not started | - |
 | 20. LLM Analysis Pipeline Verification | v1.3 | 0/TBD | Not started | - |

@@ -9,7 +9,7 @@ Requirements for v1.3 Data Pipeline Fixes. Each maps to roadmap phases.
 
 ### arXiv Crawl
 
-- [ ] **ARXIV-01**: User can crawl arXiv papers and see citation edges stored for references that mention arXiv IDs in plain text (not just hyperlinked)
+- [x] **ARXIV-01**: User can crawl arXiv papers and see citation edges stored for references that mention arXiv IDs in plain text (not just hyperlinked)
 - [ ] **ARXIV-02**: User can see published dates for all crawled papers (backfilled from arXiv API for reference-only papers)
 - [ ] **ARXIV-03**: User can run an arXiv crawl and get comparable edge density to InspireHEP for the same seed paper
 
@@ -45,7 +45,7 @@ Requirements for v1.3 Data Pipeline Fixes. Each maps to roadmap phases.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ARXIV-01 | Phase 18 | Pending |
+| ARXIV-01 | Phase 18 | Complete |
 | ARXIV-02 | Phase 19 | Pending |
 | ARXIV-03 | Phase 18 | Pending |
 | ORPH-01 | Phase 19 | Pending |

@@ -222,7 +222,12 @@ pub fn GraphPage() -> impl IntoView {
         let output_buf: Rc<RefCell<Option<LayoutOutput>>> = Rc::new(RefCell::new(None));
 
         // Set up ResizeObserver to handle canvas resize
-        setup_resize_observer(&canvas, state.clone(), renderer_rc.clone(), label_ctx.clone());
+        setup_resize_observer(
+            &canvas,
+            state.clone(),
+            renderer_rc.clone(),
+            label_ctx.clone(),
+        );
 
         // Attach event listeners to canvas
         attach_event_listeners(
@@ -592,7 +597,8 @@ fn start_render_loop(
                 ctx.clear_rect(0.0, 0.0, cw, ch);
 
                 // Hover-only label: show pill for the hovered node
-                if !s.fit_anim.active && s.viewport.scale > 0.3
+                if !s.fit_anim.active
+                    && s.viewport.scale > 0.3
                     && let Some(hi) = s.graph.hovered_node
                     && hi < s.graph.nodes.len()
                 {
@@ -610,17 +616,22 @@ fn start_render_loop(
                         let text_w = s.text_widths.get(hi).copied().unwrap_or(40.0);
                         let pill_w = text_w + PILL_H_PAD * 2.0;
                         let label_x = sx - pill_w / 2.0;
-                        let label_y =
-                            sy + node.radius * s.viewport.scale + LABEL_NODE_GAP;
+                        let label_y = sy + node.radius * s.viewport.scale + LABEL_NODE_GAP;
 
                         draw_label_pill(
-                            ctx, label_x, label_y, pill_w, PILL_HEIGHT,
-                            PILL_CORNER_RADIUS, &node.label(), PILL_H_PAD,
+                            ctx,
+                            label_x,
+                            label_y,
+                            pill_w,
+                            PILL_HEIGHT,
+                            PILL_CORNER_RADIUS,
+                            &node.label(),
+                            PILL_H_PAD,
                         );
                     }
                 }
             }
-        }  // end state borrow scope
+        } // end state borrow scope
 
         // Update visible count signal outside the state borrow (avoids RefCell conflicts)
         visible_count.set(vis_count);

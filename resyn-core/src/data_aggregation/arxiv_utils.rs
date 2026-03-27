@@ -3,9 +3,29 @@ use crate::data_aggregation::traits::PaperSource;
 use crate::datamodels::paper::{Link, Paper, Reference};
 use crate::error::ResynError;
 use crate::utils::strip_version_suffix;
+use regex::Regex;
 use scraper::{ElementRef, Selector};
 use std::collections::HashSet;
+use std::sync::OnceLock;
 use tracing::{debug, info, warn};
+
+static ARXIV_NEW_RE: OnceLock<Regex> = OnceLock::new();
+static ARXIV_OLD_RE: OnceLock<Regex> = OnceLock::new();
+static DOI_RE: OnceLock<Regex> = OnceLock::new();
+
+fn arxiv_new_re() -> &'static Regex {
+    ARXIV_NEW_RE.get_or_init(|| {
+        Regex::new(r"\b((?:0[0-9]|1[0-9]|2[0-9])\d{2}\.\d{4,5}(?:v\d+)?)\b").unwrap()
+    })
+}
+
+fn arxiv_old_re() -> &'static Regex {
+    ARXIV_OLD_RE.get_or_init(|| Regex::new(r"\b([a-zA-Z][a-zA-Z0-9\-]+/\d{7}(?:v\d+)?)\b").unwrap())
+}
+
+fn doi_re() -> &'static Regex {
+    DOI_RE.get_or_init(|| Regex::new(r"\b(10\.\d{4,}/[^\s,;)\]]+)").unwrap())
+}
 
 pub async fn aggregate_references_for_arxiv_paper(
     paper: &mut Paper,
@@ -47,6 +67,50 @@ pub async fn aggregate_references_for_arxiv_paper(
                 }
             }
         }
+        // --- Text-based ID extraction (per D-01, D-02, D-03) ---
+
+        // Build dedup set from existing <a>-tag links (D-03: merge, don't duplicate)
+        let mut seen_arxiv_ids: HashSet<String> = links
+            .iter()
+            .filter_map(|url| {
+                if url.contains("arxiv") {
+                    url.split('/').next_back().map(strip_version_suffix)
+                } else {
+                    None
+                }
+            })
+            .collect();
+
+        // Extract new-format arXiv IDs from plain text (per D-01)
+        let mut text_extracted_eprint: Option<String> = None;
+        for cap in arxiv_new_re().captures_iter(&reference_string) {
+            let id = strip_version_suffix(&cap[1]);
+            if seen_arxiv_ids.insert(id.clone()) {
+                links.push(format!("https://arxiv.org/abs/{}", id));
+                if text_extracted_eprint.is_none() {
+                    text_extracted_eprint = Some(id);
+                }
+            }
+        }
+
+        // Extract old-format arXiv IDs from plain text (per D-01)
+        for cap in arxiv_old_re().captures_iter(&reference_string) {
+            let id = strip_version_suffix(&cap[1]);
+            if seen_arxiv_ids.insert(id.clone()) {
+                links.push(format!("https://arxiv.org/abs/{}", id));
+                if text_extracted_eprint.is_none() {
+                    text_extracted_eprint = Some(id);
+                }
+            }
+        }
+
+        // Extract DOI from plain text (per D-02)
+        let text_extracted_doi = doi_re().captures(&reference_string).map(|cap| {
+            cap[1]
+                .trim_end_matches(|c: char| !c.is_alphanumeric())
+                .to_string()
+        });
+
         let (author, title) = if !em_title.is_empty() {
             let author = reference_string
                 .split(&em_title)
@@ -64,6 +128,8 @@ pub async fn aggregate_references_for_arxiv_paper(
             author,
             title,
             links: links.iter().map(|x| Link::from_url(x)).collect(),
+            doi: text_extracted_doi,
+            arxiv_eprint: text_extracted_eprint,
             ..Default::default()
         });
     }
@@ -212,5 +278,30 @@ mod tests {
             convert_pdf_url_to_html_url(pdf_url)
         };
         assert_eq!(html_url, "https://arxiv.org/html/2503.18887");
+    }
+
+    #[test]
+    fn test_arxiv_new_re_matches() {
+        let re = super::arxiv_new_re();
+        assert!(re.is_match("arXiv:2301.12345"));
+        assert!(re.is_match("arXiv:2301.12345v2"));
+        assert!(re.is_match("some text 0912.1234 more text"));
+        // Should NOT match short numbers
+        assert!(!re.is_match("91.1234"));
+    }
+
+    #[test]
+    fn test_arxiv_old_re_matches() {
+        let re = super::arxiv_old_re();
+        assert!(re.is_match("hep-ph/0601234"));
+        assert!(re.is_match("astro-ph/9912345v1"));
+        assert!(!re.is_match("12345/0601234"));
+    }
+
+    #[test]
+    fn test_doi_re_matches() {
+        let re = super::doi_re();
+        let cap = re.captures("10.1103/PhysRevD.107.012345").unwrap();
+        assert_eq!(&cap[1], "10.1103/PhysRevD.107.012345");
     }
 }

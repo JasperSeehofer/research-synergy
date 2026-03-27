@@ -297,7 +297,6 @@ impl Renderer for Canvas2DRenderer {
             canvas.set_height(height);
         }
     }
-
 }
 
 /// Compute depth-based alpha for regular citation edges (D-02).
@@ -319,7 +318,6 @@ fn depth_alpha(edge: &EdgeData, nodes: &[NodeState]) -> f64 {
         _ => 0.15,
     }
 }
-
 
 fn draw_arrowhead(
     ctx: &CanvasRenderingContext2d,

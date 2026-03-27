@@ -13,6 +13,7 @@ ssr = [
     "dep:futures",
     "dep:tokio",
     "dep:governor",
+    "dep:regex",
 ]
 
 [dependencies]
@@ -28,6 +29,7 @@ rand = { workspace = true }
 anyhow = { workspace = true }
 
 # Server-only (optional, behind ssr feature)
+regex = { workspace = true, optional = true }
 governor = { optional = true, version = "0.10" }
 surrealdb = { workspace = true, optional = true }
 reqwest = { workspace = true, optional = true }

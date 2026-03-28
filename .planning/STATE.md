@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: Data Pipeline Fixes
 status: executing
-stopped_at: Completed 20-01-PLAN.md
-last_updated: "2026-03-28T21:59:44.333Z"
+stopped_at: Completed 20-03-PLAN.md
+last_updated: "2026-03-28T22:05:59.833Z"
 last_activity: 2026-03-28
 progress:
   total_phases: 5
@@ -26,7 +26,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 ## Current Position
 
 Phase: 20 (llm-analysis-pipeline-verification) — EXECUTING
-Plan: 2 of 4
+Plan: 3 of 4
 Status: Ready to execute
 Last activity: 2026-03-28
 
@@ -48,6 +48,7 @@ Progress: [░░░░░░░░░░░░░░░░░░░░] 0% (v1.
 | Phase 18-arxiv-crawl-repair P02 | 13min | 1 tasks | 2 files |
 | Phase 19-data-quality-cleanup P01 | 5min | 2 tasks | 2 files |
 | Phase 20-llm-analysis-pipeline-verification P01 | 6min | 3 tasks | 9 files |
+| Phase 20-llm-analysis-pipeline-verification P03 | 5min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -67,6 +68,8 @@ Recent decisions relevant to v1.3:
 - [Phase 19-data-quality-cleanup]: earliest_date added to both fetch_paper() and fetch_literature() URL field params for consistency
 - [Phase 20-llm-analysis-pipeline-verification]: StartAnalysis inlines resyn-core pipeline logic directly — avoids circular dependency (resyn-app cannot depend on resyn-server)
 - [Phase 20-llm-analysis-pipeline-verification]: run_extraction/run_llm_analysis return anyhow::Result<()>; CLI run() retains process::exit for user-facing errors
+- [Phase 20-llm-analysis-pipeline-verification]: on:click dispatch uses block form { action.dispatch(()); } to discard ActionAbortHandle return value in Leptos event handlers
+- [Phase 20-llm-analysis-pipeline-verification]: analysis_action in methods.rs hoisted to MethodsPanel top-level so it can be captured by the empty state view closure
 
 ### Pending Todos
 
@@ -80,6 +83,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-28T21:59:44.332Z
-Stopped at: Completed 20-01-PLAN.md
+Last session: 2026-03-28T22:05:59.832Z
+Stopped at: Completed 20-03-PLAN.md
 Resume file: None

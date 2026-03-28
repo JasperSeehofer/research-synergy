@@ -44,12 +44,13 @@ async fn sse_progress(
 pub async fn run(args: ServeArgs) -> anyhow::Result<()> {
     // Register all Leptos server functions explicitly (inventory auto-registration
     // doesn't work across crate boundaries in this setup).
-    use resyn_app::server_fns::{gaps, graph, methods, papers, problems};
+    use resyn_app::server_fns::{analysis, gaps, graph, methods, papers, problems};
     use server_fn::axum::register_explicit;
     register_explicit::<papers::GetPapers>();
     register_explicit::<papers::GetPaperDetail>();
     register_explicit::<papers::GetDashboardStats>();
     register_explicit::<papers::StartCrawl>();
+    register_explicit::<analysis::StartAnalysis>();
     register_explicit::<gaps::GetGapFindings>();
     register_explicit::<problems::GetOpenProblemsRanked>();
     register_explicit::<methods::GetMethodMatrix>();

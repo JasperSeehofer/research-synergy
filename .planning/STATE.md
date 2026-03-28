@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: Data Pipeline Fixes
-status: verifying
-stopped_at: Phase 20 context gathered
-last_updated: "2026-03-28T21:00:22.001Z"
+status: executing
+stopped_at: Completed 20-01-PLAN.md
+last_updated: "2026-03-28T21:59:44.333Z"
 last_activity: 2026-03-28
 progress:
   total_phases: 5
   completed_phases: 2
-  total_plans: 3
-  completed_plans: 3
+  total_plans: 7
+  completed_plans: 4
   percent: 0
 ---
 
@@ -21,13 +21,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-27)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Phase 19 — data-quality-cleanup
+**Current focus:** Phase 20 — llm-analysis-pipeline-verification
 
 ## Current Position
 
-Phase: 999.1
-Plan: Not started
-Status: Phase complete — ready for verification
+Phase: 20 (llm-analysis-pipeline-verification) — EXECUTING
+Plan: 2 of 4
+Status: Ready to execute
 Last activity: 2026-03-28
 
 Progress: [░░░░░░░░░░░░░░░░░░░░] 0% (v1.3: 0/3 phases)
@@ -47,6 +47,7 @@ Progress: [░░░░░░░░░░░░░░░░░░░░] 0% (v1.
 | Phase 18-arxiv-crawl-repair P01 | 5min | 2 tasks | 4 files |
 | Phase 18-arxiv-crawl-repair P02 | 13min | 1 tasks | 2 files |
 | Phase 19-data-quality-cleanup P01 | 5min | 2 tasks | 2 files |
+| Phase 20-llm-analysis-pipeline-verification P01 | 6min | 3 tasks | 9 files |
 
 ## Accumulated Context
 
@@ -64,6 +65,8 @@ Recent decisions relevant to v1.3:
 - [Phase 18-arxiv-crawl-repair]: Old-format arXiv IDs (hep-ph/...) have get_arxiv_id() return last URL segment; verify full ID via arxiv_eprint field in tests
 - [Phase 19-data-quality-cleanup]: Filter at source in get_arxiv_references_ids() rather than at BFS queue ingestion
 - [Phase 19-data-quality-cleanup]: earliest_date added to both fetch_paper() and fetch_literature() URL field params for consistency
+- [Phase 20-llm-analysis-pipeline-verification]: StartAnalysis inlines resyn-core pipeline logic directly — avoids circular dependency (resyn-app cannot depend on resyn-server)
+- [Phase 20-llm-analysis-pipeline-verification]: run_extraction/run_llm_analysis return anyhow::Result<()>; CLI run() retains process::exit for user-facing errors
 
 ### Pending Todos
 
@@ -77,6 +80,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-28T21:00:22.000Z
-Stopped at: Phase 20 context gathered
-Resume file: .planning/phases/20-llm-analysis-pipeline-verification/20-CONTEXT.md
+Last session: 2026-03-28T21:59:44.332Z
+Stopped at: Completed 20-01-PLAN.md
+Resume file: None

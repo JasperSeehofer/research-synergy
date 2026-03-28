@@ -108,7 +108,7 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 20-01-PLAN.md — Backend wiring: StartAnalysis server fn, ProgressEvent extension, process::exit removal
+- [x] 20-01-PLAN.md — Backend wiring: StartAnalysis server fn, ProgressEvent extension, process::exit removal
 - [ ] 20-02-PLAN.md — Dashboard UI: analysis controls, LLM warning banner, sidebar progress display
 - [ ] 20-03-PLAN.md — Result panel updates: CTA empty states and SSE-triggered refetch for all panels
 - [ ] 20-04-PLAN.md — Integration tests: wiremock Ollama pipeline verification
@@ -119,7 +119,7 @@ Plans:
 
 **Goal:** Replace author/year labels with TF-IDF keyword pills (e.g. "Monte Carlo simulation", "Bayesian inference") so users can visually identify paper topics at a glance. Two tiers: (1) hover labels showing top 2-3 keywords per node, (2) cluster-level floating labels showing dominant topic of a graph region (like map labels over geographic areas). Requires wiring TF-IDF/LLM analysis results to frontend GraphData.
 **Requirements:** TBD
-**Plans:** 1/1 plans complete
+**Plans:** 1/4 plans executed
 
 Plans:
 - [ ] TBD (promote with /gsd:review-backlog when ready)
@@ -167,4 +167,4 @@ Plans:
 | 17. Viewport Fit and Label Collision | v1.2 | 2/2 | Complete | 2026-03-26 |
 | 18. arXiv Crawl Repair | v1.3 | 2/2 | Complete    | 2026-03-28 |
 | 19. Data Quality Cleanup | v1.3 | 1/1 | Complete    | 2026-03-28 |
-| 20. LLM Analysis Pipeline Verification | v1.3 | 0/4 | Not started | - |
+| 20. LLM Analysis Pipeline Verification | v1.3 | 1/4 | In Progress|  |

@@ -20,7 +20,7 @@ Requirements for v1.3 Data Pipeline Fixes. Each maps to roadmap phases.
 
 ### LLM Analysis
 
-- [ ] **LLM-01**: User can trigger LLM analysis from the web UI and see it complete successfully
+- [x] **LLM-01**: User can trigger LLM analysis from the web UI and see it complete successfully
 - [ ] **LLM-02**: User can view gap findings (contradictions, ABC-bridges) in the web UI after analysis
 - [ ] **LLM-03**: User can view open problems panel with results ranked by recurrence
 - [ ] **LLM-04**: User can view method heatmap showing existing vs absent pairings
@@ -50,7 +50,7 @@ Requirements for v1.3 Data Pipeline Fixes. Each maps to roadmap phases.
 | ARXIV-03 | Phase 18 | Complete |
 | ORPH-01 | Phase 19 | Complete |
 | ORPH-02 | Phase 19 | Complete |
-| LLM-01 | Phase 20 | Pending |
+| LLM-01 | Phase 20 | Complete |
 | LLM-02 | Phase 20 | Pending |
 | LLM-03 | Phase 20 | Pending |
 | LLM-04 | Phase 20 | Pending |

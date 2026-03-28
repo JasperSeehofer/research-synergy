@@ -105,10 +105,13 @@ Plans:
   2. User can view the gap findings panel and see contradiction edges and ABC-bridge badges rendered for papers where contradictions and bridges were detected
   3. User can view the open problems panel and see problems ranked by recurrence frequency across the crawled paper set
   4. User can view the method heatmap and see a populated matrix distinguishing existing method combinations from absent ones
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] TBD
+- [ ] 20-01-PLAN.md — Backend wiring: StartAnalysis server fn, ProgressEvent extension, process::exit removal
+- [ ] 20-02-PLAN.md — Dashboard UI: analysis controls, LLM warning banner, sidebar progress display
+- [ ] 20-03-PLAN.md — Result panel updates: CTA empty states and SSE-triggered refetch for all panels
+- [ ] 20-04-PLAN.md — Integration tests: wiremock Ollama pipeline verification
 
 ## Backlog
 
@@ -164,4 +167,4 @@ Plans:
 | 17. Viewport Fit and Label Collision | v1.2 | 2/2 | Complete | 2026-03-26 |
 | 18. arXiv Crawl Repair | v1.3 | 2/2 | Complete    | 2026-03-28 |
 | 19. Data Quality Cleanup | v1.3 | 1/1 | Complete    | 2026-03-28 |
-| 20. LLM Analysis Pipeline Verification | v1.3 | 0/TBD | Not started | - |
+| 20. LLM Analysis Pipeline Verification | v1.3 | 0/4 | Not started | - |

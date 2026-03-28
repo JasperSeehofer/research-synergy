@@ -7,7 +7,7 @@ wave_0_complete: false
 created: 2026-03-28
 ---
 
-# Phase 20 — Validation Strategy
+# Phase 20 -- Validation Strategy
 
 > Per-phase validation contract for feedback sampling during execution.
 
@@ -38,26 +38,39 @@ created: 2026-03-28
 
 | Task ID | Plan | Wave | Requirement | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|-----------|-------------------|-------------|--------|
-| 20-01-01 | 01 | 1 | LLM-01 | unit | `cargo test start_analysis` | ❌ W0 | ⬜ pending |
-| 20-01-02 | 01 | 1 | LLM-01 | integration | `cargo test analysis_pipeline_noop` | ❌ W0 | ⬜ pending |
-| 20-01-03 | 01 | 1 | LLM-01 | unit | `cargo test analysis_sse_events` | ❌ W0 | ⬜ pending |
-| 20-02-01 | 02 | 2 | LLM-02 | integration | `cargo test get_gap_findings` | ❌ W0 | ⬜ pending |
-| 20-02-02 | 02 | 2 | LLM-02 | integration | `cargo test analysis_wiremock_ollama` | ❌ W0 | ⬜ pending |
-| 20-03-01 | 03 | 2 | LLM-03 | integration | `cargo test get_open_problems_ranked_after_analysis` | ❌ W0 | ⬜ pending |
-| 20-04-01 | 04 | 2 | LLM-04 | integration | `cargo test get_method_matrix_after_analysis` | ❌ W0 | ⬜ pending |
-| 20-05-01 | 01 | 1 | LLM-01 | unit | `cargo test analysis_noop_nlp_only` | ❌ W0 | ⬜ pending |
+| 20-04-01 | 04 | 3 | LLM-01 | integration | `cargo test test_analysis_pipeline_noop_nlp_only` | W0 stub | pending |
+| 20-04-02 | 04 | 3 | LLM-01 | integration | `cargo test test_analysis_pipeline_noop_provider` | W0 stub | pending |
+| 20-04-03 | 04 | 3 | LLM-01, LLM-02, LLM-03, LLM-04 | integration | `cargo test test_analysis_pipeline_wiremock_ollama` | W0 stub | pending |
+| 20-04-04 | 04 | 3 | LLM-01 | integration | `cargo test test_analysis_pipeline_caching` | W0 stub | pending |
+| 20-04-05 | 04 | 3 | LLM-01 | integration | `cargo test test_start_analysis_http` | W0 stub | pending |
+| 20-04-06 | 04 | 3 | LLM-01 | integration | `cargo test --features ollama-test test_analysis_pipeline_real_ollama` | W0 stub (feature-gated) | pending |
 
-*Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
+*Status: pending / green / red / flaky*
 
 ---
 
 ## Wave 0 Requirements
 
-- [ ] `resyn-app/src/server_fns/analysis.rs` — `StartAnalysis` server function stub (LLM-01)
-- [ ] `resyn-server/tests/analysis_pipeline_test.rs` — integration test stubs for pipeline with wiremock (LLM-01 through LLM-04)
+- [ ] `resyn-app/src/server_fns/analysis.rs` -- `StartAnalysis` server function stub (LLM-01)
+- [ ] `resyn-server/tests/analysis_pipeline_test.rs` -- 5 default + 1 feature-gated integration test stubs (LLM-01 through LLM-04)
 - [ ] Analysis stage `event_type` strings documented in progress event types
 
-*All test files are new — no existing infrastructure covers analysis pipeline tests.*
+*All test files are new -- no existing infrastructure covers analysis pipeline tests.*
+
+---
+
+## Wave 0 Stub-to-Implementation Name Mapping
+
+Every Wave 0 stub in Plan 01 Task 0 has a 1:1 name match with Plan 04 implementations:
+
+| Wave 0 Stub (Plan 01) | Implementation (Plan 04) | Decision |
+|------------------------|--------------------------|----------|
+| `test_analysis_pipeline_noop_nlp_only` | Plan 04 Test 1 | D-07 |
+| `test_analysis_pipeline_noop_provider` | Plan 04 Test 2 | LLM-01 |
+| `test_analysis_pipeline_wiremock_ollama` | Plan 04 Test 3 | D-11 |
+| `test_analysis_pipeline_caching` | Plan 04 Test 4 | D-02 |
+| `test_start_analysis_http` | Plan 04 Test 5 | D-10 |
+| `test_analysis_pipeline_real_ollama` | Plan 04 Test 6 (feature-gated) | D-11 |
 
 ---
 

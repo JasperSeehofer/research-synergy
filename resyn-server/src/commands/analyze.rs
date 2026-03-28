@@ -64,17 +64,15 @@ pub async fn run_analysis_pipeline(
     rate_limit_secs: u64,
     skip_fulltext: bool,
 ) -> anyhow::Result<()> {
-    run_extraction(db, rate_limit_secs, skip_fulltext, args.force).await;
+    run_extraction(db, rate_limit_secs, skip_fulltext, args.force).await?;
     run_nlp_analysis(db).await;
 
     if let Some(ref provider_name) = args.llm_provider {
         let client = resyn_core::utils::create_http_client();
         let mut provider: Box<dyn LlmProvider> = match provider_name.as_str() {
             "claude" => {
-                let p = ClaudeProvider::new(client).unwrap_or_else(|e| {
-                    error!(error = %e, "Failed to initialize Claude provider");
-                    std::process::exit(1);
-                });
+                let p = ClaudeProvider::new(client)
+                    .map_err(|e| anyhow::anyhow!("Failed to initialize Claude provider: {e}"))?;
                 Box::new(if let Some(ref m) = args.llm_model {
                     p.with_model(m.clone())
                 } else {
@@ -91,27 +89,30 @@ pub async fn run_analysis_pipeline(
             }
             "noop" => Box::new(NoopProvider),
             other => {
-                error!(
-                    provider = other,
-                    "Unknown LLM provider. Use: claude, ollama, noop"
-                );
-                std::process::exit(1);
+                return Err(anyhow::anyhow!(
+                    "Unknown LLM provider: {other}. Use: claude, ollama, noop"
+                ));
             }
         };
-        run_llm_analysis(db, provider.as_mut()).await;
+        run_llm_analysis(db, provider.as_mut()).await?;
         run_gap_analysis(db, provider.as_mut(), args.full_corpus, args.verbose).await;
     }
 
     Ok(())
 }
 
-async fn run_extraction(db: &Db, rate_limit_secs: u64, skip_fulltext: bool, force: bool) {
+async fn run_extraction(
+    db: &Db,
+    rate_limit_secs: u64,
+    skip_fulltext: bool,
+    force: bool,
+) -> anyhow::Result<()> {
     let extraction_repo = resyn_core::database::queries::ExtractionRepository::new(db);
     let paper_repo = resyn_core::database::queries::PaperRepository::new(db);
-    let all_papers = paper_repo.get_all_papers().await.unwrap_or_else(|e| {
+    let all_papers = paper_repo.get_all_papers().await.map_err(|e| {
         error!(error = %e, "Failed to load papers for analysis");
-        std::process::exit(1);
-    });
+        anyhow::anyhow!("Failed to load papers for analysis: {e}")
+    })?;
 
     let client = resyn_core::utils::create_http_client();
     let mut extractor = resyn_core::data_aggregation::text_extractor::Ar5ivExtractor::new(client)
@@ -154,6 +155,7 @@ async fn run_extraction(db: &Db, rate_limit_secs: u64, skip_fulltext: bool, forc
         analyzed,
         skipped_count
     );
+    Ok(())
 }
 
 async fn run_nlp_analysis(db: &Db) {
@@ -266,14 +268,14 @@ async fn run_nlp_analysis(db: &Db) {
     info!("Top corpus terms: {}", corpus_terms_display.join(", "));
 }
 
-async fn run_llm_analysis(db: &Db, provider: &mut dyn LlmProvider) {
+async fn run_llm_analysis(db: &Db, provider: &mut dyn LlmProvider) -> anyhow::Result<()> {
     let paper_repo = resyn_core::database::queries::PaperRepository::new(db);
     let llm_repo = LlmAnnotationRepository::new(db);
 
-    let all_papers = paper_repo.get_all_papers().await.unwrap_or_else(|e| {
+    let all_papers = paper_repo.get_all_papers().await.map_err(|e| {
         error!(error = %e, "Failed to load papers for LLM analysis");
-        std::process::exit(1);
-    });
+        anyhow::anyhow!("Failed to load papers for LLM analysis: {e}")
+    })?;
 
     let (mut annotated, mut skipped, mut failed) = (0usize, 0usize, 0usize);
 
@@ -310,6 +312,7 @@ async fn run_llm_analysis(db: &Db, provider: &mut dyn LlmProvider) {
         failed,
         provider.provider_name()
     );
+    Ok(())
 }
 
 async fn run_gap_analysis(

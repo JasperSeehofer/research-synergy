@@ -13,4 +13,8 @@ pub struct ProgressEvent {
     pub elapsed_secs: f64,
     pub current_paper_id: Option<String>,
     pub current_paper_title: Option<String>,
+    /// Present during analysis pipeline events; `None` for crawl events.
+    /// Values: `"extracting"`, `"nlp"`, `"llm"`, `"gaps"`, `"complete"`, `"error"`.
+    #[serde(default)]
+    pub analysis_stage: Option<String>,
 }

@@ -88,6 +88,7 @@ pub fn CrawlProgress(
                     elapsed_secs: 0.0,
                     current_paper_id: None,
                     current_paper_title: None,
+                    analysis_stage: None,
                 });
                 let pct = progress_pct();
                 let stats_text = format!(

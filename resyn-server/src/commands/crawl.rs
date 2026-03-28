@@ -377,6 +377,7 @@ pub async fn run(args: CrawlArgs) -> anyhow::Result<()> {
                         elapsed_secs: elapsed_at_spawn,
                         current_paper_id: Some(entry.paper_id.clone()),
                         current_paper_title: title,
+                        analysis_stage: None,
                     });
                 }
                 Err(e) => {
@@ -398,6 +399,7 @@ pub async fn run(args: CrawlArgs) -> anyhow::Result<()> {
                         elapsed_secs: elapsed_at_spawn,
                         current_paper_id: Some(entry.paper_id.clone()),
                         current_paper_title: None,
+                        analysis_stage: None,
                     });
                 }
             }
@@ -426,6 +428,7 @@ pub async fn run(args: CrawlArgs) -> anyhow::Result<()> {
         elapsed_secs: elapsed.as_secs_f64(),
         current_paper_id: None,
         current_paper_title: None,
+        analysis_stage: None,
     });
 
     if args.analyze {

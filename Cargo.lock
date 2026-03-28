@@ -4645,6 +4645,7 @@ dependencies = [
 name = "resyn-app"
 version = "0.1.0"
 dependencies = [
+ "chrono",
  "codee",
  "console_error_panic_hook",
  "futures",
@@ -4702,6 +4703,7 @@ dependencies = [
  "chrono",
  "clap",
  "futures",
+ "http 1.4.0",
  "leptos",
  "leptos_axum",
  "resyn-app",
@@ -4711,9 +4713,11 @@ dependencies = [
  "server_fn",
  "tokio",
  "tokio-stream",
+ "tower",
  "tower-http",
  "tracing",
  "tracing-subscriber",
+ "wiremock",
 ]
 
 [[package]]

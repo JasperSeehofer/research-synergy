@@ -51,6 +51,7 @@ pub async fn run(args: ServeArgs) -> anyhow::Result<()> {
     register_explicit::<papers::GetDashboardStats>();
     register_explicit::<papers::StartCrawl>();
     register_explicit::<analysis::StartAnalysis>();
+    register_explicit::<analysis::CheckLlmConfigured>();
     register_explicit::<gaps::GetGapFindings>();
     register_explicit::<problems::GetOpenProblemsRanked>();
     register_explicit::<methods::GetMethodMatrix>();

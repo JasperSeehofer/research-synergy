@@ -1,5 +1,19 @@
 use leptos::prelude::*;
 
+/// Check whether an LLM provider is configured via the `RESYN_LLM_PROVIDER` environment variable.
+///
+/// Returns `true` if the variable is set (any non-empty value), `false` otherwise.
+/// Used by the frontend to show the LLM warning banner (D-07).
+#[server(CheckLlmConfigured, "/api")]
+pub async fn check_llm_configured() -> Result<bool, ServerFnError> {
+    #[cfg(feature = "ssr")]
+    {
+        Ok(std::env::var("RESYN_LLM_PROVIDER").is_ok())
+    }
+    #[cfg(not(feature = "ssr"))]
+    unreachable!()
+}
+
 /// Trigger the analysis pipeline in the background.
 ///
 /// Returns immediately with "Analysis started". Progress events are broadcast

@@ -1,5 +1,6 @@
 use leptos::prelude::*;
 
+use crate::components::analysis_controls::AnalysisControls;
 use crate::server_fns::papers::{DashboardStats, get_dashboard_stats};
 
 /// Dashboard page — summary cards for the research corpus.
@@ -35,6 +36,7 @@ pub fn Dashboard() -> impl IntoView {
                     }.into_any(),
                     Ok(s) => view! {
                         <DashboardCards stats=s/>
+                        <AnalysisControls/>
                     }.into_any(),
                 })}
             </Suspense>

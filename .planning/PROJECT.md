@@ -67,6 +67,8 @@ Surface research gaps and unexplored connections that no single paper reveals �
 - ✓ User interaction latch prevents auto-fit re-trigger after pan/zoom — v1.2 Phase 17
 - ✓ Priority-ordered label collision avoidance (seed first, then citation count) — v1.2 Phase 17
 - ✓ Three-state convergence badge (Simulating/Paused/Settled) — v1.2 Phase 17
+- ✓ Text-based arXiv ID/DOI extraction from HTML bibliography plain text — v1.3 Phase 18
+- ✓ get_arxiv_id() fallback to arxiv_eprint for non-hyperlinked references — v1.3 Phase 18
 
 ### Active
 
@@ -95,6 +97,7 @@ Surface research gaps and unexplored connections that no single paper reveals �
 ## Current State
 
 **Shipped:** v1.2 Graph Rendering Overhaul (2026-03-26)
+**Phase 18 complete** — arXiv crawl repair: text-based ID extraction restores edge density (2026-03-28)
 
 ReSyn is a 3-crate Cargo workspace (resyn-core/resyn-app/resyn-server) with ~25,000 LOC Rust across 90+ files. The full pipeline runs through a Leptos CSR web UI served by Axum, with interactive Canvas 2D / WebGL2 graph rendering powered by Barnes-Hut force layout in a WASM Web Worker. The graph renderer now produces visually clear force-directed layouts with retuned coefficients, visible edges on dark backgrounds, crisp anti-aliased nodes, seed node distinction, auto-fit viewport animation, and collision-free priority-ordered labels.
 

@@ -1,4 +1,7 @@
+use codee::string::JsonSerdeCodec;
 use leptos::prelude::*;
+use leptos_use::{UseEventSourceReturn, use_event_source};
+use resyn_core::datamodels::progress::ProgressEvent;
 
 use crate::components::heatmap::Heatmap;
 use crate::server_fns::methods::{get_method_drilldown, get_method_matrix};
@@ -8,6 +11,21 @@ use crate::server_fns::methods::{get_method_drilldown, get_method_matrix};
 pub fn MethodsPanel() -> impl IntoView {
     // Primary matrix resource.
     let matrix_resource = Resource::new(|| (), |_| async { get_method_matrix().await });
+
+    let UseEventSourceReturn { message: sse_message, .. } =
+        use_event_source::<ProgressEvent, JsonSerdeCodec>("/progress");
+
+    Effect::new(move |_| {
+        if let Some(msg) = sse_message.get() {
+            if msg.data.event_type == "analysis_complete" {
+                matrix_resource.refetch();
+            }
+        }
+    });
+
+    let analysis_action = Action::new(move |_: &()| async move {
+        crate::server_fns::analysis::start_analysis().await
+    });
 
     // Drill-down state: None = overview, Some((row_cat, col_cat)) = drill-down view.
     let drilldown: RwSignal<Option<(String, String)>> = RwSignal::new(None);
@@ -92,7 +110,14 @@ pub fn MethodsPanel() -> impl IntoView {
                                             if matrix.categories.is_empty() {
                                                 view! {
                                                     <div class="empty-state">
-                                                        <p class="empty-state-body">"No method annotations found. Run LLM analysis on the crawled papers."</p>
+                                                        <p class="empty-state-heading">"No analysis results yet"</p>
+                                                        <p class="empty-state-body">"Run analysis to see the method heatmap here."</p>
+                                                        <button
+                                                            class="btn-primary"
+                                                            on:click=move |_| { analysis_action.dispatch(()); }
+                                                        >
+                                                            "Run Analysis"
+                                                        </button>
                                                     </div>
                                                 }.into_any()
                                             } else {

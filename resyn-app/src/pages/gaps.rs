@@ -1,5 +1,8 @@
+use codee::string::JsonSerdeCodec;
 use leptos::prelude::*;
+use leptos_use::{UseEventSourceReturn, use_event_source};
 use resyn_core::datamodels::gap_finding::GapType;
+use resyn_core::datamodels::progress::ProgressEvent;
 
 use crate::components::gap_card::GapCard;
 use crate::server_fns::gaps::get_gap_findings;
@@ -8,6 +11,17 @@ use crate::server_fns::gaps::get_gap_findings;
 #[component]
 pub fn GapsPanel() -> impl IntoView {
     let findings = Resource::new(|| (), |_| get_gap_findings());
+
+    let UseEventSourceReturn { message: sse_message, .. } =
+        use_event_source::<ProgressEvent, JsonSerdeCodec>("/progress");
+
+    Effect::new(move |_| {
+        if let Some(msg) = sse_message.get() {
+            if msg.data.event_type == "analysis_complete" {
+                findings.refetch();
+            }
+        }
+    });
 
     let show_contradictions = RwSignal::new(true);
     let show_bridges = RwSignal::new(true);
@@ -105,11 +119,21 @@ pub fn GapsPanel() -> impl IntoView {
                             {move || {
                                 let list = filtered();
                                 if all_findings.get_value().is_empty() {
+                                    let analysis_action = Action::new(move |_: &()| async move {
+                                        crate::server_fns::analysis::start_analysis().await
+                                    });
                                     view! {
                                         <div class="empty-state">
+                                            <p class="empty-state-heading">"No analysis results yet"</p>
                                             <p class="empty-state-body">
-                                                "No gap findings yet. Run analysis after crawling papers."
+                                                "Run analysis to see gap findings here."
                                             </p>
+                                            <button
+                                                class="btn-primary"
+                                                on:click=move |_| { analysis_action.dispatch(()); }
+                                            >
+                                                "Run Analysis"
+                                            </button>
                                         </div>
                                     }.into_any()
                                 } else if list.is_empty() {

@@ -63,6 +63,17 @@ impl Paper {
         self.references
             .iter()
             .filter_map(|r| r.get_arxiv_id().ok())
+            .filter(|id| {
+                if id.is_empty() {
+                    tracing::warn!(
+                        "Skipping empty arXiv ID in references for paper {}",
+                        self.id
+                    );
+                    false
+                } else {
+                    true
+                }
+            })
             .collect()
     }
 }
@@ -341,5 +352,51 @@ mod tests {
             ..Default::default()
         };
         assert!(reference.get_arxiv_id().is_err());
+    }
+
+    #[test]
+    fn test_get_arxiv_references_ids_filters_empty() {
+        let mut paper = Paper::new();
+        paper.id = "2301.00001".to_string();
+        paper.references = vec![
+            Reference {
+                author: "Valid".to_string(),
+                title: "Valid Paper".to_string(),
+                links: vec![Link::from_url("https://arxiv.org/abs/2301.11111")],
+                ..Default::default()
+            },
+            Reference {
+                author: "Empty Eprint".to_string(),
+                title: "No ArXiv ID".to_string(),
+                links: vec![],
+                arxiv_eprint: Some("".to_string()),
+                ..Default::default()
+            },
+            Reference {
+                author: "Another Valid".to_string(),
+                title: "Another Paper".to_string(),
+                links: vec![],
+                arxiv_eprint: Some("2301.22222".to_string()),
+                ..Default::default()
+            },
+        ];
+        let ids = paper.get_arxiv_references_ids();
+        assert_eq!(ids.len(), 2);
+        assert_eq!(ids[0], "2301.11111");
+        assert_eq!(ids[1], "2301.22222");
+    }
+
+    #[test]
+    fn test_get_arxiv_references_ids_filters_empty_link() {
+        let mut paper = Paper::new();
+        paper.id = "2301.00002".to_string();
+        paper.references = vec![Reference {
+            author: "Bad Link".to_string(),
+            title: "Empty URL Segment".to_string(),
+            links: vec![Link::from_url("https://arxiv.org/abs/")],
+            ..Default::default()
+        }];
+        let ids = paper.get_arxiv_references_ids();
+        assert!(ids.is_empty(), "Empty URL last segment should be filtered out");
     }
 }

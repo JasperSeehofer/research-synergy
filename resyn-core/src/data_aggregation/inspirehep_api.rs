@@ -54,7 +54,7 @@ impl InspireHepClient {
     async fn fetch_literature(&mut self, arxiv_id: &str) -> Result<InspireResponse, ResynError> {
         self.rate_limit_check().await;
         let url = format!(
-            "{}/literature?q=arxiv:{}&fields=references,titles,authors,abstracts,arxiv_eprints,dois,citation_count",
+            "{}/literature?q=arxiv:{}&fields=references,titles,authors,abstracts,arxiv_eprints,dois,citation_count,earliest_date",
             self.base_url, arxiv_id
         );
         debug!(url, "Fetching from InspireHEP");
@@ -127,6 +127,16 @@ impl InspireHepClient {
 
         let citation_count = metadata.citation_count;
 
+        let published = metadata
+            .earliest_date
+            .as_deref()
+            .unwrap_or_default()
+            .to_string();
+        debug!(
+            "Set published date {} from InspireHEP earliest_date for paper {}",
+            published, arxiv_id
+        );
+
         Paper {
             title,
             authors,
@@ -135,6 +145,7 @@ impl InspireHepClient {
             doi,
             inspire_id,
             citation_count,
+            published,
             source: DataSource::InspireHep,
             ..Default::default()
         }
@@ -203,7 +214,7 @@ impl PaperSource for InspireHepClient {
         // We need mut for rate limiting, but the trait requires &self for fetch_paper.
         // Work around by creating a one-off request without rate limiting for this method.
         let url = format!(
-            "{}/literature?q=arxiv:{}&fields=titles,authors,abstracts,arxiv_eprints,dois,citation_count",
+            "{}/literature?q=arxiv:{}&fields=titles,authors,abstracts,arxiv_eprints,dois,citation_count,earliest_date",
             self.base_url, id
         );
 
@@ -302,6 +313,7 @@ pub(crate) struct InspireMetadata {
     pub dois: Option<Vec<InspireDoi>>,
     pub citation_count: Option<u32>,
     pub references: Option<Vec<InspireReferenceEntry>>,
+    pub earliest_date: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -369,6 +381,7 @@ mod tests {
                         "arxiv_eprints": [{"value": "2301.12345"}],
                         "dois": [{"value": "10.1234/test.2023"}],
                         "citation_count": 42,
+                        "earliest_date": "2023-01-15",
                         "references": [
                             {
                                 "reference": {
@@ -424,6 +437,7 @@ mod tests {
         assert_eq!(paper.inspire_id, Some("1234567".to_string()));
         assert_eq!(paper.citation_count, Some(42));
         assert_eq!(paper.source, DataSource::InspireHep);
+        assert_eq!(paper.published, "2023-01-15");
     }
 
     #[test]
@@ -471,6 +485,7 @@ mod tests {
         assert!(paper.doi.is_none());
         assert!(paper.inspire_id.is_none());
         assert!(paper.citation_count.is_none());
+        assert!(paper.published.is_empty());
     }
 
     #[test]
@@ -483,8 +498,43 @@ mod tests {
             dois: None,
             citation_count: None,
             references: None,
+            earliest_date: None,
         };
         let refs = InspireHepClient::convert_references(&meta);
         assert!(refs.is_empty());
+    }
+
+    #[tokio::test]
+    async fn test_inspirehep_fetch_paper_published() {
+        use wiremock::matchers::method;
+        use wiremock::{Mock, MockServer, ResponseTemplate};
+
+        let mock_server = MockServer::start().await;
+        let response_json = r#"{
+            "hits": {
+                "hits": [{
+                    "id": 1234567,
+                    "metadata": {
+                        "titles": [{"title": "Date Test Paper"}],
+                        "arxiv_eprints": [{"value": "2301.12345"}],
+                        "earliest_date": "2023-01-15"
+                    }
+                }]
+            }
+        }"#;
+
+        Mock::given(method("GET"))
+            .respond_with(ResponseTemplate::new(200).set_body_string(response_json))
+            .mount(&mock_server)
+            .await;
+
+        let client = reqwest::Client::new();
+        let source = InspireHepClient::new(client)
+            .with_base_url(mock_server.uri())
+            .with_rate_limit(std::time::Duration::from_millis(0));
+
+        let paper = source.fetch_paper("2301.12345").await.unwrap();
+        assert_eq!(paper.published, "2023-01-15");
+        assert_eq!(paper.id, "2301.12345");
     }
 }

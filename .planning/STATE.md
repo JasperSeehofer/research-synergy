@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: Data Pipeline Fixes
 status: executing
-stopped_at: Completed 20-02-PLAN.md
-last_updated: "2026-03-28T22:06:52.304Z"
+stopped_at: Completed 20-04-PLAN.md
+last_updated: "2026-03-28T22:28:57.121Z"
 last_activity: 2026-03-28
 progress:
   total_phases: 5
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 7
-  completed_plans: 4
+  completed_plans: 7
   percent: 0
 ---
 
@@ -26,7 +26,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 ## Current Position
 
 Phase: 20 (llm-analysis-pipeline-verification) — EXECUTING
-Plan: 3 of 4
+Plan: 4 of 4
 Status: Ready to execute
 Last activity: 2026-03-28
 
@@ -49,6 +49,7 @@ Progress: [░░░░░░░░░░░░░░░░░░░░] 0% (v1.
 | Phase 19-data-quality-cleanup P01 | 5min | 2 tasks | 2 files |
 | Phase 20-llm-analysis-pipeline-verification P01 | 6min | 3 tasks | 9 files |
 | Phase 20-llm-analysis-pipeline-verification P02 | 7min | 2 tasks | 7 files |
+| Phase 20-llm-analysis-pipeline-verification P04 | 35min | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -69,6 +70,8 @@ Recent decisions relevant to v1.3:
 - [Phase 20-llm-analysis-pipeline-verification]: StartAnalysis inlines resyn-core pipeline logic directly — avoids circular dependency (resyn-app cannot depend on resyn-server)
 - [Phase 20-llm-analysis-pipeline-verification]: run_extraction/run_llm_analysis return anyhow::Result<()>; CLI run() retains process::exit for user-facing errors
 - [Phase 20-llm-analysis-pipeline-verification]: AnalysisControls has its own SSE subscription — self-contained component, no prop threading needed
+- [Phase 20-llm-analysis-pipeline-verification]: resyn-server lib.rs added to expose pub fns to integration tests — binaries require lib target for crate imports
+- [Phase 20-llm-analysis-pipeline-verification]: Leptos 0.8 hash-suffixed server fn paths: use ServerFn::PATH constant for test request URIs
 
 ### Pending Todos
 
@@ -82,6 +85,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-28T22:06:52.303Z
-Stopped at: Completed 20-02-PLAN.md
+Last session: 2026-03-28T22:28:57.119Z
+Stopped at: Completed 20-04-PLAN.md
 Resume file: None

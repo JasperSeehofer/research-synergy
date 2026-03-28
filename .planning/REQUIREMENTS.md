@@ -10,13 +10,13 @@ Requirements for v1.3 Data Pipeline Fixes. Each maps to roadmap phases.
 ### arXiv Crawl
 
 - [x] **ARXIV-01**: User can crawl arXiv papers and see citation edges stored for references that mention arXiv IDs in plain text (not just hyperlinked)
-- [ ] **ARXIV-02**: User can see published dates for all crawled papers (backfilled from arXiv API for reference-only papers)
+- [x] **ARXIV-02**: User can see published dates for all crawled papers (backfilled from arXiv API for reference-only papers)
 - [x] **ARXIV-03**: User can run an arXiv crawl and get comparable edge density to InspireHEP for the same seed paper
 
 ### Orphan Nodes
 
-- [ ] **ORPH-01**: User can identify why specific nodes appear disconnected after an InspireHEP crawl
-- [ ] **ORPH-02**: User sees zero orphan nodes in the graph for a standard depth-2+ crawl (every node has at least one edge)
+- [x] **ORPH-01**: User can identify why specific nodes appear disconnected after an InspireHEP crawl
+- [x] **ORPH-02**: User sees zero orphan nodes in the graph for a standard depth-2+ crawl (every node has at least one edge)
 
 ### LLM Analysis
 
@@ -46,10 +46,10 @@ Requirements for v1.3 Data Pipeline Fixes. Each maps to roadmap phases.
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | ARXIV-01 | Phase 18 | Complete |
-| ARXIV-02 | Phase 19 | Pending |
+| ARXIV-02 | Phase 19 | Complete |
 | ARXIV-03 | Phase 18 | Complete |
-| ORPH-01 | Phase 19 | Pending |
-| ORPH-02 | Phase 19 | Pending |
+| ORPH-01 | Phase 19 | Complete |
+| ORPH-02 | Phase 19 | Complete |
 | LLM-01 | Phase 20 | Pending |
 | LLM-02 | Phase 20 | Pending |
 | LLM-03 | Phase 20 | Pending |

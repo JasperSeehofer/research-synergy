@@ -64,7 +64,7 @@ Full details: `.planning/milestones/v1.2-ROADMAP.md`
 **Milestone Goal:** Fix the broken arXiv crawl pipeline, eliminate orphan nodes in InspireHEP crawls, and verify the LLM analysis pipeline works end-to-end in the web UI.
 
 - [x] **Phase 18: arXiv Crawl Repair** — Fix HTML reference parser to extract arXiv IDs from plain text, restoring edge-comparable crawl output (completed 2026-03-28)
-- [ ] **Phase 19: Data Quality Cleanup** — Diagnose and eliminate orphan nodes in InspireHEP crawls; backfill missing publication dates for all crawled papers
+- [x] **Phase 19: Data Quality Cleanup** — Diagnose and eliminate orphan nodes in InspireHEP crawls; backfill missing publication dates for all crawled papers (completed 2026-03-28)
 - [ ] **Phase 20: LLM Analysis Pipeline Verification** — Restore end-to-end LLM analysis in the web UI with all result panels functional
 
 ## Phase Details
@@ -94,7 +94,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 19-01-PLAN.md — InspireHEP published date extraction + empty-ID orphan elimination
+- [x] 19-01-PLAN.md — InspireHEP published date extraction + empty-ID orphan elimination
 
 ### Phase 20: LLM Analysis Pipeline Verification
 **Goal**: Users can trigger LLM analysis from the web UI and view all analysis results (gap findings, open problems, method heatmap) populated with real data
@@ -116,7 +116,7 @@ Plans:
 
 **Goal:** Replace author/year labels with TF-IDF keyword pills (e.g. "Monte Carlo simulation", "Bayesian inference") so users can visually identify paper topics at a glance. Two tiers: (1) hover labels showing top 2-3 keywords per node, (2) cluster-level floating labels showing dominant topic of a graph region (like map labels over geographic areas). Requires wiring TF-IDF/LLM analysis results to frontend GraphData.
 **Requirements:** TBD
-**Plans:** 2/2 plans complete
+**Plans:** 1/1 plans complete
 
 Plans:
 - [ ] TBD (promote with /gsd:review-backlog when ready)
@@ -163,5 +163,5 @@ Plans:
 | 16. Edge and Node Renderer Fixes | v1.2 | 2/2 | Complete | 2026-03-25 |
 | 17. Viewport Fit and Label Collision | v1.2 | 2/2 | Complete | 2026-03-26 |
 | 18. arXiv Crawl Repair | v1.3 | 2/2 | Complete    | 2026-03-28 |
-| 19. Data Quality Cleanup | v1.3 | 0/1 | Not started | - |
+| 19. Data Quality Cleanup | v1.3 | 1/1 | Complete   | 2026-03-28 |
 | 20. LLM Analysis Pipeline Verification | v1.3 | 0/TBD | Not started | - |

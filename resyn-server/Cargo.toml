@@ -3,6 +3,9 @@ name = "resyn-server"
 version = "0.1.0"
 edition = "2024"
 
+[features]
+ollama-test = []
+
 [[bin]]
 name = "resyn"
 path = "src/main.rs"
@@ -25,3 +28,8 @@ anyhow = { workspace = true }
 futures = { workspace = true }
 axum = { workspace = true }
 tokio-stream = { workspace = true }
+
+[dev-dependencies]
+wiremock = { workspace = true }
+http = "1"
+tower = "0.5"

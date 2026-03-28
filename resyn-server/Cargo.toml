@@ -6,6 +6,10 @@ edition = "2024"
 [features]
 ollama-test = []
 
+[lib]
+name = "resyn_server"
+path = "src/lib.rs"
+
 [[bin]]
 name = "resyn"
 path = "src/main.rs"

@@ -1,7 +1,6 @@
-mod commands;
-
 use clap::{Parser, Subcommand};
-use commands::{analyze::AnalyzeArgs, crawl::CrawlArgs, serve::ServeArgs};
+use resyn_server::commands;
+use resyn_server::commands::{analyze::AnalyzeArgs, crawl::CrawlArgs, serve::ServeArgs};
 
 #[derive(Parser, Debug)]
 #[command(

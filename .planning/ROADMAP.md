@@ -91,10 +91,10 @@ Plans:
   1. User can inspect a specific disconnected node from a previous InspireHEP crawl and identify the root cause (missing edge, ID mismatch, dedup error, or crawl boundary)
   2. User runs a depth-2+ InspireHEP crawl and sees zero orphan nodes in the resulting graph — every node has at least one visible edge
   3. User can run the temporal year-range slider and see papers filter in/out — all crawled papers have non-null published dates including those fetched via reference parsing
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] TBD
+- [ ] 19-01-PLAN.md — InspireHEP published date extraction + empty-ID orphan elimination
 
 ### Phase 20: LLM Analysis Pipeline Verification
 **Goal**: Users can trigger LLM analysis from the web UI and view all analysis results (gap findings, open problems, method heatmap) populated with real data
@@ -163,5 +163,5 @@ Plans:
 | 16. Edge and Node Renderer Fixes | v1.2 | 2/2 | Complete | 2026-03-25 |
 | 17. Viewport Fit and Label Collision | v1.2 | 2/2 | Complete | 2026-03-26 |
 | 18. arXiv Crawl Repair | v1.3 | 2/2 | Complete    | 2026-03-28 |
-| 19. Data Quality Cleanup | v1.3 | 0/TBD | Not started | - |
+| 19. Data Quality Cleanup | v1.3 | 0/1 | Not started | - |
 | 20. LLM Analysis Pipeline Verification | v1.3 | 0/TBD | Not started | - |

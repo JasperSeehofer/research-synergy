@@ -69,6 +69,8 @@ Surface research gaps and unexplored connections that no single paper reveals �
 - ✓ Three-state convergence badge (Simulating/Paused/Settled) — v1.2 Phase 17
 - ✓ Text-based arXiv ID/DOI extraction from HTML bibliography plain text — v1.3 Phase 18
 - ✓ get_arxiv_id() fallback to arxiv_eprint for non-hyperlinked references — v1.3 Phase 18
+- ✓ InspireHEP published date extraction from earliest_date field — v1.3 Phase 19
+- ✓ Empty-string arXiv ID filter preventing orphan nodes in BFS crawl — v1.3 Phase 19
 
 ### Active
 
@@ -98,6 +100,7 @@ Surface research gaps and unexplored connections that no single paper reveals �
 
 **Shipped:** v1.2 Graph Rendering Overhaul (2026-03-26)
 **Phase 18 complete** — arXiv crawl repair: text-based ID extraction restores edge density (2026-03-28)
+**Phase 19 complete** — Data quality cleanup: InspireHEP published dates + orphan node elimination (2026-03-28)
 
 ReSyn is a 3-crate Cargo workspace (resyn-core/resyn-app/resyn-server) with ~25,000 LOC Rust across 90+ files. The full pipeline runs through a Leptos CSR web UI served by Axum, with interactive Canvas 2D / WebGL2 graph rendering powered by Barnes-Hut force layout in a WASM Web Worker. The graph renderer now produces visually clear force-directed layouts with retuned coefficients, visible edges on dark backgrounds, crisp anti-aliased nodes, seed node distinction, auto-fit viewport animation, and collision-free priority-ordered labels.
 
@@ -160,7 +163,7 @@ This document evolves at phase transitions and milestone boundaries.
 3. Audit Out of Scope — reasons still valid?
 4. Update Context with current state
 
-Last updated: 2026-03-27
+Last updated: 2026-03-28
 
 ---
-*Last updated: 2026-03-27 after v1.3 milestone start*
+*Last updated: 2026-03-28 after Phase 19 completion*

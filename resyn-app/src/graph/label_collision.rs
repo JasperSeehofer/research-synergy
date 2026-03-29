@@ -1,4 +1,4 @@
-use super::layout_state::NodeState;
+use super::layout_state::{LabelMode, NodeState};
 use super::renderer::Viewport;
 
 // ── Label rendering constants (per 17-UI-SPEC.md) ─────────────────────────────
@@ -8,6 +8,7 @@ pub const PILL_H_PAD: f64 = 8.0; // horizontal padding each side
 pub const COLLISION_PAD: f64 = 8.0; // clearance between placed labels
 pub const LABEL_NODE_GAP: f64 = 8.0; // gap below node in screen space
 pub const PILL_CORNER_RADIUS: f64 = 4.0; // round_rect radius
+pub const PILL_GAP: f64 = 4.0; // gap between keyword pills for same node
 
 // ── LabelCache ────────────────────────────────────────────────────────────────
 
@@ -33,12 +34,44 @@ pub struct LabelCache {
 ///
 /// This is a browser-only function. It is NOT callable from `cargo test`.
 /// Widths are cached at graph load time; never recomputed per frame.
-pub fn build_text_widths(ctx: &web_sys::CanvasRenderingContext2d, nodes: &[NodeState]) -> Vec<f64> {
+pub fn build_text_widths(
+    ctx: &web_sys::CanvasRenderingContext2d,
+    nodes: &[NodeState],
+    label_mode: &LabelMode,
+) -> Vec<f64> {
     ctx.set_font("11px monospace");
-    nodes
-        .iter()
-        .map(|n| ctx.measure_text(&n.label()).unwrap().width())
-        .collect()
+    match label_mode {
+        LabelMode::Off => vec![0.0; nodes.len()],
+        LabelMode::AuthorYear => nodes
+            .iter()
+            .map(|n| ctx.measure_text(&n.label()).unwrap().width())
+            .collect(),
+        LabelMode::Keywords => nodes
+            .iter()
+            .map(|n| {
+                if n.top_keywords.is_empty() {
+                    // "[not analyzed]" badge width
+                    ctx.measure_text("[not analyzed]").unwrap().width()
+                } else {
+                    // Sum of top-2 pill text widths + gap between them
+                    let pill_widths: f64 = n
+                        .top_keywords
+                        .iter()
+                        .take(2)
+                        .map(|(term, _)| ctx.measure_text(term).unwrap().width())
+                        .sum();
+                    let count = n.top_keywords.len().min(2);
+                    let gaps = if count > 1 {
+                        PILL_GAP * (count - 1) as f64
+                    } else {
+                        0.0
+                    };
+                    // Total = sum of (text + h_pad*2) per pill + gaps
+                    pill_widths + (PILL_H_PAD * 2.0 * count as f64) + gaps
+                }
+            })
+            .collect(),
+    }
 }
 
 // ── build_label_cache ─────────────────────────────────────────────────────────
@@ -112,9 +145,11 @@ pub fn build_label_cache(
 
 // ── Pill drawing ─────────────────────────────────────────────────────────────
 
-/// Draw a rounded-rectangle pill label with opaque background, border, and text.
+/// Draw a rounded-rectangle pill label with background, border, and text.
 ///
 /// Uses `arc_to` calls for rounded corners (compatible with all web-sys versions).
+/// `opacity` controls the global alpha for the entire pill (background + border + text).
+/// Restores global_alpha to 1.0 after drawing.
 #[allow(clippy::too_many_arguments)]
 pub fn draw_label_pill(
     ctx: &web_sys::CanvasRenderingContext2d,
@@ -125,7 +160,9 @@ pub fn draw_label_pill(
     r: f64,
     text: &str,
     h_pad: f64,
+    opacity: f64,
 ) {
+    ctx.set_global_alpha(opacity);
     ctx.set_fill_style_str("rgba(13,17,23,0.85)");
     ctx.begin_path();
     ctx.move_to(x + r, y);
@@ -146,6 +183,109 @@ pub fn draw_label_pill(
 
     ctx.set_fill_style_str("#cccccc");
     ctx.fill_text(text, x + h_pad, y + 14.0).unwrap();
+    ctx.set_global_alpha(1.0);
+}
+
+/// Draw keyword pills for a node (top-2 keywords with score-based opacity).
+///
+/// Each pill's opacity = 0.35 + score * 0.65 (D-11, D-12).
+/// Pills are laid out horizontally centered at `cx`.
+#[allow(clippy::too_many_arguments)]
+pub fn draw_keyword_pills(
+    ctx: &web_sys::CanvasRenderingContext2d,
+    cx: f64,
+    label_y: f64,
+    keywords: &[(String, f32)],
+    text_widths_per_pill: &[f64],
+) {
+    let top2: Vec<(&str, f32)> = keywords
+        .iter()
+        .take(2)
+        .map(|(s, score)| (s.as_str(), *score))
+        .collect();
+    let count = top2.len();
+    if count == 0 {
+        return;
+    }
+
+    // Compute pill widths
+    let pill_widths: Vec<f64> = (0..count)
+        .map(|i| {
+            let tw = text_widths_per_pill.get(i).copied().unwrap_or(40.0);
+            tw + PILL_H_PAD * 2.0
+        })
+        .collect();
+    let total_width: f64 = pill_widths.iter().sum::<f64>() + PILL_GAP * (count - 1) as f64;
+    let mut x = cx - total_width / 2.0;
+
+    for (i, (term, score)) in top2.iter().enumerate() {
+        let opacity = crate::graph::kmeans::score_to_opacity(*score);
+        let bg_opacity = 0.85 * opacity;
+        let pill_w = pill_widths[i];
+        let r = PILL_CORNER_RADIUS;
+        let h = PILL_HEIGHT;
+
+        ctx.set_global_alpha(opacity);
+        ctx.set_fill_style_str(&format!("rgba(22, 27, 34, {bg_opacity:.3})"));
+        ctx.begin_path();
+        ctx.move_to(x + r, label_y);
+        ctx.line_to(x + pill_w - r, label_y);
+        ctx.arc_to(x + pill_w, label_y, x + pill_w, label_y + r, r).unwrap();
+        ctx.line_to(x + pill_w, label_y + h - r);
+        ctx.arc_to(x + pill_w, label_y + h, x + pill_w - r, label_y + h, r).unwrap();
+        ctx.line_to(x + r, label_y + h);
+        ctx.arc_to(x, label_y + h, x, label_y + h - r, r).unwrap();
+        ctx.line_to(x, label_y + r);
+        ctx.arc_to(x, label_y, x + r, label_y, r).unwrap();
+        ctx.close_path();
+        ctx.fill();
+
+        ctx.set_stroke_style_str("rgba(48, 54, 61, 0.6)");
+        ctx.set_line_width(1.0);
+        ctx.stroke();
+
+        ctx.set_fill_style_str("#e6edf3");
+        ctx.fill_text(term, x + PILL_H_PAD, label_y + 14.0).unwrap();
+
+        ctx.set_global_alpha(1.0);
+        x += pill_w + PILL_GAP;
+    }
+}
+
+/// Draw the "[not analyzed]" dimmed badge for nodes without keyword analysis.
+///
+/// Uses muted styling per UI-SPEC D-06.
+pub fn draw_not_analyzed_badge(
+    ctx: &web_sys::CanvasRenderingContext2d,
+    cx: f64,
+    label_y: f64,
+    text_width: f64,
+) {
+    let w = text_width + PILL_H_PAD * 2.0;
+    let x = cx - w / 2.0;
+    let h = PILL_HEIGHT;
+    let r = PILL_CORNER_RADIUS;
+
+    ctx.set_fill_style_str("rgba(22, 27, 34, 0.5)");
+    ctx.begin_path();
+    ctx.move_to(x + r, label_y);
+    ctx.line_to(x + w - r, label_y);
+    ctx.arc_to(x + w, label_y, x + w, label_y + r, r).unwrap();
+    ctx.line_to(x + w, label_y + h - r);
+    ctx.arc_to(x + w, label_y + h, x + w - r, label_y + h, r).unwrap();
+    ctx.line_to(x + r, label_y + h);
+    ctx.arc_to(x, label_y + h, x, label_y + h - r, r).unwrap();
+    ctx.line_to(x, label_y + r);
+    ctx.arc_to(x, label_y, x + r, label_y, r).unwrap();
+    ctx.close_path();
+    ctx.fill();
+
+    ctx.set_stroke_style_str("rgba(48, 54, 61, 0.4)");
+    ctx.set_line_width(1.0);
+    ctx.stroke();
+
+    ctx.set_fill_style_str("#8b949e");
+    ctx.fill_text("[not analyzed]", x + PILL_H_PAD, label_y + 14.0).unwrap();
 }
 
 // ── Tests ─────────────────────────────────────────────────────────────────────

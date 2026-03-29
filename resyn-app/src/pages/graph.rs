@@ -18,6 +18,7 @@ use crate::server_fns::graph::get_graph_data;
 use resyn_worker::{LayoutInput, LayoutOutput, NodeData};
 
 use crate::graph::label_collision::draw_label_pill;
+use crate::graph::layout_state::LabelMode;
 
 // ── Tooltip data ────────────────────────────────────────────────────────────
 
@@ -46,6 +47,10 @@ struct RenderState {
     label_cache_dirty: bool,
     /// Cached text widths per node (measured once at graph load via measureText).
     text_widths: Vec<f64>,
+    /// Cached text widths for keyword mode (measured once at graph load).
+    keyword_text_widths: Vec<f64>,
+    /// Previous label mode — used to detect mode changes and invalidate caches.
+    prev_label_mode: LabelMode,
     /// Cached label collision result (stored here so it works for both Canvas2D and WebGL2).
     label_cache: Option<crate::graph::label_collision::LabelCache>,
 }
@@ -87,6 +92,9 @@ pub fn GraphPage() -> impl IntoView {
     let temporal_max: RwSignal<u32> = RwSignal::new(2026);
     let year_bounds: RwSignal<(u32, u32)> = RwSignal::new((2000, 2026));
     let visible_count: RwSignal<(usize, usize)> = RwSignal::new((0, 0));
+
+    // Label mode signal — controls which label style is rendered on graph nodes
+    let label_mode: RwSignal<LabelMode> = RwSignal::new(LabelMode::AuthorYear);
 
     // Tooltip overlay signal
     let tooltip_signal: RwSignal<Option<TooltipData>> = RwSignal::new(None);
@@ -164,7 +172,7 @@ pub fn GraphPage() -> impl IntoView {
         // Measure text widths for all node labels once at graph load time.
         // Uses a temporary 2D canvas context (measureText is a browser API that
         // works regardless of which renderer was selected for actual drawing).
-        let text_widths = {
+        let (text_widths, keyword_text_widths) = {
             use wasm_bindgen::JsCast;
             let document = web_sys::window().unwrap().document().unwrap();
             let temp_canvas: web_sys::HtmlCanvasElement = document
@@ -178,7 +186,17 @@ pub fn GraphPage() -> impl IntoView {
                 .unwrap()
                 .dyn_into::<web_sys::CanvasRenderingContext2d>()
                 .unwrap();
-            crate::graph::label_collision::build_text_widths(&temp_ctx, &graph_state.nodes)
+            let author_year_widths = crate::graph::label_collision::build_text_widths(
+                &temp_ctx,
+                &graph_state.nodes,
+                &LabelMode::AuthorYear,
+            );
+            let kw_widths = crate::graph::label_collision::build_text_widths(
+                &temp_ctx,
+                &graph_state.nodes,
+                &LabelMode::Keywords,
+            );
+            (author_year_widths, kw_widths)
         };
 
         // Sync initial toggle values from Leptos signals
@@ -205,6 +223,8 @@ pub fn GraphPage() -> impl IntoView {
             fit_has_fired_once: false,
             label_cache_dirty: true,
             text_widths,
+            keyword_text_widths,
+            prev_label_mode: LabelMode::AuthorYear,
             label_cache: None,
         }));
 
@@ -256,6 +276,7 @@ pub fn GraphPage() -> impl IntoView {
             fit_count,
             simulation_settled,
             label_ctx.clone(),
+            label_mode,
         );
 
         on_cleanup(move || handle.cancel());
@@ -300,6 +321,7 @@ pub fn GraphPage() -> impl IntoView {
                                 visible_count=visible_count
                                 fit_count=fit_count
                                 simulation_settled=simulation_settled
+                                label_mode=label_mode
                             />
                             <TemporalSlider
                                 temporal_min=temporal_min
@@ -423,6 +445,7 @@ fn start_render_loop(
     fit_count: RwSignal<u32>,
     simulation_settled: RwSignal<bool>,
     label_ctx: Rc<RefCell<Option<web_sys::CanvasRenderingContext2d>>>,
+    label_mode: RwSignal<LabelMode>,
 ) -> RafHandle {
     let cancelled = Arc::new(AtomicBool::new(false));
     let cancelled_clone = cancelled.clone();
@@ -569,13 +592,25 @@ fn start_render_loop(
             *prev_offset_x.borrow_mut() = s.viewport.offset_x;
             *prev_offset_y.borrow_mut() = s.viewport.offset_y;
 
+            // Detect label mode changes and invalidate cache
+            let current_label_mode = label_mode.get_untracked();
+            s.graph.label_mode = current_label_mode;
+            if current_label_mode != s.prev_label_mode {
+                s.label_cache_dirty = true;
+                s.prev_label_mode = current_label_mode;
+            }
+
             // Rebuild label cache when dirty and not animating
             if s.fit_anim.active {
                 s.label_cache = None;
             } else if s.label_cache_dirty {
+                let widths = match s.graph.label_mode {
+                    LabelMode::Keywords => &s.keyword_text_widths,
+                    _ => &s.text_widths,
+                };
                 let cache = crate::graph::label_collision::build_label_cache(
                     &s.graph.nodes,
-                    &s.text_widths,
+                    widths,
                     &s.viewport,
                 );
                 s.label_cache = Some(cache);
@@ -592,42 +627,155 @@ fn start_render_loop(
                 let dpr = web_sys::window().unwrap().device_pixel_ratio();
                 let cw = s.viewport.css_width * dpr;
                 let ch = s.viewport.css_height * dpr;
-                // Clear overlay
                 ctx.set_transform(1.0, 0.0, 0.0, 1.0, 0.0, 0.0).unwrap();
                 ctx.clear_rect(0.0, 0.0, cw, ch);
 
-                // Hover-only label: show pill for the hovered node
-                if !s.fit_anim.active
-                    && s.viewport.scale > 0.3
-                    && let Some(hi) = s.graph.hovered_node
-                    && hi < s.graph.nodes.len()
-                {
-                    let node = &s.graph.nodes[hi];
-                    if node.lod_visible && node.temporal_visible {
-                        ctx.set_transform(dpr, 0.0, 0.0, dpr, 0.0, 0.0).unwrap();
-                        ctx.set_global_alpha(1.0);
-                        ctx.set_font("11px monospace");
+                if !s.fit_anim.active && s.viewport.scale > 0.3 {
+                    ctx.set_transform(dpr, 0.0, 0.0, dpr, 0.0, 0.0).unwrap();
+                    ctx.set_global_alpha(1.0);
+                    ctx.set_font("11px monospace");
 
-                        use crate::graph::label_collision::{
-                            LABEL_NODE_GAP, PILL_CORNER_RADIUS, PILL_H_PAD, PILL_HEIGHT,
-                        };
+                    use crate::graph::label_collision::{
+                        LABEL_NODE_GAP, PILL_CORNER_RADIUS, PILL_H_PAD, PILL_HEIGHT,
+                        draw_keyword_pills, draw_not_analyzed_badge,
+                    };
 
-                        let (sx, sy) = s.viewport.world_to_screen(node.x, node.y);
-                        let text_w = s.text_widths.get(hi).copied().unwrap_or(40.0);
-                        let pill_w = text_w + PILL_H_PAD * 2.0;
-                        let label_x = sx - pill_w / 2.0;
-                        let label_y = sy + node.radius * s.viewport.scale + LABEL_NODE_GAP;
-
-                        draw_label_pill(
-                            ctx,
-                            label_x,
-                            label_y,
-                            pill_w,
-                            PILL_HEIGHT,
-                            PILL_CORNER_RADIUS,
-                            &node.label(),
-                            PILL_H_PAD,
-                        );
+                    match s.graph.label_mode {
+                        LabelMode::Off => {
+                            // Still show hover label in Off mode
+                            if let Some(hi) = s.graph.hovered_node {
+                                if hi < s.graph.nodes.len() {
+                                    let node = &s.graph.nodes[hi];
+                                    if node.lod_visible && node.temporal_visible {
+                                        let (sx, sy) =
+                                            s.viewport.world_to_screen(node.x, node.y);
+                                        let text_w =
+                                            s.text_widths.get(hi).copied().unwrap_or(40.0);
+                                        let pill_w = text_w + PILL_H_PAD * 2.0;
+                                        let label_x = sx - pill_w / 2.0;
+                                        let label_y = sy
+                                            + node.radius * s.viewport.scale
+                                            + LABEL_NODE_GAP;
+                                        draw_label_pill(
+                                            ctx,
+                                            label_x,
+                                            label_y,
+                                            pill_w,
+                                            PILL_HEIGHT,
+                                            PILL_CORNER_RADIUS,
+                                            &node.label(),
+                                            PILL_H_PAD,
+                                            1.0,
+                                        );
+                                    }
+                                }
+                            }
+                        }
+                        LabelMode::AuthorYear => {
+                            // Draw collision-culled labels from cache
+                            if let Some(ref cache) = s.label_cache {
+                                for &i in &cache.visible_indices {
+                                    let node = &s.graph.nodes[i];
+                                    if !node.lod_visible || !node.temporal_visible {
+                                        continue;
+                                    }
+                                    let (sx, sy) = s.viewport.world_to_screen(node.x, node.y);
+                                    let text_w = s.text_widths.get(i).copied().unwrap_or(40.0);
+                                    let pill_w = text_w + PILL_H_PAD * 2.0;
+                                    let label_x = sx - pill_w / 2.0;
+                                    let label_y =
+                                        sy + node.radius * s.viewport.scale + LABEL_NODE_GAP;
+                                    draw_label_pill(
+                                        ctx,
+                                        label_x,
+                                        label_y,
+                                        pill_w,
+                                        PILL_HEIGHT,
+                                        PILL_CORNER_RADIUS,
+                                        &node.label(),
+                                        PILL_H_PAD,
+                                        1.0,
+                                    );
+                                }
+                            }
+                            // Also show hover label if hovered node not in cache
+                            if let Some(hi) = s.graph.hovered_node {
+                                if hi < s.graph.nodes.len() {
+                                    let in_cache = s.label_cache.as_ref().map_or(false, |c| {
+                                        c.visible_indices.contains(&hi)
+                                    });
+                                    if !in_cache {
+                                        let node = &s.graph.nodes[hi];
+                                        if node.lod_visible && node.temporal_visible {
+                                            let (sx, sy) =
+                                                s.viewport.world_to_screen(node.x, node.y);
+                                            let text_w =
+                                                s.text_widths.get(hi).copied().unwrap_or(40.0);
+                                            let pill_w = text_w + PILL_H_PAD * 2.0;
+                                            let label_x = sx - pill_w / 2.0;
+                                            let label_y = sy
+                                                + node.radius * s.viewport.scale
+                                                + LABEL_NODE_GAP;
+                                            draw_label_pill(
+                                                ctx,
+                                                label_x,
+                                                label_y,
+                                                pill_w,
+                                                PILL_HEIGHT,
+                                                PILL_CORNER_RADIUS,
+                                                &node.label(),
+                                                PILL_H_PAD,
+                                                1.0,
+                                            );
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        LabelMode::Keywords => {
+                            // Draw collision-culled keyword pills from cache
+                            if let Some(ref cache) = s.label_cache {
+                                for &i in &cache.visible_indices {
+                                    let node = &s.graph.nodes[i];
+                                    if !node.lod_visible || !node.temporal_visible {
+                                        continue;
+                                    }
+                                    let (sx, sy) = s.viewport.world_to_screen(node.x, node.y);
+                                    let label_y =
+                                        sy + node.radius * s.viewport.scale + LABEL_NODE_GAP;
+                                    if node.top_keywords.is_empty() {
+                                        // D-06: unanalyzed badge
+                                        let text_w = s
+                                            .keyword_text_widths
+                                            .get(i)
+                                            .copied()
+                                            .unwrap_or(80.0);
+                                        draw_not_analyzed_badge(ctx, sx, label_y, text_w);
+                                    } else {
+                                        // D-02: top-2 keyword pills
+                                        let top2: Vec<(String, f32)> = node
+                                            .top_keywords
+                                            .iter()
+                                            .take(2)
+                                            .cloned()
+                                            .collect();
+                                        let pill_widths: Vec<f64> = top2
+                                            .iter()
+                                            .map(|(term, _)| {
+                                                ctx.measure_text(term).unwrap().width()
+                                            })
+                                            .collect();
+                                        draw_keyword_pills(
+                                            ctx,
+                                            sx,
+                                            label_y,
+                                            &top2,
+                                            &pill_widths,
+                                        );
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }

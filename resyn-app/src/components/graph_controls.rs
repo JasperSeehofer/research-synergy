@@ -1,3 +1,4 @@
+use crate::graph::layout_state::LabelMode;
 use leptos::prelude::*;
 
 #[component]
@@ -13,6 +14,7 @@ pub fn GraphControls(
     year_bounds: RwSignal<(u32, u32)>,
     fit_count: RwSignal<u32>,
     simulation_settled: RwSignal<bool>,
+    label_mode: RwSignal<LabelMode>,
 ) -> impl IntoView {
     let _ = temporal_min;
     let _ = temporal_max;
@@ -99,6 +101,30 @@ pub fn GraphControls(
                         format!("Showing {} of {} nodes", v, t)
                     }}
                 </span>
+            </div>
+
+            // Label mode group (D-01)
+            <div class="graph-controls-group">
+                <span class="text-label" style="font-size: 12px; color: var(--color-text-muted); text-transform: uppercase;">"Label mode"</span>
+                <select
+                    class="form-select"
+                    style="min-width: 120px;"
+                    on:change=move |e| {
+                        use leptos::wasm_bindgen::JsCast;
+                        let val = e.target().unwrap()
+                            .dyn_into::<web_sys::HtmlSelectElement>().unwrap()
+                            .value();
+                        label_mode.set(match val.as_str() {
+                            "keywords" => LabelMode::Keywords,
+                            "off" => LabelMode::Off,
+                            _ => LabelMode::AuthorYear,
+                        });
+                    }
+                >
+                    <option value="author_year" selected=move || label_mode.get() == LabelMode::AuthorYear>"Author / Year"</option>
+                    <option value="keywords" selected=move || label_mode.get() == LabelMode::Keywords>"Keywords"</option>
+                    <option value="off" selected=move || label_mode.get() == LabelMode::Off>"Off"</option>
+                </select>
             </div>
         </div>
     }

@@ -284,6 +284,7 @@ mod tests {
             nodes: vec![node],
             edges: vec![],
             seed_paper_id: None,
+            palette: vec![],
         };
         let state = GraphState::from_graph_data(data);
         assert_eq!(state.nodes[0].bfs_depth, Some(2));
@@ -296,6 +297,7 @@ mod tests {
             nodes: vec![node],
             edges: vec![],
             seed_paper_id: None,
+            palette: vec![],
         };
         let state = GraphState::from_graph_data(data);
         assert_eq!(state.nodes[0].bfs_depth, None);
@@ -308,6 +310,7 @@ mod tests {
             nodes: vec![node],
             edges: vec![],
             seed_paper_id: None,
+            palette: vec![],
         };
         let state = GraphState::from_graph_data(data);
         assert!(state.nodes[0].lod_visible);
@@ -320,6 +323,7 @@ mod tests {
             nodes: vec![node],
             edges: vec![],
             seed_paper_id: None,
+            palette: vec![],
         };
         let state = GraphState::from_graph_data(data);
         assert!(state.nodes[0].temporal_visible);
@@ -335,6 +339,7 @@ mod tests {
             ],
             edges: vec![],
             seed_paper_id: None,
+            palette: vec![],
         };
         let state = GraphState::from_graph_data(data);
         assert_eq!(state.temporal_min_year, 2015);
@@ -352,6 +357,7 @@ mod tests {
             ],
             edges: vec![],
             seed_paper_id: None,
+            palette: vec![],
         };
         let state = GraphState::from_graph_data(data);
         assert_eq!(state.temporal_min_year, 2018);
@@ -364,6 +370,7 @@ mod tests {
             nodes: vec![make_node("seed-id", Some(10))],
             edges: vec![],
             seed_paper_id: Some("seed-id".to_string()),
+            palette: vec![],
         };
         let state = GraphState::from_graph_data(data);
         assert_eq!(state.seed_paper_id, Some("seed-id".to_string()));
@@ -375,6 +382,7 @@ mod tests {
             nodes: vec![make_node("seed-id", Some(10)), make_node("other", Some(5))],
             edges: vec![],
             seed_paper_id: Some("seed-id".to_string()),
+            palette: vec![],
         };
         let state = GraphState::from_graph_data(data);
         assert!(state.nodes[0].is_seed, "seed node should have is_seed=true");
@@ -390,6 +398,7 @@ mod tests {
             nodes: vec![make_node("A", Some(0))],
             edges: vec![],
             seed_paper_id: None,
+            palette: vec![],
         };
         let state = GraphState::from_graph_data(data);
         assert!(!state.nodes[0].is_seed);
@@ -401,6 +410,7 @@ mod tests {
             nodes: vec![],
             edges: vec![],
             seed_paper_id: None,
+            palette: vec![],
         };
         let state = GraphState::from_graph_data(data);
         assert!((state.current_scale - 1.0).abs() < 1e-10);
@@ -437,6 +447,7 @@ mod tests {
             ],
             edges: vec![],
             seed_paper_id: None,
+            palette: vec![],
         };
 
         let state = GraphState::from_graph_data(data);
@@ -449,6 +460,7 @@ mod tests {
             nodes: vec![],
             edges: vec![],
             seed_paper_id: None,
+            palette: vec![],
         };
 
         let state = GraphState::from_graph_data(data);
@@ -466,6 +478,7 @@ mod tests {
             ],
             edges: vec![],
             seed_paper_id: None,
+            palette: vec![],
         };
 
         let state = GraphState::from_graph_data(data);
@@ -486,6 +499,7 @@ mod tests {
                 justification: None,
             }],
             seed_paper_id: None,
+            palette: vec![],
         };
 
         let state = GraphState::from_graph_data(data);
@@ -501,6 +515,7 @@ mod tests {
             nodes: vec![make_node("A", Some(0))],
             edges: vec![],
             seed_paper_id: None,
+            palette: vec![],
         };
         let mut state = GraphState::from_graph_data(data);
         assert!(state.simulation_running, "simulation should start running");
@@ -534,6 +549,7 @@ mod tests {
             ],
             edges: vec![],
             seed_paper_id: Some("seed".to_string()),
+            palette: vec![],
         };
         let state = GraphState::from_graph_data(data);
         let seed = &state.nodes[0];
@@ -556,6 +572,7 @@ mod tests {
             ],
             edges: vec![],
             seed_paper_id: Some("seed".to_string()),
+            palette: vec![],
         };
         let state = GraphState::from_graph_data(data);
         let seed_dist = (state.nodes[0].x.powi(2) + state.nodes[0].y.powi(2)).sqrt();
@@ -585,6 +602,7 @@ mod tests {
             ],
             edges: vec![],
             seed_paper_id: Some("seed".to_string()),
+            palette: vec![],
         };
         let state = GraphState::from_graph_data(data);
         let d1_dist = (state.nodes[1].x.powi(2) + state.nodes[1].y.powi(2)).sqrt();
@@ -633,6 +651,7 @@ mod tests {
             nodes: vec![node],
             edges: vec![],
             seed_paper_id: None,
+            palette: vec![],
         };
         let state = GraphState::from_graph_data(data);
         assert_eq!(state.nodes[0].top_keywords.len(), 1);

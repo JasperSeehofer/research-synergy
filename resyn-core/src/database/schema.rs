@@ -171,6 +171,25 @@ async fn apply_migration_7(db: &Surreal<Any>) -> Result<(), ResynError> {
     Ok(())
 }
 
+async fn apply_migration_8(db: &Surreal<Any>) -> Result<(), ResynError> {
+    db.query(
+        "
+        DEFINE TABLE IF NOT EXISTS keyword_palette SCHEMAFULL;
+        DEFINE FIELD IF NOT EXISTS keyword ON keyword_palette TYPE string;
+        DEFINE FIELD IF NOT EXISTS r ON keyword_palette TYPE int;
+        DEFINE FIELD IF NOT EXISTS g ON keyword_palette TYPE int;
+        DEFINE FIELD IF NOT EXISTS b ON keyword_palette TYPE int;
+        DEFINE FIELD IF NOT EXISTS slot_index ON keyword_palette TYPE int;
+        DEFINE FIELD IF NOT EXISTS corpus_fingerprint ON keyword_palette TYPE string;
+        DEFINE FIELD IF NOT EXISTS computed_at ON keyword_palette TYPE string;
+        DEFINE INDEX IF NOT EXISTS idx_palette_keyword ON keyword_palette FIELDS keyword UNIQUE;
+        ",
+    )
+    .await
+    .map_err(|e| ResynError::Database(format!("migration 8 DDL failed: {e}")))?;
+    Ok(())
+}
+
 pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
     // Ensure migrations table exists first
     db.query(
@@ -218,6 +237,11 @@ pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
     if version < 7 {
         apply_migration_7(db).await?;
         record_migration(db, 7).await?;
+    }
+
+    if version < 8 {
+        apply_migration_8(db).await?;
+        record_migration(db, 8).await?;
     }
 
     Ok(())

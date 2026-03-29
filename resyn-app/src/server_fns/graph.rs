@@ -33,10 +33,21 @@ pub struct GraphEdge {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct PaletteEntry {
+    pub keyword: String,
+    pub r: u8,
+    pub g: u8,
+    pub b: u8,
+    pub slot_index: u8,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GraphData {
     pub nodes: Vec<GraphNode>,
     pub edges: Vec<GraphEdge>,
     pub seed_paper_id: Option<String>,
+    #[serde(default)]
+    pub palette: Vec<PaletteEntry>,
 }
 
 #[server(GetGraphData, "/api")]
@@ -197,6 +208,7 @@ pub async fn get_graph_data() -> Result<GraphData, ServerFnError> {
             nodes,
             edges,
             seed_paper_id,
+            palette: vec![],
         })
     }
     #[cfg(not(feature = "ssr"))]
@@ -241,6 +253,7 @@ mod tests {
                 justification: Some("Because".to_string()),
             }],
             seed_paper_id: Some("2301.11111".to_string()),
+            palette: vec![],
         };
 
         let json = serde_json::to_string(&data).unwrap();
@@ -314,5 +327,28 @@ mod tests {
         assert_eq!(decoded.top_keywords.len(), 1);
         assert_eq!(decoded.top_keywords[0].0, "Monte Carlo");
         assert!((decoded.top_keywords[0].1 - 0.85).abs() < 1e-6);
+    }
+
+    #[test]
+    fn test_palette_entry_serde_round_trip() {
+        let entry = PaletteEntry {
+            keyword: "monte_carlo".to_string(),
+            r: 0x56,
+            g: 0xc7,
+            b: 0x6b,
+            slot_index: 0,
+        };
+        let json = serde_json::to_string(&entry).unwrap();
+        let deserialized: PaletteEntry = serde_json::from_str(&json).unwrap();
+        assert_eq!(deserialized.keyword, "monte_carlo");
+        assert_eq!(deserialized.r, 0x56);
+    }
+
+    #[test]
+    fn test_graph_data_palette_defaults_empty() {
+        // Backward compat: palette field absent in JSON should default to empty vec
+        let json = r#"{"nodes":[],"edges":[],"seed_paper_id":null}"#;
+        let data: GraphData = serde_json::from_str(json).unwrap();
+        assert!(data.palette.is_empty());
     }
 }

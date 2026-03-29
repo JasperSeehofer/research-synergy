@@ -757,6 +757,98 @@ impl<'a> GapFindingRepository<'a> {
     }
 }
 
+// --- PaletteRepository ---
+
+pub struct PaletteRepository<'a> {
+    db: &'a Db,
+}
+
+impl<'a> PaletteRepository<'a> {
+    pub fn new(db: &'a Db) -> Self {
+        Self { db }
+    }
+
+    pub async fn upsert_palette(
+        &self,
+        entries: &[(String, u8, u8, u8, u8, String)], // (keyword, r, g, b, slot_index, corpus_fingerprint)
+    ) -> Result<(), ResynError> {
+        // Delete existing palette entries first (full replacement per D-04)
+        self.db
+            .query("DELETE keyword_palette")
+            .await
+            .map_err(|e| ResynError::Database(format!("clear palette failed: {e}")))?;
+
+        let now = chrono::Utc::now().to_rfc3339();
+        for (keyword, r, g, b, slot_index, fingerprint) in entries {
+            self.db
+                .query("CREATE keyword_palette CONTENT { keyword: $keyword, r: $r, g: $g, b: $b, slot_index: $slot_index, corpus_fingerprint: $fingerprint, computed_at: $now }")
+                .bind(("keyword", keyword.clone()))
+                .bind(("r", *r as i64))
+                .bind(("g", *g as i64))
+                .bind(("b", *b as i64))
+                .bind(("slot_index", *slot_index as i64))
+                .bind(("fingerprint", fingerprint.clone()))
+                .bind(("now", now.clone()))
+                .await
+                .map_err(|e| ResynError::Database(format!("upsert palette entry '{}' failed: {e}", keyword)))?;
+        }
+        Ok(())
+    }
+
+    pub async fn get_palette(&self) -> Result<Vec<(String, u8, u8, u8, u8)>, ResynError> {
+        let mut response = self
+            .db
+            .query("SELECT keyword, r, g, b, slot_index FROM keyword_palette ORDER BY slot_index ASC")
+            .await
+            .map_err(|e| ResynError::Database(format!("get palette failed: {e}")))?;
+
+        let rows: Vec<serde_json::Value> = response
+            .take(0)
+            .map_err(|e| ResynError::Database(format!("palette deserialize failed: {e}")))?;
+
+        Ok(rows
+            .into_iter()
+            .filter_map(|row| {
+                Some((
+                    row.get("keyword")?.as_str()?.to_string(),
+                    row.get("r")?.as_u64()? as u8,
+                    row.get("g")?.as_u64()? as u8,
+                    row.get("b")?.as_u64()? as u8,
+                    row.get("slot_index")?.as_u64()? as u8,
+                ))
+            })
+            .collect())
+    }
+
+    /// Get the corpus_fingerprint stored with the current palette (if any).
+    /// Returns the fingerprint from the first palette entry, or None if palette is empty.
+    pub async fn get_corpus_fingerprint(&self) -> Result<Option<String>, ResynError> {
+        let mut response = self
+            .db
+            .query("SELECT corpus_fingerprint FROM keyword_palette LIMIT 1")
+            .await
+            .map_err(|e| ResynError::Database(format!("get corpus fingerprint failed: {e}")))?;
+
+        let rows: Vec<serde_json::Value> = response
+            .take(0)
+            .map_err(|e| ResynError::Database(format!("fingerprint deserialize failed: {e}")))?;
+
+        Ok(rows
+            .first()
+            .and_then(|row| row.get("corpus_fingerprint"))
+            .and_then(|v| v.as_str())
+            .map(|s| s.to_string()))
+    }
+
+    pub async fn clear_palette(&self) -> Result<(), ResynError> {
+        self.db
+            .query("DELETE keyword_palette")
+            .await
+            .map_err(|e| ResynError::Database(format!("clear palette failed: {e}")))?;
+        Ok(())
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -898,27 +990,27 @@ mod tests {
         let repo = ExtractionRepository::new(&db);
         let extraction = make_extraction("2301.12345");
         repo.upsert_extraction(&extraction).await.unwrap();
-        // Also check schema_migrations has version 7 (migrations 1-7 applied)
+        // Also check schema_migrations has version 8 (migrations 1-8 applied)
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 7);
+        assert_eq!(versions[0], 8);
     }
 
     #[tokio::test]
     async fn test_migrate_schema_is_idempotent() {
         use crate::database::schema::migrate_schema;
         let db = crate::database::client::connect("mem://").await.unwrap();
-        // Run migrate_schema again — should not error and version stays at 7
+        // Run migrate_schema again — should not error and version stays at 8
         migrate_schema(&db).await.unwrap();
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 7);
+        assert_eq!(versions[0], 8);
     }
 
     #[tokio::test]
@@ -1015,8 +1107,8 @@ mod tests {
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
         assert_eq!(
-            versions[0], 7,
-            "Expected schema version 7 after all migrations"
+            versions[0], 8,
+            "Expected schema version 8 after all migrations"
         );
     }
 
@@ -1031,7 +1123,7 @@ mod tests {
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 7);
+        assert_eq!(versions[0], 8);
     }
 
     #[tokio::test]
@@ -1158,8 +1250,8 @@ mod tests {
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
         assert_eq!(
-            versions[0], 7,
-            "Expected schema version 7 after all migrations"
+            versions[0], 8,
+            "Expected schema version 8 after all migrations"
         );
     }
 
@@ -1173,7 +1265,7 @@ mod tests {
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 7);
+        assert_eq!(versions[0], 8);
     }
 
     #[tokio::test]
@@ -1268,8 +1360,8 @@ mod tests {
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
         assert_eq!(
-            versions[0], 7,
-            "Expected schema version 7 after all migrations"
+            versions[0], 8,
+            "Expected schema version 8 after all migrations"
         );
     }
 
@@ -1325,5 +1417,82 @@ mod tests {
         let all = repo.get_all_gap_findings().await.unwrap();
         assert_eq!(all.len(), 1);
         assert_eq!(all[0].gap_type, GapType::AbcBridge);
+    }
+
+    // --- PaletteRepository tests ---
+
+    #[tokio::test]
+    async fn test_migration_8_keyword_palette() {
+        let db = connect_memory().await.unwrap();
+        // Migration 8 runs automatically in connect_memory
+        // Verify table exists by inserting a test record
+        db.query("CREATE keyword_palette CONTENT { keyword: 'test', r: 232, g: 163, b: 75, slot_index: 0, corpus_fingerprint: 'fp1', computed_at: '2026-01-01' }")
+            .await
+            .unwrap();
+        let mut res = db.query("SELECT * FROM keyword_palette").await.unwrap();
+        let rows: Vec<serde_json::Value> = res.take(0).unwrap();
+        assert_eq!(rows.len(), 1);
+    }
+
+    #[tokio::test]
+    async fn test_palette_upsert_and_get() {
+        let db = connect_memory().await.unwrap();
+        let repo = PaletteRepository::new(&db);
+
+        let entries = vec![
+            (
+                "monte_carlo".to_string(),
+                0x56u8,
+                0xc7u8,
+                0x6bu8,
+                0u8,
+                "fp1".to_string(),
+            ),
+            (
+                "bayesian".to_string(),
+                0xe8u8,
+                0xa3u8,
+                0x4bu8,
+                1u8,
+                "fp1".to_string(),
+            ),
+        ];
+        repo.upsert_palette(&entries).await.unwrap();
+
+        let result = repo.get_palette().await.unwrap();
+        assert_eq!(result.len(), 2);
+        assert_eq!(result[0].0, "monte_carlo");
+        assert_eq!(result[0].1, 0x56); // r
+    }
+
+    #[tokio::test]
+    async fn test_palette_empty_returns_empty_vec() {
+        let db = connect_memory().await.unwrap();
+        let repo = PaletteRepository::new(&db);
+        let result = repo.get_palette().await.unwrap();
+        assert!(result.is_empty());
+    }
+
+    #[tokio::test]
+    async fn test_palette_corpus_fingerprint() {
+        let db = connect_memory().await.unwrap();
+        let repo = PaletteRepository::new(&db);
+
+        // Empty palette has no fingerprint
+        let fp = repo.get_corpus_fingerprint().await.unwrap();
+        assert!(fp.is_none());
+
+        // After upsert, fingerprint is retrievable
+        let entries = vec![(
+            "kw1".to_string(),
+            0x56u8,
+            0xc7u8,
+            0x6bu8,
+            0u8,
+            "paper_count:42".to_string(),
+        )];
+        repo.upsert_palette(&entries).await.unwrap();
+        let fp = repo.get_corpus_fingerprint().await.unwrap();
+        assert_eq!(fp, Some("paper_count:42".to_string()));
     }
 }

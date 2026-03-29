@@ -10,6 +10,8 @@ pub struct GraphNode {
     pub citation_count: Option<u32>,
     pub abstract_text: String,
     pub bfs_depth: Option<u32>,
+    #[serde(default)]
+    pub top_keywords: Vec<(String, f32)>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -41,7 +43,7 @@ pub struct GraphData {
 pub async fn get_graph_data() -> Result<GraphData, ServerFnError> {
     #[cfg(feature = "ssr")]
     {
-        use resyn_core::database::queries::{GapFindingRepository, PaperRepository};
+        use resyn_core::database::queries::{AnalysisRepository, GapFindingRepository, PaperRepository};
         use resyn_core::datamodels::gap_finding::GapType;
         let db = use_context::<std::sync::Arc<resyn_core::database::client::Db>>()
             .ok_or_else(|| ServerFnError::new("Database not available"))?;
@@ -53,6 +55,25 @@ pub async fn get_graph_data() -> Result<GraphData, ServerFnError> {
             .get_all_papers()
             .await
             .map_err(|e| ServerFnError::new(e.to_string()))?;
+
+        // Load all TF-IDF analyses and build a fast lookup map (no N+1 queries).
+        let analysis_repo = AnalysisRepository::new(&db);
+        let analyses = analysis_repo
+            .get_all_analyses()
+            .await
+            .map_err(|e| ServerFnError::new(e.to_string()))?;
+        let analysis_map: std::collections::HashMap<String, Vec<(String, f32)>> = analyses
+            .into_iter()
+            .map(|a| {
+                let keywords: Vec<(String, f32)> = a
+                    .top_terms
+                    .into_iter()
+                    .zip(a.top_scores.into_iter())
+                    .take(5)
+                    .collect();
+                (a.arxiv_id, keywords)
+            })
+            .collect();
 
         // Build paper ID set for fast lookup
         let paper_id_set: std::collections::HashSet<String> =
@@ -131,6 +152,7 @@ pub async fn get_graph_data() -> Result<GraphData, ServerFnError> {
                     citation_count: p.citation_count,
                     abstract_text: p.summary.clone(),
                     bfs_depth: depths.get(&p.id).copied(),
+                    top_keywords: analysis_map.get(&p.id).cloned().unwrap_or_default(),
                 }
             })
             .collect();
@@ -197,6 +219,7 @@ mod tests {
                     citation_count: Some(42),
                     abstract_text: "Abstract A".to_string(),
                     bfs_depth: Some(1),
+                    top_keywords: vec![],
                 },
                 GraphNode {
                     id: "2301.22222".to_string(),
@@ -206,6 +229,7 @@ mod tests {
                     citation_count: None,
                     abstract_text: "Abstract B".to_string(),
                     bfs_depth: None,
+                    top_keywords: vec![],
                 },
             ],
             edges: vec![GraphEdge {
@@ -253,11 +277,42 @@ mod tests {
             citation_count: Some(100),
             abstract_text: "This is the abstract.".to_string(),
             bfs_depth: Some(2),
+            top_keywords: vec![],
         };
         let json = serde_json::to_string(&node).unwrap();
         let decoded: GraphNode = serde_json::from_str(&json).unwrap();
         assert_eq!(decoded.id, "2301.11111");
         assert_eq!(decoded.authors.len(), 2);
         assert_eq!(decoded.citation_count, Some(100));
+    }
+
+    #[test]
+    fn test_graph_node_top_keywords_serde_default() {
+        // JSON without top_keywords field should deserialize with empty vec (backward compat)
+        let json = r#"{"id":"2301.11111","title":"T","authors":[],"year":"2023","citation_count":null,"abstract_text":"","bfs_depth":null}"#;
+        let node: GraphNode = serde_json::from_str(json).unwrap();
+        assert!(
+            node.top_keywords.is_empty(),
+            "missing top_keywords field should default to empty vec"
+        );
+    }
+
+    #[test]
+    fn test_graph_node_top_keywords_round_trip() {
+        let node = GraphNode {
+            id: "2301.11111".to_string(),
+            title: "Test".to_string(),
+            authors: vec![],
+            year: "2023".to_string(),
+            citation_count: None,
+            abstract_text: String::new(),
+            bfs_depth: None,
+            top_keywords: vec![("Monte Carlo".to_string(), 0.85)],
+        };
+        let json = serde_json::to_string(&node).unwrap();
+        let decoded: GraphNode = serde_json::from_str(&json).unwrap();
+        assert_eq!(decoded.top_keywords.len(), 1);
+        assert_eq!(decoded.top_keywords[0].0, "Monte Carlo");
+        assert!((decoded.top_keywords[0].1 - 0.85).abs() < 1e-6);
     }
 }

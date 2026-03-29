@@ -1,5 +1,13 @@
 use crate::server_fns::graph::{EdgeType, GraphData};
 
+#[derive(Debug, Clone, Copy, PartialEq, Default)]
+pub enum LabelMode {
+    #[default]
+    AuthorYear,
+    Keywords,
+    Off,
+}
+
 #[derive(Debug, Clone)]
 pub struct NodeState {
     pub id: String,
@@ -17,6 +25,7 @@ pub struct NodeState {
     pub lod_visible: bool,
     pub temporal_visible: bool,
     pub is_seed: bool,
+    pub top_keywords: Vec<(String, f32)>,
 }
 
 impl NodeState {
@@ -54,6 +63,7 @@ pub struct GraphState {
     pub temporal_max_year: u32,
     pub seed_paper_id: Option<String>,
     pub current_scale: f64,
+    pub label_mode: LabelMode,
 }
 
 impl GraphState {
@@ -150,6 +160,7 @@ impl GraphState {
                     lod_visible: true,
                     temporal_visible: true,
                     is_seed,
+                    top_keywords: n.top_keywords,
                 }
             })
             .collect();
@@ -204,6 +215,7 @@ impl GraphState {
             temporal_max_year: year_max,
             seed_paper_id: data.seed_paper_id,
             current_scale: 1.0,
+            label_mode: LabelMode::default(),
         }
     }
 
@@ -234,6 +246,7 @@ mod tests {
             citation_count,
             abstract_text: "Abstract".to_string(),
             bfs_depth: None,
+            top_keywords: vec![],
         }
     }
 
@@ -246,6 +259,7 @@ mod tests {
             citation_count: Some(0),
             abstract_text: "Abstract".to_string(),
             bfs_depth,
+            top_keywords: vec![],
         }
     }
 
@@ -258,6 +272,7 @@ mod tests {
             citation_count: Some(0),
             abstract_text: "Abstract".to_string(),
             bfs_depth: None,
+            top_keywords: vec![],
         }
     }
 
@@ -600,7 +615,28 @@ mod tests {
             lod_visible: true,
             temporal_visible: true,
             is_seed: false,
+            top_keywords: vec![],
         };
         assert_eq!(node.label(), "Doe 2023");
+    }
+
+    #[test]
+    fn test_label_mode_default_is_author_year() {
+        assert_eq!(LabelMode::default(), LabelMode::AuthorYear);
+    }
+
+    #[test]
+    fn test_from_graph_data_populates_top_keywords() {
+        let mut node = make_node("A", Some(0));
+        node.top_keywords = vec![("quantum".to_string(), 0.9)];
+        let data = GraphData {
+            nodes: vec![node],
+            edges: vec![],
+            seed_paper_id: None,
+        };
+        let state = GraphState::from_graph_data(data);
+        assert_eq!(state.nodes[0].top_keywords.len(), 1);
+        assert_eq!(state.nodes[0].top_keywords[0].0, "quantum");
+        assert!((state.nodes[0].top_keywords[0].1 - 0.9).abs() < 1e-6);
     }
 }

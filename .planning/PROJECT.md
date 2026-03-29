@@ -102,6 +102,7 @@ Surface research gaps and unexplored connections that no single paper reveals �
 **Phase 18 complete** — arXiv crawl repair: text-based ID extraction restores edge density (2026-03-28)
 **Phase 19 complete** — Data quality cleanup: InspireHEP published dates + orphan node elimination (2026-03-28)
 **Phase 20 complete** — LLM analysis pipeline verification: StartAnalysis server function, UI controls, result panel CTAs with SSE refetch, integration tests (2026-03-28)
+**Phase 999.1 complete** — Keyword-based graph labels: LabelMode dropdown (Keywords/Author-Year/Off), per-node TF-IDF keyword pills with score-based opacity, k-means cluster labels with convex hull borders at low zoom, extended hover tooltip (2026-03-29)
 
 ReSyn is a 3-crate Cargo workspace (resyn-core/resyn-app/resyn-server) with ~25,000 LOC Rust across 90+ files. The full pipeline runs through a Leptos CSR web UI served by Axum, with interactive Canvas 2D / WebGL2 graph rendering powered by Barnes-Hut force layout in a WASM Web Worker. The graph renderer now produces visually clear force-directed layouts with retuned coefficients, visible edges on dark backgrounds, crisp anti-aliased nodes, seed node distinction, auto-fit viewport animation, and collision-free priority-ordered labels.
 
@@ -164,7 +165,7 @@ This document evolves at phase transitions and milestone boundaries.
 3. Audit Out of Scope — reasons still valid?
 4. Update Context with current state
 
-Last updated: 2026-03-28
+Last updated: 2026-03-29
 
 ---
-*Last updated: 2026-03-28 after Phase 20 completion*
+*Last updated: 2026-03-29 after Phase 999.1 completion*

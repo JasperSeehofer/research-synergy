@@ -101,6 +101,7 @@ mod tests {
             temporal_visible: true,
             is_seed: false,
             top_keywords: vec![],
+            topic_dimmed: false,
         }
     }
 

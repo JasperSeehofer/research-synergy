@@ -26,6 +26,7 @@ pub struct NodeState {
     pub temporal_visible: bool,
     pub is_seed: bool,
     pub top_keywords: Vec<(String, f32)>,
+    pub topic_dimmed: bool,
 }
 
 impl NodeState {
@@ -64,6 +65,7 @@ pub struct GraphState {
     pub seed_paper_id: Option<String>,
     pub current_scale: f64,
     pub label_mode: LabelMode,
+    pub palette: Vec<crate::server_fns::graph::PaletteEntry>,
 }
 
 impl GraphState {
@@ -161,6 +163,7 @@ impl GraphState {
                     temporal_visible: true,
                     is_seed,
                     top_keywords: n.top_keywords,
+                    topic_dimmed: false,
                 }
             })
             .collect();
@@ -216,6 +219,7 @@ impl GraphState {
             seed_paper_id: data.seed_paper_id,
             current_scale: 1.0,
             label_mode: LabelMode::default(),
+            palette: data.palette,
         }
     }
 
@@ -634,6 +638,7 @@ mod tests {
             temporal_visible: true,
             is_seed: false,
             top_keywords: vec![],
+            topic_dimmed: false,
         };
         assert_eq!(node.label(), "Doe 2023");
     }
@@ -657,5 +662,47 @@ mod tests {
         assert_eq!(state.nodes[0].top_keywords.len(), 1);
         assert_eq!(state.nodes[0].top_keywords[0].0, "quantum");
         assert!((state.nodes[0].top_keywords[0].1 - 0.9).abs() < 1e-6);
+    }
+
+    #[test]
+    fn test_graph_state_palette_propagation() {
+        use crate::server_fns::graph::{GraphData, PaletteEntry};
+        let data = GraphData {
+            nodes: vec![],
+            edges: vec![],
+            seed_paper_id: None,
+            palette: vec![PaletteEntry {
+                keyword: "test".to_string(),
+                r: 0x56,
+                g: 0xc7,
+                b: 0x6b,
+                slot_index: 0,
+            }],
+        };
+        let state = GraphState::from_graph_data(data);
+        assert_eq!(state.palette.len(), 1);
+        assert_eq!(state.palette[0].keyword, "test");
+    }
+
+    #[test]
+    fn test_node_state_topic_dimmed_defaults_false() {
+        use crate::server_fns::graph::{GraphData, GraphNode};
+        let data = GraphData {
+            nodes: vec![GraphNode {
+                id: "test".to_string(),
+                title: "Test".to_string(),
+                authors: vec!["Author".to_string()],
+                year: "2025".to_string(),
+                citation_count: Some(5),
+                abstract_text: "".to_string(),
+                bfs_depth: Some(0),
+                top_keywords: vec![],
+            }],
+            edges: vec![],
+            seed_paper_id: Some("test".to_string()),
+            palette: vec![],
+        };
+        let state = GraphState::from_graph_data(data);
+        assert!(!state.nodes[0].topic_dimmed);
     }
 }

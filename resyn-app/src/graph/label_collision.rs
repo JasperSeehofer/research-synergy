@@ -439,6 +439,7 @@ mod tests {
             temporal_visible: visible,
             is_seed,
             top_keywords: vec![],
+            topic_dimmed: false,
         }
     }
 

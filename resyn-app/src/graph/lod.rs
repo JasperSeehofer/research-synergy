@@ -65,6 +65,7 @@ mod tests {
             temporal_visible: true,
             is_seed: false,
             top_keywords: vec![],
+            topic_dimmed: false,
         }
     }
 
@@ -233,6 +234,7 @@ mod tests {
                 temporal_visible: true,
                 is_seed: false,
                 top_keywords: vec![],
+                topic_dimmed: false,
             },
             NodeState {
                 id: "b".to_string(),
@@ -251,6 +253,7 @@ mod tests {
                 temporal_visible: true,
                 is_seed: false,
                 top_keywords: vec![],
+                topic_dimmed: false,
             },
             NodeState {
                 id: "c".to_string(),
@@ -269,6 +272,7 @@ mod tests {
                 temporal_visible: false,
                 is_seed: false,
                 top_keywords: vec![],
+                topic_dimmed: false,
             },
         ];
         let (visible, total) = compute_visible_count(&nodes);

@@ -204,11 +204,120 @@ pub async fn get_graph_data() -> Result<GraphData, ServerFnError> {
             }
         }
 
+        // Compute corpus palette from TF-IDF variance (D-01, D-04)
+        let palette = {
+            use resyn_core::database::queries::PaletteRepository;
+            let palette_repo = PaletteRepository::new(&db);
+
+            // D-04: Corpus fingerprint = paper count. New crawl changes paper count,
+            // which invalidates the cached palette. Re-analysis alone does not change
+            // paper count, so palette stays stable within a session.
+            let current_fingerprint = format!("paper_count:{}", nodes.len());
+            let cached_fingerprint = palette_repo.get_corpus_fingerprint().await.unwrap_or(None);
+
+            let fingerprint_matches = cached_fingerprint
+                .as_ref()
+                .map(|fp| fp == &current_fingerprint)
+                .unwrap_or(false);
+
+            if fingerprint_matches {
+                // Cached palette is still valid for this corpus
+                let cached = palette_repo.get_palette().await.unwrap_or_default();
+                cached
+                    .into_iter()
+                    .map(|(keyword, r, g, b, slot_index)| PaletteEntry {
+                        keyword,
+                        r,
+                        g,
+                        b,
+                        slot_index,
+                    })
+                    .collect::<Vec<_>>()
+            } else if !analysis_map.is_empty() {
+                // Corpus changed (new crawl) or no cache yet — recompute
+                // Find top-8 keywords by inter-paper TF-IDF variance
+                let mut keyword_scores: std::collections::HashMap<String, Vec<f32>> =
+                    std::collections::HashMap::new();
+                for keywords in analysis_map.values() {
+                    for (kw, score) in keywords {
+                        keyword_scores.entry(kw.clone()).or_default().push(*score);
+                    }
+                }
+
+                // Compute variance for each keyword (inter-paper variance = discriminative power)
+                let mut keyword_variances: Vec<(String, f64)> = keyword_scores
+                    .iter()
+                    .filter(|(_, scores)| scores.len() >= 2)
+                    .map(|(kw, scores)| {
+                        let n = scores.len() as f64;
+                        let mean = scores.iter().map(|s| *s as f64).sum::<f64>() / n;
+                        let variance = scores
+                            .iter()
+                            .map(|s| (*s as f64 - mean).powi(2))
+                            .sum::<f64>()
+                            / n;
+                        (kw.clone(), variance)
+                    })
+                    .collect();
+
+                keyword_variances
+                    .sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap_or(std::cmp::Ordering::Equal));
+
+                // Pre-computed OKLCH palette colors (8 slots, from UI-SPEC)
+                const PALETTE_COLORS: &[[u8; 3]] = &[
+                    [0xe8, 0xa3, 0x4b], // slot 0: amber
+                    [0xb8, 0xcc, 0x52], // slot 1: yellow-green
+                    [0x56, 0xc7, 0x6b], // slot 2: green
+                    [0x40, 0xc9, 0xa4], // slot 3: teal
+                    [0x58, 0xb4, 0xe8], // slot 4: cyan-blue
+                    [0x88, 0x84, 0xe0], // slot 5: blue-violet
+                    [0xcc, 0x6f, 0xd6], // slot 6: magenta
+                    [0xe0, 0x60, 0x80], // slot 7: rose
+                ];
+
+                let entries: Vec<PaletteEntry> = keyword_variances
+                    .iter()
+                    .take(8)
+                    .enumerate()
+                    .map(|(i, (kw, _))| {
+                        let [r, g, b] = PALETTE_COLORS[i];
+                        PaletteEntry {
+                            keyword: kw.clone(),
+                            r,
+                            g,
+                            b,
+                            slot_index: i as u8,
+                        }
+                    })
+                    .collect();
+
+                // Cache to DB with corpus fingerprint (fire-and-forget, don't block graph load)
+                let db_entries: Vec<(String, u8, u8, u8, u8, String)> = entries
+                    .iter()
+                    .map(|e| {
+                        (
+                            e.keyword.clone(),
+                            e.r,
+                            e.g,
+                            e.b,
+                            e.slot_index,
+                            current_fingerprint.clone(),
+                        )
+                    })
+                    .collect();
+                let _ = palette_repo.upsert_palette(&db_entries).await;
+
+                entries
+            } else {
+                Vec::new()
+            }
+        };
+
         Ok(GraphData {
             nodes,
             edges,
             seed_paper_id,
-            palette: vec![],
+            palette,
         })
     }
     #[cfg(not(feature = "ssr"))]
@@ -350,5 +459,38 @@ mod tests {
         let json = r#"{"nodes":[],"edges":[],"seed_paper_id":null}"#;
         let data: GraphData = serde_json::from_str(json).unwrap();
         assert!(data.palette.is_empty());
+    }
+
+    #[test]
+    fn test_palette_computation_selects_top_by_variance() {
+        // Simulate analysis_map data
+        let mut keyword_scores: std::collections::HashMap<String, Vec<f32>> =
+            std::collections::HashMap::new();
+        // "high_var" keyword: appears in 3 papers with very different scores
+        keyword_scores.insert("high_var".to_string(), vec![0.9, 0.1, 0.5]);
+        // "low_var" keyword: appears in 3 papers with similar scores
+        keyword_scores.insert("low_var".to_string(), vec![0.5, 0.5, 0.5]);
+        // "ubiquitous" keyword: appears everywhere with same score (zero variance)
+        keyword_scores.insert("ubiquitous".to_string(), vec![0.3, 0.3, 0.3]);
+
+        let mut keyword_variances: Vec<(String, f64)> = keyword_scores
+            .iter()
+            .filter(|(_, scores)| scores.len() >= 2)
+            .map(|(kw, scores)| {
+                let n = scores.len() as f64;
+                let mean = scores.iter().map(|s| *s as f64).sum::<f64>() / n;
+                let variance = scores
+                    .iter()
+                    .map(|s| (*s as f64 - mean).powi(2))
+                    .sum::<f64>()
+                    / n;
+                (kw.clone(), variance)
+            })
+            .collect();
+        keyword_variances
+            .sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap_or(std::cmp::Ordering::Equal));
+
+        assert_eq!(keyword_variances[0].0, "high_var"); // Highest variance first
+        assert!(keyword_variances[0].1 > keyword_variances[1].1);
     }
 }

@@ -115,6 +115,7 @@ mod tests {
             temporal_visible,
             is_seed: false,
             top_keywords: vec![],
+            topic_dimmed: false,
         }
     }
 

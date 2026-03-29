@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: Data Pipeline Fixes
 status: executing
-stopped_at: Phase 999.1 context gathered
-last_updated: "2026-03-29T01:00:30.169Z"
-last_activity: 2026-03-28
+stopped_at: Completed 999.1-02-PLAN.md
+last_updated: "2026-03-29T13:37:17.060Z"
+last_activity: 2026-03-29
 progress:
   total_phases: 5
   completed_phases: 3
-  total_plans: 7
-  completed_plans: 7
+  total_plans: 11
+  completed_plans: 8
   percent: 0
 ---
 
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-27)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Phase 20 — llm-analysis-pipeline-verification
+**Current focus:** Phase 999.1 — keyword-based-graph-labels
 
 ## Current Position
 
-Phase: 999.1
-Plan: Not started
+Phase: 999.1 (keyword-based-graph-labels) — EXECUTING
+Plan: 2 of 4
 Status: Ready to execute
-Last activity: 2026-03-28
+Last activity: 2026-03-29
 
 Progress: [░░░░░░░░░░░░░░░░░░░░] 0% (v1.3: 0/3 phases)
 
@@ -49,6 +49,7 @@ Progress: [░░░░░░░░░░░░░░░░░░░░] 0% (v1.
 | Phase 19-data-quality-cleanup P01 | 5min | 2 tasks | 2 files |
 | Phase 20-llm-analysis-pipeline-verification P01 | 6min | 3 tasks | 9 files |
 | Phase 20-llm-analysis-pipeline-verification P03 | 5min | 2 tasks | 3 files |
+| Phase 999.1-keyword-based-graph-labels P02 | 3 | 1 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -70,6 +71,9 @@ Recent decisions relevant to v1.3:
 - [Phase 20-llm-analysis-pipeline-verification]: run_extraction/run_llm_analysis return anyhow::Result<()>; CLI run() retains process::exit for user-facing errors
 - [Phase 20-llm-analysis-pipeline-verification]: on:click dispatch uses block form { action.dispatch(()); } to discard ActionAbortHandle return value in Leptos event handlers
 - [Phase 20-llm-analysis-pipeline-verification]: analysis_action in methods.rs hoisted to MethodsPanel top-level so it can be captured by the empty state view closure
+- [Phase 999.1-02]: K-means++ first centroid = positions[0] for deterministic reproducibility without random seed
+- [Phase 999.1-02]: Jarvis march convex hull: simpler correctness path for small cluster sizes (k=3-8)
+- [Phase 999.1-02]: score_to_opacity minimum 0.35 ensures pills readable at any zoom level per UI-SPEC D-12
 
 ### Pending Todos
 
@@ -83,6 +87,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-29T01:00:30.167Z
-Stopped at: Phase 999.1 context gathered
-Resume file: .planning/phases/999.1-keyword-based-graph-labels/999.1-CONTEXT.md
+Last session: 2026-03-29T13:37:17.058Z
+Stopped at: Completed 999.1-02-PLAN.md
+Resume file: None

@@ -119,13 +119,13 @@ Plans:
 
 **Goal:** Replace author/year labels with TF-IDF keyword pills so users can visually identify paper topics at a glance. Two tiers: (1) per-node keyword pills showing top 2 keywords with score-based opacity, (2) cluster-level floating labels with dashed convex hull borders showing dominant topic per region. Label mode dropdown (Keywords / Author-Year / Off) in graph controls.
 **Requirements:** KGL-01, KGL-02, KGL-03, KGL-04, KGL-05, KGL-06
-**Plans:** 3/4 plans executed
+**Plans:** 4/4 plans complete
 
 Plans:
 - [x] 999.1-01-PLAN.md — Data pipeline: extend GraphNode/NodeState with top_keywords, define LabelMode enum, server function AnalysisRepository join
 - [x] 999.1-02-PLAN.md — K-means clustering module: Lloyd's algorithm, convex hull, auto_k heuristic, dominant keyword aggregation
 - [x] 999.1-03-PLAN.md — Label mode dropdown + per-node keyword pill rendering with score-based opacity
-- [ ] 999.1-04-PLAN.md — Cluster rendering (convex hull borders, LOD transition) + extended hover tooltip with top-5 keywords
+- [x] 999.1-04-PLAN.md — Cluster rendering (convex hull borders, LOD transition) + extended hover tooltip with top-5 keywords
 
 ### Phase 999.2: Topic Ring Node Borders (BACKLOG)
 

@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: Data Pipeline Fixes
-status: executing
-stopped_at: Completed 999.1-03-PLAN.md
-last_updated: "2026-03-29T13:44:49.500Z"
+status: verifying
+stopped_at: "Completed 999.1-04-PLAN.md (Task 1 done; Task 2 checkpoint:human-verify pending)"
+last_updated: "2026-03-29T13:49:40.800Z"
 last_activity: 2026-03-29
 progress:
   total_phases: 5
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 11
-  completed_plans: 10
+  completed_plans: 11
   percent: 0
 ---
 
@@ -27,7 +27,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 
 Phase: 999.1 (keyword-based-graph-labels) — EXECUTING
 Plan: 4 of 4
-Status: Ready to execute
+Status: Phase complete — ready for verification
 Last activity: 2026-03-29
 
 Progress: [░░░░░░░░░░░░░░░░░░░░] 0% (v1.3: 0/3 phases)
@@ -52,6 +52,7 @@ Progress: [░░░░░░░░░░░░░░░░░░░░] 0% (v1.
 | Phase 999.1-keyword-based-graph-labels P02 | 3 | 1 tasks | 4 files |
 | Phase 999.1-keyword-based-graph-labels P01 | 3min | 2 tasks | 4 files |
 | Phase 999.1-keyword-based-graph-labels P03 | 4min | 2 tasks | 3 files |
+| Phase 999.1-keyword-based-graph-labels P04 | 8min | 1 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -81,6 +82,8 @@ Recent decisions relevant to v1.3:
 - [Phase 999.1-keyword-based-graph-labels]: draw_label_pill gets opacity as last param: preserves call sites, backward compatible
 - [Phase 999.1-keyword-based-graph-labels]: keyword_text_widths computed at load time alongside author-year widths: no per-frame cost
 - [Phase 999.1-keyword-based-graph-labels]: Per-frame pill_widths measured inline in Keywords RAF branch: acceptable for collision-culled visible node count
+- [Phase 999.1-keyword-based-graph-labels]: Hull padding computed per-vertex as 12px outward from hull centroid: direction vector normalized from hull centroid to vertex, scaled by 12px
+- [Phase 999.1-keyword-based-graph-labels]: just_converged derived from !sim_running && alpha <= ALPHA_MIN: detects settle frame for one-shot cluster recompute
 
 ### Pending Todos
 
@@ -94,6 +97,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-29T13:44:49.499Z
-Stopped at: Completed 999.1-03-PLAN.md
+Last session: 2026-03-29T13:49:40.798Z
+Stopped at: Completed 999.1-04-PLAN.md (Task 1 done; Task 2 checkpoint:human-verify pending)
 Resume file: None

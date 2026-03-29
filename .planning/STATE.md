@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: Data Pipeline Fixes
 status: executing
-stopped_at: Completed 999.1-01-PLAN.md
-last_updated: "2026-03-29T13:38:00.325Z"
+stopped_at: Completed 999.1-03-PLAN.md
+last_updated: "2026-03-29T13:44:49.500Z"
 last_activity: 2026-03-29
 progress:
   total_phases: 5
   completed_phases: 3
   total_plans: 11
-  completed_plans: 9
+  completed_plans: 10
   percent: 0
 ---
 
@@ -26,7 +26,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 ## Current Position
 
 Phase: 999.1 (keyword-based-graph-labels) — EXECUTING
-Plan: 3 of 4
+Plan: 4 of 4
 Status: Ready to execute
 Last activity: 2026-03-29
 
@@ -51,6 +51,7 @@ Progress: [░░░░░░░░░░░░░░░░░░░░] 0% (v1.
 | Phase 20-llm-analysis-pipeline-verification P03 | 5min | 2 tasks | 3 files |
 | Phase 999.1-keyword-based-graph-labels P02 | 3 | 1 tasks | 4 files |
 | Phase 999.1-keyword-based-graph-labels P01 | 3min | 2 tasks | 4 files |
+| Phase 999.1-keyword-based-graph-labels P03 | 4min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -77,6 +78,9 @@ Recent decisions relevant to v1.3:
 - [Phase 999.1-02]: score_to_opacity minimum 0.35 ensures pills readable at any zoom level per UI-SPEC D-12
 - [Phase 999.1-keyword-based-graph-labels]: LabelMode uses #[derive(Default)] with #[default] on AuthorYear — zero-cost, no manual Default impl needed
 - [Phase 999.1-keyword-based-graph-labels]: AnalysisRepository join uses get_all_analyses() into HashMap — single DB query, no N+1, keys by arxiv_id
+- [Phase 999.1-keyword-based-graph-labels]: draw_label_pill gets opacity as last param: preserves call sites, backward compatible
+- [Phase 999.1-keyword-based-graph-labels]: keyword_text_widths computed at load time alongside author-year widths: no per-frame cost
+- [Phase 999.1-keyword-based-graph-labels]: Per-frame pill_widths measured inline in Keywords RAF branch: acceptable for collision-culled visible node count
 
 ### Pending Todos
 
@@ -90,6 +94,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-29T13:38:00.324Z
-Stopped at: Completed 999.1-01-PLAN.md
+Last session: 2026-03-29T13:44:49.499Z
+Stopped at: Completed 999.1-03-PLAN.md
 Resume file: None

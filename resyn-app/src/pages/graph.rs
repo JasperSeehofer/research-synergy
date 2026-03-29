@@ -53,6 +53,10 @@ struct RenderState {
     prev_label_mode: LabelMode,
     /// Cached label collision result (stored here so it works for both Canvas2D and WebGL2).
     label_cache: Option<crate::graph::label_collision::LabelCache>,
+    /// Cached cluster result for cluster label rendering in Keywords mode.
+    cluster_result: Option<crate::graph::kmeans::ClusterResult>,
+    /// Frame counter for cluster recompute scheduling (every 10 frames during simulation).
+    cluster_frame_counter: u32,
 }
 
 // ── RAF handle with cancel support ──────────────────────────────────────────
@@ -226,6 +230,8 @@ pub fn GraphPage() -> impl IntoView {
             keyword_text_widths,
             prev_label_mode: LabelMode::AuthorYear,
             label_cache: None,
+            cluster_result: None,
+            cluster_frame_counter: 0,
         }));
 
         let renderer_rc: Rc<RefCell<Box<dyn Renderer>>> = Rc::new(RefCell::new(renderer));
@@ -592,6 +598,39 @@ fn start_render_loop(
             *prev_offset_x.borrow_mut() = s.viewport.offset_x;
             *prev_offset_y.borrow_mut() = s.viewport.offset_y;
 
+            // Cluster recompute (D-09): every 10 frames during simulation, or on first settle
+            let just_converged = !sim_running && s.graph.alpha <= resyn_worker::forces::ALPHA_MIN;
+            let current_label_mode_for_cluster = label_mode.get_untracked();
+            if current_label_mode_for_cluster == LabelMode::Keywords {
+                s.cluster_frame_counter = s.cluster_frame_counter.wrapping_add(1);
+                let should_recompute = s.cluster_result.is_none()
+                    || (sim_running && s.cluster_frame_counter % 10 == 0)
+                    || just_converged;
+                if should_recompute && s.graph.alpha < 0.15 {
+                    // D-07: defer until simulation has partially settled (alpha < 0.15)
+                    let positions: Vec<(f64, f64)> = s
+                        .graph
+                        .nodes
+                        .iter()
+                        .filter(|n| n.lod_visible && n.temporal_visible)
+                        .map(|n| (n.x, n.y))
+                        .collect();
+                    let keywords: Vec<Vec<(String, f32)>> = s
+                        .graph
+                        .nodes
+                        .iter()
+                        .filter(|n| n.lod_visible && n.temporal_visible)
+                        .map(|n| n.top_keywords.clone())
+                        .collect();
+                    if positions.len() >= 3 {
+                        s.cluster_result =
+                            Some(crate::graph::kmeans::compute_clusters(&positions, &keywords));
+                    }
+                }
+            } else {
+                s.cluster_result = None;
+            }
+
             // Detect label mode changes and invalidate cache
             let current_label_mode = label_mode.get_untracked();
             s.graph.label_mode = current_label_mode;
@@ -775,6 +814,17 @@ fn start_render_loop(
                                     }
                                 }
                             }
+                            // Draw cluster labels when zoomed out (D-08, D-10)
+                            if s.viewport.scale < crate::graph::lod::LOD_LEVEL_1
+                                && let Some(ref clusters) = s.cluster_result
+                            {
+                                crate::graph::label_collision::draw_cluster_labels(
+                                    ctx,
+                                    clusters,
+                                    &s.graph.nodes,
+                                    &s.viewport,
+                                );
+                            }
                         }
                     }
                 }
@@ -811,16 +861,30 @@ fn start_render_loop(
 
 // ── Tooltip text formatting ─────────────────────────────────────────────────
 
-fn node_tooltip(node: &crate::graph::layout_state::NodeState) -> String {
+fn node_tooltip(
+    node: &crate::graph::layout_state::NodeState,
+    label_mode: &crate::graph::layout_state::LabelMode,
+) -> String {
     let title = if node.title.len() > 60 {
         format!("{}…", &node.title[..60])
     } else {
         node.title.clone()
     };
-    format!(
+    let mut text = format!(
         "{}\n{} · {} · {} citations",
         title, node.first_author, node.year, node.citation_count
-    )
+    );
+
+    // D-05: Append keywords section when in keyword mode and keywords present
+    if *label_mode == crate::graph::layout_state::LabelMode::Keywords
+        && !node.top_keywords.is_empty()
+    {
+        text.push_str("\n────────────────────\nKeywords:");
+        for (term, score) in node.top_keywords.iter().take(5) {
+            text.push_str(&format!("\n  {}  {:.2}", term, score));
+        }
+    }
+    text
 }
 
 fn edge_tooltip(graph: &GraphState, edge_idx: usize) -> String {
@@ -935,7 +999,7 @@ fn attach_event_listeners(
             s.graph.hovered_edge = hovered_edge;
 
             if let Some(idx) = hovered {
-                let text = node_tooltip(&s.graph.nodes[idx]);
+                let text = node_tooltip(&s.graph.nodes[idx], &s.graph.label_mode);
                 drop(s);
                 tooltip_signal.set(Some(TooltipData { text, x: sx, y: sy }));
             } else if let Some(eidx) = hovered_edge {

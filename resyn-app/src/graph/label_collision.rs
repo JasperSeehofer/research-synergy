@@ -288,6 +288,126 @@ pub fn draw_not_analyzed_badge(
     ctx.fill_text("[not analyzed]", x + PILL_H_PAD, label_y + 14.0).unwrap();
 }
 
+// ── Cluster label rendering ───────────────────────────────────────────────────
+
+/// Draw cluster-level labels with dashed convex hull borders.
+///
+/// Only called when scale < LOD_LEVEL_1 (0.6) and label_mode == Keywords.
+/// For each cluster, draws a dashed convex hull border around member nodes
+/// and a label pill at the cluster centroid showing the dominant keyword.
+#[allow(clippy::too_many_arguments)]
+pub fn draw_cluster_labels(
+    ctx: &web_sys::CanvasRenderingContext2d,
+    cluster_result: &crate::graph::kmeans::ClusterResult,
+    nodes: &[NodeState],
+    viewport: &Viewport,
+) {
+    let k = cluster_result.centroids.len();
+    for cluster_idx in 0..k {
+        // Collect node indices assigned to this cluster
+        let nodes_in_cluster: Vec<usize> = cluster_result
+            .assignments
+            .iter()
+            .enumerate()
+            .filter(|&(_, &ci)| ci == cluster_idx)
+            .map(|(i, _)| i)
+            .filter(|&i| i < nodes.len())
+            .collect();
+
+        if nodes_in_cluster.len() < 2 {
+            continue;
+        }
+
+        // Collect screen-space positions for hull computation
+        let screen_positions: Vec<(f64, f64)> = nodes_in_cluster
+            .iter()
+            .map(|&i| viewport.world_to_screen(nodes[i].x, nodes[i].y))
+            .collect();
+
+        // Compute convex hull in screen space
+        let hull = crate::graph::kmeans::convex_hull(&screen_positions);
+        if hull.len() < 3 {
+            continue;
+        }
+
+        // Compute hull centroid for padding direction
+        let hull_cx = hull.iter().map(|p| p.0).sum::<f64>() / hull.len() as f64;
+        let hull_cy = hull.iter().map(|p| p.1).sum::<f64>() / hull.len() as f64;
+
+        // Pad hull outward by 12px from centroid
+        let padded_hull: Vec<(f64, f64)> = hull
+            .iter()
+            .map(|&(hx, hy)| {
+                let dx = hx - hull_cx;
+                let dy = hy - hull_cy;
+                let len = (dx * dx + dy * dy).sqrt().max(1.0);
+                (hx + dx / len * 12.0, hy + dy / len * 12.0)
+            })
+            .collect();
+
+        // Draw dashed convex hull border
+        ctx.save();
+        ctx.set_stroke_style_str("rgba(88, 166, 255, 0.25)");
+        ctx.set_line_width(1.5);
+        let dash = js_sys::Array::new();
+        dash.push(&4.0_f64.into());
+        dash.push(&4.0_f64.into());
+        ctx.set_line_dash(&dash).unwrap();
+        ctx.begin_path();
+        ctx.move_to(padded_hull[0].0, padded_hull[0].1);
+        for &(hx, hy) in &padded_hull[1..] {
+            ctx.line_to(hx, hy);
+        }
+        ctx.close_path();
+        // Subtle fill
+        ctx.set_fill_style_str("rgba(88, 166, 255, 0.04)");
+        ctx.fill();
+        ctx.stroke();
+        ctx.set_line_dash(&js_sys::Array::new()).unwrap(); // reset dash
+        ctx.restore();
+
+        // Draw cluster label pill at the cluster centroid (screen space)
+        let text = &cluster_result.dominant_keywords[cluster_idx];
+        if text.is_empty() {
+            continue;
+        }
+
+        let (centroid_sx, centroid_sy) = viewport.world_to_screen(
+            cluster_result.centroids[cluster_idx].0,
+            cluster_result.centroids[cluster_idx].1,
+        );
+
+        let text_w = ctx.measure_text(text).unwrap().width();
+        let pill_w = text_w + PILL_H_PAD * 2.0;
+        let pill_x = centroid_sx - pill_w / 2.0;
+        let pill_y = centroid_sy - PILL_HEIGHT / 2.0;
+        let r = PILL_CORNER_RADIUS;
+        let h = PILL_HEIGHT;
+
+        ctx.set_global_alpha(1.0);
+        ctx.set_fill_style_str("rgba(22, 27, 34, 0.9)");
+        ctx.begin_path();
+        ctx.move_to(pill_x + r, pill_y);
+        ctx.line_to(pill_x + pill_w - r, pill_y);
+        ctx.arc_to(pill_x + pill_w, pill_y, pill_x + pill_w, pill_y + r, r).unwrap();
+        ctx.line_to(pill_x + pill_w, pill_y + h - r);
+        ctx.arc_to(pill_x + pill_w, pill_y + h, pill_x + pill_w - r, pill_y + h, r).unwrap();
+        ctx.line_to(pill_x + r, pill_y + h);
+        ctx.arc_to(pill_x, pill_y + h, pill_x, pill_y + h - r, r).unwrap();
+        ctx.line_to(pill_x, pill_y + r);
+        ctx.arc_to(pill_x, pill_y, pill_x + r, pill_y, r).unwrap();
+        ctx.close_path();
+        ctx.fill();
+
+        ctx.set_stroke_style_str("rgba(88, 166, 255, 0.4)");
+        ctx.set_line_width(1.0);
+        ctx.stroke();
+
+        ctx.set_fill_style_str("#e6edf3");
+        ctx.fill_text(text, pill_x + PILL_H_PAD, pill_y + 14.0).unwrap();
+    }
+}
+
 // ── Tests ─────────────────────────────────────────────────────────────────────
 
 #[cfg(test)]

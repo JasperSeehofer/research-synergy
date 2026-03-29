@@ -114,6 +114,7 @@ mod tests {
             lod_visible,
             temporal_visible,
             is_seed: false,
+            top_keywords: vec![],
         }
     }
 

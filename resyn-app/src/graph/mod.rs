@@ -1,5 +1,6 @@
 pub mod canvas_renderer;
 pub mod interaction;
+pub mod kmeans;
 pub mod label_collision;
 pub mod layout_state;
 pub mod lod;

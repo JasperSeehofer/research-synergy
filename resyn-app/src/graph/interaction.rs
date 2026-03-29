@@ -100,6 +100,7 @@ mod tests {
             lod_visible: true,
             temporal_visible: true,
             is_seed: false,
+            top_keywords: vec![],
         }
     }
 

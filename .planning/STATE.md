@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: Data Pipeline Fixes
-status: verifying
-stopped_at: Phase 999.2 UI-SPEC approved
-last_updated: "2026-03-29T17:24:22.645Z"
+status: executing
+stopped_at: Completed 999.2-01-PLAN.md
+last_updated: "2026-03-29T18:08:48.606Z"
 last_activity: 2026-03-29
 progress:
   total_phases: 5
   completed_phases: 4
-  total_plans: 11
-  completed_plans: 11
+  total_plans: 13
+  completed_plans: 12
   percent: 0
 ---
 
@@ -21,13 +21,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-27)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Phase 999.1 — keyword-based-graph-labels
+**Current focus:** Phase 999.2 — topic-ring-node-borders
 
 ## Current Position
 
-Phase: 999.2
-Plan: Not started
-Status: Phase complete — ready for verification
+Phase: 999.2 (topic-ring-node-borders) — EXECUTING
+Plan: 2 of 2
+Status: Ready to execute
 Last activity: 2026-03-29
 
 Progress: [░░░░░░░░░░░░░░░░░░░░] 0% (v1.3: 0/3 phases)
@@ -53,6 +53,7 @@ Progress: [░░░░░░░░░░░░░░░░░░░░] 0% (v1.
 | Phase 999.1-keyword-based-graph-labels P01 | 3min | 2 tasks | 4 files |
 | Phase 999.1-keyword-based-graph-labels P03 | 4min | 2 tasks | 3 files |
 | Phase 999.1-keyword-based-graph-labels P04 | 8min | 1 tasks | 2 files |
+| Phase 999.2-topic-ring-node-borders P01 | 18min | 2 tasks | 8 files |
 
 ## Accumulated Context
 
@@ -84,6 +85,9 @@ Recent decisions relevant to v1.3:
 - [Phase 999.1-keyword-based-graph-labels]: Per-frame pill_widths measured inline in Keywords RAF branch: acceptable for collision-culled visible node count
 - [Phase 999.1-keyword-based-graph-labels]: Hull padding computed per-vertex as 12px outward from hull centroid: direction vector normalized from hull centroid to vertex, scaled by 12px
 - [Phase 999.1-keyword-based-graph-labels]: just_converged derived from !sim_running && alpha <= ALPHA_MIN: detects settle frame for one-shot cluster recompute
+- [Phase 999.2-01]: corpus_fingerprint = paper_count:N — invalidates palette on new crawl but stable within session
+- [Phase 999.2-01]: upsert_palette does full DELETE + re-insert for atomic palette replacement
+- [Phase 999.2-01]: all 8 OKLCH slot colors are pre-computed constants in PALETTE_COLORS array
 
 ### Pending Todos
 
@@ -97,6 +101,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-29T17:24:22.643Z
-Stopped at: Phase 999.2 UI-SPEC approved
-Resume file: .planning/phases/999.2-topic-ring-node-borders/999.2-UI-SPEC.md
+Last session: 2026-03-29T18:08:48.604Z
+Stopped at: Completed 999.2-01-PLAN.md
+Resume file: None

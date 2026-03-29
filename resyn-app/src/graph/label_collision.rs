@@ -178,6 +178,7 @@ mod tests {
             lod_visible: visible,
             temporal_visible: visible,
             is_seed,
+            top_keywords: vec![],
         }
     }
 

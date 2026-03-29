@@ -64,6 +64,7 @@ mod tests {
             lod_visible: true,
             temporal_visible: true,
             is_seed: false,
+            top_keywords: vec![],
         }
     }
 
@@ -231,6 +232,7 @@ mod tests {
                 lod_visible: true,
                 temporal_visible: true,
                 is_seed: false,
+                top_keywords: vec![],
             },
             NodeState {
                 id: "b".to_string(),
@@ -248,6 +250,7 @@ mod tests {
                 lod_visible: false,
                 temporal_visible: true,
                 is_seed: false,
+                top_keywords: vec![],
             },
             NodeState {
                 id: "c".to_string(),
@@ -265,6 +268,7 @@ mod tests {
                 lod_visible: true,
                 temporal_visible: false,
                 is_seed: false,
+                top_keywords: vec![],
             },
         ];
         let (visible, total) = compute_visible_count(&nodes);

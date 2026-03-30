@@ -15,6 +15,9 @@ pub fn GraphControls(
     fit_count: RwSignal<u32>,
     simulation_settled: RwSignal<bool>,
     label_mode: RwSignal<LabelMode>,
+    show_topic_rings: RwSignal<bool>,
+    active_topic_filter: RwSignal<std::collections::HashSet<String>>,
+    palette: RwSignal<Vec<crate::server_fns::graph::PaletteEntry>>,
 ) -> impl IntoView {
     let _ = temporal_min;
     let _ = temporal_max;
@@ -126,6 +129,65 @@ pub fn GraphControls(
                     <option value="off" selected=move || label_mode.get() == LabelMode::Off>"Off"</option>
                 </select>
             </div>
+
+            // Topic ring toggle group (D-09)
+            <div class="graph-controls-group">
+                <button
+                    class=move || if show_topic_rings.get() { "graph-control-btn active" } else { "graph-control-btn" }
+                    on:click=move |_| show_topic_rings.update(|v| *v = !*v)
+                    aria-pressed=move || show_topic_rings.get().to_string()
+                    aria-label="Toggle topic ring borders"
+                >
+                    "Topic Rings"
+                </button>
+            </div>
+
+            // Topic Colors legend (D-10, D-11, D-12)
+            {move || {
+                let rings_on = show_topic_rings.get();
+                let pal = palette.get();
+                if rings_on && !pal.is_empty() {
+                    Some(view! {
+                        <div class="topic-legend-section">
+                            <div class="sidebar-title">"TOPIC COLORS"</div>
+                            <div class="topic-legend-entries">
+                                {pal.into_iter().map(|entry| {
+                                    let kw = entry.keyword.clone();
+                                    let kw_click = kw.clone();
+                                    let kw_class = kw.clone();
+                                    let swatch_style = format!(
+                                        "background: rgb({},{},{});",
+                                        entry.r, entry.g, entry.b
+                                    );
+                                    view! {
+                                        <button
+                                            class=move || {
+                                                let active = active_topic_filter.get().contains(&kw_class);
+                                                if active { "legend-entry active" } else { "legend-entry" }
+                                            }
+                                            on:click=move |_| {
+                                                active_topic_filter.update(|set| {
+                                                    let k = kw_click.clone();
+                                                    if set.contains(&k) {
+                                                        set.remove(&k);
+                                                    } else {
+                                                        set.insert(k);
+                                                    }
+                                                });
+                                            }
+                                        >
+                                            <span class="legend-swatch" style=swatch_style.clone()></span>
+                                            {kw.clone()}
+                                        </button>
+                                    }
+                                }).collect::<Vec<_>>()}
+                            </div>
+                        </div>
+                    })
+                } else {
+                    None
+                }
+            }}
         </div>
     }
 }

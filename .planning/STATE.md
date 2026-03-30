@@ -4,7 +4,7 @@ milestone: v1.3
 milestone_name: Data Pipeline Fixes
 status: verifying
 stopped_at: Completed 999.2-02-PLAN.md (awaiting human-verify Task 3)
-last_updated: "2026-03-30T10:21:35.329Z"
+last_updated: "2026-03-30T11:17:02.704Z"
 last_activity: 2026-03-30
 progress:
   total_phases: 5
@@ -25,8 +25,8 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 
 ## Current Position
 
-Phase: 999.2 (topic-ring-node-borders) — EXECUTING
-Plan: 2 of 2
+Phase: 999.2
+Plan: Not started
 Status: Phase complete — ready for verification
 Last activity: 2026-03-30
 

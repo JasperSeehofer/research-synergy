@@ -249,11 +249,7 @@ impl Renderer for Canvas2DRenderer {
             self.ctx.set_fill_style_str(fill_color);
             self.ctx.fill();
 
-            // Node border
-            let border_color = if node.is_seed { "#e8b84b" } else { "#7cb8ff" };
-            self.ctx.set_stroke_style_str(border_color);
-            self.ctx.set_line_width(1.0 / viewport.scale);
-            self.ctx.stroke();
+            // Node border removed — topic rings (overlay canvas) handle border rendering
 
             // Seed node outer planetary ring
             if node.is_seed && !dimmed {

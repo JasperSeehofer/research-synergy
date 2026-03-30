@@ -709,6 +709,7 @@ fn start_render_loop(
                         &s.graph.palette,
                         &s.viewport,
                         &s.graph.seed_paper_id,
+                        s.graph.hovered_node,
                     );
                 }
 
@@ -1234,8 +1235,11 @@ fn attach_event_listeners(
 
 // ── Topic ring rendering ──────────────────────────────────────────────────────
 
-const MIN_SCREEN_RADIUS_FOR_RINGS: f64 = 6.0;
-const TOPIC_RING_WIDTH: f64 = 3.0;
+const MIN_SCREEN_RADIUS_FOR_RINGS: f64 = 14.0; // only show when arcs are distinguishable
+const TOPIC_RING_WIDTH_FRAC: f64 = 0.12; // ring width as fraction of screen radius
+const TOPIC_RING_MIN_WIDTH: f64 = 1.5;
+const TOPIC_RING_MAX_WIDTH: f64 = 5.0;
+const TOPIC_RING_HOVER_EXTRA: f64 = 2.5; // extra px added on hover
 const START_ANGLE: f64 = -std::f64::consts::FRAC_PI_2; // -PI/2 = 12 o'clock
 
 /// Compute arc segment angles for a node's top-3 keywords.
@@ -1285,6 +1289,7 @@ fn draw_topic_rings(
     palette: &[crate::server_fns::graph::PaletteEntry],
     viewport: &crate::graph::renderer::Viewport,
     _seed_paper_id: &Option<String>,
+    hovered_node: Option<usize>,
 ) {
     // Build keyword -> color_hex lookup from palette
     let palette_color_map: std::collections::HashMap<&str, String> = palette
@@ -1313,7 +1318,7 @@ fn draw_topic_rings(
         })
         .collect();
 
-    for node in nodes {
+    for (i, node) in nodes.iter().enumerate() {
         if !node.lod_visible || !node.temporal_visible {
             continue;
         }
@@ -1328,9 +1333,15 @@ fn draw_topic_rings(
 
         let dim_alpha = if node.topic_dimmed { 0.3 } else { 1.0 };
 
+        // Scale-aware ring width: proportional to screen radius, clamped
+        let is_hovered = hovered_node == Some(i);
+        let base_width = (screen_radius * TOPIC_RING_WIDTH_FRAC)
+            .clamp(TOPIC_RING_MIN_WIDTH, TOPIC_RING_MAX_WIDTH);
+        let ring_width = if is_hovered { base_width + TOPIC_RING_HOVER_EXTRA } else { base_width };
+
         if node.top_keywords.is_empty() {
             // D-15: Dashed ring for unanalyzed nodes
-            draw_dashed_ring(ctx, sx, sy, screen_radius, dim_alpha);
+            draw_dashed_ring(ctx, sx, sy, screen_radius, dim_alpha, ring_width);
             continue;
         }
 
@@ -1348,7 +1359,7 @@ fn draw_topic_rings(
             ctx.save();
             ctx.set_global_alpha(dim_alpha);
             ctx.set_stroke_style_str(color);
-            ctx.set_line_width(TOPIC_RING_WIDTH);
+            ctx.set_line_width(ring_width);
             ctx.begin_path();
             let _ = ctx.arc(sx, sy, screen_radius, *start, *end);
             ctx.stroke();
@@ -1363,6 +1374,7 @@ fn draw_dashed_ring(
     sy: f64,
     r: f64,
     alpha: f64,
+    width: f64,
 ) {
     use std::f64::consts::TAU;
 
@@ -1374,7 +1386,7 @@ fn draw_dashed_ring(
     ctx.set_global_alpha(alpha);
     let _ = ctx.set_line_dash(&dash_array);
     ctx.set_stroke_style_str("#6e7681");
-    ctx.set_line_width(TOPIC_RING_WIDTH);
+    ctx.set_line_width(width);
     ctx.begin_path();
     let _ = ctx.arc(sx, sy, r, 0.0, TAU);
     ctx.stroke();

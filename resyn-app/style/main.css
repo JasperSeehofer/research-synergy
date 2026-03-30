@@ -1638,7 +1638,10 @@ input[type="range"].temporal-range {
 /* Topic Colors Legend */
 .topic-legend-section {
   padding: var(--space-sm) 0;
-  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  pointer-events: auto;
 }
 
 .topic-legend-section .sidebar-title {

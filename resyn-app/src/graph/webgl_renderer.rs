@@ -52,13 +52,7 @@ void main() {
     float alpha_mask = 1.0 - smoothstep(1.0 - fw, 1.0 + fw, d);
     if (alpha_mask < 0.001) discard;
 
-    // Border ring: bright band near node edge
-    float border_inner = 1.0 - 2.5 * fw;
-    float border_blend = smoothstep(border_inner, border_inner + fw, d);
-    vec3 border_color = clamp(v_color * 1.6, 0.0, 1.0);
-    vec3 final_color = mix(v_color, border_color, border_blend);
-
-    fragColor = vec4(final_color, v_alpha * alpha_mask);
+    fragColor = vec4(v_color, v_alpha * alpha_mask);
 }
 "#;
 

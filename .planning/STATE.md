@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: Data Pipeline Fixes
-status: executing
-stopped_at: Completed 999.2-01-PLAN.md
-last_updated: "2026-03-29T18:08:48.606Z"
-last_activity: 2026-03-29
+status: verifying
+stopped_at: Completed 999.2-02-PLAN.md (awaiting human-verify Task 3)
+last_updated: "2026-03-30T10:21:35.329Z"
+last_activity: 2026-03-30
 progress:
   total_phases: 5
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 13
-  completed_plans: 12
+  completed_plans: 13
   percent: 0
 ---
 
@@ -27,8 +27,8 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 
 Phase: 999.2 (topic-ring-node-borders) — EXECUTING
 Plan: 2 of 2
-Status: Ready to execute
-Last activity: 2026-03-29
+Status: Phase complete — ready for verification
+Last activity: 2026-03-30
 
 Progress: [░░░░░░░░░░░░░░░░░░░░] 0% (v1.3: 0/3 phases)
 
@@ -54,6 +54,7 @@ Progress: [░░░░░░░░░░░░░░░░░░░░] 0% (v1.
 | Phase 999.1-keyword-based-graph-labels P03 | 4min | 2 tasks | 3 files |
 | Phase 999.1-keyword-based-graph-labels P04 | 8min | 1 tasks | 2 files |
 | Phase 999.2-topic-ring-node-borders P01 | 18min | 2 tasks | 8 files |
+| Phase 999.2 P02 | 20min | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -88,6 +89,8 @@ Recent decisions relevant to v1.3:
 - [Phase 999.2-01]: corpus_fingerprint = paper_count:N — invalidates palette on new crawl but stable within session
 - [Phase 999.2-01]: upsert_palette does full DELETE + re-insert for atomic palette replacement
 - [Phase 999.2-01]: all 8 OKLCH slot colors are pre-computed constants in PALETTE_COLORS array
+- [Phase 999.2]: compute_arc_angles uses raw TF-IDF scores as circle fractions (not normalized) — remainder arc fills gap when sum < 1.0
+- [Phase 999.2]: draw_topic_rings drawn at all zoom levels; per-node MIN_SCREEN_RADIUS_FOR_RINGS=6px threshold skips small nodes
 
 ### Pending Todos
 
@@ -101,6 +104,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-29T18:08:48.604Z
-Stopped at: Completed 999.2-01-PLAN.md
+Last session: 2026-03-30T10:21:35.328Z
+Stopped at: Completed 999.2-02-PLAN.md (awaiting human-verify Task 3)
 Resume file: None

@@ -131,11 +131,11 @@ Plans:
 
 **Goal:** Encode each node's top-3 TF-IDF keywords as colored arc segments on its border ring, creating a visual topic fingerprint. Global corpus keywords each get a fixed color (variance-ranked). Arc length proportional to normalized TF-IDF score. Includes a keyword-to-color legend panel with click-to-filter interaction, and an independent "Topic Rings" toggle.
 **Requirements:** D-01, D-02, D-03, D-04, D-05, D-06, D-07, D-08, D-09, D-10, D-11, D-12, D-13, D-14, D-15
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans complete
 
 Plans:
 - [x] 999.2-01-PLAN.md — Data pipeline: PaletteEntry type, DB migration 8, PaletteRepository CRUD, palette variance computation, GraphState/NodeState extensions
-- [ ] 999.2-02-PLAN.md — Canvas2D arc rendering, Topic Rings toggle, Topic Colors legend with click-to-filter, CSS styles
+- [x] 999.2-02-PLAN.md — Canvas2D arc rendering, Topic Rings toggle, Topic Colors legend with click-to-filter, CSS styles
 
 ## Progress
 

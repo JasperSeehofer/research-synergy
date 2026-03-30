@@ -83,6 +83,13 @@ pub fn GraphPage() -> impl IntoView {
     let show_bridges: RwSignal<bool> = RwSignal::new(true);
     let simulation_running: RwSignal<bool> = RwSignal::new(true);
 
+    // Topic ring signals
+    let show_topic_rings: RwSignal<bool> = RwSignal::new(true); // D-09: default on
+    let active_topic_filter: RwSignal<std::collections::HashSet<String>> =
+        RwSignal::new(std::collections::HashSet::new());
+    let palette_signal: RwSignal<Vec<crate::server_fns::graph::PaletteEntry>> =
+        RwSignal::new(Vec::new());
+
     // Zoom button signals: increment a counter to trigger zoom from RAF loop
     let zoom_in_count: RwSignal<u32> = RwSignal::new(0);
     let zoom_out_count: RwSignal<u32> = RwSignal::new(0);
@@ -141,6 +148,8 @@ pub fn GraphPage() -> impl IntoView {
 
         let mut viewport = Viewport::new(css_width, css_height);
         let mut graph_state = GraphState::from_graph_data(data);
+        // Populate palette_signal from graph_state (from_graph_data already moved data)
+        palette_signal.set(graph_state.palette.clone());
         // Fit connected component into visible canvas. Only use nodes WITH
         // bfs_depth (connected nodes) — orphans at far outer ring would shrink
         // the interesting structure to a dot.
@@ -283,6 +292,8 @@ pub fn GraphPage() -> impl IntoView {
             simulation_settled,
             label_ctx.clone(),
             label_mode,
+            show_topic_rings,
+            active_topic_filter,
         );
 
         on_cleanup(move || handle.cancel());
@@ -328,6 +339,9 @@ pub fn GraphPage() -> impl IntoView {
                                 fit_count=fit_count
                                 simulation_settled=simulation_settled
                                 label_mode=label_mode
+                                show_topic_rings=show_topic_rings
+                                active_topic_filter=active_topic_filter
+                                palette=palette_signal
                             />
                             <TemporalSlider
                                 temporal_min=temporal_min
@@ -452,6 +466,8 @@ fn start_render_loop(
     simulation_settled: RwSignal<bool>,
     label_ctx: Rc<RefCell<Option<web_sys::CanvasRenderingContext2d>>>,
     label_mode: RwSignal<LabelMode>,
+    show_topic_rings: RwSignal<bool>,
+    active_topic_filter: RwSignal<std::collections::HashSet<String>>,
 ) -> RafHandle {
     let cancelled = Arc::new(AtomicBool::new(false));
     let cancelled_clone = cancelled.clone();
@@ -587,6 +603,19 @@ fn start_render_loop(
             // Compute visible count (captured before render for signal update)
             vis_count = crate::graph::lod::compute_visible_count(&s.graph.nodes);
 
+            // Update topic_dimmed per-frame from active_topic_filter signal
+            let topic_filter = active_topic_filter.get_untracked();
+            if !topic_filter.is_empty() {
+                for node in &mut s.graph.nodes {
+                    node.topic_dimmed =
+                        !node.top_keywords.iter().any(|(kw, _)| topic_filter.contains(kw));
+                }
+            } else {
+                for node in &mut s.graph.nodes {
+                    node.topic_dimmed = false;
+                }
+            }
+
             // Detect viewport changes for label cache dirty flag (D-12)
             let vp_changed = (s.viewport.scale - *prev_scale.borrow()).abs() > 0.0001
                 || (s.viewport.offset_x - *prev_offset_x.borrow()).abs() > 0.1
@@ -668,10 +697,22 @@ fn start_render_loop(
                 let ch = s.viewport.css_height * dpr;
                 ctx.set_transform(1.0, 0.0, 0.0, 1.0, 0.0, 0.0).unwrap();
                 ctx.clear_rect(0.0, 0.0, cw, ch);
+                ctx.set_transform(dpr, 0.0, 0.0, dpr, 0.0, 0.0).unwrap();
+                ctx.set_global_alpha(1.0);
+
+                // Topic rings — drawn at all zoom levels; individual node threshold handles
+                // visibility via MIN_SCREEN_RADIUS_FOR_RINGS
+                if show_topic_rings.get_untracked() {
+                    draw_topic_rings(
+                        ctx,
+                        &s.graph.nodes,
+                        &s.graph.palette,
+                        &s.viewport,
+                        &s.graph.seed_paper_id,
+                    );
+                }
 
                 if !s.fit_anim.active && s.viewport.scale > 0.3 {
-                    ctx.set_transform(dpr, 0.0, 0.0, dpr, 0.0, 0.0).unwrap();
-                    ctx.set_global_alpha(1.0);
                     ctx.set_font("11px monospace");
 
                     use crate::graph::label_collision::{
@@ -1189,4 +1230,232 @@ fn attach_event_listeners(
         _pointerleave: pointerleave,
     };
     std::mem::forget(_listeners);
+}
+
+// ── Topic ring rendering ──────────────────────────────────────────────────────
+
+const MIN_SCREEN_RADIUS_FOR_RINGS: f64 = 6.0;
+const TOPIC_RING_WIDTH: f64 = 3.0;
+const START_ANGLE: f64 = -std::f64::consts::FRAC_PI_2; // -PI/2 = 12 o'clock
+
+/// Compute arc segment angles for a node's top-3 keywords.
+/// Returns Vec of (start_angle, end_angle, slot_index_or_None).
+/// None in the third position means "neutral remainder" or keyword not in palette.
+///
+/// Each keyword score is treated as a fraction of the full circle (2π).
+/// If the total of top-3 scores is less than 1.0, the remaining circumference
+/// is appended as a neutral arc (D-07). Scores above 1.0 are clamped to 1.0.
+fn compute_arc_angles(
+    top_keywords: &[(String, f32)],
+    palette_slot_map: &std::collections::HashMap<&str, u8>,
+) -> Vec<(f64, f64, Option<u8>)> {
+    use std::f64::consts::TAU;
+
+    if top_keywords.is_empty() {
+        return vec![];
+    }
+
+    let top3: Vec<&(String, f32)> = top_keywords.iter().take(3).collect();
+
+    let mut arcs = Vec::new();
+    let mut current_angle = START_ANGLE;
+
+    for (keyword, score) in &top3 {
+        // Each score is a fraction of the full circle; clamp individual scores to [0, 1]
+        let clamped = score.clamp(0.0, 1.0);
+        let arc_angle = TAU * clamped as f64;
+        let end_angle = current_angle + arc_angle;
+        let slot = palette_slot_map.get(keyword.as_str()).copied();
+        arcs.push((current_angle, end_angle, slot));
+        current_angle = end_angle;
+    }
+
+    // Neutral remainder arc if scores sum < 1.0 (circumference not fully covered)
+    let end = START_ANGLE + TAU;
+    if current_angle < end - 0.01 {
+        arcs.push((current_angle, end, None));
+    }
+
+    arcs
+}
+
+fn draw_topic_rings(
+    ctx: &web_sys::CanvasRenderingContext2d,
+    nodes: &[crate::graph::layout_state::NodeState],
+    palette: &[crate::server_fns::graph::PaletteEntry],
+    viewport: &crate::graph::renderer::Viewport,
+    _seed_paper_id: &Option<String>,
+) {
+    // Build keyword -> color_hex lookup from palette
+    let palette_color_map: std::collections::HashMap<&str, String> = palette
+        .iter()
+        .map(|e| {
+            (
+                e.keyword.as_str(),
+                format!("#{:02x}{:02x}{:02x}", e.r, e.g, e.b),
+            )
+        })
+        .collect();
+    let palette_slot_map: std::collections::HashMap<&str, u8> = palette
+        .iter()
+        .map(|e| (e.keyword.as_str(), e.slot_index))
+        .collect();
+
+    // Pre-build slot_index -> color_hex for arc rendering
+    let slot_colors: std::collections::HashMap<u8, String> = palette
+        .iter()
+        .map(|e| {
+            let color = palette_color_map
+                .get(e.keyword.as_str())
+                .cloned()
+                .unwrap_or_else(|| "#6e7681".to_string());
+            (e.slot_index, color)
+        })
+        .collect();
+
+    for node in nodes {
+        if !node.lod_visible || !node.temporal_visible {
+            continue;
+        }
+
+        let (sx, sy) = viewport.world_to_screen(node.x, node.y);
+        let screen_radius = node.radius * viewport.scale;
+
+        // D-13: Below threshold, skip topic rings (existing border handles it)
+        if screen_radius < MIN_SCREEN_RADIUS_FOR_RINGS {
+            continue;
+        }
+
+        let dim_alpha = if node.topic_dimmed { 0.3 } else { 1.0 };
+
+        if node.top_keywords.is_empty() {
+            // D-15: Dashed ring for unanalyzed nodes
+            draw_dashed_ring(ctx, sx, sy, screen_radius, dim_alpha);
+            continue;
+        }
+
+        let arcs = compute_arc_angles(&node.top_keywords, &palette_slot_map);
+
+        for (start, end, slot) in &arcs {
+            let color = match slot {
+                Some(idx) => slot_colors
+                    .get(idx)
+                    .map(|s| s.as_str())
+                    .unwrap_or("#6e7681"),
+                None => "#3a424c", // neutral remainder (D-07)
+            };
+
+            ctx.save();
+            ctx.set_global_alpha(dim_alpha);
+            ctx.set_stroke_style_str(color);
+            ctx.set_line_width(TOPIC_RING_WIDTH);
+            ctx.begin_path();
+            let _ = ctx.arc(sx, sy, screen_radius, *start, *end);
+            ctx.stroke();
+            ctx.restore();
+        }
+    }
+}
+
+fn draw_dashed_ring(
+    ctx: &web_sys::CanvasRenderingContext2d,
+    sx: f64,
+    sy: f64,
+    r: f64,
+    alpha: f64,
+) {
+    use std::f64::consts::TAU;
+
+    let dash_array = js_sys::Array::new();
+    dash_array.push(&wasm_bindgen::JsValue::from_f64(4.0));
+    dash_array.push(&wasm_bindgen::JsValue::from_f64(4.0));
+
+    ctx.save();
+    ctx.set_global_alpha(alpha);
+    let _ = ctx.set_line_dash(&dash_array);
+    ctx.set_stroke_style_str("#6e7681");
+    ctx.set_line_width(TOPIC_RING_WIDTH);
+    ctx.begin_path();
+    let _ = ctx.arc(sx, sy, r, 0.0, TAU);
+    ctx.stroke();
+    // Reset dash pattern before restore (avoid leaking into subsequent draws)
+    let _ = ctx.set_line_dash(&js_sys::Array::new());
+    ctx.restore();
+}
+
+#[cfg(test)]
+mod topic_ring_tests {
+    use super::*;
+    use std::f64::consts::{FRAC_PI_2, TAU};
+
+    #[test]
+    fn test_arc_angles_empty_keywords() {
+        let palette = std::collections::HashMap::new();
+        let arcs = compute_arc_angles(&[], &palette);
+        assert!(arcs.is_empty());
+    }
+
+    #[test]
+    fn test_arc_angles_single_keyword_full_circle() {
+        let mut palette = std::collections::HashMap::new();
+        palette.insert("quantum", 0u8);
+        let keywords = vec![("quantum".to_string(), 1.0f32)];
+        let arcs = compute_arc_angles(&keywords, &palette);
+        // Single keyword with score 1.0 should fill entire circle, no remainder
+        assert_eq!(arcs.len(), 1);
+        assert_eq!(arcs[0].2, Some(0)); // slot 0
+        let arc_span = arcs[0].1 - arcs[0].0;
+        assert!((arc_span - TAU).abs() < 0.01, "Expected full circle, got {arc_span}");
+    }
+
+    #[test]
+    fn test_arc_angles_two_keywords_with_remainder() {
+        let mut palette = std::collections::HashMap::new();
+        palette.insert("quantum", 0u8);
+        palette.insert("gravity", 1u8);
+        let keywords = vec![
+            ("quantum".to_string(), 0.3f32),
+            ("gravity".to_string(), 0.2f32),
+        ];
+        let arcs = compute_arc_angles(&keywords, &palette);
+        // Two keyword arcs + one neutral remainder = 3
+        assert_eq!(arcs.len(), 3);
+        assert_eq!(arcs[0].2, Some(0)); // quantum = slot 0
+        assert_eq!(arcs[1].2, Some(1)); // gravity = slot 1
+        assert_eq!(arcs[2].2, None); // neutral remainder
+    }
+
+    #[test]
+    fn test_arc_angles_keyword_not_in_palette() {
+        let palette = std::collections::HashMap::new(); // empty palette
+        let keywords = vec![("unknown".to_string(), 0.5f32)];
+        let arcs = compute_arc_angles(&keywords, &palette);
+        assert!(!arcs.is_empty());
+        assert_eq!(arcs[0].2, None); // not in palette -> None
+    }
+
+    #[test]
+    fn test_arc_angles_start_at_12_oclock() {
+        let palette = std::collections::HashMap::new();
+        let keywords = vec![("kw".to_string(), 0.5f32)];
+        let arcs = compute_arc_angles(&keywords, &palette);
+        assert!(
+            (arcs[0].0 - (-FRAC_PI_2)).abs() < 0.001,
+            "Should start at -PI/2 (12 o'clock)"
+        );
+    }
+
+    #[test]
+    fn test_arc_angles_takes_only_top_3() {
+        let palette = std::collections::HashMap::new();
+        let keywords = vec![
+            ("a".to_string(), 0.25f32),
+            ("b".to_string(), 0.25f32),
+            ("c".to_string(), 0.25f32),
+            ("d".to_string(), 0.25f32), // 4th keyword should be ignored
+        ];
+        let arcs = compute_arc_angles(&keywords, &palette);
+        // 3 keyword arcs + 1 remainder (since 0.75 < 1.0) = 4 arcs total
+        assert!(arcs.len() <= 4);
+    }
 }

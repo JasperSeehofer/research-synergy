@@ -59,11 +59,13 @@ impl Renderer for Canvas2DRenderer {
             });
 
         let is_dimmed = |idx: usize| -> bool {
-            if let Some(ref neighbors) = neighbor_set {
+            let selection_dimmed = if let Some(ref neighbors) = neighbor_set {
                 !neighbors.contains(&idx)
             } else {
                 false
-            }
+            };
+            let topic_dimmed = state.nodes.get(idx).map(|n| n.topic_dimmed).unwrap_or(false);
+            selection_dimmed || topic_dimmed
         };
 
         let edge_both_dimmed = |e: &EdgeData| -> bool {

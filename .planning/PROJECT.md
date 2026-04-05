@@ -71,18 +71,16 @@ Surface research gaps and unexplored connections that no single paper reveals �
 - ✓ get_arxiv_id() fallback to arxiv_eprint for non-hyperlinked references — v1.3 Phase 18
 - ✓ InspireHEP published date extraction from earliest_date field — v1.3 Phase 19
 - ✓ Empty-string arXiv ID filter preventing orphan nodes in BFS crawl — v1.3 Phase 19
+- ✓ LLM analysis triggerable from web UI with SSE progress and result panel refetch — v1.3 Phase 20
+- ✓ Gap findings, open problems, and method heatmap panels with CTA empty states — v1.3 Phase 20
+- ✓ TF-IDF keyword pills per node with score-based opacity and Label Mode dropdown — v1.3 Phase 999.1
+- ✓ K-means clustering with convex hull borders and dominant keyword labels — v1.3 Phase 999.1
+- ✓ Topic ring arc segments encoding top-3 keywords with corpus-wide OKLCH palette — v1.3 Phase 999.2
+- ✓ Click-to-filter keyword legend panel with Topic Rings toggle — v1.3 Phase 999.2
 
 ### Active
 
-## Current Milestone: v1.3 Data Pipeline Fixes
-
-**Goal:** Fix the broken arXiv crawl pipeline, eliminate orphan nodes, and verify LLM analysis works end-to-end in the web UI.
-
-**Target features:**
-- Fix arXiv HTML parser to extract arXiv IDs from reference text (not just `<a>` tags)
-- Investigate and fix orphan nodes in InspireHEP crawls
-- Verify/fix LLM analysis pipeline integration with the Leptos web UI
-- Backfill missing paper metadata (published dates) so temporal filtering works
+(None — planning next milestone)
 
 ### Out of Scope
 
@@ -98,13 +96,9 @@ Surface research gaps and unexplored connections that no single paper reveals �
 
 ## Current State
 
-**Shipped:** v1.2 Graph Rendering Overhaul (2026-03-26)
-**Phase 18 complete** — arXiv crawl repair: text-based ID extraction restores edge density (2026-03-28)
-**Phase 19 complete** — Data quality cleanup: InspireHEP published dates + orphan node elimination (2026-03-28)
-**Phase 20 complete** — LLM analysis pipeline verification: StartAnalysis server function, UI controls, result panel CTAs with SSE refetch, integration tests (2026-03-28)
-**Phase 999.1 complete** — Keyword-based graph labels: LabelMode dropdown (Keywords/Author-Year/Off), per-node TF-IDF keyword pills with score-based opacity, k-means cluster labels with convex hull borders at low zoom, extended hover tooltip (2026-03-29)
+**Shipped:** v1.3 Data Pipeline Fixes (2026-04-05)
 
-ReSyn is a 3-crate Cargo workspace (resyn-core/resyn-app/resyn-server) with ~25,000 LOC Rust across 90+ files. The full pipeline runs through a Leptos CSR web UI served by Axum, with interactive Canvas 2D / WebGL2 graph rendering powered by Barnes-Hut force layout in a WASM Web Worker. The graph renderer now produces visually clear force-directed layouts with retuned coefficients, visible edges on dark backgrounds, crisp anti-aliased nodes, seed node distinction, auto-fit viewport animation, and collision-free priority-ordered labels.
+ReSyn is a 3-crate Cargo workspace (resyn-core/resyn-app/resyn-server) with ~27,000 LOC Rust across 100+ files. The full pipeline runs through a Leptos CSR web UI served by Axum, with interactive Canvas 2D / WebGL2 graph rendering powered by Barnes-Hut force layout in a WASM Web Worker. Both data sources (arXiv and InspireHEP) produce dense citation graphs with no orphan nodes. LLM analysis is fully integrated into the web UI with trigger controls, SSE progress, and auto-refreshing result panels. Graph nodes display TF-IDF keyword pills and colored topic ring arcs for at-a-glance topic identification.
 
 **Stack:** Rust (edition 2024), Leptos 0.8 (CSR), Trunk, Axum, SurrealDB v3 (embedded), petgraph, web-sys (Canvas 2D + WebGL2), gloo-worker, reqwest, tokio.
 
@@ -147,6 +141,12 @@ ReSyn is a 3-crate Cargo workspace (resyn-core/resyn-app/resyn-server) with ~25,
 | Viewport fit margin_factor=0.80 with lerp t=0.12 | 10% margin each side, ~0.5s ease-out | ✓ Good — smooth animation |
 | User interaction latch for auto-fit | Permanent latch on pan/wheel/zoom | ✓ Good — respects user viewport |
 | Offscreen canvas for measureText cache | Load-time text width measurement | ✓ Good — works for both renderers |
+| OnceLock<Regex> statics for compiled patterns | Zero overhead after first call | ✓ Good — no per-parse regex compilation |
+| Filter empty IDs at source in get_arxiv_references_ids() | Prevents orphan nodes from entering BFS queue | ✓ Good — zero orphans in depth-2+ crawls |
+| StartAnalysis inlines resyn-core pipeline | Avoids circular dependency (resyn-app cannot depend on resyn-server) | ✓ Good — clean separation |
+| K-means++ first centroid = positions[0] | Deterministic reproducibility without random seed | ✓ Good — stable cluster assignments |
+| OKLCH pre-computed palette constants | 8 perceptually uniform slot colors | ✓ Good — consistent topic coloring |
+| compute_arc_angles uses raw TF-IDF scores | Remainder arc fills gap when sum < 1.0 | ✓ Good — proportional visual encoding |
 
 ## Evolution
 
@@ -165,7 +165,7 @@ This document evolves at phase transitions and milestone boundaries.
 3. Audit Out of Scope — reasons still valid?
 4. Update Context with current state
 
-Last updated: 2026-03-29
+Last updated: 2026-04-05
 
 ---
-*Last updated: 2026-03-29 after Phase 999.1 completion*
+*Last updated: 2026-04-05 after v1.3 milestone*

@@ -1,5 +1,30 @@
 # Milestones
 
+## v1.3 Data Pipeline Fixes (Shipped: 2026-04-05)
+
+**Phases completed:** 5 phases (18-20, 999.1, 999.2), 13 plans, 19 tasks
+**Stats:** 102 files changed, +16,930/-158 lines
+**Timeline:** 3 days (2026-03-27 → 2026-03-30)
+
+**Delivered:** Fixed the arXiv crawl pipeline, eliminated orphan nodes, verified LLM analysis E2E in the web UI, and added keyword-based visual enrichments to the graph.
+
+**Key accomplishments:**
+
+- arXiv HTML parser repaired with regex-based extraction — recovers plain-text arXiv IDs and DOIs from bibliography references, restoring edge density parity with InspireHEP
+- InspireHEP data quality: published date extraction from earliest_date field + empty-string arXiv ID filter eliminating orphan nodes
+- LLM analysis pipeline verified end-to-end: StartAnalysis server function, Run Analysis UI controls, result panel CTAs with SSE-triggered refetch, 5 integration tests
+- Keyword-based graph labels: TF-IDF keyword pills per node, k-means clustering with convex hull borders, Label Mode dropdown (Keywords/Author-Year/Off)
+- Topic ring node borders: colored arc segments encoding top-3 keywords per node, corpus-wide OKLCH palette, click-to-filter legend panel
+
+**Known tech debt:**
+
+- `crawl_progress.rs:40-46` — `is_running()` doesn't exclude analysis events (stale sidebar after analysis)
+- `crawl_progress.rs:124` — hardcoded 50% width on analysis progress bar
+- 11 pre-existing clippy warnings from earlier phases
+- Nyquist validation missing for all 5 phases (draft stubs only)
+
+---
+
 ## v1.2 Graph Rendering Overhaul (Shipped: 2026-03-26)
 
 **Phases completed:** 3 phases (15-17), 6 plans

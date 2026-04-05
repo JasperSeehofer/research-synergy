@@ -2,6 +2,51 @@
 
 *A living document updated after each milestone. Lessons feed forward into future planning.*
 
+## Milestone: v1.3 — Data Pipeline Fixes
+
+**Shipped:** 2026-04-05
+**Phases:** 5 (18-20, 999.1, 999.2) | **Plans:** 13 | **Timeline:** 3 days (2026-03-27 → 2026-03-30)
+
+### What Was Built
+- arXiv HTML parser repaired with regex-based arXiv ID and DOI extraction from plain-text bibliography references
+- InspireHEP data quality: published date extraction from earliest_date + empty-string ID filter eliminating orphan nodes
+- LLM analysis pipeline verified E2E: StartAnalysis server function, Run Analysis button, result panel CTAs with SSE-triggered refetch, 5 integration tests
+- Keyword-based graph labels: TF-IDF keyword pills per node, k-means++ clustering with Jarvis march convex hull borders, Label Mode dropdown
+- Topic ring node borders: colored arc segments encoding top-3 keywords, corpus-wide OKLCH palette, click-to-filter legend
+
+### What Worked
+- Regex extraction with OnceLock<Regex> statics — zero per-parse compilation overhead, clean pattern
+- Filtering empty IDs at source (get_arxiv_references_ids) eliminated orphan nodes without touching the BFS queue logic
+- UI-SPEC design contracts continued from v1.2 — both 999.1 and 999.2 had specs that resolved visual decisions before execution
+- Pure math modules (clustering.rs, compute_arc_angles) enabled native unit testing — 17 k-means tests, all passing without wasm-bindgen-test
+- Backlog phases (999.x) integrated cleanly into the milestone — no numbering conflicts with core phases
+
+### What Was Inefficient
+- SUMMARY.md one_liner quality regressed again — several summaries had file paths or function names instead of human-readable descriptions, breaking milestone-extract tooling
+- Nyquist validation still missing for all 5 phases — draft stubs created but never completed (recurring debt since v1.0)
+- crawl_progress.rs is_running() integration issue (INT-01) caught only at audit time — an E2E flow test for post-analysis sidebar state would have caught this earlier
+- Phase 999.2 had two spec deviations (D-13, D-14) that required post-review polish commit — specs should account for implementation constraints earlier
+
+### Patterns Established
+- OnceLock<Regex> for compiled regex statics — avoids lazy_static dependency, type-safe
+- corpus_fingerprint = paper_count:N for palette invalidation on new crawl but stable within session
+- K-means++ first centroid = positions[0] for deterministic reproducibility
+- compute_arc_angles with raw TF-IDF scores as circle fractions, remainder arc for gap
+- MIN_SCREEN_RADIUS_FOR_RINGS threshold for LOD ring visibility
+
+### Key Lessons
+1. SUMMARY.md one_liner quality continues to degrade — need an executor-level check that one_liner is a readable sentence, not a code fragment
+2. Nyquist validation should be a blocking gate, not an optional post-hoc audit — 5 milestones of "nyquist_compliant: false" stubs is a process failure
+3. Backlog (999.x) phases work well for polish features that don't block core milestone goals — keep this pattern
+4. Post-analysis UI state needs explicit E2E flow testing — the happy path (trigger → run → complete) works but edge states (sidebar cleanup, progress bar) get missed
+
+### Cost Observations
+- Model mix: ~20% opus (orchestration), ~80% sonnet (execution)
+- Sessions: ~5 (Phase 18-19, Phase 20, Phase 999.1, Phase 999.2, completion)
+- Notable: Backlog phases 999.1 and 999.2 were the largest by execution time (38min combined) — visual features require more iteration than data pipeline fixes
+
+---
+
 ## Milestone: v1.2 — Graph Rendering Overhaul
 
 **Shipped:** 2026-03-26
@@ -188,6 +233,7 @@
 | v1.1 | ~8 | 5 | 23 | 4 days | Web migration — feature gating, WASM boundary, Leptos/WebGL stack |
 | v1.1.1 | ~3 | 4 | 4 | 2 days | Bugfix milestone — CSS fixes, yolo auto-chain, minimal scope |
 | v1.2 | ~3 | 3 | 6 | 2 days | Graph polish — UI-SPEC contracts, pure logic modules, renderer parity |
+| v1.3 | ~5 | 5 | 13 | 3 days | Pipeline fixes + visual enrichment — regex extraction, E2E analysis, keyword labels, topic rings |
 
 ### Cumulative Quality
 
@@ -197,6 +243,7 @@
 | v1.1 | 15,859 | 90 | leptos, trunk, axum, tower-http, gloo-worker, web-sys, governor |
 | v1.1.1 | ~16,000 | 90+ | (none — bugfix only) |
 | v1.2 | ~25,000 | 90+ | (none — new modules, no new deps) |
+| v1.3 | ~27,000 | 100+ | (none — regex already in deps, new modules only) |
 
 ### Top Lessons (Verified Across Milestones)
 

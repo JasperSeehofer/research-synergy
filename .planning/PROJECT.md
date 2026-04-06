@@ -80,19 +80,34 @@ Surface research gaps and unexplored connections that no single paper reveals �
 
 ### Active
 
-(None — planning next milestone)
+- [ ] Full-text search across papers (title, abstract, authors) with SurrealDB search index
+- [ ] Paper similarity engine using cosine similarity on TF-IDF vectors
+- [ ] PageRank and betweenness centrality on citation graph with UI controls
+- [ ] Community detection (Louvain) with cluster coloring and summary panels
+- [ ] Discovery recommendations ("papers you should read next") combining similarity, centrality, and community signals
+- [ ] Export: BibTeX, CSV, graph JSON
 
 ### Out of Scope
 
 - Real-time collaborative analysis — single-user tool for now
-- Citation prediction / paper recommendation — focus is on gap surfacing, not suggesting new papers
-- Full-text indexing / search engine — analysis is structured extraction, not free-text search
 - Non-arXiv PDF sources — only papers reachable through existing data sources
 - Fine-tuning custom models — use off-the-shelf LLM APIs with prompt engineering
 - LaTeX source parsing — ar5iv HTML is simpler and sufficient
 - SSR / server-side rendering — CSR-only, single-user local tool
 - JavaScript graph libraries (sigma.js, d3) — full Rust/WASM stack preferred
 - Multi-user collaboration — single-user research tool
+
+## Current Milestone: v1.4 Discovery & Intelligence
+
+**Goal:** Transform ReSyn from a visualization tool into a genuine discovery engine with search, similarity, graph analytics, community detection, recommendations, and export.
+
+**Target features:**
+- Full-text paper search across title/abstract/authors
+- Paper similarity engine using cosine similarity on TF-IDF vectors
+- Graph analytics (PageRank, betweenness centrality) with UI controls
+- Community detection (Louvain) with cluster visualization
+- Discovery recommendations combining similarity, centrality, and community signals
+- Export (BibTeX, CSV, graph JSON)
 
 ## Current State
 
@@ -165,7 +180,7 @@ This document evolves at phase transitions and milestone boundaries.
 3. Audit Out of Scope — reasons still valid?
 4. Update Context with current state
 
-Last updated: 2026-04-05
+Last updated: 2026-04-06
 
 ---
-*Last updated: 2026-04-05 after v1.3 milestone*
+*Last updated: 2026-04-06 after v1.4 milestone start*

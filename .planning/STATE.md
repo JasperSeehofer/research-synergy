@@ -1,54 +1,36 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.3
-milestone_name: Data Pipeline Fixes
-status: completed
-stopped_at: Milestone v1.3 archived
-last_updated: "2026-04-05T19:15:00.000Z"
-last_activity: 2026-04-05
+milestone: v1.4
+milestone_name: Discovery & Intelligence
+status: defining_requirements
+stopped_at: Defining requirements
+last_updated: "2026-04-06T00:00:00.000Z"
+last_activity: 2026-04-06
 progress:
-  total_phases: 5
-  completed_phases: 5
-  total_plans: 13
-  completed_plans: 13
-  percent: 100
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-04-05)
+See: .planning/PROJECT.md (updated 2026-04-06)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Planning next milestone
+**Current focus:** v1.4 Discovery & Intelligence
 
 ## Current Position
 
-Phase: —
+Phase: Not started (defining requirements)
 Plan: —
-Status: Milestone v1.3 complete — ready for next milestone
-Last activity: 2026-04-05
+Status: Defining requirements
+Last activity: 2026-04-06 — Milestone v1.4 started
 
-Progress: [████████████████████] 100% (v1.3: 5/5 phases)
-
-## Performance Metrics
-
-**Velocity (v1.3):**
-
-| Phase | Duration | Tasks | Files |
-|-------|----------|-------|-------|
-| Phase 18-arxiv-crawl-repair P01 | 5min | 2 tasks | 4 files |
-| Phase 18-arxiv-crawl-repair P02 | 13min | 1 tasks | 2 files |
-| Phase 19-data-quality-cleanup P01 | 5min | 2 tasks | 2 files |
-| Phase 20-llm-analysis-pipeline-verification P01 | 6min | 3 tasks | 9 files |
-| Phase 20-llm-analysis-pipeline-verification P03 | 5min | 2 tasks | 3 files |
-| Phase 999.1-keyword-based-graph-labels P01 | 3min | 2 tasks | 4 files |
-| Phase 999.1-keyword-based-graph-labels P02 | 3min | 1 tasks | 4 files |
-| Phase 999.1-keyword-based-graph-labels P03 | 4min | 2 tasks | 3 files |
-| Phase 999.1-keyword-based-graph-labels P04 | 8min | 1 tasks | 2 files |
-| Phase 999.2-topic-ring-node-borders P01 | 18min | 2 tasks | 8 files |
-| Phase 999.2-topic-ring-node-borders P02 | 20min | 2 tasks | 4 files |
+Progress: [░░░░░░░░░░░░░░░░░░░░] 0%
 
 ## Accumulated Context
 
@@ -62,10 +44,10 @@ None.
 
 ### Blockers/Concerns
 
-None — milestone complete.
+None.
 
 ## Session Continuity
 
-Last session: 2026-04-05
-Stopped at: Milestone v1.3 archived
+Last session: 2026-04-06
+Stopped at: Defining requirements for v1.4
 Resume file: None

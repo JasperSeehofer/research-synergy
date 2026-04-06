@@ -87,36 +87,36 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SRCH-01 | — | Pending |
-| SRCH-02 | — | Pending |
-| SRCH-03 | — | Pending |
-| SRCH-04 | — | Pending |
-| SIM-01 | — | Pending |
-| SIM-02 | — | Pending |
-| SIM-03 | — | Pending |
-| SIM-04 | — | Pending |
-| GANA-01 | — | Pending |
-| GANA-02 | — | Pending |
-| GANA-03 | — | Pending |
-| GANA-04 | — | Pending |
-| GANA-05 | — | Pending |
-| GANA-06 | — | Pending |
-| COMM-01 | — | Pending |
-| COMM-02 | — | Pending |
-| COMM-03 | — | Pending |
-| DISC-01 | — | Pending |
-| DISC-02 | — | Pending |
-| DISC-03 | — | Pending |
-| DISC-04 | — | Pending |
-| EXPO-01 | — | Pending |
-| EXPO-02 | — | Pending |
-| EXPO-03 | — | Pending |
+| SRCH-01 | Phase 21 | Pending |
+| SRCH-02 | Phase 21 | Pending |
+| SRCH-03 | Phase 21 | Pending |
+| SRCH-04 | Phase 21 | Pending |
+| SIM-01 | Phase 22 | Pending |
+| SIM-02 | Phase 22 | Pending |
+| SIM-03 | Phase 22 | Pending |
+| SIM-04 | Phase 22 | Pending |
+| GANA-01 | Phase 23 | Pending |
+| GANA-02 | Phase 23 | Pending |
+| GANA-03 | Phase 23 | Pending |
+| GANA-04 | Phase 23 | Pending |
+| GANA-05 | Phase 23 | Pending |
+| GANA-06 | Phase 23 | Pending |
+| COMM-01 | Phase 24 | Pending |
+| COMM-02 | Phase 24 | Pending |
+| COMM-03 | Phase 24 | Pending |
+| DISC-01 | Phase 25 | Pending |
+| DISC-02 | Phase 25 | Pending |
+| DISC-03 | Phase 25 | Pending |
+| DISC-04 | Phase 25 | Pending |
+| EXPO-01 | Phase 26 | Pending |
+| EXPO-02 | Phase 26 | Pending |
+| EXPO-03 | Phase 26 | Pending |
 
 **Coverage:**
 - v1.4 requirements: 24 total
-- Mapped to phases: 0
-- Unmapped: 24 ⚠️
+- Mapped to phases: 24
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-04-06*
-*Last updated: 2026-04-06 after initial definition*
+*Last updated: 2026-04-06 after roadmap creation*

@@ -55,4 +55,7 @@ features = [
   "Window",
   "Element",
   "DomRect",
+  "KeyboardEvent",
+  "HtmlInputElement",
+  "FocusEvent",
 ]

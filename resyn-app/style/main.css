@@ -145,9 +145,10 @@ textarea:focus {
 
 .content-area {
   flex: 1;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   background-color: var(--color-bg);
-  padding: var(--space-xl);
 }
 
 /* =============================================================================
@@ -1312,8 +1313,8 @@ input[type="range"]::-moz-range-thumb {
   overflow: hidden;
 }
 
-/* Override content-area padding for graph route */
-.content-area:has(.graph-page) {
+/* Override content-scroll padding for graph route */
+.content-scroll:has(.graph-page) {
   padding: 0;
 }
 
@@ -1696,4 +1697,151 @@ input[type="range"].temporal-range {
   height: 12px;
   border-radius: 2px;
   flex-shrink: 0;
+}
+
+/* ── Top bar ──────────────────────────────────────────────────────── */
+.top-bar {
+  display: flex;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+  min-height: 48px;
+  flex-shrink: 0;
+}
+
+/* ── Global search bar ────────────────────────────────────────────── */
+.global-search-wrapper {
+  position: relative;
+  min-width: 280px;
+  max-width: 480px;
+  flex: 1;
+}
+
+.global-search-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0 var(--space-md);
+  height: 36px;
+  transition: outline 100ms ease;
+  outline: 2px solid transparent;
+  outline-offset: 0;
+}
+
+.global-search-bar.search-focused {
+  outline-color: var(--color-accent);
+}
+
+.global-search-bar .search-icon {
+  font-size: 16px;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.global-search-bar input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: var(--font-size-body);
+  color: var(--color-text);
+  font-family: inherit;
+  min-width: 0;
+}
+
+.global-search-bar input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.search-kbd-hint {
+  font-size: var(--font-size-label);
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0 8px;
+  white-space: nowrap;
+  line-height: 20px;
+  flex-shrink: 0;
+}
+
+/* ── Search dropdown ──────────────────────────────────────────────── */
+.search-dropdown {
+  position: absolute;
+  top: calc(100% + var(--space-xs));
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  max-height: 320px;
+  overflow-y: auto;
+  animation: dropdown-open 150ms ease-out;
+}
+
+@keyframes dropdown-open {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.search-result-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: var(--space-sm) var(--space-md);
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: background-color 100ms ease, border-left-color 100ms ease;
+}
+
+.search-result-row:hover,
+.search-result-row.search-result-focused {
+  background: var(--color-accent-muted);
+  border-left-color: var(--color-accent);
+}
+
+.search-result-title {
+  font-size: var(--font-size-body);
+  font-weight: 400;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-result-meta {
+  font-size: var(--font-size-label);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-empty-state {
+  padding: var(--space-md);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-body);
+}
+
+.search-empty-hint {
+  font-size: var(--font-size-label);
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+}
+
+/* ── Content scroll (below top bar) ───────────────────────────────── */
+.content-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
 }

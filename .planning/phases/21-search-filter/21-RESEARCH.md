@@ -455,19 +455,19 @@ fn highlight_text(text: &str, query: &str) -> impl IntoView {
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **`HIGHLIGHTS` required for BM25 indexes?**
+1. **`HIGHLIGHTS` required for BM25 indexes? (RESOLVED)**
    - What we know: `search::score()` and `HIGHLIGHTS` are listed as separate capabilities in SurrealDB docs
    - What's unclear: Whether `BM25` alone (without `HIGHLIGHTS`) still populates the score function
    - Recommendation: Add `HIGHLIGHTS` to all three indexes to be safe; it only increases index size slightly and enables future snippet extraction
 
-2. **SurrealDB FTS on `array<string>` with `@@` operator**
+2. **SurrealDB FTS on `array<string>` with `@@` operator (RESOLVED)**
    - What we know: FTS indexes support arrays (docs confirm elements are indexed individually)
    - What's unclear: Whether `authors @2@ $query` correctly matches within array elements at query time
    - Recommendation: Write a targeted DB integration test (`test_search_by_author`) using `connect_memory()` before implementing the frontend
 
-3. **Performance: FTS on `kv-surrealkv` vs `kv-mem`**
+3. **Performance: FTS on `kv-surrealkv` vs `kv-mem` (RESOLVED)**
    - What we know: Both backends support the same SurrealDB feature set including FTS
    - What's unclear: FTS index rebuild time on an existing database with hundreds of papers when migration 9 runs
    - Recommendation: Acceptable risk — migration runs at startup, FTS index build is fast for hundreds of records

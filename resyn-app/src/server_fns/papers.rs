@@ -132,6 +132,55 @@ pub async fn get_dashboard_stats() -> Result<DashboardStats, ServerFnError> {
     unreachable!()
 }
 
+/// A single search result returned to the client.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SearchResult {
+    pub arxiv_id: String,
+    pub title: String,
+    pub authors: Vec<String>,
+    pub year: String,
+    pub score: f32,
+}
+
+/// Full-text search across paper title, abstract, and authors.
+/// Returns up to `limit` results ranked by BM25 relevance score.
+#[server(SearchPapers, "/api")]
+pub async fn search_papers(
+    query: String,
+    limit: Option<usize>,
+) -> Result<Vec<SearchResult>, ServerFnError> {
+    #[cfg(feature = "ssr")]
+    {
+        if query.trim().is_empty() {
+            return Ok(vec![]);
+        }
+        use resyn_core::database::queries::SearchRepository;
+        let db = use_context::<std::sync::Arc<resyn_core::database::client::Db>>()
+            .ok_or_else(|| ServerFnError::new("Database not available"))?;
+        let max = limit.unwrap_or(10);
+        let rows = SearchRepository::new(&db)
+            .search_papers(&query, max)
+            .await
+            .map_err(|e| ServerFnError::new(e.to_string()))?;
+        Ok(rows
+            .into_iter()
+            .map(|r| SearchResult {
+                arxiv_id: r.arxiv_id,
+                title: r.title,
+                authors: r.authors,
+                year: if r.published.len() >= 4 {
+                    r.published[..4].to_string()
+                } else {
+                    r.published
+                },
+                score: r.score,
+            })
+            .collect())
+    }
+    #[cfg(not(feature = "ssr"))]
+    unreachable!()
+}
+
 /// Start a new crawl by seeding the CrawlQueue and launching a background crawl task.
 ///
 /// Implementation:

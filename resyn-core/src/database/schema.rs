@@ -190,6 +190,31 @@ async fn apply_migration_8(db: &Surreal<Any>) -> Result<(), ResynError> {
     Ok(())
 }
 
+async fn apply_migration_9(db: &Surreal<Any>) -> Result<(), ResynError> {
+    db.query(
+        "
+        DEFINE ANALYZER IF NOT EXISTS paper_analyzer
+            TOKENIZERS blank, class
+            FILTERS lowercase, ascii;
+
+        DEFINE INDEX IF NOT EXISTS idx_paper_fts_title
+            ON paper FIELDS title
+            FULLTEXT ANALYZER paper_analyzer BM25;
+
+        DEFINE INDEX IF NOT EXISTS idx_paper_fts_summary
+            ON paper FIELDS summary
+            FULLTEXT ANALYZER paper_analyzer BM25;
+
+        DEFINE INDEX IF NOT EXISTS idx_paper_fts_authors
+            ON paper FIELDS authors
+            FULLTEXT ANALYZER paper_analyzer BM25;
+        ",
+    )
+    .await
+    .map_err(|e| ResynError::Database(format!("migration 9 DDL failed: {e}")))?;
+    Ok(())
+}
+
 pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
     // Ensure migrations table exists first
     db.query(
@@ -242,6 +267,11 @@ pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
     if version < 8 {
         apply_migration_8(db).await?;
         record_migration(db, 8).await?;
+    }
+
+    if version < 9 {
+        apply_migration_9(db).await?;
+        record_migration(db, 9).await?;
     }
 
     Ok(())

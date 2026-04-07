@@ -288,7 +288,7 @@ impl Renderer for Canvas2DRenderer {
             }
 
             // Search pulse glow ring (D-06)
-            if let (Some(ref highlighted_id), Some(pulse_start)) =
+            if let (Some(highlighted_id), Some(pulse_start)) =
                 (&state.search_highlighted, state.pulse_start_frame)
             {
                 if node.id == *highlighted_id {

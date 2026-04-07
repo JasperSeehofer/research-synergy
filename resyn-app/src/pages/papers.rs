@@ -46,17 +46,27 @@ impl SortDir {
 
 /// Highlights the first case-insensitive match of `query` in `text` using
 /// `<strong class="filter-match">` with accent color.
-fn highlight_text(text: &str, query: &str) -> impl IntoView {
+fn highlight_text(text: String, query: String) -> impl IntoView {
     if query.is_empty() {
-        return view! { <span>{text.to_string()}</span> }.into_any();
+        return view! { <span>{text}</span> }.into_any();
     }
-    let lower_text = text.to_lowercase();
     let lower_query = query.to_lowercase();
-    if let Some(start) = lower_text.find(&lower_query) {
-        let end = (start + query.len()).min(text.len());
-        let before = text[..start].to_string();
-        let matched = text[start..end].to_string();
-        let after = text[end..].to_string();
+    // Use char-aware search to handle unicode correctly: to_lowercase() can change
+    // byte lengths, so we search the original text using char iteration instead.
+    let text_chars: Vec<char> = text.chars().collect();
+    let query_chars: Vec<char> = lower_query.chars().collect();
+    let match_pos = text_chars
+        .windows(query_chars.len())
+        .position(|w| {
+            w.iter()
+                .zip(query_chars.iter())
+                .all(|(a, b)| a.to_lowercase().eq(b.to_lowercase()))
+        });
+    if let Some(char_start) = match_pos {
+        let char_end = char_start + query_chars.len();
+        let before: String = text_chars[..char_start].iter().collect();
+        let matched: String = text_chars[char_start..char_end].iter().collect();
+        let after: String = text_chars[char_end..].iter().collect();
         view! {
             <span>
                 {before}
@@ -66,7 +76,7 @@ fn highlight_text(text: &str, query: &str) -> impl IntoView {
         }
         .into_any()
     } else {
-        view! { <span>{text.to_string()}</span> }.into_any()
+        view! { <span>{text}</span> }.into_any()
     }
 }
 
@@ -103,7 +113,7 @@ pub fn PapersPanel() -> impl IntoView {
                     results.iter().map(|r| r.arxiv_id.clone()).collect();
                 Ok(all_papers
                     .into_iter()
-                    .filter(|p| matching_ids.contains(&p.arxiv_id))
+                    .filter(|p| matching_ids.contains(&p.id))
                     .collect::<Vec<_>>())
             }
         },
@@ -373,8 +383,8 @@ fn PaperRow(
 
     view! {
         <tr on:click=move |e| on_click.run(e)>
-            <td>{move || highlight_text(&title, &filter_query.get())}</td>
-            <td>{move || highlight_text(&authors_str, &filter_query.get())}</td>
+            <td>{move || highlight_text(title.clone(), filter_query.get())}</td>
+            <td>{move || highlight_text(authors_str.clone(), filter_query.get())}</td>
             <td>{year}</td>
             <td>{citations}</td>
             <td><span class=status_class>{status}</span></td>

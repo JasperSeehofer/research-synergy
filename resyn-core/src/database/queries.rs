@@ -849,6 +849,99 @@ impl<'a> PaletteRepository<'a> {
     }
 }
 
+/// A single row returned by the full-text search query.
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
+pub struct SearchResultRow {
+    pub arxiv_id: String,
+    pub title: String,
+    pub authors: Vec<String>,
+    pub published: String,
+    pub score: f32,
+}
+
+pub struct SearchRepository<'a> {
+    db: &'a Db,
+}
+
+impl<'a> SearchRepository<'a> {
+    pub fn new(db: &'a Db) -> Self {
+        Self { db }
+    }
+
+    /// Full-text search across paper title, summary, and authors.
+    /// Returns up to `limit` results ranked by BM25 relevance score (descending).
+    /// Returns empty vec immediately if `query` is blank (no DB hit).
+    pub async fn search_papers(
+        &self,
+        query: &str,
+        limit: usize,
+    ) -> Result<Vec<SearchResultRow>, ResynError> {
+        if query.trim().is_empty() {
+            return Ok(vec![]);
+        }
+
+        let query_owned = query.to_string();
+        let mut response = self
+            .db
+            .query(
+                "
+                SELECT
+                    arxiv_id,
+                    title,
+                    authors,
+                    published,
+                    (search::score(0) * 2.0 + search::score(1) * 1.5 + search::score(2) * 1.0) AS score
+                FROM paper
+                WHERE title @0@ $query
+                   OR summary @1@ $query
+                   OR authors @2@ $query
+                ORDER BY score DESC
+                LIMIT $limit
+                ",
+            )
+            .bind(("query", query_owned))
+            .bind(("limit", limit))
+            .await
+            .map_err(|e| ResynError::Database(format!("search_papers query failed: {e}")))?;
+
+        let raw: Vec<serde_json::Value> = response
+            .take(0)
+            .map_err(|e| ResynError::Database(format!("search_papers parse failed: {e}")))?;
+
+        let rows = raw
+            .into_iter()
+            .filter_map(|row| {
+                let arxiv_id = row.get("arxiv_id")?.as_str()?.to_string();
+                let title = row.get("title")?.as_str()?.to_string();
+                let authors = row
+                    .get("authors")?
+                    .as_array()?
+                    .iter()
+                    .filter_map(|a| a.as_str().map(|s| s.to_string()))
+                    .collect();
+                let published = row
+                    .get("published")
+                    .and_then(|v| v.as_str())
+                    .unwrap_or("")
+                    .to_string();
+                let score = row
+                    .get("score")
+                    .and_then(|v| v.as_f64())
+                    .unwrap_or(0.0) as f32;
+                Some(SearchResultRow {
+                    arxiv_id,
+                    title,
+                    authors,
+                    published,
+                    score,
+                })
+            })
+            .collect();
+
+        Ok(rows)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -1494,5 +1587,194 @@ mod tests {
         repo.upsert_palette(&entries).await.unwrap();
         let fp = repo.get_corpus_fingerprint().await.unwrap();
         assert_eq!(fp, Some("paper_count:42".to_string()));
+    }
+
+    // --- SearchRepository tests ---
+
+    fn make_search_paper(id: &str, title: &str, summary: &str, authors: &[&str]) -> Paper {
+        Paper {
+            title: title.to_string(),
+            authors: authors.iter().map(|a| a.to_string()).collect(),
+            summary: summary.to_string(),
+            id: id.to_string(),
+            published: "2024-01-01".to_string(),
+            ..Default::default()
+        }
+    }
+
+    #[tokio::test]
+    async fn test_search_papers_empty_query() {
+        let db = connect_memory().await.unwrap();
+        let repo = SearchRepository::new(&db);
+
+        let results = repo.search_papers("", 10).await.unwrap();
+        assert!(results.is_empty(), "Empty query should return empty vec");
+
+        let results = repo.search_papers("   ", 10).await.unwrap();
+        assert!(results.is_empty(), "Whitespace-only query should return empty vec");
+    }
+
+    #[tokio::test]
+    async fn test_search_papers_returns_ranked_results() {
+        let db = connect_memory().await.unwrap();
+        let paper_repo = PaperRepository::new(&db);
+        let search_repo = SearchRepository::new(&db);
+
+        let p1 = make_search_paper(
+            "2301.11111",
+            "Quantum entanglement in spin systems",
+            "We study quantum entanglement properties.",
+            &["Alice Smith"],
+        );
+        let p2 = make_search_paper(
+            "2301.22222",
+            "Classical mechanics overview",
+            "A review of classical mechanics with no quantum content.",
+            &["Bob Jones"],
+        );
+        let p3 = make_search_paper(
+            "2301.33333",
+            "Quantum computing fundamentals",
+            "Introduction to quantum computing paradigms.",
+            &["Carol White"],
+        );
+
+        paper_repo.upsert_paper(&p1).await.unwrap();
+        paper_repo.upsert_paper(&p2).await.unwrap();
+        paper_repo.upsert_paper(&p3).await.unwrap();
+
+        let results = search_repo.search_papers("quantum", 10).await.unwrap();
+        assert!(!results.is_empty(), "Should return results for 'quantum'");
+        // p1 and p3 mention quantum; p2 does not
+        let ids: Vec<&str> = results.iter().map(|r| r.arxiv_id.as_str()).collect();
+        assert!(ids.contains(&"2301.11111"), "p1 (quantum in title) should be in results");
+        assert!(ids.contains(&"2301.33333"), "p3 (quantum in title) should be in results");
+        // All scores should be > 0
+        for r in &results {
+            assert!(r.score >= 0.0, "Score should be non-negative");
+        }
+    }
+
+    #[tokio::test]
+    async fn test_search_papers_title_scores_higher() {
+        let db = connect_memory().await.unwrap();
+        let paper_repo = PaperRepository::new(&db);
+        let search_repo = SearchRepository::new(&db);
+
+        // Paper A: "quantum" only in title
+        let p_title = make_search_paper(
+            "2301.44444",
+            "Quantum field theory introduction",
+            "A study of field theory using standard approaches.",
+            &["Author A"],
+        );
+        // Paper B: "quantum" only in summary
+        let p_summary = make_search_paper(
+            "2301.55555",
+            "Field theory approaches",
+            "We apply quantum field theory methods to analyze interactions.",
+            &["Author B"],
+        );
+
+        paper_repo.upsert_paper(&p_title).await.unwrap();
+        paper_repo.upsert_paper(&p_summary).await.unwrap();
+
+        let results = search_repo.search_papers("quantum", 10).await.unwrap();
+        assert_eq!(results.len(), 2, "Should find exactly 2 papers");
+
+        let title_result = results.iter().find(|r| r.arxiv_id == "2301.44444");
+        let summary_result = results.iter().find(|r| r.arxiv_id == "2301.55555");
+
+        assert!(title_result.is_some(), "Title paper must be in results");
+        assert!(summary_result.is_some(), "Summary paper must be in results");
+
+        let title_score = title_result.unwrap().score;
+        let summary_score = summary_result.unwrap().score;
+        assert!(
+            title_score >= summary_score,
+            "Title match (score={title_score}) should score >= summary match (score={summary_score})"
+        );
+    }
+
+    #[tokio::test]
+    async fn test_search_papers_result_order() {
+        let db = connect_memory().await.unwrap();
+        let paper_repo = PaperRepository::new(&db);
+        let search_repo = SearchRepository::new(&db);
+
+        // Insert papers with varying relevance
+        paper_repo.upsert_paper(&make_search_paper(
+            "2301.66661",
+            "Quantum quantum quantum",
+            "Quantum everywhere in abstract.",
+            &["Author X"],
+        )).await.unwrap();
+        paper_repo.upsert_paper(&make_search_paper(
+            "2301.66662",
+            "Quantum mechanics",
+            "Brief mention of classical physics.",
+            &["Author Y"],
+        )).await.unwrap();
+        paper_repo.upsert_paper(&make_search_paper(
+            "2301.66663",
+            "Classical physics",
+            "No quantum content here whatsoever.",
+            &["Author Z"],
+        )).await.unwrap();
+
+        let results = search_repo.search_papers("quantum", 10).await.unwrap();
+
+        // Results should be ordered by score descending
+        for i in 1..results.len() {
+            assert!(
+                results[i - 1].score >= results[i].score,
+                "Results should be sorted by score DESC (index {} score {} >= index {} score {})",
+                i - 1,
+                results[i - 1].score,
+                i,
+                results[i].score
+            );
+        }
+    }
+
+    #[tokio::test]
+    async fn test_search_papers_by_author() {
+        let db = connect_memory().await.unwrap();
+        let paper_repo = PaperRepository::new(&db);
+        let search_repo = SearchRepository::new(&db);
+
+        let p = make_search_paper(
+            "2301.77777",
+            "Some Paper Title",
+            "Some paper summary content.",
+            &["Alice Smith", "Bob Jones"],
+        );
+        paper_repo.upsert_paper(&p).await.unwrap();
+
+        // Search by first author's first name
+        let results = search_repo.search_papers("Alice", 10).await.unwrap();
+        assert!(
+            !results.is_empty(),
+            "Should find paper by author name 'Alice'"
+        );
+        let ids: Vec<&str> = results.iter().map(|r| r.arxiv_id.as_str()).collect();
+        assert!(ids.contains(&"2301.77777"), "Should find the paper authored by Alice Smith");
+    }
+
+    #[tokio::test]
+    async fn test_search_papers_no_match() {
+        let db = connect_memory().await.unwrap();
+        let paper_repo = PaperRepository::new(&db);
+        let search_repo = SearchRepository::new(&db);
+
+        paper_repo.upsert_paper(&make_search_paper(
+            "2301.88888",
+            "Regular physics paper",
+            "Nothing unusual here.",
+            &["Author Normal"],
+        )).await.unwrap();
+
+        let results = search_repo.search_papers("xyznonexistent123", 10).await.unwrap();
+        assert!(results.is_empty(), "Should return empty vec for unmatched query");
     }
 }

@@ -45,7 +45,7 @@ Declared values — all existing tokens from `main.css`. This phase uses the ful
 Exceptions:
 - Dropdown max-height: 320px (fixed, not a spacing token — allows 8 results at 40px row height)
 - Global search bar minimum width: 280px on expanded sidebar layouts; 200px on rail layouts
-- Ctrl+K badge (`<kbd>`) height: 20px, padding 2px 6px — intentionally compact to sit inline with input
+- Ctrl+K badge (`<kbd>`) height: 20px, padding 0 8px — vertical centering provided by parent flex container (`align-items: center`); horizontal padding uses `--space-sm` (8px) for compact inline feel on-grid
 
 Source: CONTEXT.md D-02 (top 8-10 matches); default rule
 
@@ -107,7 +107,7 @@ New components introduced by this phase. Each maps to a decision in CONTEXT.md.
 - Search icon: 16px, color `--color-text-muted`, flex-shrink 0
 - Input: `flex: 1; background: transparent; border: none; outline: none; font-size: var(--font-size-body); color: var(--color-text);` — no border on the input itself, the container provides the visual border
 - Focus state: container gains `outline: 2px solid var(--color-accent); outline-offset: 0;` (not the input — mirrors existing input:focus but on wrapper)
-- Ctrl+K hint: `<kbd>` element, hidden when input is focused; `font-size: var(--font-size-label); color: var(--color-text-muted); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 2px 6px;`
+- Ctrl+K hint: `<kbd>` element, hidden when input is focused; `font-size: var(--font-size-label); color: var(--color-text-muted); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 0 8px;`
 - Minimum width: 280px in full sidebar mode; 200px in rail mode
 
 Source: D-01 (global bar in header); D-04 (Ctrl+K hint visible until focused)

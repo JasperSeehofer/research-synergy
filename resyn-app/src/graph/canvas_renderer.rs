@@ -65,7 +65,14 @@ impl Renderer for Canvas2DRenderer {
                 false
             };
             let topic_dimmed = state.nodes.get(idx).map(|n| n.topic_dimmed).unwrap_or(false);
-            selection_dimmed || topic_dimmed
+            // Search dimming (D-07): if search_highlight_ids is non-empty, dim nodes NOT in the set
+            let search_dimmed = if !state.search_highlight_ids.is_empty() {
+                let node_id = state.nodes.get(idx).map(|n| n.id.as_str()).unwrap_or("");
+                !state.search_highlight_ids.iter().any(|id| id == node_id)
+            } else {
+                false
+            };
+            selection_dimmed || topic_dimmed || search_dimmed
         };
 
         let edge_both_dimmed = |e: &EdgeData| -> bool {
@@ -278,6 +285,51 @@ impl Renderer for Canvas2DRenderer {
                 self.ctx.set_stroke_style_str("#58a6ff");
                 self.ctx.set_line_width(2.0);
                 self.ctx.stroke();
+            }
+
+            // Search pulse glow ring (D-06)
+            if let (Some(ref highlighted_id), Some(pulse_start)) =
+                (&state.search_highlighted, state.pulse_start_frame)
+            {
+                if node.id == *highlighted_id {
+                    let elapsed = state.frame_counter.saturating_sub(pulse_start);
+                    let t = (elapsed as f64) / 120.0; // 120 frames = ~2s at 60fps
+                    if t < 1.0 {
+                        let alpha = (1.0 - t).max(0.0);
+                        let pulse_offset = 8.0 * (t * 3.0 * std::f64::consts::PI).sin();
+
+                        // Outer ring 1: pulsing
+                        self.ctx.begin_path();
+                        self.ctx
+                            .arc(
+                                node.x,
+                                node.y,
+                                node.radius + 4.0 + pulse_offset,
+                                0.0,
+                                std::f64::consts::TAU,
+                            )
+                            .unwrap();
+                        self.ctx.set_stroke_style_str("#58a6ff");
+                        self.ctx.set_global_alpha(alpha * 0.8);
+                        self.ctx.set_line_width(2.0);
+                        self.ctx.stroke();
+
+                        // Outer ring 2: steady glow
+                        self.ctx.begin_path();
+                        self.ctx
+                            .arc(
+                                node.x,
+                                node.y,
+                                node.radius + 2.0,
+                                0.0,
+                                std::f64::consts::TAU,
+                            )
+                            .unwrap();
+                        self.ctx.set_global_alpha(alpha * 0.5);
+                        self.ctx.set_line_width(1.0);
+                        self.ctx.stroke();
+                    }
+                }
             }
 
             self.ctx.restore();

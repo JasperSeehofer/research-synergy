@@ -66,6 +66,14 @@ pub struct GraphState {
     pub current_scale: f64,
     pub label_mode: LabelMode,
     pub palette: Vec<crate::server_fns::graph::PaletteEntry>,
+    /// The paper_id of the search-highlighted node (if any). Set on search result selection.
+    pub search_highlighted: Option<String>,
+    /// Frame number when pulse animation started. None = no pulse active.
+    pub pulse_start_frame: Option<u32>,
+    /// Total frames drawn (monotonically increasing counter for pulse timing).
+    pub frame_counter: u32,
+    /// Set of paper_ids that match the current search (for multi-match dimming per D-07).
+    pub search_highlight_ids: Vec<String>,
 }
 
 impl GraphState {
@@ -220,6 +228,10 @@ impl GraphState {
             current_scale: 1.0,
             label_mode: LabelMode::default(),
             palette: data.palette,
+            search_highlighted: None,
+            pulse_start_frame: None,
+            frame_counter: 0,
+            search_highlight_ids: vec![],
         }
     }
 

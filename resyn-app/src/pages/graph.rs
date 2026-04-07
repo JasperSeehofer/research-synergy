@@ -7,7 +7,8 @@ use std::sync::atomic::{AtomicBool, Ordering};
 use wasm_bindgen::JsCast;
 use wasm_bindgen::prelude::*;
 
-use crate::app::{DrawerOpenRequest, SelectedPaper};
+use crate::app::{DrawerOpenRequest, SearchPanTrigger, SelectedPaper};
+use crate::graph::viewport_fit::compute_single_node_pan_target;
 use crate::components::graph_controls::{GraphControls, TemporalSlider};
 use crate::graph::interaction::{self, InteractionState};
 use crate::graph::layout_state::GraphState;
@@ -115,6 +116,9 @@ pub fn GraphPage() -> impl IntoView {
 
     // SelectedPaper context — for drawer integration
     let SelectedPaper(selected_paper) = expect_context::<SelectedPaper>();
+
+    // SearchPanTrigger context — for graph pan/highlight on search result selection
+    let SearchPanTrigger(search_pan_signal) = expect_context::<SearchPanTrigger>();
 
     // Effect: fires when canvas is mounted and graph data arrives
     Effect::new(move |_| {
@@ -294,6 +298,7 @@ pub fn GraphPage() -> impl IntoView {
             label_mode,
             show_topic_rings,
             active_topic_filter,
+            search_pan_signal,
         );
 
         on_cleanup(move || handle.cancel());
@@ -468,6 +473,7 @@ fn start_render_loop(
     label_mode: RwSignal<LabelMode>,
     show_topic_rings: RwSignal<bool>,
     active_topic_filter: RwSignal<std::collections::HashSet<String>>,
+    search_pan_signal: RwSignal<Option<crate::app::SearchPanRequest>>,
 ) -> RafHandle {
     let cancelled = Arc::new(AtomicBool::new(false));
     let cancelled_clone = cancelled.clone();
@@ -531,6 +537,47 @@ fn start_render_loop(
                     s.viewport.css_height,
                 ) {
                     s.fit_anim = fit;
+                }
+            }
+
+            // Increment frame counter for pulse timing
+            s.graph.frame_counter = s.graph.frame_counter.wrapping_add(1);
+
+            // Check for pending search pan request
+            if let Some(pan_req) = search_pan_signal.get_untracked() {
+                let css_w = s.viewport.css_width;
+                let css_h = s.viewport.css_height;
+                let scale = s.viewport.scale;
+                if let Some(fit) = compute_single_node_pan_target(
+                    &s.graph.nodes,
+                    &pan_req.paper_id,
+                    css_w,
+                    css_h,
+                    scale,
+                ) {
+                    s.fit_anim = fit;
+                    s.graph.search_highlighted = Some(pan_req.paper_id.clone());
+                    s.graph.search_highlight_ids = vec![pan_req.paper_id.clone()];
+                    s.graph.pulse_start_frame = None; // pulse starts after lerp completes
+                    search_pan_signal.set(None); // consume the request
+                }
+            }
+
+            // When fit animation just completed and search highlight is active, start pulse
+            if !s.fit_anim.active
+                && s.graph.search_highlighted.is_some()
+                && s.graph.pulse_start_frame.is_none()
+            {
+                s.graph.pulse_start_frame = Some(s.graph.frame_counter);
+            }
+
+            // Check if pulse finished — clear search state
+            if let Some(pulse_start) = s.graph.pulse_start_frame {
+                let elapsed = s.graph.frame_counter.saturating_sub(pulse_start);
+                if elapsed >= 120 {
+                    s.graph.search_highlighted = None;
+                    s.graph.pulse_start_frame = None;
+                    s.graph.search_highlight_ids.clear();
                 }
             }
 

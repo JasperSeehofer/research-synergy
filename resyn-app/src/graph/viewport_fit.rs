@@ -86,6 +86,28 @@ pub fn compute_fit_target(
     })
 }
 
+/// Compute viewport target to center a single node without changing scale.
+/// Preserves current scale (clamped to [0.5, 2.0]) so the user keeps graph context.
+/// Returns None if the node is not found in the node list.
+pub fn compute_single_node_pan_target(
+    nodes: &[NodeState],
+    paper_id: &str,
+    css_width: f64,
+    css_height: f64,
+    current_scale: f64,
+) -> Option<FitAnimState> {
+    let node = nodes.iter().find(|n| n.id == paper_id)?;
+    let target_scale = current_scale.clamp(0.5, 2.0);
+    let target_offset_x = css_width / 2.0 - node.x * target_scale;
+    let target_offset_y = css_height / 2.0 - node.y * target_scale;
+    Some(FitAnimState {
+        active: true,
+        target_scale,
+        target_offset_x,
+        target_offset_y,
+    })
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

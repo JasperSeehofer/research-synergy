@@ -95,7 +95,11 @@ Full details: `.planning/milestones/v1.3-ROADMAP.md`
   2. Searching from the graph page pans the viewport to the matching node and briefly highlights it
   3. The papers table filters its displayed rows as the user types in the search bar
   4. Search results are ranked by relevance (not insertion order)
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 21-01-PLAN.md — SurrealDB BM25 fulltext indexes, SearchRepository, search_papers server fn
+- [ ] 21-02-PLAN.md — GlobalSearchBar component with dropdown, Ctrl+K, SearchPanTrigger context
+- [ ] 21-03-PLAN.md — Graph pan/highlight integration, papers table inline filter with match highlighting
 **UI hint**: yes
 
 ### Phase 22: Paper Similarity Engine
@@ -182,7 +186,7 @@ Full details: `.planning/milestones/v1.3-ROADMAP.md`
 | 20. LLM Analysis Pipeline Verification | v1.3 | 4/4 | Complete | 2026-03-28 |
 | 999.1. Keyword-Based Graph Labels | v1.3 | 4/4 | Complete | 2026-03-29 |
 | 999.2. Topic Ring Node Borders | v1.3 | 2/2 | Complete | 2026-03-30 |
-| 21. Search & Filter | v1.4 | 0/? | Not started | - |
+| 21. Search & Filter | v1.4 | 0/3 | Planning | - |
 | 22. Paper Similarity Engine | v1.4 | 0/? | Not started | - |
 | 23. Graph Analytics — Centrality & Metrics | v1.4 | 0/? | Not started | - |
 | 24. Community Detection | v1.4 | 0/? | Not started | - |

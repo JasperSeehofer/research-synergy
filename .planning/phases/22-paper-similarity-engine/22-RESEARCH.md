@@ -405,17 +405,19 @@ view! {
 | A1 | O(N²) pairwise similarity is fast enough for typical corpus sizes (<500 papers) | Architecture Patterns, Pattern 2 | Could slow analysis pipeline; fix by adding async chunking or limiting corpus size |
 | A2 | Alpha reheat to 0.5 provides good force-swap animation (D-13) | Anti-Patterns, Pitfall 6 | Visual result may be too jarring or too subtle; tune in implementation |
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Shared terms storage vs. on-demand computation**
    - What we know: `shared_high_weight_terms()` requires both papers' full `tfidf_vector` (HashMap<String, f32>). The Similar tab needs 2-3 shared terms per neighbor (D-01).
    - What's unclear: Compute+store shared terms at similarity-compute time (adds ~KB per paper to DB), or load target+neighbor vectors in server fn and compute on request?
    - Recommendation: Store top-3 shared terms alongside each neighbor in the `neighbors` JSON at compute time. Avoids N extra DB fetches per drawer open.
+   - RESOLVED: Store top-3 shared terms at compute time.
 
 2. **WebGL2 dashed similarity edges**
    - What we know: WebGL2 has no native line dash; label canvas (2D) is already rendered above WebGL canvas.
    - What's unclear: Should we draw similarity edges on the label canvas overlay (simpler) or implement dash simulation in the WebGL2 shader (correct but complex)?
    - Recommendation: Use the label canvas overlay for similarity edges in WebGL2 mode. This is the approach least likely to introduce rendering bugs and is consistent with how the label canvas is already used.
+   - RESOLVED: Use label canvas overlay for WebGL2 mode.
 
 ## Environment Availability
 

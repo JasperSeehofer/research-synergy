@@ -4,6 +4,7 @@ pub mod data_processing;
 pub mod datamodels;
 pub mod error;
 pub mod gap_analysis;
+pub mod graph_analytics;
 pub mod nlp; // DEBT-01: was missing from old lib.rs
 pub mod utils;
 pub mod validation; // analysis submodules (similarity, contradiction, abc_bridge) always available;

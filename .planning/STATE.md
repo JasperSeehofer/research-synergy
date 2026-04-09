@@ -4,8 +4,8 @@ milestone: v1.4
 milestone_name: Discovery & Intelligence
 status: planning
 stopped_at: Phase 22 context gathered
-last_updated: "2026-04-09T09:18:04.505Z"
-last_activity: 2026-04-06 — Roadmap created for v1.4 Discovery & Intelligence
+last_updated: "2026-04-09T09:18:51.082Z"
+last_activity: 2026-04-09
 progress:
   total_phases: 6
   completed_phases: 1
@@ -25,10 +25,10 @@ See: .planning/PROJECT.md (updated 2026-04-06)
 
 ## Current Position
 
-Phase: 21 of 26 (Search & Filter)
-Plan: —
+Phase: 22 of 26 (paper similarity engine)
+Plan: Not started
 Status: Ready to plan
-Last activity: 2026-04-06 — Roadmap created for v1.4 Discovery & Intelligence
+Last activity: 2026-04-09
 
 Progress: [░░░░░░░░░░░░░░░░░░░░] 0%
 

@@ -77,7 +77,7 @@ Full details: `.planning/milestones/v1.3-ROADMAP.md`
 
 **Milestone Goal:** Transform ReSyn from a visualization tool into a genuine discovery engine — with full-text search, paper similarity, graph analytics, community detection, recommendations, and export.
 
-- [ ] **Phase 21: Search & Filter** - Full-text search across papers with graph viewport integration
+- [x] **Phase 21: Search & Filter** - Full-text search across papers with graph viewport integration (completed 2026-04-07)
 - [ ] **Phase 22: Paper Similarity Engine** - Cosine similarity on TF-IDF vectors with similar-papers UI
 - [ ] **Phase 23: Graph Analytics — Centrality & Metrics** - PageRank, betweenness centrality, and query optimization
 - [ ] **Phase 24: Community Detection** - Louvain clustering with community summary panels
@@ -97,9 +97,9 @@ Full details: `.planning/milestones/v1.3-ROADMAP.md`
   4. Search results are ranked by relevance (not insertion order)
 **Plans**: 3 plans
 Plans:
-- [ ] 21-01-PLAN.md — SurrealDB BM25 fulltext indexes, SearchRepository, search_papers server fn
-- [ ] 21-02-PLAN.md — GlobalSearchBar component with dropdown, Ctrl+K, SearchPanTrigger context
-- [ ] 21-03-PLAN.md — Graph pan/highlight integration, papers table inline filter with match highlighting
+- [x] 21-01-PLAN.md — SurrealDB BM25 fulltext indexes, SearchRepository, search_papers server fn
+- [x] 21-02-PLAN.md — GlobalSearchBar component with dropdown, Ctrl+K, SearchPanTrigger context
+- [x] 21-03-PLAN.md — Graph pan/highlight integration, papers table inline filter with match highlighting
 **UI hint**: yes
 
 ### Phase 22: Paper Similarity Engine
@@ -186,7 +186,7 @@ Plans:
 | 20. LLM Analysis Pipeline Verification | v1.3 | 4/4 | Complete | 2026-03-28 |
 | 999.1. Keyword-Based Graph Labels | v1.3 | 4/4 | Complete | 2026-03-29 |
 | 999.2. Topic Ring Node Borders | v1.3 | 2/2 | Complete | 2026-03-30 |
-| 21. Search & Filter | v1.4 | 0/3 | Planning | - |
+| 21. Search & Filter | v1.4 | 3/3 | Complete    | 2026-04-09 |
 | 22. Paper Similarity Engine | v1.4 | 0/? | Not started | - |
 | 23. Graph Analytics — Centrality & Metrics | v1.4 | 0/? | Not started | - |
 | 24. Community Detection | v1.4 | 0/? | Not started | - |

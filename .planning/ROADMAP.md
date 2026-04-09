@@ -111,7 +111,11 @@ Plans:
   2. User can open the paper detail drawer and view a "Similar Papers" tab listing ranked similar papers
   3. User can toggle a similarity edge overlay on the graph that draws edges between similar papers
   4. After TF-IDF analysis completes, similarity scores are automatically recomputed for the analyzed papers
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 22-01-PLAN.md — PaperSimilarity model, compute_top_neighbors, SimilarityRepository, pipeline trigger
+- [ ] 22-02-PLAN.md — DrawerTab::Similar, get_similar_papers server fn, SimilarTabBody component
+- [ ] 22-03-PLAN.md — EdgeType::Similarity rendering, graph controls toggles, dual force model
 **UI hint**: yes
 
 ### Phase 23: Graph Analytics — Centrality & Metrics
@@ -187,7 +191,7 @@ Plans:
 | 999.1. Keyword-Based Graph Labels | v1.3 | 4/4 | Complete | 2026-03-29 |
 | 999.2. Topic Ring Node Borders | v1.3 | 2/2 | Complete | 2026-03-30 |
 | 21. Search & Filter | v1.4 | 3/3 | Complete    | 2026-04-09 |
-| 22. Paper Similarity Engine | v1.4 | 0/? | Not started | - |
+| 22. Paper Similarity Engine | v1.4 | 0/3 | Not started | - |
 | 23. Graph Analytics — Centrality & Metrics | v1.4 | 0/? | Not started | - |
 | 24. Community Detection | v1.4 | 0/? | Not started | - |
 | 25. Discovery Recommendations | v1.4 | 0/? | Not started | - |

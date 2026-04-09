@@ -747,6 +747,46 @@ fn start_render_loop(
                 ctx.set_transform(dpr, 0.0, 0.0, dpr, 0.0, 0.0).unwrap();
                 ctx.set_global_alpha(1.0);
 
+                // Similarity edges on label canvas overlay — drawn before topic rings so rings
+                // appear on top. This is the rendering path for WebGL2 mode (Canvas2D has its
+                // own draw pass in canvas_renderer.rs step 6.5). Drawing here also means both
+                // renderers share one label canvas path for similarity edges.
+                if s.graph.show_similarity {
+                    use crate::server_fns::graph::EdgeType;
+                    use js_sys::Array;
+                    use wasm_bindgen::JsValue;
+                    ctx.save();
+                    ctx.set_global_alpha(0.7);
+                    let dash_array = Array::new();
+                    dash_array.push(&JsValue::from_f64(8.0));
+                    dash_array.push(&JsValue::from_f64(5.0));
+                    ctx.set_line_dash(&dash_array).unwrap();
+                    for edge in &s.graph.edges {
+                        if edge.edge_type != EdgeType::Similarity {
+                            continue;
+                        }
+                        let from = match s.graph.nodes.get(edge.from_idx) {
+                            Some(n) => n,
+                            None => continue,
+                        };
+                        let to = match s.graph.nodes.get(edge.to_idx) {
+                            Some(n) => n,
+                            None => continue,
+                        };
+                        let (fx, fy) = s.viewport.world_to_screen(from.x, from.y);
+                        let (tx, ty) = s.viewport.world_to_screen(to.x, to.y);
+                        let score = edge.confidence.unwrap_or(0.3);
+                        let thickness = 1.5 + score as f64 * 2.5;
+                        ctx.set_stroke_style_str("#f0a030");
+                        ctx.set_line_width(thickness);
+                        ctx.begin_path();
+                        ctx.move_to(fx, fy);
+                        ctx.line_to(tx, ty);
+                        ctx.stroke();
+                    }
+                    ctx.restore();
+                }
+
                 // Topic rings — drawn at all zoom levels; individual node threshold handles
                 // visibility via MIN_SCREEN_RADIUS_FOR_RINGS
                 if show_topic_rings.get_untracked() {
@@ -1004,6 +1044,23 @@ fn edge_tooltip(graph: &GraphState, edge_idx: usize) -> String {
                 .map(|s| s.as_str())
                 .collect();
             format!("ABC-Bridge · {}% · {}", confidence, terms.join(", "))
+        }
+        EdgeType::Similarity => {
+            let score = edge.confidence.map(|c| (c * 100.0) as u32).unwrap_or(0);
+            let terms: Vec<&str> = edge
+                .shared_terms
+                .iter()
+                .take(3)
+                .map(|s| s.as_str())
+                .collect();
+            if terms.is_empty() {
+                format!(
+                    "Similar · {}% · {} ↔ {}",
+                    score, from_node.first_author, to_node.first_author
+                )
+            } else {
+                format!("Similar · {}% · {}", score, terms.join(", "))
+            }
         }
     }
 }

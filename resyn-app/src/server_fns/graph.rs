@@ -20,6 +20,7 @@ pub enum EdgeType {
     Regular,
     Contradiction,
     AbcBridge,
+    Similarity,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -201,6 +202,41 @@ pub async fn get_graph_data() -> Result<GraphData, ServerFnError> {
                     confidence: Some(finding.confidence),
                     justification: Some(finding.justification),
                 });
+            }
+        }
+
+        // Load similarity edges from DB (D-06: fixed threshold 0.15)
+        {
+            use resyn_core::database::queries::SimilarityRepository;
+            let sim_repo = SimilarityRepository::new(&db);
+            let all_sims = sim_repo.get_all_similarities().await.unwrap_or_default();
+            let node_ids: std::collections::HashSet<&str> =
+                nodes.iter().map(|n| n.id.as_str()).collect();
+            let threshold = 0.15_f32; // D-06: fixed minimum threshold
+
+            for sim in &all_sims {
+                if !node_ids.contains(sim.arxiv_id.as_str()) {
+                    continue;
+                }
+                for neighbor in &sim.neighbors {
+                    if neighbor.score < threshold {
+                        continue;
+                    }
+                    if !node_ids.contains(neighbor.arxiv_id.as_str()) {
+                        continue;
+                    }
+                    // Avoid duplicate edges (A->B and B->A): only emit if source < target lexically
+                    if sim.arxiv_id < neighbor.arxiv_id {
+                        edges.push(GraphEdge {
+                            from: sim.arxiv_id.clone(),
+                            to: neighbor.arxiv_id.clone(),
+                            edge_type: EdgeType::Similarity,
+                            shared_terms: neighbor.shared_terms.clone(),
+                            confidence: Some(neighbor.score),
+                            justification: None,
+                        });
+                    }
+                }
             }
         }
 

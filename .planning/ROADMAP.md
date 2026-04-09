@@ -79,7 +79,7 @@ Full details: `.planning/milestones/v1.3-ROADMAP.md`
 
 - [x] **Phase 21: Search & Filter** - Full-text search across papers with graph viewport integration (completed 2026-04-07)
 - [x] **Phase 22: Paper Similarity Engine** - Cosine similarity on TF-IDF vectors with similar-papers UI (completed 2026-04-09)
-- [ ] **Phase 23: Graph Analytics — Centrality & Metrics** - PageRank, betweenness centrality, and query optimization
+- [x] **Phase 23: Graph Analytics — Centrality & Metrics** - PageRank, betweenness centrality, and query optimization (completed 2026-04-09)
 - [ ] **Phase 24: Community Detection** - Louvain clustering with community summary panels
 - [ ] **Phase 25: Discovery Recommendations** - Scored paper recommendations combining similarity, centrality, and community signals
 - [ ] **Phase 26: Export & Interop** - BibTeX, CSV, and graph JSON export
@@ -129,9 +129,9 @@ Plans:
   4. Citation graph queries use single SurrealDB JOINs rather than per-paper N+1 lookups
 **Plans**: 3 plans
 Plans:
-- [ ] 23-01-PLAN.md — GraphMetrics data model, migration 11, GraphMetricsRepository, N+1 query fix
-- [ ] 23-02-PLAN.md — PageRank + Brandes betweenness computation, server fns, pipeline auto-compute
-- [ ] 23-03-PLAN.md — SizeMode dropdown, node radius lerp, tooltip metrics, dashboard influential card
+- [x] 23-01-PLAN.md — GraphMetrics data model, migration 11, GraphMetricsRepository, N+1 query fix
+- [x] 23-02-PLAN.md — PageRank + Brandes betweenness computation, server fns, pipeline auto-compute
+- [x] 23-03-PLAN.md — SizeMode dropdown, node radius lerp, tooltip metrics, dashboard influential card
 **UI hint**: yes
 
 ### Phase 24: Community Detection
@@ -196,7 +196,7 @@ Plans:
 | 999.2. Topic Ring Node Borders | v1.3 | 2/2 | Complete | 2026-03-30 |
 | 21. Search & Filter | v1.4 | 3/3 | Complete    | 2026-04-09 |
 | 22. Paper Similarity Engine | v1.4 | 3/3 | Complete    | 2026-04-09 |
-| 23. Graph Analytics — Centrality & Metrics | v1.4 | 0/3 | Planned | - |
+| 23. Graph Analytics — Centrality & Metrics | v1.4 | 3/3 | Complete    | 2026-04-09 |
 | 24. Community Detection | v1.4 | 0/? | Not started | - |
 | 25. Discovery Recommendations | v1.4 | 0/? | Not started | - |
 | 26. Export & Interop | v1.4 | 0/? | Not started | - |

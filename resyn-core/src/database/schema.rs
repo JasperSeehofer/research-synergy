@@ -231,6 +231,23 @@ async fn apply_migration_10(db: &Surreal<Any>) -> Result<(), ResynError> {
     Ok(())
 }
 
+async fn apply_migration_11(db: &Surreal<Any>) -> Result<(), ResynError> {
+    db.query(
+        "
+        DEFINE TABLE IF NOT EXISTS graph_metrics SCHEMAFULL;
+        DEFINE FIELD IF NOT EXISTS arxiv_id ON graph_metrics TYPE string;
+        DEFINE FIELD IF NOT EXISTS pagerank ON graph_metrics TYPE float;
+        DEFINE FIELD IF NOT EXISTS betweenness ON graph_metrics TYPE float;
+        DEFINE FIELD IF NOT EXISTS corpus_fingerprint ON graph_metrics TYPE string;
+        DEFINE FIELD IF NOT EXISTS computed_at ON graph_metrics TYPE string;
+        DEFINE INDEX IF NOT EXISTS idx_metrics_arxiv_id ON graph_metrics FIELDS arxiv_id UNIQUE;
+        ",
+    )
+    .await
+    .map_err(|e| ResynError::Database(format!("migration 11 DDL failed: {e}")))?;
+    Ok(())
+}
+
 pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
     // Ensure migrations table exists first
     db.query(
@@ -295,6 +312,11 @@ pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
         record_migration(db, 10).await?;
     }
 
+    if version < 11 {
+        apply_migration_11(db).await?;
+        record_migration(db, 11).await?;
+    }
+
     Ok(())
 }
 
@@ -326,6 +348,36 @@ mod tests {
             .expect("select from paper_similarity failed");
         let rows: Vec<serde_json::Value> = response.take(0).expect("deserialize failed");
         assert_eq!(rows.len(), 1, "expected 1 record in paper_similarity");
+        assert_eq!(
+            rows[0].get("arxiv_id").and_then(|v| v.as_str()),
+            Some("2301.12345")
+        );
+    }
+
+    #[tokio::test]
+    async fn test_migration_11_creates_graph_metrics_table() {
+        let db = connect_memory().await.expect("in-memory DB failed");
+        migrate_schema(&db).await.expect("schema migration failed");
+
+        // Verify graph_metrics table exists by inserting and reading back a row.
+        db.query(
+            "CREATE graph_metrics CONTENT { \
+             arxiv_id: '2301.12345', \
+             pagerank: 0.5, \
+             betweenness: 10.0, \
+             corpus_fingerprint: 'test_fp', \
+             computed_at: '2026-04-09T00:00:00Z' \
+             }",
+        )
+        .await
+        .expect("insert into graph_metrics failed — table likely missing");
+
+        let mut response = db
+            .query("SELECT arxiv_id FROM graph_metrics")
+            .await
+            .expect("select from graph_metrics failed");
+        let rows: Vec<serde_json::Value> = response.take(0).expect("deserialize failed");
+        assert_eq!(rows.len(), 1, "expected 1 record in graph_metrics");
         assert_eq!(
             rows[0].get("arxiv_id").and_then(|v| v.as_str()),
             Some("2301.12345")

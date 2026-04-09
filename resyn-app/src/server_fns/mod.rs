@@ -2,6 +2,7 @@
 pub mod analysis;
 pub mod gaps;
 pub mod graph;
+pub mod metrics;
 pub mod methods;
 pub mod papers;
 pub mod problems;

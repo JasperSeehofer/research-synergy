@@ -358,6 +358,16 @@ pub async fn start_analysis() -> Result<String, ServerFnError> {
                 }
             }
 
+            // --- Stage 5 (silent): Recompute graph metrics (PageRank + betweenness) ---
+            // Per D-07 — auto-compute after analysis completes, no progress event emitted.
+            // Non-fatal: metrics failure does not block analysis_complete.
+            {
+                use crate::server_fns::metrics::compute_and_store_metrics;
+                if let Err(e) = compute_and_store_metrics(&db).await {
+                    tracing::error!("Graph metrics recomputation failed: {e}");
+                }
+            }
+
             send_progress(&tx, "analysis_complete", "complete");
             info!(
                 elapsed_secs = started.elapsed().as_secs_f64(),

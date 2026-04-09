@@ -1919,3 +1919,95 @@ input[type="range"].temporal-range {
   color: var(--color-text-muted);
   margin-top: var(--space-xs);
 }
+
+/* =============================================================================
+   Similar Papers Tab (Phase 22)
+   ============================================================================= */
+
+.similar-waiting-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-3xl) var(--space-xl);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.similar-papers-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.similar-paper-item {
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: background-color 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.similar-paper-item:last-child {
+  border-bottom: none;
+}
+
+.similar-paper-item:hover {
+  background-color: var(--color-surface-raised);
+  margin: 0 calc(-1 * var(--space-xl));
+  padding-left: var(--space-xl);
+  padding-right: var(--space-xl);
+}
+
+.similar-paper-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+}
+
+.similar-score {
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.similar-title {
+  font-size: var(--font-size-body);
+  color: var(--color-text);
+  line-height: var(--line-height-body);
+}
+
+.similar-paper-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-label);
+  color: var(--color-text-muted);
+}
+
+.similar-authors {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.similar-year {
+  flex-shrink: 0;
+}
+
+.similar-shared-terms {
+  font-size: var(--font-size-label);
+  color: var(--color-text-muted);
+}
+
+.shared-label {
+  font-weight: var(--font-weight-semibold);
+}
+
+.shared-terms {
+  font-style: italic;
+}

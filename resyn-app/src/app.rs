@@ -17,6 +17,7 @@ pub enum DrawerTab {
     #[default]
     Overview,
     Source,
+    Similar,
 }
 
 /// Request to open the drawer for a specific paper, optionally on a specific tab

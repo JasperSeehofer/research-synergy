@@ -3,8 +3,9 @@ use leptos::web_sys;
 use resyn_core::analysis::highlight::find_highlight_range;
 use resyn_core::datamodels::extraction::{ExtractionMethod, TextExtractionResult};
 
-use crate::app::{DrawerTab, SelectedPaper};
-use crate::server_fns::papers::{PaperDetail, get_paper_detail};
+use crate::app::{DrawerOpenRequest, DrawerTab, SelectedPaper};
+use crate::server_fns::papers::{get_paper_detail, PaperDetail};
+use crate::server_fns::similarity::get_similar_papers;
 
 /// Paper detail side drawer. Slides in from the right when a paper is selected.
 ///
@@ -187,12 +188,22 @@ fn DrawerBody(
             >
                 "Source"
             </button>
+            <button
+                class=move || if active_tab.get() == DrawerTab::Similar {
+                    "drawer-tab active"
+                } else {
+                    "drawer-tab"
+                }
+                on:click=move |_| active_tab.set(DrawerTab::Similar)
+            >
+                "Similar"
+            </button>
         </div>
 
         // Tab content
         {move || {
-            if active_tab.get() == DrawerTab::Overview {
-                view! {
+            match active_tab.get() {
+                DrawerTab::Overview => view! {
                     <div class="drawer-body">
                         // Authors + year
                         <p class="drawer-meta">{meta.clone()}</p>
@@ -260,9 +271,8 @@ fn DrawerBody(
                         // arXiv ID reference
                         <p class="text-label text-muted">"arXiv: " {arxiv_id.clone()}</p>
                     </div>
-                }.into_any()
-            } else {
-                view! {
+                }.into_any(),
+                DrawerTab::Source => view! {
                     <div class="drawer-body">
                         <SourceTabBody
                             extraction=extraction.clone()
@@ -270,9 +280,102 @@ fn DrawerBody(
                             highlight_section=highlight_section.clone()
                         />
                     </div>
-                }.into_any()
+                }.into_any(),
+                DrawerTab::Similar => view! {
+                    <div class="drawer-body">
+                        <SimilarTabBody paper_id=arxiv_id.clone() />
+                    </div>
+                }.into_any(),
             }
         }}
+    }
+}
+
+/// Similar tab body — shows a ranked list of similar papers with score, metadata, and shared keywords.
+/// When no similarity data exists yet (empty vec from server fn), shows a waiting spinner (D-08).
+#[component]
+fn SimilarTabBody(paper_id: String) -> impl IntoView {
+    let pid = paper_id.clone();
+    let similar_resource = Resource::new(move || pid.clone(), |id| get_similar_papers(id));
+    let selected = expect_context::<SelectedPaper>();
+
+    view! {
+        <Suspense fallback=move || view! {
+            <div class="similar-waiting-state">
+                <div class="spinner"></div>
+                <p class="text-body text-muted">"Loading similar papers..."</p>
+            </div>
+        }>
+            {move || {
+                similar_resource.get().map(|result| match result {
+                    Ok(entries) if entries.is_empty() => {
+                        // D-08: No similarity data yet — show waiting spinner
+                        view! {
+                            <div class="similar-waiting-state">
+                                <div class="spinner"></div>
+                                <p class="text-body text-muted">"Waiting for TF-IDF analysis..."</p>
+                                <p class="text-label text-muted">"Run analysis to compute paper similarity."</p>
+                            </div>
+                        }.into_any()
+                    }
+                    Ok(entries) => {
+                        // D-01: Ranked list with score %, title, authors, year, shared keywords
+                        view! {
+                            <div class="similar-papers-list">
+                                {entries.into_iter().map(|entry| {
+                                    let arxiv_id = entry.arxiv_id.clone();
+                                    let score_pct = format!("{:.0}%", entry.score * 100.0);
+                                    let authors_str = if entry.authors.len() > 2 {
+                                        format!("{} et al.", entry.authors[0])
+                                    } else {
+                                        entry.authors.join(", ")
+                                    };
+                                    let shared = entry.shared_terms.join(", ");
+
+                                    // D-02: Click navigates to the similar paper's drawer
+                                    let on_click = {
+                                        let sel = selected.0;
+                                        let id = arxiv_id.clone();
+                                        move |_: web_sys::MouseEvent| {
+                                            sel.set(Some(DrawerOpenRequest {
+                                                paper_id: id.clone(),
+                                                initial_tab: DrawerTab::Overview,
+                                                highlight_snippet: None,
+                                                highlight_section: None,
+                                            }));
+                                        }
+                                    };
+
+                                    view! {
+                                        <div class="similar-paper-item" on:click=on_click>
+                                            <div class="similar-paper-header">
+                                                <span class="similar-score">{score_pct}</span>
+                                                <span class="similar-title">{entry.title}</span>
+                                            </div>
+                                            <div class="similar-paper-meta">
+                                                <span class="similar-authors">{authors_str}</span>
+                                                {(!entry.year.is_empty()).then(|| view! {
+                                                    <span class="similar-year">{entry.year}</span>
+                                                })}
+                                            </div>
+                                            {(!shared.is_empty()).then(|| view! {
+                                                <div class="similar-shared-terms">
+                                                    <span class="shared-label">"Shared: "</span>
+                                                    <span class="shared-terms">{shared}</span>
+                                                </div>
+                                            })}
+                                        </div>
+                                    }
+                                }).collect_view()}
+                            </div>
+                        }.into_any()
+                    }
+                    Err(_) => view! {
+                        <p class="text-body text-muted">"Failed to load similar papers."</p>
+                    }.into_any(),
+                })
+            }}
+        </Suspense>
     }
 }
 

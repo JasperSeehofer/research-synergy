@@ -5,3 +5,4 @@ pub mod graph;
 pub mod methods;
 pub mod papers;
 pub mod problems;
+pub mod similarity;

@@ -78,7 +78,7 @@ Full details: `.planning/milestones/v1.3-ROADMAP.md`
 **Milestone Goal:** Transform ReSyn from a visualization tool into a genuine discovery engine — with full-text search, paper similarity, graph analytics, community detection, recommendations, and export.
 
 - [x] **Phase 21: Search & Filter** - Full-text search across papers with graph viewport integration (completed 2026-04-07)
-- [ ] **Phase 22: Paper Similarity Engine** - Cosine similarity on TF-IDF vectors with similar-papers UI
+- [x] **Phase 22: Paper Similarity Engine** - Cosine similarity on TF-IDF vectors with similar-papers UI (completed 2026-04-09)
 - [ ] **Phase 23: Graph Analytics — Centrality & Metrics** - PageRank, betweenness centrality, and query optimization
 - [ ] **Phase 24: Community Detection** - Louvain clustering with community summary panels
 - [ ] **Phase 25: Discovery Recommendations** - Scored paper recommendations combining similarity, centrality, and community signals
@@ -113,9 +113,9 @@ Plans:
   4. After TF-IDF analysis completes, similarity scores are automatically recomputed for the analyzed papers
 **Plans**: 3 plans
 Plans:
-- [ ] 22-01-PLAN.md — PaperSimilarity model, compute_top_neighbors, SimilarityRepository, pipeline trigger
-- [ ] 22-02-PLAN.md — DrawerTab::Similar, get_similar_papers server fn, SimilarTabBody component
-- [ ] 22-03-PLAN.md — EdgeType::Similarity rendering, graph controls toggles, dual force model
+- [x] 22-01-PLAN.md — PaperSimilarity model, compute_top_neighbors, SimilarityRepository, pipeline trigger
+- [x] 22-02-PLAN.md — DrawerTab::Similar, get_similar_papers server fn, SimilarTabBody component
+- [x] 22-03-PLAN.md — EdgeType::Similarity rendering, graph controls toggles, dual force model
 **UI hint**: yes
 
 ### Phase 23: Graph Analytics — Centrality & Metrics
@@ -191,7 +191,7 @@ Plans:
 | 999.1. Keyword-Based Graph Labels | v1.3 | 4/4 | Complete | 2026-03-29 |
 | 999.2. Topic Ring Node Borders | v1.3 | 2/2 | Complete | 2026-03-30 |
 | 21. Search & Filter | v1.4 | 3/3 | Complete    | 2026-04-09 |
-| 22. Paper Similarity Engine | v1.4 | 0/3 | Not started | - |
+| 22. Paper Similarity Engine | v1.4 | 3/3 | Complete    | 2026-04-09 |
 | 23. Graph Analytics — Centrality & Metrics | v1.4 | 0/? | Not started | - |
 | 24. Community Detection | v1.4 | 0/? | Not started | - |
 | 25. Discovery Recommendations | v1.4 | 0/? | Not started | - |

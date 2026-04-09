@@ -171,6 +171,38 @@ pub async fn start_analysis() -> Result<String, ServerFnError> {
                 }
             }
 
+            // --- Stage 2.5: Similarity computation (D-07: silent, no progress event) ---
+            {
+                use resyn_core::database::queries::{AnalysisRepository, SimilarityRepository};
+                use resyn_core::gap_analysis::similarity::compute_top_neighbors;
+
+                let analysis_repo = AnalysisRepository::new(&db);
+                let sim_repo = SimilarityRepository::new(&db);
+                let analyses = analysis_repo.get_all_analyses().await.unwrap_or_default();
+                if !analyses.is_empty() {
+                    let fingerprint = analyses[0].corpus_fingerprint.clone();
+                    // Fingerprint guard: skip if already computed for this corpus version
+                    let already_done = sim_repo
+                        .get_similarity(&analyses[0].arxiv_id)
+                        .await
+                        .ok()
+                        .flatten()
+                        .map(|s| s.corpus_fingerprint == fingerprint)
+                        .unwrap_or(false);
+                    if !already_done {
+                        let similarities = compute_top_neighbors(&analyses, 10);
+                        for sim in &similarities {
+                            if let Err(e) = sim_repo.upsert_similarity(sim).await {
+                                error!(arxiv_id = sim.arxiv_id.as_str(), error = %e, "Failed to persist similarity");
+                            }
+                        }
+                        info!(papers = similarities.len(), "Similarity computation complete");
+                    } else {
+                        info!("Similarity computation skipped — corpus unchanged");
+                    }
+                }
+            }
+
             // --- Stages 3 & 4: LLM annotation + gap analysis (optional) ---
             if let Some(ref provider_name) = llm_provider_name {
                 use resyn_core::llm::claude::ClaudeProvider;

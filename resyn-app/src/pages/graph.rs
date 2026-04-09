@@ -82,6 +82,10 @@ pub fn GraphPage() -> impl IntoView {
     // Overlay toggle signals — Leptos reactive (drive UI buttons)
     let show_contradictions: RwSignal<bool> = RwSignal::new(true);
     let show_bridges: RwSignal<bool> = RwSignal::new(true);
+    let show_similarity: RwSignal<bool> = RwSignal::new(false);
+    let show_citations: RwSignal<bool> = RwSignal::new(true);
+    let force_mode: RwSignal<crate::graph::layout_state::ForceMode> =
+        RwSignal::new(crate::graph::layout_state::ForceMode::Citation);
     let simulation_running: RwSignal<bool> = RwSignal::new(true);
 
     // Topic ring signals
@@ -219,6 +223,9 @@ pub fn GraphPage() -> impl IntoView {
         // Sync initial toggle values from Leptos signals
         graph_state.show_contradictions = show_contradictions.get_untracked();
         graph_state.show_bridges = show_bridges.get_untracked();
+        graph_state.show_similarity = show_similarity.get_untracked();
+        graph_state.show_citations = show_citations.get_untracked();
+        graph_state.force_mode = force_mode.get_untracked();
         graph_state.simulation_running = simulation_running.get_untracked();
 
         // Initialize temporal signals from graph year bounds
@@ -286,6 +293,9 @@ pub fn GraphPage() -> impl IntoView {
             output_buf.clone(),
             show_contradictions,
             show_bridges,
+            show_similarity,
+            show_citations,
+            force_mode,
             simulation_running,
             zoom_in_count,
             zoom_out_count,
@@ -334,6 +344,9 @@ pub fn GraphPage() -> impl IntoView {
                             <GraphControls
                                 show_contradictions=show_contradictions
                                 show_bridges=show_bridges
+                                show_similarity=show_similarity
+                                show_citations=show_citations
+                                force_mode=force_mode
                                 simulation_running=simulation_running
                                 zoom_in_count=zoom_in_count
                                 zoom_out_count=zoom_out_count
@@ -400,7 +413,27 @@ fn build_layout_input(graph: &GraphState, width: f64, height: f64) -> LayoutInpu
             }
         })
         .collect();
-    let edges: Vec<(usize, usize)> = graph.edges.iter().map(|e| (e.from_idx, e.to_idx)).collect();
+    // D-11/D-12: Derive force edges from active force mode.
+    // Citation mode: regular citation edges drive layout (default).
+    // Similarity mode: similarity edges drive layout (content-based clustering).
+    // When both edge types are visible, force mode determines layout; similarity edges
+    // are a visual overlay only in citation mode (D-12).
+    use crate::graph::layout_state::ForceMode;
+    use crate::server_fns::graph::EdgeType;
+    let edges: Vec<(usize, usize)> = match graph.force_mode {
+        ForceMode::Similarity => graph
+            .edges
+            .iter()
+            .filter(|e| e.edge_type == EdgeType::Similarity)
+            .map(|e| (e.from_idx, e.to_idx))
+            .collect(),
+        ForceMode::Citation => graph
+            .edges
+            .iter()
+            .filter(|e| e.edge_type == EdgeType::Regular)
+            .map(|e| (e.from_idx, e.to_idx))
+            .collect(),
+    };
     LayoutInput {
         nodes,
         edges,
@@ -461,6 +494,9 @@ fn start_render_loop(
     _output_buf: Rc<RefCell<Option<LayoutOutput>>>,
     show_contradictions: RwSignal<bool>,
     show_bridges: RwSignal<bool>,
+    show_similarity: RwSignal<bool>,
+    show_citations: RwSignal<bool>,
+    force_mode: RwSignal<crate::graph::layout_state::ForceMode>,
     simulation_running: RwSignal<bool>,
     zoom_in_count: RwSignal<u32>,
     zoom_out_count: RwSignal<u32>,
@@ -483,6 +519,9 @@ fn start_render_loop(
     let prev_zoom_out = Rc::new(RefCell::new(0u32));
     let prev_fit: Rc<RefCell<u32>> = Rc::new(RefCell::new(0));
 
+    // Track previous force mode to detect changes and trigger alpha reheat (D-13)
+    let prev_force_mode = Rc::new(RefCell::new(crate::graph::layout_state::ForceMode::Citation));
+
     // Track previous viewport for label cache dirty detection (D-12)
     let prev_scale = Rc::new(RefCell::new(1.0_f64));
     let prev_offset_x = Rc::new(RefCell::new(0.0_f64));
@@ -504,7 +543,24 @@ fn start_render_loop(
             // Sync Leptos toggle signals into graph state
             s.graph.show_contradictions = show_contradictions.get_untracked();
             s.graph.show_bridges = show_bridges.get_untracked();
+            s.graph.show_similarity = show_similarity.get_untracked();
+            s.graph.show_citations = show_citations.get_untracked();
             let sim_running = simulation_running.get_untracked();
+
+            // Sync force mode and reheat alpha on change (D-13)
+            {
+                let current_force_mode = force_mode.get_untracked();
+                let prev = *prev_force_mode.borrow();
+                if current_force_mode != prev {
+                    *prev_force_mode.borrow_mut() = current_force_mode;
+                    // D-13: reheat alpha to trigger visible re-simulation animation
+                    s.graph.alpha = 0.5;
+                    s.graph.simulation_running = true;
+                    simulation_running.set(true);
+                    simulation_settled.set(false);
+                }
+                s.graph.force_mode = current_force_mode;
+            }
 
             // Handle zoom button presses
             let zi = zoom_in_count.get_untracked();

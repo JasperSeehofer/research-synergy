@@ -180,22 +180,18 @@ impl<'a> PaperRepository<'a> {
         let rid = paper_record_id(&id);
         let mut response = self
             .db
-            .query("SELECT out.arxiv_id AS to_id FROM cites WHERE in = $rid")
+            .query(
+                "SELECT title, authors, summary, arxiv_id, last_updated, published, \
+                 pdf_url, comment, doi, inspire_id, citation_count, source \
+                 FROM paper WHERE id IN (SELECT VALUE out FROM cites WHERE in = $rid)",
+            )
             .bind(("rid", rid))
             .await
             .map_err(|e| ResynError::Database(format!("get cited papers failed: {e}")))?;
-
-        let to_ids: Vec<String> = response
-            .take("to_id")
+        let records: Vec<PaperRecord> = response
+            .take(0)
             .map_err(|e| ResynError::Database(format!("parse cited papers failed: {e}")))?;
-
-        let mut papers = Vec::new();
-        for to_id in to_ids {
-            if let Some(p) = self.get_paper(&to_id).await? {
-                papers.push(p);
-            }
-        }
-        Ok(papers)
+        Ok(records.iter().map(|r| r.to_paper()).collect())
     }
 
     pub async fn get_citing_papers(&self, arxiv_id: &str) -> Result<Vec<Paper>, ResynError> {
@@ -203,22 +199,18 @@ impl<'a> PaperRepository<'a> {
         let rid = paper_record_id(&id);
         let mut response = self
             .db
-            .query("SELECT in.arxiv_id AS from_id FROM cites WHERE out = $rid")
+            .query(
+                "SELECT title, authors, summary, arxiv_id, last_updated, published, \
+                 pdf_url, comment, doi, inspire_id, citation_count, source \
+                 FROM paper WHERE id IN (SELECT VALUE in FROM cites WHERE out = $rid)",
+            )
             .bind(("rid", rid))
             .await
             .map_err(|e| ResynError::Database(format!("get citing papers failed: {e}")))?;
-
-        let from_ids: Vec<String> = response
-            .take("from_id")
+        let records: Vec<PaperRecord> = response
+            .take(0)
             .map_err(|e| ResynError::Database(format!("parse citing papers failed: {e}")))?;
-
-        let mut papers = Vec::new();
-        for from_id in from_ids {
-            if let Some(p) = self.get_paper(&from_id).await? {
-                papers.push(p);
-            }
-        }
-        Ok(papers)
+        Ok(records.iter().map(|r| r.to_paper()).collect())
     }
 
     pub async fn get_all_papers(&self) -> Result<Vec<Paper>, ResynError> {
@@ -1095,6 +1087,323 @@ mod similarity_tests {
     }
 }
 
+// --- GraphMetricsRepository ---
+
+use crate::datamodels::graph_metrics::GraphMetrics;
+
+pub struct GraphMetricsRepository<'a> {
+    db: &'a Db,
+}
+
+impl<'a> GraphMetricsRepository<'a> {
+    pub fn new(db: &'a Db) -> Self {
+        Self { db }
+    }
+
+    pub async fn upsert_metrics(&self, m: &GraphMetrics) -> Result<(), ResynError> {
+        let arxiv_id = strip_version_suffix(&m.arxiv_id);
+        self.db
+            .query(
+                "UPSERT type::record('graph_metrics', $id) SET \
+                 arxiv_id = $arxiv_id, \
+                 pagerank = $pagerank, \
+                 betweenness = $betweenness, \
+                 corpus_fingerprint = $corpus_fingerprint, \
+                 computed_at = $computed_at",
+            )
+            .bind(("id", arxiv_id.clone()))
+            .bind(("arxiv_id", arxiv_id))
+            .bind(("pagerank", m.pagerank as f64))
+            .bind(("betweenness", m.betweenness as f64))
+            .bind(("corpus_fingerprint", m.corpus_fingerprint.clone()))
+            .bind(("computed_at", m.computed_at.clone()))
+            .await
+            .map_err(|e| ResynError::Database(format!("upsert metrics failed: {e}")))?;
+        Ok(())
+    }
+
+    pub async fn get_metrics(&self, arxiv_id: &str) -> Result<Option<GraphMetrics>, ResynError> {
+        let id = strip_version_suffix(arxiv_id);
+        let mut response = self
+            .db
+            .query(
+                "SELECT arxiv_id, pagerank, betweenness, corpus_fingerprint, computed_at \
+                 FROM type::record('graph_metrics', $id)",
+            )
+            .bind(("id", id))
+            .await
+            .map_err(|e| ResynError::Database(format!("get metrics failed: {e}")))?;
+
+        let rows: Vec<serde_json::Value> = response
+            .take(0)
+            .map_err(|e| ResynError::Database(format!("parse metrics failed: {e}")))?;
+
+        if let Some(row) = rows.into_iter().next() {
+            let arxiv_id = row
+                .get("arxiv_id")
+                .and_then(|v| v.as_str())
+                .unwrap_or_default()
+                .to_string();
+            let pagerank = row
+                .get("pagerank")
+                .and_then(|v| v.as_f64())
+                .unwrap_or(0.0) as f32;
+            let betweenness = row
+                .get("betweenness")
+                .and_then(|v| v.as_f64())
+                .unwrap_or(0.0) as f32;
+            let corpus_fingerprint = row
+                .get("corpus_fingerprint")
+                .and_then(|v| v.as_str())
+                .unwrap_or_default()
+                .to_string();
+            let computed_at = row
+                .get("computed_at")
+                .and_then(|v| v.as_str())
+                .unwrap_or_default()
+                .to_string();
+            Ok(Some(GraphMetrics {
+                arxiv_id,
+                pagerank,
+                betweenness,
+                corpus_fingerprint,
+                computed_at,
+            }))
+        } else {
+            Ok(None)
+        }
+    }
+
+    pub async fn get_all_metrics(&self) -> Result<Vec<GraphMetrics>, ResynError> {
+        let mut response = self
+            .db
+            .query(
+                "SELECT arxiv_id, pagerank, betweenness, corpus_fingerprint, computed_at \
+                 FROM graph_metrics",
+            )
+            .await
+            .map_err(|e| ResynError::Database(format!("get all metrics failed: {e}")))?;
+
+        let rows: Vec<serde_json::Value> = response
+            .take(0)
+            .map_err(|e| ResynError::Database(format!("parse all metrics failed: {e}")))?;
+
+        Ok(rows
+            .into_iter()
+            .filter_map(|row| {
+                let arxiv_id = row.get("arxiv_id")?.as_str()?.to_string();
+                let pagerank = row.get("pagerank").and_then(|v| v.as_f64()).unwrap_or(0.0) as f32;
+                let betweenness =
+                    row.get("betweenness").and_then(|v| v.as_f64()).unwrap_or(0.0) as f32;
+                let corpus_fingerprint = row
+                    .get("corpus_fingerprint")
+                    .and_then(|v| v.as_str())
+                    .unwrap_or_default()
+                    .to_string();
+                let computed_at = row
+                    .get("computed_at")
+                    .and_then(|v| v.as_str())
+                    .unwrap_or_default()
+                    .to_string();
+                Some(GraphMetrics {
+                    arxiv_id,
+                    pagerank,
+                    betweenness,
+                    corpus_fingerprint,
+                    computed_at,
+                })
+            })
+            .collect())
+    }
+
+    pub async fn get_top_by_pagerank(&self, limit: usize) -> Result<Vec<GraphMetrics>, ResynError> {
+        let mut response = self
+            .db
+            .query(
+                "SELECT arxiv_id, pagerank, betweenness, corpus_fingerprint, computed_at \
+                 FROM graph_metrics ORDER BY pagerank DESC LIMIT $limit",
+            )
+            .bind(("limit", limit as u32))
+            .await
+            .map_err(|e| ResynError::Database(format!("get top metrics failed: {e}")))?;
+
+        let rows: Vec<serde_json::Value> = response
+            .take(0)
+            .map_err(|e| ResynError::Database(format!("parse top metrics failed: {e}")))?;
+
+        Ok(rows
+            .into_iter()
+            .filter_map(|row| {
+                let arxiv_id = row.get("arxiv_id")?.as_str()?.to_string();
+                let pagerank = row.get("pagerank").and_then(|v| v.as_f64()).unwrap_or(0.0) as f32;
+                let betweenness =
+                    row.get("betweenness").and_then(|v| v.as_f64()).unwrap_or(0.0) as f32;
+                let corpus_fingerprint = row
+                    .get("corpus_fingerprint")
+                    .and_then(|v| v.as_str())
+                    .unwrap_or_default()
+                    .to_string();
+                let computed_at = row
+                    .get("computed_at")
+                    .and_then(|v| v.as_str())
+                    .unwrap_or_default()
+                    .to_string();
+                Some(GraphMetrics {
+                    arxiv_id,
+                    pagerank,
+                    betweenness,
+                    corpus_fingerprint,
+                    computed_at,
+                })
+            })
+            .collect())
+    }
+}
+
+#[cfg(test)]
+mod graph_metrics_tests {
+    use super::*;
+    use crate::database::client::connect_memory;
+    use crate::database::schema::migrate_schema;
+    use crate::datamodels::graph_metrics::GraphMetrics;
+
+    async fn setup_db() -> crate::database::client::Db {
+        let db = connect_memory().await.expect("in-memory DB failed");
+        migrate_schema(&db).await.expect("schema migration failed");
+        db
+    }
+
+    fn make_metrics(arxiv_id: &str, pagerank: f32, betweenness: f32) -> GraphMetrics {
+        GraphMetrics {
+            arxiv_id: arxiv_id.to_string(),
+            pagerank,
+            betweenness,
+            corpus_fingerprint: "fp_test".to_string(),
+            computed_at: "2026-04-09T10:00:00Z".to_string(),
+        }
+    }
+
+    #[tokio::test]
+    async fn test_metrics_upsert_get_roundtrip() {
+        let db = setup_db().await;
+        let repo = GraphMetricsRepository::new(&db);
+        let m = make_metrics("2301.12345", 0.42, 15.0);
+
+        repo.upsert_metrics(&m).await.expect("upsert failed");
+
+        let retrieved = repo
+            .get_metrics("2301.12345")
+            .await
+            .expect("get failed")
+            .expect("should exist");
+
+        assert_eq!(retrieved.arxiv_id, m.arxiv_id);
+        assert_eq!(retrieved.corpus_fingerprint, m.corpus_fingerprint);
+        assert_eq!(retrieved.computed_at, m.computed_at);
+        assert!((retrieved.pagerank - m.pagerank).abs() < 1e-5, "pagerank mismatch");
+        assert!((retrieved.betweenness - m.betweenness).abs() < 1e-4, "betweenness mismatch");
+    }
+
+    #[tokio::test]
+    async fn test_metrics_get_nonexistent_returns_none() {
+        let db = setup_db().await;
+        let repo = GraphMetricsRepository::new(&db);
+
+        let result = repo.get_metrics("9999.99999").await.expect("get failed");
+        assert!(result.is_none(), "non-existent ID should return None");
+    }
+
+    #[tokio::test]
+    async fn test_metrics_get_all() {
+        let db = setup_db().await;
+        let repo = GraphMetricsRepository::new(&db);
+
+        repo.upsert_metrics(&make_metrics("2301.00001", 0.5, 10.0))
+            .await
+            .expect("upsert 1 failed");
+        repo.upsert_metrics(&make_metrics("2301.00002", 0.3, 5.0))
+            .await
+            .expect("upsert 2 failed");
+
+        let all = repo.get_all_metrics().await.expect("get all failed");
+        assert_eq!(all.len(), 2, "should have 2 records");
+
+        let ids: Vec<&str> = all.iter().map(|m| m.arxiv_id.as_str()).collect();
+        assert!(ids.contains(&"2301.00001"));
+        assert!(ids.contains(&"2301.00002"));
+    }
+
+    #[tokio::test]
+    async fn test_metrics_get_top_by_pagerank() {
+        let db = setup_db().await;
+        let repo = GraphMetricsRepository::new(&db);
+
+        repo.upsert_metrics(&make_metrics("2301.00001", 0.9, 10.0))
+            .await
+            .unwrap();
+        repo.upsert_metrics(&make_metrics("2301.00002", 0.5, 5.0))
+            .await
+            .unwrap();
+        repo.upsert_metrics(&make_metrics("2301.00003", 0.7, 20.0))
+            .await
+            .unwrap();
+        repo.upsert_metrics(&make_metrics("2301.00004", 0.2, 1.0))
+            .await
+            .unwrap();
+
+        let top3 = repo.get_top_by_pagerank(3).await.expect("get top failed");
+        assert_eq!(top3.len(), 3, "should return exactly 3 records");
+        // Should be ordered pagerank DESC: 0.9, 0.7, 0.5
+        assert!(top3[0].pagerank >= top3[1].pagerank, "not sorted DESC");
+        assert!(top3[1].pagerank >= top3[2].pagerank, "not sorted DESC");
+        assert_eq!(top3[0].arxiv_id, "2301.00001", "highest pagerank first");
+    }
+
+    #[tokio::test]
+    async fn test_metrics_upsert_idempotent() {
+        let db = setup_db().await;
+        let repo = GraphMetricsRepository::new(&db);
+        let m = make_metrics("2301.12345", 0.42, 15.0);
+
+        repo.upsert_metrics(&m).await.expect("first upsert");
+
+        // Update with new values
+        let m_v2 = GraphMetrics {
+            pagerank: 0.99,
+            betweenness: 99.0,
+            corpus_fingerprint: "fp_v2".to_string(),
+            ..m.clone()
+        };
+        repo.upsert_metrics(&m_v2).await.expect("second upsert");
+
+        let retrieved = repo
+            .get_metrics("2301.12345")
+            .await
+            .expect("get failed")
+            .expect("should exist");
+
+        assert!((retrieved.pagerank - 0.99).abs() < 1e-5, "should reflect latest upsert");
+        assert_eq!(retrieved.corpus_fingerprint, "fp_v2");
+
+        let all = repo.get_all_metrics().await.expect("get all");
+        assert_eq!(all.len(), 1, "UPSERT should not create duplicate records");
+    }
+
+    #[tokio::test]
+    async fn test_metrics_version_suffix_stripped() {
+        let db = setup_db().await;
+        let repo = GraphMetricsRepository::new(&db);
+
+        let m = make_metrics("2301.12345v3", 0.5, 10.0);
+        repo.upsert_metrics(&m).await.expect("upsert failed");
+
+        // Get by bare ID — should find it
+        let fetched = repo.get_metrics("2301.12345").await.expect("get failed");
+        assert!(fetched.is_some());
+        assert_eq!(fetched.unwrap().arxiv_id, "2301.12345");
+    }
+}
+
 /// A single row returned by the full-text search query.
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 pub struct SearchResultRow {
@@ -1329,27 +1638,27 @@ mod tests {
         let repo = ExtractionRepository::new(&db);
         let extraction = make_extraction("2301.12345");
         repo.upsert_extraction(&extraction).await.unwrap();
-        // Also check schema_migrations has version 10 (migrations 1-10 applied)
+        // Also check schema_migrations has version 11 (migrations 1-11 applied)
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 10);
+        assert_eq!(versions[0], 11);
     }
 
     #[tokio::test]
     async fn test_migrate_schema_is_idempotent() {
         use crate::database::schema::migrate_schema;
         let db = crate::database::client::connect("mem://").await.unwrap();
-        // Run migrate_schema again — should not error and version stays at 10
+        // Run migrate_schema again — should not error and version stays at 11
         migrate_schema(&db).await.unwrap();
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 10);
+        assert_eq!(versions[0], 11);
     }
 
     #[tokio::test]
@@ -1446,8 +1755,8 @@ mod tests {
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
         assert_eq!(
-            versions[0], 10,
-            "Expected schema version 10 after all migrations"
+            versions[0], 11,
+            "Expected schema version 11 after all migrations"
         );
     }
 
@@ -1455,14 +1764,14 @@ mod tests {
     async fn test_migrate_schema_idempotent_from_v2() {
         use crate::database::schema::migrate_schema;
         let db = crate::database::client::connect("mem://").await.unwrap();
-        // Run migrate_schema again — should not error and version stays at 10
+        // Run migrate_schema again — should not error and version stays at 11
         migrate_schema(&db).await.unwrap();
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 10);
+        assert_eq!(versions[0], 11);
     }
 
     #[tokio::test]
@@ -1589,8 +1898,8 @@ mod tests {
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
         assert_eq!(
-            versions[0], 10,
-            "Expected schema version 10 after all migrations"
+            versions[0], 11,
+            "Expected schema version 11 after all migrations"
         );
     }
 
@@ -1604,7 +1913,7 @@ mod tests {
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
-        assert_eq!(versions[0], 10);
+        assert_eq!(versions[0], 11);
     }
 
     #[tokio::test]
@@ -1692,15 +2001,15 @@ mod tests {
     #[tokio::test]
     async fn test_migrate_schema_creates_gap_finding_table() {
         let db = crate::database::client::connect("mem://").await.unwrap();
-        // connect() runs migrate_schema — verify schema version is now 10
+        // connect() runs migrate_schema — verify schema version is now 11
         let mut resp = db
             .query("SELECT version FROM schema_migrations ORDER BY version DESC LIMIT 1")
             .await
             .unwrap();
         let versions: Vec<u32> = resp.take("version").unwrap();
         assert_eq!(
-            versions[0], 10,
-            "Expected schema version 10 after all migrations"
+            versions[0], 11,
+            "Expected schema version 11 after all migrations"
         );
     }
 

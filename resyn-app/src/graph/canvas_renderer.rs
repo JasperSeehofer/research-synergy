@@ -88,6 +88,9 @@ impl Renderer for Canvas2DRenderer {
             if edge.edge_type != EdgeType::Regular {
                 continue;
             }
+            if !state.show_citations {
+                continue;
+            }
             let from = match state.nodes.get(edge.from_idx) {
                 Some(n) => n,
                 None => continue,
@@ -176,7 +179,40 @@ impl Renderer for Canvas2DRenderer {
             }
         }
 
-        // 7. Draw arrowheads on all visible edges
+        // 6.5. Draw similarity edges (if show_similarity) — D-04: dashed amber, D-05: thickness scales
+        if state.show_similarity {
+            for edge in &state.edges {
+                if edge.edge_type != EdgeType::Similarity {
+                    continue;
+                }
+                let from = match state.nodes.get(edge.from_idx) {
+                    Some(n) => n,
+                    None => continue,
+                };
+                let to = match state.nodes.get(edge.to_idx) {
+                    Some(n) => n,
+                    None => continue,
+                };
+                self.ctx.save();
+                self.ctx.set_stroke_style_str("#f0a030"); // warm amber
+                // D-05: thickness 1.5 (min) to 4.0 (max) based on confidence (similarity score)
+                let score = edge.confidence.unwrap_or(0.3);
+                let thickness = 1.5 + score as f64 * 2.5;
+                self.ctx.set_line_width(thickness);
+                self.ctx.set_global_alpha(0.7);
+                let dash_array = Array::new();
+                dash_array.push(&JsValue::from_f64(8.0));
+                dash_array.push(&JsValue::from_f64(5.0));
+                self.ctx.set_line_dash(&dash_array).unwrap();
+                self.ctx.begin_path();
+                self.ctx.move_to(from.x, from.y);
+                self.ctx.line_to(to.x, to.y);
+                self.ctx.stroke();
+                self.ctx.restore();
+            }
+        }
+
+        // 7. Draw arrowheads on all visible edges (no arrowheads for similarity edges)
         for edge in &state.edges {
             let from = match state.nodes.get(edge.from_idx) {
                 Some(n) => n,
@@ -189,9 +225,10 @@ impl Renderer for Canvas2DRenderer {
 
             // Skip non-visible special edges
             let visible = match edge.edge_type {
-                EdgeType::Regular => true,
+                EdgeType::Regular => state.show_citations,
                 EdgeType::Contradiction => state.show_contradictions,
                 EdgeType::AbcBridge => state.show_bridges,
+                EdgeType::Similarity => false, // no arrowheads on similarity edges
             };
             if !visible {
                 continue;
@@ -206,6 +243,7 @@ impl Renderer for Canvas2DRenderer {
                 EdgeType::Regular => "#8b949e",
                 EdgeType::Contradiction => "#f85149",
                 EdgeType::AbcBridge => "#d29922",
+                EdgeType::Similarity => "#f0a030",
             };
 
             let alpha = match edge.edge_type {

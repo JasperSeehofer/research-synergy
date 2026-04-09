@@ -1,10 +1,13 @@
-use crate::graph::layout_state::LabelMode;
+use crate::graph::layout_state::{ForceMode, LabelMode};
 use leptos::prelude::*;
 
 #[component]
 pub fn GraphControls(
     show_contradictions: RwSignal<bool>,
     show_bridges: RwSignal<bool>,
+    show_similarity: RwSignal<bool>,
+    show_citations: RwSignal<bool>,
+    force_mode: RwSignal<ForceMode>,
     simulation_running: RwSignal<bool>,
     zoom_in_count: RwSignal<u32>,
     zoom_out_count: RwSignal<u32>,
@@ -27,6 +30,22 @@ pub fn GraphControls(
             // Edge filter group
             <div class="graph-controls-group">
                 <button
+                    class=move || if show_citations.get() { "graph-control-btn active" } else { "graph-control-btn" }
+                    on:click=move |_| show_citations.update(|v| *v = !*v)
+                    aria-pressed=move || show_citations.get().to_string()
+                    aria-label="Toggle citation edges"
+                >
+                    "Citations"
+                </button>
+                <button
+                    class=move || if show_similarity.get() { "graph-control-btn active" } else { "graph-control-btn" }
+                    on:click=move |_| show_similarity.update(|v| *v = !*v)
+                    aria-pressed=move || show_similarity.get().to_string()
+                    aria-label="Toggle similarity edges"
+                >
+                    "Similarity"
+                </button>
+                <button
                     class=move || if show_contradictions.get() { "graph-control-btn active" } else { "graph-control-btn" }
                     on:click=move |_| show_contradictions.update(|v| *v = !*v)
                     aria-pressed=move || show_contradictions.get().to_string()
@@ -41,6 +60,27 @@ pub fn GraphControls(
                     aria-label="Toggle ABC-Bridge edges"
                 >
                     "ABC-Bridge"
+                </button>
+            </div>
+
+            // Force mode selector (D-11: two distinct force models)
+            <div class="graph-controls-group force-mode-selector">
+                <span class="text-label" style="font-size: 12px; color: var(--color-text-muted); text-transform: uppercase;">"Layout"</span>
+                <button
+                    class=move || if force_mode.get() == ForceMode::Citation { "graph-control-btn active" } else { "graph-control-btn" }
+                    on:click=move |_| force_mode.set(ForceMode::Citation)
+                    aria-pressed=move || (force_mode.get() == ForceMode::Citation).to_string()
+                    aria-label="Citation-driven layout"
+                >
+                    "Citation"
+                </button>
+                <button
+                    class=move || if force_mode.get() == ForceMode::Similarity { "graph-control-btn active" } else { "graph-control-btn" }
+                    on:click=move |_| force_mode.set(ForceMode::Similarity)
+                    aria-pressed=move || (force_mode.get() == ForceMode::Similarity).to_string()
+                    aria-label="Similarity-driven layout"
+                >
+                    "Similarity"
                 </button>
             </div>
 

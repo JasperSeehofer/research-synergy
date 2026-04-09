@@ -1,6 +1,13 @@
 use crate::server_fns::graph::{EdgeType, GraphData};
 
 #[derive(Debug, Clone, Copy, PartialEq, Default)]
+pub enum ForceMode {
+    #[default]
+    Citation,
+    Similarity,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Default)]
 pub enum LabelMode {
     #[default]
     AuthorYear,
@@ -59,6 +66,9 @@ pub struct GraphState {
     pub hovered_edge: Option<usize>,
     pub show_contradictions: bool,
     pub show_bridges: bool,
+    pub show_similarity: bool,
+    pub show_citations: bool,
+    pub force_mode: ForceMode,
     pub simulation_running: bool,
     pub temporal_min_year: u32,
     pub temporal_max_year: u32,
@@ -221,6 +231,9 @@ impl GraphState {
             hovered_edge: None,
             show_contradictions: true,
             show_bridges: true,
+            show_similarity: false,
+            show_citations: true,
+            force_mode: ForceMode::Citation,
             simulation_running: true,
             temporal_min_year: year_min,
             temporal_max_year: year_max,

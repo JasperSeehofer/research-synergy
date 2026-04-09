@@ -244,9 +244,12 @@ impl Renderer for WebGL2Renderer {
 
         for edge in &state.edges {
             let visible = match edge.edge_type {
-                EdgeType::Regular => true,
+                EdgeType::Regular => state.show_citations,
                 EdgeType::Contradiction => state.show_contradictions,
                 EdgeType::AbcBridge => state.show_bridges,
+                // Similarity edges are drawn on the label canvas overlay (dashed lines
+                // require Canvas2D — WebGL2 has no native set_line_dash support).
+                EdgeType::Similarity => false,
             };
             if !visible {
                 continue;
@@ -612,6 +615,12 @@ fn edge_color(edge_type: EdgeType, both_dimmed: bool, depth_alpha: f32) -> (f32,
         EdgeType::AbcBridge => {
             let (r, g, b) = hex_to_rgb("#d29922");
             (r, g, b, 1.0)
+        }
+        // Similarity edges are rendered on the label canvas overlay, not via WebGL.
+        // This arm is unreachable in practice (filtered out before edge_color is called).
+        EdgeType::Similarity => {
+            let (r, g, b) = hex_to_rgb("#f0a030");
+            (r, g, b, 0.7)
         }
     }
 }

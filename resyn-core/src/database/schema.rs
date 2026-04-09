@@ -215,6 +215,22 @@ async fn apply_migration_9(db: &Surreal<Any>) -> Result<(), ResynError> {
     Ok(())
 }
 
+async fn apply_migration_10(db: &Surreal<Any>) -> Result<(), ResynError> {
+    db.query(
+        "
+        DEFINE TABLE IF NOT EXISTS paper_similarity SCHEMAFULL;
+        DEFINE FIELD IF NOT EXISTS arxiv_id ON paper_similarity TYPE string;
+        DEFINE FIELD IF NOT EXISTS neighbors ON paper_similarity TYPE string;
+        DEFINE FIELD IF NOT EXISTS corpus_fingerprint ON paper_similarity TYPE string;
+        DEFINE FIELD IF NOT EXISTS computed_at ON paper_similarity TYPE string;
+        DEFINE INDEX IF NOT EXISTS idx_similarity_arxiv_id ON paper_similarity FIELDS arxiv_id UNIQUE;
+        ",
+    )
+    .await
+    .map_err(|e| ResynError::Database(format!("migration 10 DDL failed: {e}")))?;
+    Ok(())
+}
+
 pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
     // Ensure migrations table exists first
     db.query(
@@ -274,5 +290,53 @@ pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
         record_migration(db, 9).await?;
     }
 
+    if version < 10 {
+        apply_migration_10(db).await?;
+        record_migration(db, 10).await?;
+    }
+
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::database::client::connect_memory;
+
+    #[tokio::test]
+    async fn test_migration_10_creates_paper_similarity_table() {
+        let db = connect_memory().await.expect("in-memory DB failed");
+        migrate_schema(&db).await.expect("schema migration failed");
+
+        // Verify paper_similarity table exists by inserting and reading back a row.
+        db.query(
+            "CREATE paper_similarity CONTENT { \
+             arxiv_id: '2301.12345', \
+             neighbors: '[]', \
+             corpus_fingerprint: 'test_fp', \
+             computed_at: '2026-04-08T00:00:00Z' \
+             }",
+        )
+        .await
+        .expect("insert into paper_similarity failed — table likely missing");
+
+        let mut response = db
+            .query("SELECT arxiv_id FROM paper_similarity")
+            .await
+            .expect("select from paper_similarity failed");
+        let rows: Vec<serde_json::Value> = response.take(0).expect("deserialize failed");
+        assert_eq!(rows.len(), 1, "expected 1 record in paper_similarity");
+        assert_eq!(
+            rows[0].get("arxiv_id").and_then(|v| v.as_str()),
+            Some("2301.12345")
+        );
+    }
+
+    #[tokio::test]
+    async fn test_migrate_schema_idempotent() {
+        let db = connect_memory().await.expect("in-memory DB failed");
+        // Run twice — should not error
+        migrate_schema(&db).await.expect("first migration failed");
+        migrate_schema(&db).await.expect("second migration failed — not idempotent");
+    }
 }

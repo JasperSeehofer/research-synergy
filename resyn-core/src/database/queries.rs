@@ -849,6 +849,252 @@ impl<'a> PaletteRepository<'a> {
     }
 }
 
+// --- SimilarityRepository ---
+
+use crate::datamodels::similarity::{PaperSimilarity, SimilarNeighbor};
+
+pub struct SimilarityRepository<'a> {
+    db: &'a Db,
+}
+
+impl<'a> SimilarityRepository<'a> {
+    pub fn new(db: &'a Db) -> Self {
+        Self { db }
+    }
+
+    pub async fn upsert_similarity(&self, sim: &PaperSimilarity) -> Result<(), ResynError> {
+        let arxiv_id = strip_version_suffix(&sim.arxiv_id);
+        // Serialize neighbors as JSON string (same pattern as LlmAnnotation methods/findings)
+        // SurrealDB SCHEMAFULL TYPE string avoids nested-object field enforcement pitfalls.
+        let neighbors_json =
+            serde_json::to_string(&sim.neighbors).unwrap_or_else(|_| "[]".to_string());
+
+        self.db
+            .query(
+                "UPSERT type::record('paper_similarity', $id) SET \
+                 arxiv_id = $arxiv_id, \
+                 neighbors = $neighbors, \
+                 corpus_fingerprint = $corpus_fingerprint, \
+                 computed_at = $computed_at",
+            )
+            .bind(("id", arxiv_id.clone()))
+            .bind(("arxiv_id", arxiv_id))
+            .bind(("neighbors", neighbors_json))
+            .bind(("corpus_fingerprint", sim.corpus_fingerprint.clone()))
+            .bind(("computed_at", sim.computed_at.clone()))
+            .await
+            .map_err(|e| ResynError::Database(format!("upsert similarity failed: {e}")))?;
+
+        Ok(())
+    }
+
+    pub async fn get_similarity(
+        &self,
+        arxiv_id: &str,
+    ) -> Result<Option<PaperSimilarity>, ResynError> {
+        let id = strip_version_suffix(arxiv_id);
+        let mut response = self
+            .db
+            .query("SELECT arxiv_id, neighbors, corpus_fingerprint, computed_at FROM type::record('paper_similarity', $id)")
+            .bind(("id", id))
+            .await
+            .map_err(|e| ResynError::Database(format!("get similarity failed: {e}")))?;
+
+        let rows: Vec<serde_json::Value> = response
+            .take(0)
+            .map_err(|e| ResynError::Database(format!("parse similarity failed: {e}")))?;
+
+        if let Some(row) = rows.into_iter().next() {
+            let arxiv_id = row
+                .get("arxiv_id")
+                .and_then(|v| v.as_str())
+                .unwrap_or_default()
+                .to_string();
+            let neighbors: Vec<SimilarNeighbor> = row
+                .get("neighbors")
+                .and_then(|v| v.as_str())
+                .and_then(|s| serde_json::from_str(s).ok())
+                .unwrap_or_default();
+            let corpus_fingerprint = row
+                .get("corpus_fingerprint")
+                .and_then(|v| v.as_str())
+                .unwrap_or_default()
+                .to_string();
+            let computed_at = row
+                .get("computed_at")
+                .and_then(|v| v.as_str())
+                .unwrap_or_default()
+                .to_string();
+            Ok(Some(PaperSimilarity {
+                arxiv_id,
+                neighbors,
+                corpus_fingerprint,
+                computed_at,
+            }))
+        } else {
+            Ok(None)
+        }
+    }
+
+    pub async fn get_all_similarities(&self) -> Result<Vec<PaperSimilarity>, ResynError> {
+        let mut response = self
+            .db
+            .query("SELECT arxiv_id, neighbors, corpus_fingerprint, computed_at FROM paper_similarity")
+            .await
+            .map_err(|e| ResynError::Database(format!("get all similarities failed: {e}")))?;
+
+        let rows: Vec<serde_json::Value> = response
+            .take(0)
+            .map_err(|e| ResynError::Database(format!("parse all similarities failed: {e}")))?;
+
+        Ok(rows
+            .into_iter()
+            .filter_map(|row| {
+                let arxiv_id = row.get("arxiv_id")?.as_str()?.to_string();
+                let neighbors: Vec<SimilarNeighbor> = row
+                    .get("neighbors")
+                    .and_then(|v| v.as_str())
+                    .and_then(|s| serde_json::from_str(s).ok())
+                    .unwrap_or_default();
+                let corpus_fingerprint = row
+                    .get("corpus_fingerprint")
+                    .and_then(|v| v.as_str())
+                    .unwrap_or_default()
+                    .to_string();
+                let computed_at = row
+                    .get("computed_at")
+                    .and_then(|v| v.as_str())
+                    .unwrap_or_default()
+                    .to_string();
+                Some(PaperSimilarity {
+                    arxiv_id,
+                    neighbors,
+                    corpus_fingerprint,
+                    computed_at,
+                })
+            })
+            .collect())
+    }
+}
+
+#[cfg(test)]
+mod similarity_tests {
+    use super::*;
+    use crate::database::client::connect_memory;
+    use crate::database::schema::migrate_schema;
+    use crate::datamodels::similarity::{PaperSimilarity, SimilarNeighbor};
+
+    async fn setup_db() -> crate::database::client::Db {
+        let db = connect_memory().await.expect("in-memory DB failed");
+        migrate_schema(&db).await.expect("schema migration failed");
+        db
+    }
+
+    fn make_similarity(arxiv_id: &str, fingerprint: &str) -> PaperSimilarity {
+        PaperSimilarity {
+            arxiv_id: arxiv_id.to_string(),
+            neighbors: vec![
+                SimilarNeighbor {
+                    arxiv_id: "2301.99999".to_string(),
+                    score: 0.85,
+                    shared_terms: vec!["quantum".to_string(), "spin".to_string()],
+                },
+                SimilarNeighbor {
+                    arxiv_id: "2301.88888".to_string(),
+                    score: 0.72,
+                    shared_terms: vec!["topology".to_string()],
+                },
+            ],
+            corpus_fingerprint: fingerprint.to_string(),
+            computed_at: "2026-04-08T10:00:00Z".to_string(),
+        }
+    }
+
+    #[tokio::test]
+    async fn test_similarity_upsert_get_roundtrip() {
+        let db = setup_db().await;
+        let repo = SimilarityRepository::new(&db);
+        let sim = make_similarity("2301.12345", "fp_abc");
+
+        repo.upsert_similarity(&sim).await.expect("upsert failed");
+
+        let retrieved = repo
+            .get_similarity("2301.12345")
+            .await
+            .expect("get failed")
+            .expect("should exist");
+
+        assert_eq!(retrieved.arxiv_id, sim.arxiv_id);
+        assert_eq!(retrieved.corpus_fingerprint, sim.corpus_fingerprint);
+        assert_eq!(retrieved.computed_at, sim.computed_at);
+        assert_eq!(retrieved.neighbors.len(), sim.neighbors.len());
+        assert_eq!(retrieved.neighbors[0].arxiv_id, sim.neighbors[0].arxiv_id);
+        assert!(
+            (retrieved.neighbors[0].score - sim.neighbors[0].score).abs() < 1e-5,
+            "scores differ"
+        );
+        assert_eq!(retrieved.neighbors[0].shared_terms, sim.neighbors[0].shared_terms);
+    }
+
+    #[tokio::test]
+    async fn test_similarity_get_nonexistent_returns_none() {
+        let db = setup_db().await;
+        let repo = SimilarityRepository::new(&db);
+
+        let result = repo
+            .get_similarity("9999.99999")
+            .await
+            .expect("get failed");
+        assert!(result.is_none(), "non-existent ID should return None");
+    }
+
+    #[tokio::test]
+    async fn test_similarity_get_all() {
+        let db = setup_db().await;
+        let repo = SimilarityRepository::new(&db);
+
+        let sim1 = make_similarity("2301.00001", "fp1");
+        let sim2 = make_similarity("2301.00002", "fp1");
+
+        repo.upsert_similarity(&sim1).await.expect("upsert 1 failed");
+        repo.upsert_similarity(&sim2).await.expect("upsert 2 failed");
+
+        let all = repo.get_all_similarities().await.expect("get all failed");
+        assert_eq!(all.len(), 2, "should have 2 records");
+
+        let ids: Vec<&str> = all.iter().map(|s| s.arxiv_id.as_str()).collect();
+        assert!(ids.contains(&"2301.00001"));
+        assert!(ids.contains(&"2301.00002"));
+    }
+
+    #[tokio::test]
+    async fn test_similarity_upsert_idempotent() {
+        let db = setup_db().await;
+        let repo = SimilarityRepository::new(&db);
+        let sim = make_similarity("2301.12345", "fp_v1");
+
+        repo.upsert_similarity(&sim).await.expect("first upsert");
+
+        // Update with new fingerprint
+        let sim_v2 = PaperSimilarity {
+            corpus_fingerprint: "fp_v2".to_string(),
+            ..sim.clone()
+        };
+        repo.upsert_similarity(&sim_v2).await.expect("second upsert");
+
+        let retrieved = repo
+            .get_similarity("2301.12345")
+            .await
+            .expect("get failed")
+            .expect("should exist");
+
+        assert_eq!(retrieved.corpus_fingerprint, "fp_v2", "should reflect latest upsert");
+
+        let all = repo.get_all_similarities().await.expect("get all");
+        assert_eq!(all.len(), 1, "UPSERT should not create duplicate records");
+    }
+}
+
 /// A single row returned by the full-text search query.
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 pub struct SearchResultRow {

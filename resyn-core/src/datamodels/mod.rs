@@ -5,3 +5,4 @@ pub mod gap_finding;
 pub mod llm_annotation;
 pub mod paper;
 pub mod progress;
+pub mod similarity;

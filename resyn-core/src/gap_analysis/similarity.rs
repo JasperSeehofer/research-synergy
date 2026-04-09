@@ -1,5 +1,8 @@
 use std::collections::HashMap;
 
+use crate::datamodels::analysis::PaperAnalysis;
+use crate::datamodels::similarity::{PaperSimilarity, SimilarNeighbor};
+
 /// Computes cosine similarity between two sparse TF-IDF vectors.
 ///
 /// Returns a value in [0.0, 1.0]. Returns 0.0 if either vector is empty or
@@ -25,6 +28,49 @@ pub fn cosine_similarity(a: &HashMap<String, f32>, b: &HashMap<String, f32>) -> 
     }
 
     dot_product / (mag_a * mag_b)
+}
+
+/// Computes top-K similar neighbors for each paper in the corpus using cosine similarity.
+///
+/// Returns a `PaperSimilarity` for each paper, with neighbors sorted by descending score.
+/// Self-similarity is excluded. When fewer than `top_k` other papers exist, all are included.
+/// Shared high-weight terms (min_weight=0.05, top 3) are stored per neighbor.
+pub fn compute_top_neighbors(analyses: &[PaperAnalysis], top_k: usize) -> Vec<PaperSimilarity> {
+    analyses
+        .iter()
+        .map(|target| {
+            let mut scored: Vec<SimilarNeighbor> = analyses
+                .iter()
+                .filter(|other| other.arxiv_id != target.arxiv_id)
+                .map(|other| {
+                    let score =
+                        cosine_similarity(&target.tfidf_vector, &other.tfidf_vector);
+                    let shared =
+                        shared_high_weight_terms(&target.tfidf_vector, &other.tfidf_vector, 0.05);
+                    let top_shared = shared.into_iter().take(3).collect();
+                    SimilarNeighbor {
+                        arxiv_id: other.arxiv_id.clone(),
+                        score,
+                        shared_terms: top_shared,
+                    }
+                })
+                .collect();
+
+            scored.sort_by(|a, b| {
+                b.score
+                    .partial_cmp(&a.score)
+                    .unwrap_or(std::cmp::Ordering::Equal)
+            });
+            scored.truncate(top_k);
+
+            PaperSimilarity {
+                arxiv_id: target.arxiv_id.clone(),
+                neighbors: scored,
+                corpus_fingerprint: target.corpus_fingerprint.clone(),
+                computed_at: chrono::Utc::now().to_rfc3339(),
+            }
+        })
+        .collect()
 }
 
 /// Returns terms present in both vectors with weight >= `min_weight` in both.
@@ -118,5 +164,150 @@ mod tests {
         let b = vec_from(&[("z_term", 0.5), ("a_term", 0.5), ("m_term", 0.5)]);
         let shared = shared_high_weight_terms(&a, &b, 0.1);
         assert_eq!(shared, vec!["a_term", "m_term", "z_term"]);
+    }
+
+    // --- compute_top_neighbors tests ---
+
+    fn make_analysis(arxiv_id: &str, terms: &[(&str, f32)], fingerprint: &str) -> PaperAnalysis {
+        PaperAnalysis {
+            arxiv_id: arxiv_id.to_string(),
+            tfidf_vector: vec_from(terms),
+            top_terms: terms.iter().map(|(k, _)| k.to_string()).collect(),
+            top_scores: terms.iter().map(|(_, v)| *v).collect(),
+            analyzed_at: "2026-04-08T00:00:00Z".to_string(),
+            corpus_fingerprint: fingerprint.to_string(),
+        }
+    }
+
+    #[test]
+    fn test_compute_top_neighbors_excludes_self() {
+        let analyses = vec![
+            make_analysis("2301.00001", &[("quantum", 0.8), ("spin", 0.6)], "fp1"),
+            make_analysis("2301.00002", &[("quantum", 0.7), ("spin", 0.5)], "fp1"),
+            make_analysis("2301.00003", &[("topology", 0.9)], "fp1"),
+        ];
+        let results = compute_top_neighbors(&analyses, 10);
+        assert_eq!(results.len(), 3);
+        for result in &results {
+            assert!(
+                result.neighbors.iter().all(|n| n.arxiv_id != result.arxiv_id),
+                "Self-similarity must not appear in neighbors for {}",
+                result.arxiv_id
+            );
+        }
+    }
+
+    #[test]
+    fn test_compute_top_neighbors_sorted_descending() {
+        let analyses = vec![
+            make_analysis("2301.00001", &[("quantum", 0.8), ("spin", 0.6)], "fp1"),
+            make_analysis("2301.00002", &[("quantum", 0.7), ("spin", 0.5)], "fp1"),
+            make_analysis("2301.00003", &[("topology", 0.9)], "fp1"),
+            make_analysis("2301.00004", &[("spin", 0.6), ("noise", 0.4)], "fp1"),
+        ];
+        let results = compute_top_neighbors(&analyses, 10);
+        for result in &results {
+            let scores: Vec<f32> = result.neighbors.iter().map(|n| n.score).collect();
+            for window in scores.windows(2) {
+                assert!(
+                    window[0] >= window[1],
+                    "Neighbors must be sorted descending: {} < {} for {}",
+                    window[0],
+                    window[1],
+                    result.arxiv_id
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn test_compute_top_neighbors_fewer_than_k_returns_all_non_self() {
+        // Only 3 papers, top_k=10 — should return 2 neighbors (all non-self)
+        let analyses = vec![
+            make_analysis("2301.00001", &[("quantum", 0.8)], "fp1"),
+            make_analysis("2301.00002", &[("quantum", 0.7)], "fp1"),
+            make_analysis("2301.00003", &[("topology", 0.9)], "fp1"),
+        ];
+        let results = compute_top_neighbors(&analyses, 10);
+        for result in &results {
+            assert_eq!(
+                result.neighbors.len(),
+                2,
+                "With 3 papers and top_k=10, expect 2 neighbors for {}",
+                result.arxiv_id
+            );
+        }
+    }
+
+    #[test]
+    fn test_compute_top_neighbors_truncates_to_k() {
+        // 5 papers, top_k=3 — should return exactly 3 neighbors
+        let analyses = vec![
+            make_analysis("2301.00001", &[("quantum", 0.8)], "fp1"),
+            make_analysis("2301.00002", &[("quantum", 0.7)], "fp1"),
+            make_analysis("2301.00003", &[("quantum", 0.6)], "fp1"),
+            make_analysis("2301.00004", &[("quantum", 0.5)], "fp1"),
+            make_analysis("2301.00005", &[("quantum", 0.4)], "fp1"),
+        ];
+        let results = compute_top_neighbors(&analyses, 3);
+        for result in &results {
+            assert!(
+                result.neighbors.len() <= 3,
+                "top_k=3 must truncate to 3, got {} for {}",
+                result.neighbors.len(),
+                result.arxiv_id
+            );
+        }
+    }
+
+    #[test]
+    fn test_compute_top_neighbors_shared_terms_populated() {
+        // Papers with overlapping high-weight terms
+        let analyses = vec![
+            make_analysis(
+                "2301.00001",
+                &[("quantum", 0.8), ("entanglement", 0.7), ("spin", 0.6)],
+                "fp1",
+            ),
+            make_analysis(
+                "2301.00002",
+                &[("quantum", 0.9), ("entanglement", 0.8), ("spin", 0.5)],
+                "fp1",
+            ),
+            make_analysis("2301.00003", &[("topology", 0.9)], "fp1"),
+        ];
+        let results = compute_top_neighbors(&analyses, 10);
+        // Paper 1 and 2 should share terms with each other
+        let paper1 = results.iter().find(|r| r.arxiv_id == "2301.00001").unwrap();
+        let neighbor2 = paper1
+            .neighbors
+            .iter()
+            .find(|n| n.arxiv_id == "2301.00002")
+            .unwrap();
+        // Both have quantum, entanglement, spin >= 0.05 in both
+        assert!(
+            !neighbor2.shared_terms.is_empty(),
+            "Shared terms should be populated for similar papers"
+        );
+        // At most 3 shared terms
+        assert!(
+            neighbor2.shared_terms.len() <= 3,
+            "shared_terms must be capped at 3"
+        );
+    }
+
+    #[test]
+    fn test_compute_top_neighbors_corpus_fingerprint_propagated() {
+        let analyses = vec![
+            make_analysis("2301.00001", &[("quantum", 0.8)], "fingerprint_abc"),
+            make_analysis("2301.00002", &[("quantum", 0.7)], "fingerprint_abc"),
+        ];
+        let results = compute_top_neighbors(&analyses, 10);
+        for result in &results {
+            assert_eq!(
+                result.corpus_fingerprint, "fingerprint_abc",
+                "corpus_fingerprint must be propagated from analysis"
+            );
+        }
     }
 }

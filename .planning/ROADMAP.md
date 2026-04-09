@@ -127,7 +127,11 @@ Plans:
   2. User can select a "Size by" dropdown (Uniform / PageRank / Betweenness / Citations) and graph nodes resize accordingly
   3. Dashboard shows a "Most Influential Papers" ranking panel ordered by PageRank score
   4. Citation graph queries use single SurrealDB JOINs rather than per-paper N+1 lookups
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 23-01-PLAN.md — GraphMetrics data model, migration 11, GraphMetricsRepository, N+1 query fix
+- [ ] 23-02-PLAN.md — PageRank + Brandes betweenness computation, server fns, pipeline auto-compute
+- [ ] 23-03-PLAN.md — SizeMode dropdown, node radius lerp, tooltip metrics, dashboard influential card
 **UI hint**: yes
 
 ### Phase 24: Community Detection
@@ -192,7 +196,7 @@ Plans:
 | 999.2. Topic Ring Node Borders | v1.3 | 2/2 | Complete | 2026-03-30 |
 | 21. Search & Filter | v1.4 | 3/3 | Complete    | 2026-04-09 |
 | 22. Paper Similarity Engine | v1.4 | 3/3 | Complete    | 2026-04-09 |
-| 23. Graph Analytics — Centrality & Metrics | v1.4 | 0/? | Not started | - |
+| 23. Graph Analytics — Centrality & Metrics | v1.4 | 0/3 | Planned | - |
 | 24. Community Detection | v1.4 | 0/? | Not started | - |
 | 25. Discovery Recommendations | v1.4 | 0/? | Not started | - |
 | 26. Export & Interop | v1.4 | 0/? | Not started | - |

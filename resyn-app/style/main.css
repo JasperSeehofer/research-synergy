@@ -2011,3 +2011,52 @@ input[type="range"].temporal-range {
 .shared-terms {
   font-style: italic;
 }
+
+/* =============================================================================
+   Influential Papers Card (Phase 23 — D-04, D-05, D-06)
+   ============================================================================= */
+
+.influential-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.influential-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.influential-rank {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  min-width: 20px;
+  flex-shrink: 0;
+}
+
+.influential-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.influential-title {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.influential-meta {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  margin: 2px 0 0 0;
+}

@@ -15,6 +15,16 @@ pub enum LabelMode {
     Off,
 }
 
+/// Controls which metric is used to size graph nodes.
+#[derive(Debug, Clone, Copy, PartialEq, Default)]
+pub enum SizeMode {
+    #[default]
+    Uniform,
+    PageRank,
+    Betweenness,
+    Citations,
+}
+
 #[derive(Debug, Clone)]
 pub struct NodeState {
     pub id: String,
@@ -27,6 +37,10 @@ pub struct NodeState {
     pub x: f64,
     pub y: f64,
     pub radius: f64,
+    /// Target radius for the current SizeMode (smoothly interpolated toward).
+    pub target_radius: f64,
+    /// Smoothly interpolated display radius (used by renderers).
+    pub current_radius: f64,
     pub pinned: bool,
     pub bfs_depth: Option<u32>,
     pub lod_visible: bool,
@@ -84,6 +98,10 @@ pub struct GraphState {
     pub frame_counter: u32,
     /// Set of paper_ids that match the current search (for multi-match dimming per D-07).
     pub search_highlight_ids: Vec<String>,
+    /// Controls which metric drives node sizing (D-01).
+    pub size_mode: SizeMode,
+    /// Maps arxiv_id -> (pagerank, betweenness) for metric-based sizing.
+    pub metrics: std::collections::HashMap<String, (f32, f32)>,
 }
 
 impl GraphState {
@@ -164,6 +182,7 @@ impl GraphState {
                     .as_ref()
                     .map(|sid| sid == &n.id)
                     .unwrap_or(false);
+                let r = NodeState::radius_from_citations(citation_count);
                 NodeState {
                     id: n.id,
                     title: n.title,
@@ -174,7 +193,9 @@ impl GraphState {
                     authors: n.authors,
                     x,
                     y,
-                    radius: NodeState::radius_from_citations(citation_count),
+                    radius: r,
+                    target_radius: r,
+                    current_radius: r,
                     pinned: false,
                     bfs_depth: n.bfs_depth,
                     lod_visible: true,
@@ -245,7 +266,38 @@ impl GraphState {
             pulse_start_frame: None,
             frame_counter: 0,
             search_highlight_ids: vec![],
+            size_mode: SizeMode::Uniform,
+            metrics: std::collections::HashMap::new(),
         }
+    }
+
+    /// Update `target_radius` on every node based on the current `size_mode`.
+    /// Call this whenever `size_mode` changes or new metrics are loaded.
+    pub fn update_node_target_radii(&mut self) {
+        for node in &mut self.nodes {
+            node.target_radius = match self.size_mode {
+                SizeMode::Uniform => 8.0,
+                SizeMode::Citations => Self::radius_from_citations_f64(node.citation_count),
+                SizeMode::PageRank => {
+                    let score = self.metrics.get(&node.id).map(|m| m.0).unwrap_or(0.0);
+                    Self::radius_from_metric(score)
+                }
+                SizeMode::Betweenness => {
+                    let score = self.metrics.get(&node.id).map(|m| m.1).unwrap_or(0.0);
+                    Self::radius_from_metric(score)
+                }
+            };
+        }
+    }
+
+    fn radius_from_citations_f64(count: u32) -> f64 {
+        NodeState::radius_from_citations(count)
+    }
+
+    /// Map a raw metric score to a display radius in [4.0, 18.0].
+    /// Uses sqrt scaling so highly-skewed PageRank distributions stay legible.
+    fn radius_from_metric(score: f32) -> f64 {
+        ((score as f64).sqrt() * 50.0 + 4.0).clamp(4.0, 18.0)
     }
 
     /// Check if the simulation has converged (alpha below threshold).
@@ -657,6 +709,8 @@ mod tests {
             x: 0.0,
             y: 0.0,
             radius: 4.0,
+            target_radius: 4.0,
+            current_radius: 4.0,
             pinned: false,
             bfs_depth: None,
             lod_visible: true,

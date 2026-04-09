@@ -254,7 +254,7 @@ impl Renderer for Canvas2DRenderer {
             self.ctx.save();
             self.ctx.set_fill_style_str(color);
             self.ctx.set_global_alpha(alpha);
-            draw_arrowhead(&self.ctx, from.x, from.y, to.x, to.y, to.radius);
+            draw_arrowhead(&self.ctx, from.x, from.y, to.x, to.y, to.current_radius);
             self.ctx.restore();
         }
 
@@ -286,10 +286,13 @@ impl Renderer for Canvas2DRenderer {
                 "#4a9eff"
             };
 
+            // Use current_radius for rendering (smoothly lerped toward target_radius).
+            let draw_radius = node.current_radius;
+
             // Draw node circle
             self.ctx.begin_path();
             self.ctx
-                .arc(node.x, node.y, node.radius, 0.0, std::f64::consts::TAU)
+                .arc(node.x, node.y, draw_radius, 0.0, std::f64::consts::TAU)
                 .unwrap();
             self.ctx.set_fill_style_str(fill_color);
             self.ctx.fill();
@@ -299,7 +302,7 @@ impl Renderer for Canvas2DRenderer {
             // Seed node outer planetary ring
             if node.is_seed && !dimmed {
                 self.ctx.begin_path();
-                let ring_radius = node.radius + 2.0 + 1.5; // 2px gap + ring center
+                let ring_radius = draw_radius + 2.0 + 1.5; // 2px gap + ring center
                 self.ctx
                     .arc(node.x, node.y, ring_radius, 0.0, std::f64::consts::TAU)
                     .unwrap();
@@ -315,7 +318,7 @@ impl Renderer for Canvas2DRenderer {
                     .arc(
                         node.x,
                         node.y,
-                        node.radius + 4.0,
+                        draw_radius + 4.0,
                         0.0,
                         std::f64::consts::TAU,
                     )
@@ -342,7 +345,7 @@ impl Renderer for Canvas2DRenderer {
                             .arc(
                                 node.x,
                                 node.y,
-                                node.radius + 4.0 + pulse_offset,
+                                draw_radius + 4.0 + pulse_offset,
                                 0.0,
                                 std::f64::consts::TAU,
                             )
@@ -358,7 +361,7 @@ impl Renderer for Canvas2DRenderer {
                             .arc(
                                 node.x,
                                 node.y,
-                                node.radius + 2.0,
+                                draw_radius + 2.0,
                                 0.0,
                                 std::f64::consts::TAU,
                             )

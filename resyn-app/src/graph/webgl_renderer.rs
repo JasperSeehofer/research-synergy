@@ -374,7 +374,7 @@ impl Renderer for WebGL2Renderer {
             instance_data.extend_from_slice(&[
                 node.x as f32,
                 node.y as f32,
-                node.radius as f32,
+                node.current_radius as f32,
                 alpha,
                 r,
                 g,
@@ -506,8 +506,8 @@ impl Renderer for WebGL2Renderer {
                     // Build ring annulus from triangle segments using edge buffer
                     let mut ring_verts: Vec<f32> = Vec::new();
                     let segments = 48_u32;
-                    let inner_r = (seed.radius as f32) + gap;
-                    let outer_r = (seed.radius as f32) + gap + ring_thickness;
+                    let inner_r = (seed.current_radius as f32) + gap;
+                    let outer_r = (seed.current_radius as f32) + gap + ring_thickness;
                     let cx = seed.x as f32;
                     let cy = seed.y as f32;
                     for i in 0..segments {
@@ -705,7 +705,7 @@ fn build_arrowhead(
     let dx = to.x - from.x;
     let dy = to.y - from.y;
     let angle = dy.atan2(dx) as f32;
-    let target_radius = to.radius as f32;
+    let target_radius = to.current_radius as f32;
     let size = 8.0_f32;
 
     let tip_x = to.x as f32 - target_radius * angle.cos();

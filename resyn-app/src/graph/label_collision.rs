@@ -119,7 +119,7 @@ pub fn build_label_cache(
         let text_w = text_widths.get(i).copied().unwrap_or(40.0);
         let pill_w = text_w + PILL_H_PAD * 2.0;
         let label_x = sx - pill_w / 2.0;
-        let label_y = sy + node.radius * viewport.scale + LABEL_NODE_GAP;
+        let label_y = sy + node.current_radius * viewport.scale + LABEL_NODE_GAP;
 
         // Padded rect for overlap testing
         let rx = label_x - COLLISION_PAD;
@@ -433,6 +433,8 @@ mod tests {
             x,
             y,
             radius: 8.0,
+            target_radius: 8.0,
+            current_radius: 8.0,
             pinned: false,
             bfs_depth: None,
             lod_visible: visible,

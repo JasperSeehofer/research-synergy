@@ -19,7 +19,8 @@ use crate::server_fns::graph::get_graph_data;
 use resyn_worker::{LayoutInput, LayoutOutput, NodeData};
 
 use crate::graph::label_collision::draw_label_pill;
-use crate::graph::layout_state::LabelMode;
+use crate::graph::layout_state::{LabelMode, SizeMode};
+use crate::server_fns::metrics::{get_metrics_pairs, get_metrics_status, MetricsStatus};
 
 // ── Tooltip data ────────────────────────────────────────────────────────────
 
@@ -112,11 +113,45 @@ pub fn GraphPage() -> impl IntoView {
     // Label mode signal — controls which label style is rendered on graph nodes
     let label_mode: RwSignal<LabelMode> = RwSignal::new(LabelMode::AuthorYear);
 
+    // Size mode signal — controls which metric drives node radius (D-01)
+    let size_mode: RwSignal<SizeMode> = RwSignal::new(SizeMode::Uniform);
+    let metrics_ready: RwSignal<bool> = RwSignal::new(false);
+    let metrics_computing: RwSignal<bool> = RwSignal::new(false);
+
     // Tooltip overlay signal
     let tooltip_signal: RwSignal<Option<TooltipData>> = RwSignal::new(None);
 
     // Fetch graph data from server
     let graph_resource = Resource::new(|| (), |_| get_graph_data());
+
+    // Poll metrics status to enable/disable PageRank and Betweenness options
+    let metrics_status_resource = Resource::new(|| (), |_| get_metrics_status());
+    // When status becomes Ready, fetch all metric pairs for node sizing
+    let metrics_pairs_resource = Resource::new(|| (), |_| get_metrics_pairs());
+
+    // Derive metrics_ready from status resource
+    Effect::new(move |_| {
+        if let Some(Ok(status)) = metrics_status_resource.get() {
+            metrics_ready.set(matches!(status, MetricsStatus::Ready { .. }));
+        }
+    });
+
+    // When metrics pairs arrive, store them in a shared signal for the RAF loop
+    let metrics_map_signal: RwSignal<std::collections::HashMap<String, (f32, f32)>> =
+        RwSignal::new(std::collections::HashMap::new());
+
+    Effect::new(move |_| {
+        if let Some(Ok(pairs)) = metrics_pairs_resource.get() {
+            if !pairs.is_empty() {
+                let map: std::collections::HashMap<String, (f32, f32)> = pairs
+                    .into_iter()
+                    .map(|(id, pr, bc)| (id, (pr, bc)))
+                    .collect();
+                metrics_map_signal.set(map);
+                metrics_ready.set(true);
+            }
+        }
+    });
 
     // SelectedPaper context — for drawer integration
     let SelectedPaper(selected_paper) = expect_context::<SelectedPaper>();
@@ -309,6 +344,8 @@ pub fn GraphPage() -> impl IntoView {
             show_topic_rings,
             active_topic_filter,
             search_pan_signal,
+            size_mode,
+            metrics_map_signal,
         );
 
         on_cleanup(move || handle.cancel());
@@ -360,6 +397,9 @@ pub fn GraphPage() -> impl IntoView {
                                 show_topic_rings=show_topic_rings
                                 active_topic_filter=active_topic_filter
                                 palette=palette_signal
+                                size_mode=size_mode
+                                metrics_ready=metrics_ready
+                                metrics_computing=metrics_computing
                             />
                             <TemporalSlider
                                 temporal_min=temporal_min
@@ -510,6 +550,8 @@ fn start_render_loop(
     show_topic_rings: RwSignal<bool>,
     active_topic_filter: RwSignal<std::collections::HashSet<String>>,
     search_pan_signal: RwSignal<Option<crate::app::SearchPanRequest>>,
+    size_mode: RwSignal<SizeMode>,
+    metrics_map_signal: RwSignal<std::collections::HashMap<String, (f32, f32)>>,
 ) -> RafHandle {
     let cancelled = Arc::new(AtomicBool::new(false));
     let cancelled_clone = cancelled.clone();
@@ -521,6 +563,9 @@ fn start_render_loop(
 
     // Track previous force mode to detect changes and trigger alpha reheat (D-13)
     let prev_force_mode = Rc::new(RefCell::new(crate::graph::layout_state::ForceMode::Citation));
+
+    // Track previous size mode to detect changes and update target radii (D-01)
+    let prev_size_mode = Rc::new(RefCell::new(SizeMode::Uniform));
 
     // Track previous viewport for label cache dirty detection (D-12)
     let prev_scale = Rc::new(RefCell::new(1.0_f64));
@@ -560,6 +605,38 @@ fn start_render_loop(
                     simulation_settled.set(false);
                 }
                 s.graph.force_mode = current_force_mode;
+            }
+
+            // Sync metrics map from signal into graph state (populated when metrics arrive)
+            {
+                let current_metrics = metrics_map_signal.get_untracked();
+                if !current_metrics.is_empty() && s.graph.metrics.is_empty() {
+                    s.graph.metrics = current_metrics;
+                    // Immediately update target radii if a metric mode is active
+                    s.graph.update_node_target_radii();
+                }
+            }
+
+            // Sync size mode and update target radii on change (D-01)
+            {
+                let current_size_mode = size_mode.get_untracked();
+                let prev = *prev_size_mode.borrow();
+                if current_size_mode != prev {
+                    *prev_size_mode.borrow_mut() = current_size_mode;
+                    s.graph.size_mode = current_size_mode;
+                    s.graph.update_node_target_radii();
+                }
+            }
+
+            // Lerp node radii toward targets (D-02: ~300ms transition at 60fps)
+            const LERP_FACTOR: f64 = 0.15; // ~95% in 18 frames
+            for node in &mut s.graph.nodes {
+                let diff = node.target_radius - node.current_radius;
+                if diff.abs() > 0.01 {
+                    node.current_radius += diff * LERP_FACTOR;
+                } else {
+                    node.current_radius = node.target_radius;
+                }
             }
 
             // Handle zoom button presses
@@ -878,7 +955,7 @@ fn start_render_loop(
                                         let pill_w = text_w + PILL_H_PAD * 2.0;
                                         let label_x = sx - pill_w / 2.0;
                                         let label_y = sy
-                                            + node.radius * s.viewport.scale
+                                            + node.current_radius * s.viewport.scale
                                             + LABEL_NODE_GAP;
                                         draw_label_pill(
                                             ctx,
@@ -908,7 +985,7 @@ fn start_render_loop(
                                     let pill_w = text_w + PILL_H_PAD * 2.0;
                                     let label_x = sx - pill_w / 2.0;
                                     let label_y =
-                                        sy + node.radius * s.viewport.scale + LABEL_NODE_GAP;
+                                        sy + node.current_radius * s.viewport.scale + LABEL_NODE_GAP;
                                     draw_label_pill(
                                         ctx,
                                         label_x,
@@ -938,7 +1015,7 @@ fn start_render_loop(
                                             let pill_w = text_w + PILL_H_PAD * 2.0;
                                             let label_x = sx - pill_w / 2.0;
                                             let label_y = sy
-                                                + node.radius * s.viewport.scale
+                                                + node.current_radius * s.viewport.scale
                                                 + LABEL_NODE_GAP;
                                             draw_label_pill(
                                                 ctx,
@@ -966,7 +1043,7 @@ fn start_render_loop(
                                     }
                                     let (sx, sy) = s.viewport.world_to_screen(node.x, node.y);
                                     let label_y =
-                                        sy + node.radius * s.viewport.scale + LABEL_NODE_GAP;
+                                        sy + node.current_radius * s.viewport.scale + LABEL_NODE_GAP;
                                     if node.top_keywords.is_empty() {
                                         // D-06: unanalyzed badge
                                         let text_w = s
@@ -1049,6 +1126,8 @@ fn start_render_loop(
 fn node_tooltip(
     node: &crate::graph::layout_state::NodeState,
     label_mode: &crate::graph::layout_state::LabelMode,
+    size_mode: SizeMode,
+    metrics: &std::collections::HashMap<String, (f32, f32)>,
 ) -> String {
     let title = if node.title.len() > 60 {
         format!("{}…", &node.title[..60])
@@ -1059,6 +1138,24 @@ fn node_tooltip(
         "{}\n{} · {} · {} citations",
         title, node.first_author, node.year, node.citation_count
     );
+
+    // D-03: Append active metric score in tooltip
+    match size_mode {
+        SizeMode::PageRank => {
+            if let Some((pr, _)) = metrics.get(&node.id) {
+                text.push_str(&format!("\nPageRank: {:.4}", pr));
+            }
+        }
+        SizeMode::Betweenness => {
+            if let Some((_, bc)) = metrics.get(&node.id) {
+                text.push_str(&format!("\nBetweenness: {:.4}", bc));
+            }
+        }
+        SizeMode::Citations => {
+            text.push_str(&format!("\nCitations: {}", node.citation_count));
+        }
+        SizeMode::Uniform => {}
+    }
 
     // D-05: Append keywords section when in keyword mode and keywords present
     if *label_mode == crate::graph::layout_state::LabelMode::Keywords
@@ -1201,7 +1298,7 @@ fn attach_event_listeners(
             s.graph.hovered_edge = hovered_edge;
 
             if let Some(idx) = hovered {
-                let text = node_tooltip(&s.graph.nodes[idx], &s.graph.label_mode);
+                let text = node_tooltip(&s.graph.nodes[idx], &s.graph.label_mode, s.graph.size_mode, &s.graph.metrics);
                 drop(s);
                 tooltip_signal.set(Some(TooltipData { text, x: sx, y: sy }));
             } else if let Some(eidx) = hovered_edge {
@@ -1484,7 +1581,7 @@ fn draw_topic_rings(
         }
 
         let (sx, sy) = viewport.world_to_screen(node.x, node.y);
-        let screen_radius = node.radius * viewport.scale;
+        let screen_radius = node.current_radius * viewport.scale;
 
         // D-13: Below threshold, skip topic rings (existing border handles it)
         if screen_radius < MIN_SCREEN_RADIUS_FOR_RINGS {

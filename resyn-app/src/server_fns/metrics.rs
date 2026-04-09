@@ -90,6 +90,94 @@ pub async fn get_metrics_status() -> Result<MetricsStatus, ServerFnError> {
     unreachable!()
 }
 
+/// Fetch all computed metrics as a flat list for client-side lookup.
+///
+/// Used by the "Size by" dropdown to populate `GraphState.metrics` for node sizing.
+/// Returns an empty vec when no metrics have been computed yet.
+#[server(GetAllMetrics, "/api")]
+pub async fn get_all_metrics() -> Result<Vec<RankedPaperEntry>, ServerFnError> {
+    #[cfg(feature = "ssr")]
+    {
+        use resyn_core::database::queries::GraphMetricsRepository;
+        use std::sync::Arc;
+
+        let db = use_context::<Arc<resyn_core::database::client::Db>>()
+            .ok_or_else(|| ServerFnError::new("Database not available"))?;
+        let metrics_repo = GraphMetricsRepository::new(&db);
+
+        let all = metrics_repo
+            .get_all_metrics()
+            .await
+            .map_err(|e| ServerFnError::new(e.to_string()))?;
+
+        Ok(all
+            .into_iter()
+            .map(|m| RankedPaperEntry {
+                arxiv_id: m.arxiv_id,
+                title: String::new(),
+                year: String::new(),
+                pagerank: m.pagerank,
+            })
+            .collect())
+    }
+    #[cfg(not(feature = "ssr"))]
+    unreachable!()
+}
+
+/// Fetch all computed betweenness centrality scores.
+///
+/// Separate from `get_all_metrics` to avoid a heavy join; betweenness is only
+/// needed when SizeMode::Betweenness is active.
+#[server(GetAllBetweenness, "/api")]
+pub async fn get_all_betweenness() -> Result<Vec<(String, f32)>, ServerFnError> {
+    #[cfg(feature = "ssr")]
+    {
+        use resyn_core::database::queries::GraphMetricsRepository;
+        use std::sync::Arc;
+
+        let db = use_context::<Arc<resyn_core::database::client::Db>>()
+            .ok_or_else(|| ServerFnError::new("Database not available"))?;
+        let metrics_repo = GraphMetricsRepository::new(&db);
+
+        let all = metrics_repo
+            .get_all_metrics()
+            .await
+            .map_err(|e| ServerFnError::new(e.to_string()))?;
+
+        Ok(all.into_iter().map(|m| (m.arxiv_id, m.betweenness)).collect())
+    }
+    #[cfg(not(feature = "ssr"))]
+    unreachable!()
+}
+
+/// Fetch all computed metrics (both PageRank and betweenness) as (arxiv_id, pagerank, betweenness) tuples.
+///
+/// Used to populate the `GraphState.metrics` HashMap when metrics become available.
+#[server(GetMetricsPairs, "/api")]
+pub async fn get_metrics_pairs() -> Result<Vec<(String, f32, f32)>, ServerFnError> {
+    #[cfg(feature = "ssr")]
+    {
+        use resyn_core::database::queries::GraphMetricsRepository;
+        use std::sync::Arc;
+
+        let db = use_context::<Arc<resyn_core::database::client::Db>>()
+            .ok_or_else(|| ServerFnError::new("Database not available"))?;
+        let metrics_repo = GraphMetricsRepository::new(&db);
+
+        let all = metrics_repo
+            .get_all_metrics()
+            .await
+            .map_err(|e| ServerFnError::new(e.to_string()))?;
+
+        Ok(all
+            .into_iter()
+            .map(|m| (m.arxiv_id, m.pagerank, m.betweenness))
+            .collect())
+    }
+    #[cfg(not(feature = "ssr"))]
+    unreachable!()
+}
+
 /// Trigger background computation of PageRank and betweenness centrality.
 ///
 /// Returns immediately. The computation runs asynchronously in a spawned task.

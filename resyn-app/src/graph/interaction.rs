@@ -95,6 +95,8 @@ mod tests {
             x,
             y,
             radius,
+            target_radius: radius,
+            current_radius: radius,
             pinned: false,
             bfs_depth: None,
             lod_visible: true,

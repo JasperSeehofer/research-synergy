@@ -1,4 +1,4 @@
-use crate::graph::layout_state::{ForceMode, LabelMode};
+use crate::graph::layout_state::{ForceMode, LabelMode, SizeMode};
 use leptos::prelude::*;
 
 #[component]
@@ -21,6 +21,9 @@ pub fn GraphControls(
     show_topic_rings: RwSignal<bool>,
     active_topic_filter: RwSignal<std::collections::HashSet<String>>,
     palette: RwSignal<Vec<crate::server_fns::graph::PaletteEntry>>,
+    size_mode: RwSignal<SizeMode>,
+    metrics_ready: RwSignal<bool>,
+    metrics_computing: RwSignal<bool>,
 ) -> impl IntoView {
     let _ = temporal_min;
     let _ = temporal_max;
@@ -179,6 +182,70 @@ pub fn GraphControls(
                     aria-label="Toggle topic ring borders"
                 >
                     "Topic Rings"
+                </button>
+            </div>
+
+            // Size by group (D-01, D-08, D-10)
+            <div class="graph-controls-group">
+                <span class="text-label" style="font-size: 12px; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase;">
+                    {move || if metrics_computing.get() {
+                        view! { "Size by " <span class="spinner-sm"></span> }.into_any()
+                    } else {
+                        view! { "Size by" }.into_any()
+                    }}
+                </span>
+                <select
+                    class="form-select"
+                    style="min-width: 120px;"
+                    on:change=move |e| {
+                        use leptos::wasm_bindgen::JsCast;
+                        let val = e.target().unwrap()
+                            .dyn_into::<web_sys::HtmlSelectElement>().unwrap()
+                            .value();
+                        size_mode.set(match val.as_str() {
+                            "pagerank" => SizeMode::PageRank,
+                            "betweenness" => SizeMode::Betweenness,
+                            "citations" => SizeMode::Citations,
+                            _ => SizeMode::Uniform,
+                        });
+                    }
+                >
+                    <option value="uniform" selected=move || size_mode.get() == SizeMode::Uniform>"Uniform"</option>
+                    <option value="pagerank"
+                        prop:disabled=move || !metrics_ready.get()>
+                        {move || if !metrics_ready.get() {
+                            "PageRank (computing\u{2026})"
+                        } else {
+                            "PageRank"
+                        }}
+                    </option>
+                    <option value="betweenness"
+                        prop:disabled=move || !metrics_ready.get()>
+                        {move || if !metrics_ready.get() {
+                            "Betweenness (computing\u{2026})"
+                        } else {
+                            "Betweenness"
+                        }}
+                    </option>
+                    <option value="citations" selected=move || size_mode.get() == SizeMode::Citations>"Citations"</option>
+                </select>
+                <button
+                    class="graph-control-btn"
+                    title="Recompute centrality metrics"
+                    aria-label="Recompute graph metrics"
+                    prop:disabled=move || metrics_computing.get()
+                    on:click=move |_| {
+                        use crate::server_fns::metrics::trigger_metrics_compute;
+                        leptos::task::spawn_local(async move {
+                            let _ = trigger_metrics_compute().await;
+                        });
+                    }
+                >
+                    {move || if metrics_computing.get() {
+                        view! { <span class="spinner-sm"></span> }.into_any()
+                    } else {
+                        view! { "\u{21BA}" }.into_any()
+                    }}
                 </button>
             </div>
 

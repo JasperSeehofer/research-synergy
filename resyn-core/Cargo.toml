@@ -38,6 +38,7 @@ scraper = { workspace = true, optional = true }
 arxiv-rs = { workspace = true, optional = true }
 futures = { workspace = true, optional = true }
 tokio = { workspace = true, optional = true }
+single-clustering = "0.6.1"
 
 [dev-dependencies]
 wiremock = { workspace = true }

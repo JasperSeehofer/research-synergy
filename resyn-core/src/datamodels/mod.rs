@@ -1,4 +1,5 @@
 pub mod analysis;
+pub mod community;
 pub mod enrichment;
 pub mod extraction;
 pub mod gap_finding;

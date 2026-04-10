@@ -1260,6 +1260,297 @@ impl<'a> GraphMetricsRepository<'a> {
     }
 }
 
+// --- CommunityRepository ---
+
+use crate::datamodels::community::CommunityAssignment;
+
+pub struct CommunityRepository<'a> {
+    db: &'a Db,
+}
+
+impl<'a> CommunityRepository<'a> {
+    pub fn new(db: &'a Db) -> Self {
+        Self { db }
+    }
+
+    /// Upsert community assignments. Deletes existing rows for each arxiv_id in the
+    /// batch first, then inserts fresh rows. Fully idempotent.
+    pub async fn upsert(&self, assignments: &[CommunityAssignment]) -> Result<(), ResynError> {
+        // Delete existing rows for all arxiv_ids in the batch
+        for a in assignments {
+            let id = strip_version_suffix(&a.arxiv_id);
+            self.db
+                .query(
+                    "DELETE graph_communities WHERE arxiv_id = $arxiv_id",
+                )
+                .bind(("arxiv_id", id))
+                .await
+                .map_err(|e| ResynError::Database(format!("delete community row failed: {e}")))?;
+        }
+
+        // Bulk insert fresh rows
+        for a in assignments {
+            let id = strip_version_suffix(&a.arxiv_id);
+            self.db
+                .query(
+                    "CREATE graph_communities CONTENT { \
+                     arxiv_id: $arxiv_id, \
+                     community_id: $community_id, \
+                     corpus_fingerprint: $corpus_fingerprint \
+                     }",
+                )
+                .bind(("arxiv_id", id))
+                .bind(("community_id", a.community_id as i64))
+                .bind(("corpus_fingerprint", a.corpus_fingerprint.clone()))
+                .await
+                .map_err(|e| {
+                    ResynError::Database(format!("insert community row failed: {e}"))
+                })?;
+        }
+
+        Ok(())
+    }
+
+    pub async fn get_by_paper(
+        &self,
+        arxiv_id: &str,
+    ) -> Result<Option<CommunityAssignment>, ResynError> {
+        let id = strip_version_suffix(arxiv_id);
+        let mut response = self
+            .db
+            .query(
+                "SELECT arxiv_id, community_id, corpus_fingerprint \
+                 FROM graph_communities WHERE arxiv_id = $arxiv_id LIMIT 1",
+            )
+            .bind(("arxiv_id", id))
+            .await
+            .map_err(|e| ResynError::Database(format!("get community by paper failed: {e}")))?;
+
+        let rows: Vec<serde_json::Value> = response
+            .take(0)
+            .map_err(|e| ResynError::Database(format!("parse community row failed: {e}")))?;
+
+        Ok(rows.into_iter().next().and_then(|row| {
+            Some(CommunityAssignment {
+                arxiv_id: row.get("arxiv_id")?.as_str()?.to_string(),
+                community_id: row.get("community_id")?.as_i64()? as u32,
+                corpus_fingerprint: row.get("corpus_fingerprint")?.as_str()?.to_string(),
+            })
+        }))
+    }
+
+    pub async fn list_all(&self) -> Result<Vec<CommunityAssignment>, ResynError> {
+        let mut response = self
+            .db
+            .query("SELECT arxiv_id, community_id, corpus_fingerprint FROM graph_communities")
+            .await
+            .map_err(|e| ResynError::Database(format!("list all communities failed: {e}")))?;
+
+        let rows: Vec<serde_json::Value> = response
+            .take(0)
+            .map_err(|e| ResynError::Database(format!("parse all communities failed: {e}")))?;
+
+        Ok(rows
+            .into_iter()
+            .filter_map(|row| {
+                Some(CommunityAssignment {
+                    arxiv_id: row.get("arxiv_id")?.as_str()?.to_string(),
+                    community_id: row.get("community_id")?.as_i64()? as u32,
+                    corpus_fingerprint: row.get("corpus_fingerprint")?.as_str()?.to_string(),
+                })
+            })
+            .collect())
+    }
+
+    pub async fn get_by_community_id(
+        &self,
+        community_id: u32,
+    ) -> Result<Vec<CommunityAssignment>, ResynError> {
+        let mut response = self
+            .db
+            .query(
+                "SELECT arxiv_id, community_id, corpus_fingerprint \
+                 FROM graph_communities WHERE community_id = $community_id",
+            )
+            .bind(("community_id", community_id as i64))
+            .await
+            .map_err(|e| {
+                ResynError::Database(format!("get by community_id failed: {e}"))
+            })?;
+
+        let rows: Vec<serde_json::Value> = response
+            .take(0)
+            .map_err(|e| ResynError::Database(format!("parse community_id rows failed: {e}")))?;
+
+        Ok(rows
+            .into_iter()
+            .filter_map(|row| {
+                Some(CommunityAssignment {
+                    arxiv_id: row.get("arxiv_id")?.as_str()?.to_string(),
+                    community_id: row.get("community_id")?.as_i64()? as u32,
+                    corpus_fingerprint: row.get("corpus_fingerprint")?.as_str()?.to_string(),
+                })
+            })
+            .collect())
+    }
+
+    /// Returns only rows matching the given corpus fingerprint.
+    /// Used by `get_community_assignments` server fn.
+    pub async fn get_all_for_fingerprint(
+        &self,
+        fp: &str,
+    ) -> Result<Vec<CommunityAssignment>, ResynError> {
+        let mut response = self
+            .db
+            .query(
+                "SELECT arxiv_id, community_id, corpus_fingerprint \
+                 FROM graph_communities WHERE corpus_fingerprint = $fp",
+            )
+            .bind(("fp", fp.to_string()))
+            .await
+            .map_err(|e| {
+                ResynError::Database(format!("get communities for fingerprint failed: {e}"))
+            })?;
+
+        let rows: Vec<serde_json::Value> = response
+            .take(0)
+            .map_err(|e| ResynError::Database(format!("parse fingerprint rows failed: {e}")))?;
+
+        Ok(rows
+            .into_iter()
+            .filter_map(|row| {
+                Some(CommunityAssignment {
+                    arxiv_id: row.get("arxiv_id")?.as_str()?.to_string(),
+                    community_id: row.get("community_id")?.as_i64()? as u32,
+                    corpus_fingerprint: row.get("corpus_fingerprint")?.as_str()?.to_string(),
+                })
+            })
+            .collect())
+    }
+
+    /// Removes rows whose corpus_fingerprint != current_fingerprint.
+    /// Returns the number of deleted rows.
+    pub async fn delete_stale(&self, current_fingerprint: &str) -> Result<usize, ResynError> {
+        let mut response = self
+            .db
+            .query(
+                "SELECT COUNT() AS cnt FROM graph_communities \
+                 WHERE corpus_fingerprint != $fp GROUP ALL",
+            )
+            .bind(("fp", current_fingerprint.to_string()))
+            .await
+            .map_err(|e| ResynError::Database(format!("count stale communities failed: {e}")))?;
+
+        let counts: Vec<serde_json::Value> = response
+            .take(0)
+            .map_err(|e| ResynError::Database(format!("parse stale count failed: {e}")))?;
+
+        let stale_count = counts
+            .first()
+            .and_then(|v| v.get("cnt"))
+            .and_then(|v| v.as_u64())
+            .unwrap_or(0) as usize;
+
+        self.db
+            .query(
+                "DELETE graph_communities WHERE corpus_fingerprint != $fp",
+            )
+            .bind(("fp", current_fingerprint.to_string()))
+            .await
+            .map_err(|e| ResynError::Database(format!("delete stale communities failed: {e}")))?;
+
+        Ok(stale_count)
+    }
+}
+
+#[cfg(test)]
+mod community_tests {
+    use super::*;
+    use crate::database::client::connect_memory;
+    use crate::database::schema::migrate_schema;
+    use crate::datamodels::community::CommunityAssignment;
+
+    async fn setup_db() -> crate::database::client::Db {
+        let db = connect_memory().await.expect("in-memory DB failed");
+        migrate_schema(&db).await.expect("schema migration failed");
+        db
+    }
+
+    fn make_assignment(arxiv_id: &str, community_id: u32, fp: &str) -> CommunityAssignment {
+        CommunityAssignment {
+            arxiv_id: arxiv_id.to_string(),
+            community_id,
+            corpus_fingerprint: fp.to_string(),
+        }
+    }
+
+    #[tokio::test]
+    async fn test_community_repository_upsert_idempotent() {
+        let db = setup_db().await;
+        let repo = CommunityRepository::new(&db);
+        let a = make_assignment("2301.12345", 1, "fp_v1");
+
+        // Insert twice — should remain one row
+        repo.upsert(&[a.clone()]).await.expect("first upsert failed");
+        repo.upsert(&[a.clone()]).await.expect("second upsert failed");
+
+        let by_paper = repo
+            .get_by_paper("2301.12345")
+            .await
+            .expect("get_by_paper failed")
+            .expect("should have a row");
+        assert_eq!(by_paper.community_id, 1);
+        assert_eq!(by_paper.corpus_fingerprint, "fp_v1");
+
+        let all = repo.list_all().await.expect("list_all failed");
+        assert_eq!(all.len(), 1, "upsert should not create duplicates");
+    }
+
+    #[tokio::test]
+    async fn test_community_repository_delete_stale() {
+        let db = setup_db().await;
+        let repo = CommunityRepository::new(&db);
+
+        // Insert with old fingerprint
+        let old = make_assignment("2301.12345", 1, "old_fp");
+        repo.upsert(&[old]).await.expect("upsert failed");
+
+        // Delete stale (any row not matching "new_fp")
+        let deleted = repo
+            .delete_stale("new_fp")
+            .await
+            .expect("delete_stale failed");
+        assert_eq!(deleted, 1, "should have deleted 1 stale row");
+
+        let all = repo.list_all().await.expect("list_all failed");
+        assert!(all.is_empty(), "all stale rows should be deleted");
+    }
+
+    #[tokio::test]
+    async fn test_community_repository_get_by_community_id() {
+        let db = setup_db().await;
+        let repo = CommunityRepository::new(&db);
+
+        let a1 = make_assignment("2301.00001", 1, "fp");
+        let a2 = make_assignment("2301.00002", 1, "fp");
+        let a3 = make_assignment("2301.00003", 2, "fp");
+
+        repo.upsert(&[a1, a2, a3]).await.expect("upsert failed");
+
+        let community1 = repo
+            .get_by_community_id(1)
+            .await
+            .expect("get_by_community_id failed");
+        assert_eq!(community1.len(), 2, "community 1 should have 2 members");
+
+        let community2 = repo
+            .get_by_community_id(2)
+            .await
+            .expect("get_by_community_id failed");
+        assert_eq!(community2.len(), 1, "community 2 should have 1 member");
+    }
+}
+
 #[cfg(test)]
 mod graph_metrics_tests {
     use super::*;

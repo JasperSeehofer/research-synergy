@@ -248,6 +248,22 @@ async fn apply_migration_11(db: &Surreal<Any>) -> Result<(), ResynError> {
     Ok(())
 }
 
+async fn apply_migration_12(db: &Surreal<Any>) -> Result<(), ResynError> {
+    db.query(
+        "
+        DEFINE TABLE IF NOT EXISTS graph_communities SCHEMAFULL;
+        DEFINE FIELD IF NOT EXISTS arxiv_id ON graph_communities TYPE string;
+        DEFINE FIELD IF NOT EXISTS community_id ON graph_communities TYPE int;
+        DEFINE FIELD IF NOT EXISTS corpus_fingerprint ON graph_communities TYPE string;
+        DEFINE INDEX IF NOT EXISTS idx_communities_arxiv_id ON graph_communities FIELDS arxiv_id UNIQUE;
+        DEFINE INDEX IF NOT EXISTS idx_communities_community_id ON graph_communities FIELDS community_id;
+        ",
+    )
+    .await
+    .map_err(|e| ResynError::Database(format!("migration 12 DDL failed: {e}")))?;
+    Ok(())
+}
+
 pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
     // Ensure migrations table exists first
     db.query(
@@ -315,6 +331,11 @@ pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
     if version < 11 {
         apply_migration_11(db).await?;
         record_migration(db, 11).await?;
+    }
+
+    if version < 12 {
+        apply_migration_12(db).await?;
+        record_migration(db, 12).await?;
     }
 
     Ok(())
@@ -390,5 +411,37 @@ mod tests {
         // Run twice — should not error
         migrate_schema(&db).await.expect("first migration failed");
         migrate_schema(&db).await.expect("second migration failed — not idempotent");
+    }
+
+    #[tokio::test]
+    async fn test_migration_12_creates_graph_communities_table() {
+        let db = connect_memory().await.expect("in-memory DB failed");
+        migrate_schema(&db).await.expect("schema migration failed");
+
+        // Verify graph_communities table exists by inserting and reading back a row.
+        db.query(
+            "CREATE graph_communities CONTENT { \
+             arxiv_id: '2301.12345', \
+             community_id: 1, \
+             corpus_fingerprint: 'test_fp' \
+             }",
+        )
+        .await
+        .expect("insert into graph_communities failed — table likely missing");
+
+        let mut response = db
+            .query("SELECT arxiv_id, community_id FROM graph_communities")
+            .await
+            .expect("select from graph_communities failed");
+        let rows: Vec<serde_json::Value> = response.take(0).expect("deserialize failed");
+        assert_eq!(rows.len(), 1, "expected 1 record in graph_communities");
+        assert_eq!(
+            rows[0].get("arxiv_id").and_then(|v| v.as_str()),
+            Some("2301.12345")
+        );
+        assert_eq!(
+            rows[0].get("community_id").and_then(|v| v.as_i64()),
+            Some(1)
+        );
     }
 }

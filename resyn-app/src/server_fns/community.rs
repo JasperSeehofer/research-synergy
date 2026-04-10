@@ -62,9 +62,7 @@ pub async fn get_community_summary(
 
 /// Return the community_id assigned to a specific paper, or None if not yet assigned.
 #[server(GetCommunityForPaper, "/api")]
-pub async fn get_community_for_paper(
-    arxiv_id: String,
-) -> Result<Option<u32>, ServerFnError> {
+pub async fn get_community_for_paper(arxiv_id: String) -> Result<Option<u32>, ServerFnError> {
     #[cfg(feature = "ssr")]
     {
         use resyn_core::database::queries::CommunityRepository;

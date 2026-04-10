@@ -1,4 +1,7 @@
-use crate::graph::layout_state::{ForceMode, LabelMode, SizeMode};
+use crate::graph::layout_state::{
+    ColorMode, ForceMode, LabelMode, SizeMode, community_color_for_index,
+};
+use crate::server_fns::community::CommunitySummary;
 use leptos::prelude::*;
 
 #[component]
@@ -24,10 +27,19 @@ pub fn GraphControls(
     size_mode: RwSignal<SizeMode>,
     metrics_ready: RwSignal<bool>,
     metrics_computing: RwSignal<bool>,
+    color_mode: RwSignal<ColorMode>,
+    community_summaries: RwSignal<Vec<CommunitySummary>>,
+    communities_ready: Signal<bool>,
+    communities_computing: RwSignal<bool>,
 ) -> impl IntoView {
     let _ = temporal_min;
     let _ = temporal_max;
     let _ = year_bounds;
+    let _ = communities_computing; // consumed by future Plan 03 recompute button
+
+    // Pending community drawer open — Plan 03 wires the actual drawer panel.
+    let pending = expect_context::<crate::pages::graph::PendingCommunityDrawerOpen>();
+
     view! {
         <div class="graph-controls-overlay">
             // Edge filter group
@@ -248,6 +260,77 @@ pub fn GraphControls(
                     }}
                 </button>
             </div>
+
+            // Color by group (D-09) — placed directly after Size by
+            <div class="graph-controls-group">
+                <span class="text-label" style="font-size: 12px; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase;">"Color by"</span>
+                <select
+                    id="color-by-select"
+                    class="form-select"
+                    style="min-width: 120px;"
+                    aria-label="Color nodes by"
+                    prop:value=move || color_mode.get().as_str()
+                    on:change=move |e| {
+                        use leptos::wasm_bindgen::JsCast;
+                        let val = e.target().unwrap()
+                            .dyn_into::<web_sys::HtmlSelectElement>().unwrap()
+                            .value();
+                        color_mode.set(ColorMode::from_str(&val));
+                    }
+                >
+                    <option
+                        value="community"
+                        prop:disabled=move || !communities_ready.get()
+                    >
+                        {move || if communities_ready.get() {
+                            "Community"
+                        } else {
+                            "Community (computing\u{2026})"
+                        }}
+                    </option>
+                    <option value="bfs_depth">"BFS Depth"</option>
+                    <option value="topic">"Topic"</option>
+                </select>
+                // TODO(24-03): wire recompute handler for community detection
+            </div>
+
+            // Community Colors legend — shown when ColorMode::Community is active
+            {move || {
+                let mode = color_mode.get();
+                let summaries = community_summaries.get();
+                if mode == ColorMode::Community && !summaries.is_empty() {
+                    Some(view! {
+                        <div class="topic-legend-section">
+                            <div class="sidebar-title">"COMMUNITY COLORS"</div>
+                            <div class="topic-legend-entries">
+                                {summaries.into_iter().map(|c| {
+                                    let rgb = community_color_for_index(c.color_index);
+                                    let bg = format!("rgb({}, {}, {})", rgb[0], rgb[1], rgb[2]);
+                                    let label = c.label.clone();
+                                    let community_id = c.community_id;
+                                    let pending_clone = pending;
+                                    view! {
+                                        <button
+                                            class="legend-entry"
+                                            aria-label=format!("View {} community", label)
+                                            title=format!("View {} community", label)
+                                            on:click=move |_| {
+                                                // Plan 03 subscribes to this signal and opens DrawerTab::Community
+                                                pending_clone.0.set(Some(community_id));
+                                            }
+                                        >
+                                            <span class="legend-swatch" style=format!("background: {}", bg)></span>
+                                            <span>{label.clone()}</span>
+                                        </button>
+                                    }
+                                }).collect_view()}
+                            </div>
+                        </div>
+                    })
+                } else {
+                    None
+                }
+            }}
 
             // Topic Colors legend (D-10, D-11, D-12)
             {move || {

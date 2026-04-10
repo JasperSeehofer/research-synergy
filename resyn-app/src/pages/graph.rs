@@ -20,7 +20,18 @@ use resyn_worker::{LayoutInput, LayoutOutput, NodeData};
 
 use crate::graph::label_collision::draw_label_pill;
 use crate::graph::layout_state::{ColorMode, LabelMode, SizeMode};
+use crate::server_fns::community::{
+    CommunityStatus, CommunitySummary, get_all_community_summaries, get_community_assignments,
+    get_community_status,
+};
 use crate::server_fns::metrics::{MetricsStatus, get_metrics_pairs, get_metrics_status};
+
+// ── Community drawer context ─────────────────────────────────────────────────
+
+/// Newtype context signal that carries a pending community drawer open request.
+/// Plan 03 subscribes to this and dispatches the actual drawer panel open.
+#[derive(Clone, Copy)]
+pub struct PendingCommunityDrawerOpen(pub RwSignal<Option<u32>>);
 
 // ── Tooltip data ────────────────────────────────────────────────────────────
 
@@ -120,6 +131,49 @@ pub fn GraphPage() -> impl IntoView {
 
     // Color mode signal — controls which data dimension drives node fill color (D-09 default: Community)
     let color_mode: RwSignal<ColorMode> = RwSignal::new(ColorMode::Community);
+
+    // Community detection signals
+    let community_status: RwSignal<Option<CommunityStatus>> = RwSignal::new(None);
+    let community_summaries: RwSignal<Vec<CommunitySummary>> = RwSignal::new(vec![]);
+    let communities_computing: RwSignal<bool> = RwSignal::new(false);
+    // arxiv_id → community_id (flat assignment map for all visible nodes)
+    let community_assignments_signal: RwSignal<std::collections::HashMap<String, u32>> =
+        RwSignal::new(std::collections::HashMap::new());
+
+    // Pending community drawer open (Plan 03 subscribes to this)
+    let pending_community_drawer_open: RwSignal<Option<u32>> = RwSignal::new(None);
+    provide_context(PendingCommunityDrawerOpen(pending_community_drawer_open));
+
+    // Fetch community status + summaries once on mount
+    let community_status_resource = Resource::new(|| (), |_| get_community_status());
+    let community_summaries_resource = Resource::new(|| (), |_| get_all_community_summaries());
+    let community_assignments_resource = Resource::new(|| (), |_| get_community_assignments());
+
+    Effect::new(move |_| {
+        if let Some(result) = community_status_resource.get() {
+            community_status.set(result.ok());
+        }
+    });
+
+    Effect::new(move |_| {
+        if let Some(Ok(summaries)) = community_summaries_resource.get() {
+            community_summaries.set(summaries);
+        }
+    });
+
+    Effect::new(move |_| {
+        if let Some(Ok(rows)) = community_assignments_resource.get() {
+            let map: std::collections::HashMap<String, u32> = rows
+                .into_iter()
+                .map(|a| (a.arxiv_id, a.community_id))
+                .collect();
+            community_assignments_signal.set(map);
+        }
+    });
+
+    // communities_ready: true when community status reports ready data
+    let communities_ready =
+        Signal::derive(move || community_status.get().map(|s| s.ready).unwrap_or(false));
 
     // Tooltip overlay signal
     let tooltip_signal: RwSignal<Option<TooltipData>> = RwSignal::new(None);
@@ -350,6 +404,8 @@ pub fn GraphPage() -> impl IntoView {
             size_mode,
             metrics_map_signal,
             color_mode,
+            community_summaries,
+            community_assignments_signal,
         );
 
         on_cleanup(move || handle.cancel());
@@ -404,6 +460,10 @@ pub fn GraphPage() -> impl IntoView {
                                 size_mode=size_mode
                                 metrics_ready=metrics_ready
                                 metrics_computing=metrics_computing
+                                color_mode=color_mode
+                                community_summaries=community_summaries
+                                communities_ready=communities_ready
+                                communities_computing=communities_computing
                             />
                             <TemporalSlider
                                 temporal_min=temporal_min
@@ -557,6 +617,8 @@ fn start_render_loop(
     size_mode: RwSignal<SizeMode>,
     metrics_map_signal: RwSignal<std::collections::HashMap<String, (f32, f32)>>,
     color_mode: RwSignal<ColorMode>,
+    community_summaries: RwSignal<Vec<CommunitySummary>>,
+    community_assignments: RwSignal<std::collections::HashMap<String, u32>>,
 ) -> RafHandle {
     let cancelled = Arc::new(AtomicBool::new(false));
     let cancelled_clone = cancelled.clone();
@@ -576,6 +638,9 @@ fn start_render_loop(
 
     // Track previous color mode to detect changes and update target colors (D-09)
     let prev_color_mode = Rc::new(RefCell::new(ColorMode::Community));
+
+    // Track whether community data has been loaded into GraphState yet
+    let community_data_loaded = Rc::new(RefCell::new(false));
 
     // Track previous viewport for label cache dirty detection (D-12)
     let prev_scale = Rc::new(RefCell::new(1.0_f64));
@@ -658,6 +723,37 @@ fn start_render_loop(
                     s.graph.color_mode = current_color_mode;
                     s.graph.update_node_target_colors();
                     s.graph.color_lerp_pending = true;
+                }
+            }
+
+            // Sync community data into GraphState when it arrives (one-shot after load).
+            // Also re-syncs when assignments change (e.g. after recompute in Plan 03).
+            {
+                let assignments = community_assignments.get_untracked();
+                let summaries = community_summaries.get_untracked();
+                let already_loaded = *community_data_loaded.borrow();
+
+                if !assignments.is_empty()
+                    && (!already_loaded || {
+                        // Re-sync if the assignment map size differs from what's in GraphState
+                        s.graph.communities.len() != assignments.len()
+                    })
+                {
+                    // Build community_id → color_index from summaries
+                    let color_indices: std::collections::HashMap<u32, u32> = summaries
+                        .iter()
+                        .map(|c| (c.community_id, c.color_index))
+                        .collect();
+                    // Apply per-node community_id from assignments map
+                    for node in &mut s.graph.nodes {
+                        node.community_id = assignments.get(&node.id).copied();
+                    }
+                    s.graph.communities = assignments;
+                    s.graph.community_color_indices = color_indices;
+                    // Recompute target colors with real community data, trigger lerp
+                    s.graph.update_node_target_colors();
+                    s.graph.color_lerp_pending = true;
+                    *community_data_loaded.borrow_mut() = true;
                 }
             }
 

@@ -230,9 +230,11 @@ pub fn draw_keyword_pills(
         ctx.begin_path();
         ctx.move_to(x + r, label_y);
         ctx.line_to(x + pill_w - r, label_y);
-        ctx.arc_to(x + pill_w, label_y, x + pill_w, label_y + r, r).unwrap();
+        ctx.arc_to(x + pill_w, label_y, x + pill_w, label_y + r, r)
+            .unwrap();
         ctx.line_to(x + pill_w, label_y + h - r);
-        ctx.arc_to(x + pill_w, label_y + h, x + pill_w - r, label_y + h, r).unwrap();
+        ctx.arc_to(x + pill_w, label_y + h, x + pill_w - r, label_y + h, r)
+            .unwrap();
         ctx.line_to(x + r, label_y + h);
         ctx.arc_to(x, label_y + h, x, label_y + h - r, r).unwrap();
         ctx.line_to(x, label_y + r);
@@ -272,7 +274,8 @@ pub fn draw_not_analyzed_badge(
     ctx.line_to(x + w - r, label_y);
     ctx.arc_to(x + w, label_y, x + w, label_y + r, r).unwrap();
     ctx.line_to(x + w, label_y + h - r);
-    ctx.arc_to(x + w, label_y + h, x + w - r, label_y + h, r).unwrap();
+    ctx.arc_to(x + w, label_y + h, x + w - r, label_y + h, r)
+        .unwrap();
     ctx.line_to(x + r, label_y + h);
     ctx.arc_to(x, label_y + h, x, label_y + h - r, r).unwrap();
     ctx.line_to(x, label_y + r);
@@ -285,7 +288,8 @@ pub fn draw_not_analyzed_badge(
     ctx.stroke();
 
     ctx.set_fill_style_str("#8b949e");
-    ctx.fill_text("[not analyzed]", x + PILL_H_PAD, label_y + 14.0).unwrap();
+    ctx.fill_text("[not analyzed]", x + PILL_H_PAD, label_y + 14.0)
+        .unwrap();
 }
 
 // ── Cluster label rendering ───────────────────────────────────────────────────
@@ -389,11 +393,20 @@ pub fn draw_cluster_labels(
         ctx.begin_path();
         ctx.move_to(pill_x + r, pill_y);
         ctx.line_to(pill_x + pill_w - r, pill_y);
-        ctx.arc_to(pill_x + pill_w, pill_y, pill_x + pill_w, pill_y + r, r).unwrap();
+        ctx.arc_to(pill_x + pill_w, pill_y, pill_x + pill_w, pill_y + r, r)
+            .unwrap();
         ctx.line_to(pill_x + pill_w, pill_y + h - r);
-        ctx.arc_to(pill_x + pill_w, pill_y + h, pill_x + pill_w - r, pill_y + h, r).unwrap();
+        ctx.arc_to(
+            pill_x + pill_w,
+            pill_y + h,
+            pill_x + pill_w - r,
+            pill_y + h,
+            r,
+        )
+        .unwrap();
         ctx.line_to(pill_x + r, pill_y + h);
-        ctx.arc_to(pill_x, pill_y + h, pill_x, pill_y + h - r, r).unwrap();
+        ctx.arc_to(pill_x, pill_y + h, pill_x, pill_y + h - r, r)
+            .unwrap();
         ctx.line_to(pill_x, pill_y + r);
         ctx.arc_to(pill_x, pill_y, pill_x + r, pill_y, r).unwrap();
         ctx.close_path();
@@ -404,7 +417,8 @@ pub fn draw_cluster_labels(
         ctx.stroke();
 
         ctx.set_fill_style_str("#e6edf3");
-        ctx.fill_text(text, pill_x + PILL_H_PAD, pill_y + 14.0).unwrap();
+        ctx.fill_text(text, pill_x + PILL_H_PAD, pill_y + 14.0)
+            .unwrap();
     }
 }
 
@@ -442,6 +456,9 @@ mod tests {
             is_seed,
             top_keywords: vec![],
             topic_dimmed: false,
+            current_color: [0.0; 3],
+            target_color: [0.0; 3],
+            community_id: None,
         }
     }
 

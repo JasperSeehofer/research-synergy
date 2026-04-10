@@ -68,6 +68,9 @@ mod tests {
             is_seed: false,
             top_keywords: vec![],
             topic_dimmed: false,
+            current_color: [0.0; 3],
+            target_color: [0.0; 3],
+            community_id: None,
         }
     }
 
@@ -239,6 +242,9 @@ mod tests {
                 is_seed: false,
                 top_keywords: vec![],
                 topic_dimmed: false,
+                current_color: [0.0; 3],
+                target_color: [0.0; 3],
+                community_id: None,
             },
             NodeState {
                 id: "b".to_string(),
@@ -260,6 +266,9 @@ mod tests {
                 is_seed: false,
                 top_keywords: vec![],
                 topic_dimmed: false,
+                current_color: [0.0; 3],
+                target_color: [0.0; 3],
+                community_id: None,
             },
             NodeState {
                 id: "c".to_string(),
@@ -281,6 +290,9 @@ mod tests {
                 is_seed: false,
                 top_keywords: vec![],
                 topic_dimmed: false,
+                current_color: [0.0; 3],
+                target_color: [0.0; 3],
+                community_id: None,
             },
         ];
         let (visible, total) = compute_visible_count(&nodes);

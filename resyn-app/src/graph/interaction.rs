@@ -104,6 +104,9 @@ mod tests {
             is_seed: false,
             top_keywords: vec![],
             topic_dimmed: false,
+            current_color: [0.0; 3],
+            target_color: [0.0; 3],
+            community_id: None,
         }
     }
 

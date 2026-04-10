@@ -1,5 +1,138 @@
 use crate::server_fns::graph::{EdgeType, GraphData};
 
+// ── Color palette constants (UI-SPEC §4, exact hex values locked) ────────────
+
+/// 10-slot categorical palette for community-colored nodes.
+pub const COMMUNITY_PALETTE: [[u8; 3]; 10] = [
+    [0x4e, 0x79, 0xa7], // 0 Blue
+    [0xf2, 0x8e, 0x2b], // 1 Orange
+    [0xe1, 0x57, 0x59], // 2 Red
+    [0x76, 0xb7, 0xb2], // 3 Teal
+    [0x59, 0xa1, 0x4f], // 4 Green
+    [0xed, 0xc9, 0x48], // 5 Yellow
+    [0xb0, 0x7a, 0xa1], // 6 Purple
+    [0xff, 0x9d, 0xa7], // 7 Pink
+    [0x9c, 0x75, 0x5f], // 8 Brown
+    [0xba, 0xb0, 0xac], // 9 Light Gray
+];
+
+/// Neutral dark gray for the "Other" community bucket (community_id = u32::MAX).
+pub const OTHER_COMMUNITY_COLOR: [u8; 3] = [0x4a, 0x55, 0x68];
+
+/// Warm→cool depth scale for BFS-depth coloring.
+pub const BFS_DEPTH_COLORS: [[u8; 3]; 5] = [
+    [0xf2, 0x8e, 0x2b], // depth 0 seed — warm orange
+    [0xe1, 0x57, 0x59], // depth 1 — red
+    [0x4e, 0x79, 0xa7], // depth 2 — blue
+    [0x76, 0xb7, 0xb2], // depth 3 — teal
+    [0x8b, 0x94, 0x9e], // depth 4+ — muted gray
+];
+
+/// Color for nodes with no BFS depth assigned (orphans).
+pub const ORPHAN_COLOR: [u8; 3] = [0x4a, 0x55, 0x68];
+
+// ── Color lookup helpers ─────────────────────────────────────────────────────
+
+/// Look up the fill color for a community by its palette color index.
+/// Wraps modulo COMMUNITY_PALETTE.len() for robustness; u32::MAX → OTHER_COMMUNITY_COLOR.
+pub fn community_color_for_index(idx: u32) -> [u8; 3] {
+    if idx == u32::MAX {
+        OTHER_COMMUNITY_COLOR
+    } else {
+        COMMUNITY_PALETTE[(idx as usize) % COMMUNITY_PALETTE.len()]
+    }
+}
+
+/// Look up the fill color for BFS depth. `None` → ORPHAN_COLOR, depth ≥ 4 → depth-4 gray.
+pub fn bfs_depth_color(depth: Option<u32>) -> [u8; 3] {
+    match depth {
+        None => ORPHAN_COLOR,
+        Some(d) => BFS_DEPTH_COLORS[(d as usize).min(BFS_DEPTH_COLORS.len() - 1)],
+    }
+}
+
+/// Convert a u8 [R, G, B] triple to f32 in [0.0, 1.0].
+pub fn u8_rgb_to_f32(rgb: [u8; 3]) -> [f32; 3] {
+    [
+        rgb[0] as f32 / 255.0,
+        rgb[1] as f32 / 255.0,
+        rgb[2] as f32 / 255.0,
+    ]
+}
+
+/// Advance `current` color toward `target` using the Phase-23-aligned exponential lerp.
+///
+/// Formula (UI-SPEC §5): `lerp_factor = 1.0 - (1.0 - 0.95).powf(dt_ms / 300.0)`
+pub fn advance_color_lerp(current: &mut [f32; 3], target: [f32; 3], dt_ms: f32) {
+    let factor = 1.0 - (1.0_f32 - 0.95).powf(dt_ms / 300.0);
+    for i in 0..3 {
+        current[i] += (target[i] - current[i]) * factor;
+        current[i] = current[i].clamp(0.0, 1.0);
+    }
+}
+
+/// Compute the target fill color for a node given the current ColorMode and graph data.
+///
+/// Used by both Canvas2D and WebGL2 renderers — same function for consistency.
+pub fn compute_target_color(
+    node: &NodeState,
+    color_mode: ColorMode,
+    community_color_indices: &std::collections::HashMap<u32, u32>,
+    _communities: &std::collections::HashMap<String, u32>,
+) -> [f32; 3] {
+    let rgb_u8 = match color_mode {
+        ColorMode::Community => match node.community_id {
+            Some(cid) => {
+                let color_idx = community_color_indices
+                    .get(&cid)
+                    .copied()
+                    .unwrap_or(u32::MAX);
+                community_color_for_index(color_idx)
+            }
+            None => ORPHAN_COLOR,
+        },
+        ColorMode::BfsDepth => bfs_depth_color(node.bfs_depth),
+        ColorMode::Topic => {
+            // For Topic mode, use the first top_keyword's slot color if available.
+            // The topic ring palette is managed separately; here we approximate
+            // with the BFS depth color as a neutral fallback until the renderer
+            // resolves the actual topic color from GraphState.palette.
+            // The renderers override this with the actual palette lookup per-frame.
+            ORPHAN_COLOR
+        }
+    };
+    u8_rgb_to_f32(rgb_u8)
+}
+
+// ── ColorMode enum ───────────────────────────────────────────────────────────
+
+/// Controls which data dimension drives node fill colors (D-09 default: Community).
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Default)]
+pub enum ColorMode {
+    #[default]
+    Community, // D-09: default on first load
+    BfsDepth,
+    Topic,
+}
+
+impl ColorMode {
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::Community => "community",
+            Self::BfsDepth => "bfs_depth",
+            Self::Topic => "topic",
+        }
+    }
+
+    pub fn from_str(s: &str) -> Self {
+        match s {
+            "bfs_depth" => Self::BfsDepth,
+            "topic" => Self::Topic,
+            _ => Self::Community,
+        }
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Default)]
 pub enum ForceMode {
     #[default]
@@ -48,6 +181,12 @@ pub struct NodeState {
     pub is_seed: bool,
     pub top_keywords: Vec<(String, f32)>,
     pub topic_dimmed: bool,
+    /// Smoothly interpolated display color (f32 RGB in [0,1]).
+    pub current_color: [f32; 3],
+    /// Target color from the active ColorMode (lerped toward each frame).
+    pub target_color: [f32; 3],
+    /// Community id assigned by Louvain (None until community data loads).
+    pub community_id: Option<u32>,
 }
 
 impl NodeState {
@@ -102,6 +241,15 @@ pub struct GraphState {
     pub size_mode: SizeMode,
     /// Maps arxiv_id -> (pagerank, betweenness) for metric-based sizing.
     pub metrics: std::collections::HashMap<String, (f32, f32)>,
+    /// Controls which data dimension drives node fill colors (D-09 default: Community).
+    pub color_mode: ColorMode,
+    /// Maps arxiv_id → community_id (populated from get_community_assignments server fn).
+    pub communities: std::collections::HashMap<String, u32>,
+    /// Maps community_id → palette color index (populated from get_all_community_summaries).
+    pub community_color_indices: std::collections::HashMap<u32, u32>,
+    /// True when at least one node still has `(current_color - target_color).abs().max() >= 0.01`.
+    /// Keeps the RAF loop running until color lerp converges (Pitfall 6).
+    pub color_lerp_pending: bool,
 }
 
 impl GraphState {
@@ -183,6 +331,7 @@ impl GraphState {
                     .map(|sid| sid == &n.id)
                     .unwrap_or(false);
                 let r = NodeState::radius_from_citations(citation_count);
+                let initial_color = u8_rgb_to_f32(ORPHAN_COLOR);
                 NodeState {
                     id: n.id,
                     title: n.title,
@@ -203,6 +352,9 @@ impl GraphState {
                     is_seed,
                     top_keywords: n.top_keywords,
                     topic_dimmed: false,
+                    current_color: initial_color,
+                    target_color: initial_color,
+                    community_id: None,
                 }
             })
             .collect();
@@ -268,6 +420,10 @@ impl GraphState {
             search_highlight_ids: vec![],
             size_mode: SizeMode::Uniform,
             metrics: std::collections::HashMap::new(),
+            color_mode: ColorMode::Community,
+            communities: std::collections::HashMap::new(),
+            community_color_indices: std::collections::HashMap::new(),
+            color_lerp_pending: false,
         }
     }
 
@@ -287,6 +443,19 @@ impl GraphState {
                     Self::radius_from_metric(score)
                 }
             };
+        }
+    }
+
+    /// Update `target_color` on every node based on the current `color_mode`.
+    /// Call this whenever `color_mode` changes or community data is refreshed.
+    pub fn update_node_target_colors(&mut self) {
+        for node in &mut self.nodes {
+            node.target_color = compute_target_color(
+                node,
+                self.color_mode,
+                &self.community_color_indices,
+                &self.communities,
+            );
         }
     }
 
@@ -718,6 +887,9 @@ mod tests {
             is_seed: false,
             top_keywords: vec![],
             topic_dimmed: false,
+            current_color: [0.0; 3],
+            target_color: [0.0; 3],
+            community_id: None,
         };
         assert_eq!(node.label(), "Doe 2023");
     }
@@ -761,6 +933,223 @@ mod tests {
         let state = GraphState::from_graph_data(data);
         assert_eq!(state.palette.len(), 1);
         assert_eq!(state.palette[0].keyword, "test");
+    }
+
+    // ── ColorMode / palette / lerp tests ────────────────────────────────────
+
+    #[test]
+    fn test_color_mode_default_is_community() {
+        assert_eq!(ColorMode::default(), ColorMode::Community);
+    }
+
+    #[test]
+    fn test_community_color_index_mapping() {
+        assert_eq!(community_color_for_index(0), COMMUNITY_PALETTE[0]);
+        // Cycling: index 10 wraps → slot 0
+        assert_eq!(
+            community_color_for_index(10),
+            COMMUNITY_PALETTE[10 % COMMUNITY_PALETTE.len()]
+        );
+        // u32::MAX sentinel → OTHER_COMMUNITY_COLOR
+        assert_eq!(community_color_for_index(u32::MAX), OTHER_COMMUNITY_COLOR);
+    }
+
+    #[test]
+    fn test_bfs_depth_color_seed() {
+        // depth 0 (seed) → warm orange
+        assert_eq!(bfs_depth_color(Some(0)), BFS_DEPTH_COLORS[0]);
+    }
+
+    #[test]
+    fn test_bfs_depth_color_clamp() {
+        // depth 7 (beyond max index) → clamped to depth-4 gray
+        assert_eq!(
+            bfs_depth_color(Some(7)),
+            BFS_DEPTH_COLORS[BFS_DEPTH_COLORS.len() - 1]
+        );
+    }
+
+    #[test]
+    fn test_bfs_depth_color_none() {
+        assert_eq!(bfs_depth_color(None), ORPHAN_COLOR);
+    }
+
+    #[test]
+    fn test_color_lerp_advances_toward_target() {
+        let mut current = [0.0_f32; 3];
+        let target = [1.0_f32; 3];
+        advance_color_lerp(&mut current, target, 100.0);
+        // After one tick at 100ms, each channel should have moved strictly toward target
+        for i in 0..3 {
+            assert!(
+                current[i] > 0.0 && current[i] <= 1.0,
+                "channel {} = {} not in (0,1]",
+                i,
+                current[i]
+            );
+        }
+    }
+
+    #[test]
+    fn test_color_lerp_converges() {
+        let mut current = [0.0_f32; 3];
+        let target = [1.0_f32; 3];
+        // Apply many ticks summing to 1500ms (>1000ms)
+        for _ in 0..15 {
+            advance_color_lerp(&mut current, target, 100.0);
+        }
+        for i in 0..3 {
+            assert!(
+                (current[i] - target[i]).abs() < 0.01,
+                "channel {} did not converge: {} vs {}",
+                i,
+                current[i],
+                target[i]
+            );
+        }
+    }
+
+    #[test]
+    fn test_compute_target_color_community_known() {
+        let node = NodeState {
+            id: "a".to_string(),
+            title: String::new(),
+            first_author: String::new(),
+            year: String::new(),
+            citation_count: 0,
+            abstract_text: String::new(),
+            authors: vec![],
+            x: 0.0,
+            y: 0.0,
+            radius: 4.0,
+            target_radius: 4.0,
+            current_radius: 4.0,
+            pinned: false,
+            bfs_depth: None,
+            lod_visible: true,
+            temporal_visible: true,
+            is_seed: false,
+            top_keywords: vec![],
+            topic_dimmed: false,
+            current_color: [0.0; 3],
+            target_color: [0.0; 3],
+            community_id: Some(3),
+        };
+        let mut cci = std::collections::HashMap::new();
+        cci.insert(3u32, 2u32); // community 3 → palette slot 2 (Red)
+        let result = compute_target_color(&node, ColorMode::Community, &cci, &Default::default());
+        let expected = u8_rgb_to_f32(COMMUNITY_PALETTE[2]); // Red
+        for i in 0..3 {
+            assert!(
+                (result[i] - expected[i]).abs() < 1e-5,
+                "channel {} mismatch: {} vs {}",
+                i,
+                result[i],
+                expected[i]
+            );
+        }
+    }
+
+    #[test]
+    fn test_compute_target_color_bfs_depth_seed() {
+        let node = NodeState {
+            id: "b".to_string(),
+            title: String::new(),
+            first_author: String::new(),
+            year: String::new(),
+            citation_count: 0,
+            abstract_text: String::new(),
+            authors: vec![],
+            x: 0.0,
+            y: 0.0,
+            radius: 4.0,
+            target_radius: 4.0,
+            current_radius: 4.0,
+            pinned: false,
+            bfs_depth: Some(0),
+            lod_visible: true,
+            temporal_visible: true,
+            is_seed: true,
+            top_keywords: vec![],
+            topic_dimmed: false,
+            current_color: [0.0; 3],
+            target_color: [0.0; 3],
+            community_id: None,
+        };
+        let result = compute_target_color(
+            &node,
+            ColorMode::BfsDepth,
+            &Default::default(),
+            &Default::default(),
+        );
+        let expected = u8_rgb_to_f32(BFS_DEPTH_COLORS[0]); // warm orange
+        for i in 0..3 {
+            assert!(
+                (result[i] - expected[i]).abs() < 1e-5,
+                "channel {} mismatch: {} vs {}",
+                i,
+                result[i],
+                expected[i]
+            );
+        }
+    }
+
+    #[test]
+    fn test_compute_target_color_community_unknown() {
+        let node = NodeState {
+            id: "c".to_string(),
+            title: String::new(),
+            first_author: String::new(),
+            year: String::new(),
+            citation_count: 0,
+            abstract_text: String::new(),
+            authors: vec![],
+            x: 0.0,
+            y: 0.0,
+            radius: 4.0,
+            target_radius: 4.0,
+            current_radius: 4.0,
+            pinned: false,
+            bfs_depth: None,
+            lod_visible: true,
+            temporal_visible: true,
+            is_seed: false,
+            top_keywords: vec![],
+            topic_dimmed: false,
+            current_color: [0.0; 3],
+            target_color: [0.0; 3],
+            community_id: None, // no community assigned
+        };
+        let result = compute_target_color(
+            &node,
+            ColorMode::Community,
+            &Default::default(),
+            &Default::default(),
+        );
+        let expected = u8_rgb_to_f32(ORPHAN_COLOR);
+        for i in 0..3 {
+            assert!(
+                (result[i] - expected[i]).abs() < 1e-5,
+                "channel {} mismatch: {} vs {}",
+                i,
+                result[i],
+                expected[i]
+            );
+        }
+    }
+
+    #[test]
+    fn test_community_summaries_to_color_indices_map() {
+        // Simulate building community_color_indices from CommunitySummary-like data
+        let mock_data: Vec<(u32, u32)> = vec![(0, 0), (1, 1), (2, 2)];
+        let map: std::collections::HashMap<u32, u32> = mock_data
+            .into_iter()
+            .map(|(community_id, color_index)| (community_id, color_index))
+            .collect();
+        assert_eq!(map.get(&0), Some(&0));
+        assert_eq!(map.get(&1), Some(&1));
+        assert_eq!(map.get(&2), Some(&2));
+        assert_eq!(map.get(&99), None);
     }
 
     #[test]

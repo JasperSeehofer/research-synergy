@@ -333,6 +333,36 @@ pub enum ComputeOutcome {
     Skipped,
 }
 
+/// Build a StableGraph from a list of papers and a list of (from_id, to_id) citation edges.
+/// Papers loaded from DB have empty references, so edges must be supplied separately.
+#[cfg(feature = "ssr")]
+fn build_graph_from_edges(
+    papers: &[Paper],
+    edges: &[(String, String)],
+) -> StableGraph<Paper, f32, Directed, u32> {
+    use petgraph::prelude::NodeIndex;
+    let mut graph = StableGraph::<Paper, f32, Directed, u32>::new();
+    let mut id_to_node: HashMap<String, NodeIndex<u32>> = HashMap::new();
+
+    for paper in papers {
+        let id = strip_version_suffix(&paper.id);
+        if !id_to_node.contains_key(&id) {
+            let ni = graph.add_node(paper.clone());
+            id_to_node.insert(id, ni);
+        }
+    }
+
+    for (from_id, to_id) in edges {
+        let from = strip_version_suffix(from_id);
+        let to = strip_version_suffix(to_id);
+        if let (Some(&from_ni), Some(&to_ni)) = (id_to_node.get(&from), id_to_node.get(&to)) {
+            graph.add_edge(from_ni, to_ni, 1.0);
+        }
+    }
+
+    graph
+}
+
 /// Full pipeline: load papers + citations + analyses + PageRank scores, run Louvain,
 /// bucket Other, and upsert assignments. Corpus-fingerprint invalidation: stale rows
 /// are deleted before the fresh batch is written.
@@ -343,8 +373,7 @@ pub enum ComputeOutcome {
 pub async fn compute_and_store_communities(
     db: &surrealdb::Surreal<surrealdb::engine::any::Any>,
 ) -> Result<ComputeOutcome, ResynError> {
-    use crate::data_processing::graph_creation::create_graph_from_papers;
-    use crate::database::queries::{AnalysisRepository, CommunityRepository, PaperRepository};
+    use crate::database::queries::{CommunityRepository, PaperRepository};
     use crate::nlp::tfidf::corpus_fingerprint;
 
     let paper_repo = PaperRepository::new(db);
@@ -361,7 +390,9 @@ pub async fn compute_and_store_communities(
     sorted_ids.sort();
     let fingerprint = corpus_fingerprint(&sorted_ids);
 
-    let graph = create_graph_from_papers(&papers);
+    // Load citation edges from DB (papers loaded from DB have empty references field)
+    let db_edges = paper_repo.get_all_citation_edges().await?;
+    let graph = build_graph_from_edges(&papers, &db_edges);
     let partition = detect_communities(&graph);
 
     let community_repo = CommunityRepository::new(db);
@@ -486,27 +517,24 @@ pub async fn compute_community_summaries(
         color_indices.insert(OTHER_COMMUNITY_ID, OTHER_COLOR_INDEX);
     }
 
-    // Compute intra-community degrees
-    // Build a set of (community_id, arxiv_id) pairs for fast lookup
+    // Compute intra-community degrees using DB citation edges
     let arxiv_id_to_community: HashMap<String, u32> = current_assignments
         .iter()
         .map(|a| (strip_version_suffix(&a.arxiv_id), a.community_id))
         .collect();
 
-    // Count intra-community edges from the citation graph
+    // Load citation edges from DB (papers from get_all_papers() have empty references)
+    let db_edges = paper_repo.get_all_citation_edges().await?;
     let mut intra_degree: HashMap<String, usize> = HashMap::new();
-    // We need the citation edges — load from paper references
-    for paper in &papers {
-        let from_id = strip_version_suffix(&paper.id);
+    for (from_raw, to_raw) in &db_edges {
+        let from_id = strip_version_suffix(from_raw);
+        let to_id = strip_version_suffix(to_raw);
         let from_community = arxiv_id_to_community.get(&from_id).copied();
-        for arxiv_ref_id in paper.get_arxiv_references_ids() {
-            let to_id = strip_version_suffix(&arxiv_ref_id);
-            let to_community = arxiv_id_to_community.get(&to_id).copied();
-            if let (Some(fc), Some(tc)) = (from_community, to_community) {
-                if fc == tc {
-                    *intra_degree.entry(from_id.clone()).or_insert(0) += 1;
-                    *intra_degree.entry(to_id).or_insert(0) += 1;
-                }
+        let to_community = arxiv_id_to_community.get(&to_id).copied();
+        if let (Some(fc), Some(tc)) = (from_community, to_community) {
+            if fc == tc {
+                *intra_degree.entry(from_id).or_insert(0) += 1;
+                *intra_degree.entry(to_id).or_insert(0) += 1;
             }
         }
     }
@@ -1072,6 +1100,7 @@ mod orchestrator_tests {
         let analysis_repo = AnalysisRepository::new(db);
 
         let mut ids = vec![];
+        let mut all_papers = vec![];
 
         for i in 0..16usize {
             let id = format!("2301.{:05}", i);
@@ -1094,6 +1123,7 @@ mod orchestrator_tests {
             let refs_str: Vec<&str> = refs.iter().map(|s| s.as_str()).collect();
             let paper = make_paper_with_refs(&id, &refs_str);
             paper_repo.upsert_paper(&paper).await.expect("upsert paper failed");
+            all_papers.push(paper);
 
             // Add TF-IDF analysis
             let terms: Vec<(&str, f32)> = if i < 8 {
@@ -1101,14 +1131,24 @@ mod orchestrator_tests {
             } else {
                 vec![("topology", 0.7), ("physics", 0.4)]
             };
-            let terms_owned: Vec<(String, f32)> = terms.iter().map(|(k, v)| (k.to_string(), *v)).collect();
-            let terms_ref: Vec<(&str, f32)> = terms_owned.iter().map(|(k, v)| (k.as_str(), *v)).collect();
+            let terms_owned: Vec<(String, f32)> =
+                terms.iter().map(|(k, v)| (k.to_string(), *v)).collect();
+            let terms_ref: Vec<(&str, f32)> =
+                terms_owned.iter().map(|(k, v)| (k.as_str(), *v)).collect();
             let analysis = make_analysis(&id, &terms_ref);
             analysis_repo.upsert_analysis(&analysis).await.expect("upsert analysis failed");
 
             // Add metrics
             let m = make_metrics(&id, (i + 1) as f32 * 0.1);
             metrics_repo.upsert_metrics(&m).await.expect("upsert metrics failed");
+        }
+
+        // Upsert citation edges (must be done after all papers exist in DB)
+        for paper in &all_papers {
+            paper_repo
+                .upsert_citations(paper)
+                .await
+                .expect("upsert citations failed");
         }
 
         ids

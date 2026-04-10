@@ -34,7 +34,7 @@ Requirements for Discovery & Intelligence milestone. Each maps to roadmap phases
 
 - [ ] **COMM-01**: System detects communities in the citation graph using Louvain modularity optimization
 - [ ] **COMM-02**: User can color graph nodes by community via a "Color by" dropdown (BFS Depth / Community / Topic)
-- [ ] **COMM-03**: User can view a community summary panel showing top papers, dominant keywords, and shared methods per community
+- [x] **COMM-03**: User can view a community summary panel showing top papers, dominant keywords, and shared methods per community
 
 ### Discovery
 
@@ -103,7 +103,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | GANA-06 | Phase 23 | Pending |
 | COMM-01 | Phase 24 | Pending |
 | COMM-02 | Phase 24 | Pending |
-| COMM-03 | Phase 24 | Pending |
+| COMM-03 | Phase 24 | Complete |
 | DISC-01 | Phase 25 | Pending |
 | DISC-02 | Phase 25 | Pending |
 | DISC-03 | Phase 25 | Pending |

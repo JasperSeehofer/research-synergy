@@ -80,7 +80,7 @@ Full details: `.planning/milestones/v1.3-ROADMAP.md`
 - [x] **Phase 21: Search & Filter** - Full-text search across papers with graph viewport integration (completed 2026-04-07)
 - [x] **Phase 22: Paper Similarity Engine** - Cosine similarity on TF-IDF vectors with similar-papers UI (completed 2026-04-09)
 - [x] **Phase 23: Graph Analytics — Centrality & Metrics** - PageRank, betweenness centrality, and query optimization (completed 2026-04-09)
-- [ ] **Phase 24: Community Detection** - Louvain clustering with community summary panels
+- [x] **Phase 24: Community Detection** - Louvain clustering with community summary panels (completed 2026-04-10)
 - [ ] **Phase 25: Discovery Recommendations** - Scored paper recommendations combining similarity, centrality, and community signals
 - [ ] **Phase 26: Export & Interop** - BibTeX, CSV, and graph JSON export
 
@@ -197,6 +197,6 @@ Plans:
 | 21. Search & Filter | v1.4 | 3/3 | Complete    | 2026-04-09 |
 | 22. Paper Similarity Engine | v1.4 | 3/3 | Complete    | 2026-04-09 |
 | 23. Graph Analytics — Centrality & Metrics | v1.4 | 3/3 | Complete    | 2026-04-09 |
-| 24. Community Detection | v1.4 | 0/? | Not started | - |
+| 24. Community Detection | v1.4 | 3/3 | Complete   | 2026-04-10 |
 | 25. Discovery Recommendations | v1.4 | 0/? | Not started | - |
 | 26. Export & Interop | v1.4 | 0/? | Not started | - |

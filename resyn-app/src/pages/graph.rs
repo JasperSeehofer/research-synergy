@@ -8,19 +8,19 @@ use wasm_bindgen::JsCast;
 use wasm_bindgen::prelude::*;
 
 use crate::app::{DrawerOpenRequest, SearchPanTrigger, SelectedPaper};
-use crate::graph::viewport_fit::compute_single_node_pan_target;
 use crate::components::graph_controls::{GraphControls, TemporalSlider};
 use crate::graph::interaction::{self, InteractionState};
 use crate::graph::layout_state::GraphState;
 use crate::graph::make_renderer;
 use crate::graph::renderer::{Renderer, Viewport};
+use crate::graph::viewport_fit::compute_single_node_pan_target;
 use crate::graph::worker_bridge::WorkerBridge;
 use crate::server_fns::graph::get_graph_data;
 use resyn_worker::{LayoutInput, LayoutOutput, NodeData};
 
 use crate::graph::label_collision::draw_label_pill;
-use crate::graph::layout_state::{LabelMode, SizeMode};
-use crate::server_fns::metrics::{get_metrics_pairs, get_metrics_status, MetricsStatus};
+use crate::graph::layout_state::{ColorMode, LabelMode, SizeMode};
+use crate::server_fns::metrics::{MetricsStatus, get_metrics_pairs, get_metrics_status};
 
 // ── Tooltip data ────────────────────────────────────────────────────────────
 
@@ -117,6 +117,9 @@ pub fn GraphPage() -> impl IntoView {
     let size_mode: RwSignal<SizeMode> = RwSignal::new(SizeMode::Uniform);
     let metrics_ready: RwSignal<bool> = RwSignal::new(false);
     let metrics_computing: RwSignal<bool> = RwSignal::new(false);
+
+    // Color mode signal — controls which data dimension drives node fill color (D-09 default: Community)
+    let color_mode: RwSignal<ColorMode> = RwSignal::new(ColorMode::Community);
 
     // Tooltip overlay signal
     let tooltip_signal: RwSignal<Option<TooltipData>> = RwSignal::new(None);
@@ -346,6 +349,7 @@ pub fn GraphPage() -> impl IntoView {
             search_pan_signal,
             size_mode,
             metrics_map_signal,
+            color_mode,
         );
 
         on_cleanup(move || handle.cancel());
@@ -552,6 +556,7 @@ fn start_render_loop(
     search_pan_signal: RwSignal<Option<crate::app::SearchPanRequest>>,
     size_mode: RwSignal<SizeMode>,
     metrics_map_signal: RwSignal<std::collections::HashMap<String, (f32, f32)>>,
+    color_mode: RwSignal<ColorMode>,
 ) -> RafHandle {
     let cancelled = Arc::new(AtomicBool::new(false));
     let cancelled_clone = cancelled.clone();
@@ -562,10 +567,15 @@ fn start_render_loop(
     let prev_fit: Rc<RefCell<u32>> = Rc::new(RefCell::new(0));
 
     // Track previous force mode to detect changes and trigger alpha reheat (D-13)
-    let prev_force_mode = Rc::new(RefCell::new(crate::graph::layout_state::ForceMode::Citation));
+    let prev_force_mode = Rc::new(RefCell::new(
+        crate::graph::layout_state::ForceMode::Citation,
+    ));
 
     // Track previous size mode to detect changes and update target radii (D-01)
     let prev_size_mode = Rc::new(RefCell::new(SizeMode::Uniform));
+
+    // Track previous color mode to detect changes and update target colors (D-09)
+    let prev_color_mode = Rc::new(RefCell::new(ColorMode::Community));
 
     // Track previous viewport for label cache dirty detection (D-12)
     let prev_scale = Rc::new(RefCell::new(1.0_f64));
@@ -637,6 +647,39 @@ fn start_render_loop(
                 } else {
                     node.current_radius = node.target_radius;
                 }
+            }
+
+            // Sync color mode and update target colors on change (D-09)
+            {
+                let current_color_mode = color_mode.get_untracked();
+                let prev = *prev_color_mode.borrow();
+                if current_color_mode != prev {
+                    *prev_color_mode.borrow_mut() = current_color_mode;
+                    s.graph.color_mode = current_color_mode;
+                    s.graph.update_node_target_colors();
+                    s.graph.color_lerp_pending = true;
+                }
+            }
+
+            // Lerp node colors toward targets (D-12: ~300ms exponential lerp at 60fps).
+            // dt_ms ≈ 16.67ms assumed (60fps); matches advance_color_lerp formula.
+            if s.graph.color_lerp_pending {
+                use crate::graph::layout_state::advance_color_lerp;
+                let mut any_pending = false;
+                for node in &mut s.graph.nodes {
+                    advance_color_lerp(&mut node.current_color, node.target_color, 16.67);
+                    let max_delta = node
+                        .current_color
+                        .iter()
+                        .zip(node.target_color.iter())
+                        .map(|(c, t)| (c - t).abs())
+                        .fold(0.0_f32, f32::max);
+                    if max_delta >= 0.01 {
+                        any_pending = true;
+                    }
+                }
+                // Clear flag once all channels have converged (Pitfall 6 guard)
+                s.graph.color_lerp_pending = any_pending;
             }
 
             // Handle zoom button presses
@@ -787,8 +830,10 @@ fn start_render_loop(
             let topic_filter = active_topic_filter.get_untracked();
             if !topic_filter.is_empty() {
                 for node in &mut s.graph.nodes {
-                    node.topic_dimmed =
-                        !node.top_keywords.iter().any(|(kw, _)| topic_filter.contains(kw));
+                    node.topic_dimmed = !node
+                        .top_keywords
+                        .iter()
+                        .any(|(kw, _)| topic_filter.contains(kw));
                 }
             } else {
                 for node in &mut s.graph.nodes {
@@ -832,8 +877,9 @@ fn start_render_loop(
                         .map(|n| n.top_keywords.clone())
                         .collect();
                     if positions.len() >= 3 {
-                        s.cluster_result =
-                            Some(crate::graph::kmeans::compute_clusters(&positions, &keywords));
+                        s.cluster_result = Some(crate::graph::kmeans::compute_clusters(
+                            &positions, &keywords,
+                        ));
                     }
                 }
             } else {
@@ -948,10 +994,8 @@ fn start_render_loop(
                                 if hi < s.graph.nodes.len() {
                                     let node = &s.graph.nodes[hi];
                                     if node.lod_visible && node.temporal_visible {
-                                        let (sx, sy) =
-                                            s.viewport.world_to_screen(node.x, node.y);
-                                        let text_w =
-                                            s.text_widths.get(hi).copied().unwrap_or(40.0);
+                                        let (sx, sy) = s.viewport.world_to_screen(node.x, node.y);
+                                        let text_w = s.text_widths.get(hi).copied().unwrap_or(40.0);
                                         let pill_w = text_w + PILL_H_PAD * 2.0;
                                         let label_x = sx - pill_w / 2.0;
                                         let label_y = sy
@@ -984,8 +1028,9 @@ fn start_render_loop(
                                     let text_w = s.text_widths.get(i).copied().unwrap_or(40.0);
                                     let pill_w = text_w + PILL_H_PAD * 2.0;
                                     let label_x = sx - pill_w / 2.0;
-                                    let label_y =
-                                        sy + node.current_radius * s.viewport.scale + LABEL_NODE_GAP;
+                                    let label_y = sy
+                                        + node.current_radius * s.viewport.scale
+                                        + LABEL_NODE_GAP;
                                     draw_label_pill(
                                         ctx,
                                         label_x,
@@ -1002,9 +1047,10 @@ fn start_render_loop(
                             // Also show hover label if hovered node not in cache
                             if let Some(hi) = s.graph.hovered_node {
                                 if hi < s.graph.nodes.len() {
-                                    let in_cache = s.label_cache.as_ref().map_or(false, |c| {
-                                        c.visible_indices.contains(&hi)
-                                    });
+                                    let in_cache = s
+                                        .label_cache
+                                        .as_ref()
+                                        .map_or(false, |c| c.visible_indices.contains(&hi));
                                     if !in_cache {
                                         let node = &s.graph.nodes[hi];
                                         if node.lod_visible && node.temporal_visible {
@@ -1042,37 +1088,25 @@ fn start_render_loop(
                                         continue;
                                     }
                                     let (sx, sy) = s.viewport.world_to_screen(node.x, node.y);
-                                    let label_y =
-                                        sy + node.current_radius * s.viewport.scale + LABEL_NODE_GAP;
+                                    let label_y = sy
+                                        + node.current_radius * s.viewport.scale
+                                        + LABEL_NODE_GAP;
                                     if node.top_keywords.is_empty() {
                                         // D-06: unanalyzed badge
-                                        let text_w = s
-                                            .keyword_text_widths
-                                            .get(i)
-                                            .copied()
-                                            .unwrap_or(80.0);
+                                        let text_w =
+                                            s.keyword_text_widths.get(i).copied().unwrap_or(80.0);
                                         draw_not_analyzed_badge(ctx, sx, label_y, text_w);
                                     } else {
                                         // D-02: top-2 keyword pills
-                                        let top2: Vec<(String, f32)> = node
-                                            .top_keywords
-                                            .iter()
-                                            .take(2)
-                                            .cloned()
-                                            .collect();
+                                        let top2: Vec<(String, f32)> =
+                                            node.top_keywords.iter().take(2).cloned().collect();
                                         let pill_widths: Vec<f64> = top2
                                             .iter()
                                             .map(|(term, _)| {
                                                 ctx.measure_text(term).unwrap().width()
                                             })
                                             .collect();
-                                        draw_keyword_pills(
-                                            ctx,
-                                            sx,
-                                            label_y,
-                                            &top2,
-                                            &pill_widths,
-                                        );
+                                        draw_keyword_pills(ctx, sx, label_y, &top2, &pill_widths);
                                     }
                                 }
                             }
@@ -1298,7 +1332,12 @@ fn attach_event_listeners(
             s.graph.hovered_edge = hovered_edge;
 
             if let Some(idx) = hovered {
-                let text = node_tooltip(&s.graph.nodes[idx], &s.graph.label_mode, s.graph.size_mode, &s.graph.metrics);
+                let text = node_tooltip(
+                    &s.graph.nodes[idx],
+                    &s.graph.label_mode,
+                    s.graph.size_mode,
+                    &s.graph.metrics,
+                );
                 drop(s);
                 tooltip_signal.set(Some(TooltipData { text, x: sx, y: sy }));
             } else if let Some(eidx) = hovered_edge {
@@ -1594,7 +1633,11 @@ fn draw_topic_rings(
         let is_hovered = hovered_node == Some(i);
         let base_width = (screen_radius * TOPIC_RING_WIDTH_FRAC)
             .clamp(TOPIC_RING_MIN_WIDTH, TOPIC_RING_MAX_WIDTH);
-        let ring_width = if is_hovered { base_width + TOPIC_RING_HOVER_EXTRA } else { base_width };
+        let ring_width = if is_hovered {
+            base_width + TOPIC_RING_HOVER_EXTRA
+        } else {
+            base_width
+        };
 
         if node.top_keywords.is_empty() {
             // D-15: Dashed ring for unanalyzed nodes
@@ -1674,7 +1717,10 @@ mod topic_ring_tests {
         assert_eq!(arcs.len(), 1);
         assert_eq!(arcs[0].2, Some(0)); // slot 0
         let arc_span = arcs[0].1 - arcs[0].0;
-        assert!((arc_span - TAU).abs() < 0.01, "Expected full circle, got {arc_span}");
+        assert!(
+            (arc_span - TAU).abs() < 0.01,
+            "Expected full circle, got {arc_span}"
+        );
     }
 
     #[test]

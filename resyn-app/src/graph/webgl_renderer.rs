@@ -348,14 +348,16 @@ impl Renderer for WebGL2Renderer {
             let is_hovered = state.hovered_node == Some(idx);
             let is_selected = state.selected_node == Some(idx);
 
+            // Data-driven fill from ColorMode via lerped current_color (D-09, D-12).
+            // Interaction overrides (dimmed / hover / selected) layered on top.
+            // Note: seed gold fill removed per plan; seed ring decoration remains.
             let (r, g, b) = if dimmed && !is_selected && !is_hovered {
                 hex_to_rgb("#2a3a4f")
             } else if is_hovered || is_selected {
                 hex_to_rgb("#58a6ff")
-            } else if node.is_seed {
-                hex_to_rgb("#d29922")
             } else {
-                hex_to_rgb("#4a9eff")
+                let c = node.current_color;
+                (c[0], c[1], c[2])
             };
 
             let base_alpha = if dimmed && !is_selected && !is_hovered {

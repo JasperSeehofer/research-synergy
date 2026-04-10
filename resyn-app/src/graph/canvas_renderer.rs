@@ -7,6 +7,16 @@ use super::layout_state::{EdgeData, GraphState, NodeState};
 use super::renderer::{Renderer, Viewport};
 use crate::server_fns::graph::EdgeType;
 
+/// Convert an f32 RGB triple (values in [0,1]) to a CSS `rgb(r,g,b)` string.
+fn f32_rgb_to_css(c: [f32; 3]) -> String {
+    format!(
+        "rgb({}, {}, {})",
+        (c[0] * 255.0) as u8,
+        (c[1] * 255.0) as u8,
+        (c[2] * 255.0) as u8
+    )
+}
+
 pub struct Canvas2DRenderer {
     ctx: CanvasRenderingContext2d,
     width: u32,
@@ -64,7 +74,11 @@ impl Renderer for Canvas2DRenderer {
             } else {
                 false
             };
-            let topic_dimmed = state.nodes.get(idx).map(|n| n.topic_dimmed).unwrap_or(false);
+            let topic_dimmed = state
+                .nodes
+                .get(idx)
+                .map(|n| n.topic_dimmed)
+                .unwrap_or(false);
             // Search dimming (D-07): if search_highlight_ids is non-empty, dim nodes NOT in the set
             let search_dimmed = if !state.search_highlight_ids.is_empty() {
                 let node_id = state.nodes.get(idx).map(|n| n.id.as_str()).unwrap_or("");
@@ -276,14 +290,15 @@ impl Renderer for Canvas2DRenderer {
             self.ctx
                 .set_global_alpha(combined_alpha * (if dimmed { 0.5 } else { 1.0 }));
 
-            let fill_color = if dimmed && !is_selected && !is_hovered {
-                "#2a3a4f"
+            // Data-driven fill from ColorMode via lerped current_color (D-09, D-12).
+            // Interaction overrides (dimmed / hover / selected) are layered on top.
+            // Note: seed gold fill is removed per plan; seed ring decoration remains.
+            let fill_color_str = if dimmed && !is_selected && !is_hovered {
+                "#2a3a4f".to_string()
             } else if is_hovered || is_selected {
-                "#58a6ff"
-            } else if node.is_seed {
-                "#d29922"
+                "#58a6ff".to_string()
             } else {
-                "#4a9eff"
+                f32_rgb_to_css(node.current_color)
             };
 
             // Use current_radius for rendering (smoothly lerped toward target_radius).
@@ -294,7 +309,7 @@ impl Renderer for Canvas2DRenderer {
             self.ctx
                 .arc(node.x, node.y, draw_radius, 0.0, std::f64::consts::TAU)
                 .unwrap();
-            self.ctx.set_fill_style_str(fill_color);
+            self.ctx.set_fill_style_str(&fill_color_str);
             self.ctx.fill();
 
             // Node border removed — topic rings (overlay canvas) handle border rendering

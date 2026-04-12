@@ -1,11 +1,11 @@
 use leptos::prelude::*;
 use leptos_router::hooks::use_location;
 use leptos_use::signal_debounced;
-use wasm_bindgen::closure::Closure;
 use wasm_bindgen::JsCast;
+use wasm_bindgen::closure::Closure;
 
 use crate::app::{DrawerOpenRequest, SearchPanRequest, SearchPanTrigger, SelectedPaper};
-use crate::server_fns::papers::{search_papers, SearchResult};
+use crate::server_fns::papers::{SearchResult, search_papers};
 
 /// Global search bar rendered in the app shell top bar.
 ///
@@ -56,16 +56,15 @@ pub fn GlobalSearchBar() -> impl IntoView {
     Effect::new(move |_| {
         let doc = web_sys::window().unwrap().document().unwrap();
         let input_ref_clone = input_ref.clone();
-        let cb = Closure::<dyn FnMut(web_sys::KeyboardEvent)>::new(
-            move |e: web_sys::KeyboardEvent| {
+        let cb =
+            Closure::<dyn FnMut(web_sys::KeyboardEvent)>::new(move |e: web_sys::KeyboardEvent| {
                 if (e.ctrl_key() || e.meta_key()) && e.key() == "k" {
                     e.prevent_default();
                     if let Some(el) = input_ref_clone.get() {
                         let _ = el.focus();
                     }
                 }
-            },
-        );
+            });
         doc.add_event_listener_with_callback("keydown", cb.as_ref().unchecked_ref())
             .unwrap();
         cb.forget(); // Intentional: lives for app lifetime

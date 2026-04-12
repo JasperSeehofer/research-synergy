@@ -4,7 +4,7 @@ use resyn_core::analysis::highlight::find_highlight_range;
 use resyn_core::datamodels::extraction::{ExtractionMethod, TextExtractionResult};
 
 use crate::app::{DrawerOpenRequest, DrawerTab, SelectedPaper};
-use crate::server_fns::papers::{get_paper_detail, PaperDetail};
+use crate::server_fns::papers::{PaperDetail, get_paper_detail};
 use crate::server_fns::similarity::get_similar_papers;
 
 /// Paper detail side drawer. Slides in from the right when a paper is selected.

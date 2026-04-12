@@ -1,7 +1,7 @@
 /// Result of k-means clustering on node positions.
 pub struct ClusterResult {
-    pub assignments: Vec<usize>,        // cluster index per node (parallel to input positions)
-    pub centroids: Vec<(f64, f64)>,     // (x, y) per cluster
+    pub assignments: Vec<usize>, // cluster index per node (parallel to input positions)
+    pub centroids: Vec<(f64, f64)>, // (x, y) per cluster
     pub dominant_keywords: Vec<String>, // top keyword per cluster (by summed TF-IDF)
 }
 
@@ -89,7 +89,10 @@ pub fn run_kmeans(positions: &[(f64, f64)], k: usize, max_iter: usize) -> Vec<us
         }
         for ci in 0..effective_k {
             if counts[ci] > 0 {
-                centroids[ci] = (sums[ci].0 / counts[ci] as f64, sums[ci].1 / counts[ci] as f64);
+                centroids[ci] = (
+                    sums[ci].0 / counts[ci] as f64,
+                    sums[ci].1 / counts[ci] as f64,
+                );
             }
             // If no points assigned, keep previous centroid position
         }
@@ -320,8 +323,7 @@ mod tests {
         }
 
         // All 4 clusters should be distinct
-        let clusters: std::collections::HashSet<usize> =
-            assignments.iter().copied().collect();
+        let clusters: std::collections::HashSet<usize> = assignments.iter().copied().collect();
         assert_eq!(clusters.len(), 4, "Expected 4 distinct clusters");
     }
 
@@ -409,18 +411,9 @@ mod tests {
     fn test_dominant_keyword_shared_term() {
         // 3 nodes all having "quantum" as top keyword
         let all_keywords = vec![
-            vec![
-                ("quantum".to_string(), 0.9),
-                ("field".to_string(), 0.3),
-            ],
-            vec![
-                ("quantum".to_string(), 0.8),
-                ("gravity".to_string(), 0.2),
-            ],
-            vec![
-                ("quantum".to_string(), 0.7),
-                ("mechanics".to_string(), 0.4),
-            ],
+            vec![("quantum".to_string(), 0.9), ("field".to_string(), 0.3)],
+            vec![("quantum".to_string(), 0.8), ("gravity".to_string(), 0.2)],
+            vec![("quantum".to_string(), 0.7), ("mechanics".to_string(), 0.4)],
         ];
         let node_indices = vec![0, 1, 2];
         let result = dominant_keyword_for_cluster(&node_indices, &all_keywords);
@@ -440,13 +433,21 @@ mod tests {
     #[test]
     fn test_score_to_opacity_zero() {
         let opacity = score_to_opacity(0.0);
-        assert!((opacity - 0.35).abs() < 1e-9, "Expected 0.35, got {}", opacity);
+        assert!(
+            (opacity - 0.35).abs() < 1e-9,
+            "Expected 0.35, got {}",
+            opacity
+        );
     }
 
     #[test]
     fn test_score_to_opacity_one() {
         let opacity = score_to_opacity(1.0);
-        assert!((opacity - 1.0).abs() < 1e-9, "Expected 1.0, got {}", opacity);
+        assert!(
+            (opacity - 1.0).abs() < 1e-9,
+            "Expected 1.0, got {}",
+            opacity
+        );
     }
 
     #[test]

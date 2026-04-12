@@ -55,13 +55,11 @@ fn highlight_text(text: String, query: String) -> impl IntoView {
     // byte lengths, so we search the original text using char iteration instead.
     let text_chars: Vec<char> = text.chars().collect();
     let query_chars: Vec<char> = lower_query.chars().collect();
-    let match_pos = text_chars
-        .windows(query_chars.len())
-        .position(|w| {
-            w.iter()
-                .zip(query_chars.iter())
-                .all(|(a, b)| a.to_lowercase().eq(b.to_lowercase()))
-        });
+    let match_pos = text_chars.windows(query_chars.len()).position(|w| {
+        w.iter()
+            .zip(query_chars.iter())
+            .all(|(a, b)| a.to_lowercase().eq(b.to_lowercase()))
+    });
     if let Some(char_start) = match_pos {
         let char_end = char_start + query_chars.len();
         let before: String = text_chars[..char_start].iter().collect();

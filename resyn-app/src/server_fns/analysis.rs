@@ -135,14 +135,15 @@ pub async fn start_analysis() -> Result<String, ServerFnError> {
                         .await
                         .ok()
                         .flatten()
-                        .map(|m| m.corpus_fingerprint == fingerprint && m.paper_count == paper_count)
+                        .map(|m| {
+                            m.corpus_fingerprint == fingerprint && m.paper_count == paper_count
+                        })
                         .unwrap_or(false);
 
                     if !already_done {
                         let tfidf_results = TfIdfEngine::compute_corpus(&extractions);
                         for (arxiv_id, tfidf_vector) in &tfidf_results {
-                            let (top_terms, top_scores) =
-                                TfIdfEngine::get_top_n(tfidf_vector, 5);
+                            let (top_terms, top_scores) = TfIdfEngine::get_top_n(tfidf_vector, 5);
                             let analysis = PaperAnalysis {
                                 arxiv_id: arxiv_id.clone(),
                                 tfidf_vector: tfidf_vector.clone(),
@@ -196,7 +197,10 @@ pub async fn start_analysis() -> Result<String, ServerFnError> {
                                 error!(arxiv_id = sim.arxiv_id.as_str(), error = %e, "Failed to persist similarity");
                             }
                         }
-                        info!(papers = similarities.len(), "Similarity computation complete");
+                        info!(
+                            papers = similarities.len(),
+                            "Similarity computation complete"
+                        );
                     } else {
                         info!("Similarity computation skipped — corpus unchanged");
                     }
@@ -234,7 +238,10 @@ pub async fn start_analysis() -> Result<String, ServerFnError> {
                     }
                     "noop" => Box::new(NoopProvider),
                     other => {
-                        error!(provider = other, "Unknown LLM provider — use: claude, ollama, noop");
+                        error!(
+                            provider = other,
+                            "Unknown LLM provider — use: claude, ollama, noop"
+                        );
                         send_progress(&tx, "analysis_error", "error");
                         return;
                     }

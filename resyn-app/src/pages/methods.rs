@@ -12,8 +12,10 @@ pub fn MethodsPanel() -> impl IntoView {
     // Primary matrix resource.
     let matrix_resource = Resource::new(|| (), |_| async { get_method_matrix().await });
 
-    let UseEventSourceReturn { message: sse_message, .. } =
-        use_event_source::<ProgressEvent, JsonSerdeCodec>("/progress");
+    let UseEventSourceReturn {
+        message: sse_message,
+        ..
+    } = use_event_source::<ProgressEvent, JsonSerdeCodec>("/progress");
 
     Effect::new(move |_| {
         if let Some(msg) = sse_message.get() {
@@ -23,9 +25,10 @@ pub fn MethodsPanel() -> impl IntoView {
         }
     });
 
-    let analysis_action = Action::new(move |_: &()| async move {
-        crate::server_fns::analysis::start_analysis().await
-    });
+    let analysis_action =
+        Action::new(
+            move |_: &()| async move { crate::server_fns::analysis::start_analysis().await },
+        );
 
     // Drill-down state: None = overview, Some((row_cat, col_cat)) = drill-down view.
     let drilldown: RwSignal<Option<(String, String)>> = RwSignal::new(None);

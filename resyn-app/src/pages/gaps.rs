@@ -12,8 +12,10 @@ use crate::server_fns::gaps::get_gap_findings;
 pub fn GapsPanel() -> impl IntoView {
     let findings = Resource::new(|| (), |_| get_gap_findings());
 
-    let UseEventSourceReturn { message: sse_message, .. } =
-        use_event_source::<ProgressEvent, JsonSerdeCodec>("/progress");
+    let UseEventSourceReturn {
+        message: sse_message,
+        ..
+    } = use_event_source::<ProgressEvent, JsonSerdeCodec>("/progress");
 
     Effect::new(move |_| {
         if let Some(msg) = sse_message.get() {

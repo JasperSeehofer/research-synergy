@@ -11,8 +11,10 @@ use crate::server_fns::problems::get_open_problems_ranked;
 pub fn OpenProblemsPanel() -> impl IntoView {
     let problems = Resource::new(|| (), |_| get_open_problems_ranked());
 
-    let UseEventSourceReturn { message: sse_message, .. } =
-        use_event_source::<ProgressEvent, JsonSerdeCodec>("/progress");
+    let UseEventSourceReturn {
+        message: sse_message,
+        ..
+    } = use_event_source::<ProgressEvent, JsonSerdeCodec>("/progress");
 
     Effect::new(move |_| {
         if let Some(msg) = sse_message.get() {

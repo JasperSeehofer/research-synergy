@@ -21,9 +21,7 @@ pub enum MetricsStatus {
 ///
 /// Returns an empty vec when no metrics have been computed yet.
 #[server(GetTopPageRankPapers, "/api")]
-pub async fn get_top_pagerank_papers(
-    limit: usize,
-) -> Result<Vec<RankedPaperEntry>, ServerFnError> {
+pub async fn get_top_pagerank_papers(limit: usize) -> Result<Vec<RankedPaperEntry>, ServerFnError> {
     #[cfg(feature = "ssr")]
     {
         use resyn_core::database::queries::{GraphMetricsRepository, PaperRepository};
@@ -144,7 +142,10 @@ pub async fn get_all_betweenness() -> Result<Vec<(String, f32)>, ServerFnError> 
             .await
             .map_err(|e| ServerFnError::new(e.to_string()))?;
 
-        Ok(all.into_iter().map(|m| (m.arxiv_id, m.betweenness)).collect())
+        Ok(all
+            .into_iter()
+            .map(|m| (m.arxiv_id, m.betweenness))
+            .collect())
     }
     #[cfg(not(feature = "ssr"))]
     unreachable!()
@@ -255,7 +256,8 @@ pub async fn compute_and_store_metrics(
 
     // Betweenness — O(VE), CPU-bound; run in blocking thread pool (T-23-05)
     let graph_clone = graph.clone();
-    let bc_scores = tokio::task::spawn_blocking(move || betweenness::compute_betweenness(&graph_clone)).await?;
+    let bc_scores =
+        tokio::task::spawn_blocking(move || betweenness::compute_betweenness(&graph_clone)).await?;
 
     let now = chrono::Utc::now().to_rfc3339();
 
@@ -275,9 +277,6 @@ pub async fn compute_and_store_metrics(
         }
     }
 
-    tracing::info!(
-        papers = papers.len(),
-        "Graph metrics computed and stored"
-    );
+    tracing::info!(papers = papers.len(), "Graph metrics computed and stored");
     Ok(())
 }

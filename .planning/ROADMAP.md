@@ -142,7 +142,11 @@ Plans:
   1. System detects communities in the citation graph via Louvain modularity optimization and stores assignments in SurrealDB
   2. User can select "Community" in the "Color by" dropdown (alongside BFS Depth and Topic) and graph nodes are colored by their community
   3. User can open a community summary panel that shows top papers, dominant keywords, and shared methods for each detected community
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [x] 24-01-PLAN.md — CommunityAssignment model, migration 12, Louvain impl, CommunityRepository, c-TF-IDF labels
+- [x] 24-02-PLAN.md — ColorMode::Community, 300ms lerp, Color by dropdown, community legend chips
+- [x] 24-03-PLAN.md — DrawerTab::Community, CommunityTabBody, trigger_community_compute, post-crawl Stage 6 auto-compute
 **UI hint**: yes
 
 ### Phase 25: Discovery Recommendations

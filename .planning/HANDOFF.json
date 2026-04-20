@@ -1,99 +1,114 @@
 {
   "version": "1.0",
-  "timestamp": "2026-04-20T15:37:15.626Z",
+  "timestamp": "2026-04-20T17:06:04.000Z",
   "phase": null,
-  "phase_name": "SemanticScholarSource — Kuramoto-LBD v03 corpus unblock",
+  "phase_name": "EXP-RS-07 — Sheaves-LBD v0.1 prototype",
   "phase_dir": null,
   "plan": null,
-  "task": 2,
-  "total_tasks": 6,
+  "task": 6,
+  "total_tasks": 10,
   "status": "paused",
   "completed_tasks": [
     {
       "id": 1,
-      "name": "Implement SemanticScholarSource + tests",
+      "name": "SemanticScholarSource implementation",
       "status": "done",
-      "notes": "semantic_scholar_api.rs, integration tests, all additive edits to mod.rs/error.rs/paper.rs/rate_limiter.rs/crawl.rs/queries.rs. 9 new tests green. Smoke test against real S2 API passed."
+      "commit": "38cae23",
+      "notes": "semantic_scholar_api.rs, 9 tests green."
     },
     {
       "id": 2,
-      "name": "Smoke test: single paper from S2",
+      "name": "A1: Rust export extension — ExportedCommunity + community c-TF-IDF",
       "status": "done",
-      "notes": "cargo run --bin resyn -- crawl --source semantic_scholar --paper-id cond-mat/0010317 --max-depth 0 --db surrealkv://./data-s2-smoke. 1 paper fetched in 0.6s."
+      "commit": "c2aad52",
+      "notes": "ExportedCommunity in community_graph.rs; export_community_graph() computes per-community c-TF-IDF. serde(default) for backward compat. 3 tests."
+    },
+    {
+      "id": 3,
+      "name": "Wire export-louvain-graph CLI + ar5iv fallback + analyze community step",
+      "status": "done",
+      "commit": "f0e82d3",
+      "notes": "export-louvain-graph subcommand; download_raw() for Send-safe ar5iv fallback; run_community_detection() in analyze pipeline."
+    },
+    {
+      "id": 4,
+      "name": "A2: Toy fixture — prototypes/data/hopfield_spinglass_toy.json",
+      "status": "done",
+      "commit": "af766d7",
+      "notes": "2 communities (Hopfield/neural vs SK spin-glass), 12 terms each, shared {spin,ising} edge stalk, 1 inter-community edge, ground_truth={bridge_community_pair:[0,1]}."
+    },
+    {
+      "id": 5,
+      "name": "A3+A4+A5: sheaf_lbd_v01.py + T1/SC1-SC3 + notebook",
+      "status": "done",
+      "commit": "af766d7",
+      "notes": "T1 PASS (Φ=2.0, ground truth top-1). SC2 ratio=0.0. SC3 min_lam=2.0. H⁰=22 on toy (expected — dense eigh used for N≤500, not eigsh). SHEAF_V01_RESULTS.md shows HOLD pending corpus."
     }
   ],
   "remaining_tasks": [
     {
-      "id": 3,
-      "name": "Crawl Feynman corpus (10 seeds × depth-2)",
-      "status": "not_started",
-      "notes": "Target: surrealkv://./data-kuramoto. Seeds: cond-mat/0203227, 0710.3256, cond-mat/0010317, cond-mat/0312131, cond-mat/0007235, cond-mat/0205009, nlin/0202034, cond-mat/0002374, 1005.1986, cond-mat/9801289. Unauthenticated (2200ms/paper). Expect ~500-2000 papers, ~30-90 min."
-    },
-    {
-      "id": 4,
-      "name": "Analyze corpus (NLP + community detection)",
-      "status": "not_started",
-      "notes": "cargo run --bin resyn -- analyze --db surrealkv://./data-kuramoto"
-    },
-    {
-      "id": 5,
-      "name": "Export + verify pair presence",
-      "status": "not_started",
-      "notes": "export-louvain-graph --published-before 2014-12-31 --output prototypes/data/research_synergy_pre2015.json. Then run pair-check Python snippet."
-    },
-    {
       "id": 6,
-      "name": "Execute kuramoto_lbd_v03.ipynb",
+      "name": "B1: Analyze Feynman corpus",
       "status": "not_started",
-      "notes": "Exit criterion: n_eval >= 3 AND BENCH_P10 > 0.15. jupyter nbconvert --to notebook --execute."
+      "notes": "cargo run --bin resyn -- analyze --db surrealkv://./data-kuramoto. BLOCKED: crawl must finish first. Check: tail data-kuramoto/crawl.log. Crawl last seen running with 429 rate limits (unauthenticated S2 API)."
+    },
+    {
+      "id": 7,
+      "name": "B2: Export Feynman corpus",
+      "status": "not_started",
+      "notes": "cargo run --bin resyn -- export-louvain-graph --db surrealkv://./data-kuramoto --output prototypes/data/research_synergy_pre2015.json --published-before 2014-12-31 --tfidf-top-n 200"
+    },
+    {
+      "id": 8,
+      "name": "B3+B4: T2 + T4 + SC4 + SC5 + n_sections sensitivity {10,20,50}",
+      "status": "not_started",
+      "notes": "Re-run: uv run --with numpy --with scipy --with matplotlib --with networkx python prototypes/sheaf_lbd_v01.py. Auto-detects corpus at prototypes/data/research_synergy_pre2015.json. T2: precision@10 >= 0.4 (ceiling 0.5 — 5 evaluable pairs). T4: top-5 ablation ratios > 3. SC4: spectral gap >= 1.1. SC5: Jaccard <= 0.8."
+    },
+    {
+      "id": 9,
+      "name": "B5: Finalize results + figures",
+      "status": "not_started",
+      "notes": "AUTHORIZE if T1+T2>=0.4+T4>=50%. STANDALONE if T4>=50% but T2<0.4. FALSIFIED if T4<20% or SC5>0.8. HOLD otherwise. Figures generated automatically by sheaf_lbd_v01.py if matplotlib+networkx present."
+    },
+    {
+      "id": 10,
+      "name": "Vault updates post-verdict",
+      "status": "not_started",
+      "notes": "wiki/meta/agentic-experiments.md EXP-RS-07 row; wiki/sources/exp-rs-07-sheaves-v01-results.md; flip concept+analysis status; update focus.md."
     }
   ],
   "blockers": [
     {
-      "description": "S2 API key applied for but not yet received. Crawl will run unauthenticated at 2200ms/paper (~1 rps for 2 calls/paper). ~500-2000 papers at depth-2 = 18-73 min.",
+      "description": "Feynman corpus crawl still running (data-kuramoto/crawl.log). Last seen at 16:40 UTC with heavy 429s from unauthenticated S2 API. Stage B blocked until crawl finishes, analyze completes, and export succeeds.",
       "type": "external",
-      "workaround": "Run unauthenticated. Set S2_API_KEY env var once key arrives — rate drops to 400ms/paper (5x faster)."
+      "workaround": "Stage A complete. Set S2_API_KEY to drop 429 rate. Monitor: tail -f data-kuramoto/crawl.log. If crawl ended early (process died), re-run: cargo run --bin resyn -- crawl --source semanticscholar --paper-id <seed> --db surrealkv://./data-kuramoto --max-depth 2"
     }
   ],
   "human_actions_pending": [
     {
-      "action": "Set S2_API_KEY env var once Semantic Scholar API key is received",
-      "context": "Applied for key during this session. Without it, unauthenticated crawl takes ~18-73 min for depth-2. With key: ~4-15 min.",
+      "action": "Set S2_API_KEY env var (Semantic Scholar API key)",
+      "context": "Unauthenticated crawl hits 429s and is slow (~2200ms/paper). Key brings it to ~400ms/paper. Non-blocking if crawl already finished.",
       "blocking": false
     }
   ],
   "decisions": [
     {
-      "decision": "Semantic Scholar over OpenAlex",
-      "rationale": "S2 returns externalIds.ArXiv directly on each reference. OpenAlex only returns opaque work IDs requiring N+1 lookups.",
-      "phase": "planning"
-    },
-    {
-      "decision": "External governor at 2200ms (unkeyed) covers both fetch_paper + fetch_references per paper",
-      "rationale": "Each paper = 2 API calls. With S2's 1 rps limit, 2200ms external interval = ~0.9 rps total. Internal rate_limit_check zeroed (per-task fresh source means it was a no-op anyway).",
+      "decision": "Dense np.linalg.eigh for N<=500, sparse eigsh for larger",
+      "rationale": "eigsh(k=22) on N=24 with H⁰=22 only finds zero modes — misses non-zero modes entirely. Dense solver finds all N eigenvalues.",
       "phase": "implementation"
     },
     {
-      "decision": "Old-format arXiv IDs (cond-mat/0010317) skip the Link creation, rely only on arxiv_eprint",
-      "rationale": "Reference::get_arxiv_id() splits URL by '/' and takes last segment, which strips the category prefix from old-format IDs. arxiv_eprint fallback returns the full correct ID.",
+      "decision": "COO accumulation for block-sparse Laplacian assembly",
+      "rationale": "Handles multiple edges contributing to same diagonal block correctly (coo_matrix sums duplicates). lil_matrix block slice assignment is fragile.",
       "phase": "implementation"
     },
     {
-      "decision": "Fresh DB at surrealkv://./data-kuramoto for Feynman corpus",
-      "rationale": "Existing ./data has 383 LIGO/GW papers — wrong domain. Keep it untouched.",
-      "phase": "planning"
+      "decision": "uv run --with numpy --with scipy python prototypes/sheaf_lbd_v01.py",
+      "rationale": "numpy/scipy not installed system-wide; uv handles transient deps cleanly.",
+      "phase": "implementation"
     }
   ],
-  "uncommitted_files": [
-    "resyn-core/src/data_aggregation/semantic_scholar_api.rs",
-    "resyn-core/src/data_aggregation/mod.rs",
-    "resyn-core/src/data_aggregation/rate_limiter.rs",
-    "resyn-core/src/database/queries.rs",
-    "resyn-core/src/datamodels/paper.rs",
-    "resyn-core/src/error.rs",
-    "resyn-server/src/commands/crawl.rs",
-    "resyn-core/tests/semantic_scholar_integration.rs"
-  ],
-  "next_action": "Set S2_API_KEY env var if available, then loop-crawl the 10 Feynman seeds at depth-2 into surrealkv://./data-kuramoto using --source semantic_scholar",
-  "context_notes": "Implementation complete and tested. The hard part was discovering that old-format arXiv IDs (cond-mat/...) must NOT create Link objects — only arxiv_eprint — because get_arxiv_id() strips the category prefix when splitting URLs. The plan file at ~/.claude/plans/session-wrap-up-kuramoto-v03-foamy-wall.md has the full verification script including the pair-check Python one-liner and notebook invocation."
+  "uncommitted_files": [],
+  "next_action": "Check crawl status (tail data-kuramoto/crawl.log or ls -la data-kuramoto/). If done: (1) cargo run --bin resyn -- analyze --db surrealkv://./data-kuramoto, (2) export, (3) uv run ... python prototypes/sheaf_lbd_v01.py. Full run command in remaining_tasks[id=8].",
+  "context_notes": "All Stage A commits landed (af766d7). T1 PASS confirmed by running the prototype. scipy/numpy available via uv (downloaded on first run). feynman_10pair_papers.json lives in professional-vault/prototypes/data/ not research-synergy/prototypes/data/ — sheaf_lbd_v01.py expects it at prototypes/data/feynman_10pair_papers.json. Need to symlink or copy before running Stage B. Check: ls prototypes/data/."
 }

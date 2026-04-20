@@ -1,13 +1,13 @@
 {
   "version": "1.0",
-  "timestamp": "2026-04-20T21:00:00.000Z",
+  "timestamp": "2026-04-20T22:00:00.000Z",
   "phase": null,
   "phase_name": "EXP-RS-07 — Sheaves-LBD v0.1 prototype",
   "phase_dir": null,
   "plan": null,
   "task": 13,
   "total_tasks": 18,
-  "status": "in_progress",
+  "status": "paused",
   "completed_tasks": [
     {"id": 1, "name": "SemanticScholarSource implementation", "status": "done", "commit": "38cae23"},
     {"id": 2, "name": "A1: ExportedCommunity + community c-TF-IDF in Rust export", "status": "done", "commit": "c2aad52"},
@@ -67,6 +67,6 @@
     }
   ],
   "uncommitted_files": [],
-  "next_action": "Run modern corpus crawl (task 13): cargo run --bin resyn -- crawl --source arxiv,inspirehep,semanticscholar --paper-id 1902.04760 --max-depth 2 --db surrealkv://./data-modern",
-  "context_notes": "All Rust compiles clean. 5 new tests pass. 7 pre-existing migration test failures (database::queries, hardcode count=11, now at 13) — do NOT fix as part of EXP-RS-07. T1 still PASS after script refactor. modern_lbd_pairs.json is in professional-vault/prototypes/data/ not research-synergy/prototypes/data/."
+  "next_action": "Delete data-modern/ and run multi-seed crawl for task 13 — use benchmark papers as seeds to ensure all 12 land in corpus. Start with: rm -rf data-modern && for each of [2401.04191, 2206.02851, 2109.09555, 2103.07713] run crawl --max-depth 1 into data-modern. Then analyze + export + run sheaf_lbd_v01.py.",
+  "context_notes": "TWO BUGS FIXED THIS SESSION (commit 2205b02): (1) arxiv.org/html parser — primary URL returns 200 for post-2023 papers with different schema than ar5iv; <a> elements have no href, DOIs are text content; fix: collect text from all <a> and <span> children. (2) BFS queue loop — claim_next_pending() returned None before workers enqueued depth-1 refs; fix: re-check pending_count() after draining in-flight tasks. data-modern DB currently has only 15 papers (partial crawl before fixes) — DELETE it and start fresh. m01+m04 stubs filled: evaluable_pairs now 6 [m01,m02,m03,m04,m06,m08]. Seed 2401.04191 references 2008.02217 by arXiv ID in text — use this as primary seed. 7 pre-existing migration test failures — do NOT fix. modern_lbd_pairs.json is in professional-vault/prototypes/data/."
 }

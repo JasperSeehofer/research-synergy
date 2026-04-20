@@ -1,0 +1,149 @@
+{
+  "schema_version": "v0.2",
+  "corpus_filter": "post-2018 arXiv papers",
+  "curation_date": "2026-04-20",
+  "curation_rule": "one post-2018 arXiv ID per side per pair; both sides must be in corpus for evaluable=true",
+  "verification_date": "2026-04-20",
+  "verification_note": "All arXiv IDs verified via export.arxiv.org API on 2026-04-20",
+  "evaluable_pairs": ["m01", "m02", "m03", "m04", "m06", "m08"],
+  "pairs": [
+    {
+      "id": "m01",
+      "description": "Modern Hopfield networks (dense Hebbian) ↔ p-spin spherical spin glass",
+      "evaluable": true,
+      "side_a": {
+        "domain": "machine learning / associative memory",
+        "arxiv_id": "2008.02217",
+        "title": "Hopfield Networks is All You Need",
+        "authors": ["Ramsauer et al."],
+        "year": 2020,
+        "verified": true,
+        "notes": "Shows modern dense Hopfield networks are equivalent to attention; directly connects to p-spin models"
+      },
+      "side_b": {
+        "domain": "statistical physics / spin glasses",
+        "arxiv_id": "2401.04191",
+        "title": "Dense Hopfield Networks in the Teacher-Student Setting",
+        "authors": ["Thériault", "Tantari"],
+        "year": 2024,
+        "verified": true,
+        "notes": "Analyzes phase diagram of p-body Hopfield networks as spin glasses; paramagnetic-to-spin-glass transition; bridges dense Hopfield/attention with p-spin physics"
+      }
+    },
+    {
+      "id": "m02",
+      "description": "Kuramoto oscillator mathematics ↔ brain network synchronization (fMRI)",
+      "evaluable": true,
+      "side_a": {
+        "domain": "nonlinear dynamics / synchronization",
+        "arxiv_id": "2206.02851",
+        "title": "Synchronization of coupled Kuramoto oscillators competing for resources",
+        "authors": ["Kroma-Wiley", "Mucha", "Bassett"],
+        "year": 2022,
+        "verified": true,
+        "notes": "Extends Kuramoto to resource-constrained networks; Bassett lab bridges to neuroscience"
+      },
+      "side_b": {
+        "domain": "computational neuroscience / brain connectivity",
+        "arxiv_id": "2105.08288",
+        "title": "Kuramoto model based analysis reveals oxytocin effects on brain network dynamics",
+        "authors": ["Zheng", "Liang et al."],
+        "year": 2021,
+        "verified": true,
+        "notes": "Applies Kuramoto phase dynamics to fMRI data; direct biological validation"
+      }
+    },
+    {
+      "id": "m03",
+      "description": "Random matrix theory (spectral fluctuations) ↔ neural tangent kernel theory",
+      "evaluable": true,
+      "side_a": {
+        "domain": "random matrix theory / mathematical physics",
+        "arxiv_id": "1912.11518",
+        "title": "Fluctuations of the spectrum in rotationally invariant random matrix ensembles",
+        "authors": ["Meckes", "Meckes"],
+        "year": 2019,
+        "verified": true,
+        "notes": "Rigorous spectral statistics for large random matrices; Marchenko-Pastur / semicircle foundations"
+      },
+      "side_b": {
+        "domain": "deep learning theory / kernel methods",
+        "arxiv_id": "2104.01351",
+        "title": "Random Features for the Neural Tangent Kernel",
+        "authors": ["Han", "Avron et al."],
+        "year": 2021,
+        "verified": true,
+        "notes": "Applies random matrix spectral theory to construct efficient NTK approximations"
+      }
+    },
+    {
+      "id": "m04",
+      "description": "Topological data analysis ↔ topological phase transitions in condensed matter",
+      "evaluable": true,
+      "side_a": {
+        "domain": "topological data analysis",
+        "arxiv_id": "2004.02551",
+        "title": "giotto-tda: A Topological Data Analysis Toolkit for Machine Learning and Data Exploration",
+        "authors": ["Tauzin", "Lupo et al."],
+        "year": 2020,
+        "verified": true,
+        "notes": "Implements persistent homology for data analysis; widely cited TDA toolkit"
+      },
+      "side_b": {
+        "domain": "condensed matter / quantum phase transitions",
+        "arxiv_id": "2109.09555",
+        "title": "Learning quantum phase transitions through Topological Data Analysis",
+        "authors": ["Tirelli", "Costa"],
+        "year": 2021,
+        "verified": true,
+        "notes": "Applies TDA/persistent homology to detect quantum phase transitions in 2D Anderson and Hubbard models; Monte Carlo + TDA pipeline; critical points agree with literature"
+      }
+    },
+    {
+      "id": "m06",
+      "description": "Stochastic thermodynamics (entropy production / Jarzynski) ↔ diffusion generative models",
+      "evaluable": true,
+      "side_a": {
+        "domain": "information thermodynamics / biophysics",
+        "arxiv_id": "2409.17599",
+        "title": "Information thermodynamics: from physics to neuroscience",
+        "authors": ["Karbowski"],
+        "year": 2024,
+        "verified": true,
+        "notes": "Applies fluctuation theorems and free energy bounds to neural inference"
+      },
+      "side_b": {
+        "domain": "generative models / variational inference",
+        "arxiv_id": "2401.02739",
+        "title": "Denoising Diffusion Variational Inference: Diffusion Models as Expressive Variational Posteriors",
+        "authors": ["Piriyakulkij", "Wang", "Kuleshov"],
+        "year": 2024,
+        "verified": true,
+        "notes": "Reverse-time SDEs as variational posteriors; explicitly connects to Jarzynski free-energy bounds"
+      }
+    },
+    {
+      "id": "m08",
+      "description": "SIR epidemic spreading on networks ↔ information/awareness diffusion on multiplex networks",
+      "evaluable": true,
+      "side_a": {
+        "domain": "mathematical epidemiology / complex networks",
+        "arxiv_id": "2103.07713",
+        "title": "The Effects of Diffusion of Information on Epidemic Spread -- A Multilayer Approach",
+        "authors": ["Gunduc"],
+        "year": 2021,
+        "verified": true,
+        "notes": "Coupled SIR and information-adoption dynamics on two-layer networks"
+      },
+      "side_b": {
+        "domain": "network science / epidemic control",
+        "arxiv_id": "2406.03763",
+        "title": "The impact of nodes of information dissemination on epidemic spreading in dynamic multiplex networks",
+        "authors": ["Feng", "Li et al."],
+        "year": 2024,
+        "verified": true,
+        "notes": "Information awareness in one layer suppresses disease in another; isomorphic spreading dynamics"
+      }
+    }
+  ]
+}

@@ -275,8 +275,11 @@ def run_t4_ablation(top5, G, basis_terms, maps, offsets, c_to_i, vals, vecs, L):
         detail.append(((c1, c2), i_star, lam_star, ratio, status))
         print(f"  {status} bridge=comm{c1}↔comm{c2}  i*={i_star}  λ*={lam_star:.4f}  ratio={ratio:.2f}")
 
-    n = max(len(top5), 1)
-    pass_rate = pass_count / n
+    if len(top5) == 0:
+        print("  T4 VOID: no inter-community bridges to ablate (corpus insufficient)")
+        return [], None, "VOID"
+
+    pass_rate = pass_count / len(top5)
     if pass_rate >= 0.5:
         overall = "PASS"
     elif pass_rate < 0.2:
@@ -456,9 +459,11 @@ def write_results_md(path, r):
         sc4_str = f"{sc4:.3f}" if sc4 is not None else "N/A"
         sc4_status = "PASS" if (sc4 is not None and sc4 >= 1.1) else "FLAG"
         sc5 = r.get("sc5_jaccard", 0.0)
+        t4_rate_raw = r.get("t4_pass_rate")
+        t4_rate_str = f"{t4_rate_raw:.2f}" if t4_rate_raw is not None else "N/A"
         lines += [
             f"| T2 precision@10 | precision@10 | {r['t2_precision']:.3f} | ≥ 0.4 | {'PASS' if r['t2_precision'] >= 0.4 else 'FAIL'} |",
-            f"| T4 ablation | pass rate | {r.get('t4_pass_rate', 0.0):.2f} | ≥ 0.5 | {r.get('t4_overall', 'HOLD')} |",
+            f"| T4 ablation | pass rate | {t4_rate_str} | ≥ 0.5 | {r.get('t4_overall', 'HOLD')} |",
             f"| SC4 spectral gap | λ₂₁/λ₂₀ | {sc4_str} | ≥ 1.1 | {sc4_status} |",
             f"| SC5 Jaccard | J(sheaf, cosine) | {sc5:.3f} | ≤ 0.8 | {'PASS' if sc5 <= 0.8 else 'FLAG'} |",
         ]
@@ -480,19 +485,25 @@ def write_results_md(path, r):
             "Stage A complete (T1 PASS, SC2/SC3 PASS). Feynman corpus crawl pending. "
             "Re-run after `cargo run --bin resyn -- analyze` and `export-louvain-graph`."
         )
-    elif r["t2_precision"] >= 0.4 and r.get("t4_pass_rate", 0.0) >= 0.5:
+    elif r.get("t4_overall") == "VOID":
+        decision = "HOLD"
+        reasoning = (
+            "Stage B corpus insufficient (< 2 communities or 0 inter-community edges). "
+            "Re-crawl with a larger, multi-domain corpus and re-run."
+        )
+    elif r["t2_precision"] >= 0.4 and (r.get("t4_pass_rate") or 0.0) >= 0.5:
         decision = "AUTHORIZE"
         reasoning = (
             f"T1 PASS. T2 precision@10={r['t2_precision']:.3f} ≥ 0.4. "
-            f"T4 pass-rate={r.get('t4_pass_rate',0.0):.2f} ≥ 0.5. Authorize Phase 43 (Rust sheaf module)."
+            f"T4 pass-rate={(r.get('t4_pass_rate') or 0.0):.2f} ≥ 0.5. Authorize Phase 43 (Rust sheaf module)."
         )
-    elif r.get("t4_pass_rate", 1.0) >= 0.5 and r["t2_precision"] < 0.4:
+    elif (r.get("t4_pass_rate") or 0.0) >= 0.5 and r["t2_precision"] < 0.4:
         decision = "STANDALONE"
         reasoning = (
-            f"T4 multi-causal PASS (pass-rate={r.get('t4_pass_rate',0.0):.2f}) but "
+            f"T4 multi-causal PASS (pass-rate={(r.get('t4_pass_rate') or 0.0):.2f}) but "
             f"T2 precision@10={r['t2_precision']:.3f} < 0.4. Standalone publication candidate."
         )
-    elif r.get("t4_pass_rate", 1.0) < 0.2:
+    elif r.get("t4_pass_rate") is not None and r["t4_pass_rate"] < 0.2:
         decision = "FALSIFIED"
         reasoning = "T4 < 20% — multi-causal thesis falsified; RAF-LBD remains the only multi-causal candidate."
     elif r.get("sc5_jaccard", 0.0) > 0.8:
@@ -619,6 +630,15 @@ def main():
         G_corp, _ = load_louvain_community_graph(bm_corpus)
         print(f"  Communities: {len(G_corp.community_ids)}, inter-community edges: {len(G_corp.edges)}")
 
+        if len(G_corp.community_ids) < 2 or len(G_corp.edges) == 0:
+            print(f"  [{bm_label}] HOLD — corpus insufficient (need ≥2 communities and ≥1 inter-community edge).")
+            benchmark_results[bm_label] = {
+                "label": bm_label, "t2_precision": 0.0, "sc4_gap": None,
+                "sc5_jaccard": 0.0, "t4_pass_rate": None, "t4_overall": "VOID", "t4_detail": [],
+            }
+            any_corpus_run = True
+            continue
+
         basis_corp = build_stalks(G_corp, top_k=100)
         maps_corp, rz_corp = build_restriction_maps(G_corp, basis_corp)
         print(f"  Rank-zero edges: {rz_corp}")
@@ -705,8 +725,9 @@ def main():
     if benchmark_results:
         for label, bm_r in benchmark_results.items():
             prec = bm_r["t2_precision"]
+            t4_rate_s = f"{bm_r['t4_pass_rate']:.2f}" if bm_r['t4_pass_rate'] is not None else "N/A"
             print(f"  [{label}] T2: precision@10={prec:.3f} ({'PASS' if prec >= 0.4 else 'FAIL'})"
-                  f"  T4: {bm_r['t4_overall']} (pass-rate={bm_r['t4_pass_rate']:.2f})")
+                  f"  T4: {bm_r['t4_overall']} (pass-rate={t4_rate_s})")
     else:
         print("  T2/T4/SC4/SC5: HOLD (corpus pending)")
 

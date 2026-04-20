@@ -1,13 +1,13 @@
 {
   "version": "1.0",
-  "timestamp": "2026-04-20T20:30:00.000Z",
+  "timestamp": "2026-04-20T21:00:00.000Z",
   "phase": null,
   "phase_name": "EXP-RS-07 — Sheaves-LBD v0.1 prototype",
   "phase_dir": null,
   "plan": null,
-  "task": 11,
+  "task": 13,
   "total_tasks": 18,
-  "status": "paused",
+  "status": "in_progress",
   "completed_tasks": [
     {"id": 1, "name": "SemanticScholarSource implementation", "status": "done", "commit": "38cae23"},
     {"id": 2, "name": "A1: ExportedCommunity + community c-TF-IDF in Rust export", "status": "done", "commit": "c2aad52"},
@@ -18,11 +18,11 @@
     {"id": 7, "name": "Schema migration 13: source column on crawl_queue + mark_done_with_source", "status": "done", "commit": "5062118"},
     {"id": 8, "name": "--published-after flag on export-louvain-graph", "status": "done", "commit": "5062118"},
     {"id": 9, "name": "sheaf_lbd_v01.py dual-benchmark loop (Feynman pre-2015 + modern post-2018)", "status": "done", "commit": "5062118"},
-    {"id": 10, "name": "modern_lbd_pairs.json with 4 evaluable verified pairs (m02/m03/m06/m08)", "status": "done", "commit": "5062118", "notes": "In professional-vault/prototypes/data/. Pairs verified via arXiv API. m01+m04 stubs need companion papers."}
+    {"id": 10, "name": "modern_lbd_pairs.json with 4 evaluable verified pairs (m02/m03/m06/m08)", "status": "done", "commit": "5062118", "notes": "In professional-vault/prototypes/data/. Pairs verified via arXiv API. m01+m04 stubs need companion papers."},
+    {"id": 11, "name": "Fill m01 stub: 2401.04191 (Dense Hopfield Networks in the Teacher-Student Setting)", "status": "done", "notes": "Verified via export.arxiv.org. Thériault & Tantari 2024, cond-mat.dis-nn. m01 now evaluable=true."},
+    {"id": 12, "name": "Fill m04 stub: 2109.09555 (Learning quantum phase transitions through TDA)", "status": "done", "notes": "Verified via export.arxiv.org. Tirelli & Costa 2021, cond-mat.str-el. m04 now evaluable=true. evaluable_pairs now 6: m01/m02/m03/m04/m06/m08."}
   ],
   "remaining_tasks": [
-    {"id": 11, "name": "Fill m01 stub: post-2018 cond-mat.dis-nn spin-glass paper to pair with 2008.02217", "status": "not_started", "notes": "Search Lucibello/Mezard/Charbonneau post-2020. Verify via: curl -s https://export.arxiv.org/abs/<id> | grep title"},
-    {"id": 12, "name": "Fill m04 stub: post-2018 persistent homology applied to topological phase detection", "status": "not_started", "notes": "Search 'persistent homology topological insulator site:arxiv.org' post-2019. Verify via arXiv API."},
     {"id": 13, "name": "Confirm seed paper and run crawl", "status": "not_started", "notes": "Recommended: 1902.04760 (cond-mat.dis-nn+math-ph, pre-2020 but best available). Run: cargo run --bin resyn -- crawl --source arxiv,inspirehep,semanticscholar --paper-id 1902.04760 --max-depth 2 --db surrealkv://./data-modern"},
     {"id": 14, "name": "Run analyze on modern corpus", "status": "not_started", "notes": "cargo run --bin resyn -- analyze --db surrealkv://./data-modern"},
     {"id": 15, "name": "Export modern corpus slice (post-2018)", "status": "not_started", "notes": "cargo run --bin resyn -- export-louvain-graph --db surrealkv://./data-modern --output professional-vault/prototypes/data/research_synergy_modern.json --published-after 2018-01-01 --tfidf-top-n 200"},
@@ -38,11 +38,6 @@
     }
   ],
   "human_actions_pending": [
-    {
-      "action": "Fill modern_lbd_pairs.json stubs m01 and m04 with verified arXiv IDs",
-      "context": "m01 needs post-2018 spin-glass/cond-mat.dis-nn paper. m04 needs post-2018 TDA+condensed-matter paper. MUST verify via curl export.arxiv.org/abs/<id> — do not trust agent-guessed IDs (per incident log 2026-04-20).",
-      "blocking": false
-    },
     {
       "action": "Set S2_API_KEY env var when Semantic Scholar key is approved",
       "context": "Non-blocking for modern corpus. Speeds up rare S2 fallback calls.",
@@ -72,6 +67,6 @@
     }
   ],
   "uncommitted_files": [],
-  "next_action": "Fill m01 stub in modern_lbd_pairs.json: find post-2018 spin-glass paper pairing with 2008.02217. Verify via arXiv API. Then run crawl (task 13).",
+  "next_action": "Run modern corpus crawl (task 13): cargo run --bin resyn -- crawl --source arxiv,inspirehep,semanticscholar --paper-id 1902.04760 --max-depth 2 --db surrealkv://./data-modern",
   "context_notes": "All Rust compiles clean. 5 new tests pass. 7 pre-existing migration test failures (database::queries, hardcode count=11, now at 13) — do NOT fix as part of EXP-RS-07. T1 still PASS after script refactor. modern_lbd_pairs.json is in professional-vault/prototypes/data/ not research-synergy/prototypes/data/."
 }

@@ -76,11 +76,19 @@ pub async fn aggregate_references_for_arxiv_paper(
                         reference_string.push_str(&em_title);
                     }
                     "a" => {
+                        // Always include link text (arxiv.org/html uses <a> without href for DOIs)
+                        let text = child_element.text().collect::<String>();
+                        reference_string.push_str(&text);
                         if let Some(href) = child_element.value().attr("href") {
                             links.push(href.to_string());
                         }
                     }
-                    _ => {}
+                    _ => {
+                        // Collect text from spans and other inline elements
+                        // (arxiv.org/html uses <span> instead of <em> for italic titles)
+                        let text = child_element.text().collect::<String>();
+                        reference_string.push_str(&text);
+                    }
                 }
             }
         }

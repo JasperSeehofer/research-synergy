@@ -291,6 +291,13 @@ pub async fn run(args: CrawlArgs) -> anyhow::Result<()> {
                 }
             }
 
+            // Worker tasks may have enqueued new references while we were waiting.
+            // Re-check before stopping so depth-N papers are not abandoned.
+            let newly_pending = queue_repo.pending_count().await.unwrap_or(0);
+            if newly_pending > 0 {
+                continue;
+            }
+
             // One automatic retry of failed entries.
             if !retried {
                 retried = true;

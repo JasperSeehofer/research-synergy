@@ -13,6 +13,7 @@ pub enum ResynError {
     Database(String),
     LlmApi(String),
     SemanticScholarApi(String),
+    OpenAlexApi(String),
 }
 
 impl fmt::Display for ResynError {
@@ -29,6 +30,7 @@ impl fmt::Display for ResynError {
             ResynError::Database(msg) => write!(f, "database error: {msg}"),
             ResynError::LlmApi(msg) => write!(f, "LLM API error: {msg}"),
             ResynError::SemanticScholarApi(msg) => write!(f, "Semantic Scholar API error: {msg}"),
+            ResynError::OpenAlexApi(msg) => write!(f, "OpenAlex API error: {msg}"),
         }
     }
 }

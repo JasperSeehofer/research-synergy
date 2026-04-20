@@ -111,6 +111,33 @@ impl<'a> PaperRepository<'a> {
         Ok(())
     }
 
+    /// Upsert a slice of papers. No per-paper existence check; idempotent via UPSERT.
+    pub async fn upsert_papers_batch(&self, papers: &[Paper]) -> Result<usize, ResynError> {
+        for paper in papers {
+            self.upsert_paper(paper).await?;
+        }
+        Ok(papers.len())
+    }
+
+    /// Insert citation edges for (from_arxiv_id, to_arxiv_id) pairs without checking
+    /// whether the target paper exists — dangling edges are acceptable for bulk ingest.
+    pub async fn upsert_citations_batch(
+        &self,
+        pairs: &[(String, String)],
+    ) -> Result<usize, ResynError> {
+        for (from_id, to_id) in pairs {
+            let from_rid = paper_record_id(from_id);
+            let to_rid = paper_record_id(to_id);
+            self.db
+                .query("RELATE $from->cites->$to")
+                .bind(("from", from_rid))
+                .bind(("to", to_rid))
+                .await
+                .map_err(|e| ResynError::Database(format!("batch citation failed: {e}")))?;
+        }
+        Ok(pairs.len())
+    }
+
     pub async fn upsert_citations(&self, paper: &Paper) -> Result<(), ResynError> {
         let from_id = strip_version_suffix(&paper.id);
 

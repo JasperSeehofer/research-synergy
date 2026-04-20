@@ -4,6 +4,8 @@ pub mod arxiv_source;
 pub mod arxiv_utils;
 pub mod html_parser;
 pub mod inspirehep_api;
+pub mod openalex_bulk;
+pub mod openalex_source;
 pub mod semantic_scholar_api;
 #[cfg(feature = "ssr")]
 pub mod rate_limiter;

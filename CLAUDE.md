@@ -43,6 +43,13 @@ cargo run --bin resyn -- export-louvain-graph --db surrealkv://./data \
 # Serve web UI
 cargo run --bin resyn -- serve --db surrealkv://./data
 
+# Bulk-ingest papers from OpenAlex REST API (Phase RS-08)
+# Default filter: ML+stat.ML+NeuralNet papers hosted on arXiv (~1.5M works)
+cargo run --release --bin resyn -- bulk-ingest --db surrealkv://./data-openalex
+# Custom filter (ML + statistical physics boundary):
+cargo run --release --bin resyn -- bulk-ingest --db surrealkv://./data-openalex \
+    --filter "primary_location.source.id:S4306400194,concepts.id:C154945302|C121332964|C41008148|C2778407487"
+
 # Frontend (separate from the backend binary)
 cd resyn-app && trunk serve
 ```
@@ -160,6 +167,8 @@ cargo run --bin resyn -- export-louvain-graph \
 
 - arXiv rate limiting: `ArxivHTMLDownloader` enforces configurable delays (default 3s) between requests using `tokio::time::sleep`. Violating this causes request blocks.
 - InspireHEP rate limiting: `InspireHepClient` enforces 350ms between requests.
+- **`ChainedPaperSource` empty-refs bug (KNOWN, unfixed as of 2026-04-20):** `chained_source.rs` `fetch_references` stops at the first source that returns `Ok(())`, even if `paper.references` is empty. arXiv HTML returns empty refs for physics papers that only cite journal DOIs → chain stops, S2/InspireHEP fallback never fires. Workaround: use `--source inspirehep` or `--source semantic_scholar` directly for physics seeds. Fix: propagate only if `paper.references` is non-empty, otherwise try next source.
+- **OpenAlex bulk ingest (`bulk-ingest` subcommand):** Ingests arXiv-indexed papers in bulk from the OpenAlex REST API (polite pool, ~10 req/s). Skips per-paper HTTP calls entirely. `upsert_citations_batch` does not check target paper existence (dangling edges OK). `arxiv_id()` extracts arXiv IDs from both `10.48550/arxiv.*` DOIs and `locations[].landing_page_url` matching `arxiv.org/abs/`. Concept IDs: `C154945302`=ML, `C121332964`=stat.ML, `C41008148`=Neural Networks, `C2778407487`=Statistical Physics.
 - Paper IDs may have version suffixes (e.g., "2301.12345v2") — these are stripped via `utils::strip_version_suffix()` during crawl dedup, graph construction, and DB upserts.
 - Rust edition 2024, stable toolchain (pinned via `rust-toolchain.toml`).
 - Single async runtime: `main.rs` has the only `#[tokio::main]`. All API/HTML functions are `async fn`.

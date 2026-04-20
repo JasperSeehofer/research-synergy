@@ -1,114 +1,77 @@
 {
   "version": "1.0",
-  "timestamp": "2026-04-20T17:06:04.000Z",
+  "timestamp": "2026-04-20T20:30:00.000Z",
   "phase": null,
   "phase_name": "EXP-RS-07 — Sheaves-LBD v0.1 prototype",
   "phase_dir": null,
   "plan": null,
-  "task": 6,
-  "total_tasks": 10,
+  "task": 11,
+  "total_tasks": 18,
   "status": "paused",
   "completed_tasks": [
-    {
-      "id": 1,
-      "name": "SemanticScholarSource implementation",
-      "status": "done",
-      "commit": "38cae23",
-      "notes": "semantic_scholar_api.rs, 9 tests green."
-    },
-    {
-      "id": 2,
-      "name": "A1: Rust export extension — ExportedCommunity + community c-TF-IDF",
-      "status": "done",
-      "commit": "c2aad52",
-      "notes": "ExportedCommunity in community_graph.rs; export_community_graph() computes per-community c-TF-IDF. serde(default) for backward compat. 3 tests."
-    },
-    {
-      "id": 3,
-      "name": "Wire export-louvain-graph CLI + ar5iv fallback + analyze community step",
-      "status": "done",
-      "commit": "f0e82d3",
-      "notes": "export-louvain-graph subcommand; download_raw() for Send-safe ar5iv fallback; run_community_detection() in analyze pipeline."
-    },
-    {
-      "id": 4,
-      "name": "A2: Toy fixture — prototypes/data/hopfield_spinglass_toy.json",
-      "status": "done",
-      "commit": "af766d7",
-      "notes": "2 communities (Hopfield/neural vs SK spin-glass), 12 terms each, shared {spin,ising} edge stalk, 1 inter-community edge, ground_truth={bridge_community_pair:[0,1]}."
-    },
-    {
-      "id": 5,
-      "name": "A3+A4+A5: sheaf_lbd_v01.py + T1/SC1-SC3 + notebook",
-      "status": "done",
-      "commit": "af766d7",
-      "notes": "T1 PASS (Φ=2.0, ground truth top-1). SC2 ratio=0.0. SC3 min_lam=2.0. H⁰=22 on toy (expected — dense eigh used for N≤500, not eigsh). SHEAF_V01_RESULTS.md shows HOLD pending corpus."
-    }
+    {"id": 1, "name": "SemanticScholarSource implementation", "status": "done", "commit": "38cae23"},
+    {"id": 2, "name": "A1: ExportedCommunity + community c-TF-IDF in Rust export", "status": "done", "commit": "c2aad52"},
+    {"id": 3, "name": "Wire export-louvain-graph CLI + ar5iv fallback + analyze community step", "status": "done", "commit": "f0e82d3"},
+    {"id": 4, "name": "A2: Toy fixture hopfield_spinglass_toy.json", "status": "done", "commit": "af766d7"},
+    {"id": 5, "name": "A3+A4+A5: sheaf_lbd_v01.py + T1/SC1-SC3 — T1 PASS", "status": "done", "commit": "af766d7"},
+    {"id": 6, "name": "ChainedPaperSource + --source comma-sep chain CLI", "status": "done", "commit": "5062118", "notes": "Sequential fallback: arxiv,inspirehep,semanticscholar. last_resolving_source() on PaperSource trait."},
+    {"id": 7, "name": "Schema migration 13: source column on crawl_queue + mark_done_with_source", "status": "done", "commit": "5062118"},
+    {"id": 8, "name": "--published-after flag on export-louvain-graph", "status": "done", "commit": "5062118"},
+    {"id": 9, "name": "sheaf_lbd_v01.py dual-benchmark loop (Feynman pre-2015 + modern post-2018)", "status": "done", "commit": "5062118"},
+    {"id": 10, "name": "modern_lbd_pairs.json with 4 evaluable verified pairs (m02/m03/m06/m08)", "status": "done", "commit": "5062118", "notes": "In professional-vault/prototypes/data/. Pairs verified via arXiv API. m01+m04 stubs need companion papers."}
   ],
   "remaining_tasks": [
-    {
-      "id": 6,
-      "name": "B1: Analyze Feynman corpus",
-      "status": "not_started",
-      "notes": "cargo run --bin resyn -- analyze --db surrealkv://./data-kuramoto. BLOCKED: crawl must finish first. Check: tail data-kuramoto/crawl.log. Crawl last seen running with 429 rate limits (unauthenticated S2 API)."
-    },
-    {
-      "id": 7,
-      "name": "B2: Export Feynman corpus",
-      "status": "not_started",
-      "notes": "cargo run --bin resyn -- export-louvain-graph --db surrealkv://./data-kuramoto --output prototypes/data/research_synergy_pre2015.json --published-before 2014-12-31 --tfidf-top-n 200"
-    },
-    {
-      "id": 8,
-      "name": "B3+B4: T2 + T4 + SC4 + SC5 + n_sections sensitivity {10,20,50}",
-      "status": "not_started",
-      "notes": "Re-run: uv run --with numpy --with scipy --with matplotlib --with networkx python prototypes/sheaf_lbd_v01.py. Auto-detects corpus at prototypes/data/research_synergy_pre2015.json. T2: precision@10 >= 0.4 (ceiling 0.5 — 5 evaluable pairs). T4: top-5 ablation ratios > 3. SC4: spectral gap >= 1.1. SC5: Jaccard <= 0.8."
-    },
-    {
-      "id": 9,
-      "name": "B5: Finalize results + figures",
-      "status": "not_started",
-      "notes": "AUTHORIZE if T1+T2>=0.4+T4>=50%. STANDALONE if T4>=50% but T2<0.4. FALSIFIED if T4<20% or SC5>0.8. HOLD otherwise. Figures generated automatically by sheaf_lbd_v01.py if matplotlib+networkx present."
-    },
-    {
-      "id": 10,
-      "name": "Vault updates post-verdict",
-      "status": "not_started",
-      "notes": "wiki/meta/agentic-experiments.md EXP-RS-07 row; wiki/sources/exp-rs-07-sheaves-v01-results.md; flip concept+analysis status; update focus.md."
-    }
+    {"id": 11, "name": "Fill m01 stub: post-2018 cond-mat.dis-nn spin-glass paper to pair with 2008.02217", "status": "not_started", "notes": "Search Lucibello/Mezard/Charbonneau post-2020. Verify via: curl -s https://export.arxiv.org/abs/<id> | grep title"},
+    {"id": 12, "name": "Fill m04 stub: post-2018 persistent homology applied to topological phase detection", "status": "not_started", "notes": "Search 'persistent homology topological insulator site:arxiv.org' post-2019. Verify via arXiv API."},
+    {"id": 13, "name": "Confirm seed paper and run crawl", "status": "not_started", "notes": "Recommended: 1902.04760 (cond-mat.dis-nn+math-ph, pre-2020 but best available). Run: cargo run --bin resyn -- crawl --source arxiv,inspirehep,semanticscholar --paper-id 1902.04760 --max-depth 2 --db surrealkv://./data-modern"},
+    {"id": 14, "name": "Run analyze on modern corpus", "status": "not_started", "notes": "cargo run --bin resyn -- analyze --db surrealkv://./data-modern"},
+    {"id": 15, "name": "Export modern corpus slice (post-2018)", "status": "not_started", "notes": "cargo run --bin resyn -- export-louvain-graph --db surrealkv://./data-modern --output professional-vault/prototypes/data/research_synergy_modern.json --published-after 2018-01-01 --tfidf-top-n 200"},
+    {"id": 16, "name": "Export pre-2015 Feynman slice (if any pre-2015 papers crawled)", "status": "not_started", "notes": "cargo run --bin resyn -- export-louvain-graph --db surrealkv://./data-modern --output professional-vault/prototypes/data/research_synergy_pre2015.json --published-before 2014-12-31 --tfidf-top-n 200"},
+    {"id": 17, "name": "Run sheaf_lbd_v01.py — T2/T4/SC4/SC5 on modern benchmark", "status": "not_started", "notes": "uv run --with numpy --with scipy --with matplotlib --with networkx python prototypes/sheaf_lbd_v01.py"},
+    {"id": 18, "name": "Vault updates post-verdict", "status": "not_started", "notes": "wiki/meta/agentic-experiments.md EXP-RS-07 row; wiki/sources/exp-rs-07-sheaves-v01-results.md; flip concept+analysis status; update focus.md."}
   ],
   "blockers": [
     {
-      "description": "Feynman corpus crawl still running (data-kuramoto/crawl.log). Last seen at 16:40 UTC with heavy 429s from unauthenticated S2 API. Stage B blocked until crawl finishes, analyze completes, and export succeeds.",
+      "description": "S2 API key requested but not yet approved. Unauthenticated S2 hits ~1 rps limit.",
       "type": "external",
-      "workaround": "Stage A complete. Set S2_API_KEY to drop 429 rate. Monitor: tail -f data-kuramoto/crawl.log. If crawl ended early (process died), re-run: cargo run --bin resyn -- crawl --source semanticscholar --paper-id <seed> --db surrealkv://./data-kuramoto --max-depth 2"
+      "workaround": "Chain runs arXiv+InspireHEP first — S2 is last-resort fallback. Modern papers resolve without S2. Set S2_API_KEY=<key> when approved."
     }
   ],
   "human_actions_pending": [
     {
-      "action": "Set S2_API_KEY env var (Semantic Scholar API key)",
-      "context": "Unauthenticated crawl hits 429s and is slow (~2200ms/paper). Key brings it to ~400ms/paper. Non-blocking if crawl already finished.",
+      "action": "Fill modern_lbd_pairs.json stubs m01 and m04 with verified arXiv IDs",
+      "context": "m01 needs post-2018 spin-glass/cond-mat.dis-nn paper. m04 needs post-2018 TDA+condensed-matter paper. MUST verify via curl export.arxiv.org/abs/<id> — do not trust agent-guessed IDs (per incident log 2026-04-20).",
+      "blocking": false
+    },
+    {
+      "action": "Set S2_API_KEY env var when Semantic Scholar key is approved",
+      "context": "Non-blocking for modern corpus. Speeds up rare S2 fallback calls.",
       "blocking": false
     }
   ],
   "decisions": [
     {
-      "decision": "Dense np.linalg.eigh for N<=500, sparse eigsh for larger",
-      "rationale": "eigsh(k=22) on N=24 with H⁰=22 only finds zero modes — misses non-zero modes entirely. Dense solver finds all N eigenvalues.",
-      "phase": "implementation"
+      "decision": "Modern corpus approach: ar5iv+InspireHEP primary, S2 fallback",
+      "rationale": "Pre-2015 cond-mat papers have no arXiv HTML links; S2 unauthenticated too slow. Modern papers resolve cleanly.",
+      "phase": "session-2026-04-20"
     },
     {
-      "decision": "COO accumulation for block-sparse Laplacian assembly",
-      "rationale": "Handles multiple edges contributing to same diagonal block correctly (coo_matrix sums duplicates). lil_matrix block slice assignment is fragile.",
-      "phase": "implementation"
+      "decision": "ChainedPaperSource sequential fallback: arxiv → inspirehep → semanticscholar",
+      "rationale": "arXiv primary (ar5iv fallback built-in). InspireHEP for physics. S2 last resort. Rate limiter = first source (arXiv 3s cadence).",
+      "phase": "session-2026-04-20"
     },
     {
-      "decision": "uv run --with numpy --with scipy python prototypes/sheaf_lbd_v01.py",
-      "rationale": "numpy/scipy not installed system-wide; uv handles transient deps cleanly.",
-      "phase": "implementation"
+      "decision": "Dual benchmark: Feynman pre-2015 + modern_lbd_pairs.json",
+      "rationale": "Preserves Kuramoto comparability and T3 on Feynman. Modern pairs work without pre-2015 crawl success.",
+      "phase": "session-2026-04-20"
+    },
+    {
+      "decision": "Recommended seed: 1902.04760 (Wide Neural Networks, Greg Yang)",
+      "rationale": "cond-mat.dis-nn+math-ph cross-listed; bridges RMT and ML; InspireHEP-indexed.",
+      "phase": "session-2026-04-20"
     }
   ],
   "uncommitted_files": [],
-  "next_action": "Check crawl status (tail data-kuramoto/crawl.log or ls -la data-kuramoto/). If done: (1) cargo run --bin resyn -- analyze --db surrealkv://./data-kuramoto, (2) export, (3) uv run ... python prototypes/sheaf_lbd_v01.py. Full run command in remaining_tasks[id=8].",
-  "context_notes": "All Stage A commits landed (af766d7). T1 PASS confirmed by running the prototype. scipy/numpy available via uv (downloaded on first run). feynman_10pair_papers.json lives in professional-vault/prototypes/data/ not research-synergy/prototypes/data/ — sheaf_lbd_v01.py expects it at prototypes/data/feynman_10pair_papers.json. Need to symlink or copy before running Stage B. Check: ls prototypes/data/."
+  "next_action": "Fill m01 stub in modern_lbd_pairs.json: find post-2018 spin-glass paper pairing with 2008.02217. Verify via arXiv API. Then run crawl (task 13).",
+  "context_notes": "All Rust compiles clean. 5 new tests pass. 7 pre-existing migration test failures (database::queries, hardcode count=11, now at 13) — do NOT fix as part of EXP-RS-07. T1 still PASS after script refactor. modern_lbd_pairs.json is in professional-vault/prototypes/data/ not research-synergy/prototypes/data/."
 }

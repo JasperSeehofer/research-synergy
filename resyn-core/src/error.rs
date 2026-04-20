@@ -12,6 +12,7 @@ pub enum ResynError {
     InspireHepApi(String),
     Database(String),
     LlmApi(String),
+    SemanticScholarApi(String),
 }
 
 impl fmt::Display for ResynError {
@@ -27,6 +28,7 @@ impl fmt::Display for ResynError {
             ResynError::InspireHepApi(msg) => write!(f, "InspireHEP API error: {msg}"),
             ResynError::Database(msg) => write!(f, "database error: {msg}"),
             ResynError::LlmApi(msg) => write!(f, "LLM API error: {msg}"),
+            ResynError::SemanticScholarApi(msg) => write!(f, "Semantic Scholar API error: {msg}"),
         }
     }
 }

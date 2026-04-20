@@ -44,6 +44,7 @@ impl From<&Paper> for PaperRecord {
             DataSource::Arxiv => "Arxiv",
             DataSource::InspireHep => "InspireHep",
             DataSource::Merged => "Merged",
+            DataSource::SemanticScholar => "SemanticScholar",
         };
         PaperRecord {
             title: paper.title.clone(),

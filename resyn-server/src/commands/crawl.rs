@@ -3,8 +3,10 @@ use resyn_core::data_aggregation::arxiv_source::ArxivSource;
 use resyn_core::data_aggregation::html_parser::ArxivHTMLDownloader;
 use resyn_core::data_aggregation::inspirehep_api::InspireHepClient;
 use resyn_core::data_aggregation::rate_limiter::{
-    SharedRateLimiter, make_arxiv_limiter, make_inspirehep_limiter, wait_for_token,
+    SharedRateLimiter, make_arxiv_limiter, make_inspirehep_limiter,
+    make_semantic_scholar_limiter, wait_for_token,
 };
+use resyn_core::data_aggregation::semantic_scholar_api::SemanticScholarSource;
 use resyn_core::data_aggregation::traits::PaperSource;
 use resyn_core::database::crawl_queue::CrawlQueueRepository;
 use resyn_core::database::queries::PaperRepository;
@@ -54,7 +56,7 @@ pub struct CrawlArgs {
     #[arg(long, num_args = 0..=1, default_missing_value = "4")]
     pub parallel: Option<usize>,
 
-    /// Data source: "arxiv" or "inspirehep"
+    /// Data source: "arxiv", "inspirehep", or "semantic_scholar"
     #[arg(long, default_value = "arxiv")]
     pub source: String,
 
@@ -101,6 +103,13 @@ fn make_source(source_name: &str) -> Box<dyn PaperSource> {
         "inspirehep" => {
             let inspire = InspireHepClient::new(client).with_rate_limit(Duration::ZERO);
             Box::new(inspire)
+        }
+        "semantic_scholar" => {
+            // Internal rate limit zeroed: the external SharedRateLimiter (2200 ms
+            // unkeyed / 400 ms keyed) covers both fetch_paper + fetch_references
+            // per paper to stay within S2's 1 rps unauthenticated limit.
+            let s2 = SemanticScholarSource::from_env(client).with_rate_limit(Duration::ZERO);
+            Box::new(s2)
         }
         _ => {
             let downloader = ArxivHTMLDownloader::new(client).with_rate_limit(Duration::ZERO);
@@ -190,10 +199,10 @@ pub async fn run(args: CrawlArgs) -> anyhow::Result<()> {
     }
 
     // Shared crawl resources.
-    let rate_limiter: SharedRateLimiter = if args.source == "inspirehep" {
-        make_inspirehep_limiter()
-    } else {
-        make_arxiv_limiter()
+    let rate_limiter: SharedRateLimiter = match args.source.as_str() {
+        "inspirehep" => make_inspirehep_limiter(),
+        "semantic_scholar" => make_semantic_scholar_limiter(),
+        _ => make_arxiv_limiter(),
     };
     let concurrency = args.parallel.unwrap_or(4);
     let sem = Arc::new(Semaphore::new(concurrency));

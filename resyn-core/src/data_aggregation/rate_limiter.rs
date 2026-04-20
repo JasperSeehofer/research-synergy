@@ -33,6 +33,21 @@ pub fn make_inspirehep_limiter() -> SharedRateLimiter {
     make_rate_limiter(Duration::from_millis(350))
 }
 
+/// Create a rate limiter for Semantic Scholar.
+///
+/// Each paper requires two API calls (fetch_paper + fetch_references). To stay
+/// within S2's 1 rps unauthenticated limit, the external governor fires every
+/// 2200 ms so both calls fit in one budget window. With `S2_API_KEY` (5 rps
+/// dedicated), the interval is 400 ms (200 ms × 2 calls).
+pub fn make_semantic_scholar_limiter() -> SharedRateLimiter {
+    let interval = if std::env::var("S2_API_KEY").is_ok() {
+        Duration::from_millis(400)
+    } else {
+        Duration::from_millis(2200)
+    };
+    make_rate_limiter(interval)
+}
+
 /// Wait until the rate limiter grants a token.
 ///
 /// Suspends the current task until a token is available. Suitable for use

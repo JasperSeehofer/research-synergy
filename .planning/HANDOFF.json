@@ -1,0 +1,99 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-04-20T15:37:15.626Z",
+  "phase": null,
+  "phase_name": "SemanticScholarSource — Kuramoto-LBD v03 corpus unblock",
+  "phase_dir": null,
+  "plan": null,
+  "task": 2,
+  "total_tasks": 6,
+  "status": "paused",
+  "completed_tasks": [
+    {
+      "id": 1,
+      "name": "Implement SemanticScholarSource + tests",
+      "status": "done",
+      "notes": "semantic_scholar_api.rs, integration tests, all additive edits to mod.rs/error.rs/paper.rs/rate_limiter.rs/crawl.rs/queries.rs. 9 new tests green. Smoke test against real S2 API passed."
+    },
+    {
+      "id": 2,
+      "name": "Smoke test: single paper from S2",
+      "status": "done",
+      "notes": "cargo run --bin resyn -- crawl --source semantic_scholar --paper-id cond-mat/0010317 --max-depth 0 --db surrealkv://./data-s2-smoke. 1 paper fetched in 0.6s."
+    }
+  ],
+  "remaining_tasks": [
+    {
+      "id": 3,
+      "name": "Crawl Feynman corpus (10 seeds × depth-2)",
+      "status": "not_started",
+      "notes": "Target: surrealkv://./data-kuramoto. Seeds: cond-mat/0203227, 0710.3256, cond-mat/0010317, cond-mat/0312131, cond-mat/0007235, cond-mat/0205009, nlin/0202034, cond-mat/0002374, 1005.1986, cond-mat/9801289. Unauthenticated (2200ms/paper). Expect ~500-2000 papers, ~30-90 min."
+    },
+    {
+      "id": 4,
+      "name": "Analyze corpus (NLP + community detection)",
+      "status": "not_started",
+      "notes": "cargo run --bin resyn -- analyze --db surrealkv://./data-kuramoto"
+    },
+    {
+      "id": 5,
+      "name": "Export + verify pair presence",
+      "status": "not_started",
+      "notes": "export-louvain-graph --published-before 2014-12-31 --output prototypes/data/research_synergy_pre2015.json. Then run pair-check Python snippet."
+    },
+    {
+      "id": 6,
+      "name": "Execute kuramoto_lbd_v03.ipynb",
+      "status": "not_started",
+      "notes": "Exit criterion: n_eval >= 3 AND BENCH_P10 > 0.15. jupyter nbconvert --to notebook --execute."
+    }
+  ],
+  "blockers": [
+    {
+      "description": "S2 API key applied for but not yet received. Crawl will run unauthenticated at 2200ms/paper (~1 rps for 2 calls/paper). ~500-2000 papers at depth-2 = 18-73 min.",
+      "type": "external",
+      "workaround": "Run unauthenticated. Set S2_API_KEY env var once key arrives — rate drops to 400ms/paper (5x faster)."
+    }
+  ],
+  "human_actions_pending": [
+    {
+      "action": "Set S2_API_KEY env var once Semantic Scholar API key is received",
+      "context": "Applied for key during this session. Without it, unauthenticated crawl takes ~18-73 min for depth-2. With key: ~4-15 min.",
+      "blocking": false
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Semantic Scholar over OpenAlex",
+      "rationale": "S2 returns externalIds.ArXiv directly on each reference. OpenAlex only returns opaque work IDs requiring N+1 lookups.",
+      "phase": "planning"
+    },
+    {
+      "decision": "External governor at 2200ms (unkeyed) covers both fetch_paper + fetch_references per paper",
+      "rationale": "Each paper = 2 API calls. With S2's 1 rps limit, 2200ms external interval = ~0.9 rps total. Internal rate_limit_check zeroed (per-task fresh source means it was a no-op anyway).",
+      "phase": "implementation"
+    },
+    {
+      "decision": "Old-format arXiv IDs (cond-mat/0010317) skip the Link creation, rely only on arxiv_eprint",
+      "rationale": "Reference::get_arxiv_id() splits URL by '/' and takes last segment, which strips the category prefix from old-format IDs. arxiv_eprint fallback returns the full correct ID.",
+      "phase": "implementation"
+    },
+    {
+      "decision": "Fresh DB at surrealkv://./data-kuramoto for Feynman corpus",
+      "rationale": "Existing ./data has 383 LIGO/GW papers — wrong domain. Keep it untouched.",
+      "phase": "planning"
+    }
+  ],
+  "uncommitted_files": [
+    "resyn-core/src/data_aggregation/semantic_scholar_api.rs",
+    "resyn-core/src/data_aggregation/mod.rs",
+    "resyn-core/src/data_aggregation/rate_limiter.rs",
+    "resyn-core/src/database/queries.rs",
+    "resyn-core/src/datamodels/paper.rs",
+    "resyn-core/src/error.rs",
+    "resyn-server/src/commands/crawl.rs",
+    "resyn-core/tests/semantic_scholar_integration.rs"
+  ],
+  "next_action": "Set S2_API_KEY env var if available, then loop-crawl the 10 Feynman seeds at depth-2 into surrealkv://./data-kuramoto using --source semantic_scholar",
+  "context_notes": "Implementation complete and tested. The hard part was discovering that old-format arXiv IDs (cond-mat/...) must NOT create Link objects — only arxiv_eprint — because get_arxiv_id() strips the category prefix when splitting URLs. The plan file at ~/.claude/plans/session-wrap-up-kuramoto-v03-foamy-wall.md has the full verification script including the pair-check Python one-liner and notebook invocation."
+}

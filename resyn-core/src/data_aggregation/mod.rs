@@ -3,6 +3,7 @@ pub mod arxiv_source;
 pub mod arxiv_utils;
 pub mod html_parser;
 pub mod inspirehep_api;
+pub mod semantic_scholar_api;
 #[cfg(feature = "ssr")]
 pub mod rate_limiter;
 pub mod search_query_handler;

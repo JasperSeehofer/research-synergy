@@ -11,6 +11,7 @@ pub enum DataSource {
     Arxiv,
     InspireHep,
     Merged,
+    SemanticScholar,
 }
 
 #[derive(Clone, Debug, Default, Serialize, Deserialize)]

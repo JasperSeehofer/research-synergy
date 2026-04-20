@@ -40,10 +40,16 @@ impl ArxivHTMLDownloader {
         self.last_called = Some(Instant::now());
     }
 
-    pub async fn download_and_parse(&mut self, html_url: &str) -> Result<Html, ResynError> {
+    /// Download raw HTML string with rate limiting. Returns `String` (Send-safe)
+    /// so callers can hold the result across further `.await` points before parsing.
+    pub async fn download_raw(&mut self, html_url: &str) -> Result<String, ResynError> {
         self.rate_limit_check().await;
-        let html_string = self.download_html(html_url).await?;
-        Ok(Html::parse_document(&html_string))
+        self.download_html(html_url).await
+    }
+
+    pub async fn download_and_parse(&mut self, html_url: &str) -> Result<Html, ResynError> {
+        let raw = self.download_raw(html_url).await?;
+        Ok(Html::parse_document(&raw))
     }
 
     async fn download_html(&self, html_url: &str) -> Result<String, ResynError> {

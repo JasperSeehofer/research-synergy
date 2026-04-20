@@ -1,6 +1,8 @@
 use clap::{Parser, Subcommand};
 use resyn_server::commands;
-use resyn_server::commands::{analyze::AnalyzeArgs, crawl::CrawlArgs, serve::ServeArgs};
+use resyn_server::commands::{
+    analyze::AnalyzeArgs, crawl::CrawlArgs, export::ExportArgs, serve::ServeArgs,
+};
 
 #[derive(Parser, Debug)]
 #[command(
@@ -18,6 +20,8 @@ enum Commands {
     Crawl(CrawlArgs),
     /// Run analysis pipeline on papers already in the database
     Analyze(AnalyzeArgs),
+    /// Export the Louvain community graph to JSON for external tooling (e.g. Kuramoto-LBD)
+    ExportLouvainGraph(ExportArgs),
     /// Start the web server (not yet implemented)
     Serve(ServeArgs),
 }
@@ -31,6 +35,7 @@ async fn main() {
     let result = match cli.command {
         Commands::Crawl(args) => commands::crawl::run(args).await,
         Commands::Analyze(args) => commands::analyze::run(args).await,
+        Commands::ExportLouvainGraph(args) => commands::export::run(args).await,
         Commands::Serve(args) => commands::serve::run(args).await,
     };
 

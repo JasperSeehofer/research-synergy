@@ -66,6 +66,7 @@ pub async fn run_analysis_pipeline(
 ) -> anyhow::Result<()> {
     run_extraction(db, rate_limit_secs, skip_fulltext, args.force).await?;
     run_nlp_analysis(db).await;
+    run_community_detection(db).await;
 
     if let Some(ref provider_name) = args.llm_provider {
         let client = resyn_core::utils::create_http_client();
@@ -420,4 +421,24 @@ async fn run_gap_analysis(
 
     let summary = resyn_core::gap_analysis::output::format_gap_summary(&all_findings);
     info!("{summary}");
+}
+
+async fn run_community_detection(db: &Db) {
+    use resyn_core::graph_analytics::community::{compute_and_store_communities, ComputeOutcome};
+    match compute_and_store_communities(db).await {
+        Ok(ComputeOutcome::Computed { n_communities, n_papers, fingerprint }) => {
+            info!(
+                n_communities,
+                n_papers,
+                fingerprint = fingerprint.as_str(),
+                "Community detection: {n_communities} communities across {n_papers} papers"
+            );
+        }
+        Ok(ComputeOutcome::Skipped) => {
+            info!("Community detection skipped (corpus too small or unchanged)");
+        }
+        Err(e) => {
+            warn!(error = %e, "Community detection failed");
+        }
+    }
 }

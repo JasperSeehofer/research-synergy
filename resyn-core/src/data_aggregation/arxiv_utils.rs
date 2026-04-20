@@ -31,12 +31,29 @@ pub async fn aggregate_references_for_arxiv_paper(
     paper: &mut Paper,
     downloader: &mut ArxivHTMLDownloader,
 ) -> Result<(), ResynError> {
-    let html_url = if paper.pdf_url.is_empty() {
+    let primary_url = if paper.pdf_url.is_empty() {
         format!("https://arxiv.org/html/{}", paper.id)
     } else {
         convert_pdf_url_to_html_url(&paper.pdf_url)
     };
-    let html_content = downloader.download_and_parse(&html_url).await?;
+    // ar5iv fallback: arxiv.org/html/ only serves papers from ~2023+; older papers
+    // (and 2015–2022 papers that cite pre-2015 work with arXiv IDs) are on ar5iv.
+    // Download raw HTML as String (Send-safe) before parsing to Html (!Send),
+    // so the fallback await does not hold a non-Send value across an await point.
+    let raw_html = match downloader.download_raw(&primary_url).await {
+        Ok(s) => s,
+        Err(e) => {
+            let fallback_url = format!("https://ar5iv.labs.arxiv.org/html/{}", paper.id);
+            debug!(
+                paper_id = paper.id.as_str(),
+                error = %e,
+                fallback = fallback_url.as_str(),
+                "Primary HTML unavailable, trying ar5iv fallback"
+            );
+            downloader.download_raw(&fallback_url).await?
+        }
+    };
+    let html_content = scraper::Html::parse_document(&raw_html);
     let mut references: Vec<Reference> = Vec::new();
     let reference_selector =
         Selector::parse(r#"span[class="ltx_bibblock"]"#).expect("static CSS selector is valid");

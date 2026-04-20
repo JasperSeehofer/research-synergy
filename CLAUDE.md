@@ -8,20 +8,43 @@ Research Synergy (ReSyn) is a Rust application for Literature Based Discovery (L
 
 ## Build & Run Commands
 
+The workspace has multiple binaries. Always use `cargo run --bin resyn` with the appropriate subcommand — bare `cargo run` is ambiguous.
+
 ```bash
-cargo build                  # Debug build
+cargo build                  # Debug build (all crates)
 cargo build --release        # Release build
-cargo run                    # Run the application (default seed paper, arXiv source)
-cargo run -- --paper-id 2301.12345 --max-depth 2  # Custom seed & depth
-cargo run -- --source inspirehep --paper-id 2301.12345  # Use InspireHEP source
-cargo run -- --db surrealkv://./data --paper-id 2301.12345  # Persist to local DB
-cargo run -- --db surrealkv://./data --db-only --paper-id 2301.12345  # Load from DB only
 cargo test                   # Run all tests
 cargo test <test_name>       # Run a specific test
 cargo test -- --nocapture    # Run tests with stdout visible
 cargo check                  # Type-check without building
 cargo fmt --all -- --check   # Check formatting
 cargo clippy --all-targets --all-features  # Lint (CI runs with -Dwarnings)
+```
+
+**Subcommands (`cargo run --bin resyn -- <subcommand> [args]`):**
+
+```bash
+# Crawl
+cargo run --bin resyn -- crawl --paper-id 2503.18887 --db surrealkv://./data
+cargo run --bin resyn -- crawl --paper-id 2301.12345 --max-depth 2 --db surrealkv://./data
+cargo run --bin resyn -- crawl --source inspirehep --paper-id 2301.12345 --db surrealkv://./data
+
+# Analyze (NLP + optionally LLM + gap analysis)
+cargo run --bin resyn -- analyze --db surrealkv://./data
+cargo run --bin resyn -- analyze --db surrealkv://./data --llm-provider claude
+
+# Export Louvain community graph to JSON (for external tooling, e.g. Kuramoto-LBD notebook)
+cargo run --bin resyn -- export-louvain-graph --db surrealkv://./data --output graph.json
+cargo run --bin resyn -- export-louvain-graph --db surrealkv://./data \
+    --output research_synergy_pre2015.json \
+    --published-before 2014-12-31 \
+    --tfidf-top-n 50
+
+# Serve web UI
+cargo run --bin resyn -- serve --db surrealkv://./data
+
+# Frontend (separate from the backend binary)
+cd resyn-app && trunk serve
 ```
 
 ## Architecture
@@ -44,7 +67,7 @@ Eight main layers in `src/`:
   - `schema.rs` — Schema definitions (paper table, cites relation, indexes)
   - `queries.rs` — `PaperRepository` with upsert, get, citation graph traversal
 
-- **`datamodels/`** — Core data structures: `Paper`, `Reference`, `Link`, `Journal`, `DataSource`. Paper includes optional `doi`, `inspire_id`, `citation_count`, `source` fields.
+- **`datamodels/`** — Core data structures: `Paper`, `Reference`, `Link`, `Journal`, `DataSource`. Paper includes optional `doi`, `inspire_id`, `citation_count`, `source` fields. `community_graph.rs` holds the export-only types `CommunityGraph`, `ExportedNode`, `ExportedEdge`, `LouvainParams` used by `export-louvain-graph`.
 
 - **`data_processing/`** — `graph_creation.rs` converts `Vec<Paper>` into a `petgraph::StableGraph<Paper, f32, Directed>`, creating edges from citation relationships. Uses `strip_version_suffix()` from `utils.rs` for dedup.
 
@@ -81,16 +104,57 @@ Eight main layers in `src/`:
 - Only arXiv-to-arXiv citation edges are followed. References to Nature/PhysRev/other journals are stored but not crawled.
 - SurrealDB persistence: papers stored as `paper:⟨arxiv_id⟩` records, citations as `cites` relation edges. Schema is auto-initialized on connection.
 
-## CLI Arguments
+## CLI Subcommands
+
+Run `cargo run --bin resyn -- <subcommand> --help` for full argument lists. Key arguments per subcommand:
+
+**`crawl`**
 
 | Argument | Default | Description |
 |---|---|---|
-| `--paper-id` / `-p` | `2503.18887` | arXiv paper ID seed |
+| `--paper-id` / `-p` | `2503.18887` | arXiv seed paper ID |
 | `--max-depth` / `-d` | `3` | BFS crawl depth |
 | `--rate-limit-secs` / `-r` | `3` | Rate limit between requests (seconds) |
 | `--source` | `arxiv` | Data source: `arxiv` or `inspirehep` |
-| `--db` | none | DB connection string (e.g. `mem://`, `surrealkv://./data`) |
-| `--db-only` | false | Skip crawling, load from DB only (requires `--db`) |
+| `--db` | `surrealkv://./data` | DB connection string |
+
+**`analyze`**
+
+| Argument | Default | Description |
+|---|---|---|
+| `--db` | `surrealkv://./data` | DB connection string |
+| `--llm-provider` | none | LLM for semantic extraction: `claude`, `ollama`, `noop` |
+| `--force` | false | Re-analyze already-analyzed papers |
+
+**`export-louvain-graph`** — exports the Louvain community graph to JSON for external tooling
+
+| Argument | Default | Description |
+|---|---|---|
+| `--db` | `surrealkv://./data` | DB connection string |
+| `--output` | *(required)* | Output JSON file path |
+| `--published-before` | none | ISO-8601 date cutoff e.g. `2014-12-31` (inclusive, lexicographic) |
+| `--tfidf-top-n` | `50` | Max TF-IDF terms per node |
+
+Output schema: `{louvain_params, corpus_fingerprint, nodes: [{id, community_id, tfidf_vec}], communities: [{community_id, size, tfidf_vec}], edges: [{src, dst, weight}]}`. "Other" community papers (community_id = u32::MAX-1) are excluded. Edge weight is `1.0` (uniform). The `communities` field carries per-community c-TF-IDF vectors for EXP-RS-07 (Sheaves-LBD); old consumers ignore it via serde default. Requires communities to be computed first (`analyze` runs community detection). See `resyn-core/src/datamodels/community_graph.rs` for the full type definitions.
+
+**Typical Kuramoto-LBD v03 workflow:**
+
+```bash
+# 1. Crawl a corpus (one-time)
+cargo run --bin resyn -- crawl --paper-id <seed> --db surrealkv://./data --max-depth 3
+
+# 2. Run analysis (NLP + community detection)
+cargo run --bin resyn -- analyze --db surrealkv://./data
+
+# 3. Export for the Python notebook
+cargo run --bin resyn -- export-louvain-graph \
+    --db surrealkv://./data \
+    --output professional-vault/prototypes/data/research_synergy_pre2015.json \
+    --published-before 2014-12-31 \
+    --tfidf-top-n 50
+
+# 4. Run kuramoto_lbd_v03.ipynb in professional-vault/prototypes/
+```
 
 ## Important Notes
 
@@ -105,7 +169,7 @@ Eight main layers in `src/`:
 
 ## Testing
 
-- **44 tests total**: 30 unit tests + 8 integration tests + 6 database tests
+- **46 tests total**: 32 unit tests + 8 integration tests + 6 database tests
   - Unit: paper, graph_creation, arxiv_utils, search_query_handler, validation, utils, inspirehep_api deserialization/conversion
   - Integration: wiremock-based arXiv HTML parsing (3), InspireHEP API mocking (5)
   - Database: SurrealDB in-memory (upsert, idempotent, exists, version dedup, citations, graph traversal)

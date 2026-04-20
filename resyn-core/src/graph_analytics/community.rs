@@ -699,6 +699,177 @@ pub async fn load_community_status(
     })
 }
 
+/// Export the Louvain community graph to a portable [`CommunityGraph`] for external tooling.
+///
+/// Loads community assignments, per-paper TF-IDF vectors, and citation edges from the DB.
+/// Papers in the "Other" bucket (community_id == u32::MAX - 1) are excluded.
+/// When `published_before` is supplied (e.g. `"2014-12-31"`), only papers whose `published`
+/// field lexicographically precedes the cutoff are included as nodes; edges whose either
+/// endpoint fails the filter are also excluded.
+/// `tfidf_top_n` controls how many (term, score) pairs are kept per node (sorted by score desc).
+#[cfg(feature = "ssr")]
+pub async fn export_community_graph(
+    db: &surrealdb::Surreal<surrealdb::engine::any::Any>,
+    published_before: Option<&str>,
+    tfidf_top_n: usize,
+) -> Result<crate::datamodels::community_graph::CommunityGraph, ResynError> {
+    use crate::database::queries::{AnalysisRepository, CommunityRepository, PaperRepository};
+    use crate::datamodels::community_graph::{
+        CommunityGraph, ExportedCommunity, ExportedEdge, ExportedNode, LouvainParams,
+    };
+    use crate::nlp::tfidf::corpus_fingerprint;
+    use std::collections::{HashMap, HashSet};
+
+    const OTHER_COMMUNITY_ID: u32 = u32::MAX - 1;
+
+    let paper_repo = PaperRepository::new(db);
+    let all_papers = paper_repo.get_all_papers().await?;
+
+    // Apply date filter (lexicographic prefix compare on ISO-8601 date strings).
+    let paper_ids_in_scope: HashSet<String> = all_papers
+        .iter()
+        .filter(|p| {
+            if let Some(cutoff) = published_before {
+                // `published` stored as ISO-8601 string; prefix compare is correct for dates.
+                p.published.as_str() <= cutoff
+            } else {
+                true
+            }
+        })
+        .map(|p| strip_version_suffix(&p.id))
+        .collect();
+
+    // Corpus fingerprint from all in-scope paper IDs (sorted for determinism).
+    let mut sorted_scope_ids: Vec<String> = paper_ids_in_scope.iter().cloned().collect();
+    sorted_scope_ids.sort();
+    let fingerprint = corpus_fingerprint(&sorted_scope_ids);
+
+    // Community assignments keyed by arxiv_id.
+    let community_repo = CommunityRepository::new(db);
+    let assignments: HashMap<String, u32> = community_repo
+        .list_all()
+        .await?
+        .into_iter()
+        .filter(|a| a.community_id != OTHER_COMMUNITY_ID)
+        .map(|a| (a.arxiv_id, a.community_id))
+        .collect();
+
+    // TF-IDF vectors keyed by arxiv_id.
+    let analysis_repo = AnalysisRepository::new(db);
+    let mut tfidf_map: HashMap<String, Vec<(String, f32)>> = analysis_repo
+        .get_all_analyses()
+        .await?
+        .into_iter()
+        .map(|a| {
+            let mut terms: Vec<(String, f32)> = a.tfidf_vector.into_iter().collect();
+            terms.sort_by(|x, y| y.1.partial_cmp(&x.1).unwrap_or(std::cmp::Ordering::Equal));
+            terms.truncate(tfidf_top_n);
+            (a.arxiv_id, terms)
+        })
+        .collect();
+
+    // Build community-level c-TF-IDF BEFORE consuming tfidf_map into nodes.
+    // Only in-scope papers with a non-Other community assignment contribute.
+    let mut community_term_sums: HashMap<u32, HashMap<String, f64>> = HashMap::new();
+    let mut community_paper_counts: HashMap<u32, usize> = HashMap::new();
+    for id in &sorted_scope_ids {
+        let Some(&cid) = assignments.get(id) else { continue };
+        let Some(terms) = tfidf_map.get(id) else { continue };
+        let entry = community_term_sums.entry(cid).or_default();
+        for (term, score) in terms {
+            *entry.entry(term.clone()).or_insert(0.0) += *score as f64;
+        }
+        *community_paper_counts.entry(cid).or_insert(0) += 1;
+    }
+    // Average TF per community.
+    for (&cid, term_map) in &mut community_term_sums {
+        let n = *community_paper_counts.get(&cid).unwrap_or(&1).max(&1) as f64;
+        for v in term_map.values_mut() {
+            *v /= n;
+        }
+    }
+    // Document frequency across communities.
+    let mut community_df: HashMap<String, usize> = HashMap::new();
+    for term_map in community_term_sums.values() {
+        for (term, &v) in term_map {
+            if v > 0.0 {
+                *community_df.entry(term.clone()).or_insert(0) += 1;
+            }
+        }
+    }
+    let n_communities_for_ctf = community_term_sums.len();
+    // c-TF-IDF scores and build ExportedCommunity vec.
+    let mut communities: Vec<ExportedCommunity> = community_term_sums
+        .into_iter()
+        .map(|(cid, term_map)| {
+            let mut scores: Vec<(String, f32)> = term_map
+                .into_iter()
+                .filter(|(_, v)| *v > 0.0)
+                .map(|(term, tf)| {
+                    let df = community_df.get(&term).copied().unwrap_or(1);
+                    let idf = ((n_communities_for_ctf as f64) / (df as f64)).ln() + 1.0;
+                    (term, (tf * idf) as f32)
+                })
+                .collect();
+            scores.sort_by(|a, b| {
+                b.1.partial_cmp(&a.1)
+                    .unwrap_or(std::cmp::Ordering::Equal)
+                    .then(a.0.cmp(&b.0))
+            });
+            scores.truncate(tfidf_top_n);
+            ExportedCommunity {
+                community_id: cid,
+                size: community_paper_counts.get(&cid).copied().unwrap_or(0),
+                tfidf_vec: scores,
+            }
+        })
+        .collect();
+    communities.sort_by_key(|c| c.community_id);
+
+    // Build nodes: only papers that are in-scope AND have a community assignment.
+    let nodes: Vec<ExportedNode> = sorted_scope_ids
+        .iter()
+        .filter_map(|id| {
+            let community_id = *assignments.get(id)?;
+            let tfidf_vec = tfidf_map.remove(id).unwrap_or_default();
+            Some(ExportedNode {
+                id: id.clone(),
+                community_id,
+                tfidf_vec,
+            })
+        })
+        .collect();
+
+    let node_set: HashSet<&str> = nodes.iter().map(|n| n.id.as_str()).collect();
+
+    // Build edges: both endpoints must be in the node set.
+    let raw_edges = paper_repo.get_all_citation_edges().await?;
+    let edges: Vec<ExportedEdge> = raw_edges
+        .into_iter()
+        .filter_map(|(src, dst)| {
+            let src = strip_version_suffix(&src);
+            let dst = strip_version_suffix(&dst);
+            if node_set.contains(src.as_str()) && node_set.contains(dst.as_str()) {
+                Some(ExportedEdge { src, dst, weight: 1.0 })
+            } else {
+                None
+            }
+        })
+        .collect();
+
+    Ok(CommunityGraph {
+        louvain_params: LouvainParams {
+            seed: LOUVAIN_SEED,
+            resolution: LOUVAIN_RESOLUTION,
+            min_community_size: MIN_COMMUNITY_SIZE,
+        },
+        corpus_fingerprint: fingerprint,
+        nodes,
+        communities,
+        edges,
+    })
+}
+
 // --- Tests ---
 
 #[cfg(test)]

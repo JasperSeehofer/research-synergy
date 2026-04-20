@@ -592,20 +592,31 @@ def main():
     print("  T1 PASS")
 
     # -----------------------------------------------------------------------
-    # T2 / T4 / SC4 / SC5 — Feynman corpus (Stage B)
+    # T2 / T4 / SC4 / SC5 — Corpus benchmarks (Stage B)
+    # Dual-benchmark: run for each (corpus, ground-truth) pair that exists.
     # -----------------------------------------------------------------------
-    if not (os.path.exists(corpus_path) and os.path.exists(gt10_path)):
-        print(f"\n  Corpus not found at {corpus_path} — Stage A complete.")
-        print("  Re-run after: `cargo run --bin resyn -- analyze` + `export-louvain-graph`.")
-        generate_spectrum_figure(vals_toy, spectrum_fig)
-        generate_bridge_figure(bridges_toy, G_toy, bridges_fig)
-        write_results_md(results_path, results)
-    else:
+    benchmarks = [
+        (corpus_path, gt10_path, "Feynman pre-2015"),
+        (
+            os.path.join(data_dir, "research_synergy_modern.json"),
+            os.path.join(data_dir, "modern_lbd_pairs.json"),
+            "Modern post-2018",
+        ),
+    ]
+
+    benchmark_results = {}
+    any_corpus_run = False
+
+    for bm_corpus, bm_gt, bm_label in benchmarks:
+        if not (os.path.exists(bm_corpus) and os.path.exists(bm_gt)):
+            print(f"\n  [{bm_label}] corpus or GT not found — skipping.")
+            continue
+
         print("\n" + "=" * 60)
-        print("T2 / T4 / SC4 / SC5  Feynman corpus")
+        print(f"T2 / T4 / SC4 / SC5  {bm_label}")
         print("=" * 60)
 
-        G_corp, _ = load_louvain_community_graph(corpus_path)
+        G_corp, _ = load_louvain_community_graph(bm_corpus)
         print(f"  Communities: {len(G_corp.community_ids)}, inter-community edges: {len(G_corp.edges)}")
 
         basis_corp = build_stalks(G_corp, top_k=100)
@@ -628,7 +639,7 @@ def main():
                 print(f"  SC3 ABORT on corpus (n={n_sec}): {min_lam_c:.2e}")
                 sys.exit(1)
             bridges_c = compute_bridge_scores(G_corp, basis_corp, maps_corp, vals_c, vecs_c, offsets_corp, c_to_i_corp)
-            prec, _ = compute_t2_precision(bridges_c, G_corp.nodes, gt10_path)
+            prec, _ = compute_t2_precision(bridges_c, G_corp.nodes, bm_gt)
             all_precision[n_sec] = prec
             print(f"  n_sections={n_sec}: T2 precision@10={prec:.3f}")
 
@@ -636,32 +647,53 @@ def main():
                 vals_20, vecs_20 = vals_c, vecs_c
                 bridges_20 = bridges_c
 
-        results["t2_precision"] = all_precision[20]
-        results["t2_run"] = True
-
-        # SC4 + SC5 on n=20
         sc4 = sc4_spectral_gap(vals_20, k=20)
-        results["sc4_gap"] = sc4
         sc5 = sc5_baseline_jaccard(bridges_20, G_corp)
-        results["sc5_jaccard"] = sc5
         print(f"  SC4 spectral gap (λ₂₁/λ₂₀): {sc4}")
         print(f"  SC5 Jaccard(sheaf, cosine baseline): {sc5:.3f}")
 
         # T4 ablation on top-5 of n=20
         print("\n" + "=" * 60)
-        print("T4  Ablation (top-5 bridges, n_sections=20)")
+        print(f"T4  Ablation ({bm_label}, top-5, n_sections=20)")
         print("=" * 60)
-        top5 = bridges_20[:5]
         t4_detail, t4_rate, t4_overall = run_t4_ablation(
-            top5, G_corp, basis_corp, maps_corp, offsets_corp, c_to_i_corp, vals_20, vecs_20, L_corp
+            bridges_20[:5], G_corp, basis_corp, maps_corp, offsets_corp, c_to_i_corp, vals_20, vecs_20, L_corp
         )
-        results["t4_pass_rate"] = t4_rate
-        results["t4_overall"] = t4_overall
-        results["t4_detail"] = t4_detail
+
+        bm_r = {
+            "label": bm_label,
+            "t2_precision": all_precision[20],
+            "sc4_gap": sc4,
+            "sc5_jaccard": sc5,
+            "t4_pass_rate": t4_rate,
+            "t4_overall": t4_overall,
+            "t4_detail": t4_detail,
+        }
+        benchmark_results[bm_label] = bm_r
 
         generate_spectrum_figure(vals_20, spectrum_fig)
         generate_bridge_figure(bridges_20, G_corp, bridges_fig)
-        write_results_md(results_path, results)
+        any_corpus_run = True
+
+    # Use first completed benchmark for top-level results dict (for write_results_md compat)
+    results["t2_run"] = any_corpus_run
+    if benchmark_results:
+        first = next(iter(benchmark_results.values()))
+        results["t2_precision"] = first["t2_precision"]
+        results["sc4_gap"] = first["sc4_gap"]
+        results["sc5_jaccard"] = first["sc5_jaccard"]
+        results["t4_pass_rate"] = first["t4_pass_rate"]
+        results["t4_overall"] = first["t4_overall"]
+        results["t4_detail"] = first["t4_detail"]
+        results["benchmark_results"] = benchmark_results
+
+    if not any_corpus_run:
+        print(f"\n  No corpus found — Stage A complete.")
+        print("  Re-run after: `cargo run --bin resyn -- analyze` + `export-louvain-graph`.")
+        generate_spectrum_figure(vals_toy, spectrum_fig)
+        generate_bridge_figure(bridges_toy, G_toy, bridges_fig)
+
+    write_results_md(results_path, results)
 
     print("\n" + "=" * 60)
     print("Summary")
@@ -670,11 +702,11 @@ def main():
     print(f"  SC1 H⁰(F): {results['h0']} (toy)")
     print(f"  SC2: PASS (ratio={results['sc2_ratio']:.2e})")
     print(f"  SC3: PASS (min_lam={results['min_lam']:.2e})")
-    if results["t2_run"]:
-        print(f"  T2: precision@10 = {results['t2_precision']:.3f}  ({'PASS' if results['t2_precision'] >= 0.4 else 'FAIL'})")
-        print(f"  T4: {results.get('t4_overall','?')} (pass-rate={results.get('t4_pass_rate',0):.2f})")
-        print(f"  SC4: gap={results.get('sc4_gap')}")
-        print(f"  SC5: Jaccard={results.get('sc5_jaccard',0):.3f}")
+    if benchmark_results:
+        for label, bm_r in benchmark_results.items():
+            prec = bm_r["t2_precision"]
+            print(f"  [{label}] T2: precision@10={prec:.3f} ({'PASS' if prec >= 0.4 else 'FAIL'})"
+                  f"  T4: {bm_r['t4_overall']} (pass-rate={bm_r['t4_pass_rate']:.2f})")
     else:
         print("  T2/T4/SC4/SC5: HOLD (corpus pending)")
 

@@ -1,5 +1,6 @@
 use clap::{Args, Subcommand};
 use resyn_core::data_aggregation::arxiv_source::ArxivSource;
+use resyn_core::data_aggregation::chained_source::ChainedPaperSource;
 use resyn_core::data_aggregation::html_parser::ArxivHTMLDownloader;
 use resyn_core::data_aggregation::inspirehep_api::InspireHepClient;
 use resyn_core::data_aggregation::rate_limiter::{
@@ -56,7 +57,8 @@ pub struct CrawlArgs {
     #[arg(long, num_args = 0..=1, default_missing_value = "4")]
     pub parallel: Option<usize>,
 
-    /// Data source: "arxiv", "inspirehep", or "semantic_scholar"
+    /// Data source: "arxiv", "inspirehep", "semantic_scholar", or a comma-separated
+    /// fallback chain e.g. "arxiv,inspirehep,semantic_scholar" (tried left-to-right per paper)
     #[arg(long, default_value = "arxiv")]
     pub source: String,
 
@@ -97,9 +99,9 @@ pub struct CrawlArgs {
     pub subcmd: Option<CrawlSubcommand>,
 }
 
-fn make_source(source_name: &str) -> Box<dyn PaperSource> {
+fn make_single_source(name: &str) -> Box<dyn PaperSource> {
     let client = resyn_core::utils::create_http_client();
-    match source_name {
+    match name.trim() {
         "inspirehep" => {
             let inspire = InspireHepClient::new(client).with_rate_limit(Duration::ZERO);
             Box::new(inspire)
@@ -115,6 +117,29 @@ fn make_source(source_name: &str) -> Box<dyn PaperSource> {
             let downloader = ArxivHTMLDownloader::new(client).with_rate_limit(Duration::ZERO);
             Box::new(ArxivSource::new(downloader))
         }
+    }
+}
+
+/// Build a `PaperSource` from a (possibly comma-separated) source spec.
+/// A single name returns that source directly; multiple names return a `ChainedPaperSource`.
+fn make_source(source_spec: &str) -> Box<dyn PaperSource> {
+    let parts: Vec<&str> = source_spec.split(',').collect();
+    if parts.len() == 1 {
+        make_single_source(parts[0])
+    } else {
+        let sources = parts.into_iter().map(make_single_source).collect();
+        Box::new(ChainedPaperSource::new(sources))
+    }
+}
+
+/// Pick the external rate limiter for a source spec.
+/// For chains, use the first source's rate — primary source drives the crawl cadence.
+fn make_rate_limiter_for_source(source_spec: &str) -> SharedRateLimiter {
+    let first = source_spec.split(',').next().unwrap_or("arxiv").trim();
+    match first {
+        "inspirehep" => make_inspirehep_limiter(),
+        "semantic_scholar" => make_semantic_scholar_limiter(),
+        _ => make_arxiv_limiter(),
     }
 }
 
@@ -199,11 +224,7 @@ pub async fn run(args: CrawlArgs) -> anyhow::Result<()> {
     }
 
     // Shared crawl resources.
-    let rate_limiter: SharedRateLimiter = match args.source.as_str() {
-        "inspirehep" => make_inspirehep_limiter(),
-        "semantic_scholar" => make_semantic_scholar_limiter(),
-        _ => make_arxiv_limiter(),
-    };
+    let rate_limiter: SharedRateLimiter = make_rate_limiter_for_source(&args.source);
     let concurrency = args.parallel.unwrap_or(4);
     let sem = Arc::new(Semaphore::new(concurrency));
     let (progress_tx, _) = tokio::sync::broadcast::channel::<ProgressEvent>(256);
@@ -374,7 +395,14 @@ pub async fn run(args: CrawlArgs) -> anyhow::Result<()> {
                     }
 
                     let found = found_counter.fetch_add(1, Ordering::Relaxed) + 1;
-                    queue.mark_done(&entry.paper_id, &seed_id).await.ok();
+                    queue
+                        .mark_done_with_source(
+                            &entry.paper_id,
+                            &seed_id,
+                            source.last_resolving_source(),
+                        )
+                        .await
+                        .ok();
 
                     let _ = tx.send(ProgressEvent {
                         event_type: "paper_fetched".to_string(),

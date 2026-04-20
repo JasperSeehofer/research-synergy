@@ -703,14 +703,15 @@ pub async fn load_community_status(
 ///
 /// Loads community assignments, per-paper TF-IDF vectors, and citation edges from the DB.
 /// Papers in the "Other" bucket (community_id == u32::MAX - 1) are excluded.
-/// When `published_before` is supplied (e.g. `"2014-12-31"`), only papers whose `published`
-/// field lexicographically precedes the cutoff are included as nodes; edges whose either
-/// endpoint fails the filter are also excluded.
+/// When `published_before` / `published_after` are supplied (e.g. `"2014-12-31"` / `"2018-01-01"`),
+/// only papers whose `published` field falls within the range are included; edges whose either
+/// endpoint fails the filter are also excluded. Both comparisons are lexicographic on ISO-8601.
 /// `tfidf_top_n` controls how many (term, score) pairs are kept per node (sorted by score desc).
 #[cfg(feature = "ssr")]
 pub async fn export_community_graph(
     db: &surrealdb::Surreal<surrealdb::engine::any::Any>,
     published_before: Option<&str>,
+    published_after: Option<&str>,
     tfidf_top_n: usize,
 ) -> Result<crate::datamodels::community_graph::CommunityGraph, ResynError> {
     use crate::database::queries::{AnalysisRepository, CommunityRepository, PaperRepository};
@@ -725,16 +726,14 @@ pub async fn export_community_graph(
     let paper_repo = PaperRepository::new(db);
     let all_papers = paper_repo.get_all_papers().await?;
 
-    // Apply date filter (lexicographic prefix compare on ISO-8601 date strings).
+    // Apply date range filter (lexicographic prefix compare on ISO-8601 date strings).
     let paper_ids_in_scope: HashSet<String> = all_papers
         .iter()
         .filter(|p| {
-            if let Some(cutoff) = published_before {
-                // `published` stored as ISO-8601 string; prefix compare is correct for dates.
-                p.published.as_str() <= cutoff
-            } else {
-                true
-            }
+            let pub_date = p.published.as_str();
+            let before_ok = published_before.map_or(true, |cutoff| pub_date <= cutoff);
+            let after_ok = published_after.map_or(true, |floor| pub_date >= floor);
+            before_ok && after_ok
         })
         .map(|p| strip_version_suffix(&p.id))
         .collect();

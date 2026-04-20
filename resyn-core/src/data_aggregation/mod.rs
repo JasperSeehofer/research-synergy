@@ -1,4 +1,5 @@
 pub mod arxiv_api;
+pub mod chained_source;
 pub mod arxiv_source;
 pub mod arxiv_utils;
 pub mod html_parser;

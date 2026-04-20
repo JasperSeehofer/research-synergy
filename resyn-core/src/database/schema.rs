@@ -248,6 +248,17 @@ async fn apply_migration_11(db: &Surreal<Any>) -> Result<(), ResynError> {
     Ok(())
 }
 
+async fn apply_migration_13(db: &Surreal<Any>) -> Result<(), ResynError> {
+    db.query(
+        "
+        DEFINE FIELD IF NOT EXISTS source ON crawl_queue TYPE option<string>;
+        ",
+    )
+    .await
+    .map_err(|e| ResynError::Database(format!("migration 13 DDL failed: {e}")))?;
+    Ok(())
+}
+
 async fn apply_migration_12(db: &Surreal<Any>) -> Result<(), ResynError> {
     db.query(
         "
@@ -336,6 +347,11 @@ pub async fn migrate_schema(db: &Surreal<Any>) -> Result<(), ResynError> {
     if version < 12 {
         apply_migration_12(db).await?;
         record_migration(db, 12).await?;
+    }
+
+    if version < 13 {
+        apply_migration_13(db).await?;
+        record_migration(db, 13).await?;
     }
 
     Ok(())
@@ -442,6 +458,56 @@ mod tests {
         assert_eq!(
             rows[0].get("community_id").and_then(|v| v.as_i64()),
             Some(1)
+        );
+    }
+
+    #[tokio::test]
+    async fn test_migration_13_adds_source_to_crawl_queue() {
+        let db = connect_memory().await.expect("in-memory DB failed");
+        migrate_schema(&db).await.expect("schema migration failed");
+
+        // Insert a queue entry without source (simulates pre-migration row) — source should be None.
+        db.query(
+            "CREATE crawl_queue:test1 CONTENT { \
+             paper_id: '2301.11111', \
+             seed_paper_id: '2301.11111', \
+             depth_level: 0, \
+             status: 'pending', \
+             retry_count: 0, \
+             created_at: '2026-01-01T00:00:00Z', \
+             claimed_at: NONE, \
+             completed_at: NONE \
+             }",
+        )
+        .await
+        .expect("insert without source failed");
+
+        let mut response = db
+            .query("SELECT source FROM crawl_queue WHERE paper_id = '2301.11111'")
+            .await
+            .expect("select source failed");
+        let rows: Vec<serde_json::Value> = response.take(0).expect("deserialize failed");
+        assert!(
+            rows[0].get("source").map(|v| v.is_null()).unwrap_or(true),
+            "source should be None for rows inserted without it"
+        );
+
+        // Update with source — should persist.
+        db.query(
+            "UPDATE crawl_queue SET source = 'inspirehep' WHERE paper_id = '2301.11111'",
+        )
+        .await
+        .expect("update source failed");
+
+        let mut response = db
+            .query("SELECT source FROM crawl_queue WHERE paper_id = '2301.11111'")
+            .await
+            .expect("select source failed");
+        let rows: Vec<serde_json::Value> = response.take(0).expect("deserialize failed");
+        assert_eq!(
+            rows[0].get("source").and_then(|v| v.as_str()),
+            Some("inspirehep"),
+            "source should be set after update"
         );
     }
 }

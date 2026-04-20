@@ -16,6 +16,11 @@ pub struct ExportArgs {
     #[arg(long)]
     pub published_before: Option<String>,
 
+    /// Exclude papers published before this date (ISO-8601: "YYYY-MM-DD").
+    /// Use with --published-before to select a date range, or alone for post-cutoff corpora.
+    #[arg(long)]
+    pub published_after: Option<String>,
+
     /// Maximum number of TF-IDF terms to export per node (default: 50)
     #[arg(long, default_value_t = 50)]
     pub tfidf_top_n: usize,
@@ -33,16 +38,19 @@ pub async fn run(args: ExportArgs) -> anyhow::Result<()> {
         }
     };
 
-    let cutoff = args.published_before.as_deref();
+    let before = args.published_before.as_deref();
+    let after = args.published_after.as_deref();
     info!(
-        published_before = cutoff.unwrap_or("(none)"),
+        published_before = before.unwrap_or("(none)"),
+        published_after = after.unwrap_or("(none)"),
         tfidf_top_n = args.tfidf_top_n,
         "Exporting Louvain community graph"
     );
 
     let graph = resyn_core::graph_analytics::community::export_community_graph(
         &db,
-        cutoff,
+        before,
+        after,
         args.tfidf_top_n,
     )
     .await

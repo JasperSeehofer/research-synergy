@@ -22,6 +22,7 @@ struct QueueRecord {
     pub created_at: String,
     pub claimed_at: Option<String>,
     pub completed_at: Option<String>,
+    pub source: Option<String>,
 }
 
 impl From<QueueRecord> for QueueEntry {
@@ -35,6 +36,7 @@ impl From<QueueRecord> for QueueEntry {
             created_at: r.created_at,
             claimed_at: r.claimed_at,
             completed_at: r.completed_at,
+            source: r.source,
         }
     }
 }
@@ -51,6 +53,7 @@ pub struct QueueEntry {
     pub created_at: String,
     pub claimed_at: Option<String>,
     pub completed_at: Option<String>,
+    pub source: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -172,6 +175,31 @@ impl<'a> CrawlQueueRepository<'a> {
             .bind(("now", now))
             .await
             .map_err(|e| ResynError::Database(format!("mark_done failed: {e}")))?;
+        Ok(())
+    }
+
+    /// Mark a queue entry as done, recording which source resolved it.
+    pub async fn mark_done_with_source(
+        &self,
+        paper_id: &str,
+        seed_id: &str,
+        source: &str,
+    ) -> Result<(), ResynError> {
+        let paper_id: String = strip_version_suffix(paper_id);
+        let seed_id: String = seed_id.to_owned();
+        let now: String = Utc::now().to_rfc3339();
+        self.db
+            .query(
+                "UPDATE crawl_queue
+                 SET status = 'done', completed_at = $now, source = $source
+                 WHERE paper_id = $paper_id AND seed_paper_id = $seed_id",
+            )
+            .bind(("paper_id", paper_id))
+            .bind(("seed_id", seed_id))
+            .bind(("now", now))
+            .bind(("source", source.to_owned()))
+            .await
+            .map_err(|e| ResynError::Database(format!("mark_done_with_source failed: {e}")))?;
         Ok(())
     }
 
@@ -574,6 +602,46 @@ mod tests {
         let counts = repo.get_counts().await.unwrap();
         assert_eq!(counts.pending, 2, "all failed entries should be pending");
         assert_eq!(counts.failed, 0);
+    }
+
+    #[tokio::test]
+    async fn test_mark_done_with_source() {
+        let db = connect_memory().await.unwrap();
+        let repo = CrawlQueueRepository::new(&db);
+
+        repo.enqueue_if_absent("2301.12345", "seed", 1)
+            .await
+            .unwrap();
+
+        // Plain mark_done leaves source as None.
+        repo.enqueue_if_absent("2301.99999", "seed", 1)
+            .await
+            .unwrap();
+        repo.mark_done("2301.99999", "seed").await.unwrap();
+        let mut response = db
+            .query("SELECT source FROM crawl_queue WHERE paper_id = '2301.99999'")
+            .await
+            .unwrap();
+        let rows: Vec<serde_json::Value> = response.take(0).unwrap();
+        assert!(
+            rows[0].get("source").map(|v| v.is_null()).unwrap_or(true),
+            "plain mark_done should leave source as None"
+        );
+
+        // mark_done_with_source persists the resolving source name.
+        repo.mark_done_with_source("2301.12345", "seed", "inspirehep")
+            .await
+            .unwrap();
+        let mut response = db
+            .query("SELECT source FROM crawl_queue WHERE paper_id = '2301.12345'")
+            .await
+            .unwrap();
+        let rows: Vec<serde_json::Value> = response.take(0).unwrap();
+        assert_eq!(
+            rows[0].get("source").and_then(|v| v.as_str()),
+            Some("inspirehep"),
+            "mark_done_with_source should set source field"
+        );
     }
 
     #[tokio::test]

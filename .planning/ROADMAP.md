@@ -83,6 +83,7 @@ Full details: `.planning/milestones/v1.3-ROADMAP.md`
 - [x] **Phase 24: Community Detection** - Louvain clustering with community summary panels (completed 2026-04-10)
 - [ ] **Phase 25: Discovery Recommendations** - Scored paper recommendations combining similarity, centrality, and community signals
 - [ ] **Phase 26: Export & Interop** - BibTeX, CSV, and graph JSON export
+- [ ] **Phase 27: Crawler Speedup** - Eliminate per-paper HTML scrapes via OpenAlex bulk reference-edge pre-ingest; wire OpenAlex API key; fix concept IDs in CLAUDE.md
 
 ## Phase Details
 
@@ -172,6 +173,21 @@ Plans:
 **Plans**: TBD
 **UI hint**: yes
 
+### Phase 27: Crawler Speedup
+**Goal**: Eliminate per-paper HTML scrapes for reference fetching by pre-ingesting OpenAlex citation edges into the target corpus DB; wire OpenAlex API key authentication; fix incorrect concept IDs in CLAUDE.md
+**Depends on**: Nothing (independent infrastructure improvement)
+**Requirements**: None (not yet mapped)
+**Success Criteria** (what must be TRUE):
+  1. `bulk-ingest` authenticates with `OPENALEX_API_KEY` env var instead of `--mailto` polite pool
+  2. A physics filter constant (`C121864883` Statistical physics + `C26873012` Condensed matter) is available in `bulk_ingest.rs` for corpus-specific ingest runs
+  3. CLAUDE.md concept ID `C2778407487` ("Statistical Physics") is corrected to the verified IDs above
+  4. Running `cargo run --bin resyn -- bulk-ingest --db surrealkv://./data-physics` populates both papers and citation edges without touching any other DB path
+**Plans**: 2 plans
+Plans:
+- [ ] 27-01-PLAN.md — API key auth migration (openalex_bulk.rs + bulk_ingest.rs)
+- [ ] 27-02-PLAN.md — Physics filter constant + CLAUDE.md concept ID fix
+**UI hint**: no
+
 ## Progress
 
 | Phase | Milestone | Plans Complete | Status | Completed |
@@ -204,3 +220,4 @@ Plans:
 | 24. Community Detection | v1.4 | 3/3 | Complete   | 2026-04-10 |
 | 25. Discovery Recommendations | v1.4 | 0/? | Not started | - |
 | 26. Export & Interop | v1.4 | 0/? | Not started | - |
+| 27. Crawler Speedup | v1.4 | 0/? | Not started | - |

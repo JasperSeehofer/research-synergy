@@ -184,8 +184,8 @@ Plans:
   4. Running `cargo run --bin resyn -- bulk-ingest --db surrealkv://./data-physics` populates both papers and citation edges without touching any other DB path
 **Plans**: 2 plans
 Plans:
-- [ ] 27-01-PLAN.md — API key auth migration (openalex_bulk.rs + bulk_ingest.rs)
-- [ ] 27-02-PLAN.md — Physics filter constant + CLAUDE.md concept ID fix
+- [x] 27-01-PLAN.md — API key auth migration (openalex_bulk.rs + bulk_ingest.rs)
+- [x] 27-02-PLAN.md — Physics filter constant + CLAUDE.md concept ID fix
 **UI hint**: no
 
 ## Progress

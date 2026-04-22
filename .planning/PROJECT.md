@@ -115,6 +115,8 @@ Surface research gaps and unexplored connections that no single paper reveals �
 
 ReSyn is a 3-crate Cargo workspace (resyn-core/resyn-app/resyn-server) with ~27,000 LOC Rust across 100+ files. The full pipeline runs through a Leptos CSR web UI served by Axum, with interactive Canvas 2D / WebGL2 graph rendering powered by Barnes-Hut force layout in a WASM Web Worker. Both data sources (arXiv and InspireHEP) produce dense citation graphs with no orphan nodes. LLM analysis is fully integrated into the web UI with trigger controls, SSE progress, and auto-refreshing result panels. Graph nodes display TF-IDF keyword pills and colored topic ring arcs for at-a-glance topic identification. Phase 23 complete — PageRank and betweenness centrality computation with "Size by" dropdown, animated node sizing, and "Most Influential Papers" dashboard card.
 
+Phase 27 complete (2026-04-22) — OpenAlex bulk-ingest now uses API key bearer auth (`OPENALEX_API_KEY`, hard-fail on missing); `DEFAULT_FILTER_PHYSICS` constant added for cond-mat/stat-phys corpus; CLAUDE.md corrected (C2778407487 was Altmetrics, not Statistical Physics; replaced with C26873012 + C121864883).
+
 **Stack:** Rust (edition 2024), Leptos 0.8 (CSR), Trunk, Axum, SurrealDB v3 (embedded), petgraph, web-sys (Canvas 2D + WebGL2), gloo-worker, reqwest, tokio.
 
 ## Constraints
@@ -180,7 +182,7 @@ This document evolves at phase transitions and milestone boundaries.
 3. Audit Out of Scope — reasons still valid?
 4. Update Context with current state
 
-Last updated: 2026-04-09
+Last updated: 2026-04-22
 
 ---
-*Last updated: 2026-04-09 after v1.4 milestone start*
+*Last updated: 2026-04-22 after v1.4 milestone start*

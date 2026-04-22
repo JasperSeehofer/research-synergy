@@ -83,7 +83,7 @@ Full details: `.planning/milestones/v1.3-ROADMAP.md`
 - [x] **Phase 24: Community Detection** - Louvain clustering with community summary panels (completed 2026-04-10)
 - [ ] **Phase 25: Discovery Recommendations** - Scored paper recommendations combining similarity, centrality, and community signals
 - [ ] **Phase 26: Export & Interop** - BibTeX, CSV, and graph JSON export
-- [ ] **Phase 27: Crawler Speedup** - Eliminate per-paper HTML scrapes via OpenAlex bulk reference-edge pre-ingest; wire OpenAlex API key; fix concept IDs in CLAUDE.md
+- [x] **Phase 27: Crawler Speedup** - Eliminate per-paper HTML scrapes via OpenAlex bulk reference-edge pre-ingest; wire OpenAlex API key; fix concept IDs in CLAUDE.md (completed 2026-04-22)
 
 ## Phase Details
 
@@ -220,4 +220,4 @@ Plans:
 | 24. Community Detection | v1.4 | 3/3 | Complete   | 2026-04-10 |
 | 25. Discovery Recommendations | v1.4 | 0/? | Not started | - |
 | 26. Export & Interop | v1.4 | 0/? | Not started | - |
-| 27. Crawler Speedup | v1.4 | 0/? | Not started | - |
+| 27. Crawler Speedup | v1.4 | 2/2 | Complete    | 2026-04-22 |

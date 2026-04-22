@@ -3,11 +3,11 @@ gsd_state_version: 1.0
 milestone: v1.4
 milestone_name: Discovery & Intelligence
 status: planning
-stopped_at: context exhaustion at 90% (2026-04-20)
-last_updated: "2026-04-20T19:40:35.219Z"
+stopped_at: Phase 27 context gathered
+last_updated: "2026-04-22T13:39:30.068Z"
 last_activity: 2026-04-16
 progress:
-  total_phases: 6
+  total_phases: 7
   completed_phases: 4
   total_plans: 12
   completed_plans: 12
@@ -59,6 +59,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-04-20T19:40:35.217Z
-Stopped at: context exhaustion at 90% (2026-04-20)
-Resume file: None
+Last session: --stopped-at
+Stopped at: Phase 27 context gathered
+Resume file: --resume-file

@@ -53,10 +53,21 @@ impl PaperSource for ChainedPaperSource {
         let start_idx = *self.last_resolved_idx.lock().unwrap();
         let n = self.sources.len();
         let mut last_err = ResynError::PaperNotFound(paper.id.clone());
+        let mut any_ok = false;
         for i in 0..n {
             let idx = (start_idx + i) % n;
             match self.sources[idx].fetch_references(paper).await {
-                Ok(_) => return Ok(()),
+                Ok(_) if !paper.references.is_empty() => return Ok(()),
+                Ok(_) => {
+                    // Source succeeded but returned no references — arXiv HTML often does
+                    // this for papers that only cite journal DOIs. Try the next source.
+                    any_ok = true;
+                    warn!(
+                        source = self.sources[idx].source_name(),
+                        paper_id = paper.id.as_str(),
+                        "ChainedSource: fetch_references returned empty refs, trying next source"
+                    );
+                }
                 Err(e) => {
                     warn!(
                         source = self.sources[idx].source_name(),
@@ -68,7 +79,9 @@ impl PaperSource for ChainedPaperSource {
                 }
             }
         }
-        Err(last_err)
+        // All sources exhausted. If at least one returned Ok (paper genuinely has no
+        // arXiv-linked references), propagate success with empty refs rather than an error.
+        if any_ok { Ok(()) } else { Err(last_err) }
     }
 
     fn source_name(&self) -> &'static str {
@@ -153,5 +166,54 @@ mod tests {
         ]);
         let result = chain.fetch_paper("2301.12345").await;
         assert!(result.is_err());
+    }
+
+    struct PopulatingSource(&'static str);
+
+    #[async_trait]
+    impl PaperSource for PopulatingSource {
+        async fn fetch_paper(&self, _id: &str) -> Result<Paper, ResynError> {
+            Ok(Paper::default())
+        }
+        async fn fetch_references(&mut self, paper: &mut Paper) -> Result<(), ResynError> {
+            paper.references.push(crate::datamodels::paper::Reference {
+                arxiv_eprint: Some("2301.99999".to_string()),
+                title: "test ref".to_string(),
+                ..Default::default()
+            });
+            Ok(())
+        }
+        fn source_name(&self) -> &'static str {
+            self.0
+        }
+    }
+
+    #[tokio::test]
+    async fn test_chain_empty_refs_falls_through_to_populating_source() {
+        // OkSource returns Ok() but leaves refs empty (simulates arXiv HTML with journal-only DOIs).
+        // Chain should fall through to PopulatingSource.
+        let mut chain = ChainedPaperSource::new(vec![
+            Box::new(OkSource("arxiv")),
+            Box::new(PopulatingSource("inspirehep")),
+        ]);
+        let mut paper = Paper::default();
+        paper.id = "2301.12345".to_string();
+        chain.fetch_references(&mut paper).await.unwrap();
+        assert!(!paper.references.is_empty(), "should have refs from inspirehep fallback");
+    }
+
+    #[tokio::test]
+    async fn test_chain_empty_refs_all_sources_returns_ok() {
+        // If every source returns Ok but with empty refs, the chain should still succeed
+        // (paper genuinely has no arXiv-linked references).
+        let mut chain = ChainedPaperSource::new(vec![
+            Box::new(OkSource("arxiv")),
+            Box::new(OkSource("inspirehep")),
+        ]);
+        let mut paper = Paper::default();
+        paper.id = "2301.12345".to_string();
+        let result = chain.fetch_references(&mut paper).await;
+        assert!(result.is_ok(), "should succeed even with universally empty refs");
+        assert!(paper.references.is_empty());
     }
 }

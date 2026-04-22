@@ -269,6 +269,7 @@ impl PaperSource for SemanticScholarSource {
     async fn fetch_references(&mut self, paper: &mut Paper) -> Result<(), ResynError> {
         self.rate_limit_check().await;
 
+        let bare_id = crate::utils::strip_version_suffix(&paper.id);
         let mut offset: u32 = 0;
         let limit: u32 = 500;
         let mut all_refs: Vec<S2RefItem> = Vec::new();
@@ -276,7 +277,7 @@ impl PaperSource for SemanticScholarSource {
         loop {
             let url = format!(
                 "{}/paper/arXiv:{}/references?fields=externalIds,title,authors,year&limit={}&offset={}",
-                self.base_url, paper.id, limit, offset
+                self.base_url, bare_id, limit, offset
             );
             debug!(url, "Fetching references from Semantic Scholar");
 

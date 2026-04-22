@@ -9,7 +9,11 @@ use resyn_core::database::queries::PaperRepository;
 const DEFAULT_FILTER: &str =
     "primary_location.source.id:S4306400194,concepts.id:C154945302|C121332964|C41008148";
 
-const DEFAULT_MAILTO: &str = "jasperseehofermusic@gmail.com";
+/// Physics/cond-mat corpus filter: arXiv papers in Condensed matter physics (C26873012)
+/// or Statistical physics (C121864883). Use with --db surrealkv://./data-physics.
+#[allow(dead_code)]
+const DEFAULT_FILTER_PHYSICS: &str =
+    "primary_location.source.id:S4306400194,concepts.id:C26873012|C121864883";
 
 #[derive(Args, Debug)]
 pub struct BulkIngestArgs {
@@ -19,20 +23,56 @@ pub struct BulkIngestArgs {
 
     /// OpenAlex filter expression.
     /// Default covers arXiv ML papers (Machine Learning + stat.ML + Neural Networks).
-    /// For ML+physics boundary: add "|C2778407487" (Statistical Physics) to concepts.
+    /// For cond-mat/stat-phys corpus use DEFAULT_FILTER_PHYSICS or pass --filter directly.
     #[arg(long, default_value = DEFAULT_FILTER)]
     pub filter: String,
 
-    /// Email address for OpenAlex polite pool (10 req/s vs 1 req/s unauthenticated)
-    #[arg(long, default_value = DEFAULT_MAILTO)]
-    pub mailto: String,
+    /// OpenAlex API key — required since 2026-02-13 (free at openalex.org/settings/api).
+    /// Can also be set via OPENALEX_API_KEY environment variable.
+    #[arg(long, env = "OPENALEX_API_KEY")]
+    pub api_key: Option<String>,
 
-    /// Delay between API pages in milliseconds (default 100 = 10 req/s polite pool)
+    /// Delay between API pages in milliseconds (default 100 = 10 req/s)
     #[arg(long, default_value_t = 100)]
     pub page_delay_ms: u64,
 }
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use clap::Parser;
+
+    // Wrapping CLI for argument parsing tests
+    #[derive(clap::Parser)]
+    struct Cli {
+        #[command(flatten)]
+        args: BulkIngestArgs,
+    }
+
+    #[test]
+    fn test_api_key_flag_parsed() {
+        let cli = Cli::parse_from(["test", "--api-key", "sk-test-123"]);
+        assert_eq!(cli.args.api_key.as_deref(), Some("sk-test-123"));
+    }
+
+    #[test]
+    fn test_no_api_key_is_none() {
+        let cli = Cli::parse_from(["test"]);
+        assert!(cli.args.api_key.is_none());
+    }
+}
+
 pub async fn run(args: BulkIngestArgs) -> anyhow::Result<()> {
+    let api_key = match args.api_key {
+        Some(ref k) if !k.is_empty() => k.clone(),
+        _ => {
+            tracing::error!(
+                "OPENALEX_API_KEY not set — register a free key at openalex.org/settings/api"
+            );
+            std::process::exit(1);
+        }
+    };
+
     let db = match resyn_core::database::client::connect(&args.db).await {
         Ok(db) => {
             info!(endpoint = args.db.as_str(), "Connected to database");
@@ -45,7 +85,7 @@ pub async fn run(args: BulkIngestArgs) -> anyhow::Result<()> {
     };
 
     let client = resyn_core::utils::create_http_client();
-    let loader = OpenAlexBulkLoader::new(client, &args.mailto);
+    let loader = OpenAlexBulkLoader::new(client, &api_key);
     let repo = PaperRepository::new(&db);
 
     info!(filter = args.filter.as_str(), "Starting OpenAlex bulk ingest");

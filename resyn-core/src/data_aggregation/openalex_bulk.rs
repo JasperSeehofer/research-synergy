@@ -139,29 +139,27 @@ impl OpenAlexWork {
 
 pub struct OpenAlexBulkLoader {
     client: Client,
-    mailto: String,
+    api_key: String,
 }
 
 impl OpenAlexBulkLoader {
-    pub fn new(client: Client, mailto: impl Into<String>) -> Self {
+    pub fn new(client: Client, api_key: impl Into<String>) -> Self {
         Self {
             client,
-            mailto: mailto.into(),
+            api_key: api_key.into(),
         }
     }
 
     pub async fn fetch_page(&self, filter: &str, cursor: &str) -> Result<OpenAlexPage, ResynError> {
         let url = format!(
-            "{}?filter={}&per-page=200&cursor={}&mailto={}",
-            OPENALEX_API, filter, cursor, self.mailto
+            "{}?filter={}&per-page=200&cursor={}",
+            OPENALEX_API, filter, cursor
         );
         let page: OpenAlexPage = self
             .client
             .get(&url)
-            .header(
-                "User-Agent",
-                format!("resyn/0.1 (mailto:{})", self.mailto),
-            )
+            .header("Authorization", format!("Bearer {}", self.api_key))
+            .header("User-Agent", "resyn/0.1 (mailto:jasperseehofermusic@gmail.com)")
             .send()
             .await
             .map_err(|e| ResynError::OpenAlexApi(format!("request failed: {e}")))?

@@ -221,17 +221,17 @@ Plans:
 | 25. Discovery Recommendations | v1.4 | 0/? | Not started | - |
 | 26. Export & Interop | v1.4 | 0/? | Not started | - |
 | 27. Crawler Speedup | v1.4 | 2/2 | Complete    | 2026-04-22 |
-| 28. Forward-citation crawl mode (S2) | v1.4 | 3/4 | In Progress|  |
+| 28. Forward-citation crawl mode (S2) | v1.4 | 4/4 | Complete   | 2026-04-27 |
 
 ### Phase 28: Forward-citation crawl mode (S2)
 
 **Goal:** Add bidirectional citation discovery to SemanticScholarSource. Implement `--bidirectional` CLI flag that fetches S2 forward-citations alongside backward-citations, writes correct-direction graph edges via a new `PaperRepository::upsert_inverse_citations_batch`, and enqueues newly discovered citing papers in the existing BFS queue.
 **Requirements**: None (infrastructure improvement; no v1.4 requirement IDs map to this phase)
 **Depends on:** Phase 27
-**Plans:** 3/4 plans executed
+**Plans:** 4/4 plans complete
 
 Plans:
 - [x] 28-01-PLAN.md — S2 fetch_citing_papers method + builder fields + wiremock tests (Wave 1, parallel with 28-02)
 - [x] 28-02-PLAN.md — PaperSource trait extension + Paper.citing_papers transient field + accessor (Wave 1, parallel with 28-01)
 - [x] 28-03-PLAN.md — PaperRepository::upsert_inverse_citations_batch with edge-direction integration tests (Wave 2)
-- [ ] 28-04-PLAN.md — Crawler wiring (CLI flags + worker block + non-S2 warn) + script + CLAUDE.md docs (Wave 3)
+- [x] 28-04-PLAN.md — Crawler wiring (CLI flags + worker block + non-S2 warn) + script + CLAUDE.md docs (Wave 3)

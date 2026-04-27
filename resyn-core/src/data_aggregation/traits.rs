@@ -13,4 +13,9 @@ pub trait PaperSource: Send + Sync {
     fn last_resolving_source(&self) -> &'static str {
         self.source_name()
     }
+    /// Fetch papers that cite `paper` and store them in `paper.citing_papers`.
+    /// Default: no-op — only `SemanticScholarSource` overrides this in plan 01.
+    async fn fetch_citing_papers(&mut self, _paper: &mut Paper) -> Result<(), ResynError> {
+        Ok(())
+    }
 }

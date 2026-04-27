@@ -18,6 +18,8 @@ pub struct SemanticScholarSource {
     rate_limit: Duration,
     api_key: Option<String>,
     backoff_base: Duration,
+    bidirectional: bool,
+    max_forward_citations: usize,
 }
 
 impl SemanticScholarSource {
@@ -29,6 +31,8 @@ impl SemanticScholarSource {
             rate_limit: Duration::from_millis(1100),
             api_key: None,
             backoff_base: Duration::from_secs(2),
+            bidirectional: false,
+            max_forward_citations: 500,
         }
     }
 
@@ -48,6 +52,8 @@ impl SemanticScholarSource {
             rate_limit,
             api_key,
             backoff_base: Duration::from_secs(2),
+            bidirectional: false,
+            max_forward_citations: 500,
         }
     }
 
@@ -70,6 +76,20 @@ impl SemanticScholarSource {
     /// value in tests so 429-retry tests complete quickly.
     pub fn with_backoff_base(mut self, duration: Duration) -> Self {
         self.backoff_base = duration;
+        self
+    }
+
+    /// Enable forward-citation fetching via the S2 `/citations` endpoint.
+    /// When false (default), `fetch_citing_papers_inner` is a no-op.
+    pub fn with_bidirectional(mut self, val: bool) -> Self {
+        self.bidirectional = val;
+        self
+    }
+
+    /// Cap the number of citing papers fetched per seed (default: 500).
+    /// Pagination stops once the accumulator reaches this size.
+    pub fn with_max_forward_citations(mut self, n: usize) -> Self {
+        self.max_forward_citations = n;
         self
     }
 
@@ -180,47 +200,119 @@ impl SemanticScholarSource {
         }
     }
 
+    fn convert_s2_paper_to_ref(s2: &S2Paper) -> Reference {
+        let title = s2.title.clone().unwrap_or_default();
+        let author = s2
+            .authors
+            .as_ref()
+            .and_then(|a| a.first())
+            .and_then(|a| a.name.clone())
+            .unwrap_or_default();
+        let arxiv_eprint = s2
+            .external_ids
+            .as_ref()
+            .and_then(|ids| ids.arxiv.as_ref())
+            .map(|id| strip_version_suffix(id));
+        let doi = s2.external_ids.as_ref().and_then(|ids| ids.doi.clone());
+
+        let mut links = Vec::new();
+        if let Some(ref eprint) = arxiv_eprint {
+            // Only add a Link for new-format IDs (e.g. "2301.12345").
+            // Old-format IDs (e.g. "cond-mat/0010317") contain a slash;
+            // Reference::get_arxiv_id() splits the URL by '/' and takes
+            // the last segment, which would lose the category prefix.
+            // For old-format IDs the arxiv_eprint fallback path is correct.
+            if !eprint.contains('/') {
+                links.push(Link::from_url(&format!("https://arxiv.org/abs/{eprint}")));
+            }
+        }
+
+        Reference {
+            author,
+            title,
+            links,
+            doi,
+            arxiv_eprint,
+            ..Default::default()
+        }
+    }
+
     fn convert_s2_refs(items: &[S2RefItem]) -> Vec<Reference> {
         items
             .iter()
-            .map(|item| {
-                let cited = &item.cited_paper;
-                let title = cited.title.clone().unwrap_or_default();
-                let author = cited
-                    .authors
-                    .as_ref()
-                    .and_then(|a| a.first())
-                    .and_then(|a| a.name.clone())
-                    .unwrap_or_default();
-                let arxiv_eprint = cited
-                    .external_ids
-                    .as_ref()
-                    .and_then(|ids| ids.arxiv.as_ref())
-                    .map(|id| strip_version_suffix(id));
-                let doi = cited.external_ids.as_ref().and_then(|ids| ids.doi.clone());
-
-                let mut links = Vec::new();
-                if let Some(ref eprint) = arxiv_eprint {
-                    // Only add a Link for new-format IDs (e.g. "2301.12345").
-                    // Old-format IDs (e.g. "cond-mat/0010317") contain a slash;
-                    // Reference::get_arxiv_id() splits the URL by '/' and takes
-                    // the last segment, which would lose the category prefix.
-                    // For old-format IDs the arxiv_eprint fallback path is correct.
-                    if !eprint.contains('/') {
-                        links.push(Link::from_url(&format!("https://arxiv.org/abs/{eprint}")));
-                    }
-                }
-
-                Reference {
-                    author,
-                    title,
-                    links,
-                    doi,
-                    arxiv_eprint,
-                    ..Default::default()
-                }
-            })
+            .map(|item| Self::convert_s2_paper_to_ref(&item.cited_paper))
             .collect()
+    }
+
+    fn convert_s2_citations(items: &[S2CitationItem]) -> Vec<Reference> {
+        items
+            .iter()
+            .map(|item| Self::convert_s2_paper_to_ref(&item.citing_paper))
+            .collect()
+    }
+
+    /// Fetch papers citing this paper from S2 `/citations` endpoint.
+    /// No-op when `bidirectional == false`.
+    /// Stores result in `paper.citing_papers` (transient field added in plan 02).
+    pub async fn fetch_citing_papers_inner(
+        &mut self,
+        paper: &mut Paper,
+    ) -> Result<(), ResynError> {
+        if !self.bidirectional {
+            return Ok(());
+        }
+        self.rate_limit_check().await;
+
+        let bare_id = strip_version_suffix(&paper.id);
+        let mut offset: u32 = 0;
+        let limit: u32 = 500;
+        let mut all_citations: Vec<S2CitationItem> = Vec::new();
+
+        loop {
+            let url = format!(
+                "{}/paper/arXiv:{}/citations?fields=externalIds,title,authors,year&limit={}&offset={}",
+                self.base_url, bare_id, limit, offset
+            );
+            debug!(url, "Fetching citing papers from Semantic Scholar");
+
+            let response = self.get_with_backoff(&url).await?;
+
+            if response.status() == reqwest::StatusCode::NOT_FOUND {
+                break;
+            }
+            if !response.status().is_success() {
+                return Err(ResynError::SemanticScholarApi(format!(
+                    "citations HTTP {}: {}",
+                    response.status(),
+                    paper.id
+                )));
+            }
+
+            let body = response
+                .text()
+                .await
+                .map_err(|e| ResynError::SemanticScholarApi(format!("failed to read body: {e}")))?;
+
+            let page = serde_json::from_str::<S2CitationsPage>(&body).map_err(|e| {
+                ResynError::SemanticScholarApi(format!("failed to parse response: {e}"))
+            })?;
+
+            all_citations.extend(page.data);
+
+            // Cap enforcement: truncate and stop paginating
+            if all_citations.len() >= self.max_forward_citations {
+                all_citations.truncate(self.max_forward_citations);
+                break;
+            }
+
+            match page.next {
+                Some(next_offset) => offset = next_offset,
+                None => break,
+            }
+        }
+
+        paper.citing_papers = Self::convert_s2_citations(&all_citations);
+        Ok(())
     }
 }
 
@@ -361,6 +453,18 @@ struct S2RefsPage {
 struct S2RefItem {
     #[serde(rename = "citedPaper")]
     cited_paper: S2Paper,
+}
+
+#[derive(Debug, Deserialize)]
+struct S2CitationsPage {
+    data: Vec<S2CitationItem>,
+    next: Option<u32>,
+}
+
+#[derive(Debug, Deserialize)]
+struct S2CitationItem {
+    #[serde(rename = "citingPaper")]
+    citing_paper: S2Paper,
 }
 
 // ---------------------------------------------------------------------------

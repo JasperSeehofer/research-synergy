@@ -4,7 +4,7 @@ use crate::datamodels::analysis::{AnalysisMetadata, PaperAnalysis};
 use crate::datamodels::extraction::{ExtractionMethod, TextExtractionResult};
 use crate::datamodels::gap_finding::{GapFinding, GapType};
 use crate::datamodels::llm_annotation::LlmAnnotation;
-use crate::datamodels::paper::{DataSource, Paper};
+use crate::datamodels::paper::{DataSource, Paper, Reference};
 use crate::error::ResynError;
 use crate::utils::strip_version_suffix;
 
@@ -137,6 +137,61 @@ impl<'a> PaperRepository<'a> {
                 .map_err(|e| ResynError::Database(format!("batch citation failed: {e}")))?;
         }
         Ok(pairs.len())
+    }
+
+    /// Insert INVERSE-direction citation edges for a single cited paper given a list
+    /// of references representing the papers that CITE it. For each Reference, the
+    /// edge is `RELATE citing_paper->cites->cited_paper` — the same direction the
+    /// `cites` table uses everywhere else (`in` end = citing, `out` end = cited).
+    ///
+    /// References without a resolvable arXiv ID are skipped (debug log, no error).
+    /// Neither endpoint paper needs to exist — dangling edges are acceptable, matching
+    /// `upsert_citations_batch` semantics. The citing paper is typically enqueued for
+    /// separate fetching by the BFS worker.
+    ///
+    /// Returns the count of edges actually inserted (≤ `citing_papers.len()`).
+    pub async fn upsert_inverse_citations_batch(
+        &self,
+        cited_arxiv_id: &str,
+        citing_papers: &[Reference],
+    ) -> Result<usize, ResynError> {
+        if citing_papers.is_empty() {
+            return Ok(0);
+        }
+        let to_id = strip_version_suffix(cited_arxiv_id);
+        let to_rid = paper_record_id(&to_id);
+
+        let mut inserted = 0usize;
+        for reference in citing_papers {
+            let citing_id = match reference.get_arxiv_id() {
+                Ok(id) if !id.is_empty() => strip_version_suffix(&id),
+                Ok(_) | Err(_) => {
+                    tracing::debug!(
+                        cited = cited_arxiv_id,
+                        ref_title = reference.title.as_str(),
+                        "Skipping inverse citation edge — citing paper has no resolvable arXiv ID"
+                    );
+                    continue;
+                }
+            };
+
+            let from_rid = paper_record_id(&citing_id);
+
+            self.db
+                .query("RELATE $from->cites->$to")
+                .bind(("from", from_rid))
+                .bind(("to", to_rid.clone()))
+                .await
+                .map_err(|e| {
+                    ResynError::Database(format!(
+                        "inverse citation batch failed (citing={citing_id}, cited={to_id}): {e}"
+                    ))
+                })?;
+
+            inserted += 1;
+        }
+
+        Ok(inserted)
     }
 
     pub async fn upsert_citations(&self, paper: &Paper) -> Result<(), ResynError> {

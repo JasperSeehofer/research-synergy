@@ -221,7 +221,7 @@ Plans:
 | 25. Discovery Recommendations | v1.4 | 0/? | Not started | - |
 | 26. Export & Interop | v1.4 | 0/? | Not started | - |
 | 27. Crawler Speedup | v1.4 | 2/2 | Complete    | 2026-04-22 |
-| 28. Forward-citation crawl mode (S2) | v1.4 | 4/4 | Complete   | 2026-04-27 |
+| 28. Forward-citation crawl mode (S2) | v1.4 | 4/4 | Complete    | 2026-04-27 |
 
 ### Phase 28: Forward-citation crawl mode (S2)
 

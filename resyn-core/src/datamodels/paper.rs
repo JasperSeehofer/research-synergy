@@ -209,6 +209,59 @@ impl Display for Journal {
 }
 
 #[cfg(test)]
+mod citing_papers_tests {
+    use super::*;
+
+    #[test]
+    fn citing_papers_default_empty() {
+        let p = Paper::default();
+        assert!(p.citing_papers.is_empty());
+    }
+
+    #[test]
+    fn citing_papers_skipped_in_serialization() {
+        let mut p = Paper::default();
+        p.id = "1411.4903".to_string();
+        p.citing_papers = vec![Reference {
+            arxiv_eprint: Some("2001.00001".to_string()),
+            ..Default::default()
+        }];
+        let json = serde_json::to_string(&p).unwrap();
+        assert!(!json.contains("citing_papers"), "citing_papers must be skipped from JSON, got: {json}");
+    }
+
+    #[test]
+    fn get_citing_arxiv_ids_extracts_eprints() {
+        let mut p = Paper::default();
+        p.id = "1411.4903".to_string();
+        p.citing_papers = vec![
+            Reference {
+                arxiv_eprint: Some("2001.00001".to_string()),
+                ..Default::default()
+            },
+            Reference {
+                // No arxiv_eprint, no Arxiv link → skipped
+                doi: Some("10.1234/foo".to_string()),
+                ..Default::default()
+            },
+            Reference {
+                arxiv_eprint: Some("2102.00002".to_string()),
+                ..Default::default()
+            },
+        ];
+        let ids = p.get_citing_arxiv_ids();
+        assert_eq!(ids, vec!["2001.00001", "2102.00002"]);
+    }
+
+    #[test]
+    fn paper_deserializes_without_citing_papers_field() {
+        let json = r#"{"title":"T","authors":[],"summary":"","id":"x","last_updated":"","published":"","pdf_url":"","comment":null,"references":[],"doi":null,"inspire_id":null,"citation_count":null,"source":"Arxiv"}"#;
+        let p: Paper = serde_json::from_str(json).expect("must deserialize without citing_papers");
+        assert!(p.citing_papers.is_empty());
+    }
+}
+
+#[cfg(test)]
 mod tests {
     use super::*;
 

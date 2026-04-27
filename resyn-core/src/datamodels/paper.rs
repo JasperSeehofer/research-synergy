@@ -29,6 +29,10 @@ pub struct Paper {
     pub inspire_id: Option<String>,
     pub citation_count: Option<u32>,
     pub source: DataSource,
+    /// Transient: populated by `fetch_citing_papers` during crawl;
+    /// never persisted to DB or serialized to JSON exports.
+    #[serde(default, skip_serializing)]
+    pub citing_papers: Vec<Reference>,
 }
 
 impl Paper {
@@ -68,6 +72,24 @@ impl Paper {
                 if id.is_empty() {
                     tracing::warn!(
                         "Skipping empty arXiv ID in references for paper {}",
+                        self.id
+                    );
+                    false
+                } else {
+                    true
+                }
+            })
+            .collect()
+    }
+
+    pub fn get_citing_arxiv_ids(&self) -> Vec<String> {
+        self.citing_papers
+            .iter()
+            .filter_map(|r| r.get_arxiv_id().ok())
+            .filter(|id| {
+                if id.is_empty() {
+                    tracing::warn!(
+                        "Skipping empty arXiv ID in citing_papers for paper {}",
                         self.id
                     );
                     false
@@ -227,7 +249,10 @@ mod citing_papers_tests {
             ..Default::default()
         }];
         let json = serde_json::to_string(&p).unwrap();
-        assert!(!json.contains("citing_papers"), "citing_papers must be skipped from JSON, got: {json}");
+        assert!(
+            !json.contains("citing_papers"),
+            "citing_papers must be skipped from JSON, got: {json}"
+        );
     }
 
     #[test]
@@ -451,6 +476,9 @@ mod tests {
             ..Default::default()
         }];
         let ids = paper.get_arxiv_references_ids();
-        assert!(ids.is_empty(), "Empty URL last segment should be filtered out");
+        assert!(
+            ids.is_empty(),
+            "Empty URL last segment should be filtered out"
+        );
     }
 }

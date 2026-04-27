@@ -102,7 +102,11 @@ impl OpenAlexWork {
             .flat_map(|(token, positions)| positions.iter().map(move |&pos| (pos, token.as_str())))
             .collect();
         pairs.sort_unstable_by_key(|(pos, _)| *pos);
-        pairs.into_iter().map(|(_, tok)| tok).collect::<Vec<_>>().join(" ")
+        pairs
+            .into_iter()
+            .map(|(_, tok)| tok)
+            .collect::<Vec<_>>()
+            .join(" ")
     }
 
     pub fn to_paper(&self) -> Option<Paper> {
@@ -133,6 +137,7 @@ impl OpenAlexWork {
             citation_count: None,
             source: DataSource::Arxiv,
             references: Vec::new(),
+            ..Default::default()
         })
     }
 }
@@ -159,7 +164,10 @@ impl OpenAlexBulkLoader {
             .client
             .get(&url)
             .header("Authorization", format!("Bearer {}", self.api_key))
-            .header("User-Agent", "resyn/0.1 (mailto:jasperseehofermusic@gmail.com)")
+            .header(
+                "User-Agent",
+                "resyn/0.1 (mailto:jasperseehofermusic@gmail.com)",
+            )
             .send()
             .await
             .map_err(|e| ResynError::OpenAlexApi(format!("request failed: {e}")))?
@@ -197,10 +205,7 @@ mod tests {
 
     #[test]
     fn test_arxiv_id_from_1048550_doi() {
-        let w = make_work(
-            Some("https://doi.org/10.48550/arxiv.2401.04191"),
-            vec![],
-        );
+        let w = make_work(Some("https://doi.org/10.48550/arxiv.2401.04191"), vec![]);
         assert_eq!(w.arxiv_id(), Some("2401.04191".to_string()));
     }
 

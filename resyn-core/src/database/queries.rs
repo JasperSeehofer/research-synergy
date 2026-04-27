@@ -84,6 +84,7 @@ impl PaperRecord {
             citation_count: self.citation_count.map(|c| c as u32),
             source,
             references: Vec::new(),
+            ..Default::default()
         }
     }
 }
@@ -818,7 +819,9 @@ impl<'a> PaletteRepository<'a> {
     pub async fn get_palette(&self) -> Result<Vec<(String, u8, u8, u8, u8)>, ResynError> {
         let mut response = self
             .db
-            .query("SELECT keyword, r, g, b, slot_index FROM keyword_palette ORDER BY slot_index ASC")
+            .query(
+                "SELECT keyword, r, g, b, slot_index FROM keyword_palette ORDER BY slot_index ASC",
+            )
             .await
             .map_err(|e| ResynError::Database(format!("get palette failed: {e}")))?;
 
@@ -959,7 +962,9 @@ impl<'a> SimilarityRepository<'a> {
     pub async fn get_all_similarities(&self) -> Result<Vec<PaperSimilarity>, ResynError> {
         let mut response = self
             .db
-            .query("SELECT arxiv_id, neighbors, corpus_fingerprint, computed_at FROM paper_similarity")
+            .query(
+                "SELECT arxiv_id, neighbors, corpus_fingerprint, computed_at FROM paper_similarity",
+            )
             .await
             .map_err(|e| ResynError::Database(format!("get all similarities failed: {e}")))?;
 
@@ -1053,7 +1058,10 @@ mod similarity_tests {
             (retrieved.neighbors[0].score - sim.neighbors[0].score).abs() < 1e-5,
             "scores differ"
         );
-        assert_eq!(retrieved.neighbors[0].shared_terms, sim.neighbors[0].shared_terms);
+        assert_eq!(
+            retrieved.neighbors[0].shared_terms,
+            sim.neighbors[0].shared_terms
+        );
     }
 
     #[tokio::test]
@@ -1061,10 +1069,7 @@ mod similarity_tests {
         let db = setup_db().await;
         let repo = SimilarityRepository::new(&db);
 
-        let result = repo
-            .get_similarity("9999.99999")
-            .await
-            .expect("get failed");
+        let result = repo.get_similarity("9999.99999").await.expect("get failed");
         assert!(result.is_none(), "non-existent ID should return None");
     }
 
@@ -1076,8 +1081,12 @@ mod similarity_tests {
         let sim1 = make_similarity("2301.00001", "fp1");
         let sim2 = make_similarity("2301.00002", "fp1");
 
-        repo.upsert_similarity(&sim1).await.expect("upsert 1 failed");
-        repo.upsert_similarity(&sim2).await.expect("upsert 2 failed");
+        repo.upsert_similarity(&sim1)
+            .await
+            .expect("upsert 1 failed");
+        repo.upsert_similarity(&sim2)
+            .await
+            .expect("upsert 2 failed");
 
         let all = repo.get_all_similarities().await.expect("get all failed");
         assert_eq!(all.len(), 2, "should have 2 records");
@@ -1100,7 +1109,9 @@ mod similarity_tests {
             corpus_fingerprint: "fp_v2".to_string(),
             ..sim.clone()
         };
-        repo.upsert_similarity(&sim_v2).await.expect("second upsert");
+        repo.upsert_similarity(&sim_v2)
+            .await
+            .expect("second upsert");
 
         let retrieved = repo
             .get_similarity("2301.12345")
@@ -1108,7 +1119,10 @@ mod similarity_tests {
             .expect("get failed")
             .expect("should exist");
 
-        assert_eq!(retrieved.corpus_fingerprint, "fp_v2", "should reflect latest upsert");
+        assert_eq!(
+            retrieved.corpus_fingerprint, "fp_v2",
+            "should reflect latest upsert"
+        );
 
         let all = repo.get_all_similarities().await.expect("get all");
         assert_eq!(all.len(), 1, "UPSERT should not create duplicate records");
@@ -1172,10 +1186,7 @@ impl<'a> GraphMetricsRepository<'a> {
                 .and_then(|v| v.as_str())
                 .unwrap_or_default()
                 .to_string();
-            let pagerank = row
-                .get("pagerank")
-                .and_then(|v| v.as_f64())
-                .unwrap_or(0.0) as f32;
+            let pagerank = row.get("pagerank").and_then(|v| v.as_f64()).unwrap_or(0.0) as f32;
             let betweenness = row
                 .get("betweenness")
                 .and_then(|v| v.as_f64())
@@ -1221,8 +1232,10 @@ impl<'a> GraphMetricsRepository<'a> {
             .filter_map(|row| {
                 let arxiv_id = row.get("arxiv_id")?.as_str()?.to_string();
                 let pagerank = row.get("pagerank").and_then(|v| v.as_f64()).unwrap_or(0.0) as f32;
-                let betweenness =
-                    row.get("betweenness").and_then(|v| v.as_f64()).unwrap_or(0.0) as f32;
+                let betweenness = row
+                    .get("betweenness")
+                    .and_then(|v| v.as_f64())
+                    .unwrap_or(0.0) as f32;
                 let corpus_fingerprint = row
                     .get("corpus_fingerprint")
                     .and_then(|v| v.as_str())
@@ -1264,8 +1277,10 @@ impl<'a> GraphMetricsRepository<'a> {
             .filter_map(|row| {
                 let arxiv_id = row.get("arxiv_id")?.as_str()?.to_string();
                 let pagerank = row.get("pagerank").and_then(|v| v.as_f64()).unwrap_or(0.0) as f32;
-                let betweenness =
-                    row.get("betweenness").and_then(|v| v.as_f64()).unwrap_or(0.0) as f32;
+                let betweenness = row
+                    .get("betweenness")
+                    .and_then(|v| v.as_f64())
+                    .unwrap_or(0.0) as f32;
                 let corpus_fingerprint = row
                     .get("corpus_fingerprint")
                     .and_then(|v| v.as_str())
@@ -1308,9 +1323,7 @@ impl<'a> CommunityRepository<'a> {
         for a in assignments {
             let id = strip_version_suffix(&a.arxiv_id);
             self.db
-                .query(
-                    "DELETE graph_communities WHERE arxiv_id = $arxiv_id",
-                )
+                .query("DELETE graph_communities WHERE arxiv_id = $arxiv_id")
                 .bind(("arxiv_id", id))
                 .await
                 .map_err(|e| ResynError::Database(format!("delete community row failed: {e}")))?;
@@ -1331,9 +1344,7 @@ impl<'a> CommunityRepository<'a> {
                 .bind(("community_id", a.community_id as i64))
                 .bind(("corpus_fingerprint", a.corpus_fingerprint.clone()))
                 .await
-                .map_err(|e| {
-                    ResynError::Database(format!("insert community row failed: {e}"))
-                })?;
+                .map_err(|e| ResynError::Database(format!("insert community row failed: {e}")))?;
         }
 
         Ok(())
@@ -1402,9 +1413,7 @@ impl<'a> CommunityRepository<'a> {
             )
             .bind(("community_id", community_id as i64))
             .await
-            .map_err(|e| {
-                ResynError::Database(format!("get by community_id failed: {e}"))
-            })?;
+            .map_err(|e| ResynError::Database(format!("get by community_id failed: {e}")))?;
 
         let rows: Vec<serde_json::Value> = response
             .take(0)
@@ -1480,9 +1489,7 @@ impl<'a> CommunityRepository<'a> {
             .unwrap_or(0) as usize;
 
         self.db
-            .query(
-                "DELETE graph_communities WHERE corpus_fingerprint != $fp",
-            )
+            .query("DELETE graph_communities WHERE corpus_fingerprint != $fp")
             .bind(("fp", current_fingerprint.to_string()))
             .await
             .map_err(|e| ResynError::Database(format!("delete stale communities failed: {e}")))?;
@@ -1519,8 +1526,12 @@ mod community_tests {
         let a = make_assignment("2301.12345", 1, "fp_v1");
 
         // Insert twice — should remain one row
-        repo.upsert(&[a.clone()]).await.expect("first upsert failed");
-        repo.upsert(&[a.clone()]).await.expect("second upsert failed");
+        repo.upsert(&[a.clone()])
+            .await
+            .expect("first upsert failed");
+        repo.upsert(&[a.clone()])
+            .await
+            .expect("second upsert failed");
 
         let by_paper = repo
             .get_by_paper("2301.12345")
@@ -1619,8 +1630,14 @@ mod graph_metrics_tests {
         assert_eq!(retrieved.arxiv_id, m.arxiv_id);
         assert_eq!(retrieved.corpus_fingerprint, m.corpus_fingerprint);
         assert_eq!(retrieved.computed_at, m.computed_at);
-        assert!((retrieved.pagerank - m.pagerank).abs() < 1e-5, "pagerank mismatch");
-        assert!((retrieved.betweenness - m.betweenness).abs() < 1e-4, "betweenness mismatch");
+        assert!(
+            (retrieved.pagerank - m.pagerank).abs() < 1e-5,
+            "pagerank mismatch"
+        );
+        assert!(
+            (retrieved.betweenness - m.betweenness).abs() < 1e-4,
+            "betweenness mismatch"
+        );
     }
 
     #[tokio::test]
@@ -1701,7 +1718,10 @@ mod graph_metrics_tests {
             .expect("get failed")
             .expect("should exist");
 
-        assert!((retrieved.pagerank - 0.99).abs() < 1e-5, "should reflect latest upsert");
+        assert!(
+            (retrieved.pagerank - 0.99).abs() < 1e-5,
+            "should reflect latest upsert"
+        );
         assert_eq!(retrieved.corpus_fingerprint, "fp_v2");
 
         let all = repo.get_all_metrics().await.expect("get all");
@@ -1798,10 +1818,7 @@ impl<'a> SearchRepository<'a> {
                     .and_then(|v| v.as_str())
                     .unwrap_or("")
                     .to_string();
-                let score = row
-                    .get("score")
-                    .and_then(|v| v.as_f64())
-                    .unwrap_or(0.0) as f32;
+                let score = row.get("score").and_then(|v| v.as_f64()).unwrap_or(0.0) as f32;
                 Some(SearchResultRow {
                     arxiv_id,
                     title,
@@ -2485,7 +2502,10 @@ mod tests {
         assert!(results.is_empty(), "Empty query should return empty vec");
 
         let results = repo.search_papers("   ", 10).await.unwrap();
-        assert!(results.is_empty(), "Whitespace-only query should return empty vec");
+        assert!(
+            results.is_empty(),
+            "Whitespace-only query should return empty vec"
+        );
     }
 
     #[tokio::test]
@@ -2521,8 +2541,14 @@ mod tests {
         assert!(!results.is_empty(), "Should return results for 'quantum'");
         // p1 and p3 mention quantum; p2 does not
         let ids: Vec<&str> = results.iter().map(|r| r.arxiv_id.as_str()).collect();
-        assert!(ids.contains(&"2301.11111"), "p1 (quantum in title) should be in results");
-        assert!(ids.contains(&"2301.33333"), "p3 (quantum in title) should be in results");
+        assert!(
+            ids.contains(&"2301.11111"),
+            "p1 (quantum in title) should be in results"
+        );
+        assert!(
+            ids.contains(&"2301.33333"),
+            "p3 (quantum in title) should be in results"
+        );
         // All scores should be > 0
         for r in &results {
             assert!(r.score >= 0.0, "Score should be non-negative");
@@ -2577,24 +2603,33 @@ mod tests {
         let search_repo = SearchRepository::new(&db);
 
         // Insert papers with varying relevance
-        paper_repo.upsert_paper(&make_search_paper(
-            "2301.66661",
-            "Quantum quantum quantum",
-            "Quantum everywhere in abstract.",
-            &["Author X"],
-        )).await.unwrap();
-        paper_repo.upsert_paper(&make_search_paper(
-            "2301.66662",
-            "Quantum mechanics",
-            "Brief mention of classical physics.",
-            &["Author Y"],
-        )).await.unwrap();
-        paper_repo.upsert_paper(&make_search_paper(
-            "2301.66663",
-            "Classical physics",
-            "No quantum content here whatsoever.",
-            &["Author Z"],
-        )).await.unwrap();
+        paper_repo
+            .upsert_paper(&make_search_paper(
+                "2301.66661",
+                "Quantum quantum quantum",
+                "Quantum everywhere in abstract.",
+                &["Author X"],
+            ))
+            .await
+            .unwrap();
+        paper_repo
+            .upsert_paper(&make_search_paper(
+                "2301.66662",
+                "Quantum mechanics",
+                "Brief mention of classical physics.",
+                &["Author Y"],
+            ))
+            .await
+            .unwrap();
+        paper_repo
+            .upsert_paper(&make_search_paper(
+                "2301.66663",
+                "Classical physics",
+                "No quantum content here whatsoever.",
+                &["Author Z"],
+            ))
+            .await
+            .unwrap();
 
         let results = search_repo.search_papers("quantum", 10).await.unwrap();
 
@@ -2632,7 +2667,10 @@ mod tests {
             "Should find paper by author name 'Alice'"
         );
         let ids: Vec<&str> = results.iter().map(|r| r.arxiv_id.as_str()).collect();
-        assert!(ids.contains(&"2301.77777"), "Should find the paper authored by Alice Smith");
+        assert!(
+            ids.contains(&"2301.77777"),
+            "Should find the paper authored by Alice Smith"
+        );
     }
 
     #[tokio::test]
@@ -2641,14 +2679,23 @@ mod tests {
         let paper_repo = PaperRepository::new(&db);
         let search_repo = SearchRepository::new(&db);
 
-        paper_repo.upsert_paper(&make_search_paper(
-            "2301.88888",
-            "Regular physics paper",
-            "Nothing unusual here.",
-            &["Author Normal"],
-        )).await.unwrap();
+        paper_repo
+            .upsert_paper(&make_search_paper(
+                "2301.88888",
+                "Regular physics paper",
+                "Nothing unusual here.",
+                &["Author Normal"],
+            ))
+            .await
+            .unwrap();
 
-        let results = search_repo.search_papers("xyznonexistent123", 10).await.unwrap();
-        assert!(results.is_empty(), "Should return empty vec for unmatched query");
+        let results = search_repo
+            .search_papers("xyznonexistent123", 10)
+            .await
+            .unwrap();
+        assert!(
+            results.is_empty(),
+            "Should return empty vec for unmatched query"
+        );
     }
 }

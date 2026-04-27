@@ -398,6 +398,62 @@ pub async fn run(args: CrawlArgs) -> anyhow::Result<()> {
                         );
                     }
 
+                    // Phase 28: Forward-citation discovery (bidirectional mode).
+                    // Currently only SemanticScholarSource implements fetch_citing_papers.
+                    if bidirectional {
+                        let supports = source.source_name() == "semantic_scholar"
+                            || source.last_resolving_source() == "semantic_scholar";
+                        if !supports {
+                            warn!(
+                                paper_id = entry.paper_id.as_str(),
+                                source = source.source_name(),
+                                "--bidirectional ignored: source does not support forward-citation fetching"
+                            );
+                        } else {
+                            match source.fetch_citing_papers(&mut paper).await {
+                                Ok(()) => {
+                                    if let Err(e) = paper_repo_task
+                                        .upsert_inverse_citations_batch(
+                                            &paper.id,
+                                            &paper.citing_papers,
+                                        )
+                                        .await
+                                    {
+                                        warn!(
+                                            paper_id = entry.paper_id.as_str(),
+                                            error = %e,
+                                            "Failed to upsert inverse citations"
+                                        );
+                                    }
+                                    // Enqueue each citing paper for fetching at depth + 1
+                                    for arxiv_id in paper.get_citing_arxiv_ids() {
+                                        if let Err(e) = queue
+                                            .enqueue_if_absent(
+                                                &arxiv_id,
+                                                &seed_id,
+                                                entry.depth_level + 1,
+                                            )
+                                            .await
+                                        {
+                                            warn!(
+                                                arxiv_id = arxiv_id.as_str(),
+                                                error = %e,
+                                                "Failed to enqueue citing paper"
+                                            );
+                                        }
+                                    }
+                                }
+                                Err(e) => {
+                                    warn!(
+                                        paper_id = entry.paper_id.as_str(),
+                                        error = %e,
+                                        "Failed to fetch citing papers"
+                                    );
+                                }
+                            }
+                        }
+                    }
+
                     // Enqueue all discovered arXiv references (depth filter happens at claim time).
                     let ref_ids = paper.get_arxiv_references_ids();
                     for arxiv_id in &ref_ids {

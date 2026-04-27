@@ -125,7 +125,9 @@ Run `cargo run --bin resyn -- <subcommand> --help` for full argument lists. Key 
 | `--paper-id` / `-p` | `2503.18887` | arXiv seed paper ID |
 | `--max-depth` / `-d` | `3` | BFS crawl depth |
 | `--rate-limit-secs` / `-r` | `3` | Rate limit between requests (seconds) |
-| `--source` | `arxiv` | Data source: `arxiv` or `inspirehep` |
+| `--source` | `arxiv` | Data source: `arxiv`, `inspirehep`, `semantic_scholar`, or comma-separated chain |
+| `--bidirectional` | `false` | Fetch forward citations (citing papers) in addition to references; semantic_scholar source only |
+| `--max-forward-citations` | `500` | Cap on citing papers fetched per paper when `--bidirectional` is set |
 | `--db` | `surrealkv://./data` | DB connection string |
 
 **`analyze`**
@@ -170,7 +172,7 @@ cargo run --bin resyn -- export-louvain-graph \
 
 - arXiv rate limiting: `ArxivHTMLDownloader` enforces configurable delays (default 3s) between requests using `tokio::time::sleep`. Violating this causes request blocks.
 - InspireHEP rate limiting: `InspireHepClient` enforces 350ms between requests.
-- **`ChainedPaperSource` empty-refs bug (KNOWN, unfixed as of 2026-04-20):** `chained_source.rs` `fetch_references` stops at the first source that returns `Ok(())`, even if `paper.references` is empty. arXiv HTML returns empty refs for physics papers that only cite journal DOIs → chain stops, S2/InspireHEP fallback never fires. Workaround: use `--source inspirehep` or `--source semantic_scholar` directly for physics seeds. Fix: propagate only if `paper.references` is non-empty, otherwise try next source.
+- **Bidirectional crawl mode (`--bidirectional`, S2 only):** Fetches both backward (references) and forward (citations) for each paper from the Semantic Scholar `/citations` endpoint and enqueues newly-discovered citing papers in the BFS queue. Forward-citation edges are persisted via `PaperRepository::upsert_inverse_citations_batch` with the correct direction (citing -> cited). The `--max-forward-citations N` flag caps pagination per paper (default 500). Use this mode for pre-2015 cond-mat seeds where S2 backward citations have `externalIds: null` (the graph would otherwise terminate after one hop).
 - **OpenAlex bulk ingest (`bulk-ingest` subcommand):** Ingests arXiv-indexed papers in bulk from the OpenAlex REST API (polite pool, ~10 req/s). Requires `--api-key`/`OPENALEX_API_KEY` (free key at openalex.org/settings/api). Skips per-paper HTTP calls entirely. `upsert_citations_batch` does not check target paper existence (dangling edges OK). `arxiv_id()` extracts arXiv IDs from both `10.48550/arxiv.*` DOIs and `locations[].landing_page_url` matching `arxiv.org/abs/`. Concept IDs: `C154945302`=ML, `C121332964`=stat.ML, `C41008148`=Neural Networks, `C26873012`=Condensed matter physics, `C121864883`=Statistical physics.
 - Paper IDs may have version suffixes (e.g., "2301.12345v2") — these are stripped via `utils::strip_version_suffix()` during crawl dedup, graph construction, and DB upserts.
 - Rust edition 2024, stable toolchain (pinned via `rust-toolchain.toml`).

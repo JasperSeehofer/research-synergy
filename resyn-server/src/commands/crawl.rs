@@ -94,12 +94,27 @@ pub struct CrawlArgs {
     #[arg(long, num_args = 0..=1, default_missing_value = "3001")]
     pub progress: Option<u16>,
 
+    /// Fetch both backward (references) and forward (citations) links.
+    /// Currently supported only by the `semantic_scholar` source. Setting this on
+    /// other sources logs a warning and is otherwise a no-op.
+    #[arg(long, default_value_t = false)]
+    pub bidirectional: bool,
+
+    /// Maximum forward citations to fetch per paper when --bidirectional is set
+    /// (default: 500). Caps S2 `/citations` pagination.
+    #[arg(long, default_value_t = 500)]
+    pub max_forward_citations: usize,
+
     /// Queue management subcommand (status, clear, retry)
     #[command(subcommand)]
     pub subcmd: Option<CrawlSubcommand>,
 }
 
-fn make_single_source(name: &str) -> Box<dyn PaperSource> {
+fn make_single_source(
+    name: &str,
+    bidirectional: bool,
+    max_forward_citations: usize,
+) -> Box<dyn PaperSource> {
     let client = resyn_core::utils::create_http_client();
     match name.trim() {
         "inspirehep" => {
@@ -111,6 +126,9 @@ fn make_single_source(name: &str) -> Box<dyn PaperSource> {
             // unkeyed / 400 ms keyed) covers both fetch_paper + fetch_references
             // per paper to stay within S2's 1 rps unauthenticated limit.
             let s2 = SemanticScholarSource::from_env(client).with_rate_limit(Duration::ZERO);
+            let s2 = s2
+                .with_bidirectional(bidirectional)
+                .with_max_forward_citations(max_forward_citations);
             Box::new(s2)
         }
         _ => {
@@ -122,12 +140,19 @@ fn make_single_source(name: &str) -> Box<dyn PaperSource> {
 
 /// Build a `PaperSource` from a (possibly comma-separated) source spec.
 /// A single name returns that source directly; multiple names return a `ChainedPaperSource`.
-fn make_source(source_spec: &str) -> Box<dyn PaperSource> {
+fn make_source(
+    source_spec: &str,
+    bidirectional: bool,
+    max_forward_citations: usize,
+) -> Box<dyn PaperSource> {
     let parts: Vec<&str> = source_spec.split(',').collect();
     if parts.len() == 1 {
-        make_single_source(parts[0])
+        make_single_source(parts[0], bidirectional, max_forward_citations)
     } else {
-        let sources = parts.into_iter().map(make_single_source).collect();
+        let sources = parts
+            .into_iter()
+            .map(|name| make_single_source(name, bidirectional, max_forward_citations))
+            .collect();
         Box::new(ChainedPaperSource::new(sources))
     }
 }
@@ -343,11 +368,13 @@ pub async fn run(args: CrawlArgs) -> anyhow::Result<()> {
         let failed_counter = Arc::clone(&papers_failed);
         let max_depth = args.max_depth;
         let elapsed_at_spawn = start.elapsed().as_secs_f64();
+        let bidirectional = args.bidirectional;
+        let max_forward_citations = args.max_forward_citations;
 
         join_set.spawn(async move {
             let _permit = permit;
 
-            let mut source = make_source(&source_name);
+            let mut source = make_source(&source_name, bidirectional, max_forward_citations);
             let queue = CrawlQueueRepository::new(&db_clone);
             let paper_repo_task = PaperRepository::new(&db_clone);
 
@@ -369,6 +396,62 @@ pub async fn run(args: CrawlArgs) -> anyhow::Result<()> {
                             error = %e,
                             "Failed to fetch references"
                         );
+                    }
+
+                    // Phase 28: Forward-citation discovery (bidirectional mode).
+                    // Currently only SemanticScholarSource implements fetch_citing_papers.
+                    if bidirectional {
+                        let supports = source.source_name() == "semantic_scholar"
+                            || source.last_resolving_source() == "semantic_scholar";
+                        if !supports {
+                            warn!(
+                                paper_id = entry.paper_id.as_str(),
+                                source = source.source_name(),
+                                "--bidirectional ignored: source does not support forward-citation fetching"
+                            );
+                        } else {
+                            match source.fetch_citing_papers(&mut paper).await {
+                                Ok(()) => {
+                                    if let Err(e) = paper_repo_task
+                                        .upsert_inverse_citations_batch(
+                                            &paper.id,
+                                            &paper.citing_papers,
+                                        )
+                                        .await
+                                    {
+                                        warn!(
+                                            paper_id = entry.paper_id.as_str(),
+                                            error = %e,
+                                            "Failed to upsert inverse citations"
+                                        );
+                                    }
+                                    // Enqueue each citing paper for fetching at depth + 1
+                                    for arxiv_id in paper.get_citing_arxiv_ids() {
+                                        if let Err(e) = queue
+                                            .enqueue_if_absent(
+                                                &arxiv_id,
+                                                &seed_id,
+                                                entry.depth_level + 1,
+                                            )
+                                            .await
+                                        {
+                                            warn!(
+                                                arxiv_id = arxiv_id.as_str(),
+                                                error = %e,
+                                                "Failed to enqueue citing paper"
+                                            );
+                                        }
+                                    }
+                                }
+                                Err(e) => {
+                                    warn!(
+                                        paper_id = entry.paper_id.as_str(),
+                                        error = %e,
+                                        "Failed to fetch citing papers"
+                                    );
+                                }
+                            }
+                        }
                     }
 
                     // Enqueue all discovered arXiv references (depth filter happens at claim time).

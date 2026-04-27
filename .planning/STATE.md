@@ -47,6 +47,10 @@ Recent decisions affecting v1.4:
 - [Phase 24]: Community summaries computed on-read (lazy) — no sidecar cache table
 - [Phase 24]: Stage 6 community auto-compute placed after Stage 5 metrics so PageRank is available for hybrid ranking
 
+### Roadmap Evolution
+
+- Phase 28 added: Forward-citation crawl mode (S2)
+
 ### Pending Todos
 
 None.

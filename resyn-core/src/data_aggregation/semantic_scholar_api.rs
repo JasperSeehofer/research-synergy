@@ -408,6 +408,10 @@ impl PaperSource for SemanticScholarSource {
         Ok(())
     }
 
+    async fn fetch_citing_papers(&mut self, paper: &mut Paper) -> Result<(), ResynError> {
+        self.fetch_citing_papers_inner(paper).await
+    }
+
     fn source_name(&self) -> &'static str {
         "semantic_scholar"
     }

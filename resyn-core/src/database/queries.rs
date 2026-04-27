@@ -2754,3 +2754,136 @@ mod tests {
         );
     }
 }
+
+// ----- Phase 28: upsert_inverse_citations_batch tests -----
+
+#[cfg(test)]
+mod inverse_citations_tests {
+    use super::*;
+    use crate::database::client::connect_memory;
+    use crate::datamodels::paper::{DataSource, Link, Paper, Reference};
+
+    fn paper_with_id(id: &str, title: &str) -> Paper {
+        Paper {
+            id: id.to_string(),
+            title: title.to_string(),
+            source: DataSource::SemanticScholar,
+            ..Default::default()
+        }
+    }
+
+    fn arxiv_ref(eprint: &str, title: &str) -> Reference {
+        Reference {
+            title: title.to_string(),
+            arxiv_eprint: Some(eprint.to_string()),
+            links: vec![Link::from_url(&format!("https://arxiv.org/abs/{eprint}"))],
+            ..Default::default()
+        }
+    }
+
+    #[tokio::test]
+    async fn upsert_inverse_citations_creates_correct_direction_edges() {
+        let db = connect_memory().await.expect("connect");
+        let repo = PaperRepository::new(&db);
+
+        // Create three papers: A (cited), B and C (citing A)
+        repo.upsert_paper(&paper_with_id("a.1", "A")).await.unwrap();
+        repo.upsert_paper(&paper_with_id("b.1", "B")).await.unwrap();
+        repo.upsert_paper(&paper_with_id("c.1", "C")).await.unwrap();
+
+        let citing = vec![arxiv_ref("b.1", "B"), arxiv_ref("c.1", "C")];
+        let inserted = repo
+            .upsert_inverse_citations_batch("a.1", &citing)
+            .await
+            .unwrap();
+        assert_eq!(inserted, 2);
+
+        // get_citing_papers(A) MUST return B and C
+        let citing_a = repo.get_citing_papers("a.1").await.unwrap();
+        let ids: Vec<&str> = citing_a.iter().map(|p| p.id.as_str()).collect();
+        assert!(ids.contains(&"b.1"), "B must cite A, got: {ids:?}");
+        assert!(ids.contains(&"c.1"), "C must cite A, got: {ids:?}");
+
+        // get_cited_papers(A) MUST be empty (A does not cite B or C)
+        let cited_by_a = repo.get_cited_papers("a.1").await.unwrap();
+        assert!(
+            cited_by_a.is_empty(),
+            "A must NOT cite anything, got: {cited_by_a:?}"
+        );
+    }
+
+    #[tokio::test]
+    async fn upsert_inverse_citations_skips_refs_without_arxiv_ids() {
+        let db = connect_memory().await.expect("connect");
+        let repo = PaperRepository::new(&db);
+
+        repo.upsert_paper(&paper_with_id("a.1", "A")).await.unwrap();
+
+        let citing = vec![
+            arxiv_ref("b.1", "B"),
+            Reference {
+                title: "DOI-only ref".to_string(),
+                doi: Some("10.1234/foo".to_string()),
+                ..Default::default()
+            },
+            arxiv_ref("c.1", "C"),
+        ];
+        let inserted = repo
+            .upsert_inverse_citations_batch("a.1", &citing)
+            .await
+            .unwrap();
+        assert_eq!(inserted, 2, "DOI-only ref must be skipped");
+    }
+
+    #[tokio::test]
+    async fn upsert_inverse_citations_empty_input_returns_zero() {
+        let db = connect_memory().await.expect("connect");
+        let repo = PaperRepository::new(&db);
+        let inserted = repo
+            .upsert_inverse_citations_batch("a.1", &[])
+            .await
+            .unwrap();
+        assert_eq!(inserted, 0);
+    }
+
+    #[tokio::test]
+    async fn upsert_inverse_citations_dangling_endpoints_ok() {
+        let db = connect_memory().await.expect("connect");
+        let repo = PaperRepository::new(&db);
+        // Neither cited (a.1) nor citing (b.1) paper exists in the DB.
+        let inserted = repo
+            .upsert_inverse_citations_batch("a.1", &[arxiv_ref("b.1", "B")])
+            .await
+            .unwrap();
+        assert_eq!(inserted, 1, "dangling-endpoint edge must still be written");
+    }
+
+    #[tokio::test]
+    async fn upsert_inverse_citations_strips_version_suffix() {
+        let db = connect_memory().await.expect("connect");
+        let repo = PaperRepository::new(&db);
+
+        repo.upsert_paper(&paper_with_id("1411.4903", "Cited"))
+            .await
+            .unwrap();
+        repo.upsert_paper(&paper_with_id("2001.00001", "Citing"))
+            .await
+            .unwrap();
+
+        // Pass versioned IDs — implementation must strip
+        let inserted = repo
+            .upsert_inverse_citations_batch("1411.4903v2", &[arxiv_ref("2001.00001v3", "Citing")])
+            .await
+            .unwrap();
+        assert_eq!(inserted, 1);
+
+        let citing_ids: Vec<String> = repo
+            .get_citing_papers("1411.4903")
+            .await
+            .unwrap()
+            .iter()
+            .map(|p| p.id.clone())
+            .collect();
+        assert!(citing_ids.contains(&"2001.00001".to_string()));
+    }
+}

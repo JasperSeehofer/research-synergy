@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.4
 milestone_name: Discovery & Intelligence
 status: in_progress
-stopped_at: null
-last_updated: "2026-05-04T00:00:00.000Z"
+stopped_at: "Phase 29 — crawl paused after 2 cap=500 aborts; cap lowered to 50; resume per 29-RESUME.md"
+last_updated: "2026-05-04T18:30:00.000Z"
 last_activity: 2026-05-04
 progress:
   total_phases: 9
@@ -26,8 +26,8 @@ See: .planning/PROJECT.md (updated 2026-04-06)
 ## Current Position
 
 Phase: 29
-Plan: 29-01 (in progress)
-Status: Crawl pending
+Plan: 29-01 (paused mid-execution)
+Status: Resume per `.planning/phases/29-kuramoto-corpus-build/29-RESUME.md`
 Last activity: 2026-05-04
 
 Progress: [██████████████░░░░░░] 75%
@@ -64,6 +64,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-04-27T15:17:27.560Z
-Stopped at: context exhaustion at 75% (2026-04-27)
-Resume file: None
+Last session: 2026-05-04T18:30:00.000Z
+Stopped at: User-initiated end of session (Phase 29 crawl paused after queue-blowup discovery)
+Resume file: `.planning/phases/29-kuramoto-corpus-build/29-RESUME.md`

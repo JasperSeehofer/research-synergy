@@ -58,6 +58,12 @@ The crawl will run for ~30–90 min. Build `--release` for the SurrealDB seriali
 ### D-08: `--parallel 1` (sequential workers)
 Discovered empirically during the first crawl attempt (2026-05-04 17:43). The default `concurrency=4` combined with `--bidirectional` triggers S2 429s even with a valid keyed API key. Root cause: `make_semantic_scholar_limiter` (rate_limiter.rs:42) sizes the Arc-shared external governor at 400ms/token = 2.5 papers/sec, assuming 2 API calls per paper (`fetch_paper + fetch_references`). Bidirectional adds a third call (`fetch_citing_papers`), pushing aggregate rate past S2's 5 rps keyed limit. `--parallel 1` (matching the precedent set by Phase 28's `crawl-feynman-seeds.sh`) serialises workers so a single source instance enforces 200ms-between-call internal pacing, keeping aggregate at ~5 rps.
 
+### D-09: Lower `--max-forward-citations` from 500 to 50
+Discovered during the second crawl attempt (2026-05-04 17:50). Bidirectional depth-2 expansion of seed 1 (cond-mat/0203227 — Pastor-Satorras Ising-on-networks, ~3000 citers on S2) produced **23,264 pending queue entries from a single seed**. At ~600ms/paper (3 API calls × 200ms keyed), this projects to ~40h total runtime across 10 seeds. Lowering cap to 50 reduces forward expansion 10× → estimated total ~3-4h while preserving enough topological signal for Louvain modularity to surface cross-domain bridges. The cap only bounds pagination at fetch time, so re-running on top of the 23k-entry queue would still process all entries — D-10 (fresh DB) follows.
+
+### D-10: Fresh `data-kuramoto/` for cap=50 run
+The existing `data-kuramoto/` (~61MB) contains queue entries from the killed cap=500 attempt that would be processed regardless of the new cap. `rm -rf data-kuramoto/` is the first step of the resume handoff (29-RESUME.md).
+
 </decisions>
 
 <canonical_refs>

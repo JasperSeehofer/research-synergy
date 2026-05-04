@@ -14,7 +14,7 @@ set -euo pipefail
 
 DB="${1:-surrealkv://./data-kuramoto}"
 BINARY="${BINARY:-./target/release/resyn}"
-MAX_FWD="${MAX_FWD:-500}"
+MAX_FWD="${MAX_FWD:-50}"
 
 # 10 Feynman pair seeds (5 evaluable pairs × 2 sides) from
 # professional-vault/prototypes/data/feynman_10pair_papers.json (schema v0.2).

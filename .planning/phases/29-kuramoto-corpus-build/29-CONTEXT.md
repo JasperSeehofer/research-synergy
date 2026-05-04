@@ -55,6 +55,9 @@ If the gate fails, Phase 29 documents the failure mode in `29-VERIFICATION.md` a
 ### D-07: Release-mode binary
 The crawl will run for ~30–90 min. Build `--release` for the SurrealDB serialization hot path, even though crawl throughput is HTTP-bound — release saves measurable CPU on writes.
 
+### D-08: `--parallel 1` (sequential workers)
+Discovered empirically during the first crawl attempt (2026-05-04 17:43). The default `concurrency=4` combined with `--bidirectional` triggers S2 429s even with a valid keyed API key. Root cause: `make_semantic_scholar_limiter` (rate_limiter.rs:42) sizes the Arc-shared external governor at 400ms/token = 2.5 papers/sec, assuming 2 API calls per paper (`fetch_paper + fetch_references`). Bidirectional adds a third call (`fetch_citing_papers`), pushing aggregate rate past S2's 5 rps keyed limit. `--parallel 1` (matching the precedent set by Phase 28's `crawl-feynman-seeds.sh`) serialises workers so a single source instance enforces 200ms-between-call internal pacing, keeping aggregate at ~5 rps.
+
 </decisions>
 
 <canonical_refs>

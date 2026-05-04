@@ -84,6 +84,7 @@ Full details: `.planning/milestones/v1.3-ROADMAP.md`
 - [ ] **Phase 25: Discovery Recommendations** - Scored paper recommendations combining similarity, centrality, and community signals
 - [ ] **Phase 26: Export & Interop** - BibTeX, CSV, and graph JSON export
 - [x] **Phase 27: Crawler Speedup** - Eliminate per-paper HTML scrapes via OpenAlex bulk reference-edge pre-ingest; wire OpenAlex API key; fix concept IDs in CLAUDE.md (completed 2026-04-22)
+- [ ] **Phase 29: Kuramoto-LBD v03 Corpus Build** - Bidirectional S2 crawl from 10 Feynman pair seeds; analyze + export pre-2015 graph; notebook benchmark gate (`n_eval >= 3` AND `BENCH_P10 > 0.15`)
 
 ## Phase Details
 
@@ -222,6 +223,7 @@ Plans:
 | 26. Export & Interop | v1.4 | 0/? | Not started | - |
 | 27. Crawler Speedup | v1.4 | 2/2 | Complete    | 2026-04-22 |
 | 28. Forward-citation crawl mode (S2) | v1.4 | 4/4 | Complete    | 2026-04-27 |
+| 29. Kuramoto-LBD v03 Corpus Build | v1.4 | 0/1 | In progress | - |
 
 ### Phase 28: Forward-citation crawl mode (S2)
 
@@ -235,3 +237,18 @@ Plans:
 - [x] 28-02-PLAN.md — PaperSource trait extension + Paper.citing_papers transient field + accessor (Wave 1, parallel with 28-01)
 - [x] 28-03-PLAN.md — PaperRepository::upsert_inverse_citations_batch with edge-direction integration tests (Wave 2)
 - [x] 28-04-PLAN.md — Crawler wiring (CLI flags + worker block + non-S2 warn) + script + CLAUDE.md docs (Wave 3)
+
+### Phase 29: Kuramoto-LBD v03 Corpus Build
+
+**Goal:** Build the citation graph that the deferred Kuramoto-LBD v03 prototype notebook needs (10 Feynman pair seeds, bidirectional S2 crawl, depth 2), run analysis + export, and run the notebook as the success gate. Outcome: empirical pass/fail on the dynamical-LBD direction, gating EXP-RS-07 Sheaves-LBD.
+**Requirements**: None (exploratory benchmark phase; no v1.4 requirement IDs map to this phase)
+**Depends on:** Phase 28 (bidirectional crawl mode)
+**Success Criteria:**
+  1. `data-kuramoto` corpus built via `--bidirectional` S2 crawl from 10 seeds at depth 2
+  2. `analyze` + `export-louvain-graph` produce a valid `research_synergy_pre2015.json`
+  3. At least 3 of 5 evaluable Feynman pairs map to non-Other communities (`n_eval >= 3`)
+  4. `kuramoto_lbd_v03.ipynb` executes without ABORT and reports `BENCH_P10 > 0.15`
+**Plans:** 1 plan
+Plans:
+- [ ] 29-01-PLAN.md — Build corpus, run analysis, export pre-2015 graph, run notebook benchmark gate
+**UI hint**: no

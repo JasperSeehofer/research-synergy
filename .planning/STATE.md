@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.4
 milestone_name: Discovery & Intelligence
-status: milestone_complete
-stopped_at: Phase 27 context gathered
-last_updated: "2026-04-27T09:16:46.929Z"
-last_activity: 2026-04-27 -- Phase 28 planning complete
+status: in_progress
+stopped_at: null
+last_updated: "2026-05-04T00:00:00.000Z"
+last_activity: 2026-05-04
 progress:
-  total_phases: 8
+  total_phases: 9
   completed_phases: 6
-  total_plans: 18
-  completed_plans: 14
-  percent: 75
+  total_plans: 19
+  completed_plans: 18
+  percent: 95
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-06)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Phase 25 — Discovery Recommendations
+**Current focus:** Phase 29 — Kuramoto-LBD v03 Corpus Build (exploratory dynamical-LBD benchmark)
 
 ## Current Position
 
-Phase: 28
-Plan: Not started
-Status: Milestone complete
-Last activity: 2026-04-27
+Phase: 29
+Plan: 29-01 (in progress)
+Status: Crawl pending
+Last activity: 2026-05-04
 
-Progress: [████████████░░░░░░░░] 67%
+Progress: [██████████████░░░░░░] 75%
 
 ## Accumulated Context
 
@@ -50,6 +50,7 @@ Recent decisions affecting v1.4:
 ### Roadmap Evolution
 
 - Phase 28 added: Forward-citation crawl mode (S2)
+- Phase 29 added: Kuramoto-LBD v03 Corpus Build (exploratory benchmark, gates EXP-RS-07)
 
 ### Pending Todos
 
@@ -63,6 +64,6 @@ None.
 
 ## Session Continuity
 
-Last session: --stopped-at
-Stopped at: Phase 27 context gathered
-Resume file: --resume-file
+Last session: 2026-04-27T15:17:27.560Z
+Stopped at: context exhaustion at 75% (2026-04-27)
+Resume file: None

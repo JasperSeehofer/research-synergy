@@ -31,6 +31,8 @@ enum Commands {
 
 #[tokio::main]
 async fn main() {
+    let _ = dotenvy::dotenv();
+
     tracing_subscriber::fmt::init();
 
     let cli = Cli::parse();

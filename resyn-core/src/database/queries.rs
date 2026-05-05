@@ -311,7 +311,7 @@ impl<'a> PaperRepository<'a> {
     pub async fn get_all_citation_edges(&self) -> Result<Vec<(String, String)>, ResynError> {
         let mut response = self
             .db
-            .query("SELECT in.arxiv_id AS from_id, out.arxiv_id AS to_id FROM cites")
+            .query("SELECT in.arxiv_id AS from_id, out.arxiv_id AS to_id FROM cites WHERE in.arxiv_id != NONE AND out.arxiv_id != NONE")
             .await
             .map_err(|e| ResynError::Database(format!("citation edge query failed: {e}")))?;
 

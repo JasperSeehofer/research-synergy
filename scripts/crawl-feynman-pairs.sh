@@ -42,7 +42,7 @@ for ID in "${seeds[@]}"; do
   echo "=== Seeding $ID ==="
   "$BINARY" crawl \
     --paper-id "$ID" \
-    --max-depth 2 \
+    --max-depth 1 \
     --source semantic_scholar \
     --parallel 1 \
     --bidirectional \

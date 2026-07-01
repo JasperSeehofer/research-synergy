@@ -2,3 +2,6 @@ target/
 .env
 .env.*.local
 data-*/
+
+# Gardener sweep notes (local audit trail; not tracked)
+.gardener-notes.md

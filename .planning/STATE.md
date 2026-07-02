@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.4
 milestone_name: Discovery & Intelligence
 status: in_progress
-stopped_at: "Phase 29 — crawl paused after 2 cap=500 aborts; cap lowered to 50; resume per 29-RESUME.md"
-last_updated: "2026-05-04T18:30:00.000Z"
-last_activity: 2026-05-04
+stopped_at: "Phase 30 — EXP-RS-11 TF-IDF semantic-edge substrate (Path C pivot) in progress"
+last_updated: "2026-07-02T00:00:00.000Z"
+last_activity: 2026-07-02
 progress:
-  total_phases: 9
-  completed_phases: 6
-  total_plans: 19
-  completed_plans: 18
+  total_phases: 10
+  completed_phases: 7
+  total_plans: 20
+  completed_plans: 19
   percent: 95
 ---
 
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-06)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Phase 29 — Kuramoto-LBD v03 Corpus Build (exploratory dynamical-LBD benchmark)
+**Current focus:** Phase 30 — TF-IDF Semantic-Edge Graph + Downstream LBD Method (EXP-RS-11, Path C pivot)
 
 ## Current Position
 
-Phase: 29
-Plan: 29-01 (paused mid-execution)
-Status: Resume per `.planning/phases/29-kuramoto-corpus-build/29-RESUME.md`
-Last activity: 2026-05-04
+Phase: 30
+Plan: 30-01 (in progress)
+Status: Executing EXP-RS-11 per `.planning/phases/30-tfidf-semantic-edge-graph/30-01-PLAN.md`
+Last activity: 2026-07-02
 
-Progress: [██████████████░░░░░░] 75%
+Progress: [███████████████░░░░░] 78%
 
 ## Accumulated Context
 
@@ -42,15 +42,15 @@ Recent decisions affecting v1.4:
 
 - SurrealDB FLEXIBLE TYPE for complex fields — works but limits server-side querying; revisit for analytics queries in Phase 23
 - TF-IDF vectors already stored per paper — Phase 22 similarity engine builds on this without new extraction
-- [Phase 24]: PendingCommunityDrawerOpen provided at App level (not GraphPage) — Leptos context flows downward only
-- [Phase 24]: DrawerOpenRequest.paper_id relaxed to Option<String>; community_id Option<u32> added for legend-click mode D-16/D-17
 - [Phase 24]: Community summaries computed on-read (lazy) — no sidecar cache table
-- [Phase 24]: Stage 6 community auto-compute placed after Stage 5 metrics so PageRank is available for hybrid ranking
+- [Phase 29]: FAIL verdict 2026-05-05 — pre-2015 cond-mat citation graph too sparse for dynamical LBD (41 cc / 153 nodes); benchmark gate never reached. Honest negative; deviations (S2 429 tarpit → cap 20 / depth 1) recorded in 29-VERIFICATION.md
+- [2026-07-02, human]: Path C pivot approved (`.cartographer-notes.md`) — rebuild substrate as TF-IDF cosine semantic-edge graph (EXP-RS-11, pre-registered). Time-bound kill gate: <3 evaluable Feynman pairs or BENCH_P10 ≤ 0.15 by 2026-09-30 → kill dynamical-substrate line, revert to brute-force baseline
 
 ### Roadmap Evolution
 
 - Phase 28 added: Forward-citation crawl mode (S2)
-- Phase 29 added: Kuramoto-LBD v03 Corpus Build (exploratory benchmark, gates EXP-RS-07)
+- Phase 29 added: Kuramoto-LBD v03 Corpus Build (exploratory benchmark, gates EXP-RS-07) — completed with FAIL verdict
+- Phase 30 added: TF-IDF Semantic-Edge Graph + Downstream LBD Method (EXP-RS-11, Path C pivot)
 
 ### Pending Todos
 
@@ -58,12 +58,11 @@ None.
 
 ### Blockers/Concerns
 
-- Phase 24 depends on Phase 23 (needs graph_metrics table + PageRank)
 - Phase 25 depends on Phases 22, 23, 24 (needs similarity neighbors, centrality scores, community assignments)
-- Phases 21, 22, 23, 26 are independent and can be executed in any order
+- Phase 30: no new crawling permitted (S2 429 tarpit); predictions locked — no post-hoc adjustment; τ sweep is sensitivity analysis, not tuning
 
 ## Session Continuity
 
-Last session: 2026-05-04T18:30:00.000Z
-Stopped at: User-initiated end of session (Phase 29 crawl paused after queue-blowup discovery)
-Resume file: `.planning/phases/29-kuramoto-corpus-build/29-RESUME.md`
+Last session: 2026-07-02
+Stopped at: Phase 30 EXP-RS-11 execution (this session)
+Research thread state: `.planning/research/THREAD.md` (Layer-2 contract; same-day updates required)

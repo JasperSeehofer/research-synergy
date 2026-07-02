@@ -84,7 +84,8 @@ Full details: `.planning/milestones/v1.3-ROADMAP.md`
 - [ ] **Phase 25: Discovery Recommendations** - Scored paper recommendations combining similarity, centrality, and community signals
 - [ ] **Phase 26: Export & Interop** - BibTeX, CSV, and graph JSON export
 - [x] **Phase 27: Crawler Speedup** - Eliminate per-paper HTML scrapes via OpenAlex bulk reference-edge pre-ingest; wire OpenAlex API key; fix concept IDs in CLAUDE.md (completed 2026-04-22)
-- [ ] **Phase 29: Kuramoto-LBD v03 Corpus Build** - Bidirectional S2 crawl from 10 Feynman pair seeds; analyze + export pre-2015 graph; notebook benchmark gate (`n_eval >= 3` AND `BENCH_P10 > 0.15`)
+- [x] **Phase 29: Kuramoto-LBD v03 Corpus Build** - Bidirectional S2 crawl from 10 Feynman pair seeds; analyze + export pre-2015 graph; notebook benchmark gate (`n_eval >= 3` AND `BENCH_P10 > 0.15`) — completed 2026-05-05 with **FAIL verdict** (gate not reached: citation graph too sparse, 41 cc / 153 nodes → K_stable bisection diverges; see 29-VERIFICATION.md)
+- [ ] **Phase 30: TF-IDF Semantic-Edge Graph + Downstream LBD Method** - Path C pivot (EXP-RS-11, pre-registered): c-TF-IDF cosine edges replace citation edges on the pre-2015 slice; τ sweep + connectivity precheck; kuramoto_lbd_v04 notebook to a real `BENCH_P10`. Kill gate 2026-09-30: <3 evaluable pairs or `BENCH_P10 ≤ 0.15` → kill dynamical-substrate line
 
 ## Phase Details
 
@@ -223,7 +224,8 @@ Plans:
 | 26. Export & Interop | v1.4 | 0/? | Not started | - |
 | 27. Crawler Speedup | v1.4 | 2/2 | Complete    | 2026-04-22 |
 | 28. Forward-citation crawl mode (S2) | v1.4 | 4/4 | Complete    | 2026-04-27 |
-| 29. Kuramoto-LBD v03 Corpus Build | v1.4 | 0/1 | In progress | - |
+| 29. Kuramoto-LBD v03 Corpus Build | v1.4 | 1/1 | Complete (FAIL verdict — gate not reached) | 2026-05-05 |
+| 30. TF-IDF Semantic-Edge Graph (EXP-RS-11) | v1.4 | 0/1 | In progress | - |
 
 ### Phase 28: Forward-citation crawl mode (S2)
 
@@ -250,5 +252,20 @@ Plans:
   4. `kuramoto_lbd_v03.ipynb` executes without ABORT and reports `BENCH_P10 > 0.15`
 **Plans:** 1 plan
 Plans:
-- [ ] 29-01-PLAN.md — Build corpus, run analysis, export pre-2015 graph, run notebook benchmark gate
+- [x] 29-01-PLAN.md — Build corpus, run analysis, export pre-2015 graph, run notebook benchmark gate (executed to FAIL verdict 2026-05-05; deviations recorded in 29-VERIFICATION.md)
+**UI hint**: no
+
+### Phase 30: TF-IDF Semantic-Edge Graph + Downstream LBD Method
+
+**Goal:** Execute the approved Path C pivot (EXP-RS-11, pre-registered in the vault): build a TF-IDF cosine semantic-edge graph from the Phase 29 pre-2015 export, verify connectivity across τ ∈ {0.2, 0.3, 0.4, 0.5}, and run the kuramoto_lbd_v04 notebook to a real `BENCH_P10` on the shared 10-pair Feynman benchmark.
+**Requirements**: None (exploratory research phase; Dynamical-LBD Gen-4 thread)
+**Depends on:** Phase 29 (data-kuramoto corpus + Louvain partition, reused as-is; no new crawling)
+**Success Criteria** (claims→acceptance-tests contract in 30-01-PLAN.md):
+  1. `build_tfidf_graph.py` committed before real-data run; τ sweep reports (n_nodes, n_edges, n_cc, largest_cc_size, mean_degree) per τ
+  2. Connectivity precheck evaluated: dynamics run only where `n_cc/N ≤ 0.05`; if no τ passes, the kill gate fires (that IS the result)
+  3. `kuramoto_lbd_v04.ipynb` executes `compute_K_stable` within a 5-minute budget and produces a real `BENCH_P10`
+  4. Verdict vs locked EXP-RS-11 predictions recorded in 30-VERIFICATION.md; independent falsification via `/commission --research` before acceptance
+**Plans:** 1 plan
+Plans:
+- [ ] 30-01-PLAN.md — Regenerate export, build+verify TF-IDF graph, v04 notebook benchmark, verdict
 **UI hint**: no

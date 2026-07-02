@@ -168,6 +168,30 @@ cargo run --bin resyn -- export-louvain-graph \
 # 4. Run kuramoto_lbd_v03.ipynb in professional-vault/prototypes/
 ```
 
+## Research thread wiring (professional-vault)
+
+Besides the product track, this repo hosts the **Dynamical LBD (Gen-4)** research thread,
+managed by the vault at `~/Repositories/professional-vault`. For research phases (exploratory
+LBD experiments, EXP-RS-*), follow the vault's research structure on top of the GSD scaffolding:
+
+- **Thread state** (read by the vault's `/cartographer`): `.planning/research/THREAD.md` (hard
+  core, live hypotheses, kill criteria, claims) + `.planning/research/CONVENTIONS.md`
+  (append-only convention lock — honor it; append, never edit). Update THREAD.md same-day after
+  every experiment run.
+- **Experiment registry**: EXP-RS-* rows in the vault's `wiki/meta/agentic-experiments-research.md`.
+  Predictions are pre-registered there **before** running — never adjusted post-hoc.
+- **Baseline rule**: no dynamical method is interesting until it beats the brute-force baseline
+  (vault: `wiki/concepts/brute-force-lbd-baseline.md`) on the shared 10-pair benchmark.
+- **Skills**: `/consult research "<question>"` — read-only vault lookups; `/commission --research`
+  — independent falsification of a claim/verdict before accepting it; `/scribe-debrief` at
+  session end (auto-files lessons to the vault).
+- **Cartographer channel**: `.cartographer-notes.md` (gitignored) — proposals from vault research
+  reviews land there; go/kill/pivot decisions are the human's, recorded in the vault
+  hypothesis-ledger.
+- **Notebook workspace**: Python LBD notebooks + exports live in
+  `../professional-vault/prototypes/` (see the v03 workflow above); Rust-side prototypes in
+  `prototypes/` here.
+
 ## Important Notes
 
 - arXiv rate limiting: `ArxivHTMLDownloader` enforces configurable delays (default 3s) between requests using `tokio::time::sleep`. Violating this causes request blocks.

@@ -21,7 +21,7 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-06)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Dynamical-LBD thread at a go/kill/pivot gate. Phase 31 (EXP-RS-12) validated the methodology fix (giant CC well-posed, K_stable converges) but BENCH_P10=0.000 — diagnostic isolates a corpus-CONTENT gap (3/4 benchmark pairs have no bridge edges). Decision pending: build a bridge-containing corpus (Phase 2, real cost) vs accept the unproven-method negative.
+**Current focus:** Dynamical-LBD thread at a go/kill/pivot gate after a clean result. Phases 31→33 systematically removed every confound (connectivity → content → convergence → granularity) and reached a CLEAN Kuramoto–Fiedler method-negative (Phase 33): 0/4 recovery on a fully well-posed bridge-containing corpus, mechanism verified (single global Fiedler cut). A valid benchmark testbed now exists. Recommended next (human's call): sheaf/RAF tournament on the testbed via the vault cartographer.
 
 ## Current Position
 
@@ -67,17 +67,23 @@ None.
 Last session: 2026-07-04 (autonomous overnight)
 Research thread state: `.planning/research/THREAD.md` (Layer-2 contract; same-day updates required)
 
-### OVERNIGHT RESUME POINTER (read this first if resuming autonomously)
+### OVERNIGHT OUTCOME (Phases 31→33 complete) — thread at a go/kill/pivot gate
 
-**Phase 32 (EXP-RS-13) DONE — INCONCLUSIVE:** bridged corpus (1400 nodes) has the bridges but the
-Kuramoto run did not converge (r=0.136) → invalid; genuine cross-domain recall@10=0. See
-`.planning/phases/32-bridge-corpus-retest/32-VERIFICATION.md`.
+**Phase 33 (EXP-RS-14) DONE — CLEAN Kuramoto–Fiedler method-negative.** On a fully well-posed corpus
+(`research_synergy_bridged_fine.json`: connected + 4/4 pairs bridged + synchronized r=0.932 + 32
+communities) the method recovers 0/4 benchmark bridges; NO pair in the top-200 Fiedler bridges.
+Mechanism verified: single global Fiedler cut puts all pairs on the same side → structurally
+invisible. Not a confound. See `.planning/phases/33-valid-converged-run/33-VERIFICATION.md`.
 
-**Now (EXP-RS-14 → Phase 33):** the definitive valid run. Build a SMALLER benchmark-centric bridged
-corpus (neutral reduction of the OpenAlex fetch — lower FWD_CAP) that synchronizes like the
-converged 224-node Phase-31 run, with FINER Louvain (higher resolution) so domains separate, and a
-sync-aware pipeline (require r_global ≥ 0.7 before trusting the Fiedler cut). Runner: `kuramoto_lbd_v07.py`.
-These are principled fixes to DIAGNOSED confounds, pre-registered before result — NOT benchmark tuning.
+**The five-phase substrate arc (29→33) delivered:** (a) a corpus-construction method
+(`build_bridge_corpus_openalex.py`); (b) a VALID benchmark testbed (`research_synergy_bridged_fine.json`);
+(c) the clean Kuramoto refutation; (d) a sharp prediction — LOCAL/multi-scale detectors (sheaves)
+should beat the single global cut.
+
+**NEXT (human's go/kill/pivot decision — NOT auto-executed):** run the sheaf/RAF/Kuramoto tournament
+on the valid testbed via `/cartographer --tournament` (vault, out of scope for this repo session).
+If sheaves also score 0/4 on this fair test → dynamical-LBD hard core refuted → revert to brute-force
+baseline. Do NOT re-tune the corpus or start the tournament autonomously — both are governance-gated.
 
 **Decision tree when v06 result is available:**
 1. Read `kuramoto_v06_results.json` (BENCH_P10, perpair_recall_at10, perpair_ranks, K_stable, nulls).

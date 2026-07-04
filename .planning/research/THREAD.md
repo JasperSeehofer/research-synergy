@@ -14,8 +14,8 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 
 | id | statement | discriminating experiment | status |
 |---|---|---|---|
-| H-RS-substrate | Cellular **sheaves** over the Louvain community graph detect multi-causal bridges better than RAFs or Kuramoto | 4-tier benchmark incl. multi-causal joint-removal ablation on the shared 10-pair Feynman set | **UNBLOCKED (2026-07-04 reanalysis)** — a well-posed substrate exists after all: the FULL `data-kuramoto` citation corpus giant CC (224 nodes, 1 component, 4 evaluable pairs). Phases 29/30 failed on a methodology artifact (unnecessary pre-2015 slice, C-1), not on the substrate. Gated behind EXP-RS-12 producing a real BENCH_P10 on the corrected corpus. |
-| H-RS-method | The dynamical-LBD pipeline (Kuramoto→Fiedler) has real cross-domain-bridge recovery signal when run on a well-posed citation graph containing both literatures | EXP-RS-12: BENCH_P10 on the 224-node giant CC vs 0.15 baseline / 0.30 target, vs ER + config-model nulls | **NOT YET TESTABLE** — EXP-RS-12 (Phase 31) got a well-posed graph (K_stable=14.25 converged) but BENCH_P10=0.000; diagnostic: 3/4 benchmark pairs have ZERO inter-community edges (bridge literature absent from corpus), so the method was never fairly tested. Blocked on a bridge-*containing* corpus (proposed Phase 2). |
+| H-RS-substrate | Cellular **sheaves** over the Louvain community graph detect multi-causal bridges better than RAFs or Kuramoto | 4-tier benchmark incl. multi-causal joint-removal ablation on the shared 10-pair Feynman set | **UNBLOCKED + SHARPENED (2026-07-04)** — a valid testbed now exists (`research_synergy_bridged_fine.json`: 1398 nodes, connected, 4/4 pairs bridged, synchronizing, 32 communities) AND EXP-RS-14 gives a sharp prediction: Kuramoto–Fiedler fails via a SINGLE GLOBAL CUT (all pairs on one side); sheaves (LOCAL sections) should beat it. Discriminating experiment = the sheaf/RAF/Kuramoto tournament on this corpus (`/cartographer --tournament`, human/vault). |
+| H-RS-method | The dynamical-LBD pipeline (Kuramoto→Fiedler) has real cross-domain-bridge recovery signal when run on a well-posed citation graph containing both literatures | EXP-RS-14: per-pair recall@10 on the fully-valid bridged corpus vs 0.15 baseline, vs nulls | **FALSIFIED (Phase 33, 2026-07-04) — CLEAN, mechanistic.** On a corpus that is connected ∧ bridge-containing (4/4 pairs) ∧ synchronized (r=0.932) ∧ finely-partitioned (32 comms), recall@10 = 0.000; NO benchmark pair in the top-200 Fiedler bridges. Mechanism: single global Fiedler cut (side0=834/side1=564) puts ALL benchmark pairs on the SAME side → structurally invisible. Not a confound — every well-posedness condition met. |
 
 ## Kill criteria
 
@@ -39,7 +39,18 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 
 ## Active experiment
 
-**EXP-RS-14** (→ Phase 33) — the definitive test: first VALID run on a corpus that is
+**None active. EXP-RS-14 (Phase 33) closed the Kuramoto–Fiedler line with a CLEAN,
+mechanistically-explained method-negative** (recall@10=0 on a fully well-posed corpus; single
+global Fiedler cut can't straddle multiple cross-domain pairs). **Thread is now at a go/kill/pivot
+gate — the human's call.** The five-phase substrate arc (29→33) produced: (a) a corpus-construction
+method, (b) a VALID benchmark testbed (`research_synergy_bridged_fine.json`), (c) the clean Kuramoto
+refutation, (d) a sharp prediction that LOCAL/multi-scale detectors (sheaves — the original
+H-RS-substrate hypothesis) beat the single global cut. **Recommended next (human decision):** run
+the sheaf/RAF/Kuramoto tournament on the valid testbed via `/cartographer --tournament` (out of
+scope for this repo session). If sheaves also score 0/4 on this fair test → the dynamical-LBD hard
+core is refuted → revert to the brute-force baseline. Full record: `33-VERIFICATION.md`.
+
+### (history) EXP-RS-14 → Phase 33 — the definitive valid run
 simultaneously connected + bridge-containing + synchronized + finely-partitioned. Motivation: four
 phases, four confounds — connectivity (29/30), corpus content (31), and now **dynamical
 non-convergence at scale** (32: on 1400 nodes the Kuramoto system found a low-K scattered fixed
@@ -88,7 +99,12 @@ spec question — session feedback welcome.)
 
 ## Last verification
 
-2026-07-04 — Phase 32 verification (EXP-RS-13 INCONCLUSIVE/confounded). Corpus fix worked (3/4
+2026-07-04 — Phase 33 (EXP-RS-14): **CLEAN Kuramoto–Fiedler method-negative.** recall@10=0 on a
+fully well-posed corpus (connected+bridged+synchronized+fine communities); mechanism verified
+(single global Fiedler cut, all pairs same side). Prediction FALSIFIED. Kuramoto line closed;
+H-RS-substrate (sheaves) unblocked on the valid testbed with a sharp prediction. Prior verifications:
+
+2026-07-04 — Phase 32 (EXP-RS-13 INCONCLUSIVE/confounded). Corpus fix worked (3/4
 pairs bridged; real bridges rank #11/#17 of ~9600 edges) but the 1400-node Kuramoto run did NOT
 converge (r=0.136, K_stable collapsed to floor, λ₂<0) → invalid; sole "detection" was a pair03
 same-community artifact. Genuine cross-domain recall@10 = 0. Third confound (non-convergence at

@@ -15,7 +15,7 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 | id | statement | discriminating experiment | status |
 |---|---|---|---|
 | H-RS-substrate | Cellular **sheaves** over the Louvain community graph detect multi-causal bridges better than RAFs or Kuramoto | 4-tier benchmark incl. multi-causal joint-removal ablation on the shared 10-pair Feynman set | **UNBLOCKED (2026-07-04 reanalysis)** — a well-posed substrate exists after all: the FULL `data-kuramoto` citation corpus giant CC (224 nodes, 1 component, 4 evaluable pairs). Phases 29/30 failed on a methodology artifact (unnecessary pre-2015 slice, C-1), not on the substrate. Gated behind EXP-RS-12 producing a real BENCH_P10 on the corrected corpus. |
-| H-RS-method | The dynamical-LBD pipeline (Kuramoto→Fiedler) has real cross-domain-bridge recovery signal when run on a well-posed citation graph containing both literatures | EXP-RS-12: BENCH_P10 on the 224-node giant CC vs 0.15 baseline / 0.30 target, vs ER + config-model nulls | **live** — pre-registered 2026-07-04, predictions locked (Phase 31) |
+| H-RS-method | The dynamical-LBD pipeline (Kuramoto→Fiedler) has real cross-domain-bridge recovery signal when run on a well-posed citation graph containing both literatures | EXP-RS-12: BENCH_P10 on the 224-node giant CC vs 0.15 baseline / 0.30 target, vs ER + config-model nulls | **NOT YET TESTABLE** — EXP-RS-12 (Phase 31) got a well-posed graph (K_stable=14.25 converged) but BENCH_P10=0.000; diagnostic: 3/4 benchmark pairs have ZERO inter-community edges (bridge literature absent from corpus), so the method was never fairly tested. Blocked on a bridge-*containing* corpus (proposed Phase 2). |
 
 ## Kill criteria
 
@@ -34,23 +34,28 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 | Sheaf near-section frustration ranks bridges on this corpus | HOLD — untestable on VOID corpus (T2 precision@10 = 0.000) | `prototypes/SHEAF_V01_RESULTS.md` |
 | TF-IDF cosine edges (τ=0.3) make the same corpus connected enough for spectral/dynamical LBD (`n_cc/N ≤ 0.05`, largest CC ≥ 80%) | **FALSIFIED** (Phase 30 FAIL, 2026-07-04) — actual `n_cc/N`=0.830, largest CC=3.3% at τ=0.3; *more* fragmented than the citation graph (0.268) at every pre-registered τ. Confirmed by 3 independent recomputes. | `.planning/phases/30-tfidf-semantic-edge-graph/30-VERIFICATION.md` |
 | ~~The pre-2015 cond-mat corpus (N=153) is too narrow to support *any* substrate for dynamical LBD~~ | **RETRACTED (2026-07-04)** — this conflated the *pre-2015 slice* with the *corpus*. The FULL corpus citation graph is well-posed (227→giant CC 224, 1 component, n_cc/N=0.009). The fragmentation was caused ENTIRELY by the C-1 pre-2015 slice, which is not required by the date-agnostic BENCH_P10 recovery metric. Not "corpus too narrow" — "temporal slice unnecessary and harmful." | full-corpus connectivity check 2026-07-04; see EXP-RS-12 provenance |
-| Phases 29/30 non-results were corpus/methodology artifacts; the dynamical method recovers Feynman bridges (BENCH_P10 > 0.15) on the well-posed full-corpus giant CC | **predicted — untested** (EXP-RS-12, pre-registered 2026-07-04, LOCKED) | vault `agentic-experiments-research.md` § EXP-RS-12 |
+| Phases 29/30 non-results were corpus/methodology *connectivity* artifacts (the pre-2015 slice) — CONFIRMED: the full-corpus giant CC is well-posed, K_stable=14.25 converges | **verified** (Phase 31 EXP-RS-12, 2026-07-04) | `.planning/phases/31-dynamical-lbd-giant-cc/31-VERIFICATION.md` |
+| The dynamical method recovers Feynman bridges (BENCH_P10 > 0.15) on the well-posed giant CC | **FALSIFIED but test not fair** (Phase 31: BENCH_P10=0.000) — decisive diagnostic: 3/4 evaluable pairs have ZERO inter-community citation edges → the corpus lacks the bridge literature the method is scored on; the 1 pair with a 2-edge bridge (pair04) is diluted out of the global-top-10. Corpus-CONTENT gap now isolated from the (solved) connectivity gap. | 31-VERIFICATION.md § "decisive diagnostic" |
 
 ## Active experiment
 
-**EXP-RS-12** (→ Phase 31) — pre-registered 2026-07-04, predictions LOCKED. The 2026-07-04
-reanalysis (human-directed: "reanalyze rather than inherit old decisions") found that Phases
-29/30 failed on a **methodology artifact**, not the corpus/substrate: the BENCH_P10 gate is a
-date-agnostic *recovery* metric (`dynamical-lbd.md` Criterion 3(a): corpus must "contain both
-literatures"), so the C-1 pre-2015 slice was unnecessary and it alone shattered the citation
-graph. The FULL `data-kuramoto` citation corpus is already well-posed: giant CC = 224 nodes (1
-component, λ₂>0), 34 communities, n_eval=4. EXP-RS-12 runs the validated v03 citation pipeline on
-this giant CC → the first real BENCH_P10. Stake: `BENCH_P10 > 0.15` revives the method; `≤ 0.15`
-is a clean, well-posed negative → kill on solid ground. No new crawling. Full pre-registration:
-vault `agentic-experiments-research.md` § EXP-RS-12. Conventions: C-12 (supersedes C-1), C-13.
+**None active — EXP-RS-12 (Phase 31) complete 2026-07-04, MIXED verdict; awaiting human
+go/kill/pivot on a Phase 2 corpus rebuild.** EXP-RS-12 confirmed the reanalysis (the giant CC
+is well-posed; K_stable=14.25 converges — Phases 29/30 were connectivity artifacts) but the
+locked stake P-3 was **falsified** (BENCH_P10=0.000). The decisive static diagnostic showed **why**:
+3/4 evaluable benchmark pairs have zero inter-community citation edges — the corpus does not
+contain the cross-domain bridge literature the method is scored on, so the method was never fairly
+tested. **The connectivity gap is solved; a corpus-CONTENT gap is now the blocker.**
 
-*The Phase 30 pivot kill gate fired on EXP-RS-11 (TF-IDF), which remains dead. EXP-RS-12 is a
-distinct, corrected experiment on the citation substrate — not a retry of the TF-IDF path.*
+**Proposed Phase 2 (gated on human go — real compute cost):** build a bridge-*containing* corpus
+(OpenAlex bulk-ingest of cond-mat + stat-phys + q-fin + nlin, rate-limit-free; or deeper multi-hop
+crawl) so the benchmark bridges are present, then re-test — likely also needing the per-pair
+BENCH_P10 variant (the global-top-10 metric dilutes weak bridges). Alternative: accept the
+unproven-method negative and revert to brute-force. Full record:
+`.planning/phases/31-dynamical-lbd-giant-cc/31-VERIFICATION.md`.
+
+*EXP-RS-11 (TF-IDF, Phase 30) remains dead. EXP-RS-12 tested the citation substrate — a distinct,
+corrected experiment.*
 
 ## Claim history
 
@@ -60,8 +65,10 @@ spec question — session feedback welcome.)
 
 ## Last verification
 
-2026-07-04 — Phase 30 verification (EXP-RS-11 FAIL; TF-IDF substrate fragments worse than
-citation graph; pivot kill gate FIRED). Independently falsified-and-CONFIRMED via a right-sized
-`/commission --research` (3 converging lines; no under-connection bug, no leakage, no
-contamination). Kill-criterion check: **pivot gate condition met** (`BENCH_P10` not producible
-≤ threshold; well before the 2026-09-30 deadline). Prior: 2026-05-05 Phase 29 FAIL.
+2026-07-04 — Phase 31 verification (EXP-RS-12 MIXED). Methodology fix VALIDATED (giant CC
+well-posed, K_stable=14.25 converges — 29/30 were connectivity artifacts); locked stake P-3
+FALSIFIED (BENCH_P10=0.000) but the test was not fair — static diagnostic shows 3/4 evaluable
+pairs have zero inter-community edges (bridge literature absent from corpus). Corpus-content gap
+isolated from the solved connectivity gap. Kill-criterion check: **not a clean method-kill** (the
+method was never given a bridge-containing corpus); decision on Phase 2 corpus rebuild is the
+human's. Prior: 2026-07-04 Phase 30 EXP-RS-11 FAIL; 2026-05-05 Phase 29 FAIL.

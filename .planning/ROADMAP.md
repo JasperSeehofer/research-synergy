@@ -226,7 +226,7 @@ Plans:
 | 28. Forward-citation crawl mode (S2) | v1.4 | 4/4 | Complete    | 2026-04-27 |
 | 29. Kuramoto-LBD v03 Corpus Build | v1.4 | 1/1 | Complete (FAIL verdict — gate not reached) | 2026-05-05 |
 | 30. TF-IDF Semantic-Edge Graph (EXP-RS-11) | v1.4 | 1/1 | Complete (FAIL verdict — pivot kill gate fired) | 2026-07-04 |
-| 31. Dynamical LBD on full-corpus giant CC (EXP-RS-12) | v1.4 | 0/1 | In progress | - |
+| 31. Dynamical LBD on full-corpus giant CC (EXP-RS-12) | v1.4 | 1/1 | Complete (MIXED — methodology fix validated; BENCH_P10=0, corpus-content gap isolated) | 2026-07-04 |
 
 ### Phase 28: Forward-citation crawl mode (S2)
 
@@ -285,5 +285,6 @@ Plans:
   4. Real-graph bridge signal exceeds ER-null and config-model-null controls
 **Plans:** 1 plan
 Plans:
-- [ ] 31-01-PLAN.md — Build+commit v05 notebook (giant-CC citation pipeline), execute to real BENCH_P10, verdict + (if pass) independent falsification
+- [x] 31-01-PLAN.md — Build+commit v05 giant-CC citation pipeline, execute to real BENCH_P10, verdict (executed 2026-07-04; see 31-VERIFICATION.md)
+**Outcome:** ⚠️ MIXED. Methodology fix VALIDATED — the 224-node giant CC is well-posed, `K_stable=14.25` converges (Phases 29/30 were connectivity artifacts, reanalysis confirmed). But locked stake P-3 FALSIFIED: `BENCH_P10=0.000`. Decisive static diagnostic: 3/4 evaluable pairs have zero inter-community citation edges (bridge literature absent from the shallow-crawled corpus); pair04's 2-edge bridge is diluted out of the global-top-10. Corpus-CONTENT gap isolated from the (solved) connectivity gap — the method was never fairly tested. Not a clean method-kill. Path forward (human decision): Phase 2 bridge-containing corpus (OpenAlex bulk-ingest) + per-pair metric, vs accept the unproven-method negative → brute-force.
 **UI hint**: no

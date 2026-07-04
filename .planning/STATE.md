@@ -21,13 +21,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-06)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Phase 31 — EXP-RS-12: run the validated dynamical-LBD pipeline on the well-posed FULL-corpus giant CC (224 nodes) for the first real BENCH_P10. 2026-07-04 reanalysis found Phases 29/30 failed on a methodology artifact (unnecessary pre-2015 slice), not the corpus. Pre-registered, predictions locked.
+**Current focus:** Dynamical-LBD thread at a go/kill/pivot gate. Phase 31 (EXP-RS-12) validated the methodology fix (giant CC well-posed, K_stable converges) but BENCH_P10=0.000 — diagnostic isolates a corpus-CONTENT gap (3/4 benchmark pairs have no bridge edges). Decision pending: build a bridge-containing corpus (Phase 2, real cost) vs accept the unproven-method negative.
 
 ## Current Position
 
-Phase: 31 (in progress — EXP-RS-12)
-Plan: 31-01
-Status: Reanalysis reversed the "corpus too narrow" conclusion — full-corpus giant CC (224 nodes) is well-posed and benchmark-evaluable (n_eval=4). Pre-registered EXP-RS-12 (predictions locked); running the citation-adjacency pipeline for the first real BENCH_P10. Phase 30 EXP-RS-11 (TF-IDF) remains dead; this is a distinct corrected experiment.
+Phase: 31 (complete — MIXED verdict)
+Plan: 31-01 (complete)
+Status: EXP-RS-12 got a well-posed graph (K_stable=14.25 converged — reanalysis validated, 29/30 were connectivity artifacts) but BENCH_P10=0.000 (locked stake P-3 falsified). Diagnostic: 3/4 benchmark pairs have zero inter-community edges → corpus lacks the bridge literature; method not fairly tested. Connectivity gap SOLVED; corpus-CONTENT gap now the blocker. Awaiting human go/kill on proposed Phase 2 (bridge-containing corpus via OpenAlex bulk-ingest, real compute cost).
 Last activity: 2026-07-04
 
 Progress: [████████████████░░░░] 80% (v1.4 phases 25 Discovery Recommendations, 26 Export & Interop still unstarted)

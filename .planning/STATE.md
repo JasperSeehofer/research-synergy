@@ -64,6 +64,30 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-07-04
-Stopped at: Phase 30 closed (EXP-RS-11 FAIL, kill gate fired). Verdict paperwork complete — 30-VERIFICATION.md, THREAD.md, ROADMAP.md, commission falsification record all landed. Next action is the **human's go/kill/pivot decision** (kill dynamical-substrate line vs Path B seed selection), routed via the vault cartographer — not a coding task in this repo.
+Last session: 2026-07-04 (autonomous overnight)
 Research thread state: `.planning/research/THREAD.md` (Layer-2 contract; same-day updates required)
+
+### OVERNIGHT RESUME POINTER (read this first if resuming autonomously)
+
+**In flight:** `prototypes/kuramoto_lbd_v06.py` running on the bridged corpus (EXP-RS-13). Result
+lands in `../professional-vault/prototypes/data/kuramoto_v06_results.json`. Locked prediction is in
+THREAD.md § Active experiment (per-pair recall@10 ≥ 0.25; global BENCH_P10 uncertain).
+
+**Decision tree when v06 result is available:**
+1. Read `kuramoto_v06_results.json` (BENCH_P10, perpair_recall_at10, perpair_ranks, K_stable, nulls).
+2. Write `.planning/phases/32-*/32-VERIFICATION.md` (executed evidence + verdict vs the LOCKED
+   prediction — no post-hoc adjustment). Update THREAD.md (same-day), STATE, ROADMAP, vault EXP-RS-13.
+3. **If per-pair recall@10 ≥ 0.25 OR global BENCH_P10 > 0.15** → SIGNAL. Next: (a) independent
+   falsification (right-sized, blind re-score) that the detections are real not artifacts; (b) if
+   confirmed, formalize the corpus through the resyn pipeline (bulk-ingest needs an OpenAlex key —
+   currently only unauthenticated polite pool works; note this) → analyze → export → re-run for the
+   official number; (c) flag tournament-readiness in THREAD.
+4. **If ~0 (no detections despite 3/4 bridges present)** → clean method-negative: Kuramoto–Fiedler
+   does not surface known present bridges. Write it up honestly; the kill-vs-continue call is the
+   human's (record in THREAD, do not self-kill). Consider whether the global-top-10 metric or the
+   Louvain community granularity (only 9 communities on 1400 nodes) is the confound.
+5. Commit each step (conventional commits, both repos). `/scribe-debrief` at a clean stopping point.
+
+**Do NOT** re-tune the corpus to make the benchmark pass (spec-gaming). The corpus was built by a
+neutral endpoint-neighborhood rule; keep it fixed. Metric/community-granularity are separate,
+declarable knobs — changing them is a NEW pre-registered experiment, not a tweak.

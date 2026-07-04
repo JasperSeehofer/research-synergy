@@ -39,23 +39,26 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 
 ## Active experiment
 
-**None active — EXP-RS-12 (Phase 31) complete 2026-07-04, MIXED verdict; awaiting human
-go/kill/pivot on a Phase 2 corpus rebuild.** EXP-RS-12 confirmed the reanalysis (the giant CC
-is well-posed; K_stable=14.25 converges — Phases 29/30 were connectivity artifacts) but the
-locked stake P-3 was **falsified** (BENCH_P10=0.000). The decisive static diagnostic showed **why**:
-3/4 evaluable benchmark pairs have zero inter-community citation edges — the corpus does not
-contain the cross-domain bridge literature the method is scored on, so the method was never fairly
-tested. **The connectivity gap is solved; a corpus-CONTENT gap is now the blocker.**
+**EXP-RS-13** (→ Phase 32) — pre-registered 2026-07-04, prediction LOCKED before result. Human
+approved the Phase 2 corpus rebuild (2026-07-04). Built a benchmark-centric **bridge-containing**
+corpus via a targeted OpenAlex fetch (endpoint citation neighborhoods; neutral rule, NOT tuned to
+the benchmark): `data/research_synergy_bridged.json` — **1400 nodes, 9624 edges, 9 communities;
+3/4 evaluable pairs now have inter-community bridge edges** (pair01:91, pair04:649, pair06:66) vs
+1/4 in data-kuramoto. This addresses the EXP-RS-12 corpus-content gap.
 
-**Proposed Phase 2 (gated on human go — real compute cost):** build a bridge-*containing* corpus
-(OpenAlex bulk-ingest of cond-mat + stat-phys + q-fin + nlin, rate-limit-free; or deeper multi-hop
-crawl) so the benchmark bridges are present, then re-test — likely also needing the per-pair
-BENCH_P10 variant (the global-top-10 metric dilutes weak bridges). Alternative: accept the
-unproven-method negative and revert to brute-force. Full record:
-`.planning/phases/31-dynamical-lbd-giant-cc/31-VERIFICATION.md`.
+**LOCKED PREDICTION (before the score — v06 still computing when this was written):**
+per-pair recall@10 ≥ 0.25 (the method surfaces at least the bridges now present); global BENCH_P10
+uncertain (top-10 dilution on a larger corpus). **Decisive read:** if even a bridge-CONTAINING
+corpus yields ~0 detections → clean statement that Kuramoto–Fiedler fails to surface known,
+present bridges (real method-negative). If it detects them → line alive; formalize through the
+resyn pipeline (bulk-ingest→analyze→export) for the official number.
 
-*EXP-RS-11 (TF-IDF, Phase 30) remains dead. EXP-RS-12 tested the citation substrate — a distinct,
-corrected experiment.*
+Runner: `prototypes/kuramoto_lbd_v06.py` (bridged corpus + per-pair metric; committed before run,
+vault `3115c57`). Result lands in `prototypes/data/kuramoto_v06_results.json`.
+
+*EXP-RS-11 (TF-IDF, Phase 30) remains dead. EXP-RS-12 (Phase 31) validated the methodology fix but
+found the corpus lacked bridges. EXP-RS-13 tests the same method on a corpus that now contains
+them — the fair test EXP-RS-12 could not run.*
 
 ## Claim history
 

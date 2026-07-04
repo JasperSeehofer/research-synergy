@@ -46,10 +46,17 @@ non-convergence at scale** (32: on 1400 nodes the Kuramoto system found a low-K 
 point, r=0.136; the λ₂≥0 K-criterion admits unsynchronized states; 7-community Louvain collapsed
 pair03). Kuramoto–Fiedler has a NARROW operating window; we have satisfied each condition alone but
 never all together. EXP-RS-14 removes the convergence + granularity confounds (principled,
-pre-registered, reported either way — NOT benchmark tuning): smaller benchmark-centric bridged
-corpus that synchronizes + finer Louvain + sync-aware K (min K s.t. r ≥ 0.7). Decisive: genuine
-cross-domain recall@10 still 0 on a valid run ⇒ cleanest Kuramoto–Fiedler method-negative;
-positive ⇒ real signal → formalize through resyn. Prediction locked below before running.
+pre-registered, reported either way — NOT benchmark tuning): finer Louvain (res=3.0
+→ 34 communities, all 4 pairs in DISTINCT communities, 4/4 pairs now have inter-community bridge
+edges: pair01:9, pair03:23, pair04:27, pair06:4) + sync-aware K (`find_K_sync`: min K with r ≥ 0.90;
+the 1400-node graph verified to sync — r=0.71@K=5, 0.96@K=15). Kept the FULL 1400-node corpus (no
+reduction → no selection concern). Runner `kuramoto_lbd_v07.py`.
+
+**LOCKED PREDICTION (EXP-RS-14, before run):** on this fully-valid corpus (connected ∧ bridged ∧
+synchronized ∧ finely-partitioned) genuine cross-domain per-pair recall@10 ≥ 0.25 (≥1 of 4 pairs
+detected). **Decisive:** still 0 here ⇒ the cleanest Kuramoto–Fiedler method-negative — the method
+fails to surface present bridges even when everything is well-posed. Positive ⇒ real signal →
+independent falsification, then formalize through the resyn pipeline.
 
 ### (superseded) EXP-RS-13 — Phase 32, INCONCLUSIVE (confounded) 2026-07-04
 pre-registered 2026-07-04, prediction LOCKED before result. Human

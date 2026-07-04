@@ -14,7 +14,8 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 
 | id | statement | discriminating experiment | status |
 |---|---|---|---|
-| H-RS-substrate | Cellular **sheaves** over the Louvain community graph detect multi-causal bridges better than RAFs or Kuramoto | 4-tier benchmark incl. multi-causal joint-removal ablation on the shared 10-pair Feynman set | **BLOCKED** — no viable substrate on this corpus. Citation graph fragments (Phase 29 FAIL); TF-IDF semantic edges fragment *worse* (Phase 30 FAIL, EXP-RS-11). Pivot kill gate FIRED 2026-07-04. Kill/Path-B decision → human via vault. |
+| H-RS-substrate | Cellular **sheaves** over the Louvain community graph detect multi-causal bridges better than RAFs or Kuramoto | 4-tier benchmark incl. multi-causal joint-removal ablation on the shared 10-pair Feynman set | **UNBLOCKED (2026-07-04 reanalysis)** — a well-posed substrate exists after all: the FULL `data-kuramoto` citation corpus giant CC (224 nodes, 1 component, 4 evaluable pairs). Phases 29/30 failed on a methodology artifact (unnecessary pre-2015 slice, C-1), not on the substrate. Gated behind EXP-RS-12 producing a real BENCH_P10 on the corrected corpus. |
+| H-RS-method | The dynamical-LBD pipeline (Kuramoto→Fiedler) has real cross-domain-bridge recovery signal when run on a well-posed citation graph containing both literatures | EXP-RS-12: BENCH_P10 on the 224-node giant CC vs 0.15 baseline / 0.30 target, vs ER + config-model nulls | **live** — pre-registered 2026-07-04, predictions locked (Phase 31) |
 
 ## Kill criteria
 
@@ -32,19 +33,24 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 | Dynamical-LBD on the pre-2015 cond-mat *citation* graph is empirically infeasible (~41 components / 153 nodes → `K_stable` bisection diverges) | verified (Phase 29 FAIL, 2026-05-05) | `.planning/phases/29-kuramoto-corpus-build/29-VERIFICATION.md` |
 | Sheaf near-section frustration ranks bridges on this corpus | HOLD — untestable on VOID corpus (T2 precision@10 = 0.000) | `prototypes/SHEAF_V01_RESULTS.md` |
 | TF-IDF cosine edges (τ=0.3) make the same corpus connected enough for spectral/dynamical LBD (`n_cc/N ≤ 0.05`, largest CC ≥ 80%) | **FALSIFIED** (Phase 30 FAIL, 2026-07-04) — actual `n_cc/N`=0.830, largest CC=3.3% at τ=0.3; *more* fragmented than the citation graph (0.268) at every pre-registered τ. Confirmed by 3 independent recomputes. | `.planning/phases/30-tfidf-semantic-edge-graph/30-VERIFICATION.md` |
-| The pre-2015 cond-mat corpus (N=153) is too narrow to support *any* semantic/citation substrate for dynamical LBD; Path B (seed selection / newer corpus) is the remaining option | verified (Phase 29 + Phase 30 FAIL, both substrates fragment) | 30-VERIFICATION.md § "premise is falsified" |
+| ~~The pre-2015 cond-mat corpus (N=153) is too narrow to support *any* substrate for dynamical LBD~~ | **RETRACTED (2026-07-04)** — this conflated the *pre-2015 slice* with the *corpus*. The FULL corpus citation graph is well-posed (227→giant CC 224, 1 component, n_cc/N=0.009). The fragmentation was caused ENTIRELY by the C-1 pre-2015 slice, which is not required by the date-agnostic BENCH_P10 recovery metric. Not "corpus too narrow" — "temporal slice unnecessary and harmful." | full-corpus connectivity check 2026-07-04; see EXP-RS-12 provenance |
+| Phases 29/30 non-results were corpus/methodology artifacts; the dynamical method recovers Feynman bridges (BENCH_P10 > 0.15) on the well-posed full-corpus giant CC | **predicted — untested** (EXP-RS-12, pre-registered 2026-07-04, LOCKED) | vault `agentic-experiments-research.md` § EXP-RS-12 |
 
 ## Active experiment
 
-**None active.** EXP-RS-11 (→ Phase 30) concluded FAIL 2026-07-04: the TF-IDF cosine
-semantic-edge substrate fragments worse than the citation graph at every pre-registered τ;
-precheck fails, `BENCH_P10` not producible, **pivot kill gate FIRED**. Verdict survived
-independent falsification (3 converging lines). Per pre-registered follow-ups, the corpus is
-too narrow — Path B (seed selection / newer corpus) is the remaining option. The kill vs Path-B
-decision is the human's, routed via the vault (`.cartographer-notes.md` → hypothesis-ledger).
-Full record: `.planning/phases/30-tfidf-semantic-edge-graph/30-VERIFICATION.md`.
+**EXP-RS-12** (→ Phase 31) — pre-registered 2026-07-04, predictions LOCKED. The 2026-07-04
+reanalysis (human-directed: "reanalyze rather than inherit old decisions") found that Phases
+29/30 failed on a **methodology artifact**, not the corpus/substrate: the BENCH_P10 gate is a
+date-agnostic *recovery* metric (`dynamical-lbd.md` Criterion 3(a): corpus must "contain both
+literatures"), so the C-1 pre-2015 slice was unnecessary and it alone shattered the citation
+graph. The FULL `data-kuramoto` citation corpus is already well-posed: giant CC = 224 nodes (1
+component, λ₂>0), 34 communities, n_eval=4. EXP-RS-12 runs the validated v03 citation pipeline on
+this giant CC → the first real BENCH_P10. Stake: `BENCH_P10 > 0.15` revives the method; `≤ 0.15`
+is a clean, well-posed negative → kill on solid ground. No new crawling. Full pre-registration:
+vault `agentic-experiments-research.md` § EXP-RS-12. Conventions: C-12 (supersedes C-1), C-13.
 
-**Awaiting human go/kill/pivot decision before any new experiment is opened.**
+*The Phase 30 pivot kill gate fired on EXP-RS-11 (TF-IDF), which remains dead. EXP-RS-12 is a
+distinct, corrected experiment on the citation substrate — not a retry of the TF-IDF path.*
 
 ## Claim history
 

@@ -21,13 +21,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-06)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Dynamical-LBD thread at a go/kill/pivot gate — Phase 30 (EXP-RS-11) closed FAIL; kill decision is the human's, via the vault. No experiment active.
+**Current focus:** Phase 31 — EXP-RS-12: run the validated dynamical-LBD pipeline on the well-posed FULL-corpus giant CC (224 nodes) for the first real BENCH_P10. 2026-07-04 reanalysis found Phases 29/30 failed on a methodology artifact (unnecessary pre-2015 slice), not the corpus. Pre-registered, predictions locked.
 
 ## Current Position
 
-Phase: 30 (complete — FAIL)
-Plan: 30-01 (complete)
-Status: EXP-RS-11 closed FAIL 2026-07-04; verdict independently falsified-and-CONFIRMED. Pivot kill gate FIRED. Awaiting human go/kill/pivot decision (Path B or kill dynamical-substrate line) via the vault.
+Phase: 31 (in progress — EXP-RS-12)
+Plan: 31-01
+Status: Reanalysis reversed the "corpus too narrow" conclusion — full-corpus giant CC (224 nodes) is well-posed and benchmark-evaluable (n_eval=4). Pre-registered EXP-RS-12 (predictions locked); running the citation-adjacency pipeline for the first real BENCH_P10. Phase 30 EXP-RS-11 (TF-IDF) remains dead; this is a distinct corrected experiment.
 Last activity: 2026-07-04
 
 Progress: [████████████████░░░░] 80% (v1.4 phases 25 Discovery Recommendations, 26 Export & Interop still unstarted)

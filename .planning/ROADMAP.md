@@ -226,6 +226,7 @@ Plans:
 | 28. Forward-citation crawl mode (S2) | v1.4 | 4/4 | Complete    | 2026-04-27 |
 | 29. Kuramoto-LBD v03 Corpus Build | v1.4 | 1/1 | Complete (FAIL verdict — gate not reached) | 2026-05-05 |
 | 30. TF-IDF Semantic-Edge Graph (EXP-RS-11) | v1.4 | 1/1 | Complete (FAIL verdict — pivot kill gate fired) | 2026-07-04 |
+| 31. Dynamical LBD on full-corpus giant CC (EXP-RS-12) | v1.4 | 0/1 | In progress | - |
 
 ### Phase 28: Forward-citation crawl mode (S2)
 
@@ -268,5 +269,21 @@ Plans:
 **Plans:** 1 plan
 Plans:
 - [x] 30-01-PLAN.md — Regenerate export, build+verify TF-IDF graph, v04 notebook benchmark, verdict (executed to FAIL verdict 2026-07-04; see 30-VERIFICATION.md)
-**Outcome:** ❌ FAIL — TF-IDF cosine semantic edges make the pre-2015 corpus *more* fragmented (`n_cc/N`=0.830 @ τ=0.3) than the citation graph (0.268) at every pre-registered τ. Precheck fails at all τ; `compute_K_stable`/`BENCH_P10` correctly not reached. **Pivot kill gate FIRED** (well before the 2026-09-30 deadline). Verdict independently falsified-and-CONFIRMED via a right-sized `/commission --research` (3 converging lines; no under-connection bug, no leakage/contamination). Both substrate candidates (citation, semantic) now exhausted on this corpus → the corpus itself is the limiter. Path B (seed selection / newer corpus) is the remaining option; kill vs Path-B decision is the human's, via the vault.
+**Outcome:** ❌ FAIL — TF-IDF cosine semantic edges make the pre-2015 corpus *more* fragmented (`n_cc/N`=0.830 @ τ=0.3) than the citation graph (0.268) at every pre-registered τ. Precheck fails at all τ; `compute_K_stable`/`BENCH_P10` correctly not reached. **Pivot kill gate FIRED** (well before the 2026-09-30 deadline). Verdict independently falsified-and-CONFIRMED via a right-sized `/commission --research` (3 converging lines; no under-connection bug, no leakage/contamination). NOTE (superseded by Phase 31 reanalysis): the "corpus too narrow" reading was wrong — the fragmentation was caused by the pre-2015 slice, not corpus size; the full corpus is well-posed.
+**UI hint**: no
+
+### Phase 31: Dynamical LBD on the full-corpus giant component (EXP-RS-12)
+
+**Goal:** Produce the first real `BENCH_P10` for the dynamical-LBD pipeline by running the validated v03 citation-adjacency pipeline on the **well-posed** 224-node giant component of the full `data-kuramoto` corpus — testing whether Phases 29/30 failed on a methodology artifact (the unnecessary pre-2015 slice, C-1) rather than on the method itself.
+**Requirements**: None (exploratory research phase; Dynamical-LBD Gen-4 thread). Pre-registration: vault § EXP-RS-12 (predictions LOCKED). Conventions: C-12 (supersedes C-1 — BENCH_P10 is date-agnostic recovery), C-13 (giant-CC citation substrate).
+**Depends on:** Phase 29 corpus (`data-kuramoto` / `research_synergy_kuramoto_full.json`, reused as-is; no new crawling).
+**Reanalysis basis (2026-07-04):** BENCH_P10 scoring has zero temporal logic; `dynamical-lbd.md` Criterion 3(a) requires only that the corpus "contain both literatures." The pre-2015 filter shattered the citation graph (2→41 components) without improving benchmark coverage. Full corpus: 227 nodes → giant CC 224 (1 component, λ₂>0), 34 communities, 4 evaluable pairs across communities (n_eval=4 ≥ 3).
+**Success Criteria** (claims→acceptance in 31-01-PLAN.md):
+  1. Giant CC is a single connected component; `compute_K_stable` returns finite K_stable ≤ 300 s
+  2. `n_eval = 4 ≥ 3` in the giant CC (structural, verified)
+  3. Real `BENCH_P10` produced; evaluated vs 0.15 baseline / 0.30 target — either outcome is a decisive result
+  4. Real-graph bridge signal exceeds ER-null and config-model-null controls
+**Plans:** 1 plan
+Plans:
+- [ ] 31-01-PLAN.md — Build+commit v05 notebook (giant-CC citation pipeline), execute to real BENCH_P10, verdict + (if pass) independent falsification
 **UI hint**: no

@@ -39,7 +39,20 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 
 ## Active experiment
 
-**EXP-RS-13** (→ Phase 32) — pre-registered 2026-07-04, prediction LOCKED before result. Human
+**EXP-RS-14** (→ Phase 33) — the definitive test: first VALID run on a corpus that is
+simultaneously connected + bridge-containing + synchronized + finely-partitioned. Motivation: four
+phases, four confounds — connectivity (29/30), corpus content (31), and now **dynamical
+non-convergence at scale** (32: on 1400 nodes the Kuramoto system found a low-K scattered fixed
+point, r=0.136; the λ₂≥0 K-criterion admits unsynchronized states; 7-community Louvain collapsed
+pair03). Kuramoto–Fiedler has a NARROW operating window; we have satisfied each condition alone but
+never all together. EXP-RS-14 removes the convergence + granularity confounds (principled,
+pre-registered, reported either way — NOT benchmark tuning): smaller benchmark-centric bridged
+corpus that synchronizes + finer Louvain + sync-aware K (min K s.t. r ≥ 0.7). Decisive: genuine
+cross-domain recall@10 still 0 on a valid run ⇒ cleanest Kuramoto–Fiedler method-negative;
+positive ⇒ real signal → formalize through resyn. Prediction locked below before running.
+
+### (superseded) EXP-RS-13 — Phase 32, INCONCLUSIVE (confounded) 2026-07-04
+pre-registered 2026-07-04, prediction LOCKED before result. Human
 approved the Phase 2 corpus rebuild (2026-07-04). Built a benchmark-centric **bridge-containing**
 corpus via a targeted OpenAlex fetch (endpoint citation neighborhoods; neutral rule, NOT tuned to
 the benchmark): `data/research_synergy_bridged.json` — **1400 nodes, 9624 edges, 9 communities;
@@ -68,7 +81,13 @@ spec question — session feedback welcome.)
 
 ## Last verification
 
-2026-07-04 — Phase 31 verification (EXP-RS-12 MIXED). Methodology fix VALIDATED (giant CC
+2026-07-04 — Phase 32 verification (EXP-RS-13 INCONCLUSIVE/confounded). Corpus fix worked (3/4
+pairs bridged; real bridges rank #11/#17 of ~9600 edges) but the 1400-node Kuramoto run did NOT
+converge (r=0.136, K_stable collapsed to floor, λ₂<0) → invalid; sole "detection" was a pair03
+same-community artifact. Genuine cross-domain recall@10 = 0. Third confound (non-convergence at
+scale) identified. Fair test still not run → EXP-RS-14. Prior: 2026-07-04 Phase 31 EXP-RS-12 MIXED.
+
+Earlier Phase 31 (EXP-RS-12 MIXED): Methodology fix VALIDATED (giant CC
 well-posed, K_stable=14.25 converges — 29/30 were connectivity artifacts); locked stake P-3
 FALSIFIED (BENCH_P10=0.000) but the test was not fair — static diagnostic shows 3/4 evaluable
 pairs have zero inter-community edges (bridge literature absent from corpus). Corpus-content gap

@@ -69,9 +69,15 @@ Research thread state: `.planning/research/THREAD.md` (Layer-2 contract; same-da
 
 ### OVERNIGHT RESUME POINTER (read this first if resuming autonomously)
 
-**In flight:** `prototypes/kuramoto_lbd_v06.py` running on the bridged corpus (EXP-RS-13). Result
-lands in `../professional-vault/prototypes/data/kuramoto_v06_results.json`. Locked prediction is in
-THREAD.md § Active experiment (per-pair recall@10 ≥ 0.25; global BENCH_P10 uncertain).
+**Phase 32 (EXP-RS-13) DONE — INCONCLUSIVE:** bridged corpus (1400 nodes) has the bridges but the
+Kuramoto run did not converge (r=0.136) → invalid; genuine cross-domain recall@10=0. See
+`.planning/phases/32-bridge-corpus-retest/32-VERIFICATION.md`.
+
+**Now (EXP-RS-14 → Phase 33):** the definitive valid run. Build a SMALLER benchmark-centric bridged
+corpus (neutral reduction of the OpenAlex fetch — lower FWD_CAP) that synchronizes like the
+converged 224-node Phase-31 run, with FINER Louvain (higher resolution) so domains separate, and a
+sync-aware pipeline (require r_global ≥ 0.7 before trusting the Fiedler cut). Runner: `kuramoto_lbd_v07.py`.
+These are principled fixes to DIAGNOSED confounds, pre-registered before result — NOT benchmark tuning.
 
 **Decision tree when v06 result is available:**
 1. Read `kuramoto_v06_results.json` (BENCH_P10, perpair_recall_at10, perpair_ranks, K_stable, nulls).

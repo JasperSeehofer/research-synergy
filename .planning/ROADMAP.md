@@ -227,7 +227,8 @@ Plans:
 | 29. Kuramoto-LBD v03 Corpus Build | v1.4 | 1/1 | Complete (FAIL verdict — gate not reached) | 2026-05-05 |
 | 30. TF-IDF Semantic-Edge Graph (EXP-RS-11) | v1.4 | 1/1 | Complete (FAIL verdict — pivot kill gate fired) | 2026-07-04 |
 | 31. Dynamical LBD on full-corpus giant CC (EXP-RS-12) | v1.4 | 1/1 | Complete (MIXED — methodology fix validated; BENCH_P10=0, corpus-content gap isolated) | 2026-07-04 |
-| 32. Bridge-containing corpus re-test (EXP-RS-13) | v1.4 | 0/1 | In progress (corpus built: 1400 nodes, 3/4 pairs bridged; v06 running) | - |
+| 32. Bridge-containing corpus re-test (EXP-RS-13) | v1.4 | 1/1 | Complete (INCONCLUSIVE — corpus fix worked but 1400-node dynamics did not converge; 3rd confound) | 2026-07-04 |
+| 33. Valid converged run on bridged corpus (EXP-RS-14) | v1.4 | 0/1 | In progress | - |
 
 ### Phase 28: Forward-citation crawl mode (S2)
 

@@ -225,7 +225,7 @@ Plans:
 | 27. Crawler Speedup | v1.4 | 2/2 | Complete    | 2026-04-22 |
 | 28. Forward-citation crawl mode (S2) | v1.4 | 4/4 | Complete    | 2026-04-27 |
 | 29. Kuramoto-LBD v03 Corpus Build | v1.4 | 1/1 | Complete (FAIL verdict — gate not reached) | 2026-05-05 |
-| 30. TF-IDF Semantic-Edge Graph (EXP-RS-11) | v1.4 | 0/1 | In progress | - |
+| 30. TF-IDF Semantic-Edge Graph (EXP-RS-11) | v1.4 | 1/1 | Complete (FAIL verdict — pivot kill gate fired) | 2026-07-04 |
 
 ### Phase 28: Forward-citation crawl mode (S2)
 
@@ -267,5 +267,6 @@ Plans:
   4. Verdict vs locked EXP-RS-11 predictions recorded in 30-VERIFICATION.md; independent falsification via `/commission --research` before acceptance
 **Plans:** 1 plan
 Plans:
-- [ ] 30-01-PLAN.md — Regenerate export, build+verify TF-IDF graph, v04 notebook benchmark, verdict
+- [x] 30-01-PLAN.md — Regenerate export, build+verify TF-IDF graph, v04 notebook benchmark, verdict (executed to FAIL verdict 2026-07-04; see 30-VERIFICATION.md)
+**Outcome:** ❌ FAIL — TF-IDF cosine semantic edges make the pre-2015 corpus *more* fragmented (`n_cc/N`=0.830 @ τ=0.3) than the citation graph (0.268) at every pre-registered τ. Precheck fails at all τ; `compute_K_stable`/`BENCH_P10` correctly not reached. **Pivot kill gate FIRED** (well before the 2026-09-30 deadline). Verdict independently falsified-and-CONFIRMED via a right-sized `/commission --research` (3 converging lines; no under-connection bug, no leakage/contamination). Both substrate candidates (citation, semantic) now exhausted on this corpus → the corpus itself is the limiter. Path B (seed selection / newer corpus) is the remaining option; kill vs Path-B decision is the human's, via the vault.
 **UI hint**: no

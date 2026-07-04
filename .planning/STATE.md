@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.4
 milestone_name: Discovery & Intelligence
 status: in_progress
-stopped_at: "Phase 30 — EXP-RS-11 TF-IDF semantic-edge substrate (Path C pivot) in progress"
-last_updated: "2026-07-02T00:00:00.000Z"
-last_activity: 2026-07-02
+stopped_at: "Phase 30 complete — EXP-RS-11 FAIL (TF-IDF substrate fragments worse than citation graph); pivot kill gate FIRED; awaiting human go/kill/pivot"
+last_updated: "2026-07-04T00:00:00.000Z"
+last_activity: 2026-07-04
 progress:
   total_phases: 10
-  completed_phases: 7
+  completed_phases: 8
   total_plans: 20
-  completed_plans: 19
-  percent: 95
+  completed_plans: 20
+  percent: 80
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-06)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Phase 30 — TF-IDF Semantic-Edge Graph + Downstream LBD Method (EXP-RS-11, Path C pivot)
+**Current focus:** Dynamical-LBD thread at a go/kill/pivot gate — Phase 30 (EXP-RS-11) closed FAIL; kill decision is the human's, via the vault. No experiment active.
 
 ## Current Position
 
-Phase: 30
-Plan: 30-01 (in progress)
-Status: Executing EXP-RS-11 per `.planning/phases/30-tfidf-semantic-edge-graph/30-01-PLAN.md`
-Last activity: 2026-07-02
+Phase: 30 (complete — FAIL)
+Plan: 30-01 (complete)
+Status: EXP-RS-11 closed FAIL 2026-07-04; verdict independently falsified-and-CONFIRMED. Pivot kill gate FIRED. Awaiting human go/kill/pivot decision (Path B or kill dynamical-substrate line) via the vault.
+Last activity: 2026-07-04
 
-Progress: [███████████████░░░░░] 78%
+Progress: [████████████████░░░░] 80% (v1.4 phases 25 Discovery Recommendations, 26 Export & Interop still unstarted)
 
 ## Accumulated Context
 
@@ -45,6 +45,7 @@ Recent decisions affecting v1.4:
 - [Phase 24]: Community summaries computed on-read (lazy) — no sidecar cache table
 - [Phase 29]: FAIL verdict 2026-05-05 — pre-2015 cond-mat citation graph too sparse for dynamical LBD (41 cc / 153 nodes); benchmark gate never reached. Honest negative; deviations (S2 429 tarpit → cap 20 / depth 1) recorded in 29-VERIFICATION.md
 - [2026-07-02, human]: Path C pivot approved (`.cartographer-notes.md`) — rebuild substrate as TF-IDF cosine semantic-edge graph (EXP-RS-11, pre-registered). Time-bound kill gate: <3 evaluable Feynman pairs or BENCH_P10 ≤ 0.15 by 2026-09-30 → kill dynamical-substrate line, revert to brute-force baseline
+- [Phase 30]: EXP-RS-11 FAIL verdict 2026-07-04 — TF-IDF cosine semantic edges make the pre-2015 corpus *more* fragmented (n_cc/N=0.830 @ τ=0.3) than the citation graph (0.268) at every pre-registered τ; precheck fails, `BENCH_P10` not producible. **Pivot kill gate FIRED** (well before the 2026-09-30 deadline). Verdict survived a right-sized `/commission --research` (3 converging lines; no under-connection bug, no leakage/contamination). Both substrate candidates now exhausted → the corpus itself is the limiter; Path B (seed selection) is the remaining option. Kill vs Path-B decision = human's, via the vault. See 30-VERIFICATION.md
 
 ### Roadmap Evolution
 
@@ -63,6 +64,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-07-02
-Stopped at: Phase 30 EXP-RS-11 execution (this session)
+Last session: 2026-07-04
+Stopped at: Phase 30 closed (EXP-RS-11 FAIL, kill gate fired). Verdict paperwork complete — 30-VERIFICATION.md, THREAD.md, ROADMAP.md, commission falsification record all landed. Next action is the **human's go/kill/pivot decision** (kill dynamical-substrate line vs Path B seed selection), routed via the vault cartographer — not a coding task in this repo.
 Research thread state: `.planning/research/THREAD.md` (Layer-2 contract; same-day updates required)

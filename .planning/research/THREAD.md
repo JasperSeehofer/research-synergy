@@ -39,8 +39,24 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 
 ## Active experiment
 
-**None active. EXP-RS-14 (Phase 33) closed the Kuramoto–Fiedler line with a CLEAN,
-mechanistically-explained method-negative** (recall@10=0 on a fully well-posed corpus; single
+**EXP-RS-15** (→ Phase 34) — the H-RS-substrate discriminating experiment: **sheaf vs Kuramoto,
+head-to-head on the valid testbed.** Human-directed (2026-07-05) to run the tournament here.
+Sheaf = cellular-sheaf near-section **frustration** ranking of inter-community edges (LOCAL,
+per-edge) — the detector Phase 33 predicted should beat Kuramoto's SINGLE global Fiedler cut.
+Sheaf v01 (EXP-RS-07) was HELD pending "a larger multi-domain corpus with inter-community edges" —
+`research_synergy_bridged_fine_sheaf.json` (1400 nodes, 34 communities, 4/4 pairs bridged,
+benchmark communities share 4–42 terms) is exactly that. Runner `sheaf_lbd_v02.py`; same T2
+precision@10 + per-pair recall metric as Kuramoto v07 (apples-to-apples). c-TF-IDF per community is
+aggregated from per-node vectors (exploratory approximation; formalize via resyn if it shows signal).
+
+**LOCKED PREDICTION (before score):** sheaf per-pair recall@10 ≥ 0.25 (or T2 precision@10 ≥ 0.2) —
+local frustration ranks ≥1 benchmark community-pair into the top-10 where the global cut got 0/4.
+**Decisive:** sheaf > 0 ⇒ "local beats the global cut" confirmed → H-RS-substrate revived on a fair
+test; sheaf = 0 too ⇒ NO graph method surfaces these bridges on this corpus → strong push to the
+brute-force baseline. (RAF = separate reaction-model track, not head-to-head here.)
+
+### (history) EXP-RS-14 → Phase 33 closed the Kuramoto–Fiedler line with a CLEAN,
+mechanistically-explained method-negative, (recall@10=0 on a fully well-posed corpus; single
 global Fiedler cut can't straddle multiple cross-domain pairs). **Thread is now at a go/kill/pivot
 gate — the human's call.** The five-phase substrate arc (29→33) produced: (a) a corpus-construction
 method, (b) a VALID benchmark testbed (`research_synergy_bridged_fine.json`), (c) the clean Kuramoto

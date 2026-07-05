@@ -229,6 +229,7 @@ Plans:
 | 31. Dynamical LBD on full-corpus giant CC (EXP-RS-12) | v1.4 | 1/1 | Complete (MIXED — methodology fix validated; BENCH_P10=0, corpus-content gap isolated) | 2026-07-04 |
 | 32. Bridge-containing corpus re-test (EXP-RS-13) | v1.4 | 1/1 | Complete (INCONCLUSIVE — corpus fix worked but 1400-node dynamics did not converge; 3rd confound) | 2026-07-04 |
 | 33. Valid converged run on bridged corpus (EXP-RS-14) | v1.4 | 1/1 | Complete (CLEAN Kuramoto–Fiedler method-negative — 0/4 on a fully well-posed corpus; single-global-cut mechanism) | 2026-07-04 |
+| 34. Sheaf vs Kuramoto head-to-head (EXP-RS-15) | v1.4 | 1/1 | Complete (sheaf FALSIFIED — recall@10=0, tied with Kuramoto; H-RS-substrate kill criterion met → brute-force) | 2026-07-05 |
 
 ### Phase 28: Forward-citation crawl mode (S2)
 

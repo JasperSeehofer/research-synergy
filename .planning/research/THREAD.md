@@ -14,7 +14,7 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 
 | id | statement | discriminating experiment | status |
 |---|---|---|---|
-| H-RS-substrate | Cellular **sheaves** over the Louvain community graph detect multi-causal bridges better than RAFs or Kuramoto | 4-tier benchmark incl. multi-causal joint-removal ablation on the shared 10-pair Feynman set | **UNBLOCKED + SHARPENED (2026-07-04)** — a valid testbed now exists (`research_synergy_bridged_fine.json`: 1398 nodes, connected, 4/4 pairs bridged, synchronizing, 32 communities) AND EXP-RS-14 gives a sharp prediction: Kuramoto–Fiedler fails via a SINGLE GLOBAL CUT (all pairs on one side); sheaves (LOCAL sections) should beat it. Discriminating experiment = the sheaf/RAF/Kuramoto tournament on this corpus (`/cartographer --tournament`, human/vault). |
+| H-RS-substrate | Cellular **sheaves** over the Louvain community graph detect multi-causal bridges better than RAFs or Kuramoto | 4-tier benchmark incl. multi-causal joint-removal ablation on the shared 10-pair Feynman set | **FALSIFIED at the benchmark bar (Phase 34, EXP-RS-15, 2026-07-05).** On the valid testbed, sheaf frustration recovers 0/4 into the top-10 (benchmark pairs rank #69–218), T4 ablation FALSIFIED (0/5) — **tied with Kuramoto at recall@10 = 0.** Sheaves do NOT beat the bar; the "sheaves better" hypothesis fails on a fair test. (Sheaf's self-reported "precision@10=0.400" is a mislabeled full-list metric — not top-10.) Method-level kill criterion met for the two dynamical/spectral candidates. RAF (reaction model) untested. |
 | H-RS-method | The dynamical-LBD pipeline (Kuramoto→Fiedler) has real cross-domain-bridge recovery signal when run on a well-posed citation graph containing both literatures | EXP-RS-14: per-pair recall@10 on the fully-valid bridged corpus vs 0.15 baseline, vs nulls | **FALSIFIED (Phase 33, 2026-07-04) — CLEAN, mechanistic.** On a corpus that is connected ∧ bridge-containing (4/4 pairs) ∧ synchronized (r=0.932) ∧ finely-partitioned (32 comms), recall@10 = 0.000; NO benchmark pair in the top-200 Fiedler bridges. Mechanism: single global Fiedler cut (side0=834/side1=564) puts ALL benchmark pairs on the SAME side → structurally invisible. Not a confound — every well-posedness condition met. |
 
 ## Kill criteria
@@ -39,8 +39,20 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 
 ## Active experiment
 
-**EXP-RS-15** (→ Phase 34) — the H-RS-substrate discriminating experiment: **sheaf vs Kuramoto,
-head-to-head on the valid testbed.** Human-directed (2026-07-05) to run the tournament here.
+**None active — the dynamical-substrate LBD line has reached its method-level KILL criterion
+(2026-07-05).** Both graph-dynamical/spectral candidates fail the shared 10-pair Feynman benchmark
+at recall@10 = 0 on a fully valid, bridge-containing corpus: Kuramoto–Fiedler (Phase 33, single
+global cut) and sheaf frustration (Phase 34, EXP-RS-15, bridges rank #69–218 not top-10; T4
+ablation 0/5). **Recommendation: retire the dynamical-substrate line, revert to the brute-force
+baseline (EXP-RS-10, BF-community-pairs LLM) as the working LBD method.** The go/kill decision is
+the human's. What the 6-phase arc (29→34) produced and leaves behind: a corpus-construction method
+(`build_bridge_corpus_openalex.py`), a VALID benchmark testbed
+(`research_synergy_bridged_fine{,_sheaf}.json`), and two clean mechanistic method-negatives. RAF
+(reaction-model encoding, EXP-RS-08) remains an untested different-data-model track — a possible
+last dynamical option before full kill, but low expected value given both graph methods tied at 0.
+Full record: `.planning/phases/34-sheaf-vs-kuramoto/34-VERIFICATION.md`.
+
+### (history) EXP-RS-15 → Phase 34 — sheaf vs Kuramoto head-to-head Human-directed (2026-07-05) to run the tournament here.
 Sheaf = cellular-sheaf near-section **frustration** ranking of inter-community edges (LOCAL,
 per-edge) — the detector Phase 33 predicted should beat Kuramoto's SINGLE global Fiedler cut.
 Sheaf v01 (EXP-RS-07) was HELD pending "a larger multi-domain corpus with inter-community edges" —
@@ -114,6 +126,13 @@ this thread; until then the table above is the claim record. (Exact format is an
 spec question — session feedback welcome.)
 
 ## Last verification
+
+2026-07-05 — Phase 34 (EXP-RS-15): **sheaf vs Kuramoto head-to-head — both fail, recall@10 = 0.**
+Sheaf frustration on the valid testbed recovers 0/4 into the top-10 (benchmark pairs rank #69–218),
+T4 ablation 0/5; tied with Kuramoto. Prediction (sheaf ≥ 0.25) FALSIFIED. H-RS-substrate falsified
+at the benchmark bar; method-level KILL criterion met for both dynamical/spectral candidates →
+recommend brute-force baseline. (Flagged: sheaf's built-in "precision@10=0.400" is a mislabeled
+full-list metric, not a real pass.) Prior verifications:
 
 2026-07-04 — Phase 33 (EXP-RS-14): **CLEAN Kuramoto–Fiedler method-negative.** recall@10=0 on a
 fully well-posed corpus (connected+bridged+synchronized+fine communities); mechanism verified

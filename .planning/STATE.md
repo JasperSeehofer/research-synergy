@@ -21,7 +21,7 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-06)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Dynamical-LBD thread at a go/kill/pivot gate after a clean result. Phases 31→33 systematically removed every confound (connectivity → content → convergence → granularity) and reached a CLEAN Kuramoto–Fiedler method-negative (Phase 33): 0/4 recovery on a fully well-posed bridge-containing corpus, mechanism verified (single global Fiedler cut). A valid benchmark testbed now exists. Recommended next (human's call): sheaf/RAF tournament on the testbed via the vault cartographer.
+**Current focus:** Dynamical-LBD thread has reached its method-level KILL criterion (Phase 34, 2026-07-05). Both graph-dynamical/spectral candidates fail the shared 10-pair Feynman benchmark at recall@10 = 0 on a fully valid bridge-containing corpus: Kuramoto–Fiedler (Phase 33, single global cut) and sheaf frustration (Phase 34). Recommendation (human's go/kill): retire the dynamical-substrate line, revert to the brute-force baseline (EXP-RS-10). The 6-phase arc leaves a valid testbed + corpus-construction method + two clean method-negatives.
 
 ## Current Position
 
@@ -67,7 +67,19 @@ None.
 Last session: 2026-07-04 (autonomous overnight)
 Research thread state: `.planning/research/THREAD.md` (Layer-2 contract; same-day updates required)
 
-### OVERNIGHT OUTCOME (Phases 31→33 complete) — thread at a go/kill/pivot gate
+### RESUME POINTER — dynamical-LBD KILL criterion met (Phases 31→34 complete)
+
+**Phase 34 (EXP-RS-15) DONE:** sheaf-vs-Kuramoto head-to-head on the valid testbed → **both fail,
+recall@10 = 0.** Sheaf frustration recovers 0/4 into the top-10 (pairs rank #69–218), T4 ablation
+0/5; tied with Kuramoto (Phase 33). H-RS-substrate falsified at the benchmark bar. **Method-level
+kill criterion met for both graph-dynamical/spectral candidates.** See
+`.planning/phases/34-sheaf-vs-kuramoto/34-VERIFICATION.md`.
+**NEXT (human's go/kill — NOT auto-executed):** retire the dynamical-substrate line, revert to the
+brute-force baseline (EXP-RS-10, BF-community-pairs LLM). Optional last dynamical straw: RAF on its
+reaction-model encoding (EXP-RS-08, different data model, untested) — low expected value. Do NOT
+re-tune corpora/metrics to force a pass (spec-gaming).
+
+### (history) OVERNIGHT OUTCOME (Phases 31→33) — Kuramoto clean negative
 
 **Phase 33 (EXP-RS-14) DONE — CLEAN Kuramoto–Fiedler method-negative.** On a fully well-posed corpus
 (`research_synergy_bridged_fine.json`: connected + 4/4 pairs bridged + synchronized r=0.932 + 32

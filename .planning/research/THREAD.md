@@ -52,7 +52,38 @@ test a flagship generator — **Structure-Mapping (SME) over LLM-extracted role-
 schemas** — with a roles-ON-vs-OFF ablation and the alignment table as a co-primary deliverable; spin
 up the citance/eponym gold-set harvest in parallel. The hard core "bridges emerge from graph dynamics"
 is abandoned; working baseline reverts to brute-force LLM community-pair comparison (EXP-RS-10).
-**Awaiting human choice of direction before the next experiment is opened.**
+
+**NEXT EXPERIMENT CHOSEN (human, 2026-07-06): option (a) — kick off the recommended first move as
+EXP-RS-16 (→ Phase 35).** Pre-registered below; corpus assembly started (`mvp_corpus.json`); the
+Claude-heavy run (schema extraction + baseline + scoring) is best done in a FRESH session (this one
+is context-limited). See STATE.md resume pointer + `.planning/phases/35-*/35-01-PLAN.md`.
+
+**EXP-RS-16 — SME generator vs brute-force baseline, head-to-head (conditional-retrieval eval).**
+Layer: semantic-conceptual (per the brainstorm reframe), NOT graph topology.
+- **Corpus (MVP):** the 5 evaluable Feynman pairs' endpoint papers (10, ~9 have abstracts) +
+  ~26–30 distractors sampled 2/community from the testbed, abstracts fetched (arXiv API / OpenAlex).
+- **Eval = conditional retrieval** (brainstorm-recommended, cheaper + statistically kinder): for each
+  benchmark pair, given side_a, rank all other papers; does side_b appear in top-k? Report recall@k
+  + MRR. Also run on held-out `modern_lbd_pairs.json` to blunt stat-phys-overfit + pretraining leakage.
+- **SME generator:** Claude extracts a BLIND, abstract-only, role-typed relational schema per paper
+  (closed role vocab: control-parameter, order-parameter, coupling, conserved-quantity, threshold, …
+  + higher-order relations CAUSES / UNDERGOES-TRANSITION-AT / CONSERVED-UNDER / COUPLES; domain nouns
+  alpha-renamed). Python SME-lite matcher scores pairs by SYSTEMATICITY (deep relational overlap,
+  surface attrs = 0). The alignment table (spin↔opinion, magnetization↔consensus) is a CO-PRIMARY
+  deliverable. Built blind (single-paper extraction; matcher the LLM never sees) → no scoring leakage.
+- **Baseline (EXP-RS-10, job zero — currently UN-RUN):** Claude conditional-retrieval ranking of
+  candidates per benchmark side_a. Establishes the bar everything is judged against.
+
+**LOCKED PREDICTIONS (before any method runs):**
+- P1: baseline produces a real recall@k number on the testbed (job zero exists).
+- P2 (stake): SME recall@10 ≥ brute-force baseline AND clears the TF-IDF floor (BENCH_P10 > 0.15).
+- P3 (mechanism): roles-ON > roles-OFF (relational structure, not lexical overlap, carries the signal).
+- P4: SME alignment tables match `cross_bridges_ground_truth.json` bridge_names on recovered pairs.
+**GATE:** ADVANCE iff P2 ∧ P3 ∧ P4. PIVOT (don't kill) iff SME ties baseline on recall@k BUT alignment
+tables are high-quality → metric shifts to certified-mapping quality; CAS verifier (brainstorm #3)
+becomes next build. KILL SME iff fails TF-IDF floor OR roles-ON ≤ roles-OFF → fall back to slot-frames
+(#2) or mechanism-ontology (#4). Full design + wildcards + completeness critique:
+`.planning/research/BRAINSTORM-cross-field-transfer.md`.
 
 ### (history) None active — the dynamical-substrate LBD line reached its method-level KILL criterion
 (2026-07-05). Both graph-dynamical/spectral candidates fail the shared 10-pair Feynman benchmark

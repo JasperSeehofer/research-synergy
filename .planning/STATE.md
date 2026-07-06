@@ -67,7 +67,32 @@ None.
 Last session: 2026-07-04 (autonomous overnight)
 Research thread state: `.planning/research/THREAD.md` (Layer-2 contract; same-day updates required)
 
-### RESUME POINTER — dynamical-LBD KILL criterion met (Phases 31→34 complete)
+### RESUME POINTER — EXP-RS-16 (Phase 35) pre-registered; run it in a FRESH session
+
+**New chapter opened.** Dynamical-LBD KILLED (human, 2026-07-05). Brainstorm ran (32 agents →
+`.planning/research/BRAINSTORM-cross-field-transfer.md`). Human chose the recommended first move →
+**EXP-RS-16: SME generator vs brute-force baseline, conditional-retrieval eval** (pre-registered in
+THREAD.md § Active experiment — design + LOCKED predictions P1–P4 + gate).
+
+**To run EXP-RS-16 (fresh session, has full context budget):**
+1. **Assemble corpus** `professional-vault/prototypes/data/mvp_corpus.json` (fetch FAILED this
+   session — arXiv-API batch retry needed). Benchmark endpoints resolve via OpenAlex title.search
+   (9/10 had abstracts); distractors via arXiv API `id_list` (old-format IDs like `cond-mat/…` work
+   there, but the OpenAlex `landing_page_url.search` filter 400s on them). Target: 10 benchmark +
+   ~26 distractor papers with title+abstract. Testbed for sampling/communities:
+   `data/research_synergy_bridged_fine_sheaf.json`; benchmark: `data/feynman_10pair_papers.json`
+   (evaluable pairs 01/03/04/05/06); ground-truth bridge names: `data/cross_bridges_ground_truth.json`.
+2. **Schema extraction** (Claude, ~35 papers × roles-ON + a roles-OFF variant) — blind, abstract-only,
+   role-typed relational schema (spec in THREAD). Best as a small Workflow (parallel, structured output).
+3. **SME-lite matcher** (Python, `prototypes/sme_lite.py`) — systematicity score under best
+   role-consistent VF2/greedy mapping; emit alignment tables.
+4. **Baseline** (Claude conditional-retrieval per benchmark side_a) — job zero, the bar.
+5. **Score** recall@k + MRR, SME vs baseline, roles-ON vs OFF, alignment vs ground-truth → verdict vs
+   the LOCKED gate. Same discipline as prior phases (commit scripts before running on data).
+
+Do NOT re-tune to force a pass. Predictions are locked in THREAD before any method runs.
+
+### (history) Dynamical-LBD KILL criterion met (Phases 31→34 complete)
 
 **Phase 34 (EXP-RS-15) DONE:** sheaf-vs-Kuramoto head-to-head on the valid testbed → **both fail,
 recall@10 = 0.** Sheaf frustration recovers 0/4 into the top-10 (pairs rank #69–218), T4 ablation

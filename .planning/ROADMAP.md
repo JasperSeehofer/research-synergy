@@ -291,3 +291,19 @@ Plans:
 - [x] 31-01-PLAN.md — Build+commit v05 giant-CC citation pipeline, execute to real BENCH_P10, verdict (executed 2026-07-04; see 31-VERIFICATION.md)
 **Outcome:** ⚠️ MIXED. Methodology fix VALIDATED — the 224-node giant CC is well-posed, `K_stable=14.25` converges (Phases 29/30 were connectivity artifacts, reanalysis confirmed). But locked stake P-3 FALSIFIED: `BENCH_P10=0.000`. Decisive static diagnostic: 3/4 evaluable pairs have zero inter-community citation edges (bridge literature absent from the shallow-crawled corpus); pair04's 2-edge bridge is diluted out of the global-top-10. Corpus-CONTENT gap isolated from the (solved) connectivity gap — the method was never fairly tested. Not a clean method-kill. Path forward (human decision): Phase 2 bridge-containing corpus (OpenAlex bulk-ingest) + per-pair metric, vs accept the unproven-method negative → brute-force.
 **UI hint**: no
+
+### Phases 32–34: Kuramoto/sheaf tournament (EXP-RS-13/14/15)
+
+Fast research phases — full record in `.planning/research/THREAD.md` and each phase's VERIFICATION.md. Net result: the dynamical/spectral graph-LBD hard core is CLEANLY REFUTED. Phase 32 (EXP-RS-13) inconclusive/confounded (non-convergence at scale); Phase 33 (EXP-RS-14) clean Kuramoto–Fiedler method-negative (recall@10=0 on a fully well-posed corpus; single global Fiedler cut puts all pairs on the same side); Phase 34 (EXP-RS-15) sheaf frustration also recall@10=0 (bridges rank #69–218). Method-level KILL criterion met → dynamical-substrate line retired (human, 2026-07-05) → revert to brute-force baseline.
+
+### Phase 35: SME generator vs brute-force baseline (EXP-RS-16)
+
+**Goal:** New chapter (semantic-conceptual analogy). Head-to-head: does a Structure-Mapping (SME) generator over blind, LLM-extracted role-typed relational schemas recover known cross-domain analogies at least as well as the brute-force LLM baseline — with the alignment table as a co-primary, leakage-resistant deliverable?
+**Requirements**: None (exploratory research phase). Pre-registration: THREAD.md § Active experiment (P1–P4 LOCKED). Conventions: C-14…C-20 (MVP corpus, role vocab, blind extraction, ablation arms, systematicity, retrieval metric, baseline).
+**Depends on:** valid testbed `research_synergy_bridged_fine_sheaf.json`, `feynman_10pair_papers.json`, `cross_bridges_ground_truth.json`.
+**Success Criteria** (gate): ADVANCE iff P2 ∧ P3 ∧ P4 (SME recall@10 ≥ baseline ∧ clears TF-IDF floor 0.15 ∧ roles-ON > roles-OFF ∧ alignment tables match ground-truth bridge_names).
+**Plans:** 1 plan
+Plans:
+- [x] 35-01-PLAN.md — MVP corpus, blind schema extraction (36 subagents), SME-lite matcher, brute-force baseline, score + verdict (executed 2026-07-06; see 35-VERIFICATION.md)
+**Outcome:** ❌ SME KILLED. roles-ON recall@10 = **0.00** vs brute-force LLM baseline **0.60** (MRR 0.63); role-typing inverts (roles-ON 0.00 < roles-OFF 0.20 < lexical-null 0.40); alignment tables empty 3/5. P2/P3/P4 FALSIFIED, P1 confirmed; both KILL conditions fired. Mechanism = over-abstraction collapse (blind role-schema bottleneck discards the discriminating content the full-context LLM keeps). **Durable win: job-zero brute-force baseline established (recall@10=0.60) — the bar for all future generators.** Next (human's go/kill): pre-registered fallback generators #2 slot-frames / #4 mechanism-ontology.
+**UI hint**: no

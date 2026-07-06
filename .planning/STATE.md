@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.4
 milestone_name: Discovery & Intelligence
 status: in_progress
-stopped_at: "Phase 30 complete — EXP-RS-11 FAIL (TF-IDF substrate fragments worse than citation graph); pivot kill gate FIRED; awaiting human go/kill/pivot"
-last_updated: "2026-07-04T00:00:00.000Z"
-last_activity: 2026-07-04
+stopped_at: "Phase 35 complete — EXP-RS-16: SME over blind role-typed schemas KILLED (recall@10=0.00 vs brute-force baseline 0.60); job-zero baseline established (recall@10=0.60, MRR 0.63). Awaiting human go/kill on next generator (#2 slot-frames or #4 mechanism-ontology)"
+last_updated: "2026-07-06T00:00:00.000Z"
+last_activity: 2026-07-06
 progress:
   total_phases: 10
   completed_phases: 8
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-06)
 
 **Core value:** Surface research gaps and unexplored connections that no single paper reveals — by structurally analyzing and comparing papers across a citation graph
-**Current focus:** Dynamical-LBD thread has reached its method-level KILL criterion (Phase 34, 2026-07-05). Both graph-dynamical/spectral candidates fail the shared 10-pair Feynman benchmark at recall@10 = 0 on a fully valid bridge-containing corpus: Kuramoto–Fiedler (Phase 33, single global cut) and sheaf frustration (Phase 34). Recommendation (human's go/kill): retire the dynamical-substrate line, revert to the brute-force baseline (EXP-RS-10). The 6-phase arc leaves a valid testbed + corpus-construction method + two clean method-negatives.
+**Current focus:** New chapter (semantic-conceptual analogy) opened after the dynamical-LBD kill. **Phase 35 (EXP-RS-16, 2026-07-06) complete:** the flagship SME generator over blind role-typed relational schemas is KILLED — roles-ON recall@10 = 0.00 vs the brute-force LLM baseline 0.60; role-typing inverts (roles-ON < roles-OFF < lexical); over-abstraction collapse on a physics-dense corpus. **Constructive win: job zero is done — the brute-force LLM baseline now has a real number on the valid testbed (recall@10 = 0.60, MRR 0.63), the bar every future generator is judged against.** Next (human's go/kill): the pre-registered fallback generators — slot-frames (#2, problem↔method typed transfer) or mechanism-ontology tagging (#4, MethMeSH) — evaluated against the 0.60 bar on a leakage-controlled set. Deferred (non-gating): modern_lbd_pairs.json robustness.
 
 ## Current Position
 
-Phase: 31 (complete — MIXED verdict)
-Plan: 31-01 (complete)
-Status: EXP-RS-12 got a well-posed graph (K_stable=14.25 converged — reanalysis validated, 29/30 were connectivity artifacts) but BENCH_P10=0.000 (locked stake P-3 falsified). Diagnostic: 3/4 benchmark pairs have zero inter-community edges → corpus lacks the bridge literature; method not fairly tested. Connectivity gap SOLVED; corpus-CONTENT gap now the blocker. Awaiting human go/kill on proposed Phase 2 (bridge-containing corpus via OpenAlex bulk-ingest, real compute cost).
-Last activity: 2026-07-04
+Phase: 35 (complete — SME KILLED, baseline established)
+Plan: 35-01 (complete, EXP-RS-16)
+Status: SME over blind role-typed schemas recall@10 = 0.00 vs brute-force LLM baseline 0.60 (MRR 0.63). P2/P3/P4 falsified, P1 confirmed; both KILL conditions fired. Mechanism = over-abstraction collapse (51% of pairs score systematicity 0; blind schema bottleneck discards the discriminating content the full-context LLM keeps). Durable win: brute-force baseline number established (the bar). Awaiting human go/kill on next generator (#2 slot-frames / #4 mechanism-ontology).
+Last activity: 2026-07-06
 
 Progress: [████████████████░░░░] 80% (v1.4 phases 25 Discovery Recommendations, 26 Export & Interop still unstarted)
 
@@ -46,12 +46,16 @@ Recent decisions affecting v1.4:
 - [Phase 29]: FAIL verdict 2026-05-05 — pre-2015 cond-mat citation graph too sparse for dynamical LBD (41 cc / 153 nodes); benchmark gate never reached. Honest negative; deviations (S2 429 tarpit → cap 20 / depth 1) recorded in 29-VERIFICATION.md
 - [2026-07-02, human]: Path C pivot approved (`.cartographer-notes.md`) — rebuild substrate as TF-IDF cosine semantic-edge graph (EXP-RS-11, pre-registered). Time-bound kill gate: <3 evaluable Feynman pairs or BENCH_P10 ≤ 0.15 by 2026-09-30 → kill dynamical-substrate line, revert to brute-force baseline
 - [Phase 30]: EXP-RS-11 FAIL verdict 2026-07-04 — TF-IDF cosine semantic edges make the pre-2015 corpus *more* fragmented (n_cc/N=0.830 @ τ=0.3) than the citation graph (0.268) at every pre-registered τ; precheck fails, `BENCH_P10` not producible. **Pivot kill gate FIRED** (well before the 2026-09-30 deadline). Verdict survived a right-sized `/commission --research` (3 converging lines; no under-connection bug, no leakage/contamination). Both substrate candidates now exhausted → the corpus itself is the limiter; Path B (seed selection) is the remaining option. Kill vs Path-B decision = human's, via the vault. See 30-VERIFICATION.md
+- [2026-07-05, human]: Dynamical-substrate LBD line KILLED after the 6-phase arc (29→34) refuted both graph-dynamical/spectral candidates (Kuramoto single-cut + sheaf frustration, both recall@10=0). New chapter: semantic-conceptual analogy, decoupled from graph dynamics. Working baseline reverts to brute-force LLM community-pair comparison (EXP-RS-10).
+- [Phase 35]: EXP-RS-16 KILL verdict 2026-07-06 — SME over blind role-typed schemas recall@10=0.00 vs brute-force LLM baseline 0.60 (MRR 0.63); role-typing inverts (roles-ON < roles-OFF < lexical); alignment tables empty 3/5. P2/P3/P4 falsified. Over-abstraction collapse (blind schema bottleneck too lossy on a physics-dense pool). **Constructive: brute-force baseline number established (recall@10=0.60) — the bar.** Next generator (human's go/kill): #2 slot-frames or #4 mechanism-ontology. See 35-VERIFICATION.md
 
 ### Roadmap Evolution
 
 - Phase 28 added: Forward-citation crawl mode (S2)
 - Phase 29 added: Kuramoto-LBD v03 Corpus Build (exploratory benchmark, gates EXP-RS-07) — completed with FAIL verdict
 - Phase 30 added: TF-IDF Semantic-Edge Graph + Downstream LBD Method (EXP-RS-11, Path C pivot)
+- Phases 31–34 added: dynamical/spectral tournament (EXP-RS-12/13/14/15) — ended in clean method-negative; dynamical-substrate line KILLED (human, 2026-07-05)
+- Phase 35 added: SME generator vs brute-force baseline (EXP-RS-16, new semantic-conceptual chapter) — SME KILLED, brute-force baseline established (recall@10=0.60)
 
 ### Pending Todos
 
@@ -64,33 +68,32 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-07-04 (autonomous overnight)
+Last session: 2026-07-06 (EXP-RS-16 run — SME killed, baseline established)
 Research thread state: `.planning/research/THREAD.md` (Layer-2 contract; same-day updates required)
 
-### RESUME POINTER — EXP-RS-16 (Phase 35) pre-registered; run it in a FRESH session
+### RESUME POINTER — EXP-RS-16 DONE (Phase 35, 2026-07-06). Awaiting human go/kill on next generator.
 
-**New chapter opened.** Dynamical-LBD KILLED (human, 2026-07-05). Brainstorm ran (32 agents →
-`.planning/research/BRAINSTORM-cross-field-transfer.md`). Human chose the recommended first move →
-**EXP-RS-16: SME generator vs brute-force baseline, conditional-retrieval eval** (pre-registered in
-THREAD.md § Active experiment — design + LOCKED predictions P1–P4 + gate).
+**EXP-RS-16 ran to a decisive KILL.** SME over blind role-typed relational schemas: roles-ON
+recall@10 = **0.00** vs brute-force LLM baseline **0.60** (MRR 0.63) on the 36-paper MVP testbed.
+Role-typing inverts (roles-ON 0.00 < roles-OFF 0.20 < lexical-null 0.40); alignment tables empty
+3/5. P2/P3/P4 falsified; both KILL conditions fired. Full record:
+`.planning/phases/35-sme-vs-baseline/35-VERIFICATION.md`. Artifacts (vault
+`professional-vault/prototypes/`): `build_mvp_corpus.py` + `data/mvp_corpus.json`,
+`exp16_extraction_prompt.md` + `data/mvp_schemas.json`, `sme_lite.py` (+ toytest) +
+`data/sme_results.json`, `data/baseline_results.json`.
 
-**To run EXP-RS-16 (fresh session, has full context budget):**
-1. **Assemble corpus** `professional-vault/prototypes/data/mvp_corpus.json` (fetch FAILED this
-   session — arXiv-API batch retry needed). Benchmark endpoints resolve via OpenAlex title.search
-   (9/10 had abstracts); distractors via arXiv API `id_list` (old-format IDs like `cond-mat/…` work
-   there, but the OpenAlex `landing_page_url.search` filter 400s on them). Target: 10 benchmark +
-   ~26 distractor papers with title+abstract. Testbed for sampling/communities:
-   `data/research_synergy_bridged_fine_sheaf.json`; benchmark: `data/feynman_10pair_papers.json`
-   (evaluable pairs 01/03/04/05/06); ground-truth bridge names: `data/cross_bridges_ground_truth.json`.
-2. **Schema extraction** (Claude, ~35 papers × roles-ON + a roles-OFF variant) — blind, abstract-only,
-   role-typed relational schema (spec in THREAD). Best as a small Workflow (parallel, structured output).
-3. **SME-lite matcher** (Python, `prototypes/sme_lite.py`) — systematicity score under best
-   role-consistent VF2/greedy mapping; emit alignment tables.
-4. **Baseline** (Claude conditional-retrieval per benchmark side_a) — job zero, the bar.
-5. **Score** recall@k + MRR, SME vs baseline, roles-ON vs OFF, alignment vs ground-truth → verdict vs
-   the LOCKED gate. Same discipline as prior phases (commit scripts before running on data).
+**Durable positive: job zero is done** — the brute-force LLM baseline now has a real number on the
+valid testbed (**recall@10 = 0.60, MRR 0.63**). This is the bar. It is pretraining-leakage-inflated
+(not corrected); the deferred `modern_lbd_pairs.json` robustness run would give a cleaner read.
 
-Do NOT re-tune to force a pass. Predictions are locked in THREAD before any method runs.
+**NEXT (human's go/kill — do NOT auto-execute):** pick the next candidate generator from the
+pre-registered fallback — **#2 slot-frames** (directed problem↔method typed transfer) or **#4
+mechanism-ontology tagging** (MethMeSH). Both were designed to avoid the over-abstraction collapse
+seen here. Evaluate against the **0.60 bar** on a **leakage-controlled** set (ideally the deferred
+modern held-out), keeping an auditable-artifact deliverable. The MVP corpus + `sme_lite.py`
+retrieval/metric harness (parameterized by `--corpus/--schemas/--pairs`) are reusable. Same
+discipline: pre-register predictions in THREAD, commit scripts before running on data, no re-tuning
+to force a pass. See `.planning/research/BRAINSTORM-cross-field-transfer.md` §2 (#2, #4) for designs.
 
 ### (history) Dynamical-LBD KILL criterion met (Phases 31→34 complete)
 

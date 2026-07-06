@@ -16,6 +16,7 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 |---|---|---|---|
 | H-RS-substrate | Cellular **sheaves** over the Louvain community graph detect multi-causal bridges better than RAFs or Kuramoto | 4-tier benchmark incl. multi-causal joint-removal ablation on the shared 10-pair Feynman set | **FALSIFIED at the benchmark bar (Phase 34, EXP-RS-15, 2026-07-05).** On the valid testbed, sheaf frustration recovers 0/4 into the top-10 (benchmark pairs rank #69–218), T4 ablation FALSIFIED (0/5) — **tied with Kuramoto at recall@10 = 0.** Sheaves do NOT beat the bar; the "sheaves better" hypothesis fails on a fair test. (Sheaf's self-reported "precision@10=0.400" is a mislabeled full-list metric — not top-10.) Method-level kill criterion met for the two dynamical/spectral candidates. RAF (reaction model) untested. |
 | H-RS-method | The dynamical-LBD pipeline (Kuramoto→Fiedler) has real cross-domain-bridge recovery signal when run on a well-posed citation graph containing both literatures | EXP-RS-14: per-pair recall@10 on the fully-valid bridged corpus vs 0.15 baseline, vs nulls | **FALSIFIED (Phase 33, 2026-07-04) — CLEAN, mechanistic.** On a corpus that is connected ∧ bridge-containing (4/4 pairs) ∧ synchronized (r=0.932) ∧ finely-partitioned (32 comms), recall@10 = 0.000; NO benchmark pair in the top-200 Fiedler bridges. Mechanism: single global Fiedler cut (side0=834/side1=564) puts ALL benchmark pairs on the SAME side → structurally invisible. Not a confound — every well-posedness condition met. |
+| H-RS-analogy-SME (new chapter) | The cross-field analogy signal is **semantic-conceptual**, recoverable by structure-mapping (SME) over blind LLM-extracted **role-typed relational schemas**, beating the brute-force LLM baseline | EXP-RS-16: conditional-retrieval recall@10 vs the (now-run) brute-force baseline; roles-ON vs OFF; alignment vs ground-truth bridge_names | **FALSIFIED at the benchmark bar (Phase 35, 2026-07-06).** roles-ON recall@10 = 0.00 vs baseline 0.60; role-typing inverts (roles-ON < roles-OFF < lexical); alignment empty 3/5. Over-abstraction collapse on a physics-dense pool. The blind role-schema *representation* is too lossy — NOT that semantic-conceptual analogy is absent (the full-context LLM recovers it at 0.60). Next: less-lossy generators (#2 slot-frames / #4 mechanism-ontology). |
 
 ## Kill criteria
 
@@ -36,6 +37,8 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 | ~~The pre-2015 cond-mat corpus (N=153) is too narrow to support *any* substrate for dynamical LBD~~ | **RETRACTED (2026-07-04)** — this conflated the *pre-2015 slice* with the *corpus*. The FULL corpus citation graph is well-posed (227→giant CC 224, 1 component, n_cc/N=0.009). The fragmentation was caused ENTIRELY by the C-1 pre-2015 slice, which is not required by the date-agnostic BENCH_P10 recovery metric. Not "corpus too narrow" — "temporal slice unnecessary and harmful." | full-corpus connectivity check 2026-07-04; see EXP-RS-12 provenance |
 | Phases 29/30 non-results were corpus/methodology *connectivity* artifacts (the pre-2015 slice) — CONFIRMED: the full-corpus giant CC is well-posed, K_stable=14.25 converges | **verified** (Phase 31 EXP-RS-12, 2026-07-04) | `.planning/phases/31-dynamical-lbd-giant-cc/31-VERIFICATION.md` |
 | The dynamical method recovers Feynman bridges (BENCH_P10 > 0.15) on the well-posed giant CC | **FALSIFIED but test not fair** (Phase 31: BENCH_P10=0.000) — decisive diagnostic: 3/4 evaluable pairs have ZERO inter-community citation edges → the corpus lacks the bridge literature the method is scored on; the 1 pair with a 2-edge bridge (pair04) is diluted out of the global-top-10. Corpus-CONTENT gap now isolated from the (solved) connectivity gap. | 31-VERIFICATION.md § "decisive diagnostic" |
+| The brute-force LLM baseline (EXP-RS-10) recovers cross-domain analogies on the valid testbed | **verified** (Phase 35, 2026-07-06) — conditional-retrieval recall@10 = **0.60**, MRR 0.63 (3/5 pairs rank side_b #1). Job zero established; this is the bar for all future generators. Caveat: pretraining-leakage-inflated (not corrected). | `.planning/phases/35-sme-vs-baseline/35-VERIFICATION.md` |
+| SME over blind, role-typed relational schemas beats the brute-force baseline / role-typing carries the analogy signal | **FALSIFIED** (Phase 35 EXP-RS-16, 2026-07-06) — roles-ON recall@10 = **0.00** vs baseline 0.60; role-typing *inverts* (roles-ON 0.00 < roles-OFF 0.20 < lexical 0.40); alignment tables empty 3/5. Over-abstraction collapse: closed role vocab maps every network-physics paper onto one skeleton (51% of pairs score 0). Blind schema bottleneck discards content the full-context LLM keeps. Both KILL conditions fired. | 35-VERIFICATION.md |
 
 ## Active experiment
 
@@ -53,10 +56,22 @@ schemas** — with a roles-ON-vs-OFF ablation and the alignment table as a co-pr
 up the citance/eponym gold-set harvest in parallel. The hard core "bridges emerge from graph dynamics"
 is abandoned; working baseline reverts to brute-force LLM community-pair comparison (EXP-RS-10).
 
-**NEXT EXPERIMENT CHOSEN (human, 2026-07-06): option (a) — kick off the recommended first move as
-EXP-RS-16 (→ Phase 35).** Pre-registered below; corpus assembly started (`mvp_corpus.json`); the
-Claude-heavy run (schema extraction + baseline + scoring) is best done in a FRESH session (this one
-is context-limited). See STATE.md resume pointer + `.planning/phases/35-*/35-01-PLAN.md`.
+**EXP-RS-16 → Phase 35 DONE (2026-07-06): SME KILLED; brute-force baseline established.** Ran the
+full head-to-head on the valid testbed (36-paper MVP corpus, 36 blind role-typed schemas). Result:
+**SME roles-ON recall@10 = 0.00 vs brute-force LLM baseline recall@10 = 0.60 (MRR 0.63).**
+Role-typing *inverts* the prediction — roles-ON (0.00) < roles-OFF (0.20) < lexical-null (0.40);
+adding structure hurts. Alignment tables empty for 3/5 pairs. **P2, P3, P4 all FALSIFIED; P1
+confirmed.** Both KILL conditions fire → SME-over-blind-schemas retired. Mechanism: over-abstraction
+collapse — the closed role vocab maps every network-physics paper onto one skeleton (51% of pairs
+score systematicity 0), so the true analogue ties with distractors; the blind schema bottleneck
+discards the discriminating content the full-context LLM (0.60) keeps. **Durable win: job zero is
+done — the brute-force baseline now has a real number (recall@10 = 0.60, MRR 0.63), the bar every
+future generator is judged against.** Full record: `.planning/phases/35-sme-vs-baseline/35-VERIFICATION.md`.
+**NEXT (human's go/kill):** next generator per the pre-registered fallback = slot-frames (#2,
+problem↔method typed transfer) or mechanism-ontology tagging (#4, MethMeSH), evaluated against the
+0.60 bar on a leakage-controlled set. Deferred (non-gating): `modern_lbd_pairs.json` robustness.
+
+### (history) EXP-RS-16 pre-registration (design LOCKED before run, 2026-07-06)
 
 **EXP-RS-16 — SME generator vs brute-force baseline, head-to-head (conditional-retrieval eval).**
 Layer: semantic-conceptual (per the brainstorm reframe), NOT graph topology.
@@ -172,6 +187,15 @@ this thread; until then the table above is the claim record. (Exact format is an
 spec question — session feedback welcome.)
 
 ## Last verification
+
+2026-07-06 — Phase 35 (EXP-RS-16): **SME KILLED; brute-force baseline established.** SME over blind
+role-typed schemas recall@10 = **0.00** vs brute-force LLM baseline **0.60** (MRR 0.63) on the
+36-paper MVP testbed; role-typing inverts (roles-ON 0.00 < roles-OFF 0.20 < lexical 0.40); alignment
+tables empty 3/5. P2/P3/P4 FALSIFIED, P1 confirmed; both KILL conditions fired. Mechanism =
+over-abstraction collapse (51% of pairs score systematicity 0; blind schema bottleneck discards the
+discriminating content the full-context LLM keeps). Durable win: job-zero baseline number is done
+(recall@10 = 0.60), the bar for future generators. Next (human's go/kill): slot-frames (#2) or
+mechanism-ontology (#4). Prior verifications:
 
 2026-07-05 — Phase 34 (EXP-RS-15): **sheaf vs Kuramoto head-to-head — both fail, recall@10 = 0.**
 Sheaf frustration on the valid testbed recovers 0/4 into the top-10 (benchmark pairs rank #69–218),

@@ -1,0 +1,5 @@
+{
+ "arxiv_id": "1912.11518",
+ "title": "Fluctuations of the spectrum in rotationally invariant random matrix ensembles",
+ "abstract": "We investigate traces of powers of random matrices whose distributions are invariant under rotations (with respect to the Hilbert--Schmidt inner product) within a real-linear subspace of the space of $n\\times n$ matrices. The matrices we consider may be real or complex, and Hermitian, antihermitian, or general. We use Stein's method to prove multivariate central limit theorems, with convergence rates, for these traces of powers, which imply central limit theorems for polynomial linear eigenvalue statistics. In contrast to the usual situation in random matrix theory, in our approach general, nonnormal matrices turn out to be easier to study than Hermitian matrices."
+}

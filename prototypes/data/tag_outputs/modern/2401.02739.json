@@ -1,0 +1,4 @@
+{"arxiv_id": "2401.02739",
+ "tags": [{"archetype_id": "arch-060", "evidence_snippet": "a novel regularized evidence lower bound (ELBO) on the marginal likelihood"},
+          {"archetype_id": "arch-108", "evidence_snippet": "diffusion models as flexible approximate posteriors"},
+          {"archetype_id": "arch-017", "evidence_snippet": "perform iterative refinement in latent space"}]}

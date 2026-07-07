@@ -1,0 +1,4 @@
+{"arxiv_id": "2409.17599",
+ "tags": [{"archetype_id": "arch-018", "evidence_snippet": "a classic Brownian particle"},
+          {"archetype_id": "arch-108", "evidence_snippet": "noisy neural networks can infer its probabilistic motion"},
+          {"archetype_id": "arch-094", "evidence_snippet": "The decoding of the particle motion by neurons is performed with some accuracy"}]}

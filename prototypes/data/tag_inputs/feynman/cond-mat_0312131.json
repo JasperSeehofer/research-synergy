@@ -1,0 +1,5 @@
+{
+ "arxiv_id": "cond-mat/0312131",
+ "title": "Dynamics of Rumor Spreading in Complex Networks",
+ "abstract": "We derive the mean-field equations characterizing the dynamics of a rumor process that takes place on top of complex heterogeneous networks. These equations are solved numerically by means of a stochastic approach. First, we present analytical and Monte Carlo calculations for homogeneous networks and compare the results with those obtained by the numerical method. Then, we study the spreading process in detail for random scale-free networks. The time profiles for several quantities are numerically computed, which allow us to distinguish among different variants of rumor spreading algorithms. Our conclusions are directed to possible applications in replicated database maintenance, peer to peer communication networks and social spreading phenomena."
+}

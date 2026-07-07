@@ -1,0 +1,5 @@
+{"arxiv_id": "2401.04191",
+ "tags": [{"archetype_id": "arch-001", "evidence_snippet": "the phase diagram of p-body Hopfield networks"},
+          {"archetype_id": "arch-005", "evidence_snippet": "the paramagnetic to ferromagnetic transition of the teacher-student setting"},
+          {"archetype_id": "arch-076", "evidence_snippet": "the adversarial robustness of such a student"},
+          {"archetype_id": "arch-122", "evidence_snippet": "the paramagnetic to spin-glass transition of the direct model, i.e. with random patterns"}]}

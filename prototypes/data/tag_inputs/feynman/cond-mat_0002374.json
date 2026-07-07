@@ -1,0 +1,5 @@
+{
+ "arxiv_id": "cond-mat/0002374",
+ "title": "Wealth condensation in a simple model of economy",
+ "abstract": "We introduce a simple model of economy, where the time evolution is described by an equation capturing both exchange between individuals and random speculative trading, in such a way that the fundamental symmetry of the economy under an arbitrary change of monetary units is insured. We investigate a mean-field limit of this equation and show that the distribution of wealth is of the Pareto (power-law) type. The Pareto behaviour of the tails of this distribution appears to be robust for finite range models, as shown using both a mapping to the random `directed polymer' problem, as well as numerical simulations. In this context, a transition between an economy dominated by a few individuals from a situation where the wealth is more evenly spread out, is found. An interesting outcome is that the distribution of wealth tends to be very broadly distributed when exchanges are limited, either in amplitude or topologically. Favoring exchanges (and, less surprisingly, increasing taxes) seems to be an efficient way to reduce inequalities."
+}

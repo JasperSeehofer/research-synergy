@@ -1,0 +1,5 @@
+{"arxiv_id": "cond-mat/0203227",
+ "tags": [{"archetype_id": "arch-001", "evidence_snippet": "the nearest-neighbor ferromagnetic Ising model"},
+          {"archetype_id": "arch-006", "evidence_snippet": "anomalous behavior of the magnetization, magnetic susceptibility and specific heat"},
+          {"archetype_id": "arch-111", "evidence_snippet": "when $P(k)$ is fat-tailed"},
+          {"archetype_id": "arch-068", "evidence_snippet": "When the second moment becomes divergent, $T_c$ approaches infinity"}]}

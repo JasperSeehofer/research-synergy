@@ -1,0 +1,5 @@
+{
+ "arxiv_id": "2109.09555",
+ "title": "Learning quantum phase transitions through Topological Data Analysis",
+ "abstract": "We implement a computational pipeline based on a recent machine learning technique, namely the Topological Data Analysis (TDA), that has the capability of extracting powerful information-carrying topological features. We apply such a method to the study quantum phase transitions and, to showcase its validity and potential, we exploit such a method for the investigation of two paramount important quantum systems: the 2D periodic Anderson model and the Hubbard model on the honeycomb lattice, both cases on the half-filling. To this end, we have performed unbiased auxiliary field quantum Monte Carlo simulations, feeding the TDA with snapshots of the Hubbard-Stratonovich fields through the course of the simulations The quantum critical points obtained from TDA agree quantitatively well with the existing literature, therefore suggesting that this technique could be used to investigate quantum systems where the analysis of the phase transitions is still a challenge."
+}

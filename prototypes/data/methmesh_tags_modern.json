@@ -1,0 +1,212 @@
+{
+ "experiment": "EXP-RS-17",
+ "convention": "C-23",
+ "sub": "modern",
+ "n_tagged": 12,
+ "tagging_recall_hits": 4,
+ "n_pairs": 6,
+ "gate": 4,
+ "tagging_recall_pass": true,
+ "shared_archetypes_per_pair": {
+  "m01": [
+   "arch-076"
+  ],
+  "m02": [
+   "arch-082"
+  ],
+  "m03": [],
+  "m04": [],
+  "m06": [
+   "arch-108"
+  ],
+  "m08": [
+   "arch-065"
+  ]
+ },
+ "tags": {
+  "1912.11518": {
+   "tags": [
+    {
+     "archetype_id": "arch-104",
+     "evidence_snippet": "traces of powers of random matrices"
+    },
+    {
+     "archetype_id": "arch-106",
+     "evidence_snippet": "prove multivariate central limit theorems"
+    }
+   ]
+  },
+  "2004.02551": {
+   "tags": [
+    {
+     "archetype_id": "arch-009",
+     "evidence_snippet": "topological data analysis"
+    }
+   ]
+  },
+  "2008.02217": {
+   "tags": [
+    {
+     "archetype_id": "arch-076",
+     "evidence_snippet": "fixed points which store a single pattern"
+    },
+    {
+     "archetype_id": "arch-073",
+     "evidence_snippet": "three types of energy minima (fixed points of the update)"
+    },
+    {
+     "archetype_id": "arch-074",
+     "evidence_snippet": "metastable states averaging over a subset of patterns"
+    }
+   ]
+  },
+  "2103.07713": {
+   "tags": [
+    {
+     "archetype_id": "arch-046",
+     "evidence_snippet": "five different categories of individuals: susceptibles, infective, recovered, vaccinated and precautioned"
+    },
+    {
+     "archetype_id": "arch-065",
+     "evidence_snippet": "Direct contact interactions spread the infection to the susceptibles"
+    },
+    {
+     "archetype_id": "arch-033",
+     "evidence_snippet": "the Bass equation models the adoption of information"
+    },
+    {
+     "archetype_id": "arch-111",
+     "evidence_snippet": "The topology of the information layer is a scale-free network"
+    }
+   ]
+  },
+  "2104.01351": {
+   "tags": [
+    {
+     "archetype_id": "arch-102",
+     "evidence_snippet": "dimension of the resulting features is much smaller than other baseline feature map constructions"
+    },
+    {
+     "archetype_id": "arch-095",
+     "evidence_snippet": "utilize the leverage score based sampling for improved bounds"
+    },
+    {
+     "archetype_id": "arch-099",
+     "evidence_snippet": "prove a spectral approximation guarantee of the proposed feature map to the NTK matrix"
+    }
+   ]
+  },
+  "2105.08288": {
+   "tags": [
+    {
+     "archetype_id": "arch-082",
+     "evidence_snippet": "higher synchronization in the FPN and lower synchronization in the DMN"
+    },
+    {
+     "archetype_id": "arch-112",
+     "evidence_snippet": "changes the topology of brain communities in DMN and FPN"
+    }
+   ]
+  },
+  "2109.09555": {
+   "tags": [
+    {
+     "archetype_id": "arch-096",
+     "evidence_snippet": "auxiliary field quantum Monte Carlo simulations"
+    },
+    {
+     "archetype_id": "arch-006",
+     "evidence_snippet": "quantum phase transitions"
+    },
+    {
+     "archetype_id": "arch-125",
+     "evidence_snippet": "snapshots of the Hubbard-Stratonovich fields"
+    }
+   ]
+  },
+  "2206.02851": {
+   "tags": [
+    {
+     "archetype_id": "arch-082",
+     "evidence_snippet": "synchronization is observed in such populations if they are allowed to interact"
+    },
+    {
+     "archetype_id": "arch-035",
+     "evidence_snippet": "resource competition among populations of Kuramoto oscillators"
+    },
+    {
+     "archetype_id": "arch-125",
+     "evidence_snippet": "correlations can arise between the synchronization states of two populations of oscillators which share no phase-coupling edges"
+    }
+   ]
+  },
+  "2401.02739": {
+   "tags": [
+    {
+     "archetype_id": "arch-060",
+     "evidence_snippet": "a novel regularized evidence lower bound (ELBO) on the marginal likelihood"
+    },
+    {
+     "archetype_id": "arch-108",
+     "evidence_snippet": "diffusion models as flexible approximate posteriors"
+    },
+    {
+     "archetype_id": "arch-017",
+     "evidence_snippet": "perform iterative refinement in latent space"
+    }
+   ]
+  },
+  "2401.04191": {
+   "tags": [
+    {
+     "archetype_id": "arch-001",
+     "evidence_snippet": "the phase diagram of p-body Hopfield networks"
+    },
+    {
+     "archetype_id": "arch-005",
+     "evidence_snippet": "the paramagnetic to ferromagnetic transition of the teacher-student setting"
+    },
+    {
+     "archetype_id": "arch-076",
+     "evidence_snippet": "the adversarial robustness of such a student"
+    },
+    {
+     "archetype_id": "arch-122",
+     "evidence_snippet": "the paramagnetic to spin-glass transition of the direct model, i.e. with random patterns"
+    }
+   ]
+  },
+  "2406.03763": {
+   "tags": [
+    {
+     "archetype_id": "arch-065",
+     "evidence_snippet": "the transmission of infectious diseases"
+    },
+    {
+     "archetype_id": "arch-047",
+     "evidence_snippet": "analytically derive the threshold for the proposed epidemic model"
+    },
+    {
+     "archetype_id": "arch-016",
+     "evidence_snippet": "We adopt the micro-Markov chain approach"
+    }
+   ]
+  },
+  "2409.17599": {
+   "tags": [
+    {
+     "archetype_id": "arch-018",
+     "evidence_snippet": "a classic Brownian particle"
+    },
+    {
+     "archetype_id": "arch-108",
+     "evidence_snippet": "noisy neural networks can infer its probabilistic motion"
+    },
+    {
+     "archetype_id": "arch-094",
+     "evidence_snippet": "The decoding of the particle motion by neurons is performed with some accuracy"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,173 @@
+{
+ "experiment": "EXP-RS-17",
+ "convention": "C-23",
+ "sub": "feynman",
+ "n_tagged": 10,
+ "tagging_recall_hits": 1,
+ "n_pairs": 5,
+ "gate": 3,
+ "tagging_recall_pass": false,
+ "shared_archetypes_per_pair": {
+  "pair01-ising-opinion": [],
+  "pair03-sir-rumour": [
+   "arch-068"
+  ],
+  "pair04-percolation-epidemics": [],
+  "pair05-lotka-volterra-markets": [],
+  "pair06-turing-spatial-economy": []
+ },
+ "tags": {
+  "0710.3256": {
+   "tags": [
+    {
+     "archetype_id": "arch-069",
+     "evidence_snippet": "opinion, cultural and language dynamics"
+    },
+    {
+     "archetype_id": "arch-065",
+     "evidence_snippet": "social spreading"
+    }
+   ]
+  },
+  "1005.1986": {
+   "tags": [
+    {
+     "archetype_id": "arch-010",
+     "evidence_snippet": "Turing instability in activator-inhibitor systems provides a paradigm of nonequilibrium pattern formation"
+    },
+    {
+     "archetype_id": "arch-011",
+     "evidence_snippet": "spontaneous differentiation of the network nodes into activator-rich and activator-low groups"
+    },
+    {
+     "archetype_id": "arch-057",
+     "evidence_snippet": "multiple coexisting states and hysteresis effects"
+    },
+    {
+     "archetype_id": "arch-001",
+     "evidence_snippet": "the framework of the mean-field approximation for network dynamics"
+    }
+   ]
+  },
+  "cond-mat/0002374": {
+   "tags": [
+    {
+     "archetype_id": "arch-001",
+     "evidence_snippet": "We investigate a mean-field limit of this equation"
+    },
+    {
+     "archetype_id": "arch-018",
+     "evidence_snippet": "random speculative trading"
+    },
+    {
+     "archetype_id": "arch-042",
+     "evidence_snippet": "the distribution of wealth is of the Pareto (power-law) type"
+    }
+   ]
+  },
+  "cond-mat/0007235": {
+   "tags": [
+    {
+     "archetype_id": "arch-025",
+     "evidence_snippet": "the phase transition at which a giant component first forms"
+    },
+    {
+     "archetype_id": "arch-049",
+     "evidence_snippet": "the mean number of vertices a certain distance away from a randomly chosen vertex"
+    }
+   ]
+  },
+  "cond-mat/0010317": {
+   "tags": [
+    {
+     "archetype_id": "arch-065",
+     "evidence_snippet": "the spreading of infections on scale-free networks"
+    },
+    {
+     "archetype_id": "arch-068",
+     "evidence_snippet": "the absence of an epidemic threshold"
+    },
+    {
+     "archetype_id": "arch-111",
+     "evidence_snippet": "modeled by the class of scale-free networks"
+    },
+    {
+     "archetype_id": "arch-048",
+     "evidence_snippet": "its associated critical behavior"
+    }
+   ]
+  },
+  "cond-mat/0203227": {
+   "tags": [
+    {
+     "archetype_id": "arch-001",
+     "evidence_snippet": "the nearest-neighbor ferromagnetic Ising model"
+    },
+    {
+     "archetype_id": "arch-006",
+     "evidence_snippet": "anomalous behavior of the magnetization, magnetic susceptibility and specific heat"
+    },
+    {
+     "archetype_id": "arch-111",
+     "evidence_snippet": "when $P(k)$ is fat-tailed"
+    },
+    {
+     "archetype_id": "arch-068",
+     "evidence_snippet": "When the second moment becomes divergent, $T_c$ approaches infinity"
+    }
+   ]
+  },
+  "cond-mat/0205009": {
+   "tags": [
+    {
+     "archetype_id": "arch-046",
+     "evidence_snippet": "susceptible/infective/removed (SIR) models"
+    },
+    {
+     "archetype_id": "arch-065",
+     "evidence_snippet": "probability of transmission between all pairs of individuals"
+    }
+   ]
+  },
+  "cond-mat/0312131": {
+   "tags": [
+    {
+     "archetype_id": "arch-001",
+     "evidence_snippet": "We derive the mean-field equations characterizing the dynamics"
+    },
+    {
+     "archetype_id": "arch-046",
+     "evidence_snippet": "a rumor process that takes place on top of complex heterogeneous networks"
+    },
+    {
+     "archetype_id": "arch-068",
+     "evidence_snippet": "the spreading process in detail for random scale-free networks"
+    }
+   ]
+  },
+  "cond-mat/9801289": {
+   "tags": [
+    {
+     "archetype_id": "arch-042",
+     "evidence_snippet": "Zipf's law of city distribution"
+    },
+    {
+     "archetype_id": "arch-040",
+     "evidence_snippet": "the simplest interaction (pairwise)"
+    }
+   ]
+  },
+  "nlin/0202034": {
+   "tags": [
+    {
+     "archetype_id": "arch-034",
+     "evidence_snippet": "the population dynamics of several interacting species"
+    },
+    {
+     "archetype_id": "arch-038",
+     "evidence_snippet": "adding new species through a process of \"invasion\""
+    }
+   ]
+  }
+ }
+}

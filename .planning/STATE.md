@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.4
 milestone_name: Discovery & Intelligence
 status: in_progress
-stopped_at: "EXP-RS-17 (Phase 36) PRE-REGISTERED 2026-07-07 — mechanism-ontology (MethMeSH, brainstorm #4) generator, predictions LOCKED in THREAD.md + vault registry + CONVENTIONS C-22..C-26; NOT yet run. #4 chosen first (human). Next execution steps: freeze the field-agnostic vocab (blind subagent, hashed) → build the modern held-out corpus → blind tag → eval vs the 0.60 Feynman bar + the new modern bar. Awaiting human witness of the locked predictions before the run."
+stopped_at: "EXP-RS-17 (Phase 36) RUN 2026-07-07 — MethMeSH (mechanism-ontology #4) KILLED-BY-CONSTRUCTION at the cheap tagging-recall gate: Feynman 1/5 (FAIL, gate 3/5), modern 4/6 (PASS) → P2 falsified → pre-registered KILL, reached before any distractor tagging/full eval. Mechanism = exact-archetype-ID granularity brittleness (analogous papers get neighboring non-identical archetypes). Full record: .planning/phases/36-methmesh-vs-baseline/36-VERIFICATION.md. AWAITING HUMAN go/kill/pivot: (A) accept KILL → build #2 slot-frames; (B) complete the modern-only eval for a PIVOT; (C) pre-register EXP-RS-18 with archetype-similarity scoring (reuses the 22 tags)."
 last_updated: "2026-07-07T00:00:00.000Z"
 last_activity: 2026-07-07
 progress:

@@ -64,6 +64,15 @@ same collapse *before* the full eval is paid for.
   (C-23). Candidate score(i,j) = **IDF-weighted archetype-signature similarity MINUS λ·lexical-similarity**
   (λ=1.0; lexical = the C-17 abstract bag-of-words TF-IDF null); rare (high-IDF) shared archetypes
   carry the weight (C-25).
+  - **FROZEN 2026-07-07 (leakage-control lock):** `data/mechanism_vocab.json` = **125** field-agnostic
+    archetypes, built blind by a subagent with no benchmark access (external seed: TRIZ 40 principles +
+    canonical stat-mech / dynamical-systems / network-science / stochastic-process / info-theory /
+    optimization / random-matrix taxonomies; per-archetype provenance). **SHA-256
+    `aa6584dcbd992bcafc5ceff87961f0271e66c6403ca376e8a1a6ff95dadd1a6a`**, committed BEFORE any tagging.
+    No edits post-freeze. (Benchmark bridge mechanisms — threshold/percolation, compartmental,
+    reaction-diffusion/Turing, cavity/message-passing, martingale, replicator, phase-sync — appear as
+    canonical archetypes present in ANY complete taxonomy, not benchmark-derived; the known
+    "circularity" risk is exactly what the modern held-out bar + P4 ablation control for.)
 - **Corpora.** (1) Feynman MVP = REUSE `data/mvp_corpus.json` (36 papers, C-14) → apples-to-apples
   vs the 0.60 leaky bar and the SME 0.00. (2) **Modern held-out MVP (NEW, C-24)** = the 6 evaluable
   `modern_lbd_pairs.json` pairs (m01/02/03/04/06/08) × 2 sides = 12 endpoints + ~24 deterministic

@@ -1,0 +1,776 @@
+{
+  "experiment": "EXP-RS-17",
+  "convention": "C-22",
+  "description": "Frozen field-agnostic mechanism-archetype vocabulary, built blind (no benchmark access).",
+  "sources": [
+    "TRIZ 40 inventive principles",
+    "canonical statistical mechanics (mean-field theory, critical phenomena, renormalization group)",
+    "dynamical systems and bifurcation theory (normal forms, attractors)",
+    "network science (percolation, contagion, community structure, preferential attachment)",
+    "stochastic processes (master equation, Fokker-Planck, random walks, branching processes)",
+    "nonlinear dynamics and pattern formation (reaction-diffusion, synchronization)",
+    "mathematical population dynamics and evolutionary game theory (replicator, Lotka-Volterra)",
+    "information theory (Shannon capacity, rate-distortion, fluctuation-dissipation)",
+    "variational calculus and optimization (free energy, duality, optimal transport)",
+    "numerical and Monte-Carlo methods (MCMC, importance sampling)",
+    "linear algebra and random matrix theory (spectral decomposition, PCA)",
+    "control theory (feedback regulation)",
+    "probability limit theorems (central limit, extreme value, stable laws)",
+    "message-passing statistical inference (belief propagation, cavity method)",
+    "self-organized criticality (Bak-Tang-Wiesenfeld paradigm)",
+    "nLab and Wikidata structural model/theory taxonomies"
+  ],
+  "n": 125,
+  "archetypes": [
+    {
+      "id": "arch-001",
+      "label": "mean-field-order-parameter",
+      "gloss": "Each unit responds only to a population-averaged aggregate, which is in turn determined by the units' collective response; the state is found as the solution of a self-consistent fixed-point equation for that aggregate.",
+      "provenance": "canonical statistical mechanics: mean-field theory"
+    },
+    {
+      "id": "arch-002",
+      "label": "cavity-method",
+      "gloss": "A single unit's marginal behavior is computed by removing it and treating its neighbors as approximately independent, then closing the description self-consistently across all units.",
+      "provenance": "message-passing statistical inference: cavity method"
+    },
+    {
+      "id": "arch-003",
+      "label": "self-consistent-feedback-closure",
+      "gloss": "A quantity enters the equation that determines itself; the operating point is the fixed point where the imposed input equals the produced output.",
+      "provenance": "canonical statistical mechanics: self-consistent field closures"
+    },
+    {
+      "id": "arch-004",
+      "label": "annealed-vs-quenched-disorder",
+      "gloss": "Randomness is handled in two contrasting ways: fast fluctuating randomness averaged jointly with the dynamics, versus frozen randomness held fixed as a parameter and averaged only over outcomes.",
+      "provenance": "canonical statistical mechanics: disordered systems (quenched vs annealed averaging)"
+    },
+    {
+      "id": "arch-005",
+      "label": "spontaneous-symmetry-breaking",
+      "gloss": "Past a control threshold the system settles into one of several equivalent configurations, breaking a symmetry that the governing rules still respect.",
+      "provenance": "canonical statistical mechanics: symmetry breaking"
+    },
+    {
+      "id": "arch-006",
+      "label": "continuous-order-parameter-transition",
+      "gloss": "An aggregate observable rises continuously from zero as a control parameter passes a critical value, with diverging susceptibility and correlation length (second-order-like).",
+      "provenance": "canonical statistical mechanics: continuous phase transitions"
+    },
+    {
+      "id": "arch-007",
+      "label": "first-order-nucleation",
+      "gloss": "A metastable state decays through the formation of critical-sized domains that then grow; the aggregate observable jumps discontinuously and the transition shows path-dependent hysteresis.",
+      "provenance": "canonical statistical mechanics: nucleation and first-order transitions"
+    },
+    {
+      "id": "arch-008",
+      "label": "spinodal-instability",
+      "gloss": "A homogeneous state becomes linearly unstable to infinitesimal fluctuations with no barrier, decomposing spontaneously across a band of length scales.",
+      "provenance": "canonical statistical mechanics: spinodal decomposition"
+    },
+    {
+      "id": "arch-009",
+      "label": "topological-defect",
+      "gloss": "A localized singularity in an extended order field that carries a conserved integer charge and cannot be removed by any continuous, smooth deformation.",
+      "provenance": "canonical statistical mechanics / nLab: topological defects and winding number"
+    },
+    {
+      "id": "arch-010",
+      "label": "turing-instability",
+      "gloss": "A stable homogeneous state is destabilized specifically by unequal spreading rates of a short-range self-amplifying component and a long-range suppressing component, selecting a finite-wavelength stationary pattern.",
+      "provenance": "nonlinear dynamics and pattern formation: Turing/diffusion-driven instability"
+    },
+    {
+      "id": "arch-011",
+      "label": "activator-inhibitor-loop",
+      "gloss": "Short-range self-reinforcement coupled to broader-range suppression, producing spontaneous spatial or temporal structure through the competition of the two opposing ranges.",
+      "provenance": "nonlinear dynamics and pattern formation: activator-inhibitor systems"
+    },
+    {
+      "id": "arch-012",
+      "label": "traveling-wave-front",
+      "gloss": "A self-sustaining interface connecting two states propagates at a selected speed, converting one state into the other as it passes.",
+      "provenance": "nonlinear dynamics and pattern formation: reaction-diffusion fronts (Fisher-KPP)"
+    },
+    {
+      "id": "arch-013",
+      "label": "phase-separation-coarsening",
+      "gloss": "A well-mixed system spontaneously demixes into distinct domains whose characteristic size grows as a power of elapsed time (domain coarsening).",
+      "provenance": "canonical statistical mechanics: coarsening and Ostwald ripening"
+    },
+    {
+      "id": "arch-014",
+      "label": "localized-dissipative-structure",
+      "gloss": "Stable, spatially bounded structures such as isolated spots or pulses are maintained far from equilibrium by continuous throughput of energy or matter.",
+      "provenance": "nonlinear dynamics and pattern formation: dissipative solitons / localized states"
+    },
+    {
+      "id": "arch-015",
+      "label": "kinetic-interface-roughening",
+      "gloss": "A moving boundary between two regions grows rough over time, with its width and correlations obeying universal scaling exponents independent of microscopic detail.",
+      "provenance": "canonical statistical mechanics: kinetic roughening (KPZ universality)"
+    },
+    {
+      "id": "arch-016",
+      "label": "master-equation-jump-process",
+      "gloss": "Probability flows among discrete states at prescribed transition rates; each state's occupancy changes as the balance of incoming and outgoing probability fluxes.",
+      "provenance": "stochastic processes: master equation"
+    },
+    {
+      "id": "arch-017",
+      "label": "fokker-planck-drift-diffusion",
+      "gloss": "A probability density over a continuous variable evolves under a deterministic drift together with stochastic spreading, conserving total probability.",
+      "provenance": "stochastic processes: Fokker-Planck equation"
+    },
+    {
+      "id": "arch-018",
+      "label": "langevin-noise-forcing",
+      "gloss": "A deterministic equation of motion is augmented by an explicit random forcing term standing in for unresolved fast degrees of freedom.",
+      "provenance": "stochastic processes: Langevin dynamics"
+    },
+    {
+      "id": "arch-019",
+      "label": "detailed-balance-equilibrium",
+      "gloss": "A stationary state in which every microscopic transition is exactly counterbalanced by its time-reverse, so no net probability current flows in any cycle.",
+      "provenance": "canonical statistical mechanics: detailed balance / equilibrium"
+    },
+    {
+      "id": "arch-020",
+      "label": "kramers-barrier-escape",
+      "gloss": "Noise-driven crossing of a barrier separating two long-lived states occurs at an exponentially small rate set by the barrier height relative to the noise strength.",
+      "provenance": "stochastic processes: Kramers / Arrhenius activated escape"
+    },
+    {
+      "id": "arch-021",
+      "label": "first-passage-time",
+      "gloss": "Characterization of the statistics of when a stochastic process first reaches a designated boundary or target for the first time.",
+      "provenance": "stochastic processes: first-passage theory"
+    },
+    {
+      "id": "arch-022",
+      "label": "percolation-threshold",
+      "gloss": "As the density of occupied sites or links crosses a sharp critical value, a connected cluster spanning a finite fraction of the whole system appears abruptly.",
+      "provenance": "network science: percolation theory"
+    },
+    {
+      "id": "arch-023",
+      "label": "k-core-collapse",
+      "gloss": "Iterated removal of every unit with fewer than a fixed number of surviving connections triggers a discontinuous, cascading collapse of a densely interlinked subset.",
+      "provenance": "network science: k-core / bootstrap percolation"
+    },
+    {
+      "id": "arch-024",
+      "label": "bootstrap-cascade-activation",
+      "gloss": "A unit switches on once at least a threshold number of its neighbors are on; a small initial seed can therefore trigger an all-or-nothing global activation.",
+      "provenance": "network science: bootstrap percolation / threshold activation"
+    },
+    {
+      "id": "arch-025",
+      "label": "giant-connected-component",
+      "gloss": "Emergence of a single cluster that occupies an extensive (system-spanning) fraction of all units once connectivity exceeds a critical mean degree.",
+      "provenance": "network science: random-graph giant component"
+    },
+    {
+      "id": "arch-026",
+      "label": "belief-propagation",
+      "gloss": "Local estimates are passed iteratively along the edges of a graph and combined at each node to approximate global marginals; exact when the graph is a tree.",
+      "provenance": "message-passing statistical inference: belief propagation / sum-product"
+    },
+    {
+      "id": "arch-027",
+      "label": "unbiased-random-walk",
+      "gloss": "A path built from increments with zero mean, so typical displacement grows only as the square root of the number of steps (diffusive spreading).",
+      "provenance": "stochastic processes: random walk / diffusion"
+    },
+    {
+      "id": "arch-028",
+      "label": "martingale-fair-process",
+      "gloss": "A stochastic process whose expected future value, conditioned on all information so far, equals its present value (no predictable drift).",
+      "provenance": "stochastic processes: martingale theory"
+    },
+    {
+      "id": "arch-029",
+      "label": "diffusion-limited-aggregation",
+      "gloss": "Randomly wandering units stick irreversibly on contact with a growing cluster, building branched, self-similar fractal structures.",
+      "provenance": "stochastic processes: diffusion-limited aggregation"
+    },
+    {
+      "id": "arch-030",
+      "label": "levy-flight-superdiffusion",
+      "gloss": "A walk whose step lengths are drawn from a heavy-tailed distribution, producing scale-free excursions and spreading faster than ordinary diffusion.",
+      "provenance": "stochastic processes: Levy flights / anomalous diffusion"
+    },
+    {
+      "id": "arch-031",
+      "label": "extreme-value-statistics",
+      "gloss": "The statistics of the largest or smallest values, and of successive record-breaking events, drawn from many samples, governed by universal limiting laws.",
+      "provenance": "probability limit theorems: extreme value theory"
+    },
+    {
+      "id": "arch-032",
+      "label": "replicator-selection",
+      "gloss": "The growth rate of each type is proportional to how far its performance exceeds the population average, so above-average types expand and below-average ones shrink.",
+      "provenance": "evolutionary game theory: replicator dynamics"
+    },
+    {
+      "id": "arch-033",
+      "label": "logistic-saturation",
+      "gloss": "Self-reinforcing growth that decelerates and levels off as a finite carrying capacity is approached, giving an S-shaped trajectory.",
+      "provenance": "mathematical population dynamics: logistic growth"
+    },
+    {
+      "id": "arch-034",
+      "label": "consumer-resource-cycle",
+      "gloss": "Two coupled quantities, one feeding on the other, generate sustained out-of-phase oscillations in which each rises and falls after the other.",
+      "provenance": "mathematical population dynamics: Lotka-Volterra consumer-resource oscillation"
+    },
+    {
+      "id": "arch-035",
+      "label": "competitive-exclusion",
+      "gloss": "When several types draw on a single limiting shared quantity, all but the most efficient are eventually driven out.",
+      "provenance": "mathematical population dynamics: competitive exclusion principle"
+    },
+    {
+      "id": "arch-036",
+      "label": "mutualistic-facilitation",
+      "gloss": "Reciprocal positive coupling in which each interacting type raises the abundance or performance of the other.",
+      "provenance": "mathematical population dynamics: mutualism / facilitation"
+    },
+    {
+      "id": "arch-037",
+      "label": "frequency-dependent-selection",
+      "gloss": "A type's success depends on how common it already is, which can either stabilize coexistence or drive cyclic turnover.",
+      "provenance": "evolutionary game theory: frequency-dependent selection"
+    },
+    {
+      "id": "arch-038",
+      "label": "evolutionary-stable-strategy",
+      "gloss": "A prevailing configuration that, once established, cannot be displaced by any rare invading alternative.",
+      "provenance": "evolutionary game theory: evolutionarily stable strategy"
+    },
+    {
+      "id": "arch-039",
+      "label": "autocatalytic-self-amplification",
+      "gloss": "A component promotes its own production, so its abundance grows in proportion to itself, giving self-reinforcing exponential amplification.",
+      "provenance": "canonical reaction kinetics / TRIZ principle 25 (self-service): autocatalysis"
+    },
+    {
+      "id": "arch-040",
+      "label": "mass-action-bilinear-coupling",
+      "gloss": "The rate of an interaction is proportional to the product of the densities of the two interacting populations, giving a bilinear encounter term.",
+      "provenance": "canonical reaction kinetics: law of mass action"
+    },
+    {
+      "id": "arch-041",
+      "label": "renormalization-group-flow",
+      "gloss": "Repeated coarse-graining generates a flow through parameter space; its fixed points and their stability dictate the large-scale behavior of every member of a family.",
+      "provenance": "canonical statistical mechanics: renormalization group"
+    },
+    {
+      "id": "arch-042",
+      "label": "scale-invariance-power-law",
+      "gloss": "The absence of any characteristic scale, so that observables reproduce themselves under rescaling and follow power-law distributions.",
+      "provenance": "canonical statistical mechanics: scale invariance and power laws"
+    },
+    {
+      "id": "arch-043",
+      "label": "data-collapse-scaling-function",
+      "gloss": "Rescaling the axes by appropriate powers of the distance to a critical point collapses many distinct curves onto a single universal master function.",
+      "provenance": "canonical statistical mechanics: finite-size scaling / data collapse"
+    },
+    {
+      "id": "arch-044",
+      "label": "universality-class",
+      "gloss": "Systems with entirely different microscopics share identical large-scale exponents, determined only by symmetry, conservation laws, and dimensionality.",
+      "provenance": "canonical statistical mechanics: universality"
+    },
+    {
+      "id": "arch-045",
+      "label": "coarse-graining-effective-theory",
+      "gloss": "Integrating out fast or short-scale degrees of freedom yields reduced equations that describe only the slow, large-scale variables.",
+      "provenance": "canonical statistical mechanics: effective theory / coarse-graining"
+    },
+    {
+      "id": "arch-046",
+      "label": "compartmental-flow-model",
+      "gloss": "A conserved total is partitioned into discrete compartments, and units transfer between compartments at prescribed rates while the sum stays fixed.",
+      "provenance": "mathematical epidemiology / systems dynamics: compartmental models"
+    },
+    {
+      "id": "arch-047",
+      "label": "threshold-reproduction-number",
+      "gloss": "A spreading process grows or dies out depending on whether the average number of secondary units generated per unit exceeds one.",
+      "provenance": "mathematical epidemiology: basic reproduction number threshold"
+    },
+    {
+      "id": "arch-048",
+      "label": "absorbing-state-transition",
+      "gloss": "A dynamics containing a trap it can never leave; an active, fluctuating phase survives indefinitely only when a control parameter exceeds a critical value.",
+      "provenance": "canonical statistical mechanics: absorbing-state phase transitions (directed percolation)"
+    },
+    {
+      "id": "arch-049",
+      "label": "birth-death-branching",
+      "gloss": "Units independently generate copies and are removed at fixed per-unit rates; ultimate extinction versus unbounded growth is set by the mean offspring number.",
+      "provenance": "stochastic processes: branching / birth-death processes"
+    },
+    {
+      "id": "arch-050",
+      "label": "saddle-node-bifurcation",
+      "gloss": "As a parameter crosses a threshold, two fixed points (one stable, one unstable) collide and annihilate, so a steady state abruptly appears or vanishes.",
+      "provenance": "dynamical systems: saddle-node (fold) bifurcation"
+    },
+    {
+      "id": "arch-051",
+      "label": "transcritical-exchange-of-stability",
+      "gloss": "Two fixed points pass through each other at a parameter value and swap their stability without disappearing.",
+      "provenance": "dynamical systems: transcritical bifurcation"
+    },
+    {
+      "id": "arch-052",
+      "label": "pitchfork-symmetric-branching",
+      "gloss": "A symmetric fixed point loses stability and gives birth to a symmetric pair of new stable states on either side.",
+      "provenance": "dynamical systems: pitchfork bifurcation"
+    },
+    {
+      "id": "arch-053",
+      "label": "hopf-bifurcation",
+      "gloss": "A steady state loses stability to a growing oscillation, giving birth to a self-sustained limit cycle of finite amplitude.",
+      "provenance": "dynamical systems: Hopf bifurcation"
+    },
+    {
+      "id": "arch-054",
+      "label": "period-doubling-cascade",
+      "gloss": "Successive doublings of an oscillation's period accumulate at a finite parameter value, opening a route into aperiodic, chaotic motion.",
+      "provenance": "dynamical systems: period-doubling route to chaos"
+    },
+    {
+      "id": "arch-055",
+      "label": "excitable-threshold-response",
+      "gloss": "Small perturbations decay quietly, but any perturbation above a threshold triggers a large stereotyped excursion followed by a refractory return to rest.",
+      "provenance": "dynamical systems: excitable media (FitzHugh-Nagumo type)"
+    },
+    {
+      "id": "arch-056",
+      "label": "relaxation-oscillation",
+      "gloss": "A cycle of slow buildup punctuated by fast discharge, arising when the dynamics has two widely separated timescales.",
+      "provenance": "dynamical systems: relaxation oscillations (van der Pol type)"
+    },
+    {
+      "id": "arch-057",
+      "label": "bistability-hysteresis",
+      "gloss": "Two stable states coexist over a range of a control parameter, and which one is realized depends on history, giving a hysteresis loop under slow cycling.",
+      "provenance": "dynamical systems: bistability and hysteresis"
+    },
+    {
+      "id": "arch-058",
+      "label": "critical-slowing-down",
+      "gloss": "The time to recover from a perturbation lengthens without bound as a threshold is approached, serving as an early-warning signature of an imminent transition.",
+      "provenance": "dynamical systems / statistical mechanics: critical slowing down"
+    },
+    {
+      "id": "arch-059",
+      "label": "tipping-point-catastrophe",
+      "gloss": "A gradual change in a control parameter triggers a sudden, often irreversible jump to a far-away alternative state as a fold is crossed.",
+      "provenance": "dynamical systems: catastrophe / fold tipping points"
+    },
+    {
+      "id": "arch-060",
+      "label": "free-energy-minimization",
+      "gloss": "The selected configuration minimizes a functional that trades an energy-like cost term against an entropy-like spread term.",
+      "provenance": "canonical statistical mechanics / variational calculus: free-energy minimization"
+    },
+    {
+      "id": "arch-061",
+      "label": "variational-stationary-action",
+      "gloss": "The realized trajectory or configuration is the one that makes a scalar functional stationary (extremal) against all nearby alternatives.",
+      "provenance": "variational calculus: principle of stationary action"
+    },
+    {
+      "id": "arch-062",
+      "label": "maximum-entropy-inference",
+      "gloss": "Among all distributions consistent with the known constraints, the least-biased one maximizes an entropy functional.",
+      "provenance": "information theory: maximum-entropy principle"
+    },
+    {
+      "id": "arch-063",
+      "label": "constrained-lagrange-multiplier",
+      "gloss": "An objective is extremized subject to constraints by introducing dual multiplier variables that price each constraint at its shadow value.",
+      "provenance": "variational calculus / optimization: Lagrange multipliers"
+    },
+    {
+      "id": "arch-064",
+      "label": "primal-dual-duality",
+      "gloss": "A hard optimization is recast as an equivalent complementary problem whose solution bounds and mirrors the original.",
+      "provenance": "optimization: primal-dual / Legendre duality"
+    },
+    {
+      "id": "arch-065",
+      "label": "simple-contagion-spread",
+      "gloss": "A state transmits independently across each active contact, so a single exposure can suffice to convert a neighbor.",
+      "provenance": "network science: simple contagion"
+    },
+    {
+      "id": "arch-066",
+      "label": "complex-contagion-reinforcement",
+      "gloss": "Adoption requires multiple reinforcing exposures from several distinct neighbors rather than a single contact.",
+      "provenance": "network science: complex contagion"
+    },
+    {
+      "id": "arch-067",
+      "label": "threshold-cascade-network",
+      "gloss": "Each node switches once the fraction of its already-switched neighbors exceeds its own threshold, allowing a small seed to trigger a global cascade.",
+      "provenance": "network science: linear threshold / Watts cascade model"
+    },
+    {
+      "id": "arch-068",
+      "label": "hub-dominated-spreading",
+      "gloss": "Broad heterogeneity in connectivity makes spreading dominated by a few very highly connected units, lowering or erasing the effective threshold.",
+      "provenance": "network science: spreading on heterogeneous (scale-free) networks"
+    },
+    {
+      "id": "arch-069",
+      "label": "imitation-consensus-dynamics",
+      "gloss": "Each unit repeatedly copies the state of a randomly chosen neighbor, driving the population toward uniform consensus or coarsening domains.",
+      "provenance": "network science / statistical mechanics: voter model"
+    },
+    {
+      "id": "arch-070",
+      "label": "self-organized-criticality",
+      "gloss": "Slow driving combined with threshold-triggered relaxation pulls a system, without external tuning, to a critical state emitting scale-free bursts of all sizes.",
+      "provenance": "self-organized criticality: Bak-Tang-Wiesenfeld paradigm"
+    },
+    {
+      "id": "arch-071",
+      "label": "load-redistribution-avalanche",
+      "gloss": "When a locally accumulated quantity exceeds a threshold it discharges onto neighbors, which may in turn exceed threshold, yielding events with a power-law size distribution.",
+      "provenance": "self-organized criticality: sandpile / avalanche dynamics"
+    },
+    {
+      "id": "arch-072",
+      "label": "punctuated-equilibrium",
+      "gloss": "Long stretches of near-stasis are interrupted by rare, sudden bursts of rapid reorganization.",
+      "provenance": "self-organized criticality / evolutionary dynamics: punctuated equilibrium"
+    },
+    {
+      "id": "arch-073",
+      "label": "gradient-descent-flow",
+      "gloss": "The state moves continuously in the direction of steepest decrease of a scalar potential, coming to rest at local minima.",
+      "provenance": "optimization / dynamical systems: gradient flow"
+    },
+    {
+      "id": "arch-074",
+      "label": "rugged-landscape-metastability",
+      "gloss": "A high-dimensional cost surface riddled with many local minima separated by barriers traps the dynamics in long-lived metastable configurations.",
+      "provenance": "canonical statistical mechanics: rugged energy landscapes"
+    },
+    {
+      "id": "arch-075",
+      "label": "annealing-noise-schedule",
+      "gloss": "An effective noise level is lowered gradually so the system escapes shallow traps early and settles into deep low-cost states as noise fades.",
+      "provenance": "optimization: simulated annealing"
+    },
+    {
+      "id": "arch-076",
+      "label": "basin-of-attraction",
+      "gloss": "The set of starting states that all flow to a given attractor; basin boundaries partition state space into competing outcomes.",
+      "provenance": "dynamical systems: basins of attraction"
+    },
+    {
+      "id": "arch-077",
+      "label": "minimum-energy-path-saddle",
+      "gloss": "Transitions between two minima proceed through the lowest connecting saddle, and that saddle's height controls the transition rate.",
+      "provenance": "dynamical systems / chemical kinetics: minimum-energy path and transition state"
+    },
+    {
+      "id": "arch-078",
+      "label": "conservation-continuity-equation",
+      "gloss": "A locally conserved quantity changes only by flux across boundaries, so its local accumulation equals the net inflow.",
+      "provenance": "canonical field theory: continuity / conservation law"
+    },
+    {
+      "id": "arch-079",
+      "label": "flux-balance-steady-state",
+      "gloss": "At steady state the inflow into every node exactly equals its outflow, so all stocks remain constant while flows persist.",
+      "provenance": "systems dynamics: flux balance / stationary flow"
+    },
+    {
+      "id": "arch-080",
+      "label": "gradient-driven-transport",
+      "gloss": "A flow is driven in proportion to the gradient of a potential, moving the conserved quantity from high toward low (linear-response transport).",
+      "provenance": "canonical transport theory: Fick/Fourier/Ohm linear-response laws"
+    },
+    {
+      "id": "arch-081",
+      "label": "noether-symmetry-conservation",
+      "gloss": "Every continuous symmetry of the governing functional implies a corresponding conserved quantity.",
+      "provenance": "canonical field theory: Noether's theorem"
+    },
+    {
+      "id": "arch-082",
+      "label": "phase-oscillator-synchronization",
+      "gloss": "A population of coupled cyclic units adjusts their rhythms until, above a critical coupling, a macroscopic fraction locks onto a common phase.",
+      "provenance": "nonlinear dynamics: Kuramoto synchronization transition"
+    },
+    {
+      "id": "arch-083",
+      "label": "entrainment-to-external-drive",
+      "gloss": "An autonomous oscillator locks its frequency to a periodic external forcing whenever the forcing lies within a finite locking band.",
+      "provenance": "nonlinear dynamics: entrainment / phase locking (Arnold tongues)"
+    },
+    {
+      "id": "arch-084",
+      "label": "chimera-partial-synchrony",
+      "gloss": "In an otherwise symmetric population, a synchronized subgroup coexists persistently with a desynchronized subgroup.",
+      "provenance": "nonlinear dynamics: chimera states"
+    },
+    {
+      "id": "arch-085",
+      "label": "negative-feedback-regulation",
+      "gloss": "The output is fed back to oppose deviations, holding the system near a set point and rejecting disturbances.",
+      "provenance": "control theory: negative feedback regulation"
+    },
+    {
+      "id": "arch-086",
+      "label": "positive-feedback-amplification",
+      "gloss": "The output reinforces its own cause, producing runaway growth or sharp switch-like transitions between states.",
+      "provenance": "control theory: positive feedback"
+    },
+    {
+      "id": "arch-087",
+      "label": "integral-feedback-adaptation",
+      "gloss": "Accumulating the running error over time and feeding it back drives the steady-state deviation exactly to zero, giving perfect adaptation.",
+      "provenance": "control theory: integral feedback / perfect adaptation"
+    },
+    {
+      "id": "arch-088",
+      "label": "delayed-feedback-oscillation",
+      "gloss": "Feedback applied with a time lag can destabilize an otherwise stable steady state and convert it into sustained oscillation.",
+      "provenance": "control theory / dynamical systems: delayed feedback instability"
+    },
+    {
+      "id": "arch-089",
+      "label": "proportional-restoring-force",
+      "gloss": "A restoring response proportional to displacement from equilibrium produces oscillation about that equilibrium at a natural frequency.",
+      "provenance": "canonical mechanics: linear restoring force / harmonic oscillator"
+    },
+    {
+      "id": "arch-090",
+      "label": "channel-capacity-bound",
+      "gloss": "A hard upper limit on the rate of reliable transmission through a noisy medium, set by the ratio of signal to noise.",
+      "provenance": "information theory: Shannon channel capacity"
+    },
+    {
+      "id": "arch-091",
+      "label": "rate-distortion-tradeoff",
+      "gloss": "The minimum amount of information needed to represent a source grows as the tolerated reconstruction error shrinks, tracing a fundamental tradeoff curve.",
+      "provenance": "information theory: rate-distortion theory"
+    },
+    {
+      "id": "arch-092",
+      "label": "information-bottleneck",
+      "gloss": "A variable is compressed as much as possible while retaining only the part of it that is predictive of a designated target.",
+      "provenance": "information theory: information bottleneck"
+    },
+    {
+      "id": "arch-093",
+      "label": "fluctuation-dissipation-link",
+      "gloss": "The average response to a small perturbation is tied quantitatively to the spontaneous fluctuations the system exhibits at rest.",
+      "provenance": "canonical statistical mechanics: fluctuation-dissipation theorem"
+    },
+    {
+      "id": "arch-094",
+      "label": "mutual-information-coupling",
+      "gloss": "A symmetric measure of statistical dependence quantifying how much knowing one subsystem reduces uncertainty about another.",
+      "provenance": "information theory: mutual information"
+    },
+    {
+      "id": "arch-095",
+      "label": "importance-sampling-reweighting",
+      "gloss": "Averages under a hard-to-sample distribution are estimated by drawing from an easier one and correcting each sample by a likelihood-ratio weight.",
+      "provenance": "numerical and Monte-Carlo methods: importance sampling"
+    },
+    {
+      "id": "arch-096",
+      "label": "markov-chain-monte-carlo",
+      "gloss": "A stochastic walk is engineered so that its long-run stationary distribution is the desired target, and averages are taken along the trajectory.",
+      "provenance": "numerical and Monte-Carlo methods: Markov chain Monte Carlo"
+    },
+    {
+      "id": "arch-097",
+      "label": "metropolis-acceptance-rule",
+      "gloss": "Proposed moves are accepted or rejected with a probability crafted so that the target distribution is left invariant.",
+      "provenance": "numerical and Monte-Carlo methods: Metropolis-Hastings acceptance"
+    },
+    {
+      "id": "arch-098",
+      "label": "rejection-acceptance-sampling",
+      "gloss": "Candidates are drawn from a simple envelope distribution and a fraction accepted so that survivors follow the target density.",
+      "provenance": "numerical and Monte-Carlo methods: rejection sampling"
+    },
+    {
+      "id": "arch-099",
+      "label": "spectral-eigenmode-decomposition",
+      "gloss": "Structure or dynamics is re-expressed in the basis of eigenvectors of an operator, with behavior dominated by the largest eigenvalues.",
+      "provenance": "linear algebra: eigen-decomposition / normal modes"
+    },
+    {
+      "id": "arch-100",
+      "label": "dominant-eigenvector-centrality",
+      "gloss": "The stationary importance of each unit is given by the leading eigenvector of the interaction matrix, so importance flows recursively from important neighbors.",
+      "provenance": "linear algebra / network science: eigenvector centrality (Perron-Frobenius)"
+    },
+    {
+      "id": "arch-101",
+      "label": "spectral-gap-relaxation",
+      "gloss": "The separation between the top two eigenvalues of the evolution operator sets the slowest relaxation or mixing timescale.",
+      "provenance": "linear algebra / stochastic processes: spectral gap and mixing time"
+    },
+    {
+      "id": "arch-102",
+      "label": "low-rank-factorization",
+      "gloss": "A large interaction array is approximated as the product of a few latent factors, revealing that its effective dimensionality is small.",
+      "provenance": "linear algebra: low-rank / latent-factor factorization"
+    },
+    {
+      "id": "arch-103",
+      "label": "principal-component-projection",
+      "gloss": "High-dimensional variation is projected onto the few orthogonal directions that capture the greatest variance.",
+      "provenance": "linear algebra: principal component analysis"
+    },
+    {
+      "id": "arch-104",
+      "label": "random-matrix-spectral-statistics",
+      "gloss": "The eigenvalues of large disordered interaction arrays follow universal distributions with characteristic bulk laws, edge behavior, and level repulsion.",
+      "provenance": "random matrix theory: universal spectral statistics"
+    },
+    {
+      "id": "arch-105",
+      "label": "graph-laplacian-diffusion",
+      "gloss": "Spreading and smoothing over a network are governed by the graph Laplacian, driving connected units toward local agreement (heat flow / consensus).",
+      "provenance": "network science / spectral graph theory: Laplacian diffusion"
+    },
+    {
+      "id": "arch-106",
+      "label": "central-limit-gaussian-aggregation",
+      "gloss": "A sum of many independent, comparably sized contributions converges to a bell-shaped Gaussian regardless of the individual details.",
+      "provenance": "probability limit theorems: central limit theorem"
+    },
+    {
+      "id": "arch-107",
+      "label": "stable-law-heavy-tail-aggregation",
+      "gloss": "When contributions have heavy tails with no finite variance, their sums converge instead to heavy-tailed stable distributions (generalized limit law).",
+      "provenance": "probability limit theorems: stable laws / generalized central limit theorem"
+    },
+    {
+      "id": "arch-108",
+      "label": "bayesian-belief-updating",
+      "gloss": "A prior distribution is multiplied by the likelihood of new evidence and renormalized to a posterior, integrating information sequentially.",
+      "provenance": "probability / statistical inference: Bayesian updating"
+    },
+    {
+      "id": "arch-109",
+      "label": "small-world-shortcuts",
+      "gloss": "A few long-range links added to a locally clustered structure collapse typical path lengths while preserving high local clustering.",
+      "provenance": "network science: small-world networks"
+    },
+    {
+      "id": "arch-110",
+      "label": "preferential-attachment-growth",
+      "gloss": "Newly added units connect preferentially to already well-connected ones, so connectivity begets connectivity and heavy-tailed degrees emerge.",
+      "provenance": "network science: preferential attachment / cumulative advantage"
+    },
+    {
+      "id": "arch-111",
+      "label": "scale-free-degree-distribution",
+      "gloss": "The distribution of connectivity across units is heavy-tailed with no typical scale, so a few units have enormously many links.",
+      "provenance": "network science: scale-free degree distributions"
+    },
+    {
+      "id": "arch-112",
+      "label": "modular-community-structure",
+      "gloss": "Units partition into densely interconnected groups that are only sparsely coupled to one another.",
+      "provenance": "network science: community / modular structure"
+    },
+    {
+      "id": "arch-113",
+      "label": "separation-of-timescales-averaging",
+      "gloss": "When some variables move much faster than others, one averages over the fast motion to obtain closed effective equations for the slow variables.",
+      "provenance": "dynamical systems: multiple-timescale averaging / adiabatic elimination"
+    },
+    {
+      "id": "arch-114",
+      "label": "slow-manifold-reduction",
+      "gloss": "Fast degrees of freedom rapidly collapse onto a low-dimensional invariant surface on which the remaining slow dynamics unfolds.",
+      "provenance": "dynamical systems: slow manifold / center manifold reduction"
+    },
+    {
+      "id": "arch-115",
+      "label": "mode-coupling-cascade",
+      "gloss": "Nonlinear interactions transfer excitation systematically from one scale to another, redistributing a conserved input across a range of scales (energy cascade).",
+      "provenance": "nonlinear dynamics: turbulent cascades / mode coupling"
+    },
+    {
+      "id": "arch-116",
+      "label": "resonance-amplification",
+      "gloss": "A driven system responds with disproportionately large amplitude when the driving frequency matches one of its internal natural frequencies.",
+      "provenance": "canonical mechanics: resonance"
+    },
+    {
+      "id": "arch-117",
+      "label": "stochastic-resonance",
+      "gloss": "An intermediate, nonzero noise level maximizes a system's response to a weak periodic signal, so some randomness helps rather than hurts detection.",
+      "provenance": "nonlinear dynamics / statistical physics: stochastic resonance"
+    },
+    {
+      "id": "arch-118",
+      "label": "bottleneck-rate-limiting-step",
+      "gloss": "The overall throughput of a sequential multi-stage process is dictated almost entirely by its single slowest stage.",
+      "provenance": "chemical kinetics / systems dynamics: rate-limiting step"
+    },
+    {
+      "id": "arch-119",
+      "label": "optimal-transport-matching",
+      "gloss": "One distribution is reshaped into another by moving mass along the assignment that minimizes total transport cost.",
+      "provenance": "optimization: optimal transport / Monge-Kantorovich"
+    },
+    {
+      "id": "arch-120",
+      "label": "game-theoretic-equilibrium",
+      "gloss": "A configuration of mutually best responses from which no self-interested unit can gain by unilaterally changing its choice.",
+      "provenance": "game theory: Nash equilibrium"
+    },
+    {
+      "id": "arch-121",
+      "label": "tragedy-of-shared-resource",
+      "gloss": "Individually rational exploitation of a common shared pool leads collectively to its depletion and a worse outcome for all.",
+      "provenance": "game theory: commons dilemma / social trap"
+    },
+    {
+      "id": "arch-122",
+      "label": "frustration-competing-constraints",
+      "gloss": "Constraints that cannot all be satisfied at once force the system into many nearly degenerate compromise configurations.",
+      "provenance": "canonical statistical mechanics: geometric frustration"
+    },
+    {
+      "id": "arch-123",
+      "label": "glassy-slow-relaxation",
+      "gloss": "Dynamics slow down dramatically and keep aging without ever reaching equilibrium, trapped by a rugged landscape of nearly equivalent traps.",
+      "provenance": "canonical statistical mechanics: glassy dynamics and aging"
+    },
+    {
+      "id": "arch-124",
+      "label": "cellular-automaton-local-update",
+      "gloss": "Discrete units on a lattice update in parallel according to a fixed local rule depending only on their neighbors, generating global structure from local interaction.",
+      "provenance": "dynamical systems / complex systems: cellular automata"
+    },
+    {
+      "id": "arch-125",
+      "label": "intermediary-mediator",
+      "gloss": "An interaction between two parts is carried by an inserted intermediate agent or carrier that couples them without being permanently consumed.",
+      "provenance": "TRIZ principle 24 (intermediary) / canonical catalysis: mediator coupling"
+    }
+  ]
+}

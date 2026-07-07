@@ -44,10 +44,20 @@ def norm_id(raw: str) -> str:
     return s
 
 
-def _get(url: str, timeout: int = 30) -> str:
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return r.read().decode("utf-8", errors="replace")
+def _get(url: str, timeout: int = 60, retries: int = 4) -> str:
+    last = None
+    for attempt in range(retries):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.read().decode("utf-8", errors="replace")
+        except Exception as e:  # noqa: BLE001
+            last = e
+            wait = 3.0 * (attempt + 1)
+            print(f"  [http] attempt {attempt+1}/{retries} failed "
+                  f"({type(e).__name__}); retrying in {wait:.0f}s", file=sys.stderr)
+            time.sleep(wait)
+    raise last
 
 
 def _parse_entries(xml: str):
@@ -72,16 +82,20 @@ def _parse_entries(xml: str):
     return out
 
 
-def fetch_by_ids(ids):
-    if not ids:
-        return {}
-    q = "id_list=" + ",".join(urllib.parse.quote(i, safe="/") for i in ids)
-    url = f"{ARXIV_API}?{q}&max_results={len(ids)}"
-    try:
-        return {e["arxiv_id"]: e for e in _parse_entries(_get(url))}
-    except Exception as e:  # noqa: BLE001
-        print(f"  [arxiv] id batch error: {type(e).__name__}: {e}", file=sys.stderr)
-        return {}
+def fetch_by_ids(ids, chunk=4):
+    """Fetch {arxiv_id: entry} in small chunks (robust to arXiv API timeouts)."""
+    out = {}
+    for i in range(0, len(ids), chunk):
+        batch = ids[i:i + chunk]
+        q = "id_list=" + ",".join(urllib.parse.quote(x, safe="/") for x in batch)
+        url = f"{ARXIV_API}?{q}&max_results={len(batch)}"
+        try:
+            for e in _parse_entries(_get(url)):
+                out[e["arxiv_id"]] = e
+        except Exception as e:  # noqa: BLE001
+            print(f"  [arxiv] id chunk {batch} error: {type(e).__name__}: {e}", file=sys.stderr)
+        time.sleep(RATE_LIMIT_S)
+    return out
 
 
 def fetch_category_post2018(cat: str, max_results: int = 100):

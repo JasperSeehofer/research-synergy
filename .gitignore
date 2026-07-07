@@ -3,6 +3,10 @@ target/
 .env.*.local
 data-*/
 
+# Python prototype workspace (rebuild from prototypes/requirements-lock.txt)
+prototypes/.venv/
+**/__pycache__/
+
 # Gardener sweep notes (local audit trail; not tracked)
 .gardener-notes.md
 .cartographer-notes.md

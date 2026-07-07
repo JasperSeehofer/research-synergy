@@ -161,11 +161,11 @@ cargo run --bin resyn -- analyze --db surrealkv://./data
 # 3. Export for the Python notebook
 cargo run --bin resyn -- export-louvain-graph \
     --db surrealkv://./data \
-    --output professional-vault/prototypes/data/research_synergy_pre2015.json \
+    --output prototypes/data/research_synergy_pre2015.json \
     --published-before 2014-12-31 \
     --tfidf-top-n 50
 
-# 4. Run kuramoto_lbd_v03.ipynb in professional-vault/prototypes/
+# 4. Run the Python LBD prototypes in ./prototypes/ (venv: prototypes/.venv)
 ```
 
 ## Research thread wiring (professional-vault)
@@ -188,9 +188,12 @@ LBD experiments, EXP-RS-*), follow the vault's research structure on top of the 
 - **Cartographer channel**: `.cartographer-notes.md` (gitignored) — proposals from vault research
   reviews land there; go/kill/pivot decisions are the human's, recorded in the vault
   hypothesis-ledger.
-- **Notebook workspace**: Python LBD notebooks + exports live in
-  `../professional-vault/prototypes/` (see the v03 workflow above); Rust-side prototypes in
-  `prototypes/` here.
+- **Prototype workspace (in-repo)**: ALL research/LBD implementation — Python + Rust prototypes,
+  scripts, `data/`, `figures/` — lives in-repo at `./prototypes/` (venv rebuilt from
+  `prototypes/requirements-lock.txt`, gitignored; run scripts via `prototypes/.venv/bin/python`).
+  The professional-vault holds only management/ideas/decisions (thread state in `.planning/`,
+  brainstorms, conventions) — **no implementation**. (Consolidated 2026-07-07, human decision;
+  supersedes the old vault-prototypes split — see CONVENTIONS.md C-21.)
 
 ## Important Notes
 

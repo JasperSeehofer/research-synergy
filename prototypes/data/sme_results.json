@@ -1,0 +1,188 @@
+{
+ "experiment": "EXP-RS-16",
+ "corpus": "mvp_corpus.json",
+ "n_corpus": 36,
+ "n_eval_pairs": 5,
+ "pair_ids": [
+  "pair01-ising-opinion",
+  "pair03-sir-rumour",
+  "pair04-percolation-epidemics",
+  "pair05-lotka-volterra-markets",
+  "pair06-turing-spatial-economy"
+ ],
+ "arms": {
+  "roles_on": {
+   "forward": {
+    "ranks": {
+     "pair01-ising-opinion": 26,
+     "pair03-sir-rumour": 35,
+     "pair04-percolation-epidemics": 22,
+     "pair05-lotka-volterra-markets": 33,
+     "pair06-turing-spatial-economy": 19
+    },
+    "recall@1": 0.0,
+    "recall@5": 0.0,
+    "recall@10": 0.0,
+    "mrr": 0.03908442434758224
+   },
+   "reverse": {
+    "ranks": {
+     "pair01-ising-opinion": 34,
+     "pair03-sir-rumour": 34,
+     "pair04-percolation-epidemics": 25,
+     "pair05-lotka-volterra-markets": 35,
+     "pair06-turing-spatial-economy": 9
+    },
+    "recall@1": 0.0,
+    "recall@5": 0.0,
+    "recall@10": 0.2,
+    "mrr": 0.047701213818860874
+   },
+   "both_dir_avg": {
+    "recall@1": 0.0,
+    "recall@5": 0.0,
+    "recall@10": 0.1,
+    "mrr": 0.043392819083221554
+   }
+  },
+  "roles_off": {
+   "forward": {
+    "ranks": {
+     "pair01-ising-opinion": 32,
+     "pair03-sir-rumour": 35,
+     "pair04-percolation-epidemics": 2,
+     "pair05-lotka-volterra-markets": 27,
+     "pair06-turing-spatial-economy": 25
+    },
+    "recall@1": 0.0,
+    "recall@5": 0.2,
+    "recall@10": 0.2,
+    "mrr": 0.1273716931216931
+   },
+   "reverse": {
+    "ranks": {
+     "pair01-ising-opinion": 34,
+     "pair03-sir-rumour": 33,
+     "pair04-percolation-epidemics": 3,
+     "pair05-lotka-volterra-markets": 30,
+     "pair06-turing-spatial-economy": 18
+    },
+    "recall@1": 0.0,
+    "recall@5": 0.2,
+    "recall@10": 0.2,
+    "mrr": 0.09638740344622697
+   },
+   "both_dir_avg": {
+    "recall@1": 0.0,
+    "recall@5": 0.2,
+    "recall@10": 0.2,
+    "mrr": 0.11187954828396005
+   }
+  },
+  "lexical_null": {
+   "forward": {
+    "ranks": {
+     "pair01-ising-opinion": 31,
+     "pair03-sir-rumour": 2,
+     "pair04-percolation-epidemics": 17,
+     "pair05-lotka-volterra-markets": 7,
+     "pair06-turing-spatial-economy": 25
+    },
+    "recall@1": 0.0,
+    "recall@5": 0.2,
+    "recall@10": 0.4,
+    "mrr": 0.15478774735700732
+   },
+   "reverse": {
+    "ranks": {
+     "pair01-ising-opinion": 32,
+     "pair03-sir-rumour": 2,
+     "pair04-percolation-epidemics": 18,
+     "pair05-lotka-volterra-markets": 16,
+     "pair06-turing-spatial-economy": 8
+    },
+    "recall@1": 0.0,
+    "recall@5": 0.2,
+    "recall@10": 0.4,
+    "mrr": 0.15486111111111112
+   },
+   "both_dir_avg": {
+    "recall@1": 0.0,
+    "recall@5": 0.2,
+    "recall@10": 0.4,
+    "mrr": 0.1548244292340592
+   }
+  }
+ },
+ "BENCH_P10": 0.0,
+ "alignment_tables": {
+  "pair01-ising-opinion": {
+   "systematicity": 0,
+   "n_aligned_entities": 0,
+   "preserved_relation_types": [],
+   "rows": []
+  },
+  "pair03-sir-rumour": {
+   "systematicity": 0,
+   "n_aligned_entities": 0,
+   "preserved_relation_types": [],
+   "rows": []
+  },
+  "pair04-percolation-epidemics": {
+   "systematicity": 1,
+   "n_aligned_entities": 2,
+   "preserved_relation_types": [
+    "UNDERGOES-TRANSITION-AT"
+   ],
+   "rows": [
+    {
+     "a_id": "e3",
+     "a_role": "threshold",
+     "a_gloss": "a critical value of the control parameter at which the collective aggregate first emerges",
+     "b_id": "e6",
+     "b_role": "threshold",
+     "b_gloss": "the critical value of the control parameter above which macroscopic propagation emerges"
+    },
+    {
+     "a_id": "e2",
+     "a_role": "order-parameter",
+     "a_gloss": "a macroscopic connected aggregate whose relative size is zero below a critical point and becomes non-zero above it",
+     "b_id": "e5",
+     "b_role": "order-parameter",
+     "b_gloss": "a collective aggregate measuring the total extent of propagation, becoming macroscopic past a critical point"
+    }
+   ]
+  },
+  "pair05-lotka-volterra-markets": {
+   "systematicity": 0,
+   "n_aligned_entities": 0,
+   "preserved_relation_types": [],
+   "rows": []
+  },
+  "pair06-turing-spatial-economy": {
+   "systematicity": 1,
+   "n_aligned_entities": 2,
+   "preserved_relation_types": [
+    "DEPENDS-ON"
+   ],
+   "rows": [
+    {
+     "a_id": "e7",
+     "a_role": "order-parameter",
+     "a_gloss": "a collective aggregate measuring splitting of units into high- and low- groups, nonzero past the critical point",
+     "b_id": "e4",
+     "b_role": "order-parameter",
+     "b_gloss": "emergent collective clusters that self-organize from the interacting units"
+    },
+    {
+     "a_id": "e9",
+     "a_role": "observable",
+     "a_gloss": "coexistence of multiple stationary states with history-dependent (hysteretic) selection",
+     "b_id": "e5",
+     "b_role": "observable",
+     "b_gloss": "a rank-magnitude distribution of cluster sizes following a scale-free power law"
+    }
+   ]
+  }
+ }
+}

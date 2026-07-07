@@ -1,0 +1,90 @@
+{
+ "experiment": "EXP-RS-13",
+ "phase": 32,
+ "corpus": "research_synergy_kuramoto_full.json (giant CC)",
+ "N": 1398,
+ "n_communities": 7,
+ "n_edges": 9598,
+ "K_stable": 0.500212074072794,
+ "n_eval": 4,
+ "BENCH_P10": 0.1,
+ "BENCH_COSINE": 0.03906603902578354,
+ "BENCH_V": "ABORT (precision=0.100 <= baseline 0.15 \u2014 no signal above chance)",
+ "p10_er": 0.0,
+ "p10_cm": 0.0,
+ "SC2": "FLAG (min_J=0.0000 \u2014 high omega sensitivity; failure mode 4)",
+ "SC3": "ABORT (r=0.1360 < 0.7 \u2014 ODE not converging; check integration params)",
+ "SC5": "FLAG (lambda_2=-0.0066>0 OK, gap=nan < 1.05 \u2014 Fiedler direction ambiguous)",
+ "SC1A": "PASS (J=0.0000 <= 0.3 \u2014 topology-sensitive)",
+ "SC1B": "PASS (J=0.0000 <= 0.3 \u2014 beyond-degree topology detected)",
+ "PLATEAU_V": "FLAG (no strict plateau; using full upper cluster)",
+ "ORTHO_V": "SKIP",
+ "v05_aborts": [
+  [
+   "SC3",
+   "ABORT (r=0.1360 < 0.7 \u2014 ODE not converging; check integration params)"
+  ],
+  [
+   "BENCH",
+   "ABORT (precision=0.100 <= baseline 0.15 \u2014 no signal above chance)"
+  ]
+ ],
+ "perpair_recall_at10": 0.25,
+ "perpair_recall_any": 0.75,
+ "perpair_ranks": [
+  {
+   "pair": "pair01-ising-opinion",
+   "a_comm": 0,
+   "b_comm": 1,
+   "rank": null
+  },
+  {
+   "pair": "pair03-sir-rumour",
+   "a_comm": 2,
+   "b_comm": 2,
+   "rank": 2
+  },
+  {
+   "pair": "pair04-percolation-epidemics",
+   "a_comm": 8,
+   "b_comm": 2,
+   "rank": 17
+  },
+  {
+   "pair": "pair06-turing-spatial-economy",
+   "a_comm": 3,
+   "b_comm": 1,
+   "rank": 11
+  }
+ ],
+ "evaluable_detail": [
+  {
+   "pair": "pair01-ising-opinion",
+   "detected": false,
+   "cosine": 0.01524612307548523,
+   "a_comm": 0,
+   "b_comm": 1
+  },
+  {
+   "pair": "pair03-sir-rumour",
+   "detected": true,
+   "cosine": 0.14101803302764893,
+   "a_comm": 2,
+   "b_comm": 2
+  },
+  {
+   "pair": "pair04-percolation-epidemics",
+   "detected": false,
+   "cosine": 0.0,
+   "a_comm": 8,
+   "b_comm": 2
+  },
+  {
+   "pair": "pair06-turing-spatial-economy",
+   "detected": false,
+   "cosine": 0.0,
+   "a_comm": 3,
+   "b_comm": 1
+  }
+ ]
+}

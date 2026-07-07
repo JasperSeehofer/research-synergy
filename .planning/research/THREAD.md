@@ -67,9 +67,14 @@ score systematicity 0), so the true analogue ties with distractors; the blind sc
 discards the discriminating content the full-context LLM (0.60) keeps. **Durable win: job zero is
 done — the brute-force baseline now has a real number (recall@10 = 0.60, MRR 0.63), the bar every
 future generator is judged against.** Full record: `.planning/phases/35-sme-vs-baseline/35-VERIFICATION.md`.
-**NEXT (human's go/kill):** next generator per the pre-registered fallback = slot-frames (#2,
-problem↔method typed transfer) or mechanism-ontology tagging (#4, MethMeSH), evaluated against the
-0.60 bar on a leakage-controlled set. Deferred (non-gating): `modern_lbd_pairs.json` robustness.
+**NEXT — human approved (2026-07-07) BOTH fallback generators → build EXP-RS-17:** mechanism-ontology
+tagging (#4, MethMeSH) and slot-frames (#2, problem↔method typed transfer), either order, each
+evaluated against the **0.60 bar** + a **modern-held-out** leakage-controlled bar (the
+`modern_lbd_pairs.json` robustness run, now promoted from deferred to run-alongside). Pre-register
+EXP-RS-17 predictions here + in the vault before running. **Repo layout change (human, 2026-07-07,
+CONVENTIONS C-21 supersedes C-7): ALL implementation now IN-REPO at `research-synergy/prototypes/`;
+the professional-vault is management-only.** Harness (`prototypes/{build_mvp_corpus,sme_lite}.py`,
+venv from `prototypes/requirements-lock.txt`) is reusable for both generators.
 
 ### (history) EXP-RS-16 pre-registration (design LOCKED before run, 2026-07-06)
 

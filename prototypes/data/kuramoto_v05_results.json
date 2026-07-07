@@ -1,0 +1,58 @@
+{
+ "experiment": "EXP-RS-12",
+ "phase": 31,
+ "corpus": "research_synergy_kuramoto_full.json (giant CC)",
+ "N": 224,
+ "n_communities": 34,
+ "n_edges": 344,
+ "K_stable": 14.247085139647858,
+ "n_eval": 4,
+ "BENCH_P10": 0.0,
+ "BENCH_COSINE": 0.009506684960797429,
+ "BENCH_V": "ABORT (precision=0.000 <= baseline 0.15 \u2014 no signal above chance)",
+ "p10_er": 0.0,
+ "p10_cm": 0.0,
+ "SC2": "FLAG (min_J=0.5000 \u2014 moderate omega sensitivity)",
+ "SC3": "PASS",
+ "SC5": "PASS (lambda_2=0.5645 > 0, gap=1.7141 >= 1.05)",
+ "SC1A": "PASS (J=0.0000 <= 0.3 \u2014 topology-sensitive)",
+ "SC1B": "PASS (J=0.0000 <= 0.3 \u2014 beyond-degree topology detected)",
+ "PLATEAU_V": "FLAG (no strict plateau; using full upper cluster)",
+ "ORTHO_V": "SKIP",
+ "v05_aborts": [
+  [
+   "BENCH",
+   "ABORT (precision=0.000 <= baseline 0.15 \u2014 no signal above chance)"
+  ]
+ ],
+ "evaluable_detail": [
+  {
+   "pair": "pair01-ising-opinion",
+   "detected": false,
+   "cosine": 0.00894570630043745,
+   "a_comm": 65,
+   "b_comm": 11
+  },
+  {
+   "pair": "pair04-percolation-epidemics",
+   "detected": false,
+   "cosine": 0.029081033542752266,
+   "a_comm": 53,
+   "b_comm": 69
+  },
+  {
+   "pair": "pair05-lotka-volterra-markets",
+   "detected": false,
+   "cosine": 0.0,
+   "a_comm": 26,
+   "b_comm": 27
+  },
+  {
+   "pair": "pair06-turing-spatial-economy",
+   "detected": false,
+   "cosine": 0.0,
+   "a_comm": 25,
+   "b_comm": 135
+  }
+ ]
+}

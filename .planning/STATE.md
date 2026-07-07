@@ -68,32 +68,46 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-07-06 (EXP-RS-16 run — SME killed, baseline established)
+Last session: 2026-07-07 (post-EXP-RS-16 review — prototypes migrated in-repo; next steps set)
 Research thread state: `.planning/research/THREAD.md` (Layer-2 contract; same-day updates required)
 
-### RESUME POINTER — EXP-RS-16 DONE (Phase 35, 2026-07-06). Awaiting human go/kill on next generator.
+### RESUME POINTER — start EXP-RS-17 (next generator). Prototypes now IN-REPO. (updated 2026-07-07)
 
-**EXP-RS-16 ran to a decisive KILL.** SME over blind role-typed relational schemas: roles-ON
-recall@10 = **0.00** vs brute-force LLM baseline **0.60** (MRR 0.63) on the 36-paper MVP testbed.
-Role-typing inverts (roles-ON 0.00 < roles-OFF 0.20 < lexical-null 0.40); alignment tables empty
-3/5. P2/P3/P4 falsified; both KILL conditions fired. Full record:
-`.planning/phases/35-sme-vs-baseline/35-VERIFICATION.md`. Artifacts (vault
-`professional-vault/prototypes/`): `build_mvp_corpus.py` + `data/mvp_corpus.json`,
-`exp16_extraction_prompt.md` + `data/mvp_schemas.json`, `sme_lite.py` (+ toytest) +
-`data/sme_results.json`, `data/baseline_results.json`.
+**Repo layout changed (human decision 2026-07-07, CONVENTIONS C-21, supersedes C-7):** ALL
+research/LBD implementation now lives **in-repo at `./prototypes/`** (Python + Rust prototypes,
+scripts, `data/`, `figures/`). The professional-vault is management-only (thread state in
+`.planning/`, brainstorms, conventions) — no implementation. Rebuild the venv once per machine:
+`cd prototypes && uv venv --python 3.13 .venv && uv pip install --python .venv -r requirements-lock.txt`
+(gitignored). Verify: `.venv/bin/python sme_lite_toytest.py` (asserts pass) and
+`.venv/bin/python sme_lite.py` (reproduces roles-ON recall@10=0.00 / lexical 0.40).
 
-**Durable positive: job zero is done** — the brute-force LLM baseline now has a real number on the
-valid testbed (**recall@10 = 0.60, MRR 0.63**). This is the bar. It is pretraining-leakage-inflated
-(not corrected); the deferred `modern_lbd_pairs.json` robustness run would give a cleaner read.
+**Where EXP-RS-16 landed (done, committed):** SME over blind role-typed schemas KILLED — roles-ON
+recall@10 = **0.00** vs brute-force LLM baseline **0.60** (MRR 0.63). recall@10 = fraction of the 5
+evaluable Feynman pairs whose known partner paper is retrieved in the top-10 (0.60 = 3/5, all at
+rank 1). Full record: `.planning/phases/35-sme-vs-baseline/35-VERIFICATION.md`. Harness (reusable,
+`--corpus/--schemas/--pairs`): `prototypes/{build_mvp_corpus.py, sme_lite.py, sme_lite_toytest.py}`
++ `prototypes/data/{mvp_corpus,mvp_schemas,sme_results,baseline_results}.json`.
 
-**NEXT (human's go/kill — do NOT auto-execute):** pick the next candidate generator from the
-pre-registered fallback — **#2 slot-frames** (directed problem↔method typed transfer) or **#4
-mechanism-ontology tagging** (MethMeSH). Both were designed to avoid the over-abstraction collapse
-seen here. Evaluate against the **0.60 bar** on a **leakage-controlled** set (ideally the deferred
-modern held-out), keeping an auditable-artifact deliverable. The MVP corpus + `sme_lite.py`
-retrieval/metric harness (parameterized by `--corpus/--schemas/--pairs`) are reusable. Same
-discipline: pre-register predictions in THREAD, commit scripts before running on data, no re-tuning
-to force a pass. See `.planning/research/BRAINSTORM-cross-field-transfer.md` §2 (#2, #4) for designs.
+**THE BAR:** brute-force LLM baseline **recall@10 = 0.60, MRR 0.63** — leakage-inflated (Claude knows
+the famous analogies), so treat as an upper-ish bound.
+
+**NEXT — human approved BOTH generators (2026-07-07); build EXP-RS-17.** Do these; they are the
+plan, not a go/kill prompt:
+1. **Pick a generator to build first — #4 mechanism-ontology (MethMeSH) or #2 slot-frames** (human
+   likes both; either order). #4 = tag each paper with 1–5 labels from a *frozen, curated,
+   field-agnostic* mechanism vocab (~50–150 archetypes, seed from TRIZ/nLab, **freeze BEFORE looking
+   at the benchmark = leakage control**); a bridge = two papers in *different* communities sharing a
+   *rare (high-IDF)* archetype, ranked by signature-overlap MINUS lexical-similarity; O(N) tag +
+   inverted index. Watch the granularity knob (too coarse → "everything is a phase transition").
+   #2 = per-paper problem-slot vs method-slot frames; bridge = method from field B satisfies an open
+   problem in field A. See `.planning/research/BRAINSTORM-cross-field-transfer.md` §2 (#4, #2).
+2. **Run the modern held-out baseline ALONGSIDE** (human-approved): rebuild an MVP corpus for the 6
+   evaluable `modern_lbd_pairs.json` pairs + distractors, run the C-20 brute-force baseline on it →
+   a leakage-controlled bar. Reuse `build_mvp_corpus.py` + `sme_lite.py`.
+3. **Discipline (unchanged):** pre-register EXP-RS-17 predictions in THREAD.md + the vault
+   `agentic-experiments-research.md` BEFORE running; commit scripts before touching data; evaluate
+   against the 0.60 bar (and the modern bar); keep the auditable shared-label/frame artifact as a
+   co-primary deliverable; no re-tuning to force a pass.
 
 ### (history) Dynamical-LBD KILL criterion met (Phases 31→34 complete)
 

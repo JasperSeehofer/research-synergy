@@ -1,0 +1,3392 @@
+{
+ "experiment": "EXP-RS-16",
+ "convention": "C-16",
+ "n": 36,
+ "schemas": {
+  "0704.0491": {
+   "arxiv_id": "0704.0491",
+   "idx": 0,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "control-parameter",
+     "placeholder": "X1",
+     "gloss": "a per-unit scalar tuning parameter governing the strength of an intervention that stochastically deactivates each unit"
+    },
+    {
+     "id": "e2",
+     "role": "interaction-network",
+     "placeholder": "X2",
+     "gloss": "a directed connectivity structure specifying asymmetric pairwise links among units, assumed locally acyclic"
+    },
+    {
+     "id": "e3",
+     "role": "coupling",
+     "placeholder": "X3",
+     "gloss": "a weighted operator formed by attenuating each directed link by the per-unit retention factor (one minus the tuning parameter)"
+    },
+    {
+     "id": "e4",
+     "role": "observable",
+     "placeholder": "X4",
+     "gloss": "the leading spectral value (largest eigenvalue) of the weighted operator, a scalar summarizing overall propagation strength"
+    },
+    {
+     "id": "e5",
+     "role": "threshold",
+     "placeholder": "X5",
+     "gloss": "a critical value of the leading spectral value (unity) separating the connected regime from the fragmented regime"
+    },
+    {
+     "id": "e6",
+     "role": "order-parameter",
+     "placeholder": "X6",
+     "gloss": "a collective aggregate measuring the fraction of units remaining in the giant mutually-reachable component; non-zero in the connected phase and vanishing past the critical point"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e3",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e3",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e1",
+     "type": "DECREASES-WITH"
+    },
+    {
+     "src": "e6",
+     "dst": "e4",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e6",
+     "dst": "e1",
+     "type": "DECREASES-WITH"
+    },
+    {
+     "src": "e6",
+     "dst": "e5",
+     "type": "UNDERGOES-TRANSITION-AT"
+    }
+   ]
+  },
+  "0704.0691": {
+   "arxiv_id": "0704.0691",
+   "idx": 1,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "state-variable",
+     "placeholder": "X1",
+     "gloss": "a discrete categorical state an agent can adopt, one of many mutually competing alternatives"
+    },
+    {
+     "id": "e2",
+     "role": "observable",
+     "placeholder": "X2",
+     "gloss": "the count of agents currently holding a given categorical state"
+    },
+    {
+     "id": "e3",
+     "role": "observable",
+     "placeholder": "X3",
+     "gloss": "the aggregate distribution of state sizes across the whole population"
+    },
+    {
+     "id": "e4",
+     "role": "control-parameter",
+     "placeholder": "X4",
+     "gloss": "the spatial separation between two agents or regions"
+    },
+    {
+     "id": "e5",
+     "role": "observable",
+     "placeholder": "X5",
+     "gloss": "a pairwise similarity measure between states reflecting shared lineage"
+    },
+    {
+     "id": "e6",
+     "role": "external-field",
+     "placeholder": "X6",
+     "gloss": "a fixed spatial partition or barrier constraining which agents can interact"
+    },
+    {
+     "id": "e7",
+     "role": "state-variable",
+     "placeholder": "X7",
+     "gloss": "a composite state in which an agent simultaneously holds two categorical states at once"
+    },
+    {
+     "id": "e8",
+     "role": "coupling",
+     "placeholder": "X8",
+     "gloss": "the competitive interaction through which agents adopt or abandon states, biased toward more populous ones"
+    },
+    {
+     "id": "e9",
+     "role": "rate",
+     "placeholder": "X9",
+     "gloss": "the probability per update step that an agent switches its categorical state"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e5",
+     "dst": "e4",
+     "type": "DECREASES-WITH"
+    },
+    {
+     "src": "e5",
+     "dst": "e6",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e9",
+     "dst": "e2",
+     "type": "INCREASES-WITH"
+    },
+    {
+     "src": "e8",
+     "dst": "e9",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e8",
+     "dst": "e2",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e8",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e3",
+     "dst": "e8",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e7",
+     "dst": "e1",
+     "type": "COUPLES"
+    }
+   ]
+  },
+  "0704.0744": {
+   "arxiv_id": "0704.0744",
+   "idx": 2,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "interaction-network",
+     "placeholder": "X1",
+     "gloss": "a time-evolving network of pairwise links among elementary units"
+    },
+    {
+     "id": "e2",
+     "role": "state-variable",
+     "placeholder": "X2",
+     "gloss": "elementary units whose activity and linking patterns change over time"
+    },
+    {
+     "id": "e3",
+     "role": "order-parameter",
+     "placeholder": "X3",
+     "gloss": "a cohesive, densely-connected substructure that emerges within the network"
+    },
+    {
+     "id": "e4",
+     "role": "control-parameter",
+     "placeholder": "X4",
+     "gloss": "the size (number of constituent units) of a substructure, which selects its dynamical regime"
+    },
+    {
+     "id": "e5",
+     "role": "rate",
+     "placeholder": "X5",
+     "gloss": "the rate at which a substructure's constituent membership turns over"
+    },
+    {
+     "id": "e6",
+     "role": "observable",
+     "placeholder": "X6",
+     "gloss": "the persistence duration (lifetime) of a substructure"
+    },
+    {
+     "id": "e7",
+     "role": "observable",
+     "placeholder": "X7",
+     "gloss": "the degree of sustained participation of a unit in a given substructure"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e3",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e5",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e6",
+     "dst": "e5",
+     "type": "INCREASES-WITH"
+    },
+    {
+     "src": "e6",
+     "dst": "e5",
+     "type": "DECREASES-WITH"
+    },
+    {
+     "src": "e5",
+     "dst": "e4",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e6",
+     "dst": "e4",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e6",
+     "dst": "e7",
+     "type": "INCREASES-WITH"
+    }
+   ]
+  },
+  "0704.1269": {
+   "arxiv_id": "0704.1269",
+   "idx": 3,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "control-parameter",
+     "placeholder": "X1",
+     "gloss": "a discrete tuning parameter fixing the number of admissible local states allowed per unit"
+    },
+    {
+     "id": "e2",
+     "role": "control-parameter",
+     "placeholder": "X2",
+     "gloss": "a scalar tuning parameter measuring the mean density of pairwise constraints per unit"
+    },
+    {
+     "id": "e3",
+     "role": "interaction-network",
+     "placeholder": "X3",
+     "gloss": "a large sparse random network of pairwise incompatibility constraints linking the units"
+    },
+    {
+     "id": "e4",
+     "role": "state-variable",
+     "placeholder": "X4",
+     "gloss": "the space of admissible joint configurations that satisfy every pairwise constraint"
+    },
+    {
+     "id": "e5",
+     "role": "order-parameter",
+     "placeholder": "X5",
+     "gloss": "the entropy (log count) of admissible configurations, a collective aggregate over the whole system"
+    },
+    {
+     "id": "e6",
+     "role": "order-parameter",
+     "placeholder": "X6",
+     "gloss": "the fraction of units pinned to a single admissible value across a dominant cluster; zero below a critical point and non-zero above it"
+    },
+    {
+     "id": "e7",
+     "role": "threshold",
+     "placeholder": "X7",
+     "gloss": "a critical value of the constraint-density parameter at which the configuration space fragments into exponentially many disconnected clusters"
+    },
+    {
+     "id": "e8",
+     "role": "threshold",
+     "placeholder": "X8",
+     "gloss": "a critical value at which statistical weight condenses onto a finite number of the largest clusters"
+    },
+    {
+     "id": "e9",
+     "role": "threshold",
+     "placeholder": "X9",
+     "gloss": "a critical value at which a finite fraction of units becomes frozen within every dominant cluster"
+    },
+    {
+     "id": "e10",
+     "role": "threshold",
+     "placeholder": "X10",
+     "gloss": "a critical value of the constraint-density parameter beyond which no admissible configuration exists at all"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e4",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e7",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e4",
+     "dst": "e8",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e4",
+     "dst": "e9",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e4",
+     "dst": "e10",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e5",
+     "dst": "e2",
+     "type": "DECREASES-WITH"
+    },
+    {
+     "src": "e6",
+     "dst": "e9",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e6",
+     "dst": "e2",
+     "type": "INCREASES-WITH"
+    },
+    {
+     "src": "e7",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "0704.1589": {
+   "arxiv_id": "0704.1589",
+   "idx": 4,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "interaction-network",
+     "placeholder": "X1",
+     "gloss": "a substrate of discrete units joined by pairwise links over which influence can spread, with a heavy-tailed distribution of per-unit link counts"
+    },
+    {
+     "id": "e2",
+     "role": "state-variable",
+     "placeholder": "X2",
+     "gloss": "the local connectivity of a unit, i.e. its number of incident links"
+    },
+    {
+     "id": "e3",
+     "role": "threshold",
+     "placeholder": "X3",
+     "gloss": "a cutoff on a unit's connectivity above which the unit is eligible to be selected for deactivation"
+    },
+    {
+     "id": "e4",
+     "role": "control-parameter",
+     "placeholder": "X4",
+     "gloss": "the fraction of units that are deactivated, tuned upward to drive the substrate toward loss of global connectivity"
+    },
+    {
+     "id": "e5",
+     "role": "order-parameter",
+     "placeholder": "X5",
+     "gloss": "the size of the largest mutually reachable cluster of active units, a collective aggregate that collapses toward zero past a critical point"
+    },
+    {
+     "id": "e6",
+     "role": "other",
+     "placeholder": "X6",
+     "gloss": "a purely local selection procedure that picks a random unit and follows one of its links to a more-connected neighbor, using only neighborhood information rather than global structure"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e6",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e6",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e6",
+     "dst": "e4",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e5",
+     "dst": "e4",
+     "type": "DECREASES-WITH"
+    },
+    {
+     "src": "e5",
+     "dst": "e4",
+     "type": "UNDERGOES-TRANSITION-AT"
+    }
+   ]
+  },
+  "0705.1175": {
+   "arxiv_id": "0705.1175",
+   "idx": 5,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "interaction-network",
+     "placeholder": "X1",
+     "gloss": "a structured web of pairwise connections among a large number of interacting units"
+    },
+    {
+     "id": "e2",
+     "role": "observable",
+     "placeholder": "X2",
+     "gloss": "the extreme values of the spectrum of the pairwise-connectivity operator, which govern how the connection structure shapes collective dynamics"
+    },
+    {
+     "id": "e3",
+     "role": "control-parameter",
+     "placeholder": "X3",
+     "gloss": "the size of the system (number of units), driven toward a large-size limit"
+    },
+    {
+     "id": "e4",
+     "role": "observable",
+     "placeholder": "X4",
+     "gloss": "the across-realizations distribution of X2 over an ensemble of randomly generated structures"
+    },
+    {
+     "id": "e5",
+     "role": "order-parameter",
+     "placeholder": "X5",
+     "gloss": "the degree of concentration (sharp peakedness) of X4, which becomes strongly peaked in the large-size limit"
+    },
+    {
+     "id": "e6",
+     "role": "state-variable",
+     "placeholder": "X6",
+     "gloss": "a collective dynamical process unfolding on the network whose behavior is determined by X2"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e2",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e6",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e6",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e5",
+     "dst": "e3",
+     "type": "INCREASES-WITH"
+    }
+   ]
+  },
+  "0705.1305": {
+   "arxiv_id": "0705.1305",
+   "idx": 6,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "state-variable",
+     "placeholder": "X1",
+     "gloss": "an angular phase variable carried by each individual unit in a large coupled ensemble"
+    },
+    {
+     "id": "e2",
+     "role": "rate",
+     "placeholder": "X2",
+     "gloss": "the intrinsic advancement rate assigned to each unit that drives its own dynamics"
+    },
+    {
+     "id": "e3",
+     "role": "coupling",
+     "placeholder": "X3",
+     "gloss": "the pairwise interaction strength that links the states of connected units"
+    },
+    {
+     "id": "e4",
+     "role": "order-parameter",
+     "placeholder": "X4",
+     "gloss": "a collective aggregate measuring the degree of mutual coherence across the ensemble, becoming appreciable past a critical point"
+    },
+    {
+     "id": "e5",
+     "role": "interaction-network",
+     "placeholder": "X5",
+     "gloss": "the network of connections over which units exchange influence"
+    },
+    {
+     "id": "e6",
+     "role": "threshold",
+     "placeholder": "X6",
+     "gloss": "a critical value of the coupling above which collective coherence emerges"
+    },
+    {
+     "id": "e7",
+     "role": "external-field",
+     "placeholder": "X7",
+     "gloss": "a two-mode distribution of intrinsic rates that partitions the units into two opposing classes with distinct roles"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e3",
+     "dst": "e1",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e1",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e1",
+     "dst": "e5",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e3",
+     "type": "INCREASES-WITH"
+    },
+    {
+     "src": "e4",
+     "dst": "e6",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e6",
+     "dst": "e7",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e7",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "0705.3224": {
+   "arxiv_id": "0705.3224",
+   "idx": 7,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "interaction-network",
+     "placeholder": "X1",
+     "gloss": "a topological substrate of nodes joined by pairwise links over which a process propagates"
+    },
+    {
+     "id": "e2",
+     "role": "control-parameter",
+     "placeholder": "X2",
+     "gloss": "the count of direct links attached to a given node"
+    },
+    {
+     "id": "e3",
+     "role": "state-variable",
+     "placeholder": "X3",
+     "gloss": "a per-node status indicating whether the node currently holds the propagated quantity"
+    },
+    {
+     "id": "e4",
+     "role": "observable",
+     "placeholder": "X4",
+     "gloss": "a collective aggregate measuring the average maximal fraction of a node's neighbors that mutually participate in the shared process"
+    },
+    {
+     "id": "e5",
+     "role": "observable",
+     "placeholder": "X5",
+     "gloss": "the elapsed duration required for the process to reach that aggregate fraction"
+    },
+    {
+     "id": "e6",
+     "role": "observable",
+     "placeholder": "X6",
+     "gloss": "the likelihood that a given node becomes a target of the propagated process"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e3",
+     "dst": "e1",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e4",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e5",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e6",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e6",
+     "dst": "e2",
+     "type": "INCREASES-WITH"
+    }
+   ]
+  },
+  "0706.3372": {
+   "arxiv_id": "0706.3372",
+   "idx": 8,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "observable",
+     "placeholder": "X1",
+     "gloss": "a scalar aggregate measuring the fraction of pairwise couplings that are mutual/two-way across the whole system"
+    },
+    {
+     "id": "e2",
+     "role": "control-parameter",
+     "placeholder": "X2",
+     "gloss": "a fixed input prescribing, for each unit, how many outgoing and incoming couplings it carries"
+    },
+    {
+     "id": "e3",
+     "role": "coupling",
+     "placeholder": "X3",
+     "gloss": "a statistical dependency that biases which units couple to which, based on their connectivity magnitudes"
+    },
+    {
+     "id": "e4",
+     "role": "interaction-network",
+     "placeholder": "X4",
+     "gloss": "the ensemble of directed pairwise couplings among the units of the system"
+    },
+    {
+     "id": "e5",
+     "role": "other",
+     "placeholder": "X5",
+     "gloss": "an ordered hierarchy of successively higher-order contributions summing to the aggregate"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e1",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e1",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e1",
+     "dst": "e5",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e3",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e3",
+     "dst": "e4",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e5",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "0707.1107": {
+   "arxiv_id": "0707.1107",
+   "idx": 9,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "interaction-network",
+     "placeholder": "X1",
+     "gloss": "the topology of pairwise connections linking many units into a single interacting system"
+    },
+    {
+     "id": "e2",
+     "role": "state-variable",
+     "placeholder": "X2",
+     "gloss": "the local state of an individual unit embedded in the system"
+    },
+    {
+     "id": "e3",
+     "role": "coupling",
+     "placeholder": "X3",
+     "gloss": "the strength of interaction transmitted between units along a connection"
+    },
+    {
+     "id": "e4",
+     "role": "order-parameter",
+     "placeholder": "X4",
+     "gloss": "a collective aggregate that emerges from the many units acting together"
+    },
+    {
+     "id": "e5",
+     "role": "observable",
+     "placeholder": "X5",
+     "gloss": "a global objective quantity that an optimization process seeks to extremize"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e1",
+     "dst": "e2",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e3",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e5",
+     "dst": "e4",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e5",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "0707.4416": {
+   "arxiv_id": "0707.4416",
+   "idx": 10,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "interaction-network",
+     "placeholder": "X1",
+     "gloss": "a reconfigurable connectivity substrate linking interacting units, whose wiring can change over time"
+    },
+    {
+     "id": "e2",
+     "role": "state-variable",
+     "placeholder": "X2",
+     "gloss": "a per-unit internal attribute that evolves through local interactions along the substrate"
+    },
+    {
+     "id": "e3",
+     "role": "order-parameter",
+     "placeholder": "X3",
+     "gloss": "a collective aggregate measuring the extent of global alignment among units, i.e. the emergence of aligned clusters"
+    },
+    {
+     "id": "e4",
+     "role": "control-parameter",
+     "placeholder": "X4",
+     "gloss": "a scalar tuning parameter setting how strongly and quickly the substrate reconfigures itself"
+    },
+    {
+     "id": "e5",
+     "role": "coupling",
+     "placeholder": "X5",
+     "gloss": "the feedback link that ties unit-state similarity to reconfiguration of the connectivity substrate"
+    },
+    {
+     "id": "e6",
+     "role": "threshold",
+     "placeholder": "X6",
+     "gloss": "a critical point separating a globally-aligned regime from a fragmented, split regime"
+    },
+    {
+     "id": "e7",
+     "role": "observable",
+     "placeholder": "X7",
+     "gloss": "the temporal-evolution profile of the system's aggregate state, at both early and late times"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e2",
+     "dst": "e1",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e5",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e1",
+     "dst": "e5",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e3",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e3",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e3",
+     "dst": "e6",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e7",
+     "dst": "e4",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "0709.2231": {
+   "arxiv_id": "0709.2231",
+   "idx": 11,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "control-parameter",
+     "placeholder": "X1",
+     "gloss": "a scalar tuning parameter that skews the local step-selection rule toward preferred neighbors"
+    },
+    {
+     "id": "e2",
+     "role": "rate",
+     "placeholder": "X2",
+     "gloss": "the per-step transition probability governing how a mobile token hops between adjacent elements"
+    },
+    {
+     "id": "e3",
+     "role": "interaction-network",
+     "placeholder": "X3",
+     "gloss": "the substrate graph of interacting elements over which the process unfolds, with an arbitrary connectivity distribution"
+    },
+    {
+     "id": "e4",
+     "role": "observable",
+     "placeholder": "X4",
+     "gloss": "the steady-state probability of finding the mobile token at a given element"
+    },
+    {
+     "id": "e5",
+     "role": "observable",
+     "placeholder": "X5",
+     "gloss": "the mean number of steps for the token to travel between two designated elements"
+    },
+    {
+     "id": "e6",
+     "role": "threshold",
+     "placeholder": "X6",
+     "gloss": "a critical value of the injection rate above which the system's collective behavior qualitatively changes"
+    },
+    {
+     "id": "e7",
+     "role": "control-parameter",
+     "placeholder": "X7",
+     "gloss": "the rate at which discrete units are injected into the system"
+    },
+    {
+     "id": "e8",
+     "role": "state-variable",
+     "placeholder": "X8",
+     "gloss": "a local connectivity attribute of an element in the substrate that biases local transitions"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e2",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e2",
+     "dst": "e8",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e8",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e5",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e5",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e5",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e7",
+     "dst": "e6",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e6",
+     "dst": "e5",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "0710.0059": {
+   "arxiv_id": "0710.0059",
+   "idx": 12,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "interaction-network",
+     "placeholder": "X1",
+     "gloss": "a system of discrete elements joined by pairwise connections"
+    },
+    {
+     "id": "e2",
+     "role": "state-variable",
+     "placeholder": "X2",
+     "gloss": "an assignment partitioning elements into cohesive classes"
+    },
+    {
+     "id": "e3",
+     "role": "observable",
+     "placeholder": "X3",
+     "gloss": "a scalar aggregate quantifying the quality of a partition by comparing observed to expected connection density"
+    },
+    {
+     "id": "e4",
+     "role": "other",
+     "placeholder": "X4",
+     "gloss": "recurring higher-order connection sub-patterns among small groups of elements"
+    },
+    {
+     "id": "e5",
+     "role": "coupling",
+     "placeholder": "X5",
+     "gloss": "statistical correlations between elements that extend beyond immediate neighbours"
+    },
+    {
+     "id": "e6",
+     "role": "state-variable",
+     "placeholder": "X6",
+     "gloss": "the local density of connections within a class"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e6",
+     "dst": "e5",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e5",
+     "dst": "e4",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e3",
+     "dst": "e4",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e2",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e2",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "0710.3256": {
+   "arxiv_id": "0710.3256",
+   "idx": 13,
+   "is_benchmark": true,
+   "pair_id": "pair01-ising-opinion",
+   "side": "side_b",
+   "entities": [
+    {
+     "id": "e1",
+     "role": "state-variable",
+     "placeholder": "X1",
+     "gloss": "the internal state carried by each elementary unit of the system"
+    },
+    {
+     "id": "e2",
+     "role": "interaction-network",
+     "placeholder": "X2",
+     "gloss": "the network structure specifying which elementary units interact with which"
+    },
+    {
+     "id": "e3",
+     "role": "coupling",
+     "placeholder": "X3",
+     "gloss": "the local interaction that makes one unit's state influence a neighboring unit's state"
+    },
+    {
+     "id": "e4",
+     "role": "order-parameter",
+     "placeholder": "X4",
+     "gloss": "a collective aggregate that emerges macroscopically from many local interactions"
+    },
+    {
+     "id": "e5",
+     "role": "observable",
+     "placeholder": "X5",
+     "gloss": "an empirically measured quantity used to test the model's collective predictions"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e3",
+     "dst": "e1",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e3",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e3",
+     "dst": "e4",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e2",
+     "dst": "e4",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e5",
+     "dst": "e4",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "0807.1458": {
+   "arxiv_id": "0807.1458",
+   "idx": 14,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "control-parameter",
+     "placeholder": "X1",
+     "gloss": "a scalar rate parameter tuning how fast the process propagates through the system"
+    },
+    {
+     "id": "e2",
+     "role": "threshold",
+     "placeholder": "X2",
+     "gloss": "a critical value of the control parameter below which the process cannot propagate at all"
+    },
+    {
+     "id": "e3",
+     "role": "order-parameter",
+     "placeholder": "X3",
+     "gloss": "a collective aggregate — the eventual fraction of units ever reached — that becomes non-zero once the control parameter exceeds the critical point"
+    },
+    {
+     "id": "e4",
+     "role": "interaction-network",
+     "placeholder": "X4",
+     "gloss": "the connectivity structure linking units, whose topology ranges from homogeneous to strongly heterogeneous"
+    },
+    {
+     "id": "e5",
+     "role": "coupling",
+     "placeholder": "X5",
+     "gloss": "correlations between the connectivity degrees of adjacent units in the interaction structure"
+    },
+    {
+     "id": "e6",
+     "role": "state-variable",
+     "placeholder": "X6",
+     "gloss": "the activation state of an individual unit"
+    },
+    {
+     "id": "e7",
+     "role": "observable",
+     "placeholder": "X7",
+     "gloss": "the initial growth rate at which the propagating quantity spreads early on"
+    },
+    {
+     "id": "e8",
+     "role": "control-parameter",
+     "placeholder": "X8",
+     "gloss": "the overall size of the system"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e3",
+     "dst": "e2",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e3",
+     "dst": "e1",
+     "type": "INCREASES-WITH"
+    },
+    {
+     "src": "e2",
+     "dst": "e4",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e2",
+     "dst": "e8",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e7",
+     "dst": "e4",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e7",
+     "dst": "e5",
+     "type": "INCREASES-WITH"
+    },
+    {
+     "src": "e4",
+     "dst": "e6",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e3",
+     "dst": "e5",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "0903.0419": {
+   "arxiv_id": "0903.0419",
+   "idx": 15,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "interaction-network",
+     "placeholder": "X1",
+     "gloss": "a higher-order relational network that joins three distinct classes of nodes through multi-endpoint links"
+    },
+    {
+     "id": "e2",
+     "role": "control-parameter",
+     "placeholder": "X2",
+     "gloss": "a scalar size parameter whose large-value limit renders aggregate quantities exactly computable"
+    },
+    {
+     "id": "e3",
+     "role": "coupling",
+     "placeholder": "X3",
+     "gloss": "a behavioral pattern in which a single node is linked to many counterparts, inducing correlations across the network"
+    },
+    {
+     "id": "e4",
+     "role": "observable",
+     "placeholder": "X4",
+     "gloss": "analytically derived aggregate structural properties of the idealized model"
+    },
+    {
+     "id": "e5",
+     "role": "observable",
+     "placeholder": "X5",
+     "gloss": "empirically measured aggregate structural properties of the real system"
+    },
+    {
+     "id": "e6",
+     "role": "observable",
+     "placeholder": "X6",
+     "gloss": "the discrepancy between the derived and the measured structural properties"
+    },
+    {
+     "id": "e7",
+     "role": "other",
+     "placeholder": "X7",
+     "gloss": "a class of active nodes that generate the higher-order links"
+    },
+    {
+     "id": "e8",
+     "role": "other",
+     "placeholder": "X8",
+     "gloss": "a class of passive nodes that receive the links"
+    },
+    {
+     "id": "e9",
+     "role": "other",
+     "placeholder": "X9",
+     "gloss": "a class of annotation nodes attached to the passive nodes"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e4",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e6",
+     "dst": "e4",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e6",
+     "dst": "e5",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e3",
+     "dst": "e6",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e1",
+     "dst": "e7",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e1",
+     "dst": "e8",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e1",
+     "dst": "e9",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e3",
+     "dst": "e7",
+     "type": "COUPLES"
+    }
+   ]
+  },
+  "0903.4009": {
+   "arxiv_id": "0903.4009",
+   "idx": 16,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "interaction-network",
+     "placeholder": "X1",
+     "gloss": "a set of discrete units joined by pairwise links whose connectivity structure is modeled"
+    },
+    {
+     "id": "e2",
+     "role": "control-parameter",
+     "placeholder": "X2",
+     "gloss": "a scalar tuning the propensity for two units adjacent to a common unit to also be directly linked"
+    },
+    {
+     "id": "e3",
+     "role": "control-parameter",
+     "placeholder": "X3",
+     "gloss": "a scalar setting the overall density of pairwise links in the system"
+    },
+    {
+     "id": "e4",
+     "role": "order-parameter",
+     "placeholder": "X4",
+     "gloss": "the fraction of the system contained in a single macroscopic connected piece, becoming non-zero past a critical point"
+    },
+    {
+     "id": "e5",
+     "role": "threshold",
+     "placeholder": "X5",
+     "gloss": "the critical parameter value at which the macroscopic connected piece first emerges"
+    },
+    {
+     "id": "e6",
+     "role": "control-parameter",
+     "placeholder": "X6",
+     "gloss": "the fraction of elements retained under a stochastic pruning process applied to the system"
+    },
+    {
+     "id": "e7",
+     "role": "threshold",
+     "placeholder": "X7",
+     "gloss": "the critical value of the retained fraction at which a system-spanning connected cluster first appears"
+    },
+    {
+     "id": "e8",
+     "role": "observable",
+     "placeholder": "X8",
+     "gloss": "the distribution over sizes of the disconnected finite pieces of the system"
+    },
+    {
+     "id": "e9",
+     "role": "order-parameter",
+     "placeholder": "X9",
+     "gloss": "the fraction of the system belonging to a spanning cluster under the stochastic pruning process, non-zero past a critical point"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e2",
+     "dst": "e1",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e4",
+     "dst": "e5",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e5",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e5",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e3",
+     "type": "INCREASES-WITH"
+    },
+    {
+     "src": "e9",
+     "dst": "e7",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e9",
+     "dst": "e6",
+     "type": "INCREASES-WITH"
+    },
+    {
+     "src": "e7",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e8",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "0907.1182": {
+   "arxiv_id": "0907.1182",
+   "idx": 17,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "interaction-network",
+     "placeholder": "X1",
+     "gloss": "a set of interacting units joined by pairwise links, coupled to a second such set whose functioning is mutually required"
+    },
+    {
+     "id": "e2",
+     "role": "coupling",
+     "placeholder": "X2",
+     "gloss": "a mutual-dependency coupling that ties units across the two sub-systems so that survival of one requires the other"
+    },
+    {
+     "id": "e3",
+     "role": "control-parameter",
+     "placeholder": "X3",
+     "gloss": "a scalar tuning parameter setting the mean number of links per unit"
+    },
+    {
+     "id": "e4",
+     "role": "order-parameter",
+     "placeholder": "X4",
+     "gloss": "a collective aggregate (fraction of units in the largest surviving connected cluster) that stays finite above a critical point and vanishes to total collapse below it"
+    },
+    {
+     "id": "e5",
+     "role": "threshold",
+     "placeholder": "X5",
+     "gloss": "a critical value of the control parameter separating a functioning phase from complete fragmentation of both sub-systems"
+    },
+    {
+     "id": "e6",
+     "role": "external-field",
+     "placeholder": "X6",
+     "gloss": "an externally imposed perturbation that removes a small fraction of units to initiate the process"
+    },
+    {
+     "id": "e7",
+     "role": "other",
+     "placeholder": "X7",
+     "gloss": "a self-amplifying feedback process in which failures propagate back and forth between the coupled sub-systems, escalating each round"
+    },
+    {
+     "id": "e8",
+     "role": "control-parameter",
+     "placeholder": "X8",
+     "gloss": "a parameter describing the breadth/heterogeneity of the per-unit link-count distribution"
+    },
+    {
+     "id": "e9",
+     "role": "observable",
+     "placeholder": "X9",
+     "gloss": "a measured robustness of the coupled system to random removal of units"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e2",
+     "dst": "e1",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e6",
+     "dst": "e7",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e7",
+     "dst": "e4",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e7",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e5",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e4",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e5",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e9",
+     "dst": "e3",
+     "type": "INCREASES-WITH"
+    },
+    {
+     "src": "e9",
+     "dst": "e8",
+     "type": "DECREASES-WITH"
+    }
+   ]
+  },
+  "0907.2373": {
+   "arxiv_id": "0907.2373",
+   "idx": 18,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "interaction-network",
+     "placeholder": "X1",
+     "gloss": "a network of directed coupling links along which signals flow between discrete units"
+    },
+    {
+     "id": "e2",
+     "role": "interaction-network",
+     "placeholder": "X2",
+     "gloss": "a second, distinct network of symmetric coupling links joining the same set of units"
+    },
+    {
+     "id": "e3",
+     "role": "external-field",
+     "placeholder": "X3",
+     "gloss": "an externally imposed stimulus applied to a selected subset of units"
+    },
+    {
+     "id": "e4",
+     "role": "state-variable",
+     "placeholder": "X4",
+     "gloss": "the activation state of each unit as it propagates through the coupled network"
+    },
+    {
+     "id": "e5",
+     "role": "observable",
+     "placeholder": "X5",
+     "gloss": "statistical and topological descriptors of connectivity (link-count distribution, multiplicity, small-world index, recurring subgraph frequencies)"
+    },
+    {
+     "id": "e6",
+     "role": "other",
+     "placeholder": "X6",
+     "gloss": "units occupying central hub positions that mediate a disproportionate share of signal routing"
+    },
+    {
+     "id": "e7",
+     "role": "observable",
+     "placeholder": "X7",
+     "gloss": "collective activation patterns that emerge across the network in response to input"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e3",
+     "dst": "e4",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e4",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e6",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e1",
+     "dst": "e2",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e5",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e6",
+     "dst": "e5",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e7",
+     "dst": "e4",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "1005.1986": {
+   "arxiv_id": "1005.1986",
+   "idx": 19,
+   "is_benchmark": true,
+   "pair_id": "pair06-turing-spatial-economy",
+   "side": "side_a",
+   "entities": [
+    {
+     "id": "e1",
+     "role": "state-variable",
+     "placeholder": "X1",
+     "gloss": "a locally self-reinforcing dynamical field defined on each discrete unit"
+    },
+    {
+     "id": "e2",
+     "role": "state-variable",
+     "placeholder": "X2",
+     "gloss": "a second dynamical field that antagonizes and suppresses the self-reinforcing one"
+    },
+    {
+     "id": "e3",
+     "role": "interaction-network",
+     "placeholder": "X3",
+     "gloss": "a large random network of links coupling discrete units together"
+    },
+    {
+     "id": "e4",
+     "role": "coupling",
+     "placeholder": "X4",
+     "gloss": "transport of the two fields between linked units across the network"
+    },
+    {
+     "id": "e5",
+     "role": "control-parameter",
+     "placeholder": "X5",
+     "gloss": "a scalar ratio of the two fields' transport rates that tunes the onset of instability"
+    },
+    {
+     "id": "e6",
+     "role": "threshold",
+     "placeholder": "X6",
+     "gloss": "a critical value at which the spatially uniform state loses stability"
+    },
+    {
+     "id": "e7",
+     "role": "order-parameter",
+     "placeholder": "X7",
+     "gloss": "a collective aggregate measuring splitting of units into high- and low- groups, nonzero past the critical point"
+    },
+    {
+     "id": "e8",
+     "role": "other",
+     "placeholder": "X8",
+     "gloss": "the number of coupling links attached to a unit (its connectivity)"
+    },
+    {
+     "id": "e9",
+     "role": "observable",
+     "placeholder": "X9",
+     "gloss": "coexistence of multiple stationary states with history-dependent (hysteretic) selection"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e1",
+     "dst": "e2",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e4",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e7",
+     "dst": "e6",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e6",
+     "dst": "e5",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e5",
+     "dst": "e7",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e7",
+     "dst": "e8",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e7",
+     "dst": "e5",
+     "type": "INCREASES-WITH"
+    },
+    {
+     "src": "e9",
+     "dst": "e7",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "1010.5017": {
+   "arxiv_id": "1010.5017",
+   "idx": 20,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "state-variable",
+     "placeholder": "X1",
+     "gloss": "a large collection of individual units, each carrying a time-evolving directional state"
+    },
+    {
+     "id": "e2",
+     "role": "coupling",
+     "placeholder": "X2",
+     "gloss": "a local interaction that tends to align the directional states of neighboring units"
+    },
+    {
+     "id": "e3",
+     "role": "interaction-network",
+     "placeholder": "X3",
+     "gloss": "the proximity-based network specifying which units mutually influence each other"
+    },
+    {
+     "id": "e4",
+     "role": "order-parameter",
+     "placeholder": "X4",
+     "gloss": "a collective aggregate that becomes non-zero once the units coordinate, distinguishing the few macroscopic states"
+    },
+    {
+     "id": "e5",
+     "role": "control-parameter",
+     "placeholder": "X5",
+     "gloss": "a scalar tuning parameter whose variation drives the system between distinct macroscopic states"
+    },
+    {
+     "id": "e6",
+     "role": "threshold",
+     "placeholder": "X6",
+     "gloss": "a critical value at which the collective state changes qualitatively, marked by a discontinuity"
+    },
+    {
+     "id": "e7",
+     "role": "observable",
+     "placeholder": "X7",
+     "gloss": "a measurable response quantity that diverges algebraically near the critical point"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e2",
+     "dst": "e1",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e2",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e2",
+     "type": "INCREASES-WITH"
+    },
+    {
+     "src": "e4",
+     "dst": "e5",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e6",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e6",
+     "dst": "e5",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e7",
+     "dst": "e5",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e7",
+     "dst": "e6",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "1102.3931": {
+   "arxiv_id": "1102.3931",
+   "idx": 21,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "control-parameter",
+     "placeholder": "X1",
+     "gloss": "a scalar fraction that tunes the system and drives a qualitative change in its collective behavior"
+    },
+    {
+     "id": "e2",
+     "role": "threshold",
+     "placeholder": "X2",
+     "gloss": "a critical value of the tuning parameter above which the system's behavior changes qualitatively"
+    },
+    {
+     "id": "e3",
+     "role": "order-parameter",
+     "placeholder": "X3",
+     "gloss": "a collective aggregate describing the population-wide adopted state that can be flipped from one dominant value to another"
+    },
+    {
+     "id": "e4",
+     "role": "observable",
+     "placeholder": "X4",
+     "gloss": "a measurable timescale for the whole system to reach a single uniform collective state"
+    },
+    {
+     "id": "e5",
+     "role": "external-field",
+     "placeholder": "X5",
+     "gloss": "a fixed subpopulation that persistently biases other units toward one state and is itself immune to influence"
+    },
+    {
+     "id": "e6",
+     "role": "rate",
+     "placeholder": "X6",
+     "gloss": "an exponential growth-rate coefficient governing how the relaxation timescale scales with system size"
+    },
+    {
+     "id": "e7",
+     "role": "interaction-network",
+     "placeholder": "X7",
+     "gloss": "the topology of interactions connecting the individual units of the system"
+    },
+    {
+     "id": "e8",
+     "role": "state-variable",
+     "placeholder": "X8",
+     "gloss": "the discrete state carried by an individual unit that can switch under local influence"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e5",
+     "dst": "e3",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e3",
+     "dst": "e2",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e4",
+     "dst": "e2",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e4",
+     "dst": "e1",
+     "type": "DECREASES-WITH"
+    },
+    {
+     "src": "e4",
+     "dst": "e6",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e6",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e5",
+     "dst": "e8",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e8",
+     "dst": "e7",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e2",
+     "dst": "e7",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "1202.0409": {
+   "arxiv_id": "1202.0409",
+   "idx": 22,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "coupling",
+     "placeholder": "X1",
+     "gloss": "pairwise coupling strength between two constituent units of the system, estimated from their co-fluctuation"
+    },
+    {
+     "id": "e2",
+     "role": "control-parameter",
+     "placeholder": "X2",
+     "gloss": "a scalar tuning parameter applied to pairwise couplings that admits a link only when the coupling exceeds it"
+    },
+    {
+     "id": "e3",
+     "role": "interaction-network",
+     "placeholder": "X3",
+     "gloss": "a network whose nodes are the units and whose edges connect pairs whose coupling exceeds the tuning parameter"
+    },
+    {
+     "id": "e4",
+     "role": "order-parameter",
+     "placeholder": "X4",
+     "gloss": "the collective grouping of units into connected clusters that emerges from the network structure"
+    },
+    {
+     "id": "e5",
+     "role": "observable",
+     "placeholder": "X5",
+     "gloss": "a scalar measure characterizing the scaling heterogeneity of a unit's fluctuation series"
+    },
+    {
+     "id": "e6",
+     "role": "external-field",
+     "placeholder": "X6",
+     "gloss": "an external regime shift that perturbs the whole system over a distinguished time interval"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e3",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e3",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e2",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e3",
+     "dst": "e2",
+     "type": "DECREASES-WITH"
+    },
+    {
+     "src": "e6",
+     "dst": "e1",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e4",
+     "dst": "e5",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "1207.0580": {
+   "arxiv_id": "1207.0580",
+   "idx": 23,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "control-parameter",
+     "placeholder": "X1",
+     "gloss": "a scalar tuning parameter in [0,1] setting the fraction of components deactivated on each presented instance"
+    },
+    {
+     "id": "e2",
+     "role": "noise-source",
+     "placeholder": "X2",
+     "gloss": "a stochastic process that randomly deactivates a subset of components independently for each presented instance"
+    },
+    {
+     "id": "e3",
+     "role": "state-variable",
+     "placeholder": "X3",
+     "gloss": "an individual component that adapts to respond to a recurring pattern in the inputs"
+    },
+    {
+     "id": "e4",
+     "role": "coupling",
+     "placeholder": "X4",
+     "gloss": "mutual dependence between components whereby one component is only useful in the specific context of certain other components"
+    },
+    {
+     "id": "e5",
+     "role": "interaction-network",
+     "placeholder": "X5",
+     "gloss": "the large ensemble of interconnected components that jointly process each instance"
+    },
+    {
+     "id": "e6",
+     "role": "control-parameter",
+     "placeholder": "X6",
+     "gloss": "the ratio of ensemble capacity to the number of available example instances"
+    },
+    {
+     "id": "e7",
+     "role": "observable",
+     "placeholder": "X7",
+     "gloss": "performance measured on unseen, held-out instances not used during adaptation"
+    },
+    {
+     "id": "e8",
+     "role": "other",
+     "placeholder": "X8",
+     "gloss": "the failure mode of fitting the available sample closely while performing poorly on unseen instances"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e6",
+     "dst": "e8",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e4",
+     "dst": "e8",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e4",
+     "dst": "e3",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e4",
+     "dst": "e2",
+     "type": "DECREASES-WITH"
+    },
+    {
+     "src": "e2",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e8",
+     "dst": "e2",
+     "type": "DECREASES-WITH"
+    },
+    {
+     "src": "e7",
+     "dst": "e2",
+     "type": "INCREASES-WITH"
+    }
+   ]
+  },
+  "1407.1664": {
+   "arxiv_id": "1407.1664",
+   "idx": 24,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "rate",
+     "placeholder": "X1",
+     "gloss": "a simple local rule that generates new connections between two elements that already share a common neighbor"
+    },
+    {
+     "id": "e2",
+     "role": "order-parameter",
+     "placeholder": "X2",
+     "gloss": "a mesoscopic collective aggregate: densely-linked subgroups that emerge spontaneously from the dynamics"
+    },
+    {
+     "id": "e3",
+     "role": "interaction-network",
+     "placeholder": "X3",
+     "gloss": "the relational substrate of elements and pairwise links on which the growth process operates"
+    },
+    {
+     "id": "e4",
+     "role": "control-parameter",
+     "placeholder": "X4",
+     "gloss": "a scalar tuning parameter measuring how densely populated the substrate is with links"
+    },
+    {
+     "id": "e5",
+     "role": "control-parameter",
+     "placeholder": "X5",
+     "gloss": "a scalar tuning parameter controlling the degree of stochasticity in the attachment procedure"
+    },
+    {
+     "id": "e6",
+     "role": "external-field",
+     "placeholder": "X6",
+     "gloss": "a per-element intrinsic attractivity that biases which elements accrue new connections"
+    },
+    {
+     "id": "e7",
+     "role": "control-parameter",
+     "placeholder": "X7",
+     "gloss": "a scalar tuning parameter measuring the spread/heterogeneity of the attractivity across elements"
+    },
+    {
+     "id": "e8",
+     "role": "order-parameter",
+     "placeholder": "X8",
+     "gloss": "an alternative collective organization in which a few dominant elements are shared among many groups"
+    },
+    {
+     "id": "e9",
+     "role": "observable",
+     "placeholder": "X9",
+     "gloss": "measurable structural statistics of the substrate, including heavy-tailed connectivity counts and high local transitivity"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e1",
+     "dst": "e3",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e1",
+     "dst": "e2",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e1",
+     "dst": "e9",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e2",
+     "dst": "e4",
+     "type": "DECREASES-WITH"
+    },
+    {
+     "src": "e2",
+     "dst": "e5",
+     "type": "DECREASES-WITH"
+    },
+    {
+     "src": "e6",
+     "dst": "e3",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e2",
+     "dst": "e7",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e8",
+     "dst": "e7",
+     "type": "INCREASES-WITH"
+    },
+    {
+     "src": "e6",
+     "dst": "e8",
+     "type": "CAUSES"
+    }
+   ]
+  },
+  "1703.04046": {
+   "arxiv_id": "1703.04046",
+   "idx": 25,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "external-field",
+     "placeholder": "X1",
+     "gloss": "a raw single-channel time-series input signal fed into the system"
+    },
+    {
+     "id": "e2",
+     "role": "interaction-network",
+     "placeholder": "X2",
+     "gloss": "a local, translation-invariant mapping that transforms the input into intermediate representations"
+    },
+    {
+     "id": "e3",
+     "role": "state-variable",
+     "placeholder": "X3",
+     "gloss": "position-invariant intermediate representations extracted from the input"
+    },
+    {
+     "id": "e4",
+     "role": "interaction-network",
+     "placeholder": "X4",
+     "gloss": "a bidirectional sequential mapping that couples each element to its neighbours in an ordered sequence"
+    },
+    {
+     "id": "e5",
+     "role": "rate",
+     "placeholder": "X5",
+     "gloss": "learned rules governing the succession between ordered discrete categories"
+    },
+    {
+     "id": "e6",
+     "role": "observable",
+     "placeholder": "X6",
+     "gloss": "the discrete category assigned to each successive element of the sequence"
+    },
+    {
+     "id": "e7",
+     "role": "observable",
+     "placeholder": "X7",
+     "gloss": "a scalar aggregate score measuring agreement of predicted categories with a reference standard"
+    },
+    {
+     "id": "e8",
+     "role": "other",
+     "placeholder": "X8",
+     "gloss": "a staged optimization procedure that fits the parameters of the mappings"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e2",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e2",
+     "dst": "e3",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e4",
+     "dst": "e3",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e5",
+     "dst": "e4",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e6",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e6",
+     "dst": "e5",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e7",
+     "dst": "e6",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e2",
+     "dst": "e8",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e8",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e7",
+     "dst": "e5",
+     "type": "INCREASES-WITH"
+    }
+   ]
+  },
+  "1708.04975": {
+   "arxiv_id": "1708.04975",
+   "idx": 26,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "control-parameter",
+     "placeholder": "X1",
+     "gloss": "a low-dimensional set of tuning parameters that indexes candidate high-dimensional configurations"
+    },
+    {
+     "id": "e2",
+     "role": "other",
+     "placeholder": "X2",
+     "gloss": "a trained transformation mapping the low-dimensional parameters onto high-dimensional structured configurations"
+    },
+    {
+     "id": "e3",
+     "role": "external-field",
+     "placeholder": "X3",
+     "gloss": "an externally supplied exemplar encoding the target statistical structure to be reproduced"
+    },
+    {
+     "id": "e4",
+     "role": "state-variable",
+     "placeholder": "X4",
+     "gloss": "a high-dimensional generated configuration realized from the parameters"
+    },
+    {
+     "id": "e5",
+     "role": "observable",
+     "placeholder": "X5",
+     "gloss": "measured quantities predicted from a configuration through a forward operator"
+    },
+    {
+     "id": "e6",
+     "role": "order-parameter",
+     "placeholder": "X6",
+     "gloss": "the distribution over configurations conditioned on the measured quantities — the collective target the sampler converges toward"
+    },
+    {
+     "id": "e7",
+     "role": "other",
+     "placeholder": "X7",
+     "gloss": "an iterative stochastic sampling process that explores the conditioned target distribution"
+    },
+    {
+     "id": "e8",
+     "role": "external-field",
+     "placeholder": "X8",
+     "gloss": "externally imposed pointwise constraints incorporated during inference"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e2",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e5",
+     "dst": "e4",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e6",
+     "dst": "e5",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e7",
+     "dst": "e6",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e1",
+     "dst": "e7",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e4",
+     "dst": "e8",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "2003.10218": {
+   "arxiv_id": "2003.10218",
+   "idx": 27,
+   "is_benchmark": false,
+   "pair_id": null,
+   "side": null,
+   "entities": [
+    {
+     "id": "e1",
+     "role": "control-parameter",
+     "placeholder": "X1",
+     "gloss": "a scalar tuning parameter in a bounded range, the fraction of units adhering to an imposed behavioral restriction"
+    },
+    {
+     "id": "e2",
+     "role": "order-parameter",
+     "placeholder": "X2",
+     "gloss": "a collective aggregate measuring the extent of propagation across the population; sustained in one regime and suppressed in another"
+    },
+    {
+     "id": "e3",
+     "role": "threshold",
+     "placeholder": "X3",
+     "gloss": "a narrow critical band of the control parameter (a tipping range) separating an uncontrolled regime from a controlled one"
+    },
+    {
+     "id": "e4",
+     "role": "interaction-network",
+     "placeholder": "X4",
+     "gloss": "a fine-grained network of individually resolved interacting units over which the process propagates"
+    },
+    {
+     "id": "e5",
+     "role": "state-variable",
+     "placeholder": "X5",
+     "gloss": "a per-unit status variable whose activation probability depends on a unit attribute and differs by unit class"
+    },
+    {
+     "id": "e6",
+     "role": "external-field",
+     "placeholder": "X6",
+     "gloss": "an externally applied intervention that detects and removes or isolates active units"
+    },
+    {
+     "id": "e7",
+     "role": "external-field",
+     "placeholder": "X7",
+     "gloss": "an externally applied intervention restricting cross-boundary inflow of new active units"
+    },
+    {
+     "id": "e8",
+     "role": "coupling",
+     "placeholder": "X8",
+     "gloss": "a secondary intervention whose effect is contingent on being combined with a high value of the control parameter"
+    },
+    {
+     "id": "e9",
+     "role": "observable",
+     "placeholder": "X9",
+     "gloss": "the elapsed time required to drive the order parameter down to a controlled level"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e2",
+     "dst": "e3",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e2",
+     "dst": "e1",
+     "type": "DECREASES-WITH"
+    },
+    {
+     "src": "e2",
+     "dst": "e4",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e2",
+     "dst": "e5",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e2",
+     "dst": "e6",
+     "type": "DECREASES-WITH"
+    },
+    {
+     "src": "e2",
+     "dst": "e7",
+     "type": "DECREASES-WITH"
+    },
+    {
+     "src": "e8",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e8",
+     "dst": "e1",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e6",
+     "dst": "e7",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e9",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "cond-mat/0002374": {
+   "arxiv_id": "cond-mat/0002374",
+   "idx": 28,
+   "is_benchmark": true,
+   "pair_id": "pair05-lotka-volterra-markets",
+   "side": "side_b",
+   "entities": [
+    {
+     "id": "e1",
+     "role": "state-variable",
+     "placeholder": "X1",
+     "gloss": "a per-unit quantity held by each member of a population that evolves in time"
+    },
+    {
+     "id": "e2",
+     "role": "coupling",
+     "placeholder": "X2",
+     "gloss": "the strength/rate of pairwise transfer of the quantity between units"
+    },
+    {
+     "id": "e3",
+     "role": "noise-source",
+     "placeholder": "X3",
+     "gloss": "a random multiplicative fluctuation acting on each unit's quantity independently"
+    },
+    {
+     "id": "e4",
+     "role": "order-parameter",
+     "placeholder": "X4",
+     "gloss": "a collective aggregate measuring concentration of the quantity onto a few units, non-zero in one phase"
+    },
+    {
+     "id": "e5",
+     "role": "observable",
+     "placeholder": "X5",
+     "gloss": "the population-wide distribution of the per-unit quantity, characterized by heavy power-law tails"
+    },
+    {
+     "id": "e6",
+     "role": "control-parameter",
+     "placeholder": "X6",
+     "gloss": "a scalar tuning parameter setting the balance between pairwise transfer and random fluctuation"
+    },
+    {
+     "id": "e7",
+     "role": "interaction-network",
+     "placeholder": "X7",
+     "gloss": "the connectivity/topology and range over which transfers between units may occur"
+    },
+    {
+     "id": "e8",
+     "role": "external-field",
+     "placeholder": "X8",
+     "gloss": "an externally imposed uniform redistributive drain applied across the population"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e2",
+     "dst": "e1",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e1",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e1",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e3",
+     "dst": "e5",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e4",
+     "dst": "e6",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e6",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e6",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e2",
+     "type": "DECREASES-WITH"
+    },
+    {
+     "src": "e4",
+     "dst": "e8",
+     "type": "DECREASES-WITH"
+    },
+    {
+     "src": "e5",
+     "dst": "e7",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "cond-mat/0007235": {
+   "arxiv_id": "cond-mat/0007235",
+   "idx": 29,
+   "is_benchmark": true,
+   "pair_id": "pair04-percolation-epidemics",
+   "side": "side_a",
+   "entities": [
+    {
+     "id": "e1",
+     "role": "control-parameter",
+     "placeholder": "X1",
+     "gloss": "a tunable input distribution over per-element local connectivity that governs the system's structure"
+    },
+    {
+     "id": "e2",
+     "role": "order-parameter",
+     "placeholder": "X2",
+     "gloss": "a macroscopic connected aggregate whose relative size is zero below a critical point and becomes non-zero above it"
+    },
+    {
+     "id": "e3",
+     "role": "threshold",
+     "placeholder": "X3",
+     "gloss": "a critical value of the control parameter at which the collective aggregate first emerges"
+    },
+    {
+     "id": "e4",
+     "role": "interaction-network",
+     "placeholder": "X4",
+     "gloss": "an ensemble of elements joined by pairwise links, drawn at random subject to the input distribution"
+    },
+    {
+     "id": "e5",
+     "role": "state-variable",
+     "placeholder": "X5",
+     "gloss": "the number of links attached to an individual element"
+    },
+    {
+     "id": "e6",
+     "role": "observable",
+     "placeholder": "X6",
+     "gloss": "the average size of the finite connected clusters an element belongs to"
+    },
+    {
+     "id": "e7",
+     "role": "observable",
+     "placeholder": "X7",
+     "gloss": "the average number of steps separating two elements along links, and the count of elements a fixed distance away"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e1",
+     "dst": "e5",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e2",
+     "dst": "e3",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e3",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e2",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e6",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e7",
+     "dst": "e4",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e6",
+     "dst": "e3",
+     "type": "INCREASES-WITH"
+    }
+   ]
+  },
+  "cond-mat/0010317": {
+   "arxiv_id": "cond-mat/0010317",
+   "idx": 30,
+   "is_benchmark": true,
+   "pair_id": "pair03-sir-rumour",
+   "side": "side_a",
+   "entities": [
+    {
+     "id": "e1",
+     "role": "interaction-network",
+     "placeholder": "X1",
+     "gloss": "a network whose connectivity distribution is strongly heterogeneous (lacking a characteristic scale), serving as the substrate over which a dynamical process propagates between coupled units"
+    },
+    {
+     "id": "e2",
+     "role": "control-parameter",
+     "placeholder": "X2",
+     "gloss": "a scalar tuning parameter setting the per-contact rate at which the active condition is transmitted from one unit to a neighbor"
+    },
+    {
+     "id": "e3",
+     "role": "order-parameter",
+     "placeholder": "X3",
+     "gloss": "a collective steady-state aggregate giving the fraction of units in the active condition; it vanishes below a critical point and becomes non-zero above it"
+    },
+    {
+     "id": "e4",
+     "role": "threshold",
+     "placeholder": "X4",
+     "gloss": "a critical value of the control parameter separating an inactive phase from an active phase; found to collapse to zero on the heterogeneous substrate"
+    },
+    {
+     "id": "e5",
+     "role": "state-variable",
+     "placeholder": "X5",
+     "gloss": "the two-valued condition of an individual unit, toggling between an active and an inactive state"
+    },
+    {
+     "id": "e6",
+     "role": "observable",
+     "placeholder": "X6",
+     "gloss": "the average persistence time of the active configuration across the population"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e2",
+     "dst": "e3",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e3",
+     "dst": "e4",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e3",
+     "dst": "e2",
+     "type": "INCREASES-WITH"
+    },
+    {
+     "src": "e4",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e3",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e1",
+     "dst": "e5",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e6",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "cond-mat/0203227": {
+   "arxiv_id": "cond-mat/0203227",
+   "idx": 31,
+   "is_benchmark": true,
+   "pair_id": "pair01-ising-opinion",
+   "side": "side_a",
+   "entities": [
+    {
+     "id": "e1",
+     "role": "control-parameter",
+     "placeholder": "X1",
+     "gloss": "a scalar tuning parameter whose value sets the macroscopic regime of the system"
+    },
+    {
+     "id": "e2",
+     "role": "threshold",
+     "placeholder": "X2",
+     "gloss": "a critical value of the tuning parameter at which the collective state changes qualitatively"
+    },
+    {
+     "id": "e3",
+     "role": "order-parameter",
+     "placeholder": "X3",
+     "gloss": "a collective aggregate that is zero on one side of the threshold and becomes non-zero on the other"
+    },
+    {
+     "id": "e4",
+     "role": "coupling",
+     "placeholder": "X4",
+     "gloss": "a pairwise interaction strength that aligns neighboring units"
+    },
+    {
+     "id": "e5",
+     "role": "interaction-network",
+     "placeholder": "X5",
+     "gloss": "the network of connections over which units interact"
+    },
+    {
+     "id": "e6",
+     "role": "control-parameter",
+     "placeholder": "X6",
+     "gloss": "a distribution-valued parameter governing how many connections each unit has"
+    },
+    {
+     "id": "e7",
+     "role": "observable",
+     "placeholder": "X7",
+     "gloss": "a response function measuring how strongly the collective aggregate reacts to an external influence"
+    },
+    {
+     "id": "e8",
+     "role": "observable",
+     "placeholder": "X8",
+     "gloss": "a response function measuring how the system's energy content changes with the tuning parameter"
+    },
+    {
+     "id": "e9",
+     "role": "other",
+     "placeholder": "X9",
+     "gloss": "a higher-order statistical moment of the connectivity distribution whose divergence drives anomalous behavior"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e3",
+     "dst": "e2",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e3",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e3",
+     "dst": "e4",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e2",
+     "dst": "e6",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e2",
+     "dst": "e9",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e9",
+     "dst": "e6",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e5",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e7",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e8",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "cond-mat/0205009": {
+   "arxiv_id": "cond-mat/0205009",
+   "idx": 32,
+   "is_benchmark": true,
+   "pair_id": "pair04-percolation-epidemics",
+   "side": "side_b",
+   "entities": [
+    {
+     "id": "e1",
+     "role": "interaction-network",
+     "placeholder": "X1",
+     "gloss": "a network of pairwise connections among units over which an activated state propagates"
+    },
+    {
+     "id": "e2",
+     "role": "state-variable",
+     "placeholder": "X2",
+     "gloss": "a per-unit discrete state that advances irreversibly through a fixed sequence of stages (available, activated, then spent)"
+    },
+    {
+     "id": "e3",
+     "role": "control-parameter",
+     "placeholder": "X3",
+     "gloss": "a scalar tunable probability that an interaction along a connection succeeds in propagating the activated state"
+    },
+    {
+     "id": "e4",
+     "role": "rate",
+     "placeholder": "X4",
+     "gloss": "the timescale over which an activated unit remains able to propagate to its neighbours"
+    },
+    {
+     "id": "e5",
+     "role": "order-parameter",
+     "placeholder": "X5",
+     "gloss": "a collective aggregate measuring the total extent of propagation, becoming macroscopic past a critical point"
+    },
+    {
+     "id": "e6",
+     "role": "threshold",
+     "placeholder": "X6",
+     "gloss": "the critical value of the control parameter above which macroscopic propagation emerges"
+    },
+    {
+     "id": "e7",
+     "role": "coupling",
+     "placeholder": "X7",
+     "gloss": "the per-connection coupling strength governing propagation between adjacent units, allowed to be non-uniform and correlated across connections"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e7",
+     "dst": "e2",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e7",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e2",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e5",
+     "dst": "e3",
+     "type": "INCREASES-WITH"
+    },
+    {
+     "src": "e5",
+     "dst": "e4",
+     "type": "INCREASES-WITH"
+    },
+    {
+     "src": "e5",
+     "dst": "e6",
+     "type": "UNDERGOES-TRANSITION-AT"
+    },
+    {
+     "src": "e6",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e5",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "cond-mat/0312131": {
+   "arxiv_id": "cond-mat/0312131",
+   "idx": 33,
+   "is_benchmark": true,
+   "pair_id": "pair03-sir-rumour",
+   "side": "side_b",
+   "entities": [
+    {
+     "id": "e1",
+     "role": "interaction-network",
+     "placeholder": "X1",
+     "gloss": "a heterogeneous connectivity structure linking discrete units, over which a propagation process unfolds"
+    },
+    {
+     "id": "e2",
+     "role": "state-variable",
+     "placeholder": "X2",
+     "gloss": "fraction of units in a receptive state, able to be activated upon contact with an active unit"
+    },
+    {
+     "id": "e3",
+     "role": "state-variable",
+     "placeholder": "X3",
+     "gloss": "fraction of units in an active state that transmit activation to their neighbors"
+    },
+    {
+     "id": "e4",
+     "role": "state-variable",
+     "placeholder": "X4",
+     "gloss": "fraction of units in a terminal inert state that no longer transmit or receive activation"
+    },
+    {
+     "id": "e5",
+     "role": "rate",
+     "placeholder": "X5",
+     "gloss": "per-contact rate at which an active unit converts a receptive neighbor into an active unit"
+    },
+    {
+     "id": "e6",
+     "role": "rate",
+     "placeholder": "X6",
+     "gloss": "rate at which an active unit transitions into the terminal inert state after contacting a non-receptive unit"
+    },
+    {
+     "id": "e7",
+     "role": "order-parameter",
+     "placeholder": "X7",
+     "gloss": "the final aggregate fraction of units ever activated, a collective outcome emerging from the dynamics"
+    },
+    {
+     "id": "e8",
+     "role": "control-parameter",
+     "placeholder": "X8",
+     "gloss": "a structural parameter quantifying the degree of connectivity heterogeneity across the network"
+    },
+    {
+     "id": "e9",
+     "role": "conserved-quantity",
+     "placeholder": "X9",
+     "gloss": "the total number of units, invariant under the dynamics so that the state fractions always sum to a constant"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e5",
+     "dst": "e3",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e6",
+     "dst": "e4",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e3",
+     "dst": "e2",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e3",
+     "dst": "e4",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e3",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e7",
+     "dst": "e5",
+     "type": "INCREASES-WITH"
+    },
+    {
+     "src": "e7",
+     "dst": "e6",
+     "type": "DECREASES-WITH"
+    },
+    {
+     "src": "e7",
+     "dst": "e8",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e9",
+     "dst": "e3",
+     "type": "CONSERVED-UNDER"
+    }
+   ]
+  },
+  "cond-mat/9801289": {
+   "arxiv_id": "cond-mat/9801289",
+   "idx": 34,
+   "is_benchmark": true,
+   "pair_id": "pair06-turing-spatial-economy",
+   "side": "side_b",
+   "entities": [
+    {
+     "id": "e1",
+     "role": "state-variable",
+     "placeholder": "X1",
+     "gloss": "microscopic units whose local assignments evolve under mutual influence"
+    },
+    {
+     "id": "e2",
+     "role": "coupling",
+     "placeholder": "X2",
+     "gloss": "a pairwise coupling acting between two units"
+    },
+    {
+     "id": "e3",
+     "role": "interaction-network",
+     "placeholder": "X3",
+     "gloss": "the network of pairwise couplings connecting the units"
+    },
+    {
+     "id": "e4",
+     "role": "order-parameter",
+     "placeholder": "X4",
+     "gloss": "emergent collective clusters that self-organize from the interacting units"
+    },
+    {
+     "id": "e5",
+     "role": "observable",
+     "placeholder": "X5",
+     "gloss": "a rank-magnitude distribution of cluster sizes following a scale-free power law"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e2",
+     "dst": "e1",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e3",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e2",
+     "dst": "e4",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e4",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e5",
+     "dst": "e4",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e5",
+     "dst": "e2",
+     "type": "DEPENDS-ON"
+    }
+   ]
+  },
+  "nlin/0202034": {
+   "arxiv_id": "nlin/0202034",
+   "idx": 35,
+   "is_benchmark": true,
+   "pair_id": "pair05-lotka-volterra-markets",
+   "side": "side_a",
+   "entities": [
+    {
+     "id": "e1",
+     "role": "interaction-network",
+     "placeholder": "X1",
+     "gloss": "a set of directed links assigned between elementary units, either by a fixed rule or built up incrementally"
+    },
+    {
+     "id": "e2",
+     "role": "state-variable",
+     "placeholder": "X2",
+     "gloss": "the abundance level of each unit, evolving under coupled dynamical equations"
+    },
+    {
+     "id": "e3",
+     "role": "coupling",
+     "placeholder": "X3",
+     "gloss": "the pairwise interaction strengths between units that mediate their mutual dynamics"
+    },
+    {
+     "id": "e4",
+     "role": "order-parameter",
+     "placeholder": "X4",
+     "gloss": "a collective persistence property that is non-zero when the assembled system endures rather than collapsing"
+    },
+    {
+     "id": "e5",
+     "role": "observable",
+     "placeholder": "X5",
+     "gloss": "the total count of units comprising the system"
+    },
+    {
+     "id": "e6",
+     "role": "rate",
+     "placeholder": "X6",
+     "gloss": "the rate at which new units are introduced into the system, either by insertion or by variation of existing units"
+    }
+   ],
+   "relations": [
+    {
+     "src": "e1",
+     "dst": "e2",
+     "type": "COUPLES"
+    },
+    {
+     "src": "e2",
+     "dst": "e3",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e3",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e1",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e4",
+     "dst": "e5",
+     "type": "DEPENDS-ON"
+    },
+    {
+     "src": "e5",
+     "dst": "e6",
+     "type": "INCREASES-WITH"
+    },
+    {
+     "src": "e6",
+     "dst": "e5",
+     "type": "CAUSES"
+    },
+    {
+     "src": "e4",
+     "dst": "e6",
+     "type": "INCREASES-WITH"
+    }
+   ]
+  }
+ }
+}

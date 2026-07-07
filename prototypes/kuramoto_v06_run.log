@@ -1,0 +1,249 @@
+/home/jasper/Repositories/professional-vault/prototypes/kuramoto_lbd_v06.py:828: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+Imports OK.
+K_mults: [1.3, 1.5, 2.0, 3.0]
+Pre-registered precision@10 target: 0.3
+Expected TF-IDF cosine baseline: 0.15
+Corpus file: data/research_synergy_bridged.json
+sha256: d235881499492eb5004777999c7998948d80927d3705aa37d25348c869d28a6b
+Full corpus: N=1400, components=3, top sizes=[1398, 1, 1]
+Giant CC: 1398 nodes (99.9%)  precheck(>= 0.95): PASS
+Giant-CC corpus: N=1398 nodes, 9624 edges, 7 communities
+Fingerprint: openalex-bridge-exploratory
+Louvain params: {'seed': 42, 'resolution': 1.0, 'min_community_size': 1}
+Adjacency: 9598 undirected edges, mean_deg=13.77, skipped=0
+Giant-CC n_cc=1 (require 1 for lambda_2>0): OK
+SC4 TOY: true bridge (24, 25) rank = 1
+  Top-5: [(24, 25)]
+SC4 TOY verdict: PASS
+Pipeline helpers defined.
+Computing K_stable via bisection (this may take several minutes for large N)...
+  lambda_2(L_unweighted) = 0.01561 -> K_hi init = 256.270
+K_stable = 0.5002  (14 probes, 30s)
+Running canonical K-sweep ([1.3, 1.5, 2.0, 3.0]) on corpus (N=1398)...
+  K=1.3*K_stable=0.650: 200 bridges, lambda_2=-0.00656, r=0.097, t=0.3s
+  K=1.5*K_stable=0.750: 200 bridges, lambda_2=-0.00493, r=0.143, t=0.2s
+  K=2.0*K_stable=1.000: 200 bridges, lambda_2=-0.01014, r=0.136, t=0.2s
+  K=3.0*K_stable=1.501: 200 bridges, lambda_2=-0.04597, r=0.385, t=0.3s
+Sweep done in 1s.
+
+Top-5 Fiedler bridges at K=1.3*K_stable:
+  #1: node 1906.02386 (comm 6) -- 1412.6980 (comm 6)  contrib=0.00147
+  #2: node 1101.4028 (comm 2) -- 0806.1224 (comm 2)  contrib=0.00037
+  #3: node 0901.0585 (comm 2) -- 0806.1224 (comm 2)  contrib=0.00012
+  #4: node 1209.0453 (comm 1) -- cond-mat/0505371 (comm 2)  contrib=0.00010
+  #5: node cond-mat/0505371 (comm 2) -- 1101.4028 (comm 2)  contrib=0.00008
+SC3: r_global at K=2.0*K_stable (1.000) = 0.1360
+SC3 verdict: ABORT (r=0.1360 < 0.7 — ODE not converging; check integration params)
+[v05 non-fatal ABORT recorded] ABORT (r=0.1360 < 0.7 — ODE not converging; check integration params)
+SC5: upper-cluster K_mults (lambda_2 >= 0): []
+     lower-cluster K_mults (lambda_2 < 0):  [1.3, 1.5, 2.0, 3.0]
+  At K=1.3: lambda_2=-0.006563, lambda_3=-0.005818, gap=nan
+SC5 verdict: FLAG (lambda_2=-0.0066>0 OK, gap=nan < 1.05 — Fiedler direction ambiguous)
+Running permuted-omega sweep (theta0 fixed)...
+  K=1.3*K_stable=0.650: 200 bridges, lambda_2=-0.00354, r=0.074, t=0.2s
+  K=1.5*K_stable=0.750: 200 bridges, lambda_2=-0.01795, r=0.090, t=0.2s
+  K=2.0*K_stable=1.000: 200 bridges, lambda_2=-0.00876, r=0.202, t=0.2s
+  K=3.0*K_stable=1.501: 200 bridges, lambda_2=-0.03009, r=0.220, t=0.3s
+Done in 1s.
+Plateau Jaccard (canonical vs permuted-omega), upper cluster:
+  mean=0.0000, min=0.0000
+SC2 verdict: FLAG (min_J=0.0000 — high omega sensitivity; failure mode 4)
+Building ER null graph...
+ER null: N=1398, edges=9596
+Running ER null K-sweep...
+  K=1.3*K_stable=0.650: 200 bridges, lambda_2=-0.01367, r=0.054, t=0.4s
+  K=1.5*K_stable=0.750: 200 bridges, lambda_2=-0.01537, r=0.090, t=0.4s
+  K=2.0*K_stable=1.000: 200 bridges, lambda_2=-0.01612, r=0.034, t=0.4s
+  K=3.0*K_stable=1.501: 200 bridges, lambda_2=-0.03403, r=0.057, t=0.3s
+Done in 1s.
+SC1a Jaccard(corpus, ER-null) at K=1.3: 0.0000
+SC1a verdict: PASS (J=0.0000 <= 0.3 — topology-sensitive)
+Building configuration-model null graph...
+Config-model null: N=1398, edges=8826 (real: 9598)
+Running config-model null K-sweep...
+  K=1.3*K_stable=0.650: 6 bridges, lambda_2=-0.00009, r=0.046, t=0.3s
+  K=1.5*K_stable=0.750: 0 bridges, lambda_2=-0.00000, r=0.087, t=0.3s
+  K=2.0*K_stable=1.000: 0 bridges, lambda_2=-0.00000, r=0.077, t=0.3s
+  K=3.0*K_stable=1.501: 0 bridges, lambda_2=-0.00000, r=0.268, t=0.3s
+Done in 1s.
+SC1b Jaccard(corpus, config-model-null) at K=1.3: 0.0000
+SC1b verdict: PASS (J=0.0000 <= 0.3 — beyond-degree topology detected)
+Plateau verdict: FLAG (no strict plateau; using full upper cluster)
+Plateau K_mults: []
+
+Upper-cluster pairwise Jaccard:
+
+Min plateau Jaccard: 1.0000 (gate >= 0.85)
+Building TF-IDF matrix...
+Vocabulary: 9878 terms across 1398 nodes
+TF-IDF matrix ready.
+Feynman benchmark — corpus presence:
+  pair01-ising-opinion: BOTH  (cond-mat/0203227 / 0710.3256)
+  pair02-hopfield-spinglass: B-only  (None / cond-mat/0009418)
+  pair03-sir-rumour: BOTH  (cond-mat/0010317 / cond-mat/0312131)
+  pair04-percolation-epidemics: BOTH  (cond-mat/0007235 / cond-mat/0205009)
+  pair05-lotka-volterra-markets: A-only  (nlin/0202034 / cond-mat/0002374)
+  pair06-turing-spatial-economy: BOTH  (1005.1986 / cond-mat/9801289)
+  pair07-kuramoto-firefly-sync: A-only  (0805.2976 / None)
+  pair08-belief-propagation-cavity: B-only  (None / cond-mat/0207121)
+  pair09-ant-colony-sgd-noise: B-only  (None / 1412.6980)
+  pair10-random-walk-price-dynamics: ABSENT  (None / cond-mat/9907161)
+
+Evaluable pairs: 4/10
+
+Benchmark results at K=1.3*K_stable:
+  precision@10 = 0.100  (target >= 0.3)
+  TF-IDF cosine mean        = 0.0391  (expected baseline ~ 0.15)
+
+  Pair                                      Detected   Cosine       Comms
+  ---------------------------------------------------------------------------
+  pair01-ising-opinion                            NO   0.0152         0-1
+  pair03-sir-rumour                              YES   0.1410         2-2
+  pair04-percolation-epidemics                    NO   0.0000         8-2
+  pair06-turing-spatial-economy                   NO   0.0000         3-1
+
+Benchmark verdict: ABORT (precision=0.100 <= baseline 0.15 — no signal above chance)
+[v05 non-fatal ABORT recorded] ABORT (precision=0.100 <= baseline 0.15 — no signal above chance)
+Null benchmark precision@10:
+  ER null:           0.000  (abort gate: > 0.25)
+  Config-model null: 0.000  (abort gate: > 0.25)
+  Real corpus:       0.100
+Null gate: PASS
+ABC bridges file not found: data/abc_bridges.json
+Skipping orthogonality check. Export resyn bridges first to enable.
+Figure saved: kuramoto_v06_bridges.png
+================================================================================
+KURAMOTO-LBD v0.6 (EXP-RS-13) — RESULTS SUMMARY
+================================================================================
+Corpus: N=1398, 7 communities, 9598 edges
+K_stable = 0.5002  (14 bisection probes)
+K_mults (v03 restricted): [1.3, 1.5, 2.0, 3.0]
+Upper cluster: []
+
+  Check                         Verdict                                     Threshold
+  ----------------------------------------------------------------------------------------------------
+  SC4-TOY  true bridge          PASS                                        rank<=5 ABORT>20
+  SC3      global lock          ABORT (r=0.1360 < 0.7 — ODE not convergi    r>0.9 ABORT<0.7 (r=0.136)
+  SC5      spectral gap         FLAG (lambda_2=-0.0066>0 OK, gap=nan < 1    lam2>=0, gap>=1.05
+  SC2      perm-omega J         FLAG (min_J=0.0000 — high omega sensitiv    min_J>=0.85
+  SC1a     ER null J            PASS (J=0.0000 <= 0.3 — topology-sensiti    J<=0.30 ABORT>0.60
+  SC1b     CM null J            PASS (J=0.0000 <= 0.3 — beyond-degree to    J<=0.30 ABORT>0.60
+  PLATEAU  stability            FLAG (no strict plateau; using full uppe    J>0.70 in upper cluster
+
+  Benchmark                     Result                                      Target
+  ----------------------------------------------------------------------------------------------------
+  FEYNMAN p@10                  0.100                                      >= 0.3
+  TFIDF cosine mean             0.0391                                     (baseline ~ 0.15)
+  ER null p@10                  0.000                                      <= 0.25
+  CM null p@10                  0.000                                      <= 0.25
+  Orthogonality                 SKIP    J <= 0.7
+
+SC: PASS=3  FLAG=3  ABORT=2
+
+OVERALL: ABORT — retire Kuramoto-LBD or debug pipeline.
+
+Pre-registered targets:
+  precision@10 target:   0.3  actual: 0.100  NOT MET
+  plateau Jaccard min: 0.85  actual: 1.000  MET
+  ortho J <= 0.7: MET
+
+PER-PAIR bridge ranks (first top-200 bridge spanning the pair community-pair):
+  pair01-ising-opinion       comm 0-1:  rank >200 (not in top-200)
+  pair03-sir-rumour          comm 2-2:  rank 2
+  pair04-percolation-epidemics comm 8-2:  rank 17
+  pair06-turing-spatial-economy comm 3-1:  rank 11
+Per-pair recall@10 = 0.250   recall@any(top200) = 0.750
+(global BENCH_P10 for reference = 0.100)
+
+[v05] results -> data/kuramoto_v06_results.json
+{
+ "experiment": "EXP-RS-13",
+ "phase": 32,
+ "corpus": "research_synergy_kuramoto_full.json (giant CC)",
+ "N": 1398,
+ "n_communities": 7,
+ "n_edges": 9598,
+ "K_stable": 0.500212074072794,
+ "n_eval": 4,
+ "BENCH_P10": 0.1,
+ "BENCH_COSINE": 0.03906603902578354,
+ "BENCH_V": "ABORT (precision=0.100 <= baseline 0.15 \u2014 no signal above chance)",
+ "p10_er": 0.0,
+ "p10_cm": 0.0,
+ "SC2": "FLAG (min_J=0.0000 \u2014 high omega sensitivity; failure mode 4)",
+ "SC3": "ABORT (r=0.1360 < 0.7 \u2014 ODE not converging; check integration params)",
+ "SC5": "FLAG (lambda_2=-0.0066>0 OK, gap=nan < 1.05 \u2014 Fiedler direction ambiguous)",
+ "SC1A": "PASS (J=0.0000 <= 0.3 \u2014 topology-sensitive)",
+ "SC1B": "PASS (J=0.0000 <= 0.3 \u2014 beyond-degree topology detected)",
+ "PLATEAU_V": "FLAG (no strict plateau; using full upper cluster)",
+ "ORTHO_V": "SKIP",
+ "v05_aborts": [
+  [
+   "SC3",
+   "ABORT (r=0.1360 < 0.7 \u2014 ODE not converging; check integration params)"
+  ],
+  [
+   "BENCH",
+   "ABORT (precision=0.100 <= baseline 0.15 \u2014 no signal above chance)"
+  ]
+ ],
+ "perpair_recall_at10": 0.25,
+ "perpair_recall_any": 0.75,
+ "perpair_ranks": [
+  {
+   "pair": "pair01-ising-opinion",
+   "a_comm": 0,
+   "b_comm": 1,
+   "rank": null
+  },
+  {
+   "pair": "pair03-sir-rumour",
+   "a_comm": 2,
+   "b_comm": 2,
+   "rank": 2
+  },
+  {
+   "pair": "pair04-percolation-epidemics",
+   "a_comm": 8,
+   "b_comm": 2,
+   "rank": 17
+  },
+  {
+   "pair": "pair06-turing-spatial-economy",
+   "a_comm": 3,
+   "b_comm": 1,
+   "rank": 11
+  }
+ ],
+ "evaluable_detail": [
+  {
+   "pair": "pair01-ising-opinion",
+   "detected": false,
+   "cosine": 0.01524612307548523,
+   "a_comm": 0,
+   "b_comm": 1
+  },
+  {
+   "pair": "pair03-sir-rumour",
+   "detected": true,
+   "cosine": 0.14101803302764893,
+   "a_comm": 2,
+   "b_comm": 2
+  },
+  {
+   "pair": "pair04-percolation-epidemics",
+   "detected": false,
+   "cosine": 0.0,
+   "a_comm": 8,
+   "b_comm": 2
+  },
+  {
+   "pair": "pair06-turing-spatial-economy",
+   "detected": false,
+   "cosine": 0.0,
+   "a_comm": 3,
+   "b_comm": 1
+  }
+ ]
+}

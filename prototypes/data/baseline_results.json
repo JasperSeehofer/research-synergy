@@ -1,0 +1,81 @@
+{
+ "experiment": "EXP-RS-16",
+ "method": "brute-force-LLM-baseline (EXP-RS-10)",
+ "direction": "forward (side_a query, C-20)",
+ "per_pair": {
+  "pair01-ising-opinion": {
+   "side_b": "0710.3256",
+   "rank": 12,
+   "n_ranked": 35,
+   "n_missing": 0,
+   "missing_had_side_b": false,
+   "top5": [
+    "cond-mat/0010317",
+    "cond-mat/0007235",
+    "cond-mat/0205009",
+    "0704.1269",
+    "0807.1458"
+   ]
+  },
+  "pair03-sir-rumour": {
+   "side_b": "cond-mat/0312131",
+   "rank": 1,
+   "n_ranked": 35,
+   "n_missing": 0,
+   "missing_had_side_b": false,
+   "top5": [
+    "cond-mat/0312131",
+    "0807.1458",
+    "cond-mat/0205009",
+    "0705.3224",
+    "0704.1589"
+   ]
+  },
+  "pair04-percolation-epidemics": {
+   "side_b": "cond-mat/0205009",
+   "rank": 1,
+   "n_ranked": 35,
+   "n_missing": 0,
+   "missing_had_side_b": false,
+   "top5": [
+    "cond-mat/0205009",
+    "cond-mat/0010317",
+    "cond-mat/0203227",
+    "0903.4009",
+    "0907.1182"
+   ]
+  },
+  "pair05-lotka-volterra-markets": {
+   "side_b": "cond-mat/0002374",
+   "rank": 1,
+   "n_ranked": 35,
+   "n_missing": 0,
+   "missing_had_side_b": false,
+   "top5": [
+    "cond-mat/0002374",
+    "1005.1986",
+    "0704.0691",
+    "0705.1175",
+    "0704.0491"
+   ]
+  },
+  "pair06-turing-spatial-economy": {
+   "side_b": "cond-mat/9801289",
+   "rank": 15,
+   "n_ranked": 34,
+   "n_missing": 1,
+   "missing_had_side_b": false,
+   "top5": [
+    "cond-mat/0002374",
+    "cond-mat/0203227",
+    "0705.1175",
+    "0704.0491",
+    "nlin/0202034"
+   ]
+  }
+ },
+ "recall@1": 0.6,
+ "recall@5": 0.6,
+ "recall@10": 0.6,
+ "mrr": 0.63
+}

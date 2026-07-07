@@ -1,0 +1,32 @@
+{
+  "graph": {
+    "N": 50,
+    "seed": 42,
+    "p_intra": 0.35,
+    "n_bridges": 1,
+    "bridge": [
+      24,
+      25
+    ]
+  },
+  "omega_seed": 42,
+  "theta0_seed": 42,
+  "K_stable": 16.115527343750003,
+  "K_C_MEANFIELD": 1.5957691216057306,
+  "K_sweep_multipliers": [
+    0.5,
+    0.7,
+    1.0,
+    1.3,
+    1.5,
+    2.0,
+    3.0
+  ],
+  "top_20_bridges_at_K1.3": [
+    {
+      "i": 24,
+      "j": 25,
+      "contribution": 0.01592262708094972
+    }
+  ]
+}

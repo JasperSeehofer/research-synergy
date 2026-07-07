@@ -1,0 +1,246 @@
+{
+  "schema_version": "v0.2",
+  "corpus_filter": "pre-2015 arXiv papers; must exist in resyn corpus or be credibly findable via citation crawl from physics+ML seed papers",
+  "curation_date": "2026-04-20",
+  "curation_rule": "one pre-2015 arXiv ID per side per pair; arxiv_id=null means paper was not found on arXiv or has no confirmed preprint",
+  "verification_date": "2026-04-20",
+  "verification_note": "All IDs systematically verified against arXiv API 2026-04-20. Several original 'verify=false' IDs were wrong (cond-mat/0010028, cond-mat/9906434). Multiple 'verify=true' IDs corrected. Papers not found on arXiv set to null.",
+  "evaluable_pairs": ["pair01","pair03","pair04","pair05","pair06"],
+  "pairs": [
+    {
+      "id": "pair01-ising-opinion",
+      "description": "Ising model (statistical physics of binary states) \u2194 opinion dynamics (social physics)",
+      "evaluable": true,
+      "side_a": {
+        "domain": "ising-model",
+        "arxiv_id": "cond-mat/0203227",
+        "title": "Ising Model on Networks with an Arbitrary Distribution of Connections",
+        "authors": ["Dorogovtsev", "Goltsev", "Mendes"],
+        "year": 2002,
+        "verified": true,
+        "notes": "Phys. Rev. E 66, 016104; corrected from wrong ID cond-mat/0206144; confirmed via arXiv API 2026-04-20"
+      },
+      "side_b": {
+        "domain": "opinion-dynamics",
+        "arxiv_id": "0710.3256",
+        "title": "Statistical physics of social dynamics",
+        "authors": ["Castellano", "Fortunato", "Loreto"],
+        "year": 2009,
+        "verified": true,
+        "notes": "Rev. Mod. Phys. 81, 591; confirmed via arXiv API 2026-04-20"
+      }
+    },
+    {
+      "id": "pair02-hopfield-spinglass",
+      "description": "Hopfield associative memory (energy-based neural networks) \u2194 spin glasses (disordered magnets)",
+      "evaluable": false,
+      "evaluable_note": "side_a (Hinton CD) is a Neural Computation journal paper with no arXiv preprint",
+      "side_a": {
+        "domain": "hopfield-model",
+        "arxiv_id": null,
+        "title": "Training Products of Experts by Minimizing Contrastive Divergence",
+        "authors": ["Hinton"],
+        "year": 2002,
+        "verified": true,
+        "notes": "Neural Computation 14:1771; not posted to arXiv — journal-only publication"
+      },
+      "side_b": {
+        "domain": "spin-glass",
+        "arxiv_id": "cond-mat/0009418",
+        "title": "The Bethe lattice spin glass revisited",
+        "authors": ["Mezard", "Parisi"],
+        "year": 2001,
+        "verified": true,
+        "notes": "Eur. Phys. J. B 20, 217; confirmed via arXiv API 2026-04-20"
+      }
+    },
+    {
+      "id": "pair03-sir-rumour",
+      "description": "SIR epidemic model (compartmental infectious disease) \u2194 rumour spreading on networks",
+      "evaluable": true,
+      "side_a": {
+        "domain": "sir-model",
+        "arxiv_id": "cond-mat/0010317",
+        "title": "Epidemic spreading in scale-free networks",
+        "authors": ["Pastor-Satorras", "Vespignani"],
+        "year": 2001,
+        "verified": true,
+        "notes": "PRL 86, 3200; corrected from wrong ID cond-mat/0010028 (which was a superconductor paper); confirmed via arXiv API 2026-04-20"
+      },
+      "side_b": {
+        "domain": "rumour-spread",
+        "arxiv_id": "cond-mat/0312131",
+        "title": "Dynamics of rumor spreading in complex networks",
+        "authors": ["Moreno", "Nekovee", "Pacheco"],
+        "year": 2004,
+        "verified": true,
+        "notes": "Phys. Rev. E 69, 066130; confirmed via arXiv API 2026-04-20"
+      }
+    },
+    {
+      "id": "pair04-percolation-epidemics",
+      "description": "Percolation theory (graph connectivity thresholds) \u2194 epidemic threshold on networks",
+      "evaluable": true,
+      "side_a": {
+        "domain": "percolation-model",
+        "arxiv_id": "cond-mat/0007235",
+        "title": "Random graphs with arbitrary degree distributions and their applications",
+        "authors": ["Newman", "Strogatz", "Watts"],
+        "year": 2001,
+        "verified": true,
+        "notes": "Phys. Rev. E 64, 026118; confirmed via arXiv API 2026-04-20"
+      },
+      "side_b": {
+        "domain": "epidemic-networks",
+        "arxiv_id": "cond-mat/0205009",
+        "title": "The spread of epidemic disease on networks",
+        "authors": ["Newman"],
+        "year": 2002,
+        "verified": true,
+        "notes": "Phys. Rev. E 66, 016128; corrected from wrong ID cond-mat/0111100; confirmed via arXiv API 2026-04-20"
+      }
+    },
+    {
+      "id": "pair05-lotka-volterra-markets",
+      "description": "Lotka-Volterra predator-prey dynamics \u2194 competitive market dynamics (econophysics)",
+      "evaluable": true,
+      "side_a": {
+        "domain": "lotka-volterra-model",
+        "arxiv_id": "nlin/0202034",
+        "title": "Modelling food webs",
+        "authors": ["Drossel", "McKane"],
+        "year": 2002,
+        "verified": true,
+        "notes": "Chapter in Handbook of Graphs and Networks (Wiley-VCH 2003); corrected from wrong ID cond-mat/0110359; confirmed via arXiv API 2026-04-20"
+      },
+      "side_b": {
+        "domain": "competitive-markets",
+        "arxiv_id": "cond-mat/0002374",
+        "title": "Wealth condensation in a simple model of economy",
+        "authors": ["Bouchaud", "Mezard"],
+        "year": 2000,
+        "verified": true,
+        "notes": "Physica A 282, 536; confirmed via arXiv API 2026-04-20"
+      }
+    },
+    {
+      "id": "pair06-turing-spatial-economy",
+      "description": "Turing reaction-diffusion instability (self-organised spatial patterns) \u2194 spatial economic agglomeration (core-periphery geography)",
+      "evaluable": true,
+      "side_a": {
+        "domain": "reaction-diffusion-model",
+        "arxiv_id": "1005.1986",
+        "title": "Turing patterns in network-organized activator-inhibitor systems",
+        "authors": ["Nakao", "Mikhailov"],
+        "year": 2010,
+        "verified": true,
+        "notes": "Nature Physics 6, 544; confirmed via arXiv API 2026-04-20"
+      },
+      "side_b": {
+        "domain": "spatial-economy",
+        "arxiv_id": "cond-mat/9801289",
+        "title": "Interacting Individuals Leading to Zipf's Law",
+        "authors": ["Marsili", "Zhang"],
+        "year": 1998,
+        "verified": true,
+        "notes": "Phys. Rev. Lett. 1998; corrected from wrong ID cond-mat/9907246 (which was a different paper); confirmed via arXiv API 2026-04-20"
+      }
+    },
+    {
+      "id": "pair07-kuramoto-firefly-sync",
+      "description": "Kuramoto phase-oscillator model \u2194 biological/engineering synchronization (fireflies, power grids)",
+      "evaluable": false,
+      "evaluable_note": "side_b (Rohden 2012 PRL 109, 064101) has no arXiv preprint — journal-only",
+      "side_a": {
+        "domain": "kuramoto-model",
+        "arxiv_id": "0805.2976",
+        "title": "Synchronization in complex networks",
+        "authors": ["Arenas", "Diaz-Guilera", "Kurths", "Moreno", "Zhou"],
+        "year": 2008,
+        "verified": true,
+        "notes": "Physics Reports 469, 93; confirmed via arXiv API 2026-04-20"
+      },
+      "side_b": {
+        "domain": "biological-synchronization",
+        "arxiv_id": null,
+        "title": "Self-organized synchronization in decentralized power grids",
+        "authors": ["Rohden", "Sorge", "Timme", "Witthaut"],
+        "year": 2012,
+        "verified": true,
+        "notes": "PRL 109, 064101; original ID 1106.3375 was a quantum Hall paper (wrong); correct Rohden 2012 PRL paper not found on arXiv"
+      }
+    },
+    {
+      "id": "pair08-belief-propagation-cavity",
+      "description": "Belief propagation / message passing (graphical model inference) \u2194 cavity method (statistical physics of disordered systems)",
+      "evaluable": false,
+      "evaluable_note": "side_a (Kabashima/Saad Europhys.Lett. 45, 97, 1999) not found on arXiv",
+      "side_a": {
+        "domain": "belief-propagation",
+        "arxiv_id": null,
+        "title": "Statistical physics of error-correcting codes",
+        "authors": ["Kabashima", "Saad"],
+        "year": 1999,
+        "verified": true,
+        "notes": "Europhys. Lett. 45, 97; original ID cond-mat/9901122 was a superconductor paper (wrong); correct arXiv preprint not found"
+      },
+      "side_b": {
+        "domain": "cavity-method",
+        "arxiv_id": "cond-mat/0207121",
+        "title": "The cavity method at zero temperature",
+        "authors": ["Mezard", "Parisi"],
+        "year": 2003,
+        "verified": true,
+        "notes": "J. Stat. Phys. 111, 1; confirmed via arXiv API 2026-04-20"
+      }
+    },
+    {
+      "id": "pair09-ant-colony-sgd-noise",
+      "description": "Ant colony optimisation (swarm intelligence, stigmergic search) \u2194 stochastic gradient descent with noise (adaptive optimisation)",
+      "evaluable": false,
+      "evaluable_note": "side_a (Dorigo/Blum ACO intro) not posted to arXiv",
+      "side_a": {
+        "domain": "ant-colony-optimization",
+        "arxiv_id": null,
+        "title": "Ant colony optimization: A new meta-heuristic",
+        "authors": ["Dorigo", "Blum"],
+        "year": 1999,
+        "verified": true,
+        "notes": "cs.NE conference paper; original ID cs.NE/0101015 does not exist on arXiv; Dorigo's ACO papers were not posted to arXiv"
+      },
+      "side_b": {
+        "domain": "sgd-noise",
+        "arxiv_id": "1412.6980",
+        "title": "Adam: A Method for Stochastic Optimization",
+        "authors": ["Kingma", "Ba"],
+        "year": 2014,
+        "verified": true,
+        "notes": "ICLR 2015; confirmed via arXiv API 2026-04-20"
+      }
+    },
+    {
+      "id": "pair10-random-walk-price-dynamics",
+      "description": "Random walk / anomalous diffusion theory \u2194 financial price dynamics (econophysics)",
+      "evaluable": false,
+      "evaluable_note": "side_a (Metzler/Klafter J.Phys.A 37 R161, 2004) not found on arXiv",
+      "side_a": {
+        "domain": "random-walk",
+        "arxiv_id": null,
+        "title": "The restaurant at the end of the random walk: Recent developments in the description of anomalous transport by fractional dynamics",
+        "authors": ["Metzler", "Klafter"],
+        "year": 2004,
+        "verified": true,
+        "notes": "J. Phys. A 37 R161; original ID cond-mat/0307565 was a fluctuation-dissipation paper (wrong); correct arXiv preprint not found"
+      },
+      "side_b": {
+        "domain": "financial-price-dynamics",
+        "arxiv_id": "cond-mat/9907161",
+        "title": "Scaling of the distribution of price fluctuations of individual companies",
+        "authors": ["Plerou", "Gopikrishnan", "Amaral", "Meyer", "Stanley"],
+        "year": 1999,
+        "verified": true,
+        "notes": "Phys. Rev. E 60, 6519; corrected from wrong ID cond-mat/9906434; confirmed via arXiv API 2026-04-20"
+      }
+    }
+  ]
+}

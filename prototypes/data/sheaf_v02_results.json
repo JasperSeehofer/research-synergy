@@ -1,0 +1,46 @@
+{
+ "experiment": "EXP-RS-15",
+ "method": "sheaf-frustration",
+ "corpus": "research_synergy_bridged_fine_sheaf.json",
+ "n_communities": 34,
+ "n_inter_community_edges": 384,
+ "t2_precision_at10": {
+  "10": 0.4,
+  "20": 0.4,
+  "50": 0.4
+ },
+ "perpair_recall_at10": 0.0,
+ "perpair_ranks": [
+  {
+   "pair": "pair01-ising-opinion",
+   "a_comm": 8,
+   "b_comm": 12,
+   "rank": 167
+  },
+  {
+   "pair": "pair03-sir-rumour",
+   "a_comm": 29,
+   "b_comm": 10,
+   "rank": 218
+  },
+  {
+   "pair": "pair04-percolation-epidemics",
+   "a_comm": 3,
+   "b_comm": 25,
+   "rank": 69
+  },
+  {
+   "pair": "pair05-lotka-volterra-markets",
+   "a_comm": 14,
+   "b_comm": 16,
+   "rank": null
+  },
+  {
+   "pair": "pair06-turing-spatial-economy",
+   "a_comm": 9,
+   "b_comm": 14,
+   "rank": 188
+  }
+ ],
+ "kuramoto_v07_recall_at10": 0.0
+}

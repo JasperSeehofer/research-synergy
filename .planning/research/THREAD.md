@@ -17,7 +17,7 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 | H-RS-substrate | Cellular **sheaves** over the Louvain community graph detect multi-causal bridges better than RAFs or Kuramoto | 4-tier benchmark incl. multi-causal joint-removal ablation on the shared 10-pair Feynman set | **FALSIFIED at the benchmark bar (Phase 34, EXP-RS-15, 2026-07-05).** On the valid testbed, sheaf frustration recovers 0/4 into the top-10 (benchmark pairs rank #69–218), T4 ablation FALSIFIED (0/5) — **tied with Kuramoto at recall@10 = 0.** Sheaves do NOT beat the bar; the "sheaves better" hypothesis fails on a fair test. (Sheaf's self-reported "precision@10=0.400" is a mislabeled full-list metric — not top-10.) Method-level kill criterion met for the two dynamical/spectral candidates. RAF (reaction model) untested. |
 | H-RS-method | The dynamical-LBD pipeline (Kuramoto→Fiedler) has real cross-domain-bridge recovery signal when run on a well-posed citation graph containing both literatures | EXP-RS-14: per-pair recall@10 on the fully-valid bridged corpus vs 0.15 baseline, vs nulls | **FALSIFIED (Phase 33, 2026-07-04) — CLEAN, mechanistic.** On a corpus that is connected ∧ bridge-containing (4/4 pairs) ∧ synchronized (r=0.932) ∧ finely-partitioned (32 comms), recall@10 = 0.000; NO benchmark pair in the top-200 Fiedler bridges. Mechanism: single global Fiedler cut (side0=834/side1=564) puts ALL benchmark pairs on the SAME side → structurally invisible. Not a confound — every well-posedness condition met. |
 | H-RS-analogy-SME (new chapter) | The cross-field analogy signal is **semantic-conceptual**, recoverable by structure-mapping (SME) over blind LLM-extracted **role-typed relational schemas**, beating the brute-force LLM baseline | EXP-RS-16: conditional-retrieval recall@10 vs the (now-run) brute-force baseline; roles-ON vs OFF; alignment vs ground-truth bridge_names | **FALSIFIED at the benchmark bar (Phase 35, 2026-07-06).** roles-ON recall@10 = 0.00 vs baseline 0.60; role-typing inverts (roles-ON < roles-OFF < lexical); alignment empty 3/5. Over-abstraction collapse on a physics-dense pool. The blind role-schema *representation* is too lossy — NOT that semantic-conceptual analogy is absent (the full-context LLM recovers it at 0.60). Next: less-lossy generators (#2 slot-frames / #4 mechanism-ontology). |
-| H-RS-analogy-mechanism (new chapter, EXP-RS-17) | The cross-field analogy signal is recoverable by matching papers on a **shared rare mechanism archetype** from a *frozen, field-agnostic* ontology (MethMeSH), beating the brute-force LLM baseline — and, crucially, holding up on a **leakage-controlled modern held-out set** where the LLM baseline's pretraining advantage is neutralised | EXP-RS-17: C-19 conditional-retrieval recall@10 on Feynman (vs the 0.60 leaky bar + SME 0.00) AND a NEW modern held-out corpus (vs its own brute-force bar); cheap tagging-recall gate; IDF-on/off + λ ablations; shared-archetype artifact vs `bridge_names` | **FALSIFIED (exact-match form) at the cheap gate (Phase 36, 2026-07-07): Feynman tagging-recall = 1/5 < 3/5 → P2 falsified → KILL-by-construction.** Modern passed 4/6. Failure = exact-archetype-ID brittleness (neighboring archetypes), NOT absent representation. Similarity-aware scoring = a fresh hypothesis (EXP-RS-18), not a re-tune. |
+| H-RS-analogy-mechanism (new chapter, EXP-RS-17) | The cross-field analogy signal is recoverable by matching papers on a **shared rare mechanism archetype** from a *frozen, field-agnostic* ontology (MethMeSH), beating the brute-force LLM baseline — and, crucially, holding up on a **leakage-controlled modern held-out set** where the LLM baseline's pretraining advantage is neutralised | EXP-RS-17: C-19 conditional-retrieval recall@10 on Feynman (vs the 0.60 leaky bar + SME 0.00) AND a NEW modern held-out corpus (vs its own brute-force bar); cheap tagging-recall gate; IDF-on/off + λ ablations; shared-archetype artifact vs `bridge_names` | **FALSIFIED (exact-match form) at the cheap gate (Phase 36, 2026-07-07): Feynman tagging-recall = 1/5 < 3/5 → P2 falsified → KILL-by-construction.** Modern passed 4/6. Failure = exact-archetype-ID brittleness (neighboring archetypes), NOT absent representation. Similarity-aware scoring **pre-registered as EXP-RS-18** (Phase 37, 2026-07-07; blind frozen archetype-adjacency graph, soft exact-or-adjacent matching) to test whether brittleness — not absent representation — was the killer. |
 
 ## Kill criteria
 
@@ -43,6 +43,56 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 | Mechanism-ontology tagging (MethMeSH, exact-archetype-ID overlap) represents cross-domain bridges well enough to beat the baseline | **FALSIFIED at the cheap gate** (Phase 36 EXP-RS-17, 2026-07-07) — Feynman tagging-recall = 1/5 (only pair03 shares an archetype) < gate 3/5 → P2 falsified → KILL-by-construction before any full eval. Failure = exact-ID granularity brittleness: analogous papers get *neighboring* non-identical archetypes (pair04 percolation: giant-connected-component/birth-death-branching vs compartmental-flow/simple-contagion). Modern held-out passed 4/6. | `36-methmesh-vs-baseline/36-VERIFICATION.md` |
 
 ## Active experiment
+
+**EXP-RS-18 → Phase 37 — MethMeSH-Soft: archetype-SIMILARITY scoring over the same blind tags.
+PRE-REGISTERED 2026-07-07; predictions LOCKED below; NOT yet run.** Human-directed (2026-07-07)
+after EXP-RS-17's KILL diagnosed the failure as exact-ID brittleness — the archetype *representation*
+is correct (`turing-instability` WAS tagged on the Turing paper) but analogous papers get
+*neighboring, non-identical* archetypes ⇒ exact-ID cosine 0. EXP-RS-18 keeps everything that worked
+(frozen vocab C-22, blind tags C-23, both corpora) and changes ONLY the matching rule: exact-ID
+overlap → soft overlap over a **blind, frozen archetype-adjacency graph**. This is a DISTINCT
+hypothesis with its own gate, NOT a re-tune of EXP-RS-17 (whose KILL stands).
+
+**Design (LOCKED — full convention text C-27..C-30 in CONVENTIONS.md):**
+- **Frozen archetype adjacency (C-27, leakage control).** A BLIND subagent (NO benchmark/ground-truth
+  access) links each of the 125 archetypes to its mechanistically-adjacent neighbors (closely-related
+  / overlapping mechanism) using ONLY the vocab glosses — capped degree ~6, symmetric, one-line
+  rationale per edge. FROZEN: SHA-256 recorded + committed BEFORE any scoring. Justifiable from the
+  glosses alone, never the benchmark (orchestrator has seen `bridge_names` → delegated blind, as C-22).
+- **Soft signature + scoring (C-28).** Neighbor-expanded signature `sig*(p)[a] = max over t∈tags(p)
+  of w_t·sim(a,t)`, `sim(a,t)=1` if a==t, `=s` (decay s=0.5) if a adjacent to t, else 0; `w_t`=IDF.
+  `score(i,j)=cos(sig*_i,sig*_j) − λ·cos(tfidf_i,tfidf_j)`, λ=1.0. Ablations: hard-neighbor s=1.0;
+  exact-only s=0 (recovers EXP-RS-17); IDF on/off.
+- **Corpora / eval / baseline:** unchanged — Feynman MVP (C-14) + modern held-out (C-24); C-19
+  conditional retrieval recall@{1,5,10}+MRR; baselines = the 0.60 Feynman bar + the modern brute-force
+  bar (C-20, run on the modern corpus).
+- **Cheap soft gate (C-29), run FIRST on the EXISTING 22 endpoint tags:** soft tagging-recall =
+  fraction of pairs whose two sides share an exact-OR-adjacent archetype. Feynman ≥3/5 AND modern
+  ≥4/6, else KILL. The immediate decisive test of the diagnosis, before tagging any distractor.
+- **Over-abstraction guard (C-30):** the adjacency must not re-introduce the EXP-RS-16 collapse —
+  the max fraction of corpus papers matching any single archetype's exact-or-adjacent set must stay
+  < 0.5, AND the soft arm must beat the lexical-null.
+
+**LOCKED PREDICTIONS (before the adjacency graph is built or scored):**
+- **P1 (the diagnosis test):** under soft (exact-or-adjacent) matching the soft gate PASSES — Feynman
+  ≥3/5 (up from exact-match 1/5) AND modern ≥4/6. Direct test that brittleness, not absent
+  representation, killed EXP-RS-17.
+- **P2 (lift over exact-match):** MethMeSH-Soft recall@10 > exact-match MethMeSH on Feynman AND
+  > 0.15 floor on both corpora.
+- **P3 (the bar):** MethMeSH-Soft recall@10 ≥ the modern brute-force baseline (primary,
+  leakage-controlled) AND competitive with the 0.60 Feynman bar.
+- **P4 (no over-abstraction / mechanism):** guard holds (flood < 0.5) AND soft > lexical-null AND
+  soft(s=0.5) ≥ exact(s=0) — the adjacency, not coarsening-to-mush, carries the lift.
+- **P5 (artifact):** recovered pairs' matched exact-or-adjacent archetype pair maps to the
+  ground-truth `bridge_names` (pair04: percolation-threshold ~ giant-connected-component → threshold/
+  connectivity).
+**GATE:** ADVANCE iff P1∧P3∧P4∧P5 → mechanism-archetype LBD viable; formalize + build the CAS
+verifier (#3). PIVOT iff P1∧P2∧P4 but only ties the baseline → #4-soft as the cheap O(N) first stage
+of a tag→verify cascade. KILL the mechanism-archetype line iff P1 fails (adjacency doesn't restore
+tagging recall) OR P4 fails (only over-abstraction lifts it) → fall back to slot-frames (#2). Reuses
+C-14, C-17, C-19, C-20, C-22, C-23, C-24.
+
+### (just-run, KILLED 2026-07-07) EXP-RS-17 → Phase 36 — mechanism-ontology (MethMeSH #4), exact-match
 
 **EXP-RS-17 → Phase 36 — mechanism-ontology (MethMeSH, brainstorm #4) generator vs the brute-force
 baseline, with a leakage-controlled modern held-out bar. RUN 2026-07-07 — KILL-BY-CONSTRUCTION

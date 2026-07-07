@@ -17,6 +17,7 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 | H-RS-substrate | Cellular **sheaves** over the Louvain community graph detect multi-causal bridges better than RAFs or Kuramoto | 4-tier benchmark incl. multi-causal joint-removal ablation on the shared 10-pair Feynman set | **FALSIFIED at the benchmark bar (Phase 34, EXP-RS-15, 2026-07-05).** On the valid testbed, sheaf frustration recovers 0/4 into the top-10 (benchmark pairs rank #69–218), T4 ablation FALSIFIED (0/5) — **tied with Kuramoto at recall@10 = 0.** Sheaves do NOT beat the bar; the "sheaves better" hypothesis fails on a fair test. (Sheaf's self-reported "precision@10=0.400" is a mislabeled full-list metric — not top-10.) Method-level kill criterion met for the two dynamical/spectral candidates. RAF (reaction model) untested. |
 | H-RS-method | The dynamical-LBD pipeline (Kuramoto→Fiedler) has real cross-domain-bridge recovery signal when run on a well-posed citation graph containing both literatures | EXP-RS-14: per-pair recall@10 on the fully-valid bridged corpus vs 0.15 baseline, vs nulls | **FALSIFIED (Phase 33, 2026-07-04) — CLEAN, mechanistic.** On a corpus that is connected ∧ bridge-containing (4/4 pairs) ∧ synchronized (r=0.932) ∧ finely-partitioned (32 comms), recall@10 = 0.000; NO benchmark pair in the top-200 Fiedler bridges. Mechanism: single global Fiedler cut (side0=834/side1=564) puts ALL benchmark pairs on the SAME side → structurally invisible. Not a confound — every well-posedness condition met. |
 | H-RS-analogy-SME (new chapter) | The cross-field analogy signal is **semantic-conceptual**, recoverable by structure-mapping (SME) over blind LLM-extracted **role-typed relational schemas**, beating the brute-force LLM baseline | EXP-RS-16: conditional-retrieval recall@10 vs the (now-run) brute-force baseline; roles-ON vs OFF; alignment vs ground-truth bridge_names | **FALSIFIED at the benchmark bar (Phase 35, 2026-07-06).** roles-ON recall@10 = 0.00 vs baseline 0.60; role-typing inverts (roles-ON < roles-OFF < lexical); alignment empty 3/5. Over-abstraction collapse on a physics-dense pool. The blind role-schema *representation* is too lossy — NOT that semantic-conceptual analogy is absent (the full-context LLM recovers it at 0.60). Next: less-lossy generators (#2 slot-frames / #4 mechanism-ontology). |
+| H-RS-analogy-mechanism (new chapter, EXP-RS-17) | The cross-field analogy signal is recoverable by matching papers on a **shared rare mechanism archetype** from a *frozen, field-agnostic* ontology (MethMeSH), beating the brute-force LLM baseline — and, crucially, holding up on a **leakage-controlled modern held-out set** where the LLM baseline's pretraining advantage is neutralised | EXP-RS-17: C-19 conditional-retrieval recall@10 on Feynman (vs the 0.60 leaky bar + SME 0.00) AND a NEW modern held-out corpus (vs its own brute-force bar); cheap tagging-recall gate; IDF-on/off + λ ablations; shared-archetype artifact vs `bridge_names` | **PRE-REGISTERED (Phase 36, 2026-07-07); predictions LOCKED below; NOT yet run.** |
 
 ## Kill criteria
 
@@ -41,6 +42,69 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 | SME over blind, role-typed relational schemas beats the brute-force baseline / role-typing carries the analogy signal | **FALSIFIED** (Phase 35 EXP-RS-16, 2026-07-06) — roles-ON recall@10 = **0.00** vs baseline 0.60; role-typing *inverts* (roles-ON 0.00 < roles-OFF 0.20 < lexical 0.40); alignment tables empty 3/5. Over-abstraction collapse: closed role vocab maps every network-physics paper onto one skeleton (51% of pairs score 0). Blind schema bottleneck discards content the full-context LLM keeps. Both KILL conditions fired. | 35-VERIFICATION.md |
 
 ## Active experiment
+
+**EXP-RS-17 → Phase 36 — mechanism-ontology (MethMeSH, brainstorm #4) generator vs the brute-force
+baseline, with a leakage-controlled modern held-out bar. PRE-REGISTERED 2026-07-07; predictions
+LOCKED below; NOT yet run.** Human approved BOTH fallback generators (2026-07-07); #4 selected to
+build first (human, 2026-07-07). Layer: semantic-conceptual (mechanism archetypes), NOT graph
+topology — same chapter as EXP-RS-16. Direct response to the EXP-RS-16 kill (over-abstraction
+collapse of a closed *role* vocab): MethMeSH swaps the lossy role-schema representation for a
+*frozen, field-agnostic mechanism ontology* and adds a **cheap tagging-recall gate** that detects the
+same collapse *before* the full eval is paid for.
+
+**Design (LOCKED — full convention text C-22..C-26 in CONVENTIONS.md):**
+- **Generator.** Freeze a ~50–150 archetype field-agnostic mechanism vocabulary (mean-field/Ising,
+  SIR-compartmental, reaction-diffusion, master/Fokker–Planck, percolation-threshold,
+  message-passing/cavity, martingale, replicator, …), **seeded from external taxonomies (TRIZ +
+  canonical applied-math / math-physics), built by a BLIND subagent with no benchmark/ground-truth
+  access, then SHA-256-hashed and committed BEFORE any tagging** (C-22 — the leakage control; the
+  orchestrator has already seen `bridge_names`, so vocab construction is delegated blind and each
+  archetype carries external provenance). A blind per-paper subagent tags each paper from
+  `{title, abstract}` + the frozen vocab with 1–5 archetypes, each carrying an evidence snippet
+  (C-23). Candidate score(i,j) = **IDF-weighted archetype-signature similarity MINUS λ·lexical-similarity**
+  (λ=1.0; lexical = the C-17 abstract bag-of-words TF-IDF null); rare (high-IDF) shared archetypes
+  carry the weight (C-25).
+- **Corpora.** (1) Feynman MVP = REUSE `data/mvp_corpus.json` (36 papers, C-14) → apples-to-apples
+  vs the 0.60 leaky bar and the SME 0.00. (2) **Modern held-out MVP (NEW, C-24)** = the 6 evaluable
+  `modern_lbd_pairs.json` pairs (m01/02/03/04/06/08) × 2 sides = 12 endpoints + ~24 deterministic
+  post-2018 arXiv distractors → the **leakage-controlled** testbed (`research_synergy_modern.json` is
+  a 3-node stub, unusable → must be built).
+- **Eval** = C-19 conditional retrieval (given side_a, rank all others, is side_b in top-k?):
+  recall@{1,5,10} + MRR, on BOTH corpora. Baseline = C-20 brute-force LLM ranking (already 0.60 on
+  Feynman; must be RUN on modern → the modern bar). **Cheap early gate (run FIRST): tagging recall**
+  — do both sides of a benchmark pair share ≥1 frozen archetype? (C-26). **Ablations:** IDF-weight
+  ON vs OFF; λ=1 vs λ=0; archetype-frequency distribution (flood diagnostic). **Auditable co-primary
+  deliverable:** the shared-archetype + evidence-snippet table for recovered pairs, scored vs
+  `cross_bridges_ground_truth.json` `bridge_names`.
+
+**LOCKED PREDICTIONS (before any method runs; no post-hoc adjustment):**
+- **P1 (job-zero + leakage direction):** the C-20 brute-force baseline produces a real recall@10 on
+  the NEW modern corpus, AND modern recall@10 ≤ Feynman 0.60 (the modern pairs are less famous /
+  partly post-pretraining-cutoff → the LLM's leakage advantage shrinks).
+- **P2 (representation adequacy — the cheap KILL gate):** ≥3/5 Feynman pairs AND ≥4/6 modern pairs
+  have both sides sharing ≥1 frozen archetype. Below → the vocab cannot represent the bridges →
+  KILL by construction (the EXP-RS-16 collapse, caught cheaply, before the full eval).
+- **P3 (stake vs the bar):** MethMeSH recall@10 ≥ the **modern** brute-force baseline (the
+  leakage-controlled comparison is primary) AND recall@10 > 0.15 (C-3 TF-IDF floor) on BOTH corpora.
+  (On leaky Feynman, MethMeSH may trail the pretraining-inflated 0.60 — acceptable iff it wins on
+  modern.)
+- **P4 (mechanism — load-bearing, the roles-ON/OFF analog):** IDF-weighted signature > uniform-weight
+  AND λ=1 (signature-minus-lexical) > λ=0 (signature-only). The *rare shared mechanism*, not generic
+  tag overlap or lexical similarity, carries the signal.
+- **P5 (auditable artifact):** for recovered pairs the shared archetype matches the ground-truth
+  `bridge_name` family (pair03→compartmental-transition, pair04→threshold/percolation,
+  pair06→reaction-diffusion, …).
+
+**GATE:** **ADVANCE** iff P2 ∧ P3 ∧ P4 ∧ P5 → MethMeSH is a viable generator; formalize the
+`abc_bridge.rs` refactor, then build the CAS verifier (#3) as the precision layer. **PIVOT (don't
+kill)** iff floor cleared ∧ P4 holds ∧ artifacts high-quality but MethMeSH only *ties* the modern
+baseline → keep #4 as the cheap O(N) first stage of a cascade (tag → SME/CAS verify); next build =
+CAS verifier (#3). **KILL #4** iff P2 fails (tagging recall below gate) OR recall@10 < floor on BOTH
+corpora OR P4 fails (ablations null) → fall back to slot-frames (#2). Reused conventions: C-3 (floor),
+C-14 (Feynman corpus), C-17 (lexical-null), C-19 (retrieval metric), C-20 (baseline). Full brainstorm
+rationale: `.planning/research/BRAINSTORM-cross-field-transfer.md` §2 (#4).
+
+### (history) EXP-RS-16 chapter open + dynamical-line kill
 
 **KILL DECISION — HUMAN, 2026-07-05: the dynamical-substrate LBD line (Gen-4) is RETIRED.** After
 the 6-phase arc (29→34) refuted both graph-dynamical/spectral candidates (Kuramoto single-cut, sheaf

@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.4
 milestone_name: Discovery & Intelligence
 status: in_progress
-stopped_at: "Phase 35 complete — EXP-RS-16: SME over blind role-typed schemas KILLED (recall@10=0.00 vs brute-force baseline 0.60); job-zero baseline established (recall@10=0.60, MRR 0.63). Awaiting human go/kill on next generator (#2 slot-frames or #4 mechanism-ontology)"
-last_updated: "2026-07-06T00:00:00.000Z"
-last_activity: 2026-07-06
+stopped_at: "EXP-RS-17 (Phase 36) PRE-REGISTERED 2026-07-07 — mechanism-ontology (MethMeSH, brainstorm #4) generator, predictions LOCKED in THREAD.md + vault registry + CONVENTIONS C-22..C-26; NOT yet run. #4 chosen first (human). Next execution steps: freeze the field-agnostic vocab (blind subagent, hashed) → build the modern held-out corpus → blind tag → eval vs the 0.60 Feynman bar + the new modern bar. Awaiting human witness of the locked predictions before the run."
+last_updated: "2026-07-07T00:00:00.000Z"
+last_activity: 2026-07-07
 progress:
   total_phases: 10
   completed_phases: 8
@@ -71,7 +71,22 @@ None.
 Last session: 2026-07-07 (post-EXP-RS-16 review — prototypes migrated in-repo; next steps set)
 Research thread state: `.planning/research/THREAD.md` (Layer-2 contract; same-day updates required)
 
-### RESUME POINTER — start EXP-RS-17 (next generator). Prototypes now IN-REPO. (updated 2026-07-07)
+### RESUME POINTER — EXP-RS-17 PRE-REGISTERED (locked), build next. (updated 2026-07-07)
+
+**STATUS 2026-07-07:** EXP-RS-17 is now **pre-registered and predictions LOCKED** — generator = **#4
+mechanism-ontology (MethMeSH)** (human's choice). Design + LOCKED predictions P1–P5 + ADVANCE/PIVOT/KILL
+gate are in `.planning/research/THREAD.md` (Active experiment) + vault
+`agentic-experiments-research.md` + CONVENTIONS C-22..C-26. **NOT yet run** — held at the
+pre-registration commit boundary for the human to witness the locked predictions before the run.
+Remaining execution (tasks tracked): (1) freeze the ~50–150 archetype field-agnostic vocab via a
+BLIND subagent (external TRIZ/math-physics seed, no benchmark access), SHA-256-hash + commit; (2)
+build `data/modern_mvp_corpus.json` (12 modern endpoints + 24 deterministic post-2018 distractors,
+C-24); (3) `methmesh_score.py` + blind tagging subagents (C-23/C-25); (4) run the tagging-recall gate
+FIRST (cheap KILL check, C-26), then the full eval on Feynman + modern; (5) verdict vs locked
+predictions in `.planning/phases/36-*/36-VERIFICATION.md`, same-day thread-state update. Below is the
+original post-EXP-RS-16 handoff that set this up:
+
+
 
 **Repo layout changed (human decision 2026-07-07, CONVENTIONS C-21, supersedes C-7):** ALL
 research/LBD implementation now lives **in-repo at `./prototypes/`** (Python + Rust prototypes,

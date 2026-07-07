@@ -18,7 +18,7 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 | H-RS-method | The dynamical-LBD pipeline (Kuramoto→Fiedler) has real cross-domain-bridge recovery signal when run on a well-posed citation graph containing both literatures | EXP-RS-14: per-pair recall@10 on the fully-valid bridged corpus vs 0.15 baseline, vs nulls | **FALSIFIED (Phase 33, 2026-07-04) — CLEAN, mechanistic.** On a corpus that is connected ∧ bridge-containing (4/4 pairs) ∧ synchronized (r=0.932) ∧ finely-partitioned (32 comms), recall@10 = 0.000; NO benchmark pair in the top-200 Fiedler bridges. Mechanism: single global Fiedler cut (side0=834/side1=564) puts ALL benchmark pairs on the SAME side → structurally invisible. Not a confound — every well-posedness condition met. |
 | H-RS-analogy-SME (new chapter) | The cross-field analogy signal is **semantic-conceptual**, recoverable by structure-mapping (SME) over blind LLM-extracted **role-typed relational schemas**, beating the brute-force LLM baseline | EXP-RS-16: conditional-retrieval recall@10 vs the (now-run) brute-force baseline; roles-ON vs OFF; alignment vs ground-truth bridge_names | **FALSIFIED at the benchmark bar (Phase 35, 2026-07-06).** roles-ON recall@10 = 0.00 vs baseline 0.60; role-typing inverts (roles-ON < roles-OFF < lexical); alignment empty 3/5. Over-abstraction collapse on a physics-dense pool. The blind role-schema *representation* is too lossy — NOT that semantic-conceptual analogy is absent (the full-context LLM recovers it at 0.60). Next: less-lossy generators (#2 slot-frames / #4 mechanism-ontology). |
 | H-RS-analogy-mechanism (new chapter, EXP-RS-17) | The cross-field analogy signal is recoverable by matching papers on a **shared rare mechanism archetype** from a *frozen, field-agnostic* ontology (MethMeSH), beating the brute-force LLM baseline — and, crucially, holding up on a **leakage-controlled modern held-out set** where the LLM baseline's pretraining advantage is neutralised | EXP-RS-17: C-19 conditional-retrieval recall@10 on Feynman (vs the 0.60 leaky bar + SME 0.00) AND a NEW modern held-out corpus (vs its own brute-force bar); cheap tagging-recall gate; IDF-on/off + λ ablations; shared-archetype artifact vs `bridge_names` | **FALSIFIED (exact-match form) at the cheap gate (Phase 36, 2026-07-07): Feynman tagging-recall = 1/5 < 3/5 → P2 falsified → KILL-by-construction.** Modern passed 4/6. Failure = exact-archetype-ID brittleness (neighboring archetypes), NOT absent representation. **Also FALSIFIED under similarity matching (EXP-RS-18, Phase 37, 2026-07-07): soft exact-or-adjacent gate = Feynman 2/5 < 3/5** (blind frozen adjacency, 124 nodes/427 edges). Adjacency lifts 1→2/5 but can't close the residual domain-knowledge-equivalence gap. **Mechanism-ontology line (#4, exact + soft) KILLED on the Feynman bar → fall back to slot-frames (#2).** Modern held-out 5/6 (its pairs share identical named mechanisms). Does not refute semantic-conceptual analogy broadly (LLM baseline 0.60). |
-| H-RS-analogy-generative (EXP-RS-19) | A cross-field analogy = SAME method, DIFFERENT object; it is recoverable by GENERATING (from the query alone) hypothetical abstracts that re-express the query's method in other fields' native vocabulary, then retrieving real candidates against them (HyDE). Generation is an EXPANSION → converts latent equivalences (percolation≡epidemic) into retrievable tokens where pure-lexical splits self-kill | EXP-RS-19: C-19 conditional-retrieval recall@10 on Feynman (vs 0.60 bar + 0.40 lexical null) + modern held-out (vs its frozen brute-force bar + 0.833 null); cheap forward gate (GATE-A recall≥3/5 & recovers a null-missed pair; GATE-B pair04); auditable transfer card vs `bridge_names` | **PRE-REGISTERED (Phase 38, 2026-07-07); predictions LOCKED; NOT yet run. Honest ceiling = TIE at 0.60 → artifact-primary, PIVOT-oriented gate.** |
+| H-RS-analogy-generative (EXP-RS-19) | A cross-field analogy = SAME method, DIFFERENT object; it is recoverable by GENERATING (from the query alone) hypothetical abstracts that re-express the query's method in other fields' native vocabulary, then retrieving real candidates against them (HyDE). Generation is an EXPANSION → converts latent equivalences (percolation≡epidemic) into retrievable tokens where pure-lexical splits self-kill | EXP-RS-19: C-19 conditional-retrieval recall@10 on Feynman (vs 0.60 bar + 0.40 lexical null) + modern held-out; cheap forward gate (GATE-A recall≥3/5 & recovers a null-missed pair; GATE-B pair04); auditable transfer card vs `bridge_names` | **PARTIAL-CONFIRM / headline KILLED (Phase 38, 2026-07-07). Mechanism PROVEN: pair04 recovered 17→4 (verified: epidemiology hypothetical matches the real epidemics paper, 0.15 vs null 0.06); K=1 ties LLM 0.60. But pinned headline (K=5 max-pool) = 0.20 < 0.40 null → GATE-A FAILS → KILL. Cause = max-pool distractor inflation (monotonic in K), NOT absent signal. Ceiling = TIE (as predicted). Next: generate→verify cascade #3.** |
 
 ## Kill criteria
 
@@ -43,12 +43,30 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 | SME over blind, role-typed relational schemas beats the brute-force baseline / role-typing carries the analogy signal | **FALSIFIED** (Phase 35 EXP-RS-16, 2026-07-06) — roles-ON recall@10 = **0.00** vs baseline 0.60; role-typing *inverts* (roles-ON 0.00 < roles-OFF 0.20 < lexical 0.40); alignment tables empty 3/5. Over-abstraction collapse: closed role vocab maps every network-physics paper onto one skeleton (51% of pairs score 0). Blind schema bottleneck discards content the full-context LLM keeps. Both KILL conditions fired. | 35-VERIFICATION.md |
 | Mechanism-ontology tagging (MethMeSH, exact-archetype-ID overlap) represents cross-domain bridges well enough to beat the baseline | **FALSIFIED at the cheap gate** (Phase 36 EXP-RS-17, 2026-07-07) — Feynman tagging-recall = 1/5 (only pair03 shares an archetype) < gate 3/5 → P2 falsified → KILL-by-construction before any full eval. Failure = exact-ID granularity brittleness: analogous papers get *neighboring* non-identical archetypes (pair04 percolation: giant-connected-component/birth-death-branching vs compartmental-flow/simple-contagion). Modern held-out passed 4/6. | `36-methmesh-vs-baseline/36-VERIFICATION.md` |
 | Archetype-SIMILARITY matching (blind frozen adjacency graph) rescues mechanism-ontology LBD where exact-ID failed | **FALSIFIED at the soft gate** (Phase 37 EXP-RS-18, 2026-07-07) — soft exact-or-adjacent gate = Feynman 2/5 < 3/5 (adjacency lifts 1→2/5 but not past the gate); modern 5/6. P1 falsified → KILL the mechanism-ontology line (#4, both forms). Residual gap: cross-domain bridges (percolation≈epidemic, reaction-diffusion≈economy) need domain-knowledge equivalences invisible from field-agnostic glosses; blind tagger applies generic archetypes to the non-physics side. | `37-methmesh-soft/37-VERIFICATION.md` |
+| Generation-based cross-field retrieval (HyDE) recovers cross-vocabulary analogies the lexical comparator misses | **PARTIALLY CONFIRMED** (Phase 38 EXP-RS-19, 2026-07-07) — VERIFIED: a blind epidemiology hypothetical generated from a percolation paper matches the real epidemics paper (cos 0.15 vs null 0.06 via transmission/epidemics tokens) → pair04 recovered rank 17→4; K=1 ablation ties the LLM baseline (0.60). But the PINNED headline (K=5 max-pool) = 0.20 < 0.40 null → GATE-A fails → KILL; cause = max-pool distractor inflation (monotonic: K1 0.60 / K3 0.40 / K5 0.20), NOT absent signal. Ceiling = TIE (as predicted). | `38-hyde-bridge/38-VERIFICATION.md` |
 
 ## Active experiment
 
-**EXP-RS-19 → Phase 38 — HyDE-Bridge (#2 slot-frames, artifact-primary). PRE-REGISTERED 2026-07-07;
-predictions LOCKED below; NOT yet run.** Human directed starting #2 (2026-07-07, ultracode). Design
-chosen by a **21-agent judge panel** (5 independent designs × 3 adversarial lenses → synthesis;
+**EXP-RS-19 → Phase 38 — HyDE-Bridge (#2 slot-frames, artifact-primary). RUN 2026-07-07 — pinned
+headline KILLED at the cheap gate, but the generation MECHANISM is PROVEN (pair04 recovered; K=1
+ties 0.60). Forward = human's go/kill/pivot.** Human directed starting #2 (2026-07-07, ultracode).
+Design chosen by a **21-agent judge panel**
+
+> **RESULT (2026-07-07):** Blind HyDE prompt (hashed) + 5 blind Feynman side_a generations (hashed
+> before scoring). Cheap gate (C-34, forward, full 36-candidate retrieval): headline (K=5,max,λ=0)
+> forward **recall@10 = 0.20 — BELOW the 0.40 lexical null → GATE-A FAILS → KILL**. BUT **GATE-B
+> PASSES**: pair04 (percolation→epidemics) recovered rank **17→4**, and the mechanism is VERIFIED —
+> the blind epidemiology hypothetical matches the real "spread of epidemic disease on networks" paper
+> at cos 0.1546 (null 0.0586) via *transmission/epidemics/spread* tokens. Cause of the KILL = **max-pool
+> distractor inflation** (residual risk #4), monotonic in K: **K=1→0.60, K=3→0.40, K=5→0.20**. The
+> pre-registered K=1 ablation TIES the LLM baseline (0.60, same pairs 03/04/05) — the design's honest
+> TIE ceiling — but K=1 is a non-promotable descriptive ablation (C-36 pin). pair01/06 unrecovered by
+> anyone (LLM too). So: the *pinned aggregation* failed, NOT the generation idea — signal survives,
+> violating C-37's "no signal" KILL premise. Both C-37's escalation branch (LLM-judge cascade) and the
+> design's PIVOT (verify stage) converge → **generate→VERIFY cascade (#3)** is the best next move.
+> Full record: `.planning/phases/38-hyde-bridge/38-VERIFICATION.md`. **Forward = human's call:**
+> (rec.) build the generate→verify cascade #3 (HyDE recall stage + LLM/CAS verify) · or escalate to a
+> real embedding substrate · or a fresh EXP-RS-20 with distractor-robust aggregation (K=1 / rank-fusion). (5 independent designs × 3 adversarial lenses → synthesis;
 `workflows/scripts/design-exp-rs-19-slotframes-*`). The panel proved *from the data* that every
 PURE-LEXICAL method/object split SELF-KILLS: true-pair whole-abstract cosines are near-zero for the 4
 hard Feynman pairs (a token partition can't manufacture shared-method tokens ABSENT from the text →
@@ -425,6 +443,15 @@ this thread; until then the table above is the claim record. (Exact format is an
 spec question — session feedback welcome.)
 
 ## Last verification
+
+2026-07-07 — Phase 38 (EXP-RS-19): **HyDE-Bridge — pinned headline KILLED at the cheap gate, but the
+generation MECHANISM is PROVEN.** Blind HyDE prompt (hashed) + 5 blind Feynman side_a generations
+(hashed). Headline (K=5,max,λ=0) forward recall@10 = **0.20 < 0.40 null → GATE-A FAILS → KILL**; but
+**GATE-B PASSES** (pair04 17→4, verified: epidemiology hypothetical matches the real epidemics paper,
+cos 0.15 vs 0.06). Cause = max-pool distractor inflation (K1 0.60 / K3 0.40 / K5 0.20); K=1 ties the
+LLM 0.60 (non-promotable, C-36). Signal survives → violates C-37's "no signal" KILL premise → both the
+escalation branch and the design's PIVOT converge on the **generate→verify cascade (#3)**. Forward =
+human's go/kill/pivot. Full record: `38-hyde-bridge/38-VERIFICATION.md`. Prior verifications:
 
 2026-07-07 — Phase 37 (EXP-RS-18): **MethMeSH-Soft KILLED → mechanism-ontology line (#4) retired.**
 Blind frozen archetype-adjacency graph (124 nodes/427 edges, SHA-256 `620d9c0f…`, committed

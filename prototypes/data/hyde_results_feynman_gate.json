@@ -1,0 +1,110 @@
+{
+ "experiment": "EXP-RS-19",
+ "corpus": "mvp_corpus.json",
+ "hyp": "hyde_hypotheticals_feynman.json",
+ "n_corpus": 36,
+ "n_eval_pairs": 5,
+ "pair_ids": [
+  "pair01-ising-opinion",
+  "pair03-sir-rumour",
+  "pair04-percolation-epidemics",
+  "pair05-lotka-volterra-markets",
+  "pair06-turing-spatial-economy"
+ ],
+ "n_queries_with_hyp": 5,
+ "arms": {
+  "headline_lam0_k5_max": {
+   "forward": {
+    "ranks": {
+     "pair01-ising-opinion": 26,
+     "pair03-sir-rumour": 16,
+     "pair04-percolation-epidemics": 4,
+     "pair05-lotka-volterra-markets": 19,
+     "pair06-turing-spatial-economy": 32
+    },
+    "recall@1": 0.0,
+    "recall@5": 0.2,
+    "recall@10": 0.2,
+    "mrr": 0.08696862348178139
+   }
+  },
+  "abl_lam0.5_k5_max": {
+   "forward": {
+    "ranks": {
+     "pair01-ising-opinion": 20,
+     "pair03-sir-rumour": 29,
+     "pair04-percolation-epidemics": 3,
+     "pair05-lotka-volterra-markets": 20,
+     "pair06-turing-spatial-economy": 25
+    },
+    "recall@1": 0.0,
+    "recall@5": 0.2,
+    "recall@10": 0.2,
+    "mrr": 0.1015632183908046
+   }
+  },
+  "abl_lam0_k5_mean": {
+   "forward": {
+    "ranks": {
+     "pair01-ising-opinion": 31,
+     "pair03-sir-rumour": 11,
+     "pair04-percolation-epidemics": 13,
+     "pair05-lotka-volterra-markets": 21,
+     "pair06-turing-spatial-economy": 32
+    },
+    "recall@1": 0.0,
+    "recall@5": 0.0,
+    "recall@10": 0.0,
+    "mrr": 0.0557918559934689
+   }
+  },
+  "abl_lam0_k3_max": {
+   "forward": {
+    "ranks": {
+     "pair01-ising-opinion": 24,
+     "pair03-sir-rumour": 12,
+     "pair04-percolation-epidemics": 2,
+     "pair05-lotka-volterra-markets": 10,
+     "pair06-turing-spatial-economy": 29
+    },
+    "recall@1": 0.0,
+    "recall@5": 0.2,
+    "recall@10": 0.4,
+    "mrr": 0.15189655172413793
+   }
+  },
+  "abl_lam0_k1_max": {
+   "forward": {
+    "ranks": {
+     "pair01-ising-opinion": 26,
+     "pair03-sir-rumour": 4,
+     "pair04-percolation-epidemics": 1,
+     "pair05-lotka-volterra-markets": 6,
+     "pair06-turing-spatial-economy": 35
+    },
+    "recall@1": 0.2,
+    "recall@5": 0.4,
+    "recall@10": 0.6,
+    "mrr": 0.2967399267399268
+   }
+  }
+ },
+ "BENCH_P10": 0.2,
+ "gate": {
+  "GATE_A_recall10_ge_3of5_and_null_missed_recovered": false,
+  "GATE_B_pair04_recovered": true,
+  "recall@10": 0.2,
+  "null_missed_pairs_recovered": [
+   "pair04-percolation-epidemics"
+  ],
+  "pair04_rank": 4,
+  "PASS": false,
+  "forward_ranks": {
+   "pair01-ising-opinion": 26,
+   "pair03-sir-rumour": 16,
+   "pair04-percolation-epidemics": 4,
+   "pair05-lotka-volterra-markets": 19,
+   "pair06-turing-spatial-economy": 32
+  }
+ }
+}

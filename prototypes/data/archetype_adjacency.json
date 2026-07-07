@@ -1,0 +1,684 @@
+{
+  "experiment": "EXP-RS-18",
+  "convention": "C-27",
+  "description": "Blind mechanistic archetype-adjacency graph, built from vocab glosses only (no benchmark access).",
+  "max_out_degree": 6,
+  "n_archetypes": 125,
+  "adjacency": [
+    {"id": "arch-001", "neighbors": [
+      {"id": "arch-002", "rationale": "Both obtain a unit's behavior from a self-consistent closure over the whole population."},
+      {"id": "arch-003", "rationale": "Both solve a fixed-point where the produced aggregate equals the imposed input."},
+      {"id": "arch-005", "rationale": "The self-consistent aggregate turning nonzero selects one of several equivalent states."},
+      {"id": "arch-006", "rationale": "The population-averaged aggregate is the order parameter rising past a critical point."}
+    ]},
+    {"id": "arch-002", "neighbors": [
+      {"id": "arch-001", "rationale": "Single-unit marginal closed self-consistently across the population is mean-field."},
+      {"id": "arch-026", "rationale": "Both pass local marginals treating neighbors as independent, exact on trees."},
+      {"id": "arch-003", "rationale": "Neighbors treated as independent and the description closed self-consistently."}
+    ]},
+    {"id": "arch-003", "neighbors": [
+      {"id": "arch-001", "rationale": "Fixed point where imposed aggregate equals produced aggregate is mean-field self-consistency."},
+      {"id": "arch-002", "rationale": "A self-consistent closure whose operating point is a fixed point."},
+      {"id": "arch-086", "rationale": "A quantity that enters the equation determining itself is a self-reinforcing loop."},
+      {"id": "arch-085", "rationale": "Output fed back to set the operating point is a regulated feedback loop."}
+    ]},
+    {"id": "arch-004", "neighbors": [
+      {"id": "arch-122", "rationale": "Frozen (quenched) disorder produces the competing, unsatisfiable constraints."},
+      {"id": "arch-123", "rationale": "Quenched randomness underlies glassy trapping and aging."},
+      {"id": "arch-074", "rationale": "Frozen disorder generates a rugged multi-minimum landscape."},
+      {"id": "arch-104", "rationale": "Both treat frozen random couplings as fixed disorder to average over."}
+    ]},
+    {"id": "arch-005", "neighbors": [
+      {"id": "arch-006", "rationale": "An order parameter growing from zero past threshold breaks symmetry continuously."},
+      {"id": "arch-052", "rationale": "A symmetric state birthing a symmetric pair is the bifurcation form of symmetry breaking."},
+      {"id": "arch-001", "rationale": "The self-consistent aggregate selects one of several equivalent configurations."},
+      {"id": "arch-009", "rationale": "Defects are the singularities left in a broken-symmetry order field."}
+    ]},
+    {"id": "arch-006", "neighbors": [
+      {"id": "arch-005", "rationale": "Continuous onset of an order parameter breaks a symmetry."},
+      {"id": "arch-001", "rationale": "The aggregate observable is a self-consistent order parameter."},
+      {"id": "arch-058", "rationale": "Diverging susceptibility and correlation length near the transition slow relaxation."},
+      {"id": "arch-044", "rationale": "Second-order transitions are classified by universal critical exponents."},
+      {"id": "arch-043", "rationale": "Observables near the critical point collapse under critical rescaling."},
+      {"id": "arch-042", "rationale": "Diverging correlation length makes the critical point scale-invariant."}
+    ]},
+    {"id": "arch-007", "neighbors": [
+      {"id": "arch-008", "rationale": "Contrasting decay of a metastable/unstable state, barrier vs barrierless."},
+      {"id": "arch-013", "rationale": "Nucleated domains grow and demix the system."},
+      {"id": "arch-057", "rationale": "Discontinuous jump with path-dependent hysteresis between metastable states."},
+      {"id": "arch-059", "rationale": "A discontinuous, hysteretic jump to an alternative state."},
+      {"id": "arch-020", "rationale": "Decay proceeds by escape over a barrier via a critical nucleus."}
+    ]},
+    {"id": "arch-008", "neighbors": [
+      {"id": "arch-007", "rationale": "Contrasting mechanisms for decay of a metastable homogeneous state."},
+      {"id": "arch-013", "rationale": "Barrierless decomposition demixes into growing domains."},
+      {"id": "arch-010", "rationale": "A homogeneous state going linearly unstable to fluctuations across length scales."}
+    ]},
+    {"id": "arch-009", "neighbors": [
+      {"id": "arch-005", "rationale": "Defects are singularities in the broken-symmetry order field."},
+      {"id": "arch-013", "rationale": "Defects and domain walls anneal as domains coarsen."}
+    ]},
+    {"id": "arch-010", "neighbors": [
+      {"id": "arch-011", "rationale": "Differential spreading of short-range activator and long-range inhibitor is the Turing mechanism."},
+      {"id": "arch-008", "rationale": "A homogeneous state destabilized linearly by infinitesimal fluctuations."},
+      {"id": "arch-014", "rationale": "Reaction-diffusion machinery producing stationary spatial structure."}
+    ]},
+    {"id": "arch-011", "neighbors": [
+      {"id": "arch-010", "rationale": "Short-range self-amplification vs long-range suppression is the Turing pattern mechanism."},
+      {"id": "arch-014", "rationale": "The same competing ranges sustain localized spots and pulses."},
+      {"id": "arch-012", "rationale": "Activator-inhibitor kinetics propagate fronts and waves."}
+    ]},
+    {"id": "arch-012", "neighbors": [
+      {"id": "arch-055", "rationale": "Excitable media propagate stereotyped self-sustaining pulses."},
+      {"id": "arch-014", "rationale": "Self-sustaining propagating pulses maintained far from equilibrium."},
+      {"id": "arch-011", "rationale": "Reaction-diffusion kinetics drive the moving interface."}
+    ]},
+    {"id": "arch-013", "neighbors": [
+      {"id": "arch-008", "rationale": "Spinodal decomposition initiates the demixing that then coarsens."},
+      {"id": "arch-007", "rationale": "Nucleated domains grow and coarsen over time."},
+      {"id": "arch-015", "rationale": "Both are domain/interface growth with power-law scaling in time."},
+      {"id": "arch-069", "rationale": "Copying dynamics coarsen into growing like-state domains."}
+    ]},
+    {"id": "arch-014", "neighbors": [
+      {"id": "arch-011", "rationale": "Competing activation/inhibition ranges sustain the localized structures."},
+      {"id": "arch-010", "rationale": "Reaction-diffusion patterning far from equilibrium."},
+      {"id": "arch-012", "rationale": "Bounded pulses maintained by continuous throughput of energy/matter."}
+    ]},
+    {"id": "arch-015", "neighbors": [
+      {"id": "arch-013", "rationale": "Interface/domain growth with power laws in elapsed time."},
+      {"id": "arch-044", "rationale": "Roughening exponents are universal, independent of microscopic detail."},
+      {"id": "arch-042", "rationale": "Interface width and correlations follow scale-free power laws."},
+      {"id": "arch-043", "rationale": "Width curves collapse under the scaling exponents."}
+    ]},
+    {"id": "arch-016", "neighbors": [
+      {"id": "arch-017", "rationale": "Continuum limit describing the same evolution of a probability distribution."},
+      {"id": "arch-019", "rationale": "Its stationary state with balanced microscopic transition fluxes."},
+      {"id": "arch-046", "rationale": "Occupancy transfers among discrete states at prescribed rates."},
+      {"id": "arch-049", "rationale": "Birth-death transitions are a canonical discrete jump process."}
+    ]},
+    {"id": "arch-017", "neighbors": [
+      {"id": "arch-018", "rationale": "The distribution-level dual of the same drift-plus-noise dynamics."},
+      {"id": "arch-016", "rationale": "Continuum limit of the discrete-state balance equation."},
+      {"id": "arch-027", "rationale": "Stochastic spreading is diffusion of the density."},
+      {"id": "arch-020", "rationale": "Barrier-escape rates derive from this drift-diffusion equation."},
+      {"id": "arch-021", "rationale": "First-passage is a boundary problem for the evolving density."},
+      {"id": "arch-019", "rationale": "The zero-current stationary state of the density."}
+    ]},
+    {"id": "arch-018", "neighbors": [
+      {"id": "arch-017", "rationale": "The SDE whose density obeys the drift-diffusion equation."},
+      {"id": "arch-020", "rationale": "Explicit random forcing drives the noise-activated escape."},
+      {"id": "arch-093", "rationale": "The noise term is tied quantitatively to the dissipation."},
+      {"id": "arch-027", "rationale": "Random forcing integrates into diffusive displacement."}
+    ]},
+    {"id": "arch-019", "neighbors": [
+      {"id": "arch-016", "rationale": "Its stationary state with each transition balanced by its reverse."},
+      {"id": "arch-097", "rationale": "Acceptance crafted to satisfy detailed balance for the target."},
+      {"id": "arch-096", "rationale": "Detailed balance guarantees the desired stationary distribution."},
+      {"id": "arch-017", "rationale": "The zero-current equilibrium of the density."}
+    ]},
+    {"id": "arch-020", "neighbors": [
+      {"id": "arch-077", "rationale": "The connecting saddle height sets the exponential escape rate."},
+      {"id": "arch-017", "rationale": "Escape rate computed from drift-diffusion over the barrier."},
+      {"id": "arch-018", "rationale": "Noise forcing supplies the activation for barrier crossing."},
+      {"id": "arch-021", "rationale": "Escape time is a first passage over the barrier."},
+      {"id": "arch-007", "rationale": "Nucleation is barrier escape via a critical nucleus."}
+    ]},
+    {"id": "arch-021", "neighbors": [
+      {"id": "arch-027", "rationale": "First passage of a diffusing walk to a target boundary."},
+      {"id": "arch-020", "rationale": "Escape time is the first passage over a barrier."},
+      {"id": "arch-017", "rationale": "First-passage as a density boundary problem."},
+      {"id": "arch-049", "rationale": "Extinction time is a first passage to zero population."}
+    ]},
+    {"id": "arch-022", "neighbors": [
+      {"id": "arch-025", "rationale": "Both mark the abrupt onset of system-spanning connectivity."},
+      {"id": "arch-024", "rationale": "Bootstrap percolation is threshold-driven cluster emergence."},
+      {"id": "arch-023", "rationale": "Both are sharp connectivity transitions on networks."}
+    ]},
+    {"id": "arch-023", "neighbors": [
+      {"id": "arch-024", "rationale": "Iterated threshold pruning vs activation are dual cascades."},
+      {"id": "arch-022", "rationale": "A discontinuous connectivity transition."},
+      {"id": "arch-025", "rationale": "Collapse/emergence of a densely connected extensive subset."},
+      {"id": "arch-071", "rationale": "Threshold-triggered cascading collapse."}
+    ]},
+    {"id": "arch-024", "neighbors": [
+      {"id": "arch-067", "rationale": "A node switching once enough neighbors are on is a threshold cascade."},
+      {"id": "arch-023", "rationale": "Dual iterated-threshold process on a network."},
+      {"id": "arch-066", "rationale": "Activation needs a threshold number of active neighbors."},
+      {"id": "arch-022", "rationale": "Seed-triggered spanning activation is bootstrap percolation."}
+    ]},
+    {"id": "arch-025", "neighbors": [
+      {"id": "arch-022", "rationale": "The same abrupt spanning-cluster onset."},
+      {"id": "arch-023", "rationale": "Extensive densely-connected component appearing or collapsing."},
+      {"id": "arch-047", "rationale": "An extensive component emerges once mean degree/offspring exceeds one."}
+    ]},
+    {"id": "arch-026", "neighbors": [
+      {"id": "arch-002", "rationale": "Message passing that treats neighbors as independent, exact on trees."},
+      {"id": "arch-108", "rationale": "Local estimates combined via likelihoods to approximate marginals."}
+    ]},
+    {"id": "arch-027", "neighbors": [
+      {"id": "arch-028", "rationale": "Zero-mean increments make the position a fair driftless process."},
+      {"id": "arch-017", "rationale": "Diffusive spreading is the density-level of the walk."},
+      {"id": "arch-106", "rationale": "Summed increments give sqrt-scaling Gaussian displacement."},
+      {"id": "arch-030", "rationale": "Contrasting heavy-tailed-step walk that spreads super-diffusively."},
+      {"id": "arch-021", "rationale": "Hitting-time statistics of the walk."}
+    ]},
+    {"id": "arch-028", "neighbors": [
+      {"id": "arch-027", "rationale": "Driftless zero-mean increments define a fair process."},
+      {"id": "arch-021", "rationale": "Stopping-time statistics of a fair process."}
+    ]},
+    {"id": "arch-029", "neighbors": [
+      {"id": "arch-027", "rationale": "Randomly wandering units aggregate on contact."},
+      {"id": "arch-042", "rationale": "The aggregate is self-similar and fractal (scale-free)."}
+    ]},
+    {"id": "arch-030", "neighbors": [
+      {"id": "arch-107", "rationale": "Heavy-tailed steps sum to heavy-tailed stable laws."},
+      {"id": "arch-027", "rationale": "A heavy-tailed variant of diffusive random walking."},
+      {"id": "arch-042", "rationale": "Scale-free step lengths give power-law excursions."}
+    ]},
+    {"id": "arch-031", "neighbors": [
+      {"id": "arch-106", "rationale": "Sibling universal limit law (extremes vs sums)."},
+      {"id": "arch-107", "rationale": "Limiting laws governing heavy-tailed extremes."}
+    ]},
+    {"id": "arch-032", "neighbors": [
+      {"id": "arch-038", "rationale": "Uninvadable configurations are the stable fixed points of selection."},
+      {"id": "arch-037", "rationale": "Fitness relative to average depends on type frequencies."},
+      {"id": "arch-035", "rationale": "Below-average types are driven out."},
+      {"id": "arch-120", "rationale": "Replicator dynamics converge to game equilibria."}
+    ]},
+    {"id": "arch-033", "neighbors": [
+      {"id": "arch-039", "rationale": "Early self-reinforcing growth before saturation."},
+      {"id": "arch-086", "rationale": "Self-reinforcing growth is positive feedback."},
+      {"id": "arch-035", "rationale": "Growth limited by a finite shared carrying capacity."}
+    ]},
+    {"id": "arch-034", "neighbors": [
+      {"id": "arch-040", "rationale": "The feeding term is a bilinear product of the two densities."},
+      {"id": "arch-035", "rationale": "Consumers drawing on a shared resource."},
+      {"id": "arch-036", "rationale": "Another sign of pairwise coupling between populations."},
+      {"id": "arch-053", "rationale": "Sustained out-of-phase oscillations arise via a limit cycle."}
+    ]},
+    {"id": "arch-035", "neighbors": [
+      {"id": "arch-032", "rationale": "The most efficient type outcompetes the rest by selection."},
+      {"id": "arch-034", "rationale": "Competition mediated by a shared limiting resource."},
+      {"id": "arch-036", "rationale": "Opposite-sign interspecific interaction."},
+      {"id": "arch-121", "rationale": "Several users drawing on a single shared pool."}
+    ]},
+    {"id": "arch-036", "neighbors": [
+      {"id": "arch-035", "rationale": "Opposite-sign interspecific coupling."},
+      {"id": "arch-034", "rationale": "Another pairwise interaction between coupled populations."},
+      {"id": "arch-086", "rationale": "Reciprocal positive coupling is mutual positive feedback."}
+    ]},
+    {"id": "arch-037", "neighbors": [
+      {"id": "arch-032", "rationale": "Success depends on relative frequency in the population."},
+      {"id": "arch-038", "rationale": "Frequency dependence sets uninvadability."},
+      {"id": "arch-120", "rationale": "Payoffs depending on others' frequencies define the game."}
+    ]},
+    {"id": "arch-038", "neighbors": [
+      {"id": "arch-120", "rationale": "An uninvadable strategy refines the Nash equilibrium."},
+      {"id": "arch-032", "rationale": "ESS are the stable rest points of selection dynamics."},
+      {"id": "arch-037", "rationale": "Resistance to invasion is inherently frequency dependent."}
+    ]},
+    {"id": "arch-039", "neighbors": [
+      {"id": "arch-086", "rationale": "Promoting one's own production is positive feedback."},
+      {"id": "arch-033", "rationale": "Self-amplification is the growth phase before saturation."},
+      {"id": "arch-049", "rationale": "Self-copying units multiply proportionally to their number."}
+    ]},
+    {"id": "arch-040", "neighbors": [
+      {"id": "arch-034", "rationale": "Predation rate is the bilinear product of predator and prey."},
+      {"id": "arch-065", "rationale": "Infection rate is the product of susceptible and infected densities."},
+      {"id": "arch-046", "rationale": "Inter-compartment transfer rates are mass-action encounters."}
+    ]},
+    {"id": "arch-041", "neighbors": [
+      {"id": "arch-044", "rationale": "Fixed points and their stability define universality classes."},
+      {"id": "arch-042", "rationale": "Fixed points of the flow are scale-invariant."},
+      {"id": "arch-045", "rationale": "RG is iterated coarse-graining of the description."},
+      {"id": "arch-043", "rationale": "The flow predicts the critical scaling functions."}
+    ]},
+    {"id": "arch-042", "neighbors": [
+      {"id": "arch-044", "rationale": "Shared power-law exponents across microscopically different systems."},
+      {"id": "arch-043", "rationale": "Power-law rescaling collapses observables."},
+      {"id": "arch-041", "rationale": "Scale invariance is realized at RG fixed points."},
+      {"id": "arch-070", "rationale": "Emits scale-free bursts of all sizes."},
+      {"id": "arch-111", "rationale": "Heavy-tailed, scale-free connectivity distribution."}
+    ]},
+    {"id": "arch-043", "neighbors": [
+      {"id": "arch-044", "rationale": "Distinct systems collapse onto one universal master curve."},
+      {"id": "arch-042", "rationale": "Collapse achieved by power-law axis rescaling."},
+      {"id": "arch-041", "rationale": "Scaling functions follow from the RG flow."},
+      {"id": "arch-006", "rationale": "Collapse is anchored to the distance from the critical point."}
+    ]},
+    {"id": "arch-044", "neighbors": [
+      {"id": "arch-041", "rationale": "Universality classes are RG fixed points."},
+      {"id": "arch-042", "rationale": "Identical large-scale power-law exponents."},
+      {"id": "arch-043", "rationale": "Universal master curves under rescaling."},
+      {"id": "arch-006", "rationale": "Critical exponents classify continuous transitions."},
+      {"id": "arch-015", "rationale": "Roughening exponents are independent of microscopics."},
+      {"id": "arch-104", "rationale": "Universal spectral distributions independent of detail."}
+    ]},
+    {"id": "arch-045", "neighbors": [
+      {"id": "arch-041", "rationale": "Integrating out short scales is one RG step."},
+      {"id": "arch-113", "rationale": "Averaging over fast/short modes yields slow equations."},
+      {"id": "arch-114", "rationale": "Reduced equations for the slow variables."}
+    ]},
+    {"id": "arch-046", "neighbors": [
+      {"id": "arch-065", "rationale": "SIR-type compartments and transfer describe spreading."},
+      {"id": "arch-047", "rationale": "The spreading threshold is defined on the compartments."},
+      {"id": "arch-016", "rationale": "Occupancies flow between discrete states at rates."},
+      {"id": "arch-078", "rationale": "A conserved total redistributed among compartments."},
+      {"id": "arch-040", "rationale": "Transfer rates set by mass-action encounters."}
+    ]},
+    {"id": "arch-047", "neighbors": [
+      {"id": "arch-049", "rationale": "Growth vs extinction set by mean offspring exceeding one."},
+      {"id": "arch-046", "rationale": "R0 defined from compartmental transfer rates."},
+      {"id": "arch-065", "rationale": "Spreading grows only above the reproduction threshold."},
+      {"id": "arch-048", "rationale": "Crossing R0=1 is the transition out of the absorbing state."},
+      {"id": "arch-025", "rationale": "An extensive outbreak/component appears past the threshold."}
+    ]},
+    {"id": "arch-048", "neighbors": [
+      {"id": "arch-047", "rationale": "The active phase survives only above the reproduction threshold."},
+      {"id": "arch-049", "rationale": "Extinction is the absorbing trap."},
+      {"id": "arch-065", "rationale": "SIS spreading has an absorbing infection-free state."},
+      {"id": "arch-006", "rationale": "The active-order parameter grows continuously past criticality."}
+    ]},
+    {"id": "arch-049", "neighbors": [
+      {"id": "arch-047", "rationale": "Extinction vs growth set by the mean offspring number."},
+      {"id": "arch-048", "rationale": "Extinction is the absorbing state."},
+      {"id": "arch-016", "rationale": "Birth-death rates define the jump process."},
+      {"id": "arch-021", "rationale": "Extinction is a first passage to zero population."},
+      {"id": "arch-025", "rationale": "Supercritical branching underlies the giant component."}
+    ]},
+    {"id": "arch-050", "neighbors": [
+      {"id": "arch-059", "rationale": "The fold whose crossing triggers the sudden jump."},
+      {"id": "arch-057", "rationale": "Paired folds bound the bistable/hysteretic range."},
+      {"id": "arch-051", "rationale": "Sibling local bifurcation of colliding fixed points."},
+      {"id": "arch-052", "rationale": "Sibling fixed-point bifurcation."},
+      {"id": "arch-058", "rationale": "Relaxation slows as the fixed points approach collision."}
+    ]},
+    {"id": "arch-051", "neighbors": [
+      {"id": "arch-050", "rationale": "Sibling local bifurcation of fixed points."},
+      {"id": "arch-052", "rationale": "Sibling bifurcation with stability change."},
+      {"id": "arch-047", "rationale": "Exchange of stability at R0=1 is the epidemic-threshold bifurcation."}
+    ]},
+    {"id": "arch-052", "neighbors": [
+      {"id": "arch-005", "rationale": "A symmetric state birthing a symmetric pair is symmetry breaking."},
+      {"id": "arch-050", "rationale": "Sibling local bifurcation."},
+      {"id": "arch-051", "rationale": "Sibling bifurcation with stability change."},
+      {"id": "arch-006", "rationale": "Continuous branching of a new ordered state."}
+    ]},
+    {"id": "arch-053", "neighbors": [
+      {"id": "arch-088", "rationale": "Delay-destabilized steady states birth limit cycles."},
+      {"id": "arch-054", "rationale": "The born limit cycle undergoes period doublings toward chaos."},
+      {"id": "arch-034", "rationale": "Predator-prey oscillations emerge as a limit cycle."},
+      {"id": "arch-050", "rationale": "Sibling local bifurcation of the steady state."}
+    ]},
+    {"id": "arch-054", "neighbors": [
+      {"id": "arch-053", "rationale": "Successive doublings act on the limit cycle born at the Hopf point."}
+    ]},
+    {"id": "arch-055", "neighbors": [
+      {"id": "arch-056", "rationale": "Shared slow-fast machinery: subthreshold rest vs stereotyped excursion."},
+      {"id": "arch-012", "rationale": "Excitable media propagate stereotyped traveling pulses."}
+    ]},
+    {"id": "arch-056", "neighbors": [
+      {"id": "arch-055", "rationale": "Same slow-fast dynamics giving stereotyped excursions."},
+      {"id": "arch-113", "rationale": "The cycle arises from two widely separated timescales."},
+      {"id": "arch-114", "rationale": "Slow buildup on a slow manifold with fast jumps."}
+    ]},
+    {"id": "arch-057", "neighbors": [
+      {"id": "arch-050", "rationale": "The folds create and destroy the two coexisting states."},
+      {"id": "arch-059", "rationale": "History-dependent jump across a fold."},
+      {"id": "arch-007", "rationale": "Discontinuous, hysteretic switch between metastable states."},
+      {"id": "arch-086", "rationale": "Positive feedback produces switch-like bistability."},
+      {"id": "arch-076", "rationale": "Two coexisting states are competing basins."}
+    ]},
+    {"id": "arch-058", "neighbors": [
+      {"id": "arch-059", "rationale": "Lengthening recovery is an early warning of the tipping."},
+      {"id": "arch-006", "rationale": "Relaxation diverges as the critical point is approached."},
+      {"id": "arch-050", "rationale": "Recovery slows as a bifurcation is neared."},
+      {"id": "arch-101", "rationale": "The closing spectral gap sets the diverging relaxation time."}
+    ]},
+    {"id": "arch-059", "neighbors": [
+      {"id": "arch-050", "rationale": "The fold whose crossing causes the jump."},
+      {"id": "arch-057", "rationale": "An irreversible jump between coexisting states."},
+      {"id": "arch-058", "rationale": "The early-warning slowdown before the jump."},
+      {"id": "arch-007", "rationale": "A sudden discontinuous transition to a far state."},
+      {"id": "arch-076", "rationale": "The state leaves one basin for a distant attractor."}
+    ]},
+    {"id": "arch-060", "neighbors": [
+      {"id": "arch-061", "rationale": "Both select the state that extremizes a scalar functional."},
+      {"id": "arch-062", "rationale": "The entropy term traded against energy is the maxent principle."},
+      {"id": "arch-073", "rationale": "Dynamics descend the free-energy potential to its minimum."}
+    ]},
+    {"id": "arch-061", "neighbors": [
+      {"id": "arch-060", "rationale": "Extremizing a scalar functional selects the state."},
+      {"id": "arch-081", "rationale": "Symmetries of the stationary-action functional yield conserved quantities."},
+      {"id": "arch-063", "rationale": "Extremization subject to constraints."},
+      {"id": "arch-062", "rationale": "Extremization of a functional over configurations."}
+    ]},
+    {"id": "arch-062", "neighbors": [
+      {"id": "arch-063", "rationale": "Constrained entropy maximization solved via multipliers."},
+      {"id": "arch-060", "rationale": "The entropy functional traded against energy."},
+      {"id": "arch-108", "rationale": "Least-biased inference from stated information."}
+    ]},
+    {"id": "arch-063", "neighbors": [
+      {"id": "arch-064", "rationale": "Dual multipliers price constraints, mirroring the primal."},
+      {"id": "arch-062", "rationale": "Multipliers enforce the maxent constraints."},
+      {"id": "arch-061", "rationale": "Constrained extremization of a functional."},
+      {"id": "arch-119", "rationale": "The constrained transport optimum uses dual multipliers."}
+    ]},
+    {"id": "arch-064", "neighbors": [
+      {"id": "arch-063", "rationale": "Dual variables price the constraints."},
+      {"id": "arch-119", "rationale": "Kantorovich duality mirrors the transport problem."},
+      {"id": "arch-120", "rationale": "Minimax duality of a zero-sum game."}
+    ]},
+    {"id": "arch-065", "neighbors": [
+      {"id": "arch-066", "rationale": "Contrasting single-exposure vs multi-exposure transmission."},
+      {"id": "arch-046", "rationale": "SIR compartments model the spread."},
+      {"id": "arch-047", "rationale": "Growth is set by the reproduction threshold."},
+      {"id": "arch-040", "rationale": "Transmission rate is a susceptible-infected product."},
+      {"id": "arch-068", "rationale": "Spreading channeled through highly connected units."}
+    ]},
+    {"id": "arch-066", "neighbors": [
+      {"id": "arch-067", "rationale": "Adoption requires a threshold fraction/number of active neighbors."},
+      {"id": "arch-065", "rationale": "Contrasting requirement of multiple vs single exposures."},
+      {"id": "arch-024", "rationale": "Activation demands several active neighbors."}
+    ]},
+    {"id": "arch-067", "neighbors": [
+      {"id": "arch-024", "rationale": "Threshold-neighbor switching triggering a global cascade."},
+      {"id": "arch-066", "rationale": "Switching needs a threshold of reinforcing neighbors."},
+      {"id": "arch-071", "rationale": "Threshold crossings propagate a cascade to neighbors."},
+      {"id": "arch-023", "rationale": "A threshold-based network cascade."}
+    ]},
+    {"id": "arch-068", "neighbors": [
+      {"id": "arch-111", "rationale": "Broad degree heterogeneity means a few dominant hubs."},
+      {"id": "arch-065", "rationale": "Hubs channel and accelerate the spread."},
+      {"id": "arch-110", "rationale": "Growth mechanism producing the dominant hubs."}
+    ]},
+    {"id": "arch-069", "neighbors": [
+      {"id": "arch-105", "rationale": "Copying neighbors drives connected units toward local agreement."},
+      {"id": "arch-013", "rationale": "Copying coarsens into growing like-state domains."}
+    ]},
+    {"id": "arch-070", "neighbors": [
+      {"id": "arch-071", "rationale": "Threshold-triggered discharge produces power-law avalanches."},
+      {"id": "arch-042", "rationale": "Emits scale-free bursts of all sizes."},
+      {"id": "arch-072", "rationale": "Quiescence punctuated by sudden bursts."}
+    ]},
+    {"id": "arch-071", "neighbors": [
+      {"id": "arch-070", "rationale": "Threshold discharge onto neighbors is the sandpile mechanism."},
+      {"id": "arch-067", "rationale": "Threshold crossings cascade to neighbors."},
+      {"id": "arch-023", "rationale": "Cascading threshold-driven collapse."},
+      {"id": "arch-024", "rationale": "A seed exceeding threshold triggers a spreading cascade."}
+    ]},
+    {"id": "arch-072", "neighbors": [
+      {"id": "arch-070", "rationale": "Long stasis broken by scale-free bursts."},
+      {"id": "arch-071", "rationale": "Rapid reorganization events interrupt the stasis."}
+    ]},
+    {"id": "arch-073", "neighbors": [
+      {"id": "arch-060", "rationale": "Descent moves down a scalar potential to its minimum."},
+      {"id": "arch-074", "rationale": "Descent is trapped in the many local minima."},
+      {"id": "arch-076", "rationale": "Each starting point flows to its attracting minimum."},
+      {"id": "arch-080", "rationale": "Motion proportional to the gradient of a potential."}
+    ]},
+    {"id": "arch-074", "neighbors": [
+      {"id": "arch-123", "rationale": "A rugged multi-minimum landscape traps the dynamics in aging states."},
+      {"id": "arch-122", "rationale": "Unsatisfiable constraints produce many degenerate minima."},
+      {"id": "arch-076", "rationale": "Minima partition the space into competing basins."},
+      {"id": "arch-077", "rationale": "Minima are separated by barrier saddles."},
+      {"id": "arch-075", "rationale": "Annealing is designed to escape the shallow traps."},
+      {"id": "arch-073", "rationale": "Descent gets stuck in the local minima."}
+    ]},
+    {"id": "arch-075", "neighbors": [
+      {"id": "arch-074", "rationale": "Gradually lowered noise escapes the rugged traps."},
+      {"id": "arch-096", "rationale": "Simulated annealing is cooled MCMC."},
+      {"id": "arch-020", "rationale": "Noise supplies the barrier-crossing that fades as it cools."}
+    ]},
+    {"id": "arch-076", "neighbors": [
+      {"id": "arch-073", "rationale": "Trajectories flow to the attracting minimum."},
+      {"id": "arch-074", "rationale": "The minima define the basins."},
+      {"id": "arch-057", "rationale": "Coexisting states are competing basins."},
+      {"id": "arch-059", "rationale": "Tipping is escape from one basin to another."},
+      {"id": "arch-077", "rationale": "Saddles lie on the basin boundaries."}
+    ]},
+    {"id": "arch-077", "neighbors": [
+      {"id": "arch-020", "rationale": "The saddle height controls the transition rate."},
+      {"id": "arch-074", "rationale": "Minima connected through barrier saddles."},
+      {"id": "arch-076", "rationale": "Saddles sit on basin boundaries."},
+      {"id": "arch-007", "rationale": "The critical nucleus is the saddle of the transition."}
+    ]},
+    {"id": "arch-078", "neighbors": [
+      {"id": "arch-079", "rationale": "Steady state where boundary fluxes balance."},
+      {"id": "arch-080", "rationale": "The flux that changes the conserved quantity."},
+      {"id": "arch-046", "rationale": "A conserved total moved between compartments."},
+      {"id": "arch-081", "rationale": "The conserved quantity obeying continuity."},
+      {"id": "arch-017", "rationale": "Probability is conserved via a continuity equation."}
+    ]},
+    {"id": "arch-079", "neighbors": [
+      {"id": "arch-078", "rationale": "Steady state of the continuity balance."},
+      {"id": "arch-080", "rationale": "The persisting flows through the network."},
+      {"id": "arch-046", "rationale": "Stationary inter-compartment flows with constant stocks."},
+      {"id": "arch-118", "rationale": "Steady throughput through a series of stages."}
+    ]},
+    {"id": "arch-080", "neighbors": [
+      {"id": "arch-078", "rationale": "Flux moving a conserved quantity."},
+      {"id": "arch-079", "rationale": "The driven flows in the steady balance."},
+      {"id": "arch-105", "rationale": "Gradient-driven smoothing/diffusion over a network."},
+      {"id": "arch-073", "rationale": "Motion proportional to the negative potential gradient."},
+      {"id": "arch-017", "rationale": "The drift component of the density flow."}
+    ]},
+    {"id": "arch-081", "neighbors": [
+      {"id": "arch-061", "rationale": "Conserved quantities follow from symmetries of the action."},
+      {"id": "arch-078", "rationale": "The resulting conserved quantity obeys continuity."}
+    ]},
+    {"id": "arch-082", "neighbors": [
+      {"id": "arch-083", "rationale": "Locking of rhythms, mutual vs to an external drive."},
+      {"id": "arch-084", "rationale": "Partial synchronization of the same oscillator population."},
+      {"id": "arch-001", "rationale": "The sync order parameter is a self-consistent mean field."},
+      {"id": "arch-006", "rationale": "Synchronization onsets continuously past a critical coupling."}
+    ]},
+    {"id": "arch-083", "neighbors": [
+      {"id": "arch-082", "rationale": "Frequency locking, to a drive vs among oscillators."},
+      {"id": "arch-116", "rationale": "Locking occurs when forcing matches the natural-frequency band."}
+    ]},
+    {"id": "arch-084", "neighbors": [
+      {"id": "arch-082", "rationale": "Coexisting synchronized and desynchronized subpopulations."}
+    ]},
+    {"id": "arch-085", "neighbors": [
+      {"id": "arch-087", "rationale": "Accumulated-error feedback is negative feedback for exact adaptation."},
+      {"id": "arch-086", "rationale": "Opposite-sign feedback loop."},
+      {"id": "arch-088", "rationale": "Lagged negative feedback can destabilize the set point."}
+    ]},
+    {"id": "arch-086", "neighbors": [
+      {"id": "arch-039", "rationale": "Output reinforcing its own cause is autocatalysis."},
+      {"id": "arch-085", "rationale": "Opposite-sign feedback loop."},
+      {"id": "arch-057", "rationale": "Positive feedback creates switch-like bistable states."},
+      {"id": "arch-033", "rationale": "The self-reinforcing growth phase."}
+    ]},
+    {"id": "arch-087", "neighbors": [
+      {"id": "arch-085", "rationale": "Integral action is negative feedback driving error to zero."}
+    ]},
+    {"id": "arch-088", "neighbors": [
+      {"id": "arch-053", "rationale": "Lag-induced destabilization births a limit-cycle oscillation."},
+      {"id": "arch-085", "rationale": "Delayed feedback applied to a regulated loop."}
+    ]},
+    {"id": "arch-089", "neighbors": [
+      {"id": "arch-116", "rationale": "A natural-frequency oscillator resonates when driven at that frequency."},
+      {"id": "arch-085", "rationale": "Displacement-proportional restoring is negative feedback to equilibrium."}
+    ]},
+    {"id": "arch-090", "neighbors": [
+      {"id": "arch-091", "rationale": "Dual Shannon limits: transmission vs compression."},
+      {"id": "arch-094", "rationale": "Capacity is the maximized mutual information."},
+      {"id": "arch-092", "rationale": "Shares the compression/relevance information tradeoff."}
+    ]},
+    {"id": "arch-091", "neighbors": [
+      {"id": "arch-092", "rationale": "Compression traded against relevance generalizes rate-distortion."},
+      {"id": "arch-090", "rationale": "Complementary Shannon coding limit."},
+      {"id": "arch-094", "rationale": "The rate is measured in mutual information."}
+    ]},
+    {"id": "arch-092", "neighbors": [
+      {"id": "arch-091", "rationale": "Compression vs distortion/relevance tradeoff."},
+      {"id": "arch-094", "rationale": "Compression and prediction measured by mutual information."},
+      {"id": "arch-090", "rationale": "A Shannon-information bound on retained information."}
+    ]},
+    {"id": "arch-093", "neighbors": [
+      {"id": "arch-018", "rationale": "Noise and dissipation are the two tied terms."},
+      {"id": "arch-080", "rationale": "Linear response of transport to a small applied gradient."},
+      {"id": "arch-019", "rationale": "The relation holds in the equilibrium state."}
+    ]},
+    {"id": "arch-094", "neighbors": [
+      {"id": "arch-090", "rationale": "Capacity is maximized mutual information."},
+      {"id": "arch-092", "rationale": "Relevance measured by mutual information."},
+      {"id": "arch-091", "rationale": "The rate measured in mutual information."}
+    ]},
+    {"id": "arch-095", "neighbors": [
+      {"id": "arch-098", "rationale": "Both sample a target via an easier proposal distribution."},
+      {"id": "arch-096", "rationale": "Monte-Carlo estimation of hard-to-sample averages."},
+      {"id": "arch-108", "rationale": "Likelihood-ratio weights are the Bayesian reweighting."}
+    ]},
+    {"id": "arch-096", "neighbors": [
+      {"id": "arch-097", "rationale": "The accept/reject rule that realizes the chain."},
+      {"id": "arch-019", "rationale": "The stationary target is enforced by detailed balance."},
+      {"id": "arch-095", "rationale": "Alternative Monte-Carlo estimation scheme."},
+      {"id": "arch-075", "rationale": "Simulated annealing is cooled MCMC."},
+      {"id": "arch-101", "rationale": "The spectral gap sets the chain's mixing time."}
+    ]},
+    {"id": "arch-097", "neighbors": [
+      {"id": "arch-096", "rationale": "The acceptance rule driving the Markov chain."},
+      {"id": "arch-019", "rationale": "Acceptance crafted to leave the target invariant."},
+      {"id": "arch-098", "rationale": "Accept or reject proposed moves."}
+    ]},
+    {"id": "arch-098", "neighbors": [
+      {"id": "arch-095", "rationale": "Correct an easy proposal to match the target."},
+      {"id": "arch-097", "rationale": "Accept/reject to realize the target density."},
+      {"id": "arch-096", "rationale": "Sampling scheme for the target distribution."}
+    ]},
+    {"id": "arch-099", "neighbors": [
+      {"id": "arch-100", "rationale": "Behavior dominated by the leading eigenvector."},
+      {"id": "arch-101", "rationale": "Eigenvalue spacing sets relaxation timescales."},
+      {"id": "arch-103", "rationale": "Eigen-decomposition of the covariance operator."},
+      {"id": "arch-102", "rationale": "Keeping the dominant modes gives a low-rank approximation."},
+      {"id": "arch-105", "rationale": "Dynamics expanded in Laplacian eigenmodes."},
+      {"id": "arch-104", "rationale": "Statistics of the operator's eigenvalues."}
+    ]},
+    {"id": "arch-100", "neighbors": [
+      {"id": "arch-099", "rationale": "Importance is the leading eigenvector."},
+      {"id": "arch-105", "rationale": "Importance flows recursively over the network operator."},
+      {"id": "arch-068", "rationale": "Highly connected units carry the dominant weight."}
+    ]},
+    {"id": "arch-101", "neighbors": [
+      {"id": "arch-099", "rationale": "Gap between the top eigenvalues of the operator."},
+      {"id": "arch-096", "rationale": "The gap sets the chain's mixing time."},
+      {"id": "arch-058", "rationale": "A vanishing gap makes relaxation diverge."},
+      {"id": "arch-105", "rationale": "The Laplacian gap sets diffusion/mixing speed."}
+    ]},
+    {"id": "arch-102", "neighbors": [
+      {"id": "arch-103", "rationale": "Both extract a few latent variance-capturing factors."},
+      {"id": "arch-099", "rationale": "Low rank keeps only the dominant singular/eigen modes."}
+    ]},
+    {"id": "arch-103", "neighbors": [
+      {"id": "arch-102", "rationale": "Projecting onto few directions is a low-rank representation."},
+      {"id": "arch-099", "rationale": "Components are eigenvectors of the covariance."}
+    ]},
+    {"id": "arch-104", "neighbors": [
+      {"id": "arch-099", "rationale": "Describes the eigenvalues of the interaction operator."},
+      {"id": "arch-044", "rationale": "Eigenvalue laws are universal across disordered ensembles."}
+    ]},
+    {"id": "arch-105", "neighbors": [
+      {"id": "arch-069", "rationale": "Laplacian smoothing drives units to local agreement/consensus."},
+      {"id": "arch-080", "rationale": "Heat flow is gradient-driven diffusion."},
+      {"id": "arch-099", "rationale": "Diffusion decomposed in Laplacian eigenmodes."},
+      {"id": "arch-101", "rationale": "The Laplacian gap sets the mixing timescale."},
+      {"id": "arch-112", "rationale": "Laplacian spectra reveal the community partitions."}
+    ]},
+    {"id": "arch-106", "neighbors": [
+      {"id": "arch-107", "rationale": "Generalized limit law when the variance diverges."},
+      {"id": "arch-027", "rationale": "Summed independent increments give Gaussian sqrt-scaling."},
+      {"id": "arch-031", "rationale": "Sibling universal limit theorem."}
+    ]},
+    {"id": "arch-107", "neighbors": [
+      {"id": "arch-106", "rationale": "The heavy-tailed generalization of the CLT."},
+      {"id": "arch-030", "rationale": "Heavy-tailed steps sum to stable laws."},
+      {"id": "arch-111", "rationale": "Heavy-tailed with no characteristic scale."},
+      {"id": "arch-042", "rationale": "Power-law tails with no finite scale."}
+    ]},
+    {"id": "arch-108", "neighbors": [
+      {"id": "arch-026", "rationale": "Iteratively combines local likelihoods into marginals."},
+      {"id": "arch-062", "rationale": "Least-biased inference from priors and constraints."},
+      {"id": "arch-095", "rationale": "Posterior reweighting by likelihood ratios."},
+      {"id": "arch-096", "rationale": "Sampling from the posterior distribution."}
+    ]},
+    {"id": "arch-109", "neighbors": [
+      {"id": "arch-112", "rationale": "Preserves high local clustering, i.e. dense local groups."}
+    ]},
+    {"id": "arch-110", "neighbors": [
+      {"id": "arch-111", "rationale": "Rich-get-richer growth produces heavy-tailed degrees."},
+      {"id": "arch-068", "rationale": "It builds the dominant spreading hubs."},
+      {"id": "arch-042", "rationale": "Emergent power-law degree distribution."}
+    ]},
+    {"id": "arch-111", "neighbors": [
+      {"id": "arch-110", "rationale": "The generative rich-get-richer mechanism."},
+      {"id": "arch-068", "rationale": "Heavy-tailed degrees create the spreading hubs."},
+      {"id": "arch-042", "rationale": "Heavy-tailed, no typical degree scale."},
+      {"id": "arch-107", "rationale": "A heavy-tailed distribution with no finite scale."}
+    ]},
+    {"id": "arch-112", "neighbors": [
+      {"id": "arch-105", "rationale": "Laplacian spectra expose the module partition."},
+      {"id": "arch-109", "rationale": "Dense local clusters linked by a few shortcuts."}
+    ]},
+    {"id": "arch-113", "neighbors": [
+      {"id": "arch-114", "rationale": "Fast motion collapses, leaving slow effective dynamics."},
+      {"id": "arch-045", "rationale": "Averaging out fast modes yields reduced equations."},
+      {"id": "arch-056", "rationale": "Two widely separated timescales structure the cycle."}
+    ]},
+    {"id": "arch-114", "neighbors": [
+      {"id": "arch-113", "rationale": "Fast variables averaged onto the slow dynamics."},
+      {"id": "arch-045", "rationale": "A reduced description of the slow variables."}
+    ]},
+    {"id": "arch-115", "neighbors": [
+      {"id": "arch-042", "rationale": "Cascading across scales yields a scale-free spectrum."},
+      {"id": "arch-078", "rationale": "A conserved input is redistributed across scales."},
+      {"id": "arch-099", "rationale": "Excitation transferred among the system's modes."}
+    ]},
+    {"id": "arch-116", "neighbors": [
+      {"id": "arch-089", "rationale": "Disproportionate response at the oscillator's natural frequency."},
+      {"id": "arch-083", "rationale": "Strong response when drive matches the natural frequency."},
+      {"id": "arch-117", "rationale": "Noise-tuned resonant response to a weak periodic signal."}
+    ]},
+    {"id": "arch-117", "neighbors": [
+      {"id": "arch-116", "rationale": "An optimal response to a weak periodic drive."},
+      {"id": "arch-055", "rationale": "Noise helps weak signals cross the firing threshold."},
+      {"id": "arch-020", "rationale": "Noise-assisted well-to-well hops synchronized to the signal."}
+    ]},
+    {"id": "arch-118", "neighbors": [
+      {"id": "arch-079", "rationale": "Throughput of a serial steady flow set by its slowest stage."}
+    ]},
+    {"id": "arch-119", "neighbors": [
+      {"id": "arch-064", "rationale": "The transport optimum is expressed via Kantorovich duality."},
+      {"id": "arch-063", "rationale": "Mass-conserving transport minimized with dual multipliers."}
+    ]},
+    {"id": "arch-120", "neighbors": [
+      {"id": "arch-038", "rationale": "An uninvadable refinement of the equilibrium."},
+      {"id": "arch-032", "rationale": "Selection dynamics converge to the equilibrium."},
+      {"id": "arch-121", "rationale": "A social-dilemma equilibrium worse than the collective optimum."},
+      {"id": "arch-064", "rationale": "Zero-sum equilibria are a minimax duality."},
+      {"id": "arch-037", "rationale": "Payoffs depend on the frequency of strategies."}
+    ]},
+    {"id": "arch-121", "neighbors": [
+      {"id": "arch-120", "rationale": "A self-interested equilibrium depleting the commons."},
+      {"id": "arch-035", "rationale": "Multiple users drawing down a single shared pool."}
+    ]},
+    {"id": "arch-122", "neighbors": [
+      {"id": "arch-123", "rationale": "Frustration produces the many-trap glassy dynamics."},
+      {"id": "arch-074", "rationale": "Unsatisfiable constraints yield many degenerate minima."},
+      {"id": "arch-004", "rationale": "Frozen (quenched) disorder imposes the competing constraints."}
+    ]},
+    {"id": "arch-123", "neighbors": [
+      {"id": "arch-074", "rationale": "Trapping in a rugged multi-minimum landscape."},
+      {"id": "arch-122", "rationale": "Frustration drives the glassy slowdown."},
+      {"id": "arch-004", "rationale": "Quenched disorder underlies the glass."},
+      {"id": "arch-058", "rationale": "Both are dramatic divergences of the relaxation time."}
+    ]},
+    {"id": "arch-124", "neighbors": [
+      {"id": "arch-069", "rationale": "Local copying is a lattice update rule."},
+      {"id": "arch-070", "rationale": "Sandpile-type local-update rules generate scale-free bursts."},
+      {"id": "arch-024", "rationale": "Threshold activation on a lattice from local rules."}
+    ]}
+  ]
+}

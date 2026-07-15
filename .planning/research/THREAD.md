@@ -19,6 +19,7 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 | H-RS-analogy-SME (new chapter) | The cross-field analogy signal is **semantic-conceptual**, recoverable by structure-mapping (SME) over blind LLM-extracted **role-typed relational schemas**, beating the brute-force LLM baseline | EXP-RS-16: conditional-retrieval recall@10 vs the (now-run) brute-force baseline; roles-ON vs OFF; alignment vs ground-truth bridge_names | **FALSIFIED at the benchmark bar (Phase 35, 2026-07-06).** roles-ON recall@10 = 0.00 vs baseline 0.60; role-typing inverts (roles-ON < roles-OFF < lexical); alignment empty 3/5. Over-abstraction collapse on a physics-dense pool. The blind role-schema *representation* is too lossy — NOT that semantic-conceptual analogy is absent (the full-context LLM recovers it at 0.60). Next: less-lossy generators (#2 slot-frames / #4 mechanism-ontology). |
 | H-RS-analogy-mechanism (new chapter, EXP-RS-17) | The cross-field analogy signal is recoverable by matching papers on a **shared rare mechanism archetype** from a *frozen, field-agnostic* ontology (MethMeSH), beating the brute-force LLM baseline — and, crucially, holding up on a **leakage-controlled modern held-out set** where the LLM baseline's pretraining advantage is neutralised | EXP-RS-17: C-19 conditional-retrieval recall@10 on Feynman (vs the 0.60 leaky bar + SME 0.00) AND a NEW modern held-out corpus (vs its own brute-force bar); cheap tagging-recall gate; IDF-on/off + λ ablations; shared-archetype artifact vs `bridge_names` | **FALSIFIED (exact-match form) at the cheap gate (Phase 36, 2026-07-07): Feynman tagging-recall = 1/5 < 3/5 → P2 falsified → KILL-by-construction.** Modern passed 4/6. Failure = exact-archetype-ID brittleness (neighboring archetypes), NOT absent representation. **Also FALSIFIED under similarity matching (EXP-RS-18, Phase 37, 2026-07-07): soft exact-or-adjacent gate = Feynman 2/5 < 3/5** (blind frozen adjacency, 124 nodes/427 edges). Adjacency lifts 1→2/5 but can't close the residual domain-knowledge-equivalence gap. **Mechanism-ontology line (#4, exact + soft) KILLED on the Feynman bar → fall back to slot-frames (#2).** Modern held-out 5/6 (its pairs share identical named mechanisms). Does not refute semantic-conceptual analogy broadly (LLM baseline 0.60). |
 | H-RS-analogy-generative (EXP-RS-19) | A cross-field analogy = SAME method, DIFFERENT object; it is recoverable by GENERATING (from the query alone) hypothetical abstracts that re-express the query's method in other fields' native vocabulary, then retrieving real candidates against them (HyDE). Generation is an EXPANSION → converts latent equivalences (percolation≡epidemic) into retrievable tokens where pure-lexical splits self-kill | EXP-RS-19: C-19 conditional-retrieval recall@10 on Feynman (vs 0.60 bar + 0.40 lexical null) + modern held-out; cheap forward gate (GATE-A recall≥3/5 & recovers a null-missed pair; GATE-B pair04); auditable transfer card vs `bridge_names` | **PARTIAL-CONFIRM / headline KILLED (Phase 38, 2026-07-07). Mechanism PROVEN: pair04 recovered 17→4 (verified: epidemiology hypothetical matches the real epidemics paper, 0.15 vs null 0.06); K=1 ties LLM 0.60. But pinned headline (K=5 max-pool) = 0.20 < 0.40 null → GATE-A FAILS → KILL. Cause = max-pool distractor inflation (monotonic in K), NOT absent signal. Ceiling = TIE (as predicted). Next: generate→verify cascade #3.** |
+| H-RS-analogy-cascade (EXP-RS-20) | A cross-field analogy = SAME method, DIFFERENT object; recoverable by a two-stage **generate→verify** cascade: keep HyDE's proven generation/recall stage (EXP-RS-19, frozen), then add a blind VERIFY stage (LLM/CAS) that audits each proposed transfer for method-coherence ∧ object-difference and prunes the max-pool distractors that killed the HyDE headline (K1 0.60 / K3 0.40 / K5 0.20) | EXP-RS-20: cheap forward gate FIRST (cascade fwd recall@10 > 0.40 null ∧ pair04 in top-10 ∧ ≥1 null-missed pair); then recall@{1,5,10}+MRR on Feynman (vs 0.60 bar) + modern held-out (vs C-35 bar / 0.833 null); auditable transfer card vs `bridge_names` | **PRE-REGISTERED — LOCKED 2026-07-15 (Phase 39). Predictions frozen (P1–P5 + GATE — see Active experiment). Provenance: pi/Mistral draft → Claude review (4 fixes) → 3-family orbiter panel (2 fixes). Expected outcome = PIVOT (bank auditable artifact + cheap retriever) or KILL→embedding-substrate escalation; ADVANCE unlikely (chapter ceiling = TIE at 0.60).** |
 
 ## Kill criteria
 
@@ -47,7 +48,57 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 
 ## Active experiment
 
-**EXP-RS-19 → Phase 38 — HyDE-Bridge (#2 slot-frames, artifact-primary). RUN 2026-07-07 — pinned
+**EXP-RS-20 → Phase 39 — Generate→Verify Cascade (#3). PRE-REGISTERED — LOCKED 2026-07-15.**
+Provenance: the EXP-RS-19 forward (both C-37's escalation branch and the design PIVOT converge on #3).
+Draft by pi/Mistral-Devstral (supervised) → Claude synthesis-review (4 fixes) → 3-family orbiter
+heterogeneous panel (local Devstral + Mistral + Claude; 2 fixes). Full record + inline provenance:
+`.planning/phases/39-generate-verify-cascade/39-PREREG.md`.
+
+**Hypothesis (H-RS-analogy-cascade):** a cross-field analogy = SAME method, DIFFERENT object; recoverable
+by a two-stage cascade — GENERATE (HyDE, frozen from EXP-RS-19) then VERIFY (blind LLM/CAS audit of each
+transfer for method-coherence ∧ object-difference), pruning the max-pool distractors that throttled the
+HyDE headline (K1 0.60 / K3 0.40 / K5 0.20).
+
+**Design (LOCKED — new convention text C-38..C-40 in CONVENTIONS.md):** Reuse frozen residue — Feynman
+MVP (C-14) + modern held-out (C-24); frozen blind HyDE prompt + scorer + 5 frozen Feynman generations;
+C-17 null (0.40 / 0.833); C-20 baseline 0.60; C-35 modern bar. NEW verify stage (C-38 blindness / C-39
+input closure / C-40 pruning): a blind, benchmark-agnostic `verify_prompt.md` (SHA-256 committed before
+any verify run); per candidate it sees ONLY {query title/abstract, winning hypothetical
+target_field/generic_object/abstract, candidate title/abstract} → `{method_coherence:bool,
+object_difference:bool, rationale}`; headline pruning demotes `method_coherence=false` to rank ∞
+(arxiv_id tie-break, C-19). Runner: new `prototypes/verify_score.py` on the frozen `hyde_score.py`.
+
+**Predictions (LOCKED):**
+- **P1 (cheap forward gate — run FIRST, 5 Feynman side_a, ~180 calls):** cascade fwd recall@10 **> 0.40**
+  (beats the C-17 null — verify does what max-pool HyDE alone could not) ∧ pair04 recovered into top-10 ∧
+  ≥1 null-missed pair (01/04/06). FAIL → KILL (verification cannot rescue the aggregation → escalate OUT
+  of lexical intermediates; NOT "no signal", which EXP-RS-19 disproved at K=1).
+- **P2:** cascade fwd recall@10 **> 0.20** (beats HyDE-alone K=5 max-pool — the value-of-verification test).
+- **P3 (the bar; TIE expected):** Feynman recall@10 **≥ 0.60**; modern recall@10 **≥ C-35 bar ∧ ≥ 0.833**.
+- **P4:** verify prunes **≥2 distractors/query** on average (auditable pruned-card log; disproportionately
+  same-field distractors).
+- **P5 (PRIMARY-VALUE):** for **≥3/5 recovered Feynman pairs** the winning transfer card matches
+  `bridge_names` under the C-36 objective rule; a random control does NOT.
+
+**GATE (exhaustive, non-overlapping; R = Feynman fwd recall@10, M = modern recall@10):** **KILL** `R≤0.40`
+→ lexical-intermediate line exhausted; escalate to a real embedding substrate or a pure LLM-judge cascade,
+no more TF-IDF variants. **WEAK/PIVOT-caveat** `0.40<R<0.60 ∧ P2 ∧ M≥0.833` → bank cheap retriever +
+artifact, below incumbent. **PIVOT (expected, subsumes the exact tie)** `0.60≤R<0.80 ∧ M≥C-35 bar ∧
+M≥0.833 ∧ P4/P5` → bank the artifact pipeline; next build = verify-stage tuning; a `[0.60,0.80)` beat is
+provisional (PIVOTs, does not ADVANCE). **ADVANCE** `R≥0.80 ∧ M>C-35 bar` (strict double-beat) →
+formalize through the resyn pipeline (bulk-ingest→analyze→export); scale.
+
+**Ablations (only if P1 passes):** pruning severity {headline / conservative both-false / aggressive
+either-false}; verify backbone {LLM / CAS}; reverse direction (side_b→side_a — EXP-RS-19 measured forward
+only; the transfer is directional).
+
+**► NEXT SESSION START HERE:** implement `prototypes/verify_score.py` + the blind `verify_prompt.md`
+(freeze its SHA-256 before use, C-38), run the P1 cheap gate FIRST (~180 calls) before any modern /
+reverse / ablation spend. Expected = PIVOT; a P1 fail cleanly licenses the embedding-substrate escalation.
+
+---
+
+### Prior (concluded) — EXP-RS-19 → Phase 38 — HyDE-Bridge (#2 slot-frames, artifact-primary). RUN 2026-07-07 — pinned
 headline KILLED at the cheap gate, but the generation MECHANISM is PROVEN (pair04 recovered; K=1
 ties 0.60). Forward = human's go/kill/pivot.** Human directed starting #2 (2026-07-07, ultracode).
 Design chosen by a **21-agent judge panel**

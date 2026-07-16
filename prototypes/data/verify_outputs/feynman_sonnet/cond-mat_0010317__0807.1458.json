@@ -1,0 +1,6 @@
+{
+ "method_coherence": true,
+ "object_difference": false,
+ "rationale": "The query's/hyp's core engine is a heterogeneous mean-field model that stratifies nodes/patches by connectivity (degree) class, derives coupled rate equations for an SIS-type spreading process, and shows the epidemic threshold collapses to zero when the degree distribution is scale-free/broad-variance. The candidate applies exactly this machinery: mean-field rate equations stratified by network topology, explicitly comparing random graphs vs. scale-free (and assortative) networks and showing the spreading threshold \"becomes vanishingly small\" for scale-free topology — genuine shared machinery, not just keyword overlap. However, the candidate's object is rumour spreading on complex social/Internet-mediated networks, which is essentially the query's own substrate (Internet/social network topology and spreading dynamics) rather than the hypothetical's sought object (a directly transmitted parasite across a fragmented wildlife/plant host metapopulation in landscape ecology); this is a same-field relabeling (virus to rumour) rather than a genuine cross-field transfer.",
+ "backbone": "claude-sonnet-5"
+}

@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's engine is an exact mean-field/self-consistent equation for an order parameter (magnetization) on a network with arbitrary degree distribution P(k), whose critical point is set by ratios of the distribution's moments (<k>, <k^2>) and becomes anomalous when those moments diverge. The candidate's engine is a kinetic wealth-exchange stochastic process (multiplicative exchange plus speculative trading) analyzed via a mean-field limit and a mapping to the directed-polymer problem, producing Pareto tails and a condensation transition governed by exchange amplitude/range rather than any degree-distribution moment criterion — a different machinery despite shared 'few dominate vs. spread out' phrasing, so method_coherence is FALSE. The candidate's object is wealth/monetary exchange among economic agents, genuinely different from the query's spin/magnetic system on a random graph, so object_difference is TRUE.\"",
+ "backbone": "claude-sonnet-5"
+}

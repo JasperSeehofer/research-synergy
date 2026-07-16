@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's core method is the use of probability generating functions to analyze branching processes with arbitrary offspring distributions in random graphs. The candidate studies language competition via Monte Carlo simulation, not the same mathematical machinery (generating functions or branching processes). Its object—language dynamics—is genuinely different from the query's networks or the hypothetical's aftershock cascades.",
+ "backbone": "mistral-large-latest"
+}

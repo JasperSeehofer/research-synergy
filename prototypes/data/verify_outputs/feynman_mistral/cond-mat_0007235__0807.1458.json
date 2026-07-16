@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's core transferable method is a generating-function analysis of random graphs with arbitrary degree distributions to derive phase transitions, component sizes, and distances. The candidate studies rumor spreading dynamics on complex networks using mean-field equations, not the query's combinatorial machinery. Its object—social networks and rumor propagation—is genuinely different from the query's random graphs and real-world networks (e.g., web, collaboration graphs).",
+ "backbone": "mistral-large-latest"
+}

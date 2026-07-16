@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The candidate paper broadly surveys social dynamics using statistical physics concepts but does not employ the query's core machinery—probability generating functions and branching-process theory for arbitrary degree/offspring distributions to derive phase transitions, component sizes, or transmission thresholds. Its object (social systems and collective human behavior) is genuinely different from the query's random graphs, but the methods do not cohere.",
+ "backbone": "mistral-large-latest"
+}

@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's (and hyp_abstract's) core engine is a degree-stratified mean-field dynamical model showing that a fat-tailed/diverging-second-moment degree distribution makes the epidemic (or contagion loss-rate) threshold vanish; the candidate instead defines two ad hoc empirical metrics (\"spread factor\" and \"spreading time\") and measures gossip propagation on real networks, with no mean-field equations, no threshold, and no critical-behavior analysis, so the machinery does not cohere despite shared words like \"spreading\" and \"scale-free.\" The object also differs: the query studies computer-virus infection on Internet/computer networks, while the candidate studies gossip propagation among people in social-acquaintance networks, a genuinely different substrate and phenomenon.",
+ "backbone": "claude-sonnet-5"
+}

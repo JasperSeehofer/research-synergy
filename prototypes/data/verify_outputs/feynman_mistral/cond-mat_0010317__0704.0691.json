@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's core transferable method is a dynamical model of spreading on scale-free networks using mean-field equations to analyze threshold behavior and absence of epidemic thresholds. The candidate abstract describes Monte Carlo simulations of language competition, which is a stochastic agent-based approach rather than the query's mean-field epidemiological framework. The object differs (linguistic variants diffusing across speaker networks vs. language competition dynamics), but the methods do not cohere.",
+ "backbone": "mistral-large-latest"
+}

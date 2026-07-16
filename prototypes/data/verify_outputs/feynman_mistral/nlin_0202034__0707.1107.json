@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": false,
+ "rationale": "The candidate abstract discusses optimization in generic networks across various domains but does not employ the query's core transferable machinery—static combinatorial rules, dynamical stability analysis via Jacobians, or constructive growth models for network assembly. Its object (generic optimization in networks) is not genuinely distinct from the query's food webs, as it broadly overlaps with network theory rather than focusing on a different substrate like chemical reaction networks.",
+ "backbone": "mistral-large-latest"
+}

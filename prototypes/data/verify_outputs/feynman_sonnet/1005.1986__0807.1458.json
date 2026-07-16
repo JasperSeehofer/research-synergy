@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's engine is a two-species activator-inhibitor Turing instability on a network, analyzed via linear stability about a homogeneous state with disturbances decomposed onto graph-Laplacian eigenmodes, yielding a discrete dispersion relation and degree-dependent differentiation (echoed in hyp_abstract's Laplacian eigenmode/dispersion-relation/connectivity-threshold framing). The candidate instead builds a compartmental stochastic rumor-spreading (ignorant/spreader/stifler-style) model and derives an epidemic-style spreading-rate threshold from degree-distribution moments on random and scale-free graphs — mean-field equations and \"threshold\" language are shared vocabulary, but there is no eigenmode/dispersion-relation stability analysis or activator-inhibitor pattern-forming machinery, so the core engine does not match. The object is genuinely different regardless: the query concerns concentration fields of a reaction-diffusion (activator/inhibitor) system on a network, while the candidate concerns rumor/information propagation among people in a social network.",
+ "backbone": "claude-sonnet-5"
+}

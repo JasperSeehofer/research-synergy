@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's core transferable method is the use of probability generating functions to analyze branching processes with arbitrary offspring distributions, locating phase transitions (e.g., giant component formation or criticality) and deriving statistical properties of cascades. The candidate paper models food webs using static, dynamical, and evolutionary approaches, none of which employ generating functions or branching process machinery. The object differs (food webs vs. neutron cascades), but the methods do not cohere.",
+ "backbone": "mistral-large-latest"
+}

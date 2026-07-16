@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's core transferable method is the exact derivation of a critical threshold (temperature/transmissibility) for a binary-state model on networks with arbitrary degree distributions, using a self-consistent equation for the stationary state and analyzing moments of the degree distribution. The candidate studies rumor spreading dynamics via mean-field equations and Monte Carlo simulations, focusing on time profiles and algorithm variants, not the exact threshold derivation or moment-based scaling of a critical point. The object differs: the query studies the Ising model on networks, while the candidate studies rumor spreading on social/contact networks.",
+ "backbone": "mistral-large-latest"
+}

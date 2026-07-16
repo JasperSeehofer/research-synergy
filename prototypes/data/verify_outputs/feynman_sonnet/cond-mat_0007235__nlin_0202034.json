@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's transferable engine (per hyp_abstract) is a branching-process/generating-function formalism: encode an arbitrary multiplicity/degree distribution as a probability generating function, self-compose it to locate a critical threshold (giant component / divergent chain), and derive moments as derivatives at unit argument. The candidate is a high-level review of food-web modelling that only names three broad model classes (static link-assignment rules, dynamical population models, assembly/evolutionary models) without describing any generating-function, branching-process, or percolation-threshold machinery, so no shared engine can be confirmed. The object is genuinely different, however: food webs (species trophic-interaction networks) versus the query's social/web/collaboration graphs, so object_difference is TRUE while method_coherence is FALSE.",
+ "backbone": "claude-sonnet-5"
+}

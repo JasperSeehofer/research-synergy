@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's core transferable method involves modeling networks (food webs or software dependencies) via static generators, dynamical stability analysis, or growth models. The candidate abstract describes a local immunization strategy on social/contact networks, focusing on node degree thresholds and vaccination efficiency—no shared machinery with the query's modeling approaches. The object differs (software dependency networks vs. social/contact networks for immunization), so object_difference is true, but method_coherence is false due to mismatched methods.",
+ "backbone": "mistral-large-latest"
+}

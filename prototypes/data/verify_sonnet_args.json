@@ -1,0 +1,206 @@
+{
+ "prompt_path": "/home/jasper/Repositories/research-synergy/prototypes/verify_prompt.md",
+ "input_dir": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman",
+ "records": [
+  {
+   "file": "cond-mat_0203227__0907.1182.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0203227__0907.1182.json"
+  },
+  {
+   "file": "cond-mat_0203227__0704.1269.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0203227__0704.1269.json"
+  },
+  {
+   "file": "cond-mat_0203227__0907.2373.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0203227__0907.2373.json"
+  },
+  {
+   "file": "cond-mat_0203227__cond-mat_0002374.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0203227__cond-mat_0002374.json"
+  },
+  {
+   "file": "cond-mat_0203227__0807.1458.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0203227__0807.1458.json"
+  },
+  {
+   "file": "cond-mat_0203227__1102.3931.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0203227__1102.3931.json"
+  },
+  {
+   "file": "cond-mat_0203227__0704.1589.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0203227__0704.1589.json"
+  },
+  {
+   "file": "cond-mat_0203227__1202.0409.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0203227__1202.0409.json"
+  },
+  {
+   "file": "cond-mat_0203227__cond-mat_0010317.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0203227__cond-mat_0010317.json"
+  },
+  {
+   "file": "cond-mat_0203227__0710.3256.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0203227__0710.3256.json"
+  },
+  {
+   "file": "cond-mat_0010317__cond-mat_0203227.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0010317__cond-mat_0203227.json"
+  },
+  {
+   "file": "cond-mat_0010317__0807.1458.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0010317__0807.1458.json"
+  },
+  {
+   "file": "cond-mat_0010317__1202.0409.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0010317__1202.0409.json"
+  },
+  {
+   "file": "cond-mat_0010317__0907.1182.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0010317__0907.1182.json"
+  },
+  {
+   "file": "cond-mat_0010317__cond-mat_9801289.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0010317__cond-mat_9801289.json"
+  },
+  {
+   "file": "cond-mat_0010317__0704.1269.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0010317__0704.1269.json"
+  },
+  {
+   "file": "cond-mat_0010317__1102.3931.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0010317__1102.3931.json"
+  },
+  {
+   "file": "cond-mat_0010317__0705.3224.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0010317__0705.3224.json"
+  },
+  {
+   "file": "cond-mat_0010317__cond-mat_0007235.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0010317__cond-mat_0007235.json"
+  },
+  {
+   "file": "cond-mat_0010317__cond-mat_0312131.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0010317__cond-mat_0312131.json"
+  },
+  {
+   "file": "cond-mat_0007235__0704.1269.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0007235__0704.1269.json"
+  },
+  {
+   "file": "cond-mat_0007235__0709.2231.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0007235__0709.2231.json"
+  },
+  {
+   "file": "cond-mat_0007235__0907.1182.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0007235__0907.1182.json"
+  },
+  {
+   "file": "cond-mat_0007235__cond-mat_0205009.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0007235__cond-mat_0205009.json"
+  },
+  {
+   "file": "cond-mat_0007235__cond-mat_0203227.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0007235__cond-mat_0203227.json"
+  },
+  {
+   "file": "cond-mat_0007235__0907.2373.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0007235__0907.2373.json"
+  },
+  {
+   "file": "cond-mat_0007235__cond-mat_0002374.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0007235__cond-mat_0002374.json"
+  },
+  {
+   "file": "cond-mat_0007235__0705.3224.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0007235__0705.3224.json"
+  },
+  {
+   "file": "cond-mat_0007235__0705.1175.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0007235__0705.1175.json"
+  },
+  {
+   "file": "cond-mat_0007235__nlin_0202034.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/cond-mat_0007235__nlin_0202034.json"
+  },
+  {
+   "file": "nlin_0202034__0705.1305.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/nlin_0202034__0705.1305.json"
+  },
+  {
+   "file": "nlin_0202034__0705.1175.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/nlin_0202034__0705.1175.json"
+  },
+  {
+   "file": "nlin_0202034__1407.1664.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/nlin_0202034__1407.1664.json"
+  },
+  {
+   "file": "nlin_0202034__0710.0059.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/nlin_0202034__0710.0059.json"
+  },
+  {
+   "file": "nlin_0202034__1005.1986.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/nlin_0202034__1005.1986.json"
+  },
+  {
+   "file": "nlin_0202034__0707.4416.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/nlin_0202034__0707.4416.json"
+  },
+  {
+   "file": "nlin_0202034__0704.1589.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/nlin_0202034__0704.1589.json"
+  },
+  {
+   "file": "nlin_0202034__0807.1458.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/nlin_0202034__0807.1458.json"
+  },
+  {
+   "file": "nlin_0202034__1010.5017.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/nlin_0202034__1010.5017.json"
+  },
+  {
+   "file": "nlin_0202034__cond-mat_0002374.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/nlin_0202034__cond-mat_0002374.json"
+  },
+  {
+   "file": "1005.1986__0707.4416.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/1005.1986__0707.4416.json"
+  },
+  {
+   "file": "1005.1986__0903.4009.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/1005.1986__0903.4009.json"
+  },
+  {
+   "file": "1005.1986__0704.1269.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/1005.1986__0704.1269.json"
+  },
+  {
+   "file": "1005.1986__0907.1182.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/1005.1986__0907.1182.json"
+  },
+  {
+   "file": "1005.1986__0707.1107.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/1005.1986__0707.1107.json"
+  },
+  {
+   "file": "1005.1986__1202.0409.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/1005.1986__1202.0409.json"
+  },
+  {
+   "file": "1005.1986__0907.2373.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/1005.1986__0907.2373.json"
+  },
+  {
+   "file": "1005.1986__0704.1589.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/1005.1986__0704.1589.json"
+  },
+  {
+   "file": "1005.1986__0807.1458.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/1005.1986__0807.1458.json"
+  },
+  {
+   "file": "1005.1986__cond-mat_9801289.json",
+   "path": "/home/jasper/Repositories/research-synergy/prototypes/data/verify_inputs/feynman/1005.1986__cond-mat_9801289.json"
+  }
+ ]
+}

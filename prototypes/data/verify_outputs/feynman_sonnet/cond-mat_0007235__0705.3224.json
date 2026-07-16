@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": false,
+ "rationale": "The query's transferable engine (per hyp_abstract) is a branching-process/generating-function treatment of an arbitrary offspring/degree distribution — closed-form thresholds, outbreak/giant-component size, and generation-by-generation reachable counts derived analytically via PGFs. The candidate instead defines ad hoc empirical/simulation quantities (\"spread factor,\" \"spreading time\") measured on networks, with no generating-function recursion, branching-process derivation, or threshold/extinction analysis, so the core machinery does not match. Its object is also not epidemiological transmission but real social-acquaintance and scale-free/small-world networks — essentially the same network-science domain (including social/collaboration-style graphs) the query itself already studies, so this is the query's own field rather than a genuine transfer to the target field.",
+ "backbone": "claude-sonnet-5"
+}

@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query/hyp engine is a heterogeneous mean-field spreading model: continuous-time balance equations stratified by degree/connectivity class (infected-fraction or tripped-fraction dynamics with transmission above a threshold and restoration), showing the threshold vanishes when the degree distribution's second moment diverges. The candidate instead uses a discrete percolation/giant-component framework for coupled (interdependent) networks — node failures propagate via inter-network dependency links and are analyzed through generating-function self-consistency equations for a critical average degree, not stratified transmission-restoration rate equations, so the machinery does not match. The object also differs: the query studies computer-virus epidemic spread on a single scale-free network, while the candidate studies cascading collapse between two coupled/interdependent networks (the kind of power-grid/communication coupling the hypothesis targets), a genuinely different substrate and failure mechanism.",
+ "backbone": "claude-sonnet-5"
+}

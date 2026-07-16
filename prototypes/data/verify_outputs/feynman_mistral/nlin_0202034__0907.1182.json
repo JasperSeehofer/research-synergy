@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The candidate studies interdependent networks and cascading failures using percolation theory and degree-distribution analysis, which is fundamentally different from the query's core machinery of static combinatorial rules, dynamical stability of coupled nonlinear rate equations, or constructive growth via catalyzed transformations. While the candidate's object (interdependent engineered/societal networks) is genuinely different from the query's food webs, the methods do not cohere.",
+ "backbone": "mistral-large-latest"
+}

@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query/hyp's transferable engine is a three-part comparative framework: static wiring-rule ensembles, dynamical population/expression models whose stability is assessed via linearization and eigenvalue analysis, and growth/assembly models (invasion-speciation or duplication-divergence with selection) that build large networks while preserving dynamical stability versus fragile random rewirings. The candidate instead proposes a static motif-based extension of Newman-Girvan modularity for community detection - no population/expression dynamics, no linearized-stability eigenvalue criterion, and no evolutionary growth-with-selection mechanism; \"motif\" here just labels a local subgraph pattern used for modularity, not a stability-robustness diagnostic, so method_coherence is FALSE. The query's object is ecological food webs (species/trophic interactions); the candidate's object is unspecified generic \"synthetic and real networks\" studied purely for community structure, not food webs or gene-regulatory circuits, so the substrate is genuinely different from the query's, giving object_difference TRUE.",
+ "backbone": "claude-sonnet-5"
+}

@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's core transferable method involves modeling networks (food webs) through static topology rules, dynamical stability analysis (eigenvalues of linearized systems), and incremental growth/selection processes. The candidate applies random matrix theory (RMT), network clustering, and multifractal analysis to financial indices, focusing on correlation thresholds and statistical properties—no shared machinery with the query's dynamical stability or evolutionary growth models. Its object (global financial indices) is genuinely different from the query's food webs.",
+ "backbone": "mistral-large-latest"
+}

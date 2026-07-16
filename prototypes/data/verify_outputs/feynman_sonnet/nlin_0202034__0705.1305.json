@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's most specific, headline-worthy machinery — echoed in the hyp_abstract's longest and most detailed passage — is selection-driven incremental network growth/assembly (evolutionary \"invasion\"/expansion-planning with a reliability filter) that yields large networks remaining stable, unlike randomly built ones of the same size (query: \"Evolutionary models are found to be capable of building large stable webs\"; hyp: incremental build-out with a \"reliability-and-cost filter,\" contrasted against \"randomly augmented grids... markedly more prone to cascading outages\"). The candidate contains none of this: it only establishes a formal equation-level mapping between the Kuramoto oscillator model and power-grid swing dynamics (sources vs. consumers, bimodal frequency distribution), with no mention of network construction/growth, selection filtering, or stability-vs-random-growth comparison — a different, narrower engine than the one the hypothesis foregrounds. The object is genuinely different, however: the query studies ecological food webs of interacting species, while the candidate studies an electrical power distribution grid of generators and consumers, a real cross-field substrate shift matching hyp_generic_object.",
+ "backbone": "claude-sonnet-5"
+}

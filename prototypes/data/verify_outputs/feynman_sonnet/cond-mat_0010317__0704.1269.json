@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query/hyp's transferable engine is a degree-stratified heterogeneous mean-field spreading model: balance equations per connectivity class showing that when the degree distribution's second moment diverges, the epidemic/cascade threshold vanishes and disturbances self-sustain on the most-connected nodes. The candidate instead uses the cavity method to map the static solution-space geometry of graph coloring (clustering, condensation, freezing transitions) as a function of uniform average degree in Erdos-Renyi/regular graphs — no spreading dynamics, no per-node connectivity-class balance equations, and no role for heterogeneous/diverging-degree connectivity driving threshold loss; the shared terms \"phase transition,\" \"critical connectivity,\" and \"mean field\" are surface vocabulary from statistical physics, not the same machinery. The object also differs genuinely: the query studies real-world spreading (computer-virus prevalence on the Internet/scale-free networks), while the candidate studies the combinatorial solution space of vertex coloring on synthetic random graphs — an unrelated substrate.",
+ "backbone": "claude-sonnet-5"
+}

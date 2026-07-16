@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's transferable engine is a specific three-class taxonomy for building/analyzing an interaction network — static rule-based link assignment, dynamical population models with stability analysis, and constructive assembly/evolutionary growth (iteratively adding nodes via invasion/speciation, showing such growth yields large stable webs unlike random assembly), mirrored in hyp_abstract via reaction-network chemistry. The candidate abstract describes collective-motion/flocking research — self-propelled particle models, order parameters, and analogies to equilibrium phase transitions — with no static/dynamical/constructive-assembly taxonomy, no network-growth-by-invasion mechanism, and no comparison of assembled-vs-random network stability, so the machinery does not match despite loose shared words like \"stability.\" The object is genuinely different: food-web trophic-interaction networks versus self-propelled collective-motion systems (macromolecules, robots, animals), so object_difference is true.",
+ "backbone": "claude-sonnet-5"
+}

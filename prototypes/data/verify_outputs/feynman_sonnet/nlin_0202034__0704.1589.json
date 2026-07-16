@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's transferable engine (per hyp_abstract) is reviewing three network-model families for building/stabilizing complex webs — static attachment generators, dynamical stability analysis via linearization/eigenvalues of the interaction matrix, and growth/assembly processes with an adoption/invasion filter that yield large resilient structures. The candidate instead proposes a semi-local immunization/vaccination algorithm (ask a random node's neighbor, exploiting degree bias) to approximate targeted high-degree immunization for epidemic control — no stability/eigenvalue analysis, no growth-and-selection assembly model, just a topological targeting heuristic for vaccination, so the machinery does not match. The object also differs: the query studies ecological food webs (species interactions), while the candidate studies immunization on social/scale-free networks for epidemic spreading — a genuinely different substrate and field, even though neither matches the software-dependency hypothetical target either.",
+ "backbone": "claude-sonnet-5"
+}

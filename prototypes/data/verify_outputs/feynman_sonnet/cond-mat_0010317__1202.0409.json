@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query/hyp's transferable engine is a degree-stratified mean-field dynamical model showing the epidemic/contagion threshold vanishes when the network's degree distribution is heavy-tailed with diverging variance; the candidate instead uses RMT eigenvalue analysis, correlation-threshold network clustering, and multifractal (MF-DFA/BMFM) analysis of financial index time series — no spreading dynamics, degree-class equations, or threshold behavior at all, so only the word 'network' is shared, not the machinery. The candidate's object (correlation structure among 20 global financial indices) is nonetheless a genuinely different substrate from the query's computer-virus/Internet epidemic spreading, so object_difference is true even though method_coherence is false.",
+ "backbone": "claude-sonnet-5"
+}

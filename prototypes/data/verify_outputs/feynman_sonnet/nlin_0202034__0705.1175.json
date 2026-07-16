@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query/hyp's core dynamical-stability engine is deriving asymptotic-stability conditions of a fixed point from the eigenvalues of a linearized interaction/Jacobian matrix, with the specific finding that high connectivity alone destabilizes a network unless particular motif structure is present; the candidate instead asks a different, narrower question — whether extreme eigenvalues of random scale-free connectivity matrices converge to a stable \"ensemble-averaged\" distribution as network size grows (self-averaging), with no treatment of fixed-point stability, motif structure, or growth/assembly dynamics, so shared eigenvalue vocabulary does not amount to shared machinery. The candidate's object is generic random scale-free networks illustrated via synchronization/epidemic-spreading processes, genuinely different from the query's ecological food webs, so a real object shift has occurred even though the method does not cohere.",
+ "backbone": "claude-sonnet-5"
+}

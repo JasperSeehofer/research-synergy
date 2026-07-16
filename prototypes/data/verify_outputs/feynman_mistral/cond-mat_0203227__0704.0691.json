@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's core transferable method is a self-consistent balance equation for binary states (operational/failed) on a network with arbitrary degree distribution, deriving a critical threshold from the moments of P(k). The candidate studies language competition via Monte Carlo simulation, not a binary-state balance equation or moment-based threshold analysis, so the machinery does not cohere. Its object (languages and speakers) is genuinely different from the query's Ising model on networks.",
+ "backbone": "mistral-large-latest"
+}

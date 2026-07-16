@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's core transferable method involves modeling networks (food webs) via static generators, dynamical stability analysis, and growth models (assembly/evolution). The candidate abstract discusses statistical physics applied to social dynamics, focusing on collective phenomena like opinion dynamics and social spreading, with no mention of static network generators, coupled dynamical stability, or publish-and-select growth mechanisms. The object differs (social systems vs. food webs), but the methods do not cohere.",
+ "backbone": "mistral-large-latest"
+}

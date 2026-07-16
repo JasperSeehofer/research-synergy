@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's core method involves analyzing Turing instability in activator-inhibitor systems on large random networks, leading to node differentiation based on degree via a mode-indexed dispersion relation. The candidate studies food webs using static, dynamical, and evolutionary models, focusing on species interactions and stability—no shared machinery with the query's network-organized activator-inhibitor dynamics. The object (food webs vs. network-organized activator-inhibitor systems) is genuinely different.",
+ "backbone": "mistral-large-latest"
+}

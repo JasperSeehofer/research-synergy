@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The candidate studies random hypergraphs to model tripartite folksonomy structures (users, resources, tags), which is a genuinely different object from the query's food webs or the hypothetical's software dependency networks. However, its core machinery—probabilistic hypergraph generation and statistical analysis of large networks—does not match the query's three modeling families (static link assignment, dynamical population stability, or evolutionary growth via invasion/speciation), so there is no shared transferable method.",
+ "backbone": "mistral-large-latest"
+}

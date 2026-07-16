@@ -175,9 +175,9 @@ def emit_inputs(sub, forward_only=True):
 
 
 # ----------------------------- verdict backbones -----------------------------
-def load_llm_verdicts(sub, manifest):
+def load_llm_verdicts(sub, manifest, outputs_subdir=None):
     """Read blind subagent outputs -> {(q,c): verdict}. Requires one file per manifest record."""
-    out_dir = os.path.join(DATA, "verify_outputs", sub)
+    out_dir = os.path.join(DATA, "verify_outputs", outputs_subdir or sub)
     verdicts, missing, bad = {}, [], []
     for rec in manifest["records"]:
         path = os.path.join(out_dir, rec["file"])
@@ -240,12 +240,24 @@ def compute_cas_verdicts(sub):
 
 
 # ----------------------------- score + gate -----------------------------
-def pruned_scorer(hyde_score, verdicts, default_coherent=True):
-    """C-40: coherent -> hyde_score; method_coherence=false -> -inf (rank inf, lexicographic ties)."""
+def _keep(v, mode, default_coherent):
+    """Whether candidate survives pruning under severity `mode` (C-40)."""
+    if v is None:
+        return default_coherent
+    mc, od = v["method_coherence"], v["object_difference"]
+    if mode == "headline":       # prune iff not method_coherent
+        return mc
+    if mode == "conservative":   # prune iff BOTH false -> keep if method OR object holds
+        return mc or od
+    if mode == "aggressive":     # prune iff EITHER false -> keep iff BOTH hold
+        return mc and od
+    raise ValueError(mode)
+
+
+def pruned_scorer(hyde_score, verdicts, default_coherent=True, mode="headline"):
+    """C-40: survivor -> hyde_score; pruned -> -inf (rank inf, lexicographic ties)."""
     def f(q, c):
-        v = verdicts.get((q, c))
-        coherent = v["method_coherence"] if v is not None else default_coherent
-        return hyde_score(q, c) if coherent else NEG_INF
+        return hyde_score(q, c) if _keep(verdicts.get((q, c)), mode, default_coherent) else NEG_INF
     return f
 
 
@@ -281,7 +293,7 @@ def prune_stats(sub, manifest, verdicts):
     }
 
 
-def run_score(sub, backbone, forward_only, allow_missing):
+def run_score(sub, backbone, forward_only, allow_missing, outputs_subdir=None):
     corpus, all_ids, by_id, hyp, pairs, hyde_score, winning_idx = load_ctx(sub)
     mpath = os.path.join(DATA, f"verify_manifest_{sub}.json")
     if not os.path.exists(mpath):
@@ -292,17 +304,23 @@ def run_score(sub, backbone, forward_only, allow_missing):
         verdicts = compute_cas_verdicts(sub)
         missing, bad = [], []
     else:
-        verdicts, missing, bad = load_llm_verdicts(sub, manifest)
+        verdicts, missing, bad = load_llm_verdicts(sub, manifest, outputs_subdir)
         if (missing or bad) and not allow_missing:
             raise SystemExit(
                 f"verify outputs incomplete: {len(missing)} missing, {len(bad)} malformed "
                 f"(of {len(manifest['records'])}). First missing: {missing[:5]}. "
                 f"Re-run the blind subagents, or pass --allow-missing (missing -> coherent, logged).")
 
-    # HyDE-alone baseline (no prune) and the C-40 pruned cascade.
+    # HyDE-alone baseline (no prune) and the C-40 pruned cascade (headline).
     hyde_fwd = eval_direction(pairs, all_ids, hyde_score, "side_a", "side_b")
-    psc = pruned_scorer(hyde_score, verdicts, default_coherent=True)
+    psc = pruned_scorer(hyde_score, verdicts, default_coherent=True, mode="headline")
     pruned_fwd = eval_direction(pairs, all_ids, psc, "side_a", "side_b")
+    # pre-registered pruning-severity ablations (C-40; DESCRIPTIVE, not the headline)
+    ablations = {}
+    for mode in ("conservative", "aggressive"):
+        m = eval_direction(pairs, all_ids,
+                           pruned_scorer(hyde_score, verdicts, mode=mode), "side_a", "side_b")
+        ablations[mode] = {"recall@10": m["recall@10"], "mrr": m["mrr"], "ranks": m["ranks"]}
 
     ranks = pruned_fwd["ranks"]
     recovered = {pid for pid, r in ranks.items() if r is not None and r <= 10}
@@ -321,12 +339,14 @@ def run_score(sub, backbone, forward_only, allow_missing):
 
     results = {
         "experiment": "EXP-RS-20", "sub": sub, "backbone": backbone,
+        "outputs_subdir": outputs_subdir or sub,
         "forward_only": forward_only, "n_corpus": len(all_ids),
         "n_eval_pairs": len(pairs), "pair_ids": [p["id"] for p in pairs],
         "n_verdicts": len(verdicts), "n_missing": len(missing), "n_malformed": len(bad),
         "missing_examples": missing[:10],
         "hyde_alone_forward": hyde_fwd,
         "cascade_forward": pruned_fwd,
+        "ablation_pruning_severity": ablations,
         "gate": {
             "P1_cheap_forward_gate": {
                 "R_recall@10": R,
@@ -358,6 +378,8 @@ def run_score(sub, backbone, forward_only, allow_missing):
         print(f"{name:20} {m['recall@1']:5.2f} {m['recall@5']:5.2f} {m['recall@10']:5.2f} "
               f"{m['mrr']:6.3f}")
     print("\ncascade forward ranks:", ranks)
+    print(f"ablations (descriptive): conservative R@10={ablations['conservative']['recall@10']:.2f}  "
+          f"aggressive R@10={ablations['aggressive']['recall@10']:.2f}")
     print(f"pruned/query (mean)={stats['mean_pruned_per_query']:.2f}  "
           f"same-community share={stats['same_community_share_of_pruned']:.2f}  "
           f"targets_pruned={stats['targets_pruned']}")
@@ -389,13 +411,15 @@ def main():
     s.add_argument("--both-directions", action="store_true")
     s.add_argument("--allow-missing", action="store_true",
                    help="treat missing LLM verdicts as method_coherence=true (logged); default errors")
+    s.add_argument("--outputs-subdir", default=None,
+                   help="verify_outputs/<subdir> to score (e.g. feynman_mistral); default = <sub>")
     args = ap.parse_args()
 
     if args.cmd == "emit-inputs":
         emit_inputs(args.sub, forward_only=not args.both_directions)
     elif args.cmd == "score":
         run_score(args.sub, args.backbone, forward_only=not args.both_directions,
-                  allow_missing=args.allow_missing)
+                  allow_missing=args.allow_missing, outputs_subdir=args.outputs_subdir)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query/hyp's core engine is a linear stability analysis about a uniform state on a network, expanding perturbations in graph-Laplacian eigenmodes so that only nodes in a critical degree/coordination range destabilize into two coexisting populations, captured by a degree-grouped mean-field theory with multistability and hysteresis. The candidate instead uses the cavity method and belief propagation to study the combinatorial solution-space geometry of random-graph coloring (clustering, condensation, freezing transitions) — an entropy/constraint-satisfaction analysis with no Laplacian eigenmode decomposition or activator-inhibitor dynamics, so despite shared words like 'phase transition,' 'random graph,' 'mean field,' and 'degree/connectivity,' the underlying machinery does not match. The object is genuinely different too: proper-coloring assignments on random graphs (a discrete constraint-satisfaction problem) versus the query's activator-inhibitor reaction-diffusion network (and the hyp's battery-electrode particle network), so no shared substrate.",
+ "backbone": "claude-sonnet-5"
+}

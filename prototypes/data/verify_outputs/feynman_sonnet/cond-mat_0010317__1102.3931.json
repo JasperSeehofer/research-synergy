@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query/hyp's transferable engine is: a threshold (epidemic / gelation) collapses to zero when the underlying network's degree (or monomer-functionality) distribution has a diverging second moment, demonstrated via mean-field / generating-function branching-process analysis nucleated on rare hubs. The candidate's actual mechanism is different: a nonlinear rate-equation (bistable opinion-competition) model in which a critical fraction p_c of committed, unpersuadable zealots flips the population from exponential- to logarithmic-time consensus — a tipping point driven by agent commitment dynamics, not by degree-distribution moment divergence or any generating-function/branching argument. The shared terms \"scale-free networks\" and \"critical value\" are incidental description, not shared machinery, so method_coherence is FALSE. The candidate's object — social/opinion consensus formation among agents with committed minorities — is a genuinely different phenomenon from the query's computer-virus epidemic spreading (and from the hypothetical's polymer gelation), so object_difference is TRUE.",
+ "backbone": "claude-sonnet-5"
+}

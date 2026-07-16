@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The candidate is a generic Focus Issue preface announcing a collection of articles on \"optimization in collective behavior\" across physical/biological/social/technological networks; it states no specific model, linearization, dispersion relation, or degree-dependent bifurcation mechanism, so there is no identifiable machinery to compare against the query/hyp's Laplacian-eigenmode Turing-instability analysis — too thin to confirm shared machinery, hence FALSE. Its named topic (network optimization in collective behavior) is nonetheless a different phenomenon than the query's activator-inhibitor Turing pattern formation on networks, so object_difference is TRUE.",
+ "backbone": "claude-sonnet-5"
+}

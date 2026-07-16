@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query/hyp_abstract's transferable engine is a framework of network-building and stability machinery: static rule-based link assignment, dynamical stability analysis of coupled interaction/rate equations via Jacobian conditions on stationary states, and constrained sequential assembly (adding nodes only if they remain producible/non-depleting) that yields large self-maintaining stable networks versus randomly assembled ones collapsing. The candidate instead runs a mean-field compartmental contagion model (rumour spreading) over a fixed, pre-given network topology, deriving epidemic-style spreading thresholds as a function of degree distribution (random graphs vs. scale-free) — a different engine (contagion/threshold dynamics on a static topology, not stability-of-interactions or closure-constrained growth), so method_coherence is FALSE. The candidate's object is social/information networks (rumour/chain-email spreading), genuinely different from the query's ecological food webs (and not the chemistry target either), so object_difference is TRUE.",
+ "backbone": "claude-sonnet-5"
+}

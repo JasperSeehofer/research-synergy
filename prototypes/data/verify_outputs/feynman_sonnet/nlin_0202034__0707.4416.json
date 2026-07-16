@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query/hyp's transferable machinery is (a) static generative link-placement rules, (b) population/output dynamics whose equilibrium stability is assessed via linearization and Jacobian eigenvalues, and (c) networks built endogenously by entry-and-selection (species invasion/speciation or firm founding with a cost-recovery filter). The candidate instead studies opinion/consensus dynamics (a discrete state-adoption process akin to a voter model) coupled with homophily-driven link rewiring — no population dynamics, no Jacobian stability analysis, and no entry/exit-and-selection network assembly, so the core engine differs despite shared words like 'network' and 'stability'. The object is also genuinely different: agents holding opinions in a social/acquaintance network, not species in a food web (or firms in a production network), so object_difference is true even though method_coherence is false.",
+ "backbone": "claude-sonnet-5"
+}

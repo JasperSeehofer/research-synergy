@@ -1,0 +1,1014 @@
+{
+ "experiment": "EXP-RS-20",
+ "sub": "feynman",
+ "backbone": "llm",
+ "outputs_subdir": "feynman_mistral",
+ "forward_only": true,
+ "n_corpus": 36,
+ "n_eval_pairs": 5,
+ "pair_ids": [
+  "pair01-ising-opinion",
+  "pair03-sir-rumour",
+  "pair04-percolation-epidemics",
+  "pair05-lotka-volterra-markets",
+  "pair06-turing-spatial-economy"
+ ],
+ "n_verdicts": 175,
+ "n_missing": 0,
+ "n_malformed": 0,
+ "missing_examples": [],
+ "hyde_alone_forward": {
+  "ranks": {
+   "pair01-ising-opinion": 26,
+   "pair03-sir-rumour": 16,
+   "pair04-percolation-epidemics": 4,
+   "pair05-lotka-volterra-markets": 19,
+   "pair06-turing-spatial-economy": 32
+  },
+  "recall@1": 0.0,
+  "recall@5": 0.2,
+  "recall@10": 0.2,
+  "mrr": 0.08696862348178139
+ },
+ "cascade_forward": {
+  "ranks": {
+   "pair01-ising-opinion": 16,
+   "pair03-sir-rumour": 33,
+   "pair04-percolation-epidemics": 2,
+   "pair05-lotka-volterra-markets": 29,
+   "pair06-turing-spatial-economy": 34
+  },
+  "recall@1": 0.0,
+  "recall@5": 0.2,
+  "recall@10": 0.2,
+  "mrr": 0.13133951072592048
+ },
+ "ablation_pruning_severity": {
+  "conservative": {
+   "recall@10": 0.2,
+   "mrr": 0.08732539682539683,
+   "ranks": {
+    "pair01-ising-opinion": 25,
+    "pair03-sir-rumour": 16,
+    "pair04-percolation-epidemics": 4,
+    "pair05-lotka-volterra-markets": 18,
+    "pair06-turing-spatial-economy": 35
+   }
+  },
+  "aggressive": {
+   "recall@10": 0.2,
+   "mrr": 0.13133951072592048,
+   "ranks": {
+    "pair01-ising-opinion": 16,
+    "pair03-sir-rumour": 33,
+    "pair04-percolation-epidemics": 2,
+    "pair05-lotka-volterra-markets": 29,
+    "pair06-turing-spatial-economy": 34
+   }
+  }
+ },
+ "gate": {
+  "P1_cheap_forward_gate": {
+   "R_recall@10": 0.2,
+   "beats_C17_null_gt_0.40": false,
+   "pair04_recovered": true,
+   "pair04_rank": 2,
+   "null_missed_recovered": [
+    "pair04-percolation-epidemics"
+   ],
+   "recovers_null_missed_pair": true,
+   "PASS": false
+  },
+  "P2_beats_hyde_alone_gt_0.20": {
+   "cascade_R": 0.2,
+   "hyde_alone_R": 0.2,
+   "PASS": false
+  },
+  "P4_prune_ge2_per_query": {
+   "mean_pruned_per_query": 33.8,
+   "same_community_share": 0.029585798816568046,
+   "targets_pruned": 4,
+   "PASS": true
+  }
+ },
+ "prune_stats": {
+  "per_query": {
+   "cond-mat/0203227": {
+    "n": 35,
+    "pruned": 33,
+    "pruned_same_comm": 1,
+    "pruned_target": 1,
+    "obj_diff_false": 2
+   },
+   "cond-mat/0010317": {
+    "n": 35,
+    "pruned": 34,
+    "pruned_same_comm": 0,
+    "pruned_target": 1,
+    "obj_diff_false": 2
+   },
+   "cond-mat/0007235": {
+    "n": 35,
+    "pruned": 33,
+    "pruned_same_comm": 1,
+    "pruned_target": 0,
+    "obj_diff_false": 7
+   },
+   "nlin/0202034": {
+    "n": 35,
+    "pruned": 34,
+    "pruned_same_comm": 2,
+    "pruned_target": 1,
+    "obj_diff_false": 2
+   },
+   "1005.1986": {
+    "n": 35,
+    "pruned": 35,
+    "pruned_same_comm": 1,
+    "pruned_target": 1,
+    "obj_diff_false": 5
+   }
+  },
+  "mean_pruned_per_query": 33.8,
+  "total_pruned": 169,
+  "same_community_share_of_pruned": 0.029585798816568046,
+  "targets_pruned": 4
+ },
+ "verdicts": {
+  "1005.1986__0704.0491": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a linear instability analysis of coupled activator-inhibitor dynamics on a network, leading to spontaneous node differentiation via Laplacian eigenmodes and mean-field approximation. The candidate studies percolation transitions on directed networks via eigenvalue analysis of a modified adjacency matrix, which is a different mathematical machinery (structural connectivity threshold vs. dynamical instability). The candidate's object—general directed networks under node removal—is genuinely different from the query's biological/chemical pattern-formation systems, aligning with the hypothetical's economic geography context."
+  },
+  "1005.1986__0704.0691": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves Turing instability in network-organized activator-inhibitor systems, analyzed via linear stability and mean-field approximation on network Laplacian eigenmodes. The candidate studies language competition via Monte Carlo simulation, a stochastic agent-based approach with no shared machinery (no Laplacian eigenmodes, no coupled fields, no mean-field bifurcation analysis). The candidate's object (language dynamics) is genuinely different from the query's (biological/chemical networks), but the methods do not cohere."
+  },
+  "1005.1986__0704.0744": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The candidate studies social group evolution in dynamic networks using clique percolation, a community-detection algorithm, rather than the query's core machinery of Turing instability in activator-inhibitor systems with diffusive coupling and Laplacian-mode analysis. While the candidate's object (social networks) is genuinely different from the query's (biological/chemical networks), the methods do not cohere."
+  },
+  "1005.1986__0704.1269": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves Turing instability in activator-inhibitor systems on networks, leading to spontaneous node differentiation via linear stability analysis of coupled fields and mean-field approximation. The candidate studies graph coloring using the cavity method and phase transitions in solution spaces, focusing on entropy and algorithmic hardness rather than the coupled-field instability or mean-field dynamics of the query. The candidate's object (random graph vertex coloring) is genuinely different from the query's network-organized activator-inhibitor systems, but the methods do not cohere."
+  },
+  "1005.1986__0704.1589": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is a Turing instability in network-organized activator-inhibitor systems leading to node differentiation via a linear stability analysis of coupled variables on a graph Laplacian. The candidate employs a local immunization strategy based on node degree thresholds, unrelated to activator-inhibitor dynamics or pattern formation. The candidate's object (epidemiological networks) is genuinely different from the query's (biological/chemical networks), but the methods do not cohere."
+  },
+  "1005.1986__0705.1175": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a Turing instability analysis on networks, decomposing perturbations onto graph Laplacian eigenmodes to predict spontaneous differentiation of nodes. The candidate studies eigenvalue distributions of connectivity matrices to assess ensemble averageability, focusing on extreme eigenvalues for synchronization and epidemic processes—no Turing instability, no activator-inhibitor dynamics, and no node differentiation via Laplacian eigenmodes. The candidate's object (generic network dynamical processes) is genuinely different from the query's network-organized activator-inhibitor systems, but the methods do not cohere."
+  },
+  "1005.1986__0705.1305": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves Turing instability in activator-inhibitor systems on random networks, leading to node differentiation via a dispersion relation derived from Laplacian eigenvectors. The candidate uses the Kuramoto model for synchronization in power grids, which relies on phase coupling of oscillators, not the activator-inhibitor dynamics or Laplacian-mode instability. The candidate's object (power grids with generators/consumers) is genuinely different from the query's biological/chemical networks, but the methods do not cohere."
+  },
+  "1005.1986__0705.3224": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a Turing instability in activator-inhibitor systems on networks, leading to spontaneous node differentiation via a linear stability analysis of coupled variables with network Laplacian dispersal. The candidate studies gossip propagation in social networks using a spread factor and spreading time model, which lacks the coupled activator-inhibitor dynamics, stability analysis, or network Laplacian-based differentiation mechanism. The candidate's object (social networks and gossip propagation) is genuinely different from the query's biological/chemical networks, but the methods do not cohere."
+  },
+  "1005.1986__0706.3372": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is the analysis of Turing instability in network-organized activator-inhibitor systems via linearization, Laplacian eigenvector projection, and mode-indexed dispersion relations to predict node differentiation by degree. The candidate studies reciprocity in networks using a statistical ensemble approach and degree correlations, with no mention of activator-inhibitor dynamics, Laplacian modes, or bifurcation into clusters—thus no shared machinery. The candidate's object (reciprocity in generic networks) is genuinely different from the query's biological/chemical pattern formation, aligning with the target field of networked control systems."
+  },
+  "1005.1986__0707.1107": {
+   "method_coherence": false,
+   "object_difference": false,
+   "rationale": "The candidate abstract describes a broad survey of optimization in networked systems across various domains, with no specific method or machinery matching the query's core transferable engine (Turing instability in activator-inhibitor systems leading to node differentiation via Laplacian mode instability and mean-field approximation). The object (general networked systems in optimization contexts) is not genuinely distinct from the query's network-organized activator-inhibitor systems, as it encompasses similar network structures without clear cross-field transfer."
+  },
+  "1005.1986__0707.4416": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves Turing instability in activator-inhibitor systems on random networks, leading to node differentiation via a dispersion relation derived from Laplacian eigenvectors. The candidate studies consensus formation on adaptive networks with rewiring based on opinion similarity, lacking the activator-inhibitor dynamics, Laplacian mode analysis, or bifurcation into high/low clusters characteristic of the query's machinery. However, its object (opinion dynamics on adaptive networks) is genuinely different from the query's biological/chemical pattern formation, so object_difference is true."
+  },
+  "1005.1986__0709.2231": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is the analysis of Turing instability in activator-inhibitor systems on large random networks, leading to node differentiation via a mode-indexed dispersion relation and mean-field approximation. The candidate studies biased random walks on complex networks, focusing on stationary occupation probabilities and transit times—entirely different machinery (stochastic processes vs. reaction-diffusion dynamics). However, its object (communication networks/transport processes) is genuinely different from the query's biological/chemical pattern formation, so object_difference is true."
+  },
+  "1005.1986__0710.0059": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is the analysis of Turing instability in network-organized activator-inhibitor systems via linearization, Laplacian eigenvector projection, and mode-indexed dispersion relations to predict node differentiation by degree. The candidate instead defines communities using motif-based extensions of modularity, a graph-theoretic measure unrelated to the dynamical systems machinery of the query. The candidate's object—motif-based communities in complex networks—is genuinely different from the query's activator-inhibitor systems in biological/ecological networks, but the methods do not cohere."
+  },
+  "1005.1986__0710.3256": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is the analysis of Turing instability in network-organized activator-inhibitor systems via linearization, Laplacian eigenvector projection, and mode-indexed dispersion relations to predict node differentiation by degree. The candidate paper reviews statistical physics models of social dynamics (e.g., opinion, cultural, and language dynamics) without employing this specific machinery—it lacks the activator-inhibitor framework, Laplacian mode analysis, or degree-based clustering. The object differs (social systems vs. biological/chemical networks), but the method does not cohere."
+  },
+  "1005.1986__0807.1458": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves Turing instability in activator-inhibitor systems on networks, leading to node differentiation via a linear stability analysis of coupled variables with network Laplacian dispersal. The candidate studies rumor spreading using a stochastic epidemic-like model with mean-field equations on social networks, lacking the activator-inhibitor coupling, Laplacian eigenmode decomposition, or bifurcation-driven differentiation machinery. The candidate's object (social networks and rumor propagation) is genuinely different from the query's biological/chemical networks, but the methods do not cohere."
+  },
+  "1005.1986__0903.0419": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a Turing instability analysis on a network, leading to spontaneous differentiation of nodes via a linear stability analysis of coupled activator-inhibitor dynamics with network Laplacian eigenmodes. The candidate studies random hypergraphs for social networks, focusing on structural properties and tripartite representations, with no activator-inhibitor dynamics, stability analysis, or node differentiation mechanism. The candidate's object (online social tagging systems) is genuinely different from the query's (biological/chemical networks), but the methods do not cohere."
+  },
+  "1005.1986__0903.4009": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is the analysis of Turing instability in activator-inhibitor systems on large random networks, leading to node differentiation via a mode-indexed dispersion relation and mean-field approximation. The candidate studies phase transitions and component sizes in clustered random graphs, focusing on structural properties (e.g., transitivity, percolation) rather than the dynamical bifurcation mechanism of the query. The object differs (networked control agents vs. abstract random graphs), but the methods do not cohere."
+  },
+  "1005.1986__0907.1182": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves Turing instability in activator-inhibitor systems on networks, leading to spontaneous node differentiation via a linear stability analysis of coupled variables with network Laplacian-based dispersal. The candidate studies cascading failures in interdependent networks using percolation theory and degree-based thresholds, not the same activator-inhibitor dynamics or stability analysis machinery. However, the candidate's object (interdependent engineered/societal networks) is genuinely different from the query's biological/chemical systems, so object_difference is true."
+  },
+  "1005.1986__0907.2373": {
+   "method_coherence": false,
+   "object_difference": false,
+   "rationale": "The candidate studies the structural and functional properties of a neuronal network in C. elegans, focusing on network topology and signal propagation, not the Turing-type activator-inhibitor dynamics described in the query and hypothetical. The core machinery of spontaneous differentiation via a discrete dispersion relation and mean-field approximation for coupled activator-inhibitor variables is absent. Additionally, the object (neuronal network of C. elegans) is neither the query's network-organized activator-inhibitor systems nor the hypothetical's lake phosphorus-oxygen dynamics, but it is closer to the query's biological network context, failing object_difference."
+  },
+  "1005.1986__1010.5017": {
+   "method_coherence": false,
+   "object_difference": false,
+   "rationale": "The candidate abstract discusses collective motion and flocking models, focusing on self-propelled units and emergent coordination, which is fundamentally different from the query's core machinery of Turing instability in activator-inhibitor systems with diffusive coupling over networks. Additionally, the candidate's object (collective motion in biological or robotic systems) does not align with the query's network-organized activator-inhibitor systems or the hypothetical's multi-agent control systems, as it lacks the specific two-state coupling dynamics and network differentiation described in the query and hypothetical."
+  },
+  "1005.1986__1102.3931": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves Turing instability in activator-inhibitor systems on networks, leading to spontaneous node differentiation via a dispersion relation derived from Laplacian eigenvectors. The candidate studies opinion dynamics in social networks using a threshold model of committed minorities, with no shared machinery (no activator-inhibitor coupling, no Laplacian-mode instability, no degree-based clustering). The candidate's object—social consensus in multi-agent opinion networks—is genuinely different from the query's biological/chemical pattern formation, but the methods do not cohere."
+  },
+  "1005.1986__1202.0409": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a network-organized activator-inhibitor system exhibiting Turing instability, leading to spontaneous node differentiation via Laplacian eigenmode analysis and mean-field approximation. The candidate studies financial indices using random matrix theory (RMT), network clustering, and multifractal detrended fluctuation analysis (MF-DFA), which are unrelated to the query's Turing instability or mean-field framework. However, the candidate's object—global financial indices—is genuinely different from the query's biological/chemical networks, confirming object_difference."
+  },
+  "1005.1986__1207.0580": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves Turing instability in activator-inhibitor systems on networks, leading to spontaneous node differentiation via Laplacian-mode instability and mean-field clustering. The candidate employs dropout regularization in neural networks, a technique to prevent co-adaptation of feature detectors, which is unrelated to the query's bifurcation or network dynamics machinery. However, the candidate's object (neural network feature detectors) is genuinely different from the query's network-organized activator-inhibitor systems."
+  },
+  "1005.1986__1407.1664": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves Turing instability in activator-inhibitor systems on networks, leading to spontaneous node differentiation via a dispersion relation derived from Laplacian eigenvectors. The candidate, however, studies community formation through triadic closure and stochastic growth mechanisms, with no shared machinery (e.g., no activator-inhibitor dynamics, no Laplacian-based stability analysis). The candidate's object—social/technological networks with emergent communities—is genuinely different from the query's biological/chemical pattern-forming systems."
+  },
+  "1005.1986__1703.04046": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves Turing instability in network-organized activator-inhibitor systems leading to node differentiation via a mean-field approximation, while the hypothetical re-expresses this as a discrete dispersion relation and Laplacian eigenmode-driven differentiation in lake networks. The candidate, however, employs deep learning (CNNs and bidirectional-LSTM) for sleep stage classification from EEG signals, sharing no underlying mathematical or algorithmic machinery with the query. The candidate's object (sleep EEG data) is genuinely different from the query's (network-organized biological/chemical systems), but the methods do not cohere."
+  },
+  "1005.1986__1708.04975": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves Turing instability in network-organized activator-inhibitor systems, leading to spontaneous node differentiation via linear stability analysis of network Laplacian modes. The candidate employs a spatial generative adversarial network (GAN) for geostatistical inversion, a deep learning-based parameterization and MCMC sampling approach, which is unrelated to the query's reaction-diffusion or network stability machinery. The candidate's object (geological media and subsurface flow) is genuinely different from the query's biological/ecological networks, but the methods do not cohere."
+  },
+  "1005.1986__2003.10218": {
+   "method_coherence": false,
+   "object_difference": false,
+   "rationale": "The candidate employs agent-based modeling of disease transmission, a fundamentally different machinery from the query's Turing instability framework in activator-inhibitor systems on networks. Its object—COVID-19 spread in Australia—is unrelated to the query's focus on network-organized pattern formation (e.g., morphogenesis or ecological metapopulations) or the hypothetical's economic geography context, instead addressing epidemiological dynamics in the same broad domain as the query's biological application."
+  },
+  "1005.1986__cond-mat/0002374": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves Turing instability in activator-inhibitor systems on networks, leading to node differentiation via a linear stability analysis of coupled variables with network Laplacian-driven dispersal. The candidate models wealth distribution using a mean-field equation for exchange and speculative trading, with no analogous activator-inhibitor dynamics, Laplacian eigenmode decomposition, or bifurcation-driven differentiation. The candidate's object (wealth distribution in an economy) is genuinely different from the query's (biological/chemical pattern formation in networks), but the methods do not cohere."
+  },
+  "1005.1986__cond-mat/0007235": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The candidate paper studies structural properties of random graphs with arbitrary degree distributions, focusing on phase transitions and component sizes, which is unrelated to the query's core machinery of Turing instability in activator-inhibitor systems leading to node differentiation via a dispersion relation in Laplacian modes. The object differs (networked control systems/agents vs. graph theory applications like the web or social networks), but the method does not cohere."
+  },
+  "1005.1986__cond-mat/0010317": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves Turing instability in activator-inhibitor systems on networks, leading to spontaneous node differentiation via linear stability analysis of coupled dynamics. The candidate studies epidemic spreading on scale-free networks using a dynamical infection model, not the activator-inhibitor framework or its stability analysis machinery. The object differs (economic regional polarization vs. epidemic spreading on networks), but the methods do not cohere."
+  },
+  "1005.1986__cond-mat/0203227": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves linear instability analysis of coupled activator-inhibitor dynamics on a network, leading to spontaneous symmetry breaking along network Laplacian eigenmodes. The candidate, however, studies the Ising model's critical behavior on networks using equilibrium statistical mechanics, focusing on phase transitions and thermodynamic quantities (magnetization, susceptibility) rather than dynamical symmetry breaking. While both involve networks with heterogeneous connectivity, the machinery (dynamical instability vs. equilibrium phase transitions) differs. The candidate's object—spin systems on random graphs—is genuinely different from the query's activator-inhibitor systems in morphogenesis or ecology."
+  },
+  "1005.1986__cond-mat/0205009": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves Turing instability in activator-inhibitor systems on networks, leading to spontaneous node differentiation via a mode-indexed dispersion relation and Laplacian eigenvector analysis. The candidate studies SIR epidemiological models on networks, focusing on disease spread dynamics rather than the activator-inhibitor bifurcation machinery. While the object (networked systems) differs from the query's biological/chemical context, the candidate does not employ the same mathematical or algorithmic method."
+  },
+  "1005.1986__cond-mat/0312131": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves linear instability analysis of coupled activator-inhibitor dynamics on a network, leading to symmetry breaking and pattern formation via Laplacian eigenmode decomposition. The candidate studies rumor spreading dynamics using mean-field equations and stochastic simulations, focusing on propagation processes rather than symmetry-breaking instabilities or Laplacian-based pattern formation. The candidate's object (rumor propagation on social/communication networks) is genuinely different from the query's (biological/chemical pattern formation on random networks)."
+  },
+  "1005.1986__cond-mat/9801289": {
+   "method_coherence": false,
+   "object_difference": false,
+   "rationale": "The candidate abstract describes a pairwise interaction model for city formation leading to Zipf's law, which does not employ the query's core machinery of Turing instability in activator-inhibitor systems with diffusive coupling over a network (Laplacian modes, dispersion relations, or degree-dependent clustering). Additionally, the candidate's object (city distribution) is unrelated to the query's network-organized activator-inhibitor systems or the hypothetical's multi-agent control systems, remaining in a distinct sociophysical domain."
+  },
+  "1005.1986__nlin/0202034": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves analyzing Turing instability in activator-inhibitor systems on large random networks, leading to node differentiation based on degree via a mode-indexed dispersion relation. The candidate studies food webs using static, dynamical, and evolutionary models, focusing on species interactions and stability—no shared machinery with the query's network-organized activator-inhibitor dynamics. The object (food webs vs. network-organized activator-inhibitor systems) is genuinely different."
+  },
+  "cond-mat/0007235__0704.0491": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is a generating-function-based cascade theory for random graphs with arbitrary degree distributions to predict phase transitions (e.g., giant component formation). The candidate uses spectral analysis of the adjacency matrix under node removal, a different mathematical machinery (eigenvalue threshold vs. generating functions). The candidate's object—directed networks under percolation—is genuinely different from the query's social/internet graphs, but the methods do not cohere."
+  },
+  "cond-mat/0007235__0704.0691": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is the use of probability generating functions to analyze branching processes with arbitrary offspring distributions in random graphs. The candidate studies language competition via Monte Carlo simulation, not the same mathematical machinery (generating functions or branching processes). Its object—language dynamics—is genuinely different from the query's networks or the hypothetical's aftershock cascades."
+  },
+  "cond-mat/0007235__0704.0744": {
+   "method_coherence": false,
+   "object_difference": false,
+   "rationale": "The candidate studies social group evolution in networks using clique percolation, a method unrelated to the query's random graph theory with arbitrary degree distributions and generating functions. Additionally, its object (social/communication networks) is the same domain as the query's real-world applications (social networks, collaboration graphs), so no cross-field transfer is present."
+  },
+  "cond-mat/0007235__0704.1269": {
+   "method_coherence": true,
+   "object_difference": true,
+   "rationale": "The candidate employs the same core machinery as the query's method re-expressed in the hypothetical: generating-function analysis of random structures with arbitrary degree distributions to derive phase transitions, component sizes, and local neighborhood properties in the sparse limit. Its object—random constraint-satisfaction instances (graph coloring)—is genuinely different from the query's social/internet graphs, aligning with the target field of theoretical computer science."
+  },
+  "cond-mat/0007235__0704.1589": {
+   "method_coherence": false,
+   "object_difference": false,
+   "rationale": "The candidate's method (a local immunization strategy based on neighbor degree comparison) does not employ the query's core machinery—probability generating functions for arbitrary degree distributions to derive phase transitions, component sizes, and giant components. Additionally, the candidate's object (social networks for immunization strategies) overlaps with the query's own domain (social networks and internet graphs), not the distinct target field of polymer chemistry and branched macromolecules."
+  },
+  "cond-mat/0007235__0705.1175": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a generating-function analysis of random graphs with arbitrary degree distributions to derive phase transitions, component sizes, and distances. The candidate studies eigenvalue distributions of scale-free networks using ensemble averaging, not the same generating-function machinery or structural analysis. The candidate's object (network spectra and dynamical processes) is genuinely different from the query's random graphs of social/internet networks, so object_difference is true, but method_coherence is false."
+  },
+  "cond-mat/0007235__0705.1305": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves modeling networks with arbitrary degree distributions using probability generating functions to derive properties like phase transitions and component sizes. The candidate, however, employs a Kuramoto-like model of synchronized oscillators to analyze power grids, focusing on bimodal frequency distributions and synchronization dynamics—entirely different machinery. The candidate's object (power-grid oscillators) is genuinely different from the query's (social/internet graphs), but the methods do not cohere."
+  },
+  "cond-mat/0007235__0705.3224": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is the use of probability generating functions and branching-process theory to analyze phase transitions and component sizes in networks with arbitrary degree distributions. The candidate studies gossip propagation using spread factors and empirical network comparisons, lacking the mathematical machinery of generating functions or branching processes. However, its object (social networks and gossip dynamics) is genuinely different from the query's random graphs with arbitrary degree distributions, aligning with the target field of epidemiology."
+  },
+  "cond-mat/0007235__0706.3372": {
+   "method_coherence": false,
+   "object_difference": false,
+   "rationale": "The candidate studies reciprocity in networks with arbitrary degree sequences and correlations, focusing on structural properties of graphs (degree distributions and correlations) rather than the branching-process machinery central to the query and hypothetical (generating functions, critical branching ratios, and cascading sequences). Its object—networks with degree correlations—is the same domain as the query (graph theory), not the seismological aftershock cascades described in the hypothetical."
+  },
+  "cond-mat/0007235__0707.1107": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The candidate abstract discusses optimization in networks across various domains but does not employ the query's core machinery—probability generating functions for arbitrary degree distributions to derive phase transitions, component sizes, or giant component formation. Its object (general networked systems, including physical, biological, social, and technological) is genuinely different from the query's random graphs with arbitrary degree distributions, but the methods do not cohere."
+  },
+  "cond-mat/0007235__0707.4416": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is a probabilistic generating-function framework for random graphs with arbitrary degree distributions to predict phase transitions (e.g., giant component formation) and structural properties. The candidate studies consensus formation on adaptive networks using agent-based modeling and percolation concepts, not the same generating-function machinery. Its object—opinion dynamics on social networks—is genuinely different from the query's random graphs or the hypothetical's branched macromolecules."
+  },
+  "cond-mat/0007235__0709.2231": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is a generating-function analysis of random graphs with arbitrary degree distributions to derive phase transitions, component sizes, and distances, re-expressed in the hypothetical as a similar analysis for constraint-satisfaction instances. The candidate studies biased random walks on networks, focusing on stationary probabilities and transit times, which is a fundamentally different machinery (Markov processes vs. generating-function combinatorics). The candidate's object—complex networks with arbitrary degree distributions—is genuinely different from the query's social/internet graphs, but the methods do not cohere."
+  },
+  "cond-mat/0007235__0710.0059": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a generating-function analysis of random graphs with arbitrary degree distributions to derive phase transitions, component sizes, and distances. The candidate instead focuses on motif-based community detection using modularity extensions, a different machinery (graph partitioning via motif density) unrelated to the query's probabilistic combinatorial analysis. The candidate's object—complex networks and their community structure—is genuinely different from the query's random graphs with arbitrary degree distributions, so object_difference is true."
+  },
+  "cond-mat/0007235__0710.3256": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The candidate paper broadly surveys social dynamics using statistical physics concepts but does not employ the query's core machinery—probability generating functions and branching-process theory for arbitrary degree/offspring distributions to derive phase transitions, component sizes, or transmission thresholds. Its object (social systems and collective human behavior) is genuinely different from the query's random graphs, but the methods do not cohere."
+  },
+  "cond-mat/0007235__0807.1458": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a generating-function analysis of random graphs with arbitrary degree distributions to derive phase transitions, component sizes, and distances. The candidate studies rumor spreading dynamics on complex networks using mean-field equations, not the query's combinatorial machinery. Its object—social networks and rumor propagation—is genuinely different from the query's random graphs and real-world networks (e.g., web, collaboration graphs)."
+  },
+  "cond-mat/0007235__0903.0419": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is the use of probability generating functions to analyze phase transitions and component sizes in random graphs with arbitrary degree distributions. The candidate, while in a different field (online social networks), employs random hypergraphs to model tripartite structures, not the branching-process machinery or generating-function recursion central to the query. The object differs (folksonomies vs. disease transmission networks), but the methods do not cohere."
+  },
+  "cond-mat/0007235__0903.4009": {
+   "method_coherence": false,
+   "object_difference": false,
+   "rationale": "The candidate paper focuses on extending standard random graph models to incorporate clustering, addressing a different core method (modeling transitivity) than the query's machinery of generating-function analysis for arbitrary degree distributions and phase transitions in random graphs. Additionally, the candidate's object remains within the domain of random graphs and network theory, sharing the same field and substrate as the query rather than transferring to constraint-satisfaction instances."
+  },
+  "cond-mat/0007235__0907.1182": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves analyzing random graphs with arbitrary degree distributions using probability generating functions to predict phase transitions (e.g., giant component formation). The candidate studies interdependent networks and cascading failures using percolation theory and mean-field approximations, not the same generating-function machinery. However, its object—interdependent networks (e.g., engineering/societal systems)—is genuinely different from the query's social/internet graphs or the hypothetical's polymer macromolecules."
+  },
+  "cond-mat/0007235__0907.2373": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is a probabilistic generating-function framework for random graphs with arbitrary degree distributions to predict phase transitions (e.g., giant component formation) and structural properties. The candidate studies the *C. elegans* neuronal network using statistical and topological measures (degree distributions, small-world properties, motifs) but does not employ the query's generating-function machinery or solve for phase transitions in a probabilistic model. The object differs (neuronal network vs. random graphs/social networks), but the methods do not cohere."
+  },
+  "cond-mat/0007235__1005.1986": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is the use of probability generating functions and branching-process theory to analyze phase transitions and component sizes in networks with arbitrary degree distributions. The candidate studies Turing patterns in activator-inhibitor systems on random networks, focusing on node differentiation and mean-field dynamics—entirely different machinery. However, its object (ecological metapopulations or cellular networks) is genuinely different from the query's social/internet graphs, so object_difference is true."
+  },
+  "cond-mat/0007235__1010.5017": {
+   "method_coherence": false,
+   "object_difference": false,
+   "rationale": "The candidate paper studies collective motion in systems ranging from macromolecules to animal groups, focusing on emergent coordinated behavior and modeling principles, not the probabilistic generating-function machinery for random graphs with arbitrary degree distributions. Its object (collective motion in self-propelled units) is unrelated to the query's random graphs or the hypothetical's branched macromolecules, so neither method coherence nor object difference is satisfied."
+  },
+  "cond-mat/0007235__1102.3931": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is the use of probability generating functions and branching-process theory to analyze phase transitions and component sizes in networks with arbitrary degree distributions. The candidate studies opinion dynamics via agent-based simulation and percolation-like thresholds on random graphs, not the same mathematical machinery. However, its object—social consensus dynamics on networks—is genuinely different from the query's random graphs with arbitrary degree distributions, so object_difference is true."
+  },
+  "cond-mat/0007235__1202.0409": {
+   "method_coherence": false,
+   "object_difference": false,
+   "rationale": "The query's core method is the mathematical theory of random graphs with arbitrary degree distributions, using probability generating functions to derive phase transitions, component sizes, and distances. The candidate studies financial indices using random matrix theory (RMT), network clustering, and multifractal analysis—entirely different machinery (e.g., eigenvalue decomposition, threshold-based networks, multifractal detrended fluctuation analysis). The candidate's object (global financial indices) is also unrelated to the query's networks (social/internet graphs) or the hypothetical's branched macromolecules, but it is not a cross-field analogue of the query's object either, as it does not align with the target field (polymer chemistry)."
+  },
+  "cond-mat/0007235__1207.0580": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves modeling random graphs with arbitrary degree distributions using probability generating functions to analyze phase transitions and component sizes. The candidate paper employs dropout regularization in neural networks, a technique unrelated to the query's branching-process or graph-theoretic machinery. However, its object—neural network training dynamics—is genuinely different from the query's social/internet graphs, so object_difference is true."
+  },
+  "cond-mat/0007235__1407.1664": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a generating-function framework for random graphs with arbitrary degree distributions to derive phase transitions, component sizes, and distances. The candidate instead models network growth via triadic closure, a local social mechanism, producing communities and fat-tailed degree distributions without using the query's probabilistic machinery. Its object—social/complex networks with community structure—is genuinely different from the query's random graphs with arbitrary degree distributions, but the methods do not cohere."
+  },
+  "cond-mat/0007235__1703.04046": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is a probabilistic generating-function framework for analyzing phase transitions and component sizes in random graphs with arbitrary degree distributions. The candidate employs deep learning (CNN + bidirectional LSTM) for automatic sleep-stage classification from EEG signals, sharing no underlying mathematical machinery with the query. The candidate's object (sleep EEG data) is genuinely different from the query's (social/internet graphs), but the methods do not cohere."
+  },
+  "cond-mat/0007235__1708.04975": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a branching-process model using probability generating functions to analyze phase transitions and component sizes in networks with arbitrary degree distributions. The candidate employs a deep generative adversarial network (GAN) combined with Markov chain Monte Carlo (MCMC) for geostatistical inversion, which is a fundamentally different machinery (neural network-based sampling vs. analytic generating functions). The candidate's object—geological media and hydraulic properties—is genuinely different from the query's social/internet graphs, so object_difference is true, but method_coherence is false."
+  },
+  "cond-mat/0007235__2003.10218": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a generating-function framework for random graphs with arbitrary degree distributions to derive phase transitions, component sizes, and distances. The candidate uses agent-based simulation calibrated to COVID-19 transmission parameters, not a generating-function or branching-process approach, so the machinery does not cohere. Its object—COVID-19 transmission dynamics in Australia—is genuinely different from the query's social/internet graphs, satisfying object difference."
+  },
+  "cond-mat/0007235__cond-mat/0002374": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves using probability generating functions to analyze phase transitions (e.g., giant component formation) in random graphs with arbitrary degree distributions. The candidate, while studying a different object (wealth distribution in economies), employs a mean-field model and mapping to directed polymers, not the generating-function machinery of the query. The objects differ (polymer networks vs. economic wealth), but the methods do not cohere."
+  },
+  "cond-mat/0007235__cond-mat/0010317": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a generating-function analysis of random graphs with arbitrary degree distributions to derive phase transitions and component properties. The candidate studies epidemic spreading dynamics on scale-free networks using a dynamical model, not the query's combinatorial machinery. The object differs (computer virus infections on networks vs. random graphs with arbitrary degree distributions), but the methods do not cohere."
+  },
+  "cond-mat/0007235__cond-mat/0203227": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is the use of probability generating functions to analyze phase transitions (e.g., giant component formation) in random graphs with arbitrary degree distributions. The candidate applies the Ising model to networks with arbitrary degree distributions, focusing on critical temperature and thermodynamic properties, not the generating-function machinery or gelation-like phase transitions. The candidate's object (spin systems on networks) is genuinely different from the query's (random graphs and real-world networks), but the methods do not cohere."
+  },
+  "cond-mat/0007235__cond-mat/0205009": {
+   "method_coherence": true,
+   "object_difference": true,
+   "rationale": "The candidate employs the same core machinery as the query's method re-expressed in the hypothetical: using probability generating functions and branching-process theory to analyze phase transitions (invasion threshold), component sizes (outbreak sizes), and reachability (transmission generations) in networks with arbitrary degree/offspring distributions. Its object—the transmission structure of infectious diseases in host populations—is genuinely different from the query's random graphs of social/internet networks, representing a cross-field transfer."
+  },
+  "cond-mat/0007235__cond-mat/0312131": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is the use of probability generating functions to analyze branching processes with arbitrary offspring distributions, locating phase transitions and deriving statistical properties. The candidate studies rumor spreading dynamics on complex networks using mean-field equations and Monte Carlo simulations, which does not employ the same generating-function machinery. The candidate's object (rumor propagation on social/communication networks) is genuinely different from the query's (random graphs with arbitrary degree distributions)."
+  },
+  "cond-mat/0007235__cond-mat/9801289": {
+   "method_coherence": false,
+   "object_difference": false,
+   "rationale": "The candidate does not employ the query's core machinery—probability generating functions and cascade theory for random graphs with arbitrary degree distributions to predict phase transitions and component sizes. Instead, it models city formation via pairwise interactions, unrelated to the query's graph-theoretic or polymerization framework. Additionally, the candidate's object (city distribution and human interactions) is neither the query's network graphs nor the hypothetical's branched macromolecules, but it is closer to social networks (a domain already explored in the query), so object difference is also false."
+  },
+  "cond-mat/0007235__nlin/0202034": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is the use of probability generating functions to analyze branching processes with arbitrary offspring distributions, locating phase transitions (e.g., giant component formation or criticality) and deriving statistical properties of cascades. The candidate paper models food webs using static, dynamical, and evolutionary approaches, none of which employ generating functions or branching process machinery. The object differs (food webs vs. neutron cascades), but the methods do not cohere."
+  },
+  "cond-mat/0010317__0704.0491": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a mean-field dynamical model of spreading (e.g., SIS/SIR-like balance equations) on scale-free networks to analyze threshold behavior and hub-driven persistence. The candidate instead studies percolation theory (largest eigenvalue condition for network disintegration) under node removal, a static structural criterion unrelated to the query's dynamical spreading machinery. The candidate's object—directed networks under node removal—is genuinely different from the query's epidemic spreading on scale-free networks, aligning with the target field of systemic risk."
+  },
+  "cond-mat/0010317__0704.0691": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a dynamical model of spreading on scale-free networks using mean-field equations to analyze threshold behavior and absence of epidemic thresholds. The candidate abstract describes Monte Carlo simulations of language competition, which is a stochastic agent-based approach rather than the query's mean-field epidemiological framework. The object differs (linguistic variants diffusing across speaker networks vs. language competition dynamics), but the methods do not cohere."
+  },
+  "cond-mat/0010317__0704.0744": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is a dynamical model of spreading on scale-free networks using mean-field equations to analyze epidemic thresholds and critical behavior. The candidate, while studying social networks, employs a clique percolation algorithm to analyze community evolution, not the same spreading dynamics or mathematical machinery. The candidate's object (social group evolution in collaboration/mobile networks) is genuinely different from the query's (epidemic spreading in scale-free networks), but the methods do not cohere."
+  },
+  "cond-mat/0010317__0704.1269": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is a dynamical model of spreading processes (infections or outages) on networks with heterogeneous connectivity, analyzing epidemic thresholds via mean-field balance equations. The candidate studies the statistical physics of random graph coloring using the cavity method, focusing on phase transitions in solution spaces—different mathematical machinery despite both involving networks. The candidate's object (random graphs and graph coloring problems) is genuinely different from the query's epidemic spreading on scale-free networks."
+  },
+  "cond-mat/0010317__0704.1589": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is a dynamical mean-field model of spreading on scale-free networks with a vanishing epidemic threshold due to hubs, while the candidate employs a local immunization strategy targeting high-degree nodes without modeling contagion dynamics. The objects differ (computer virus spread vs. interbank distress propagation for the hypothetical, but the candidate studies social networks and immunization, genuinely distinct from the query's epidemic focus)."
+  },
+  "cond-mat/0010317__0705.1175": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves modeling epidemic spreading dynamics on scale-free networks using generating-function recursions and critical threshold analysis, while the candidate focuses on spectral properties (eigenvalues) of random scale-free networks to study ensemble averageability, with no shared machinery. The candidate's object (network spectra and dynamical processes like synchronization) is genuinely different from the query's epidemic spreading in communication networks."
+  },
+  "cond-mat/0010317__0705.1305": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves modeling spreading dynamics (e.g., infections) on scale-free networks using generating-function recursions and critical threshold analysis, while the candidate applies a Kuramoto-like oscillator synchronization model to power grids, a fundamentally different mathematical machinery. The candidate's object (power distribution grids) is genuinely different from the query's (scale-free networks like the Internet), but the methods do not cohere."
+  },
+  "cond-mat/0010317__0705.3224": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a mean-field dynamical model of spreading on scale-free networks with a vanishing epidemic threshold due to heavy-tailed degree distributions. The candidate studies gossip propagation using a spread factor and spreading time metric, focusing on information diffusion dynamics rather than the query's epidemiological machinery. The object differs (social gossip networks vs. computer virus infections), but the methods do not cohere."
+  },
+  "cond-mat/0010317__0706.3372": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a dynamical model of spreading on networks with heterogeneous connectivity (scale-free degree distribution) leading to the absence of an epidemic threshold. The candidate studies reciprocity in networks with arbitrary degree sequences and correlations, focusing on statistical ensemble approaches and network randomization—this is a structural analysis of network properties, not a spreading process or epidemiological model. The candidate's object (general network connectivity and reciprocity) is genuinely different from the query's (epidemic spreading in scale-free networks), but the methods do not cohere."
+  },
+  "cond-mat/0010317__0707.1107": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves a dynamical model of spreading processes (e.g., infections or outages) on scale-free networks, analyzing epidemic thresholds and critical behavior. The candidate abstract is a broad overview of optimization in networks across various domains and does not describe any specific dynamical model or spreading mechanism, so the machinery does not cohere. However, the candidate's object (general networked systems across physical, biological, social, and technological domains) is genuinely different from the query's focus on epidemic spreading in scale-free networks."
+  },
+  "cond-mat/0010317__0707.4416": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a mean-field dynamical model of spreading (infection/distress) on scale-free networks with a vanishing epidemic threshold due to heavy-tailed degree distributions. The candidate studies consensus formation on adaptive networks, focusing on opinion dynamics and link rewiring, not the same spreading mechanism or threshold behavior. The candidate's object (opinion clusters in social networks) is genuinely different from the query's (epidemic spreading in scale-free networks), but the methods do not cohere."
+  },
+  "cond-mat/0010317__0709.2231": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves modeling epidemic spreading on scale-free networks using dynamical systems and generating-function recursions to analyze connectivity and thresholds. The candidate studies biased random walks on complex networks, focusing on transport efficiency and routing protocols, which is a different mathematical machinery (Markov processes and transition probabilities) despite shared network terminology. The candidate's object (transport on communication networks) is genuinely different from the query's (epidemic spreading on scale-free networks), aligning with the hypothetical's target field (polymer chemistry) in spirit but not in method."
+  },
+  "cond-mat/0010317__0710.0059": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is a dynamical model of spreading (e.g., SIS/SIR-like mean-field equations) on scale-free networks to explain threshold-free diffusion. The candidate abstract describes a static community-detection framework based on motif counts and modularity, not a spreading process, so the machinery does not cohere. The candidate's object is generic complex networks (e.g., social or technological), genuinely different from the query's computer-virus epidemiology."
+  },
+  "cond-mat/0010317__0710.3256": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a dynamical model of spreading on scale-free networks with mean-field equations for prevalence across connectivity classes, predicting threshold absence. The candidate is a broad review of social dynamics models, not specifically applying the query's epidemiological machinery (e.g., no per-interaction transmissibility, no mean-field equations for variant fractions by connectivity class). However, its object—social/linguistic dynamics—is genuinely different from the query's computer virus networks."
+  },
+  "cond-mat/0010317__0807.1458": {
+   "method_coherence": true,
+   "object_difference": true,
+   "rationale": "The candidate employs the same core transferable method as the query and hypothetical: a dynamical model of spreading on scale-free networks with coupled rate equations stratified by node connectivity, leading to the absence of an epidemic threshold when the degree distribution is broad. Its object—rumour propagation in social networks—is genuinely different from the query's computer virus infections and the hypothetical's fragmented host metapopulation, representing a cross-field analogue."
+  },
+  "cond-mat/0010317__0903.0419": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves modeling spreading dynamics on scale-free networks using generating-function recursions and analyzing critical thresholds, while the hypothetical re-expresses this as generating-function recursions for connectivity growth in polydisperse polymerization. The candidate, however, studies random hypergraphs to model tripartite social structures (users, resources, tags), focusing on structural properties rather than the same dynamical spreading or connectivity machinery. The candidate's object (online folksonomies) is genuinely different from the query's (epidemic spreading in networks) and the hypothetical's (polymerization connectivity)."
+  },
+  "cond-mat/0010317__0903.4009": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves modeling epidemic spreading on scale-free networks using generating-function recursions and analyzing the absence of an epidemic threshold. The candidate studies random graphs with clustering, focusing on component sizes and phase transitions via probabilistic combinatorics, not the same dynamical spreading machinery. However, its object (random graphs/networks with clustering) is genuinely different from the query's epidemic spreading on communication networks."
+  },
+  "cond-mat/0010317__0907.1182": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is a dynamical model of spreading on scale-free networks using mean-field balance equations to analyze epidemic thresholds and critical behavior. The candidate studies cascading failures in interdependent networks using percolation theory and critical average degree thresholds, not the same dynamical spreading machinery. The candidate's object (interdependent networks in engineering/societal systems) is genuinely different from the query's (computer virus infections on the Internet)."
+  },
+  "cond-mat/0010317__0907.2373": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves a dynamical model of spreading processes (e.g., infections or distress) on scale-free networks using mean-field balance equations to analyze threshold behavior. The candidate studies the *structural and statistical properties* of a neuronal network (e.g., degree distributions, small-world properties) and uses linear systems theory for activity propagation, not the same spreading dynamics or mean-field machinery. The object differs (interbank exposure network vs. C. elegans neuronal network), but the methods do not cohere."
+  },
+  "cond-mat/0010317__1005.1986": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is a dynamical model of spreading on scale-free networks using generating-function recursions and percolation theory to analyze connectivity and threshold behavior. The candidate studies Turing pattern formation in activator-inhibitor systems on random networks, focusing on instability-driven node differentiation and mean-field dynamics—entirely different machinery. The candidate's object (network-organized activator-inhibitor systems) is genuinely different from the query's epidemic spreading on communication networks, but the methods do not cohere."
+  },
+  "cond-mat/0010317__1010.5017": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves modeling spreading dynamics on scale-free networks using generating-function recursions and critical behavior analysis, while the candidate focuses on collective motion in self-propelled systems, employing models from statistical physics and simulations—no shared machinery. The candidate's object (collective motion in biological/physical systems) is genuinely different from the query's (epidemic spreading in networks), but the methods do not cohere."
+  },
+  "cond-mat/0010317__1102.3931": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves modeling spreading dynamics on scale-free networks using generating-function recursions and critical threshold analysis, while the candidate studies opinion dynamics via committed minorities and phase transitions in consensus time, employing agent-based simulations and mean-field approximations—different mathematical machinery. The candidate's object (social consensus in populations) is genuinely different from the query's (epidemic spreading in networks), but the methods do not cohere."
+  },
+  "cond-mat/0010317__1202.0409": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a mean-field dynamical model of spreading on a scale-free network with a vanishing epidemic threshold due to heavy-tailed degree distribution. The candidate analyzes financial indices using random matrix theory (RMT), network clustering, and multifractal detrended fluctuation analysis (MF-DFA), none of which employ the query's spreading dynamics or threshold behavior. The candidate's object—global financial indices and their correlation networks—is genuinely different from the query's computer virus infections on the Internet, but the methods do not cohere."
+  },
+  "cond-mat/0010317__1207.0580": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a dynamical model of spreading processes (infections or outages) on networks with heterogeneous connectivity, analyzing epidemic thresholds via mean-field balance equations. The candidate paper, however, employs a regularization technique ('dropout') for neural networks to prevent overfitting, unrelated to spreading dynamics or network connectivity models. The candidate's object (neural network feature detectors) is genuinely different from the query's (scale-free networks and epidemic spreading), but the methods do not cohere."
+  },
+  "cond-mat/0010317__1407.1664": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is a dynamical model of spreading (epidemic-like transmission with mean-field equations) on scale-free networks, analyzing threshold behavior and absence of epidemic threshold. The candidate studies network growth via triadic closure, focusing on community structure emergence and degree distributions, not transmission dynamics or threshold phenomena. The object differs (linguistic variant diffusion vs. community formation in networks), but the methods do not cohere."
+  },
+  "cond-mat/0010317__1703.04046": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is a mean-field dynamical model of spreading processes on scale-free networks with heterogeneous connectivity, analyzing epidemic thresholds. The candidate employs deep learning (CNN + bidirectional LSTM) for automatic feature extraction and temporal modeling of EEG signals, unrelated to network-based spreading dynamics. The candidate's object (sleep stage scoring from EEG) is genuinely different from the query's (epidemic spreading in networks), but the methods do not cohere."
+  },
+  "cond-mat/0010317__1708.04975": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is a mean-field dynamical model of spreading processes on scale-free networks with a vanishing epidemic threshold, while the candidate employs a spatial generative adversarial neural network (SGAN) for geostatistical inversion, a fundamentally different algorithmic machinery. The candidate's object—geological media and subsurface flow—is genuinely different from the query's computer virus propagation on scale-free networks."
+  },
+  "cond-mat/0010317__2003.10218": {
+   "method_coherence": false,
+   "object_difference": false,
+   "rationale": "The candidate models COVID-19 spread using agent-based simulations with interventions like social distancing and case isolation, which is a fundamentally different machinery from the query's mean-field dynamical model of infection spreading on scale-free networks. Additionally, the candidate studies pandemic spread in human populations, not a genuinely different object from the query's epidemic spreading in networks (both involve contagion dynamics in populations, albeit with different specifics)."
+  },
+  "cond-mat/0010317__cond-mat/0002374": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves modeling spreading dynamics on scale-free networks using generating-function recursions and analyzing critical thresholds, while the hypothetical re-expresses this as generating-function recursions for connectivity growth in polymerization. The candidate, however, models wealth distribution using mean-field equations and mappings to directed polymers, with no shared machinery (e.g., no generating-function recursions or critical threshold analysis). The candidate's object (wealth distribution in economies) is genuinely different from the query's (epidemic spreading in networks), but the methods do not cohere."
+  },
+  "cond-mat/0010317__cond-mat/0007235": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves modeling epidemic spreading dynamics on scale-free networks using generating-function recursions and critical behavior analysis. The candidate, while studying random graphs with arbitrary degree distributions (including scale-free), focuses on static structural properties (e.g., phase transitions, component sizes) rather than dynamical spreading processes, so the machinery does not cohere. The candidate's object—general random graphs and real-world networks like the web—is genuinely different from the query's epidemic spreading on communication networks."
+  },
+  "cond-mat/0010317__cond-mat/0203227": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves modeling spreading dynamics (e.g., infections) on scale-free networks using generating-function recursions and critical threshold analysis. The candidate studies the Ising model's critical temperature on networks with arbitrary degree distributions, focusing on statistical mechanics rather than the query's dynamical spreading machinery. While both involve networks with heavy-tailed distributions, the methods (dynamical epidemic model vs. equilibrium Ising model) do not cohere. The candidate's object (magnetic systems on random graphs) is genuinely different from the query's epidemic spreading on communication networks."
+  },
+  "cond-mat/0010317__cond-mat/0205009": {
+   "method_coherence": false,
+   "object_difference": false,
+   "rationale": "The candidate applies standard SIR epidemiological models on networks, focusing on exact solutions for transmission dynamics, but does not employ the query's core machinery of stratified patch connectivity with scale-free degree distributions and the resulting absence of an epidemic threshold. Its object—general social networks and disease spread—overlaps with the query's focus on scale-free networks and computer viruses, rather than representing a genuinely different substrate like the hypothetical's fragmented host metapopulation."
+  },
+  "cond-mat/0010317__cond-mat/0312131": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a mean-field dynamical model of spreading (infections/distress) on scale-free networks with a vanishing epidemic threshold due to heavy-tailed degree distributions. The candidate studies rumor spreading using mean-field equations on complex networks, but its focus is on algorithmic variants (e.g., rumor-spreading rules) and time profiles, not the structural absence of a threshold or systemic risk machinery. The object differs (rumor propagation in social/communication networks vs. epidemic spreading in scale-free networks), but the methods do not cohere."
+  },
+  "cond-mat/0010317__cond-mat/9801289": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is a dynamical model of spreading on scale-free networks with mean-field equations for infection prevalence, predicting threshold-free diffusion. The candidate studies city formation via pairwise interactions, producing Zipf's law, which does not employ the same epidemiological machinery (no transmissibility, no connectivity-class equations, no threshold analysis). The candidate's object—city size distributions—is genuinely different from the query's computer virus infections, but the methods do not cohere."
+  },
+  "cond-mat/0010317__nlin/0202034": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves modeling spreading dynamics on scale-free networks using generating-function recursions and critical behavior analysis, while the candidate focuses on static, dynamical, and evolutionary models of food webs without employing the same network-based spreading machinery. The candidate's object (ecological food webs) is genuinely different from the query's (computer virus spreading on scale-free networks), but the methods do not cohere."
+  },
+  "cond-mat/0203227__0704.0491": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a self-consistent balance equation for the critical threshold of a binary-state model on networks with arbitrary degree distributions, governed by moments of P(k). The candidate instead uses spectral analysis of the adjacency matrix under node removal (percolation theory), a different mathematical machinery. The candidate's object—directed networks under node removal—is genuinely different from the query's Ising model on random graphs, aligning with the target field of power systems engineering."
+  },
+  "cond-mat/0203227__0704.0691": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a self-consistent balance equation for binary states (operational/failed) on a network with arbitrary degree distribution, deriving a critical threshold from the moments of P(k). The candidate studies language competition via Monte Carlo simulation, not a binary-state balance equation or moment-based threshold analysis, so the machinery does not cohere. Its object (languages and speakers) is genuinely different from the query's Ising model on networks."
+  },
+  "cond-mat/0203227__0704.0744": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves deriving the critical transition point of a binary-state model (Ising/spin adoption) on networks with arbitrary degree distributions using self-consistent equations for aggregate states. The candidate, however, employs clique percolation and community-detection algorithms to study the evolution of social groups, not the collective adoption dynamics of binary states. While the candidate's object (social networks with evolving communities) differs from the query's (Ising model on random graphs), the methods are unrelated."
+  },
+  "cond-mat/0203227__0704.1269": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a self-consistent balance equation for the critical threshold of a binary-state model on networks with arbitrary degree distributions, analyzed via moments of P(k). The candidate studies the coloring of random graphs using the cavity method to analyze phase transitions in solution spaces, which is a different mathematical machinery (constraint satisfaction and entropy landscapes) despite superficial similarities in network terminology. The candidate's object (graph coloring solutions) is genuinely different from the query's Ising model on networks, aligning with the hypothetical's power systems context."
+  },
+  "cond-mat/0203227__0704.1589": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is the exact derivation of a critical threshold (Tc) for a binary-state model on networks with arbitrary degree distributions, governed by the moments of P(k). The candidate focuses on a local immunization strategy for networks, not deriving a threshold or analyzing phase transitions via moment-based self-consistent equations, so the machinery does not cohere. The candidate's object (immunization strategies on contact networks) is genuinely different from the query's Ising model on random graphs."
+  },
+  "cond-mat/0203227__0705.1175": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is determining a critical threshold (tipping point) for a binary-state system on networks with arbitrary degree distributions via self-consistent equations for aggregate behavior, grounded in statistical mechanics (e.g., Ising model). The candidate, however, studies the convergence of extreme eigenvalues in network spectra to analyze dynamical processes like synchronization and epidemic spreading, which does not employ the same machinery (self-consistent equations for binary-state adoption). The candidate's object—network dynamical processes governed by spectral properties—is genuinely different from the query's Ising model on random graphs, aligning with the social-influence network context of the hypothetical."
+  },
+  "cond-mat/0203227__0705.1305": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a self-consistent equation for the critical transition (phase transition or resilience threshold) in a binary-state system on a network with arbitrary degree distribution, governed by moments of the connectivity distribution. The candidate uses the Kuramoto model of coupled oscillators, a different mathematical machinery (phase synchronization dynamics) applied to power grids, not the binary-state Ising-like contagion mechanism. The candidate's object (power grid with generators and consumers) is genuinely different from the query's Ising model on random graphs."
+  },
+  "cond-mat/0203227__0705.3224": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is determining a critical threshold (tipping point) for collective behavior in a binary-state system on networks with arbitrary degree distributions using self-consistent equations derived from statistical mechanics (e.g., Ising model). The candidate studies information propagation via a spread factor and spreading time, focusing on empirical network dynamics without employing the same self-consistent machinery or critical threshold analysis. However, its object—social networks with binary adoption/information states—is genuinely different from the query's physical Ising model on random graphs."
+  },
+  "cond-mat/0203227__0706.3372": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is determining a critical transition (temperature/coupling) in a binary-state system on a network with arbitrary degree distribution via self-consistent equations for mean activation, governed by moments of P(k). The candidate studies reciprocity in networks with arbitrary degree sequences and correlations using a statistical ensemble approach, focusing on structural properties rather than a dynamic phase transition or binary-state activation machinery. The candidate's object (structural connectivity networks with degree correlations) is genuinely different from the query's Ising model on random graphs."
+  },
+  "cond-mat/0203227__0707.1107": {
+   "method_coherence": false,
+   "object_difference": false,
+   "rationale": "The candidate abstract does not describe any specific method or machinery, only a broad theme of 'optimization in networks,' which does not cohere with the query's core method of deriving exact critical thresholds via self-consistent equations for stationary states on networks with arbitrary degree distributions. Additionally, the candidate's object (general 'networked systems' across domains) is not genuinely distinct from the query's network-based Ising model, as it does not focus on a specific cross-field substrate like epidemiology."
+  },
+  "cond-mat/0203227__0707.4416": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is determining a critical transition point (e.g., temperature or tipping point) in a binary-state system on networks with arbitrary degree distributions using self-consistent equations derived from statistical mechanics (e.g., Ising model). The candidate studies consensus formation on *adaptive* networks with rewiring dynamics, focusing on cluster formation and temporal evolution due to adaptivity, not the static critical transition machinery of the query. The object differs: the query studies equilibrium random graphs with fixed degree distributions, while the candidate studies social-influence networks with adaptive rewiring, a genuinely different substrate."
+  },
+  "cond-mat/0203227__0709.2231": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is determining a critical threshold (temperature/coupling) for a binary-state model on networks with arbitrary degree distributions using self-consistent equations for mean activation and moments of the degree distribution. The candidate studies biased random walks on networks, focusing on stationary occupation probabilities and transit times, which is a fundamentally different mathematical machinery (Markov processes vs. Ising-like self-consistent mean-field theory). The candidate's object—transport processes on complex networks—is genuinely different from the query's Ising model on equilibrium graphs, aligning with the hypothetical's neuroscience target."
+  },
+  "cond-mat/0203227__0710.0059": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a self-consistent equation for the aggregate state (magnetization/adoption) on a network with arbitrary degree distribution, yielding a critical threshold dependent on moments of the degree distribution. The candidate instead defines communities via motif-based extensions of modularity, a fundamentally different machinery (graph partitioning vs. equilibrium statistical mechanics). The candidate's object—motif-based communities in complex networks—is genuinely different from the query's Ising model on random graphs, aligning with the hypothetical's social-influence network."
+  },
+  "cond-mat/0203227__0710.3256": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is the exact solution of a binary-state model (Ising) on networks with arbitrary degree distributions via self-consistent equations for aggregate behavior, yielding critical thresholds dependent on moments of the degree distribution. The candidate is a broad review of statistical physics applied to social dynamics, covering many models and phenomena but not specifically applying or replicating the Ising-model machinery (self-consistent equations for critical thresholds tied to degree distribution moments). The candidate's object—social dynamics and collective phenomena—is genuinely different from the query's physical Ising model on random graphs."
+  },
+  "cond-mat/0203227__0807.1458": {
+   "method_coherence": true,
+   "object_difference": true,
+   "rationale": "The candidate employs the same core machinery as the query's method re-expressed in the hypothetical: a self-consistent equation for the stationary state of a binary-state process (rumour spread vs. Ising magnetization) on a network with arbitrary degree distribution, yielding a threshold determined by the moments of the degree distribution. Its object—a rumour spreading on social networks—is genuinely different from the query's Ising model on random graphs, representing a cross-field transfer from statistical physics to epidemiology/social dynamics."
+  },
+  "cond-mat/0203227__0903.0419": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is the self-consistent determination of a critical threshold (temperature/stress) for a binary-state system on a network with arbitrary degree distribution, governed by the moments of that distribution. The candidate studies random hypergraphs to model tripartite social structures (users, resources, tags), focusing on structural properties rather than a binary-state cascade mechanism or moment-based critical thresholds, so the machinery does not cohere. Its object — collaborative tagging systems in online communities — is genuinely different from the query's Ising model on networks or the hypothetical's interbank default cascades."
+  },
+  "cond-mat/0203227__0903.4009": {
+   "method_coherence": false,
+   "object_difference": false,
+   "rationale": "The query's core transferable method is determining critical behavior (e.g., phase transition thresholds) of a binary-state model on networks with arbitrary degree distributions by analyzing moments of the distribution. The candidate studies percolation and component sizes in clustered random graphs, not the same binary-state model or critical behavior machinery. Additionally, the candidate's object (general random graphs with clustering) is not genuinely different from the query's network substrate, as both are abstract network models rather than a distinct applied domain like power systems."
+  },
+  "cond-mat/0203227__0907.1182": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is determining a critical threshold (temperature/loading) for a binary-state model on a network with arbitrary degree distribution P(k) via self-consistent balance equations, where the threshold depends on moments of P(k). The candidate studies interdependent networks using a cascading failure model but does not employ the same machinery—it focuses on coupled Erdos-Renyi networks and percolation-based fragmentation, not the Ising-like self-consistent balance or moment-based thresholds. The candidate's object (interdependent infrastructure networks) is genuinely different from the query's (Ising model on random graphs), but the methods do not cohere."
+  },
+  "cond-mat/0203227__0907.2373": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The candidate paper focuses on structural and topological properties of a specific neuronal network (C. elegans) and its functional implications using linear systems theory, without employing the query's core machinery of a self-consistent mean-field approach to determine critical coupling in a binary-state model with arbitrary connectivity distributions. The object (neuronal networks in computational neuroscience) is genuinely different from the query's Ising model on random graphs, but the methods do not cohere."
+  },
+  "cond-mat/0203227__1005.1986": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is deriving a critical threshold (temperature/transmissibility) for a binary-state model on networks with arbitrary degree distributions by analyzing moments of P(k) and self-consistent equations for stationary states. The candidate studies Turing patterns in activator-inhibitor systems on networks, focusing on node differentiation and mean-field dynamics, not the same threshold derivation or moment-based analysis. The candidate's object (network-organized activator-inhibitor systems) is genuinely different from the query's Ising model on networks, but the methods do not cohere."
+  },
+  "cond-mat/0203227__1010.5017": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is a self-consistent equation for the critical point of a binary-state model (Ising) on networks with arbitrary degree distributions, focusing on phase transition properties. The candidate abstract discusses collective motion models (e.g., flocking) and analogies to equilibrium statistical physics but does not employ the query's machinery (self-consistent equations for binary adoption states or critical thresholds derived from degree distributions). The candidate's object—collective motion in biological/social systems—is genuinely different from the query's Ising model on networks, but the methods do not cohere."
+  },
+  "cond-mat/0203227__1102.3931": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is determining a critical threshold (tipping point) in a binary-state system on networks with arbitrary degree distributions via self-consistent equations derived from statistical mechanics (e.g., Ising model). The candidate, however, models opinion dynamics through a committed minority's influence and focuses on the time to consensus (T_c) using agent-based simulations and scaling arguments, not the same self-consistent machinery. The object differs: the query studies spin systems on random graphs, while the candidate studies social consensus in influence networks, so object_difference is true."
+  },
+  "cond-mat/0203227__1202.0409": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a self-consistent equation for the critical threshold of a binary-state system (e.g., magnetization or default) on a network with arbitrary degree distribution, governed by moments of P(k). The candidate applies random matrix theory (RMT), network clustering, and multifractal analysis to financial indices, not the Ising-like binary-state contagion machinery. Its object—global financial indices and their correlations—is genuinely different from the query's Ising model on networks, but the methods do not cohere."
+  },
+  "cond-mat/0203227__1207.0580": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is determining a critical transition point in a binary-state system on a network with arbitrary degree distribution via self-consistent mean-field equations and analyzing its dependence on the moments of the degree distribution. The candidate paper employs dropout regularization in feedforward neural networks, a technique unrelated to the Ising model's mean-field machinery or critical transitions. The candidate's object (neural network feature detectors and overfitting) is genuinely different from the query's (Ising spins on networks), but the methods do not cohere."
+  },
+  "cond-mat/0203227__1407.1664": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is determining a critical transition point (e.g., temperature or influence strength) in a binary-state system on networks with arbitrary degree distributions using self-consistent equations derived from statistical mechanics (e.g., Ising model). The candidate, however, focuses on network growth mechanisms (triadic closure) and emergent community structure, not the same mathematical machinery of critical transitions in binary-state systems. The candidate's object (social networks with community structure) is genuinely different from the query's (Ising model on random graphs), but the methods do not cohere."
+  },
+  "cond-mat/0203227__1703.04046": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is a self-consistent mean-field solution for the critical temperature/coupling in a binary-state model (Ising/neuronal) on a network with arbitrary degree distribution, governed by the moments of P(k). The candidate uses deep learning (CNN + bidirectional LSTM) to classify sleep stages from raw EEG, with no shared machinery—its method is supervised feature extraction and temporal modeling, not a self-consistent mean-field closure. The object differs (neuronal activity on structural networks vs. sleep-stage EEG signals), so object_difference is true, but method_coherence is false."
+  },
+  "cond-mat/0203227__1708.04975": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves deriving critical behavior in a binary-state system (Ising model) on networks with arbitrary degree distributions using self-consistent equations for mean activation. The candidate employs a generative adversarial neural network (GAN) for geostatistical inversion, a deep learning-based probabilistic approach unrelated to the query's statistical physics machinery. The candidate's object (geological media and subsurface flow) is genuinely different from the query's (neuronal networks or spin systems)."
+  },
+  "cond-mat/0203227__2003.10218": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is a self-consistent equation for the critical transition in a binary-state model (Ising/spin dynamics) on networks with arbitrary degree distributions, focusing on how moments of the degree distribution govern the phase transition. The candidate models COVID-19 transmission using agent-based simulation with calibrated age-dependent symptomatic fractions and intervention strategies, lacking the Ising/spin machinery or degree-distribution-driven criticality. The candidate's object—disease spread in a human population—is genuinely different from the query's equilibrium random graphs, but the methods do not cohere."
+  },
+  "cond-mat/0203227__cond-mat/0002374": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query and hypothetical center on the same core machinery: analyzing phase transitions or tipping points in a binary-state system on networks with arbitrary degree distributions using self-consistent equations derived from statistical mechanics (e.g., Ising model dynamics). The candidate, however, models wealth distribution via exchange dynamics and speculative trading, mapping to a directed polymer problem — a fundamentally different mathematical framework (e.g., stochastic processes, mean-field wealth exchange) with no shared machinery. The object differs (wealth distribution in economies vs. binary adoption states in social networks), so object_difference is true, but method_coherence is false."
+  },
+  "cond-mat/0203227__cond-mat/0007235": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is the exact solution of a binary-state model (Ising) on networks with arbitrary degree distributions, focusing on phase transitions and critical thresholds determined by moments of P(k). The candidate paper studies random graphs with arbitrary degree distributions but does not employ the Ising model or self-consistent balance equations for binary states; it focuses on structural properties like giant components and distances, not cascading failures or phase transitions of operational states. The candidate's object (social networks, internet, collaboration graphs) is genuinely different from the query's (Ising spins on networks), but the machinery does not cohere."
+  },
+  "cond-mat/0203227__cond-mat/0010317": {
+   "method_coherence": true,
+   "object_difference": true,
+   "rationale": "The candidate employs the same core machinery as the query's method re-expressed in the hypothetical: a self-consistent equation for the stationary state of a binary-state process (magnetization/prevalence) on a network with arbitrary degree distribution, yielding a threshold determined by the ratio of the mean degree to its second moment. Its object is a directly transmitted contagion (computer viruses) spreading over a scale-free contact network, genuinely different from the query's Ising model on random graphs."
+  },
+  "cond-mat/0203227__cond-mat/0205009": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is a self-consistent balance equation for a binary-state model (Ising spins or operational/failed nodes) on a network with arbitrary degree distribution, yielding a critical threshold determined by the moments of P(k). The candidate studies SIR epidemiological models on networks, which involve probabilistic transitions between susceptible, infective, and removed states rather than the query's equilibrium binary-state machinery. The candidate's object—disease spread on social networks—is genuinely different from the query's Ising model on random graphs, but the methods do not cohere."
+  },
+  "cond-mat/0203227__cond-mat/0312131": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is the exact derivation of a critical threshold (temperature/transmissibility) for a binary-state model on networks with arbitrary degree distributions, using a self-consistent equation for the stationary state and analyzing moments of the degree distribution. The candidate studies rumor spreading dynamics via mean-field equations and Monte Carlo simulations, focusing on time profiles and algorithm variants, not the exact threshold derivation or moment-based scaling of a critical point. The object differs: the query studies the Ising model on networks, while the candidate studies rumor spreading on social/contact networks."
+  },
+  "cond-mat/0203227__cond-mat/9801289": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method is deriving a critical threshold (temperature/transmissibility) for a binary-state model on networks with arbitrary degree distributions by analyzing moments of the distribution and their divergence. The candidate studies city size distributions via pairwise interactions, yielding Zipf's law, with no shared machinery—no self-consistent equation for a threshold, no moment-based analysis, and no binary-state dynamics. The candidate's object (city populations) is genuinely different from the query's (Ising spins on networks), but the methods do not cohere."
+  },
+  "cond-mat/0203227__nlin/0202034": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method is deriving an exact critical threshold (temperature or transmissibility) for a binary-state model on a network with arbitrary degree distribution, using self-consistent equations for stationary states and analyzing divergence of moments. The candidate abstract discusses food web models, focusing on stability and assembly processes, with no mention of binary-state dynamics, self-consistent equations, or moment-based thresholds, so the machinery does not cohere. The object differs: the candidate studies ecological food webs, genuinely distinct from the query's Ising model on networks or the hypothetical's contagion on contact networks."
+  },
+  "nlin/0202034__0704.0491": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves static, dynamical, and constructive models of network growth and stability (e.g., stability analysis via Jacobians, closure-driven growth of networks). The candidate, however, focuses on percolation theory and spectral analysis of adjacency matrices under node removal, which is a distinct mathematical framework unrelated to the query's methods. The candidate's object (general directed networks) is genuinely different from the query's food webs, aligning with the hypothetical's chemical reaction networks."
+  },
+  "nlin/0202034__0704.0691": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The candidate studies language competition dynamics via Monte Carlo simulation, which does not employ the query's core transferable machinery—static ensemble models, dynamical stability analysis of coupled differential equations, or duplication-and-divergence network growth. Its object (human languages and their evolution) is genuinely different from the query's food webs, but the methods do not cohere."
+  },
+  "nlin/0202034__0704.0744": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves modeling networks (food webs or reaction networks) via static combinatorial rules, dynamical stability analysis of coupled nonlinear equations, and constructive growth models (assembly or speciation). The candidate studies social group evolution using clique percolation, a graph-theoretic community-detection algorithm, which does not share the query's machinery of dynamical stability or constructive network growth. The candidate's object (social/communication networks) is genuinely different from the query's food webs, but the methods do not cohere."
+  },
+  "nlin/0202034__0704.1269": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves modeling networks (food webs or reaction networks) via static combinatorial rules, dynamical stability analysis of coupled nonlinear equations, and constructive growth models with closure-driven assembly. The candidate, however, studies the statistical physics of random graph coloring using the cavity method and phase transitions in solution spaces, which is a distinct mathematical machinery (constraint satisfaction and replica symmetry breaking) unrelated to the query's network modeling approaches. The candidate's object—random graphs and their coloring properties—is genuinely different from the query's food webs or the hypothetical's chemical reaction networks."
+  },
+  "nlin/0202034__0704.1589": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves modeling networks (food webs or software dependencies) via static generators, dynamical stability analysis, or growth models. The candidate abstract describes a local immunization strategy on social/contact networks, focusing on node degree thresholds and vaccination efficiency—no shared machinery with the query's modeling approaches. The object differs (software dependency networks vs. social/contact networks for immunization), so object_difference is true, but method_coherence is false due to mismatched methods."
+  },
+  "nlin/0202034__0705.1175": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves three classes of models: static ensemble models (probabilistic wiring rules), dynamical models (stability of coupled ODEs), and evolutionary growth models (duplication-and-divergence assembly). The candidate focuses solely on spectral properties of random scale-free networks, analyzing eigenvalue distributions for dynamical processes like synchronization and epidemic spreading, which does not align with the query's machinery. However, its object—generic network spectra—differs from the query's food webs, confirming object difference."
+  },
+  "nlin/0202034__0705.1305": {
+   "method_coherence": true,
+   "object_difference": true,
+   "rationale": "The candidate employs the same core transferable machinery as the query's method re-expressed in the hypothetical: dynamical modeling of coupled oscillators (generators/consumers in power grids vs. species in food webs) using nonlinear phase-angle equations to assess stability of synchronized states. The object differs genuinely—the candidate studies electrical power transmission grids, while the query studies ecological food webs."
+  },
+  "nlin/0202034__0705.3224": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves modeling networks (food webs) through static topology rules, dynamical stability analysis, and incremental growth/selection processes. The candidate studies information propagation in social networks using spreading dynamics and metrics like spread factor and time, which do not align with the query's machinery of stability analysis or incremental network construction. However, the candidate's object (social acquaintance networks) is genuinely different from the query's food webs."
+  },
+  "nlin/0202034__0706.3372": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves three classes of models: static ensemble models with probabilistic wiring rules, dynamical models analyzing stability via linearized dynamics, and evolutionary growth models building networks through duplication-divergence. The candidate focuses on statistical ensemble analysis of reciprocity in networks with arbitrary degree sequences and correlations, lacking the dynamical stability analysis or evolutionary growth mechanisms central to the query's method. The candidate's object is abstract networks with degree correlations, genuinely different from the query's food webs, but the machinery does not cohere."
+  },
+  "nlin/0202034__0707.1107": {
+   "method_coherence": false,
+   "object_difference": false,
+   "rationale": "The candidate abstract discusses optimization in generic networks across various domains but does not employ the query's core transferable machinery—static combinatorial rules, dynamical stability analysis via Jacobians, or constructive growth models for network assembly. Its object (generic optimization in networks) is not genuinely distinct from the query's food webs, as it broadly overlaps with network theory rather than focusing on a different substrate like chemical reaction networks."
+  },
+  "nlin/0202034__0707.4416": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves modeling networks (food webs or production networks) via static generative rules, dynamical stability analysis of coupled nonlinear systems, or endogenous assembly through entry-and-selection processes. The candidate studies consensus formation on adaptive networks using opinion dynamics and link rewiring, which does not share the same machinery—no generative rules, no stability analysis of coupled production systems, and no endogenous assembly. The candidate's object (social opinion networks) is genuinely different from the query's food webs, but the methods do not cohere."
+  },
+  "nlin/0202034__0709.2231": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves modeling networks (food webs or reaction networks) via static combinatorial rules, dynamical stability analysis, or constructive growth processes. The candidate studies biased random walks on complex networks, focusing on transport efficiency and routing protocols, which is a fundamentally different mathematical machinery (Markov processes and graph traversal) unrelated to the query's network modeling approaches. However, the candidate's object—generic complex networks with arbitrary degree distributions—is genuinely different from the query's food webs, aligning with the hypothetical's chemical reaction networks."
+  },
+  "nlin/0202034__0710.0059": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves three classes of models: static ensemble models (probabilistic wiring rules), dynamical models (stability of coupled ODEs), and evolutionary growth models (duplication-and-divergence with selection). The candidate focuses on motif-based community detection using modularity extensions, which does not employ the same machinery—it lacks dynamical stability analysis or evolutionary assembly. However, its object (complex networks, including gene regulatory networks) is genuinely different from the query's food webs."
+  },
+  "nlin/0202034__0710.3256": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves modeling networks (food webs) via static generators, dynamical stability analysis, and growth models (assembly/evolution). The candidate abstract discusses statistical physics applied to social dynamics, focusing on collective phenomena like opinion dynamics and social spreading, with no mention of static network generators, coupled dynamical stability, or publish-and-select growth mechanisms. The object differs (social systems vs. food webs), but the methods do not cohere."
+  },
+  "nlin/0202034__0807.1458": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves modeling networks (food webs or reaction networks) via static combinatorial rules, dynamical stability analysis of coupled nonlinear equations, and constructive growth models. The candidate studies rumor spreading using stochastic mean-field equations on social networks, focusing on threshold behavior and dynamics—this is a different mathematical machinery (epidemic-like spreading models vs. network growth and stability analysis). The candidate's object (social networks and rumor propagation) is genuinely different from the query's food webs, but the methods do not cohere."
+  },
+  "nlin/0202034__0903.0419": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The candidate studies random hypergraphs to model tripartite folksonomy structures (users, resources, tags), which is a genuinely different object from the query's food webs or the hypothetical's software dependency networks. However, its core machinery—probabilistic hypergraph generation and statistical analysis of large networks—does not match the query's three modeling families (static link assignment, dynamical population stability, or evolutionary growth via invasion/speciation), so there is no shared transferable method."
+  },
+  "nlin/0202034__0903.4009": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The candidate studies random graph models with clustering, focusing on topological properties like transitivity and component sizes, which is a static combinatorial approach but does not employ the query's core transferable machinery: dynamical stability analysis of coupled nonlinear rate equations or constructive growth models with closure-driven assembly. Its object is abstract networks (e.g., social or technological), genuinely different from the query's food webs or the hypothetical's chemical reaction networks."
+  },
+  "nlin/0202034__0907.1182": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The candidate studies interdependent networks and cascading failures using percolation theory and degree-distribution analysis, which is fundamentally different from the query's core machinery of static combinatorial rules, dynamical stability of coupled nonlinear rate equations, or constructive growth via catalyzed transformations. While the candidate's object (interdependent engineered/societal networks) is genuinely different from the query's food webs, the methods do not cohere."
+  },
+  "nlin/0202034__0907.2373": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The candidate studies the neuronal network of C. elegans, focusing on statistical and topological properties (e.g., degree distributions, small-world properties) and linear systems theory for activity propagation, which does not align with the query's core machinery of static combinatorial rules, dynamical stability analysis via nonlinear rate equations, or constructive growth models for network assembly. While the object (neuronal networks vs. food webs) is genuinely different, the methods employed are distinct and unrelated to the query's theoretical approaches."
+  },
+  "nlin/0202034__1005.1986": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves static, dynamical, and constructive models of network growth and stability, particularly focusing on assembly and evolutionary processes for large stable networks. The candidate, however, studies Turing instability and pattern formation in activator-inhibitor systems on random networks, a fundamentally different dynamical mechanism (reaction-diffusion instability) unrelated to the query's network assembly or stability criteria. The candidate's object—network-organized activator-inhibitor systems in chemistry or biology—is genuinely different from the query's food webs, but the methods do not cohere."
+  },
+  "nlin/0202034__1010.5017": {
+   "method_coherence": false,
+   "object_difference": false,
+   "rationale": "The candidate studies collective motion in physical and biological systems, focusing on self-propelled units and flocking models, which is neither the same machinery as the query's food web models (static, dynamical, or evolutionary network assembly) nor the hypothetical's chemical reaction network models. The object (collective motion of entities) is also unrelated to the query's food webs or the hypothetical's chemical reaction networks, so no cross-field transfer is evident."
+  },
+  "nlin/0202034__1102.3931": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves modeling networks (food webs or production networks) via static generative rules, dynamical stability analysis of coupled nonlinear systems, or endogenous assembly through entry and selection. The candidate studies opinion dynamics in social networks using a threshold-based diffusion model, focusing on the influence of committed minorities—this is a different mathematical machinery (diffusion/percolation vs. network assembly or dynamical stability). The object differs (social consensus networks vs. food webs), but the methods do not cohere."
+  },
+  "nlin/0202034__1202.0409": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves modeling networks (food webs) through static topology rules, dynamical stability analysis (eigenvalues of linearized systems), and incremental growth/selection processes. The candidate applies random matrix theory (RMT), network clustering, and multifractal analysis to financial indices, focusing on correlation thresholds and statistical properties—no shared machinery with the query's dynamical stability or evolutionary growth models. Its object (global financial indices) is genuinely different from the query's food webs."
+  },
+  "nlin/0202034__1207.0580": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves modeling networks (food webs or reaction networks) via static combinatorial rules, dynamical stability analysis, or constructive growth processes. The candidate paper, however, focuses on a neural network training technique (dropout to prevent co-adaptation of feature detectors), which does not share the same underlying machinery of network modeling or stability analysis. The candidate's object (neural network feature detectors) is genuinely different from the query's food webs, but the methods do not cohere."
+  },
+  "nlin/0202034__1407.1664": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The candidate studies network growth via triadic closure, a mechanism focused on social network community formation through local link addition, which does not employ the query's core machinery of static combinatorial rules, dynamical stability analysis of coupled rate equations, or constructive growth via catalyzed transformations. Its object—social/biological networks with community structure—is genuinely different from the query's food webs, but the methods do not cohere."
+  },
+  "nlin/0202034__1703.04046": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves modeling networks (food webs or gene regulatory networks) using static ensemble models, dynamical stability analysis, or evolutionary growth models. The candidate employs a deep learning model (CNN + bidirectional LSTM) for sleep stage classification from EEG data, which does not share the same underlying machinery (e.g., dynamical stability analysis or network growth rules). The candidate's object (sleep stage scoring from EEG) is genuinely different from the query's food webs or the hypothetical's gene regulatory networks."
+  },
+  "nlin/0202034__1708.04975": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves static, dynamical, and evolutionary models for constructing and analyzing stable networks (e.g., food webs or gene regulatory networks), focusing on stability, connectivity, and growth processes. The candidate employs a spatial generative adversarial network (GAN) for geostatistical inversion, a deep learning-based probabilistic approach unrelated to the query's network modeling machinery. The candidate's object (geologic media and subsurface flow models) is genuinely different from the query's food webs or the hypothetical's gene regulatory networks."
+  },
+  "nlin/0202034__2003.10218": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves modeling networks (food webs or production networks) via static generative rules, dynamical stability analysis of coupled systems, or endogenous assembly/selection processes. The candidate, however, employs agent-based epidemiological modeling of disease transmission, focusing on intervention strategies and calibration to real-world data—entirely different machinery. The candidate's object (COVID-19 pandemic spread in Australia) is genuinely different from the query's food webs, but the methods do not cohere."
+  },
+  "nlin/0202034__cond-mat/0002374": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core method involves static generative models, dynamical stability analysis of coupled systems, and endogenous network assembly via entry/selection processes, while the candidate employs a mean-field stochastic exchange model with speculative trading, yielding wealth distributions via symmetry arguments and mappings to directed polymers—no shared machinery. The candidate's object (wealth distribution in an economy) is genuinely different from the query's food webs, but the methods do not cohere."
+  },
+  "nlin/0202034__cond-mat/0007235": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The candidate focuses on static random graph models with arbitrary degree distributions, analyzing structural properties like phase transitions and component sizes, which differs from the query's core transferable method—dynamical stability analysis of coupled interactions or evolutionary growth models. Its object is directed/bipartite graphs (e.g., web links, social networks), genuinely different from the query's food webs, but the machinery does not cohere with the hypothetical's dynamical or growth-based dependency ecosystem models."
+  },
+  "nlin/0202034__cond-mat/0010317": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves modeling networks (food webs or reaction networks) via static combinatorial rules, dynamical stability analysis of coupled nonlinear equations, and constructive growth models. The candidate studies epidemic spreading on scale-free networks using a dynamical model of infection propagation, which does not share the same underlying machinery (e.g., no combinatorial static models, no constructive growth via catalyzed transformations, and no stability analysis of stationary states in the sense of the query). The candidate's object (communication/social networks and computer virus spread) is genuinely different from the query's food webs, but the methods do not cohere."
+  },
+  "nlin/0202034__cond-mat/0203227": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves modeling networks (food webs or power grids) through static topology generation, dynamical stability analysis, and incremental growth/assembly under selection rules. The candidate studies the Ising model on random graphs with arbitrary degree distributions, focusing on phase transitions and critical temperatures—entirely different mathematical machinery (statistical mechanics of spin systems) rather than the query's network modeling approaches. However, the candidate's object (random graphs with arbitrary connectivity) is genuinely different from the query's food webs, aligning with the target field's power transmission networks."
+  },
+  "nlin/0202034__cond-mat/0205009": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The candidate studies epidemic spread on social networks using SIR (susceptible/infective/removed) dynamical models, which are compartmental differential equation models of infection transmission, not the same core machinery as the query's static, dynamical, or constructive network models (e.g., rule-based link assignment, population dynamics, or closure-driven growth). The object is genuinely different (social networks of disease transmission vs. food webs or chemical reaction networks)."
+  },
+  "nlin/0202034__cond-mat/0312131": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The query's core transferable method involves modeling networks (food webs or production networks) via static generative rules, dynamical stability analysis of coupled nonlinear systems, or endogenous assembly/selection processes. The candidate studies rumor spreading dynamics on complex networks using mean-field equations and stochastic simulations, which is a fundamentally different machinery (epidemic-like spreading models vs. network structure and stability analysis). The candidate's object (rumor propagation on social/communication networks) is genuinely different from the query's food webs, but the methods do not cohere."
+  },
+  "nlin/0202034__cond-mat/9801289": {
+   "method_coherence": false,
+   "object_difference": true,
+   "rationale": "The candidate studies city formation via pairwise interactions among individuals, focusing on emergent statistical properties (Zipf's law), which does not employ the query's core machinery of static/dynamical/growth models for directed dependency networks. Its object (human cities) is genuinely different from the query's food webs, but the methods do not cohere."
+  }
+ }
+}

@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's core transferable method is a self-consistent equation for the critical threshold of a binary-state system (e.g., magnetization or default) on a network with arbitrary degree distribution, governed by moments of P(k). The candidate applies random matrix theory (RMT), network clustering, and multifractal analysis to financial indices, not the Ising-like binary-state contagion machinery. Its object—global financial indices and their correlations—is genuinely different from the query's Ising model on networks, but the methods do not cohere.",
+ "backbone": "mistral-large-latest"
+}

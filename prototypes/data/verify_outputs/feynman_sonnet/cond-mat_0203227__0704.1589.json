@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query/hyp's core engine is an analytical derivation of a closed-form epidemic/critical threshold from self-consistent equations built on the moments of an arbitrary degree distribution (threshold ~ <k>/<k^2>, anomalous behavior when moments diverge). The candidate instead proposes and empirically tests a purely local heuristic immunization algorithm (ask a random node's neighbor for their degree/threshold and immunize them) to approximate targeted high-degree immunization on real and model networks — no threshold formula or moment-based self-consistent closure is derived, so the machinery differs even though both mention 'targeted immunization' and 'highest degree nodes.' The object is genuinely different from the query: the query studies Ising spin/magnetic phase transitions on random graphs, while the candidate studies vaccination coverage for disease-like spread/network robustness, matching the epidemiology/contagion target field rather than the query's own statistical-physics substrate.",
+ "backbone": "claude-sonnet-5"
+}

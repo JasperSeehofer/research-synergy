@@ -1,0 +1,370 @@
+{
+ "experiment": "EXP-RS-20",
+ "comparison": "sonnet-5 vs mistral-large",
+ "n_subset": 50,
+ "n_compared": 50,
+ "missing": {
+  "sonnet": 0,
+  "mistral": 0
+ },
+ "agreement": {
+  "method_coherence": {
+   "raw": 0.86,
+   "cohens_kappa": 0.45482866043613707,
+   "sonnet_coherent": 9,
+   "mistral_coherent": 6
+  },
+  "object_difference": {
+   "raw": 0.7,
+   "cohens_kappa": -0.13293051359516617,
+   "sonnet_diff": 39,
+   "mistral_diff": 46
+  },
+  "both_fields_agree": 32,
+  "both_fields_agree_rate": 0.64
+ },
+ "true_positive_on_real_analogues": {
+  "sonnet": {
+   "pair01-ising-opinion": false,
+   "pair03-sir-rumour": true,
+   "pair04-percolation-epidemics": true,
+   "pair05-lotka-volterra-markets": false,
+   "pair06-turing-spatial-economy": false
+  },
+  "mistral": {
+   "pair01-ising-opinion": false,
+   "pair03-sir-rumour": false,
+   "pair04-percolation-epidemics": true,
+   "pair05-lotka-volterra-markets": false,
+   "pair06-turing-spatial-economy": false
+  }
+ },
+ "per_query_pruning": {
+  "pair01-ising-opinion": {
+   "n": 10,
+   "sonnet_pruned": 7,
+   "mistral_pruned": 8,
+   "sonnet_same_comm_pruned": 1,
+   "mistral_same_comm_pruned": 1
+  },
+  "pair03-sir-rumour": {
+   "n": 10,
+   "sonnet_pruned": 6,
+   "mistral_pruned": 9,
+   "sonnet_same_comm_pruned": 0,
+   "mistral_same_comm_pruned": 0
+  },
+  "pair04-percolation-epidemics": {
+   "n": 10,
+   "sonnet_pruned": 8,
+   "mistral_pruned": 8,
+   "sonnet_same_comm_pruned": 0,
+   "mistral_same_comm_pruned": 0
+  },
+  "pair05-lotka-volterra-markets": {
+   "n": 10,
+   "sonnet_pruned": 10,
+   "mistral_pruned": 9,
+   "sonnet_same_comm_pruned": 0,
+   "mistral_same_comm_pruned": 0
+  },
+  "pair06-turing-spatial-economy": {
+   "n": 10,
+   "sonnet_pruned": 10,
+   "mistral_pruned": 10,
+   "sonnet_same_comm_pruned": 0,
+   "mistral_same_comm_pruned": 0
+  }
+ },
+ "n_disagreements": 18,
+ "disagreements": [
+  {
+   "pair_id": "pair01-ising-opinion",
+   "candidate": "0907.1182",
+   "hyde_rank": 1,
+   "is_target": false,
+   "sonnet": {
+    "mc": true,
+    "od": true,
+    "why": "The query's engine is an exact self-consistent equation for a critical point governed by moments of the degree distribution P(k), producing anomalous (vanishing threshold / non-standard-order transiti"
+   },
+   "mistral": {
+    "mc": false,
+    "od": true,
+    "why": "The query's core transferable method is determining a critical threshold (temperature/loading) for a binary-state model on a network with arbitrary degree distribution P(k) via self-consistent balance"
+   }
+  },
+  {
+   "pair_id": "pair01-ising-opinion",
+   "candidate": "0704.1269",
+   "hyde_rank": 2,
+   "is_target": false,
+   "sonnet": {
+    "mc": false,
+    "od": false,
+    "why": "The query/hyp engine is a moment-driven self-consistent threshold formula (Tc / cascade threshold fixed by ratio of low moments of an arbitrary, possibly heavy-tailed P(k), with anomalous behavior onc"
+   },
+   "mistral": {
+    "mc": false,
+    "od": true,
+    "why": "The query's core transferable method is a self-consistent balance equation for the critical threshold of a binary-state model on networks with arbitrary degree distributions, analyzed via moments of P"
+   }
+  },
+  {
+   "pair_id": "pair03-sir-rumour",
+   "candidate": "cond-mat/0203227",
+   "hyde_rank": 1,
+   "is_target": false,
+   "sonnet": {
+    "mc": true,
+    "od": false,
+    "why": "The hyp_abstract's engine is a moment-driven threshold analysis: generating-function/branching-process recursions on a heavy-tailed connectivity distribution showing the critical point collapses (to z"
+   },
+   "mistral": {
+    "mc": false,
+    "od": true,
+    "why": "The query's core transferable method involves modeling spreading dynamics (e.g., infections) on scale-free networks using generating-function recursions and critical threshold analysis. The candidate "
+   }
+  },
+  {
+   "pair_id": "pair03-sir-rumour",
+   "candidate": "0807.1458",
+   "hyde_rank": 2,
+   "is_target": false,
+   "sonnet": {
+    "mc": true,
+    "od": false,
+    "why": "The query's/hyp's core engine is a heterogeneous mean-field model that stratifies nodes/patches by connectivity (degree) class, derives coupled rate equations for an SIS-type spreading process, and sh"
+   },
+   "mistral": {
+    "mc": true,
+    "od": true,
+    "why": "The candidate employs the same core transferable method as the query and hypothetical: a dynamical model of spreading on scale-free networks with coupled rate equations stratified by node connectivity"
+   }
+  },
+  {
+   "pair_id": "pair03-sir-rumour",
+   "candidate": "cond-mat/0007235",
+   "hyde_rank": 9,
+   "is_target": false,
+   "sonnet": {
+    "mc": true,
+    "od": false,
+    "why": "The transferable engine (per hyp_abstract) is generating-function/branching-process recursions over a degree (functionality) distribution that locate a percolation-type critical threshold, which colla"
+   },
+   "mistral": {
+    "mc": false,
+    "od": true,
+    "why": "The query's core method involves modeling epidemic spreading dynamics on scale-free networks using generating-function recursions and critical behavior analysis. The candidate, while studying random g"
+   }
+  },
+  {
+   "pair_id": "pair03-sir-rumour",
+   "candidate": "cond-mat/0312131",
+   "hyde_rank": 16,
+   "is_target": true,
+   "sonnet": {
+    "mc": true,
+    "od": false,
+    "why": "The candidate derives degree-stratified mean-field equations contrasting homogeneous vs. scale-free network topology for a spreading process, the same heterogeneous-mean-field machinery the query itse"
+   },
+   "mistral": {
+    "mc": false,
+    "od": true,
+    "why": "The query's core transferable method is a mean-field dynamical model of spreading (infections/distress) on scale-free networks with a vanishing epidemic threshold due to heavy-tailed degree distributi"
+   }
+  },
+  {
+   "pair_id": "pair04-percolation-epidemics",
+   "candidate": "0704.1269",
+   "hyde_rank": 1,
+   "is_target": false,
+   "sonnet": {
+    "mc": false,
+    "od": true,
+    "why": "The query/hyp_abstract engine is a generating-function-plus-local-tree-approximation calculation (probability generating functions for incidence/arity distributions, derivatives at unit argument) that"
+   },
+   "mistral": {
+    "mc": true,
+    "od": true,
+    "why": "The candidate employs the same core machinery as the query's method re-expressed in the hypothetical: generating-function analysis of random structures with arbitrary degree distributions to derive ph"
+   }
+  },
+  {
+   "pair_id": "pair04-percolation-epidemics",
+   "candidate": "0709.2231",
+   "hyde_rank": 2,
+   "is_target": false,
+   "sonnet": {
+    "mc": false,
+    "od": false,
+    "why": "The query/hyp engine is a probability-generating-function analysis of a configuration-model-like ensemble (arbitrary incidence/degree distribution, local tree approximation) used to derive a phase tra"
+   },
+   "mistral": {
+    "mc": false,
+    "od": true,
+    "why": "The query's core method is a generating-function analysis of random graphs with arbitrary degree distributions to derive phase transitions, component sizes, and distances, re-expressed in the hypothet"
+   }
+  },
+  {
+   "pair_id": "pair04-percolation-epidemics",
+   "candidate": "0907.1182",
+   "hyde_rank": 3,
+   "is_target": false,
+   "sonnet": {
+    "mc": true,
+    "od": false,
+    "why": "The query's engine — self-consistent composition of a degree-distribution generating function under a locally tree-like assumption to locate a phase transition (giant component) and derive component/s"
+   },
+   "mistral": {
+    "mc": false,
+    "od": true,
+    "why": "The query's core method involves analyzing random graphs with arbitrary degree distributions using probability generating functions to predict phase transitions (e.g., giant component formation). The "
+   }
+  },
+  {
+   "pair_id": "pair04-percolation-epidemics",
+   "candidate": "cond-mat/0203227",
+   "hyde_rank": 5,
+   "is_target": false,
+   "sonnet": {
+    "mc": false,
+    "od": false,
+    "why": "The query/hyp engine is a probability-generating-function formalism: encode a degree/functionality distribution as a PGF and self-consistently compose it to locate a percolation-type threshold (giant "
+   },
+   "mistral": {
+    "mc": false,
+    "od": true,
+    "why": "The query's core transferable method is the use of probability generating functions to analyze phase transitions (e.g., giant component formation) in random graphs with arbitrary degree distributions."
+   }
+  },
+  {
+   "pair_id": "pair04-percolation-epidemics",
+   "candidate": "0907.2373",
+   "hyde_rank": 6,
+   "is_target": false,
+   "sonnet": {
+    "mc": false,
+    "od": false,
+    "why": "The query's/hyp's core engine is a generating-function-based self-consistent branching (cascade) calculation from an arbitrary degree/functionality distribution to derive a phase transition (giant com"
+   },
+   "mistral": {
+    "mc": false,
+    "od": true,
+    "why": "The query's core method is a probabilistic generating-function framework for random graphs with arbitrary degree distributions to predict phase transitions (e.g., giant component formation) and struct"
+   }
+  },
+  {
+   "pair_id": "pair04-percolation-epidemics",
+   "candidate": "0705.3224",
+   "hyde_rank": 8,
+   "is_target": false,
+   "sonnet": {
+    "mc": false,
+    "od": false,
+    "why": "The query's transferable engine (per hyp_abstract) is a branching-process/generating-function treatment of an arbitrary offspring/degree distribution — closed-form thresholds, outbreak/giant-component"
+   },
+   "mistral": {
+    "mc": false,
+    "od": true,
+    "why": "The query's core transferable method is the use of probability generating functions and branching-process theory to analyze phase transitions and component sizes in networks with arbitrary degree dist"
+   }
+  },
+  {
+   "pair_id": "pair04-percolation-epidemics",
+   "candidate": "0705.1175",
+   "hyde_rank": 9,
+   "is_target": false,
+   "sonnet": {
+    "mc": false,
+    "od": false,
+    "why": "The query/hyp engine is a generating-function, locally-tree-approximation analysis of configuration-model-style ensembles (arbitrary degree/incidence distributions) yielding exact phase-transition thr"
+   },
+   "mistral": {
+    "mc": false,
+    "od": true,
+    "why": "The query's core transferable method is a generating-function analysis of random graphs with arbitrary degree distributions to derive phase transitions, component sizes, and distances. The candidate s"
+   }
+  },
+  {
+   "pair_id": "pair05-lotka-volterra-markets",
+   "candidate": "0705.1305",
+   "hyde_rank": 1,
+   "is_target": false,
+   "sonnet": {
+    "mc": false,
+    "od": true,
+    "why": "The query's most specific, headline-worthy machinery — echoed in the hyp_abstract's longest and most detailed passage — is selection-driven incremental network growth/assembly (evolutionary \"invasion\""
+   },
+   "mistral": {
+    "mc": true,
+    "od": true,
+    "why": "The candidate employs the same core transferable machinery as the query's method re-expressed in the hypothetical: dynamical modeling of coupled oscillators (generators/consumers in power grids vs. sp"
+   }
+  },
+  {
+   "pair_id": "pair05-lotka-volterra-markets",
+   "candidate": "1010.5017",
+   "hyde_rank": 9,
+   "is_target": false,
+   "sonnet": {
+    "mc": false,
+    "od": true,
+    "why": "The query's transferable engine is a specific three-class taxonomy for building/analyzing an interaction network — static rule-based link assignment, dynamical population models with stability analysi"
+   },
+   "mistral": {
+    "mc": false,
+    "od": false,
+    "why": "The candidate studies collective motion in physical and biological systems, focusing on self-propelled units and flocking models, which is neither the same machinery as the query's food web models (st"
+   }
+  },
+  {
+   "pair_id": "pair06-turing-spatial-economy",
+   "candidate": "0707.1107",
+   "hyde_rank": 5,
+   "is_target": false,
+   "sonnet": {
+    "mc": false,
+    "od": true,
+    "why": "The candidate is a generic Focus Issue preface announcing a collection of articles on \"optimization in collective behavior\" across physical/biological/social/technological networks; it states no speci"
+   },
+   "mistral": {
+    "mc": false,
+    "od": false,
+    "why": "The candidate abstract describes a broad survey of optimization in networked systems across various domains, with no specific method or machinery matching the query's core transferable engine (Turing "
+   }
+  },
+  {
+   "pair_id": "pair06-turing-spatial-economy",
+   "candidate": "0907.2373",
+   "hyde_rank": 7,
+   "is_target": false,
+   "sonnet": {
+    "mc": false,
+    "od": true,
+    "why": "The query's engine is a Turing-instability analysis of coupled activator-inhibitor variables on a network: linear stability about a homogeneous state, disturbances decomposed onto graph-Laplacian eige"
+   },
+   "mistral": {
+    "mc": false,
+    "od": false,
+    "why": "The candidate studies the structural and functional properties of a neuronal network in C. elegans, focusing on network topology and signal propagation, not the Turing-type activator-inhibitor dynamic"
+   }
+  },
+  {
+   "pair_id": "pair06-turing-spatial-economy",
+   "candidate": "cond-mat/9801289",
+   "hyde_rank": 32,
+   "is_target": true,
+   "sonnet": {
+    "mc": false,
+    "od": true,
+    "why": "The query/hyp machinery is a linear (Turing-type) instability analysis of a two-state activator-inhibitor system on a random graph — Laplacian-eigenmode dispersion relation, a computable critical coup"
+   },
+   "mistral": {
+    "mc": false,
+    "od": false,
+    "why": "The candidate abstract describes a pairwise interaction model for city formation leading to Zipf's law, which does not employ the query's core machinery of Turing instability in activator-inhibitor sy"
+   }
+  }
+ ]
+}

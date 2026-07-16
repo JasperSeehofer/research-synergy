@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's core transferable method is a mean-field dynamical model of spreading (e.g., SIS/SIR-like balance equations) on scale-free networks to analyze threshold behavior and hub-driven persistence. The candidate instead studies percolation theory (largest eigenvalue condition for network disintegration) under node removal, a static structural criterion unrelated to the query's dynamical spreading machinery. The candidate's object—directed networks under node removal—is genuinely different from the query's epidemic spreading on scale-free networks, aligning with the target field of systemic risk.",
+ "backbone": "mistral-large-latest"
+}

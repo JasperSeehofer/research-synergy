@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query/hyp machinery is a specific self-consistent mean-field equation that yields an exact critical/tipping point as a function of the moments of a degree (tie) distribution, with anomalous divergent-order transitions when those moments diverge; the candidate is a broad survey abstract listing topic areas (opinion, cultural, language dynamics, crowd behavior, hierarchy formation, human dynamics, social spreading) with no mention of any self-consistent equation, degree-distribution moments, or critical/tipping-point behavior, so no shared machinery can be confirmed - method_coherence is FALSE. The candidate's object is social/collective human phenomena (opinions, culture, crowds, human dynamics) rather than the query's magnetic spin system on a graph, so object_difference is TRUE.",
+ "backbone": "claude-sonnet-5"
+}

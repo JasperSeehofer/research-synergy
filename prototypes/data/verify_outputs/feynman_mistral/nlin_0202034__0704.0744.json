@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's core transferable method involves modeling networks (food webs or reaction networks) via static combinatorial rules, dynamical stability analysis of coupled nonlinear equations, and constructive growth models (assembly or speciation). The candidate studies social group evolution using clique percolation, a graph-theoretic community-detection algorithm, which does not share the query's machinery of dynamical stability or constructive network growth. The candidate's object (social/communication networks) is genuinely different from the query's food webs, but the methods do not cohere.",
+ "backbone": "mistral-large-latest"
+}

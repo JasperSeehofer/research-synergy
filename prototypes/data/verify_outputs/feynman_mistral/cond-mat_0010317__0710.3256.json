@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's core transferable method is a dynamical model of spreading on scale-free networks with mean-field equations for prevalence across connectivity classes, predicting threshold absence. The candidate is a broad review of social dynamics models, not specifically applying the query's epidemiological machinery (e.g., no per-interaction transmissibility, no mean-field equations for variant fractions by connectivity class). However, its object—social/linguistic dynamics—is genuinely different from the query's computer virus networks.",
+ "backbone": "mistral-large-latest"
+}

@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's transferable engine is an exact analytic critical-threshold calculation for a phase transition on a network — deriving Tc (or an equivalent ignition threshold) from moments of an arbitrary degree distribution P(k) via a self-consistent mean-field equation, with anomalous (vanishing/smoothed) transitions when those moments diverge. The candidate is instead an empirical connectomics paper: it reconstructs the actual C. elegans wiring diagram and reports descriptive statistical/topological properties (degree distributions, motifs, small-world structure) plus a linear-systems-theory look at activity propagation — there is no critical-point derivation, no moment-based threshold formula, and no divergence/anomalous-transition analysis, so the machinery does not match despite the shared 'degree distribution'/'network' vocabulary. The object does genuinely differ, though: the query studies an abstract Ising spin system on a random graph, while the candidate studies a real biological neuronal network (C. elegans synaptic/gap-junction connectome), so a real cross-field object shift has occurred even though the method transfer failed.",
+ "backbone": "claude-sonnet-5"
+}

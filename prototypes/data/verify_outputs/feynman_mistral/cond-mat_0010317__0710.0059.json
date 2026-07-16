@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's core method is a dynamical model of spreading (e.g., SIS/SIR-like mean-field equations) on scale-free networks to explain threshold-free diffusion. The candidate abstract describes a static community-detection framework based on motif counts and modularity, not a spreading process, so the machinery does not cohere. The candidate's object is generic complex networks (e.g., social or technological), genuinely different from the query's computer-virus epidemiology.",
+ "backbone": "mistral-large-latest"
+}

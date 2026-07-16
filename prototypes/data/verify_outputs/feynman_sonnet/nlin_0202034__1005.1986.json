@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's headline engine, mirrored in hyp_abstract's most elaborated (third) class, is sequential/evolutionary network construction: new species/compounds are admitted one at a time under a viability/persistence filter (invasion success or non-depleting catalytic closure), yielding large stable self-organized webs versus random assembly's collapse. The candidate instead analyzes Turing (diffusion-driven) instability on a fixed, already-complete random network, using mean-field linear stability to show degree-dependent node differentiation into activator-rich/low groups — there is no incremental growth, no viability filter, no autocatalytic closure, so the query's data/question could not be addressed by this method; shared terms like 'network' and 'stability' are superficial, not the same machinery. The object also differs genuinely: the query studies ecological food webs (species interaction structure and assembly), while the candidate studies generic reaction-diffusion pattern formation on random networks (citing morphogenesis and metapopulation dispersal only as motivating examples), a distinct phenomenon and modeling domain.\"",
+ "backbone": "claude-sonnet-5"
+}

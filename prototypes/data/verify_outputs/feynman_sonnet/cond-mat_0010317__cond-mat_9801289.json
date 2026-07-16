@@ -1,0 +1,6 @@
+{
+ "method_coherence": false,
+ "object_difference": true,
+ "rationale": "The query's transferable engine is a heterogeneous-mean-field threshold analysis: infection fractions per connectivity class, where a heavy-tailed (divergent-variance) degree distribution drives the epidemic threshold to zero. The candidate's thin abstract only claims that assuming pairwise interaction among individuals yields Zipf's law of city-size distribution — no compartmental/spreading dynamics, no connectivity-class equations, and no threshold-vanishing mechanism are described, so shared machinery cannot be confirmed (method_coherence FALSE). The candidate's object is city-size distribution from individual interactions, genuinely different from the query's computer-virus spreading on an internet network (object_difference TRUE).",
+ "backbone": "claude-sonnet-5"
+}

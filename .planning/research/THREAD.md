@@ -20,6 +20,7 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 | H-RS-analogy-mechanism (new chapter, EXP-RS-17) | The cross-field analogy signal is recoverable by matching papers on a **shared rare mechanism archetype** from a *frozen, field-agnostic* ontology (MethMeSH), beating the brute-force LLM baseline — and, crucially, holding up on a **leakage-controlled modern held-out set** where the LLM baseline's pretraining advantage is neutralised | EXP-RS-17: C-19 conditional-retrieval recall@10 on Feynman (vs the 0.60 leaky bar + SME 0.00) AND a NEW modern held-out corpus (vs its own brute-force bar); cheap tagging-recall gate; IDF-on/off + λ ablations; shared-archetype artifact vs `bridge_names` | **FALSIFIED (exact-match form) at the cheap gate (Phase 36, 2026-07-07): Feynman tagging-recall = 1/5 < 3/5 → P2 falsified → KILL-by-construction.** Modern passed 4/6. Failure = exact-archetype-ID brittleness (neighboring archetypes), NOT absent representation. **Also FALSIFIED under similarity matching (EXP-RS-18, Phase 37, 2026-07-07): soft exact-or-adjacent gate = Feynman 2/5 < 3/5** (blind frozen adjacency, 124 nodes/427 edges). Adjacency lifts 1→2/5 but can't close the residual domain-knowledge-equivalence gap. **Mechanism-ontology line (#4, exact + soft) KILLED on the Feynman bar → fall back to slot-frames (#2).** Modern held-out 5/6 (its pairs share identical named mechanisms). Does not refute semantic-conceptual analogy broadly (LLM baseline 0.60). |
 | H-RS-analogy-generative (EXP-RS-19) | A cross-field analogy = SAME method, DIFFERENT object; it is recoverable by GENERATING (from the query alone) hypothetical abstracts that re-express the query's method in other fields' native vocabulary, then retrieving real candidates against them (HyDE). Generation is an EXPANSION → converts latent equivalences (percolation≡epidemic) into retrievable tokens where pure-lexical splits self-kill | EXP-RS-19: C-19 conditional-retrieval recall@10 on Feynman (vs 0.60 bar + 0.40 lexical null) + modern held-out; cheap forward gate (GATE-A recall≥3/5 & recovers a null-missed pair; GATE-B pair04); auditable transfer card vs `bridge_names` | **PARTIAL-CONFIRM / headline KILLED (Phase 38, 2026-07-07). Mechanism PROVEN: pair04 recovered 17→4 (verified: epidemiology hypothetical matches the real epidemics paper, 0.15 vs null 0.06); K=1 ties LLM 0.60. But pinned headline (K=5 max-pool) = 0.20 < 0.40 null → GATE-A FAILS → KILL. Cause = max-pool distractor inflation (monotonic in K), NOT absent signal. Ceiling = TIE (as predicted). Next: generate→verify cascade #3.** |
 | H-RS-analogy-cascade (EXP-RS-20) | A cross-field analogy = SAME method, DIFFERENT object; recoverable by a two-stage **generate→verify** cascade: keep HyDE's proven generation/recall stage (EXP-RS-19, frozen), then add a blind VERIFY stage (LLM/CAS) that audits each proposed transfer for method-coherence ∧ object-difference and prunes the max-pool distractors that killed the HyDE headline (K1 0.60 / K3 0.40 / K5 0.20) | EXP-RS-20: cheap forward gate FIRST (cascade fwd recall@10 > 0.40 null ∧ pair04 in top-10 ∧ ≥1 null-missed pair); then recall@{1,5,10}+MRR on Feynman (vs 0.60 bar) + modern held-out (vs C-35 bar / 0.833 null); auditable transfer card vs `bridge_names` | **PRE-REGISTERED — LOCKED 2026-07-15 (Phase 39). Predictions frozen (P1–P5 + GATE — see Active experiment). Provenance: pi/Mistral draft → Claude review (4 fixes) → 3-family orbiter panel (2 fixes). Expected outcome = PIVOT (bank auditable artifact + cheap retriever) or KILL→embedding-substrate escalation; ADVANCE unlikely (chapter ceiling = TIE at 0.60). RUN 2026-07-16 → KILLED at the cheap gate: Mistral-large full-175 headline cascade fwd recall@10 = 0.20 ≤ 0.40 null → P1 FAILS. recall@10 = 0.20 under ALL 3 C-40 pruning severities (headline/conservative/aggressive) — verify over-prunes true analogues: prune hard → kills 4/5 bridges, prune soft → reverts to HyDE-alone. Only pair04 (percolation→epidemics; PGF/branching-process) survives + rises 4→2 (both backbones; P5 card holds). Sonnet-5 ceiling = 0.40 (keeps 2/5) = ties null → still FAIL. Backbone method_coherence κ=0.45; Mistral systematically over-prunes (W-SYN synthesis weakness). Pre-registered KILL → lexical-intermediate line EXHAUSTED → embedding-substrate / pure-LLM-judge escalation.** |
+| H-RS-analogy-embedding (EXP-RS-21) | The cross-field analogy signal — real (LLM 0.60) but invisible to lexical (TF-IDF) retrieval — is recoverable in a **dense semantic-embedding space**: whole-abstract embedding cosine places cross-vocabulary mechanism-analogues (percolation↔epidemic) near each other where surface tokens don't overlap. The single non-lexical substrate the chapter lacked. Sub-hypothesis (illustrative): a GENERAL contrastive embedding beats a citation-trained scientific one (SPECTER2) cross-domain | EXP-RS-21: swap the C-17 TF-IDF vec for dense `emb(title+abstract)`, hold C-14/C-24/C-19/bars fixed. P1 cheap FIRST = ∃ LIVE local model {bge,specter,gte} with strict-P1 (fwd recall@10>0.40 ∧ pair04 top-10 ∧ ≥1 null-missed); then M1=bge recall@{1,5,10}+MRR vs 0.60 bar + 0.40 null + random-chance null; modern = no-regression floor (0.833); objective P5 card (metadata + δ=0.02 margin + random control) | **PRE-REGISTERED — LOCKED 2026-07-16 (Phase 40). v2 predictions frozen (P0–P5 + 6-outcome total-function GATE — see Active experiment). Provenance: Claude design → 5-lens adversarial panel (needs-rework, 9 must + 7 should fixes) → all applied; GATE grid-verified total (`embed_gate_selftest.py`, 4608 cells). Manifest SHA `4dc8da72…`; all 3 local encoders toytest-live; SPECTER proximity adapter active. Honest framing = KILL-vs-TIE (effective n≈1 = pair04; 0.40 null ≈ chance); ADVANCE a stretch. Escalates OUT of lexical intermediates per the RS-20 gate. RUN pending.** |
 
 ## Kill criteria
 
@@ -49,75 +50,69 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 
 ## Active experiment
 
-**EXP-RS-20 → Phase 39 — Generate→Verify Cascade (#3). RUN 2026-07-16 → KILLED at the cheap gate (P1 FAIL). Verify OVER-PRUNES true analogues; cascade recall@10 = 0.20 (ALL pruning severities) ≤ 0.40 null. Pre-registered KILL → embedding-substrate escalation. First orbiter-migration backbone head-to-head (Mistral executor vs Sonnet overseer).**
-Provenance: the EXP-RS-19 forward (both C-37's escalation branch and the design PIVOT converge on #3).
-Draft by pi/Mistral-Devstral (supervised) → Claude synthesis-review (4 fixes) → 3-family orbiter
-heterogeneous panel (local Devstral + Mistral + Claude; 2 fixes). Full record + inline provenance:
-`.planning/phases/39-generate-verify-cascade/39-PREREG.md`.
+**EXP-RS-21 → Phase 40 — Dense Embedding Substrate. LOCKED 2026-07-16 (v2). The first escalation OUT of
+lexical intermediates (per the RS-20 gate). RUN pending.** Provenance: Claude design → 5-lens adversarial
+panel (gate-band / leakage-forking / metric-stats / ML-IR / kill-integrity → synthesis; verdict
+**needs-rework**, 9 must-fixes + 7 should-fixes) → all applied in v2; GATE rebuilt as a grid-verified
+TOTAL function (`prototypes/embed_gate_selftest.py`, 4608 cells → exactly one of 6 verdicts). Full
+record: `.planning/phases/40-embedding-substrate/40-PREREG.md`.
 
-**Hypothesis (H-RS-analogy-cascade):** a cross-field analogy = SAME method, DIFFERENT object; recoverable
-by a two-stage cascade — GENERATE (HyDE, frozen from EXP-RS-19) then VERIFY (blind LLM/CAS audit of each
-transfer for method-coherence ∧ object-difference), pruning the max-pool distractors that throttled the
-HyDE headline (K1 0.60 / K3 0.40 / K5 0.20).
+**Hypothesis (H-RS-analogy-embedding):** the analogy signal — real (LLM 0.60) but invisible to TF-IDF —
+is recoverable in a **dense semantic-embedding space** (whole-abstract cosine places percolation↔epidemic
+near each other where surface tokens don't overlap). The single non-lexical substrate the chapter lacked.
 
-**Design (LOCKED — new convention text C-38..C-40 in CONVENTIONS.md):** Reuse frozen residue — Feynman
-MVP (C-14) + modern held-out (C-24); frozen blind HyDE prompt + scorer + 5 frozen Feynman generations;
-C-17 null (0.40 / 0.833); C-20 baseline 0.60; C-35 modern bar. NEW verify stage (C-38 blindness / C-39
-input closure / C-40 pruning): a blind, benchmark-agnostic `verify_prompt.md` (SHA-256 committed before
-any verify run); per candidate it sees ONLY {query title/abstract, winning hypothetical
-target_field/generic_object/abstract, candidate title/abstract} → `{method_coherence:bool,
-object_difference:bool, rationale}`; headline pruning demotes `method_coherence=false` to rank ∞
-(arxiv_id tie-break, C-19). Runner: new `prototypes/verify_score.py` on the frozen `hyde_score.py`.
+**Design (LOCKED — C-41..C-45).** ONE change: swap the C-17 TF-IDF vec for `emb(title+abstract)`; hold
+C-14 Feynman + C-24 modern + C-19 metric + all bars/nulls fixed (apples-to-apples with every RS-16..20
+arm). Frozen model set (manifest SHA `4dc8da72…`): **M1 bge-large-en-v1.5 (HEADLINE, symmetric — no
+instruction, MTEB-designated)**, M2 specter2+proximity (scientific/citation P3 contrast, native [SEP]),
+M4 gte-large (robustness), **M3 mistral-embed (EU, DESCRIPTIVE-ONLY — excluded from the KILL vote)**.
+`class↑` vote = reproducible LOCAL {M1,M2,M4} that are LIVE (per-model toytest ∧ modern≥0.5). All three
+local encoders toytest-green; SPECTER proximity adapter asserted active. Harness: `embed_score.py` (reuses
+`sme_lite.{rank_candidates,eval_direction}` verbatim) + `embed_gate.py` (total-function verdict).
 
-**Predictions (LOCKED):**
-- **P1 (cheap forward gate — run FIRST, 5 Feynman side_a, ~180 calls):** cascade fwd recall@10 **> 0.40**
-  (beats the C-17 null — verify does what max-pool HyDE alone could not) ∧ pair04 recovered into top-10 ∧
-  ≥1 null-missed pair (01/04/06). FAIL → KILL (verification cannot rescue the aggregation → escalate OUT
-  of lexical intermediates; NOT "no signal", which EXP-RS-19 disproved at K=1).
-- **P2:** cascade fwd recall@10 **> 0.20** (beats HyDE-alone K=5 max-pool — the value-of-verification test).
-- **P3 (the bar; TIE expected):** Feynman recall@10 **≥ 0.60**; modern recall@10 **≥ C-35 bar ∧ ≥ 0.833**.
-- **P4:** verify prunes **≥2 distractors/query** on average (auditable pruned-card log; disproportionately
-  same-field distractors).
-- **P5 (PRIMARY-VALUE):** for **≥3/5 recovered Feynman pairs** the winning transfer card matches
-  `bridge_names` under the C-36 objective rule; a random control does NOT.
+**Predictions (LOCKED v2):**
+- **P0 (job-zero, BLIND):** compute+freeze the C-35 modern LLM baseline (`baseline_results_modern.json`)
+  via a FRESH BLIND subagent (C-20 procedure, sees only {id,title,abstract}×35) BEFORE any modern
+  embedding scoring. Modern = no-regression FLOOR (0.833); NOT a strict-beat (C-44).
+- **P1 (cheap class gate — run FIRST, Feynman fwd):** ∃ LIVE local model with strict-P1 = [fwd recall@10
+  > 0.40 ∧ pair04 in its top-10 ∧ ≥1 null-missed (01/04/06) recovered]. FAIL → clean class-KILL.
+- **P2 (bar):** M1 Feynman recall@10 ≥ 0.60 WITH pair04 (= strict-P1(M1)) ∧ modern ≥ 0.833.
+- **P3 (ILLUSTRATIVE, underpowered — NOT inferred):** general (M1/M4) recover more null-missed pairs than
+  SPECTER2 (M2); with effective n≈1 this is a per-pair anecdote, reported with its n.
+- **P4:** M1's pair04 recovery corroborated by ≥1 other general model (M4/M3). M1↔M4 disagreement caps
+  the verdict at PIVOT.
+- **P5 (OBJECTIVE, co-primary):** pair04 card passes iff cross-domain metadata ∧ true-pair cosine >
+  same-field distractor median + δ(0.02) ∧ random control < 0.30. Computed in code.
 
-**GATE (exhaustive, non-overlapping; R = Feynman fwd recall@10, M = modern recall@10):** **KILL** `R≤0.40`
-→ lexical-intermediate line exhausted; escalate to a real embedding substrate or a pure LLM-judge cascade,
-no more TF-IDF variants. **WEAK/PIVOT-caveat** `0.40<R<0.60 ∧ P2 ∧ M≥0.833` → bank cheap retriever +
-artifact, below incumbent. **PIVOT (expected, subsumes the exact tie)** `0.60≤R<0.80 ∧ M≥C-35 bar ∧
-M≥0.833 ∧ P4/P5` → bank the artifact pipeline; next build = verify-stage tuning; a `[0.60,0.80)` beat is
-provisional (PIVOTs, does not ADVANCE). **ADVANCE** `R≥0.80 ∧ M>C-35 bar` (strict double-beat) →
-formalize through the resyn pipeline (bulk-ingest→analyze→export); scale.
+**GATE (6-outcome TOTAL function, grid-verified; MUST-1/2/3):** `¬LIVE(M1)`→INVALID; `headlinePass ∧
+modern<0.833`→WEAK-no-bank; `headlinePass ∧ R≥0.80 ∧ P4 ∧ P5obj`→**ADVANCE**; `headlinePass else`
+(R=0.60 tie / missing P4-P5)→**PIVOT** (bank card + cheap retriever; next = embedding→LLM re-rank);
+`¬headlinePass ∧ class↑ ∧ winner-modern≥0.833`→**WEAK-PIVOT**; `¬headlinePass ∧ ¬class↑`→**KILL**
+(static geometry adds nothing beyond the ~chance lexical null → pure LLM-judge cascade that STRUCTURALLY
+differs from the C-20 one-shot 35-way ranking; else terminal chapter verdict). **Honest framing =
+KILL-vs-TIE**: effective n≈1 (pair04), 0.40 null ≈ chance (binomial P(R≥0.40)=0.44); ADVANCE (needs
+dense to recover a pair the LLM cannot) a live-but-low-probability stretch. Random-chance null reported.
 
-**Ablations (only if P1 passes):** pruning severity {headline / conservative both-false / aggressive
-either-false}; verify backbone {LLM / CAS}; reverse direction (side_b→side_a — EXP-RS-19 measured forward
-only; the transfer is directional).
+**Ablations (after P1):** BGE-asymmetric (`--directional`); reverse + both-dir; text-field title/abstract-only.
 
-**► RESULT (2026-07-16) — EXP-RS-20 KILLED at the cheap gate.** Built the blind verify stage:
-`prototypes/verify_prompt.md` (blind-authored, SHA-256 `5f79b20b…` frozen BEFORE any run per C-38),
-`verify_score.py` (emit-inputs + C-40 pruning score + P1/P2/P4 gate + severity ablations),
-`verify_compare.py` (backbone head-to-head), `verify_toytest.py` (self-test, green). Ran the P1 cheap
-forward gate (175 inputs = 5 side_a × 35) as the **first orbiter/pi-migration backbone head-to-head**
-(human-directed): **Mistral-large** (executor, direct API 175/175) vs **Sonnet-5** (Claude overseer,
-Workflow 50-subset). **Mistral full-175 headline cascade fwd recall@10 = 0.20 ≤ 0.40 null → P1 FAILS
-→ KILL** (P2 fails, P4 passes — over-prunes 33.8/34 per query). **recall@10 = 0.20 under ALL 3 C-40
-pruning severities** (headline/conservative/aggressive): the verify stage cannot beat the lexical null
-— prune hard → kills 4/5 true analogues, prune soft → reverts to HyDE-alone. Only **pair04**
-(percolation→epidemics; both backbones independently name PGF/branching-process as the shared
-machinery) survives and rises **4→2** (GATE-B + the P5 transfer card hold — the one durable artifact).
-Sonnet keeps 2/5 true analogues (vs Mistral 1/5) but ceiling = 0.40 = ties null → still FAIL. Backbone
-method_coherence κ=0.45; Mistral systematically over-prunes (W-SYN synthesis weakness, invisible to its
-own self-report). Full record: `prototypes/verify_results_feynman_llm.json`,
+**► RUN ORDER:** commit LOCK → P1 Feynman class gate (embeddings, cheap, FIRST) → if class↑: P0 blind C-35
++ modern embeddings + ablations → `embed_gate.py` verdict → 40-VERIFICATION.md.
+
+---
+
+### (just-run, KILLED 2026-07-16) EXP-RS-20 → Phase 39 — Generate→Verify Cascade (#3)
+
+**RUN 2026-07-16 → KILLED at the cheap gate (P1 FAIL).** First orbiter-migration backbone head-to-head
+(Mistral-large executor 175/175 vs Sonnet-5 Claude overseer). **Mistral headline cascade fwd recall@10 =
+0.20 ≤ 0.40 null → KILL; 0.20 under ALL 3 C-40 pruning severities** — verify OVER-PRUNES true analogues
+(prune hard → kills 4/5 bridges; prune soft → reverts to HyDE-alone). Only pair04 survives + rises 4→2
+(both backbones name PGF/branching-process; P5 card holds — the one durable artifact). Sonnet ceiling =
+0.40 (keeps 2/5) = ties null → still FAIL. method_coherence κ=0.45; Mistral over-prunes (W-SYN, invisible
+to self-report). This EXHAUSTED the lexical-intermediate line (RS-16→20 all fail the 0.60 bar) → the
+pre-registered escalation OUT of lexical intermediates = EXP-RS-21 (above). See [[project_orbiter_migration]]
++ [[project_orbiter_experiment_loop]] (memory) for the executor/overseer loop. Full record:
+`.planning/phases/39-generate-verify-cascade/39-PREREG.md`, `prototypes/verify_results_feynman_llm.json`,
 `verify_compare_feynman.json`.
-**► NEXT SESSION START HERE:** the lexical-intermediate LBD line (TF-IDF/HyDE + verify) is EXHAUSTED
-(EXP-RS-16→20 all fail the 0.60 bar; the analogy signal is real but not recoverable through any lexical
-intermediate). Per the pre-registered GATE, escalate OUT of lexical intermediates → **EXP-RS-21 = a real
-semantic-embedding substrate OR a pure LLM-judge cascade** (no HyDE/TF-IDF intermediate). Reuse the
-frozen residue (blind verify harness, Sonnet/Mistral verdict sets, pair04 card). For the
-Mistral-executor / Claude-overseer experiment loop to apply, see [[project_orbiter_migration]] +
-[[project_orbiter_experiment_loop]] (memory) — Mistral does T0–T2 execution vs a pre-loaded
-non-inventable rubric; a MANDATORY Claude synthesis-review pass audits over-pruning BEFORE any verdict
-is final (the cross-family cross-check must be a pipeline stage, not a spot-check).
 
 ---
 

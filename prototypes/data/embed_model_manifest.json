@@ -1,0 +1,63 @@
+{
+ "experiment": "EXP-RS-21",
+ "convention": "C-42/C-43",
+ "frozen_before_scoring": true,
+ "no_prior_eval_attestation": "No model in this set has been scored on the Feynman (mvp_corpus) or modern (modern_mvp_corpus) benchmark pairs before this lock. Only the non-benchmark synthetic embed_toytest (percolation/epidemic + cooking/music) has been run. The bge-vs-gte headline/robustness split was fixed by external MTEB retrieval-average (bge>gte), with no per-pair benchmark numbers in hand.",
+ "env": {
+  "torch": "2.13.0+cu130",
+  "sentence_transformers": "5.6.0",
+  "transformers": "4.57.6",
+  "numpy": "2.5.0",
+  "device": "cpu",
+  "determinism": "torch.manual_seed(0), model.eval(), CPU"
+ },
+ "bge_query_instruction_string": "Represent this sentence for searching relevant passages: ",
+ "p5_margin_delta": 0.02,
+ "modern_floor": 0.833,
+ "live_floor": 0.5,
+ "control_max": 0.3,
+ "models": {
+  "M1_bge": {
+   "hf_id": "BAAI/bge-large-en-v1.5",
+   "revision": "d4aa6901d3a41ba39fb536a557fa166f842b0e09",
+   "role": "HEADLINE (general open, symmetric)",
+   "class_vote": true,
+   "dim": 1024,
+   "max_seq_length": 512,
+   "text": "title + '. ' + abstract",
+   "encoding": "symmetric (no instruction)",
+   "headline_designation": "MTEB retrieval-average bge-large-en-v1.5 (~54.3) > gte-large (~52.2)"
+  },
+  "M2_specter": {
+   "hf_id": "allenai/specter2_base",
+   "revision": "3447645e1def9117997203454fa4495937bfbd83",
+   "adapter": "allenai/specter2 (proximity)",
+   "adapter_revision": "2081559630a80fc5851d8f798a05ba81e9468089",
+   "role": "scientific/citation (P3 contrast, illustrative)",
+   "class_vote": true,
+   "dim": 768,
+   "max_seq_length": 512,
+   "text": "title [SEP] abstract (CLS pooling)",
+   "fallback": "allenai/specter (v1) on objective adapter-import/load failure"
+  },
+  "M3_mistral": {
+   "api_model_id": "mistral-embed",
+   "host": "EU (api.mistral.ai)",
+   "role": "EU strong tier \u2014 DESCRIPTIVE ONLY (server-side non-reproducible)",
+   "class_vote": false,
+   "dim": "expect 1024 (logged at run)",
+   "max_seq_length": 8192,
+   "text": "title + '. ' + abstract"
+  },
+  "M4_gte": {
+   "hf_id": "thenlper/gte-large",
+   "revision": "4bef63f39fcc5e2d6b0aae83089f307af4970164",
+   "role": "2nd general open (robustness P4)",
+   "class_vote": true,
+   "dim": 1024,
+   "max_seq_length": 512,
+   "text": "title + '. ' + abstract",
+   "encoding": "symmetric"
+  }
+ }
+}

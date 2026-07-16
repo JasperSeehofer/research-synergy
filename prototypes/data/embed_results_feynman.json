@@ -1,0 +1,380 @@
+{
+ "experiment": "EXP-RS-21",
+ "corpus": "mvp_corpus.json",
+ "corpus_name": "mvp_corpus",
+ "n_corpus": 36,
+ "n_eval_pairs": 5,
+ "pair_ids": [
+  "pair01-ising-opinion",
+  "pair03-sir-rumour",
+  "pair04-percolation-epidemics",
+  "pair05-lotka-volterra-markets",
+  "pair06-turing-spatial-economy"
+ ],
+ "directional": false,
+ "p5_margin_delta": 0.02,
+ "models": {
+  "bge": {
+   "revision": "d4aa6901d3a41ba39fb536a557fa166f842b0e09",
+   "max_seq_length": 512,
+   "truncation": {
+    "n_truncated": 0,
+    "over": [],
+    "max_len": 512
+   },
+   "forward": {
+    "ranks": {
+     "pair01-ising-opinion": 17,
+     "pair03-sir-rumour": 3,
+     "pair04-percolation-epidemics": 20,
+     "pair05-lotka-volterra-markets": 28,
+     "pair06-turing-spatial-economy": 29
+    },
+    "recall@1": 0.0,
+    "recall@5": 0.2,
+    "recall@10": 0.2,
+    "mrr": 0.10247078141601466
+   },
+   "reverse": {
+    "ranks": {
+     "pair01-ising-opinion": 22,
+     "pair03-sir-rumour": 3,
+     "pair04-percolation-epidemics": 9,
+     "pair05-lotka-volterra-markets": 30,
+     "pair06-turing-spatial-economy": 28
+    },
+    "recall@1": 0.0,
+    "recall@5": 0.2,
+    "recall@10": 0.4,
+    "mrr": 0.1117893217893218
+   },
+   "both_dir_avg": {
+    "recall@1": 0.0,
+    "recall@5": 0.2,
+    "recall@10": 0.30000000000000004,
+    "mrr": 0.10713005160266822
+   },
+   "cards": {
+    "pair01-ising-opinion": {
+     "true_pair_cosine": 0.721919049642293,
+     "same_field_median": 0.6818332404694536,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": true,
+     "objective_pass": true
+    },
+    "pair03-sir-rumour": {
+     "true_pair_cosine": 0.8139566794672154,
+     "same_field_median": 0.0,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": true,
+     "objective_pass": true
+    },
+    "pair04-percolation-epidemics": {
+     "true_pair_cosine": 0.7497780646972504,
+     "same_field_median": 0.7281977967142528,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": true,
+     "objective_pass": true
+    },
+    "pair05-lotka-volterra-markets": {
+     "true_pair_cosine": 0.6373555832477399,
+     "same_field_median": 0.6251776578987323,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": false,
+     "objective_pass": false
+    },
+    "pair06-turing-spatial-economy": {
+     "true_pair_cosine": 0.6534986686313273,
+     "same_field_median": 0.7576656730265892,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": false,
+     "objective_pass": false
+    }
+   },
+   "random_control": {
+    "control_pairs_tried": 26,
+    "control_pass_rate": 0.8076923076923077
+   },
+   "strict_P1": {
+    "recall@10": 0.2,
+    "beats_null_0.40": false,
+    "pair04_rank": 20,
+    "pair04_top10": false,
+    "null_missed_recovered": [],
+    "strict_P1_pass": false
+   }
+  },
+  "gte": {
+   "revision": "4bef63f39fcc5e2d6b0aae83089f307af4970164",
+   "max_seq_length": 512,
+   "truncation": {
+    "n_truncated": 0,
+    "over": [],
+    "max_len": 512
+   },
+   "forward": {
+    "ranks": {
+     "pair01-ising-opinion": 15,
+     "pair03-sir-rumour": 2,
+     "pair04-percolation-epidemics": 18,
+     "pair05-lotka-volterra-markets": 25,
+     "pair06-turing-spatial-economy": 20
+    },
+    "recall@1": 0.0,
+    "recall@5": 0.2,
+    "recall@10": 0.2,
+    "mrr": 0.14244444444444443
+   },
+   "reverse": {
+    "ranks": {
+     "pair01-ising-opinion": 17,
+     "pair03-sir-rumour": 3,
+     "pair04-percolation-epidemics": 10,
+     "pair05-lotka-volterra-markets": 22,
+     "pair06-turing-spatial-economy": 16
+    },
+    "recall@1": 0.0,
+    "recall@5": 0.2,
+    "recall@10": 0.4,
+    "mrr": 0.1200222816399287
+   },
+   "both_dir_avg": {
+    "recall@1": 0.0,
+    "recall@5": 0.2,
+    "recall@10": 0.30000000000000004,
+    "mrr": 0.13123336304218658
+   },
+   "cards": {
+    "pair01-ising-opinion": {
+     "true_pair_cosine": 0.828091465963083,
+     "same_field_median": 0.8076273593671348,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": true,
+     "objective_pass": true
+    },
+    "pair03-sir-rumour": {
+     "true_pair_cosine": 0.8807001159612924,
+     "same_field_median": 0.0,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": true,
+     "objective_pass": true
+    },
+    "pair04-percolation-epidemics": {
+     "true_pair_cosine": 0.8368029405683245,
+     "same_field_median": 0.814629715285399,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": true,
+     "objective_pass": true
+    },
+    "pair05-lotka-volterra-markets": {
+     "true_pair_cosine": 0.7821566752462289,
+     "same_field_median": 0.7924217038643173,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": false,
+     "objective_pass": false
+    },
+    "pair06-turing-spatial-economy": {
+     "true_pair_cosine": 0.8150733386700069,
+     "same_field_median": 0.8341718181726425,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": false,
+     "objective_pass": false
+    }
+   },
+   "random_control": {
+    "control_pairs_tried": 26,
+    "control_pass_rate": 0.8076923076923077
+   },
+   "strict_P1": {
+    "recall@10": 0.2,
+    "beats_null_0.40": false,
+    "pair04_rank": 18,
+    "pair04_top10": false,
+    "null_missed_recovered": [],
+    "strict_P1_pass": false
+   }
+  },
+  "specter": {
+   "revision": "specter2_base+proximity@3447645e1def9117997203454fa4495937bfbd83",
+   "max_seq_length": 512,
+   "truncation": {
+    "n_truncated": 0,
+    "over": [],
+    "max_len": 512
+   },
+   "forward": {
+    "ranks": {
+     "pair01-ising-opinion": 17,
+     "pair03-sir-rumour": 4,
+     "pair04-percolation-epidemics": 5,
+     "pair05-lotka-volterra-markets": 21,
+     "pair06-turing-spatial-economy": 22
+    },
+    "recall@1": 0.0,
+    "recall@5": 0.4,
+    "recall@10": 0.4,
+    "mrr": 0.12037942449707155
+   },
+   "reverse": {
+    "ranks": {
+     "pair01-ising-opinion": 22,
+     "pair03-sir-rumour": 3,
+     "pair04-percolation-epidemics": 6,
+     "pair05-lotka-volterra-markets": 21,
+     "pair06-turing-spatial-economy": 26
+    },
+    "recall@1": 0.0,
+    "recall@5": 0.2,
+    "recall@10": 0.4,
+    "mrr": 0.1263070263070263
+   },
+   "both_dir_avg": {
+    "recall@1": 0.0,
+    "recall@5": 0.30000000000000004,
+    "recall@10": 0.4,
+    "mrr": 0.12334322540204892
+   },
+   "cards": {
+    "pair01-ising-opinion": {
+     "true_pair_cosine": 0.8881392715532406,
+     "same_field_median": 0.8695947467496635,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": false,
+     "objective_pass": false
+    },
+    "pair03-sir-rumour": {
+     "true_pair_cosine": 0.9269007013792185,
+     "same_field_median": 0.0,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": true,
+     "objective_pass": true
+    },
+    "pair04-percolation-epidemics": {
+     "true_pair_cosine": 0.9188892978082147,
+     "same_field_median": 0.8945751307690463,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": true,
+     "objective_pass": true
+    },
+    "pair05-lotka-volterra-markets": {
+     "true_pair_cosine": 0.8635492821801382,
+     "same_field_median": 0.8695608091356335,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": false,
+     "objective_pass": false
+    },
+    "pair06-turing-spatial-economy": {
+     "true_pair_cosine": 0.8599114168810453,
+     "same_field_median": 0.8577121339902413,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": false,
+     "objective_pass": false
+    }
+   },
+   "random_control": {
+    "control_pairs_tried": 26,
+    "control_pass_rate": 0.7307692307692307
+   },
+   "strict_P1": {
+    "recall@10": 0.4,
+    "beats_null_0.40": false,
+    "pair04_rank": 5,
+    "pair04_top10": true,
+    "null_missed_recovered": [
+     "pair04-percolation-epidemics"
+    ],
+    "strict_P1_pass": false
+   }
+  },
+  "mistral": {
+   "revision": "mistral-embed-api@mistral-embed",
+   "max_seq_length": 8192,
+   "truncation": {
+    "note": "api tokens not counted"
+   },
+   "forward": {
+    "ranks": {
+     "pair01-ising-opinion": 16,
+     "pair03-sir-rumour": 3,
+     "pair04-percolation-epidemics": 7,
+     "pair05-lotka-volterra-markets": 15,
+     "pair06-turing-spatial-economy": 34
+    },
+    "recall@1": 0.0,
+    "recall@5": 0.2,
+    "recall@10": 0.4,
+    "mrr": 0.12695378151260503
+   },
+   "reverse": {
+    "ranks": {
+     "pair01-ising-opinion": 17,
+     "pair03-sir-rumour": 3,
+     "pair04-percolation-epidemics": 5,
+     "pair05-lotka-volterra-markets": 21,
+     "pair06-turing-spatial-economy": 26
+    },
+    "recall@1": 0.0,
+    "recall@5": 0.4,
+    "recall@10": 0.4,
+    "mrr": 0.13564748976513682
+   },
+   "both_dir_avg": {
+    "recall@1": 0.0,
+    "recall@5": 0.30000000000000004,
+    "recall@10": 0.4,
+    "mrr": 0.13130063563887093
+   },
+   "cards": {
+    "pair01-ising-opinion": {
+     "true_pair_cosine": 0.8627894409446171,
+     "same_field_median": 0.8471354661881314,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": false,
+     "objective_pass": false
+    },
+    "pair03-sir-rumour": {
+     "true_pair_cosine": 0.923241901114042,
+     "same_field_median": 0.0,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": true,
+     "objective_pass": true
+    },
+    "pair04-percolation-epidemics": {
+     "true_pair_cosine": 0.9123801172797112,
+     "same_field_median": 0.860894954750896,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": true,
+     "objective_pass": true
+    },
+    "pair05-lotka-volterra-markets": {
+     "true_pair_cosine": 0.8558115179642889,
+     "same_field_median": 0.8154752490733117,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": true,
+     "objective_pass": true
+    },
+    "pair06-turing-spatial-economy": {
+     "true_pair_cosine": 0.7885181613944582,
+     "same_field_median": 0.8762115171569071,
+     "cross_domain_metadata": true,
+     "margin_over_same_field": false,
+     "objective_pass": false
+    }
+   },
+   "random_control": {
+    "control_pairs_tried": 26,
+    "control_pass_rate": 0.8076923076923077
+   },
+   "strict_P1": {
+    "recall@10": 0.4,
+    "beats_null_0.40": false,
+    "pair04_rank": 7,
+    "pair04_top10": true,
+    "null_missed_recovered": [
+     "pair04-percolation-epidemics"
+    ],
+    "strict_P1_pass": false
+   }
+  }
+ }
+}

@@ -1,0 +1,77 @@
+{
+ "verdict": "KILL",
+ "rationale": "No LIVE reproducible dense substrate recovers the pair04 anchor beyond the ~chance lexical null. Static embedding geometry does not surface cross-domain mechanism analogy; only full-context LLM reasoning does. Escalate to a pure LLM-judge cascade that STRUCTURALLY differs from the C-20 one-shot 35-way baseline (e.g. pairwise/tournament judging, or scaling beyond the 36-paper pool); if no such structural difference is available, this KILL is the terminal chapter verdict.",
+ "R_bge_feynman_recall@10": 0.2,
+ "M1_bge_modern_recall@10": 0.6666666666666666,
+ "MODERN_FLOOR": 0.833,
+ "live": {
+  "bge": true,
+  "specter": true,
+  "gte": true
+ },
+ "toytest_pass": {
+  "bge": true,
+  "gte": true,
+  "specter": true
+ },
+ "class_pass": false,
+ "headline_pass": false,
+ "winner_banked": null,
+ "P4_family_corroboration": false,
+ "P5obj_pair04_card_and_control": false,
+ "pair04_card_bge": {
+  "true_pair_cosine": 0.7497780646972504,
+  "same_field_median": 0.7281977967142528,
+  "cross_domain_metadata": true,
+  "margin_over_same_field": true,
+  "objective_pass": true
+ },
+ "random_control_pass_rate_bge": 0.8076923076923077,
+ "strict_P1_by_model": {
+  "bge": {
+   "recall@10": 0.2,
+   "beats_null_0.40": false,
+   "pair04_rank": 20,
+   "pair04_top10": false,
+   "null_missed_recovered": [],
+   "strict_P1_pass": false
+  },
+  "gte": {
+   "recall@10": 0.2,
+   "beats_null_0.40": false,
+   "pair04_rank": 18,
+   "pair04_top10": false,
+   "null_missed_recovered": [],
+   "strict_P1_pass": false
+  },
+  "specter": {
+   "recall@10": 0.4,
+   "beats_null_0.40": false,
+   "pair04_rank": 5,
+   "pair04_top10": true,
+   "null_missed_recovered": [
+    "pair04-percolation-epidemics"
+   ],
+   "strict_P1_pass": false
+  },
+  "mistral": {
+   "recall@10": 0.4,
+   "beats_null_0.40": false,
+   "pair04_rank": 7,
+   "pair04_top10": true,
+   "null_missed_recovered": [
+    "pair04-percolation-epidemics"
+   ],
+   "strict_P1_pass": false
+  }
+ },
+ "random_null_feynman": {
+  "chance_recall@10_per_pair": 0.2857142857142857,
+  "P(recall>=0.40)": 0.442196703754388,
+  "P(recall>=0.60)": 0.144701612423395,
+  "P(recall>=0.80)": 0.025703575890997796,
+  "expected_recall": 0.2857142857142857
+ },
+ "c35_modern_bar": null,
+ "note_c35": "modern is a NO-REGRESSION FLOOR only (null already 0.833); C-35 is descriptive context, NOT a strict-beat requirement (MUST-3)."
+}

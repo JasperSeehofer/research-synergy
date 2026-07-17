@@ -1,0 +1,20 @@
+{
+  "experiment": "EXP-RS-22",
+  "authored_by": "no-stake blind statistics subagent (no benchmark/ground-truth/thread-outcome access)",
+  "date": "2026-07-17",
+  "metric": "percentile rank of side_b in a fixed pool of K candidates (0=best/top, 100=worst)",
+  "assumptions": "percentile-rank marginal SD ~29pt; LLM vs bestnull paired within same K-pool, rho~0.75 -> SD of paired difference SD_d ~20pt",
+  "constants": {
+    "K_pool_size": 50,
+    "delta_reason_margin_pts": 5,
+    "alpha_one_sided": 0.05,
+    "n_floor_clean_stratum_pairs": 110,
+    "posctrl_set_size": 40,
+    "posctrl_fire_floor": 0.90,
+    "repro_band_recall_at_10": [0.50, 0.90],
+    "falsemiss_max": 0.10,
+    "kappa_floor": 0.60
+  },
+  "frozen_decision_rule": "REASONING-CONFIRMED iff one-sided paired Wilcoxon p<0.05 AND bootstrap CI lower bound > 5 percentile-rank pts, on n>=110 clean-stratum pairs (K=50); gated by pinned-model recall@10 in [0.50,0.90] on the 5 anchors, positive-control fire>=0.90 (m=40), stratum false-miss<=0.10, rubric kappa>=0.60. Else INCONCLUSIVE. MEMORIZATION is not an available outcome.",
+  "power_calc": "n = (z0.05+z0.20)^2 (SD_d/delta)^2 = (1.645+0.842)^2 (20/5)^2 = 6.18*16 ~= 99; +~10% Wilcoxon overhead -> 110; standardized effect delta/SD_d=0.25"
+}

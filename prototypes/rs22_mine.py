@@ -97,18 +97,33 @@ OA_SELECT = ("id,doi,title,display_name,publication_date,referenced_works,locati
              "abstract_inverted_index,primary_topic,language,primary_location")
 
 
+_last_oa = [0.0]
+
+
 def _get(url):
+    """OpenAlex GET with polite rate-limit + 429-aware backoff; returns {} on persistent failure (never raises)."""
+    dt = time.monotonic() - _last_oa[0]
+    if dt < 0.15:
+        time.sleep(0.15 - dt)
     req = urllib.request.Request(url, headers={"User-Agent": OA_MAILTO})
     key = os.environ.get("OPENALEX_API_KEY")
     if key:
         req.add_header("Authorization", f"Bearer {key}")
-    for attempt in range(4):
+    for attempt in range(6):
         try:
-            return json.load(urllib.request.urlopen(req, timeout=60))
+            r = json.load(urllib.request.urlopen(req, timeout=60))
+            _last_oa[0] = time.monotonic()
+            return r
+        except urllib.error.HTTPError as e:
+            if attempt == 5:
+                break
+            time.sleep((12 if e.code == 429 else 2) * (attempt + 1))
         except Exception:  # noqa: BLE001
-            if attempt == 3:
-                raise
-            time.sleep(1.5 * (attempt + 1))
+            if attempt == 5:
+                break
+            time.sleep(2 * (attempt + 1))
+    _last_oa[0] = time.monotonic()
+    return {}
 
 
 def oa_search(phrase, cap):
@@ -323,67 +338,84 @@ def main():
 
     # ---- §2/§3 bridge → pair (references via OpenAlex) ----
     emitted, used_ids, seen_pairs, rejections = [], set(), set(), []
-    for b_aid, (b_abstract, b_cat) in bridges_sorted:
-        ref_ids = [a for a in ref_arxiv_ids(b_aid) if a != b_aid]
-        if len(ref_ids) < 2:
-            rejections.append({"bridge": b_aid, "reason": "no_or_too_few_arxiv_refs"}); continue
-        meta = arxiv_meta(ref_ids)   # {arxiv_id: (title, abstract, primary_category)} (§2.2.3 arXiv)
-        R = []  # (arxiv_id, TOPCAT, (title, abstract, category))  — clean domain refs only (§2.2.4)
-        for aid, (title, ab, cat) in meta.items():
-            if not (title and ab and cat):
-                continue
-            if len(norm(ab)) < 200 or not english_ok(ab) or has_pattern(ab):
-                continue
-            R.append((aid, topcat(cat), (title, ab, cat)))
-        if len({r[0] for r in R}) < 2:
-            rejections.append({"bridge": b_aid, "reason": "too_few_clean_refs"}); continue
-        R.sort(key=lambda x: x[0])  # §2.2.5 arxiv_id asc
-        cnt = Counter(tc for _, tc, _ in R)                       # §2.3 two most-cited distinct fields
-        C = sorted(cnt, key=lambda t: (-cnt[t], t))
-        if len(C) < 2:
-            rejections.append({"bridge": b_aid, "reason": "not_cross_field"}); continue
-        c1, c2 = C[0], C[1]
-        paper_c1 = next(a for a, tc, _ in R if tc == c1)
-        paper_c2 = next(a for a, tc, _ in R if tc == c2)
-        s_lo, s_hi = sorted([paper_c1, paper_c2])                 # §2.3.5 side_a = smaller arxiv_id
-        metamap = {a: m for a, _, m in R}
-        pair_sides, ok = {}, True
-        for role, aid in (("side_a", s_lo), ("side_b", s_hi)):
-            title, ab, cat = metamap[aid]
-            if not (title and ab and len(norm(ab)) >= 200 and english_ok(ab) and not has_pattern(ab)):
-                ok = False; break
-            pair_sides[role] = {"arxiv_id": aid, "title": title, "abstract": ab, "category": cat}
-        if not ok:
-            rejections.append({"bridge": b_aid, "reason": "side_filter_fail"}); continue
-        # §3 filters: cross-field (final), exclusion, dedup
-        if topcat(pair_sides["side_a"]["category"] or "") == topcat(pair_sides["side_b"]["category"] or ""):
-            # fall back to OA field comparison already ensured distinct; if arXiv cats collapse, keep OA distinctness
-            if pair_sides["side_a"]["category"] == pair_sides["side_b"]["category"]:
+    def _emit_snapshot_and_out():  # incremental checkpoint (survives a duration-kill)
+        _write_outputs(args, proto_sha, bridges_sorted, raw_hits, emitted, rejections)
+
+    for bi, (b_aid, (b_abstract, b_cat)) in enumerate(bridges_sorted):
+        try:
+            ref_ids = [a for a in ref_arxiv_ids(b_aid) if a != b_aid]
+            if len(ref_ids) < 2:
+                rejections.append({"bridge": b_aid, "reason": "no_or_too_few_arxiv_refs"}); continue
+            meta = arxiv_meta(ref_ids)   # {arxiv_id: (title, abstract, primary_category)} (§2.2.3)
+            R = []  # (arxiv_id, TOPCAT, (title, abstract, category)) — clean domain refs only (§2.2.4)
+            for aid, (title, ab, cat) in meta.items():
+                if not (title and ab and cat):
+                    continue
+                if len(norm(ab)) < 200 or not english_ok(ab) or has_pattern(ab):
+                    continue
+                R.append((aid, topcat(cat), (title, ab, cat)))
+            if len({r[0] for r in R}) < 2:
+                rejections.append({"bridge": b_aid, "reason": "too_few_clean_refs"}); continue
+            R.sort(key=lambda x: x[0])  # §2.2.5 arxiv_id asc
+            cnt = Counter(tc for _, tc, _ in R)                   # §2.3 two most-cited distinct fields
+            C = sorted(cnt, key=lambda t: (-cnt[t], t))
+            if len(C) < 2:
+                rejections.append({"bridge": b_aid, "reason": "not_cross_field"}); continue
+            c1, c2 = C[0], C[1]
+            paper_c1 = next(a for a, tc, _ in R if tc == c1)
+            paper_c2 = next(a for a, tc, _ in R if tc == c2)
+            s_lo, s_hi = sorted([paper_c1, paper_c2])             # §2.3.5 side_a = smaller arxiv_id
+            metamap = {a: m for a, _, m in R}
+            pair_sides, ok = {}, True
+            for role, aid in (("side_a", s_lo), ("side_b", s_hi)):
+                title, ab, cat = metamap[aid]
+                if not (title and ab and len(norm(ab)) >= 200 and english_ok(ab) and not has_pattern(ab)):
+                    ok = False; break
+                pair_sides[role] = {"arxiv_id": aid, "title": title, "abstract": ab, "category": cat}
+            if not ok:
+                rejections.append({"bridge": b_aid, "reason": "side_filter_fail"}); continue
+            if pair_sides["side_a"]["category"] == pair_sides["side_b"]["category"]:  # §3.1 cross-field
                 rejections.append({"bridge": b_aid, "reason": "same_field_final"}); continue
-        if s_lo in excl or s_hi in excl:
-            rejections.append({"bridge": b_aid, "reason": "excluded_prior_benchmark"}); continue
-        if s_lo in used_ids or s_hi in used_ids or frozenset([s_lo, s_hi]) in seen_pairs:
-            rejections.append({"bridge": b_aid, "reason": "dup"}); continue
-        _, snippet = first_pattern_snippet(b_abstract)
-        rank = len(emitted)
-        emitted.append({
-            "pair_id": "rs22-%06d" % rank, "side_a": pair_sides["side_a"],
-            "side_b": pair_sides["side_b"],
-            "bridge_paper": {"arxiv_id": b_aid, "asserted_analogy_snippet": snippet},
-            "block_id": (rank // BLOCK_SIZE) + 1,
-        })
-        used_ids.update([s_lo, s_hi]); seen_pairs.add(frozenset([s_lo, s_hi]))
+            if s_lo in excl or s_hi in excl:
+                rejections.append({"bridge": b_aid, "reason": "excluded_prior_benchmark"}); continue
+            if s_lo in used_ids or s_hi in used_ids or frozenset([s_lo, s_hi]) in seen_pairs:
+                rejections.append({"bridge": b_aid, "reason": "dup"}); continue
+            _, snippet = first_pattern_snippet(b_abstract)
+            rank = len(emitted)
+            emitted.append({
+                "pair_id": "rs22-%06d" % rank, "side_a": pair_sides["side_a"],
+                "side_b": pair_sides["side_b"],
+                "bridge_paper": {"arxiv_id": b_aid, "asserted_analogy_snippet": snippet},
+                "block_id": (rank // BLOCK_SIZE) + 1,
+            })
+            used_ids.update([s_lo, s_hi]); seen_pairs.add(frozenset([s_lo, s_hi]))
+        except Exception as e:  # noqa: BLE001 — one bad bridge never crashes the mine
+            rejections.append({"bridge": b_aid, "reason": "exc_" + type(e).__name__}); continue
+        if len(emitted) and len(emitted) % 20 == 0:
+            _emit_snapshot_and_out()
+        if bi % 50 == 0:
+            print(f"  [{bi}/{len(bridges_sorted)} bridges → {len(emitted)} pairs]", flush=True)
         if args.full and len(emitted) >= N_COMMIT:
             break
 
-    # ---- §4.2/§5 snapshot + output ----
+    # ---- §4.2/§5 final snapshot + output ----
+    out_path, snap_path = _write_outputs(args, proto_sha, bridges_sorted, raw_hits, emitted, rejections)
+    print(f"bridges considered={len(bridges_sorted)}  emitted pairs={len(emitted)}  "
+          f"rejections={len(rejections)}")
+    for e in emitted[:5]:
+        print(f"  {e['pair_id']}: {e['side_a']['arxiv_id']} [{e['side_a']['category']}] <-> "
+              f"{e['side_b']['arxiv_id']} [{e['side_b']['category']}]  bridge={e['bridge_paper']['arxiv_id']}")
+    print(f"wrote {out_path} + {snap_path}")
+
+
+def _write_outputs(args, proto_sha, bridges_sorted, raw_hits, emitted, rejections):
     suffix = args.out_suffix
     snap = {"protocol_sha256": proto_sha, "constants_sha256":
             "af5ee11c7828fbec0bf9eb6a9520e82cb57dbebfcacf4f3290b108c3a8643c33",
             "snapshot_date_utc": "live", "n_bridges_considered": len(bridges_sorted),
             "raw_hits_counts": {p: len(v) for p, v in raw_hits["arxiv"].items()},
             "bridge_candidates_sorted": [a for a, _ in bridges_sorted],
-            "n_emitted": len(emitted), "rejections": rejections[:200]}
+            "n_emitted": len(emitted), "rejections": rejections[:400]}
     snap_path = os.path.join(DATA, f"rs22_mining_snapshot{suffix}.json")
     json.dump(snap, open(snap_path, "w"), indent=1, ensure_ascii=False)
     out = {"protocol_sha256": proto_sha, "snapshot_ref": os.path.basename(snap_path),
@@ -391,12 +423,7 @@ def main():
            "n_pairs": len(emitted), "validation_slice": not args.full, "pairs": emitted}
     out_path = os.path.join(DATA, f"rs22_mined_pairs{suffix}.json")
     json.dump(out, open(out_path, "w"), indent=1, ensure_ascii=False)
-    print(f"bridges considered={len(bridges_sorted)}  emitted pairs={len(emitted)}  "
-          f"rejections={len(rejections)}")
-    for e in emitted[:5]:
-        print(f"  {e['pair_id']}: {e['side_a']['arxiv_id']} [{e['side_a']['category']}] <-> "
-              f"{e['side_b']['arxiv_id']} [{e['side_b']['category']}]  bridge={e['bridge_paper']['arxiv_id']}")
-    print(f"wrote {out_path} + {snap_path}")
+    return out_path, snap_path
 
 
 def _sha(path):

@@ -76,11 +76,13 @@ probe_recognition,probe_familiarity,probe_openbook,judge_semantic}.md` + `.sha25
 (`rs22_gate.py` + `rs22_gate_selftest.py`, total-function verified); MINER built + live-validated
 (`rs22_mine.py` — arXiv `abs:"<phrase>"` discovery + Semantic-Scholar refs + arXiv metadata; OpenAlex
 DROPPED, was 429-stalling the long run). Commits through `dab8005`+speed-fix.
-**RUNNING NOW (detached `setsid nohup`, ~70–80 min):** the full mine → `prototypes/data/rs22_mined_pairs.json`
-(checkpoints every 20 pairs), log `prototypes/rs22_mine_run.log`. It is a standalone OS process,
-independent of any Claude session.
-**RESUME HERE:** (1) confirm the mine finished (~420 pairs in `rs22_mined_pairs.json`); `sha256sum` it +
-`rs22_mining_snapshot.json`, record in THREAD, commit `data(exp-rs-22): freeze mined corpus`. (2) **Task 13
+**MINE DONE + FROZEN (2026-07-17):** full mine completed — **420 pairs** (7 blocks × 60; 1756 bridges
+considered, 725 rejections; OpenAlex-free arXiv+S2 path). Frozen SHAs recorded here:
+`rs22_mined_pairs.json` = `e7929b337a993a57bce986b111476f4f0b6818c23d520d4add5395a9164dc329`;
+`rs22_mining_snapshot.json` = `658bf02e5d2436d84f29a59df0abfad7872c9ae8a4dfa90f73a83a6ecdd4a33e`
+(snapshot `constants_sha256` = `af5ee11c…`, `protocol_sha256` = `97ee43a7…`). All 6 prompt SHAs +
+constants SHA re-verified intact. Committed `data(exp-rs-22): freeze mined corpus`.
+**RESUME HERE:** (1) ✅ DONE — mine frozen (420 pairs, SHAs above). (2) **Task 13
 — instruments:** run the 5 blind instruments (recall + recognition + familiarity + open-book on the pinned
 Opus 4.8 + a cross-family Mistral fan-out via the orbiter; probes ⟂ retrieval — independent fresh sessions,
 hashed inputs), memory-isolating scoring (score `target_field` vs side_b via `rs22_judge_semantic.md`),

@@ -69,11 +69,25 @@ mined → 110 memory-absent) — a durable asset that also re-powers the chronic
 build (human directive):** pi/Mistral mines/pre-filters/stats vs the frozen rubric; Claude does the
 synthesis-tier mining validity-judgment + probe-generation + semantic-judging + the MANDATORY
 over-pruning audit; a blind subagent authored the constants + does final gate adjudication. Conventions
-C-46..C-48. **► BUILD STATE (2026-07-17):** LOCKED. NEXT = freeze the mining protocol + the 5 blind
-instrument prompts + the semantic-judge prompt (SHA-frozen BEFORE any mining, C-31 lineage) → pi/Mistral
-mine deterministic block 1 → run instruments (pinned Claude + cross-family Mistral) → clean-stratum yield
-check → deterministic expansion to n≥110 → score → gate. Full record:
-`.planning/phases/41-benchmark-validity/41-PREREG.md`.
+C-46..C-48. **► BUILD STATE (2026-07-17, MID-BUILD — resume point for a fresh session):**
+**DONE:** blind constants frozen (`prototypes/data/rs22_constants.json`, SHA `af5ee11c…`, n_floor=110);
+mining protocol + 6 instrument/judge prompts frozen (C-46, `prototypes/rs22_{mining_protocol,probe_recall,
+probe_recognition,probe_familiarity,probe_openbook,judge_semantic}.md` + `.sha256`); gate harness
+(`rs22_gate.py` + `rs22_gate_selftest.py`, total-function verified); MINER built + live-validated
+(`rs22_mine.py` — arXiv `abs:"<phrase>"` discovery + Semantic-Scholar refs + arXiv metadata; OpenAlex
+DROPPED, was 429-stalling the long run). Commits through `dab8005`+speed-fix.
+**RUNNING NOW (detached `setsid nohup`, ~70–80 min):** the full mine → `prototypes/data/rs22_mined_pairs.json`
+(checkpoints every 20 pairs), log `prototypes/rs22_mine_run.log`. It is a standalone OS process,
+independent of any Claude session.
+**RESUME HERE:** (1) confirm the mine finished (~420 pairs in `rs22_mined_pairs.json`); `sha256sum` it +
+`rs22_mining_snapshot.json`, record in THREAD, commit `data(exp-rs-22): freeze mined corpus`. (2) **Task 13
+— instruments:** run the 5 blind instruments (recall + recognition + familiarity + open-book on the pinned
+Opus 4.8 + a cross-family Mistral fan-out via the orbiter; probes ⟂ retrieval — independent fresh sessions,
+hashed inputs), memory-isolating scoring (score `target_field` vs side_b via `rs22_judge_semantic.md`),
+build the ≥110 clean (fails-both-memory-probes) stratum, deterministic B8+ expansion if short. (3) **Task 14
+— verdict:** `rs22_gate.py` → REASONING-CONFIRMED (chapter CLOSES) / INCONCLUSIVE → `41-VERIFICATION.md`.
+All frozen; constants blind-authored; gate grid-verified ⇒ the analysis is mechanical + unsteerable. Full
+record: `.planning/phases/41-benchmark-validity/41-PREREG.md`.
 
 ---
 

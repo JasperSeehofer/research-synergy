@@ -1,0 +1,52 @@
+{
+ "units_spec": "anchors",
+ "n_units": 5,
+ "n_records": 5,
+ "records": [
+  {
+   "instr": "retrieval",
+   "key": "pair01-ising-opinion",
+   "utype": "anchor",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/retrieval/pair01-ising-opinion.json",
+   "input_sha256": "09a4cc99ffd20ce6113e52273fc2f6d0a86c5a3b6646ec32e8abba9e166a9f6c",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/retrieval/pair01-ising-opinion.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/retrieval/pair01-ising-opinion.json"
+  },
+  {
+   "instr": "retrieval",
+   "key": "pair03-sir-rumour",
+   "utype": "anchor",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/retrieval/pair03-sir-rumour.json",
+   "input_sha256": "b32bab79b10f9ca3bdb6722f710a38a7dad563b1ce796b0abd8e591f56a0c143",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/retrieval/pair03-sir-rumour.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/retrieval/pair03-sir-rumour.json"
+  },
+  {
+   "instr": "retrieval",
+   "key": "pair04-percolation-epidemics",
+   "utype": "anchor",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/retrieval/pair04-percolation-epidemics.json",
+   "input_sha256": "46ef0104243f99f4f0d334f6e5bd21a629f805d5d8028267c9a449762f5a4313",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/retrieval/pair04-percolation-epidemics.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/retrieval/pair04-percolation-epidemics.json"
+  },
+  {
+   "instr": "retrieval",
+   "key": "pair05-lotka-volterra-markets",
+   "utype": "anchor",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/retrieval/pair05-lotka-volterra-markets.json",
+   "input_sha256": "386bf6ab7ed54010ef687029dfd543fa418daddeaea103275c177ffa248c394f",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/retrieval/pair05-lotka-volterra-markets.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/retrieval/pair05-lotka-volterra-markets.json"
+  },
+  {
+   "instr": "retrieval",
+   "key": "pair06-turing-spatial-economy",
+   "utype": "anchor",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/retrieval/pair06-turing-spatial-economy.json",
+   "input_sha256": "1c7e564b73dc7069c7fea1fef9ab1238246157b5687db4b5fd348f1991bfff91",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/retrieval/pair06-turing-spatial-economy.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/retrieval/pair06-turing-spatial-economy.json"
+  }
+ ]
+}

@@ -1,0 +1,35 @@
+{
+ "verdict": "INVALID/INCONCLUSIVE",
+ "rationale": "A validity precondition failed (pinned_retrieval_reproduces_incumbent, audit_passed, false_miss<=max, clean_n>=floor, field_diverse, rubric_kappa>=floor) — REASON may not be interpreted; fix + re-run.",
+ "posctrl_ok": false,
+ "posctrl_checks": {
+  "positive_control_fire>=floor": true,
+  "negative_control_holds": true,
+  "pinned_retrieval_reproduces_incumbent": false,
+  "audit_passed": false,
+  "false_miss<=max": false,
+  "clean_n>=floor": false,
+  "field_diverse": false,
+  "rubric_kappa>=floor": false
+ },
+ "reason": {
+  "REASON_median": null,
+  "n": 0,
+  "wilcoxon_p_onesided_gt_delta": 1.0,
+  "boot_ci_lower": null
+ },
+ "constants": {
+  "K_pool_size": 50,
+  "delta_reason_margin_pts": 5,
+  "alpha_one_sided": 0.05,
+  "n_floor_clean_stratum_pairs": 110,
+  "posctrl_set_size": 40,
+  "posctrl_fire_floor": 0.9,
+  "repro_band_recall_at_10": [
+   0.5,
+   0.9
+  ],
+  "falsemiss_max": 0.1,
+  "kappa_floor": 0.6
+ }
+}

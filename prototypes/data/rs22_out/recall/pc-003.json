@@ -1,0 +1,6 @@
+{
+  "target_field": "analytic number theory",
+  "shared_mechanism": "universal eigenvalue-spacing statistics with level repulsion (GUE sine-kernel pair-correlation / Montgomery-Odlyzko law) — gap probability vanishing linearly, independent of microscopic detail",
+  "confidence": 0.83,
+  "brief_reason": "The normalized spacings between consecutive nontrivial zeros of the Riemann zeta function on the critical line follow the same random-matrix level-repulsion law (Montgomery's pair-correlation conjecture, verified numerically by Odlyzko), so zeta zeros behave statistically like the eigenvalues of a large random Hermitian ensemble."
+}

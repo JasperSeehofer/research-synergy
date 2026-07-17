@@ -1,0 +1,6 @@
+{
+  "target_field": "probability theory / mathematical statistics",
+  "shared_mechanism": "expressing higher moments of a product as a sum over all perfect matchings (pairings) of a fixed symmetric bilinear contraction — i.e. deforming a commutative/symmetric-algebra product by a bilinear form (the covariance), which is the moment–cumulant / exponential-formula structure of a combinatorial Hopf algebra",
+  "confidence": 0.8,
+  "brief_reason": "Isserlis' (Gaussian moment) theorem in probability computes moments of a multivariate normal as a sum over all pairings of pairwise covariances, which is combinatorially identical to Wick's theorem: the covariance plays the role of the Wick contraction that reorders operator products, and the same pairing/contraction bilinear form furnishes the Cliffordization deformation described in the paper."
+}

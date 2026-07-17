@@ -1,0 +1,5 @@
+{
+  "chosen_field": "representation theory",
+  "confidence": 0.55,
+  "brief_reason": "The paper's core machinery is Hopf-algebra/Clifford-algebra combinatorics for reordering products, which is exactly the mechanism governing PBW-type reordering in universal enveloping algebras and quantum groups studied in representation theory."
+}

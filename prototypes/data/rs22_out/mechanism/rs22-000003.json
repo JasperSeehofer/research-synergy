@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "coalescence of the multiple branches of the discriminant (singular) locus of a GKZ-type hypergeometric system — a system of linear differential equations fixed by combinatorial/lattice data — at a special point in parameter space, where the colliding singularities generate an enhanced symmetry whose structure is organized as the root system (all positive roots) of an A-type Lie algebra",
+  "brief_reason": "The abstract solves the GKZ system of the local geometry and locates the point where all n(n-1)/2 branches of the discriminant coincide, showing that this collision of singular branches is what makes the full A_{n-1} root system (not just simple roots) emerge as an enhanced symmetry."
+}

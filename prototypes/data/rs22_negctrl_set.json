@@ -1,0 +1,111 @@
+{
+  "description": "NEGATIVE control set for RS-22 (cross-field-analogy recall probe): 15 single-domain, method-self-contained papers (generic, non-real) for which there is NO clean cross-field analogue to recall. Each is a narrow, idiosyncratic, locality- or device-specific result whose method is a bespoke procedure rather than a portable universal mechanism. A well-behaved recall probe SHOULD return target_field=null with low confidence on these, NOT a spurious high-confidence analogy. Authored from general knowledge only.",
+  "n": 15,
+  "items": [
+    {
+      "id": "nc-000",
+      "field": "observational astronomy",
+      "title": "Updated Arc-Lamp Wavelength Solution for the Blue Channel of a Fiber-Fed Spectrograph",
+      "abstract": "We present a revised wavelength calibration for the blue arm of a particular fiber-fed multi-object spectrograph, derived from thorium-argon arc-lamp exposures taken across an observing season. Line centroids were fit with a low-order two-dimensional polynomial in pixel and fiber coordinates, and we tabulate residuals and drift with instrument temperature. The updated solution reduces systematic velocity offsets between fibers to below the previous pipeline's tolerance. We recommend nightly re-fitting during humid conditions.",
+      "why_no_analogue": "An instrument-specific polynomial fit to one spectrograph's arc lines is a bespoke calibration recipe, not a portable universal mechanism."
+    },
+    {
+      "id": "nc-001",
+      "field": "entomology",
+      "title": "Revision of the Beetle Genus Xylophilodes with Description of Four New Species from Montane Cloud Forest",
+      "abstract": "We revise the beetle genus Xylophilodes based on examination of type specimens and newly collected material, redescribing seven known species and erecting four new ones. Species boundaries are diagnosed from genitalic morphology, elytral puncturation, and antennal segment ratios, and we provide a dichotomous identification key. A lectotype is designated for a previously ambiguous name, and updated distribution records are mapped. The revision stabilizes nomenclature within the genus.",
+      "why_no_analogue": "A morphological taxonomy revision of one insect genus is idiosyncratic descriptive systematics with no transferable cross-field machinery."
+    },
+    {
+      "id": "nc-002",
+      "field": "compiler engineering",
+      "title": "A Peephole Optimization Pass for Redundant Flag-Setting Instructions on a Specific 8-bit Microcontroller Backend",
+      "abstract": "We add a target-specific peephole pass to a compiler backend that recognizes and removes redundant condition-flag-setting instructions unique to one 8-bit microcontroller's instruction set. The pass matches short local instruction patterns after register allocation and rewrites them using cheaper equivalents that preserve the flag semantics required by subsequent branches. On a suite of firmware benchmarks it reduces code size by a few percent with no measurable runtime regression. The rewrite rules are enumerated for each addressing mode.",
+      "why_no_analogue": "Pattern-rewriting tied to one ISA's flag semantics is hardware-specific engineering optimization, not a universal mechanism."
+    },
+    {
+      "id": "nc-003",
+      "field": "radio astronomy",
+      "title": "A Reprocessing Pipeline for Legacy Single-Dish HI Survey Data from a Decommissioned Receiver",
+      "abstract": "We describe a bespoke reduction pipeline for reprocessing archival neutral-hydrogen survey scans taken with a since-retired single-dish receiver, addressing its idiosyncratic baseline ripple and standing-wave artifacts. Steps include per-scan bandpass division against reference off-positions, polynomial baseline subtraction with masked emission channels, and gridding onto a common spatial cube. We characterize residual sidelobe contamination and publish flag tables for known interference. The pipeline recovers usable spectra from otherwise-uncalibrated legacy recordings.",
+      "why_no_analogue": "A reduction pipeline built around one retired receiver's specific artifacts is an archival engineering procedure with no portable scientific mechanism."
+    },
+    {
+      "id": "nc-004",
+      "field": "botany",
+      "title": "A New Species of Terrestrial Orchid from a Single Karst Locality, with Notes on Its Pollination",
+      "abstract": "We describe a new terrestrial orchid species known from one limestone-karst hillside, distinguished from its congeners by labellum shape, spur length, and column-wing morphology. A full diagnosis, type designation, and comparison table against the three most similar species are provided. Field observation recorded a single fungus-gnat visitor, and we note the plant's phenology and micro-habitat. Conservation status is assessed as critically endangered given the restricted range.",
+      "why_no_analogue": "A single-locality species description is narrow descriptive taxonomy; its diagnostic characters do not generalize into a cross-field mechanism."
+    },
+    {
+      "id": "nc-005",
+      "field": "clinical pharmacology",
+      "title": "Revised Renal Dose-Adjustment Table for a Specific Antibiotic in Patients on Intermittent Hemodialysis",
+      "abstract": "We update the dose-adjustment recommendations for a particular renally-cleared antibiotic in adults receiving intermittent hemodialysis, based on measured pre- and post-dialysis serum concentrations in a cohort. A supplemental post-dialysis dose is recommended to offset the fraction of drug removed by the dialyzer, with thresholds stratified by residual renal function. The revised table lowers the fraction of sub-therapeutic troughs relative to prior guidance. We note that the estimates are specific to high-flux dialyzers.",
+      "why_no_analogue": "A drug- and modality-specific dosing table is applied pharmacokinetic bookkeeping, not a universal mechanism transferable to other fields."
+    },
+    {
+      "id": "nc-006",
+      "field": "software engineering",
+      "title": "A Zero-Downtime Schema Migration Procedure for Splitting a Monolithic Orders Table in a Specific E-Commerce System",
+      "abstract": "We document a stepwise migration that splits a single large orders table into normalized order and line-item tables in a running production database without downtime. The procedure uses dual writes, a backfill job with batched copies, a consistency-check phase, and a staged cutover of reads behind a feature flag, followed by removal of the legacy columns. We report lock-contention measurements and the rollback plan used at each step. The steps are specific to this application's access patterns and object-relational mapping.",
+      "why_no_analogue": "An application-specific migration runbook is bespoke operational engineering; its steps depend on one system's schema and tooling."
+    },
+    {
+      "id": "nc-007",
+      "field": "genomics",
+      "title": "Chromosome-Level Genome Assembly and Annotation of a Regional Isolate of a Freshwater Diatom",
+      "abstract": "We report a chromosome-level genome assembly for a single regional isolate of a freshwater diatom, combining long-read and proximity-ligation data. Repeat masking, ab initio and evidence-based gene prediction, and functional annotation against protein databases yield a gene set, and we describe assembly contiguity and completeness metrics. The organellar genomes are assembled separately and annotated. The assembly is deposited as a reference for this isolate.",
+      "why_no_analogue": "A one-organism assembly-and-annotation report is a data-generation deliverable specific to that genome, with no portable universal mechanism."
+    },
+    {
+      "id": "nc-008",
+      "field": "stratigraphy",
+      "title": "Redefinition of a Regional Formation Boundary and Two New Member Units in a Sedimentary Basin",
+      "abstract": "We revise the lithostratigraphic subdivision of a mid-continental sedimentary basin, formally redefining the boundary between two formations at a mappable sandstone marker and naming two new member units. Type sections are designated with measured lithologic logs, and we correlate the units across cores and outcrops. The revision resolves prior inconsistencies in regional mapping practice. Biostratigraphic control is summarized where available.",
+      "why_no_analogue": "Regional lithostratigraphic renaming is descriptive, locality-bound geological bookkeeping with no cross-field mechanism."
+    },
+    {
+      "id": "nc-009",
+      "field": "surgery",
+      "title": "A Modified Suture-Anchoring Technique for a Specific Arthroscopic Rotator-Cuff Repair",
+      "abstract": "We describe a modification to the suture-anchor placement sequence in arthroscopic repair of a particular rotator-cuff tear configuration, aimed at improving tendon-footprint contact. The technique alters the anchor angle and knot-tying order, and we report operative time and early re-tear rates in a consecutive case series. Step-by-step intraoperative guidance and instrument setup are provided. Outcomes are specific to this tear pattern and anchor hardware.",
+      "why_no_analogue": "A procedure-specific surgical maneuver is craft knowledge tied to one anatomy and instrument set, not a generalizable mechanism."
+    },
+    {
+      "id": "nc-010",
+      "field": "materials engineering",
+      "title": "An Optimized Two-Stage Aging Schedule for a Specific Aluminum Casting Alloy",
+      "abstract": "We optimize the artificial-aging heat treatment of a particular aluminum casting alloy to balance yield strength and elongation for a thin-walled component. A two-stage isothermal schedule is tuned via hardness and tensile testing across temperature and time, and we describe the precipitate response inferred from calorimetry. The recommended schedule raises strength while keeping ductility within specification. The parameters are specific to this alloy composition and section thickness.",
+      "why_no_analogue": "A tuned aging schedule for one alloy and part is empirical process engineering, not a transferable universal mechanism."
+    },
+    {
+      "id": "nc-011",
+      "field": "archival science",
+      "title": "A Processed Finding Aid for a Twentieth-Century Regional Architect's Drawing Collection",
+      "abstract": "We report the arrangement and description of a regional architect's professional papers and drawings, processed into series by project and document type. The finding aid records folder-level inventories, provenance and custodial history, and access restrictions, with notes on the preservation of oversized media. We describe rehousing decisions and the controlled vocabulary used for indexing. The aid enables researcher discovery within this specific collection.",
+      "why_no_analogue": "A collection-specific archival finding aid is descriptive curatorial work bound to one set of documents, with no portable mechanism."
+    },
+    {
+      "id": "nc-012",
+      "field": "astronomical instrumentation",
+      "title": "An Updated Empirical Pointing Model for a Specific Alt-Azimuth Telescope Mount",
+      "abstract": "We derive an updated empirical pointing correction for one alt-azimuth telescope mount, fitting a standard set of geometric terms for axis misalignments, non-perpendicularity, and flexure to a grid of measured star offsets. The refit reduces blind-pointing RMS error across the sky, and we tabulate the fitted coefficients and their seasonal variation. Residual maps reveal a localized flexure term specific to this structure. Operators are advised to re-solve the model after any hardware intervention.",
+      "why_no_analogue": "An empirical pointing-model refit for one mount is a bespoke mechanical-calibration deliverable with no portable universal mechanism."
+    },
+    {
+      "id": "nc-013",
+      "field": "historical linguistics",
+      "title": "The Etymology and Semantic Shift of a Single Dialectal Kinship Term",
+      "abstract": "We trace the history of one dialectal kinship term across attested documents, arguing for a specific borrowing pathway and a later semantic narrowing from a general to a specific relative. Evidence is drawn from dated textual attestations, comparison with neighboring dialect forms, and regular sound-correspondence patterns. We reconstruct an intermediate form and propose a date range for the shift. Alternative etymologies are weighed and rejected on phonological grounds.",
+      "why_no_analogue": "A single-word etymology is philological detective work specific to one lexical item, not a generalizable mechanism."
+    },
+    {
+      "id": "nc-014",
+      "field": "embedded systems engineering",
+      "title": "A Software Workaround for an I2C Peripheral Erratum on a Specific Microcontroller Revision",
+      "abstract": "We document a software workaround for a hardware erratum in the I2C peripheral of a particular microcontroller silicon revision, in which the bus can latch up under a specific clock-stretching timing. The workaround detects the stuck condition via a timeout, toggles the pins through general-purpose I/O to force a bus recovery, and reinitializes the peripheral. We give the exact register sequence and timing constraints, and quantify the added latency. The fix is specific to this revision and is unnecessary on later silicon.",
+      "why_no_analogue": "A register-level workaround for one chip revision's erratum is device-specific engineering with no transferable universal mechanism."
+    }
+  ]
+}

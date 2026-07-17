@@ -1,0 +1,6 @@
+{
+  "target_field": "computational neuroscience (attractor neural networks / associative memory)",
+  "shared_mechanism": "descent on a Lyapunov energy function whose exponentially many local minima act as fixed-point attractors storing patterns, giving content-addressable retrieval from noisy inputs, with a critical storage capacity above which attractor basins interfere and recall breaks down catastrophically",
+  "confidence": 0.92,
+  "brief_reason": "Content-addressable memory in Hopfield-type attractor neural networks is governed by the same machinery: stored patterns are energy-minimum fixed points reached by downhill neuron updates, noisy states converge to the nearest stored pattern, and above a critical memory load (patterns per neuron) the stored states overlap and retrieval fails catastrophically, exactly as the embedded configurations degrade above the critical loading here."
+}

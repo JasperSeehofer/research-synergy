@@ -1,0 +1,6 @@
+{
+  "target_field": null,
+  "shared_mechanism": null,
+  "confidence": 0.07,
+  "brief_reason": "The paper's method is routine instrument calibration: fitting a low-order 2D polynomial to thorium-argon arc-lamp line centroids to map pixel/fiber coordinates onto wavelength and tracking thermal drift. That is generic least-squares calibration-curve fitting rather than a distinctive transferable mechanism, so no specific phenomenon in a genuinely different field came to mind."
+}

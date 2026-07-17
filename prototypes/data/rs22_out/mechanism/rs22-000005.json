@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an exact spectral duality that reduces a continuous second-order linear operator defined on the edges of a network to an equivalent discrete tridiagonal (nearest-neighbour, three-term recurrence) operator with identical spectrum",
+  "brief_reason": "The abstract sets up a correspondence extending the Kronig-Penney model that maps Schroedinger operators on graphs (continuous operators on a network) onto Jacobi matrices (discrete tridiagonal three-term-recurrence operators), i.e. an exact continuous-to-discrete spectral equivalence."
+}

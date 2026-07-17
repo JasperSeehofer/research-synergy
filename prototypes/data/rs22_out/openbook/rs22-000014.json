@@ -1,0 +1,11 @@
+{
+  "mapping": [
+    {"a_element": "three-wave-interaction kinetic equations for the spectral densities", "b_element": "Smoluchowski aggregation equation for the mass distribution"},
+    {"a_element": "constant flux of energy through scales (the turbulent cascade)", "b_element": "constant flux of mass from small masses to large masses"},
+    {"a_element": "Kolmogorov-type power-law energy spectrum solving the kinetic equations", "b_element": "Kolmogorov-type stationary power-law mass distribution"},
+    {"a_element": "exactly computed constants of the spectra (Kolmogorov constant)", "b_element": "exactly computed Kolmogorov constant"},
+    {"a_element": "implicit Zakharov conformal transformation used to obtain the constant-flux spectrum", "b_element": "method of Zakharov transformations applied to the aggregation kernel"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both papers find stationary constant-flux (Kolmogorov-type) power-law solutions of a collision/kinetic integral equation via the Zakharov transformation and compute the resulting Kolmogorov constant exactly; paper A's energy cascade through the MHD three-wave kinetic equations plays exactly the role of paper B's mass flux through the Smoluchowski aggregation equation, so the underlying Kolmogorov-Zakharov machinery is the same."
+}

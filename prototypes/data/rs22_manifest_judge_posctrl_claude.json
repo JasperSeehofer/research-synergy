@@ -1,0 +1,52 @@
+{
+ "units_spec": "posctrl",
+ "arm": "claude",
+ "n_records": 5,
+ "records": [
+  {
+   "instr": "judge",
+   "key": "pc-000",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/judge/pc-000.json",
+   "input_sha256": "fc5c1108870f7e34f068e8c6b7b00267c9bab2b7e685eac7e15da5463cbad895",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/judge/pc-000.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/judge/pc-000.json"
+  },
+  {
+   "instr": "judge",
+   "key": "pc-001",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/judge/pc-001.json",
+   "input_sha256": "43a87fbfb824177de1931eba08331273360ce5c0910124d76cb13a89785d558d",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/judge/pc-001.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/judge/pc-001.json"
+  },
+  {
+   "instr": "judge",
+   "key": "pc-002",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/judge/pc-002.json",
+   "input_sha256": "bcfd3c870a81ccfb4b6d824fd1e6c5dfb406e18f3506b6169f15e2bcfb0eba04",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/judge/pc-002.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/judge/pc-002.json"
+  },
+  {
+   "instr": "judge",
+   "key": "pc-003",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/judge/pc-003.json",
+   "input_sha256": "d0d6e526fdc3211372b4d7ce50958c70f7c81087b9d09712090fcbcce7ac6944",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/judge/pc-003.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/judge/pc-003.json"
+  },
+  {
+   "instr": "judge",
+   "key": "pc-004",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/judge/pc-004.json",
+   "input_sha256": "4adb7c37049628fe6559304b4dbde7efcac50260eef42bde08f56487f81d9fee",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/judge/pc-004.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/judge/pc-004.json"
+  }
+ ]
+}

@@ -1,0 +1,6 @@
+{
+  "target_field": "fluid dynamics",
+  "shared_mechanism": "free-boundary (obstacle) problem for the Laplacian — the occupied domain is the coincidence set of a potential and its least superharmonic majorant, i.e. a quadrature domain grown by Laplacian growth from a point source",
+  "confidence": 0.76,
+  "brief_reason": "Idealized Hele-Shaw flow (viscous-fingering / point-source fluid injection into a cell) grows a domain whose moving interface is governed by the same obstacle problem for the harmonic pressure field, and a radial point source yields a growing disk — exactly the Euclidean-ball limit and quadrature-domain structure of the divisible sandpile and rotor-router aggregation."
+}

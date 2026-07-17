@@ -1,0 +1,6 @@
+{
+  "field_match": false,
+  "mechanism_match": true,
+  "overall_equivalent": false,
+  "rationale": "Physical oceanography (wind-driven surface waves) is a genuinely different specific field from statistical mechanics, so field_match fails. The stated mechanism, a wave-kinetic (Boltzmann-type) collision equation for the spectral energy density admitting Kolmogorov-Zakharov constant-flux power-law stationary spectra, denotes the same specific weak/wave-turbulence machinery as the reference's constant-flux Kolmogorov-type cascade in an integro-differential kinetic equation extracted via the Zakharov transformation, so mechanism_match holds; overall_equivalent is their AND and is false."
+}

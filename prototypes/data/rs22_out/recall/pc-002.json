@@ -1,0 +1,6 @@
+{
+  "target_field": "equilibrium statistical mechanics of magnetism",
+  "shared_mechanism": "self-consistent mean-field (Curie-Weiss) second-order phase transition, in which an order parameter grows continuously from zero once a control parameter crosses a critical value set by the coupling versus the disorder/spread",
+  "confidence": 0.82,
+  "brief_reason": "The paramagnet-to-ferromagnet transition is governed by the same machinery: below the critical coupling (temperature) the self-consistent mean field is zero and spins are disordered, while above it the magnetization order parameter grows continuously from zero, exactly as the synchronization order parameter emerges via a supercritical bifurcation of the collective mean field when coupling overcomes the natural-frequency spread."
+}

@@ -1,0 +1,6 @@
+{
+  "target_field": "algebraic geometry (toric geometry)",
+  "shared_mechanism": "Ehrhart-type lattice-point counting in integer dilates of an integral convex polytope, identified with the Hilbert polynomial giving dim H^0(X, L^{⊗r}) of tensor powers of an ample line bundle on the associated projective toric variety",
+  "confidence": 0.58,
+  "brief_reason": "For a projective toric variety built from a lattice polytope P, the number of lattice points in the r-th dilate rP equals the dimension of the space of global sections of the r-th power of its ample line bundle and is a polynomial in r (the Hilbert polynomial) — the same dilated-polytope lattice-point-counting machinery that makes the higher-spin alternating sign matrices the integer points of the r-th dilate of the ASM polytope, enumerated by an Ehrhart polynomial in r."
+}

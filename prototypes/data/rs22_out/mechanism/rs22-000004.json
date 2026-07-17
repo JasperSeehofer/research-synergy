@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Linear modulational (self-focusing) instability of a homogeneous state in a self-nonlinear dispersive medium, where the band of exponentially growing perturbation wavenumbers and their growth rates are set by a dispersion relation that depends on the statistical spectral distribution of the background field (a Landau-type stabilization/destabilization controlled by the spread of that distribution)",
+  "brief_reason": "The abstract analyzes when small perturbations to a uniform wave in a nonlinear (Kerr) medium grow, and shows the unstable-wavenumber band and instability strength depend crucially on the profile/spread of the field's incoherence spectrum, which can enhance rather than suppress the growth."
+}

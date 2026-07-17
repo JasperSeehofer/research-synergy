@@ -1,0 +1,6 @@
+{
+  "target_field": "statistical mechanics (two-dimensional critical lattice models / conformal field theory)",
+  "shared_mechanism": "the ADE simply-laced Dynkin-diagram / root-system classification via the McKay correspondence (finite subgroups of SU(2) canonically labelled by ADE diagrams), which indexes and organizes the discrete structure of both objects",
+  "confidence": 0.68,
+  "brief_reason": "The Cappelli-Itzykson-Zuber classification of modular-invariant partition functions of 2D minimal conformal field theories, and equivalently the critical RSOS (Andrews-Baxter-Forrester) height lattice models of statistical mechanics, are indexed by exactly the same ADE Dynkin diagrams / simply-laced root systems that here classify the DuVal singularities C^2/G and their resolutions; both are governed by the same ADE root-system classification and McKay correspondence, despite spins-on-a-lattice sharing no vocabulary with resolutions of quotient singularities."
+}

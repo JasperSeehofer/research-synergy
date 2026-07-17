@@ -1,0 +1,6 @@
+{
+  "target_field": "information geometry (mathematical statistics)",
+  "shared_mechanism": "a dually-flat affine connection on the tangent bundle of a smooth manifold that parametrizes a family, where each tangent space is identified with the space of observables/random variables and the connection's zero curvature lets parallel transport determine all of the family's correlators (moments/cumulants)",
+  "confidence": 0.5,
+  "brief_reason": "In information geometry a parametrized family of probability distributions forms a statistical (Frobenius/dually-flat) manifold whose tangent spaces are spaces of random variables (observables) and which carries flat exponential/mixture connections whose flatness fixes all of the family's moments and cumulants, mirroring how the BV moduli space M of QFTs carries a flat quantum connection over a tangent bundle of observables that determines every correlation function of the family."
+}

@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "the prearranged correlated (entangled) quantum systems used as the teleportation resource", "b_element": "the bipartite entangled Gaussian states whose entanglement is being characterized"},
+    {"a_element": "the continuous-variable system whose state is teleported", "b_element": "the oscillator (continuous-variable) modes on Alice's and Bob's sides"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only genuine overlap is the shared objects (bipartite entangled, continuous-variable/oscillator systems), not shared machinery: paper A is a dynamical transfer PROTOCOL that moves an unknown state via nonlocal measurement plus classical communication, whereas paper B is a static CLASSIFICATION of separability using the covariance-matrix positivity of the partial transpose (PPT criterion and bound entanglement). There is no role-for-role correspondence between a teleportation procedure and a partial-transpose separability test, so the underlying methods differ."
+}

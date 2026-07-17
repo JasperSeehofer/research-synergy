@@ -1,0 +1,6 @@
+{
+  "target_field": "collective behavior in biology (coupled biological oscillators)",
+  "shared_mechanism": "spontaneous onset of long-range phase coherence via a continuous order-disorder transition, when a phase-locking/coupling term overcomes a competing disordering term past a critical ratio (emergence of a U(1) phase order parameter)",
+  "confidence": 0.5,
+  "brief_reason": "The Kuramoto synchronization transition of coupled biological oscillators (e.g. firefly flashing or cardiac pacemaker cells) shares the same machinery: as coupling exceeds the disordering frequency spread past a critical value, a global phase order parameter switches on, exactly as tunneling establishes system-wide phase coherence in the superfluid until on-site interaction pins atom number and destroys it in the Mott phase."
+}

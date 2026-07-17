@@ -1,0 +1,6 @@
+{
+  "target_field": "geophysical fluid dynamics (atmospheric and oceanic waves)",
+  "shared_mechanism": "bulk-boundary correspondence: a nonzero integer (Chern number) of a gapped band structure over momentum/parameter space forces a quantized number of unidirectional chiral edge modes at a boundary",
+  "confidence": 0.72,
+  "brief_reason": "Equatorial Kelvin and Yanai waves are topologically protected, unidirectional boundary modes whose existence and count are fixed by the Chern number of the shallow-water/Coriolis band structure, exactly as the spectral Chern number ν in Kitaev's free-fermion model governs the chiral edge (thermal transport) modes via the same bulk-boundary correspondence."
+}

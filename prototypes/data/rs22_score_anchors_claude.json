@@ -1,0 +1,21 @@
+{
+ "summary": {
+  "units_spec": "anchors",
+  "arm": "claude",
+  "n_pairs_scored": 0,
+  "n_clean": 0,
+  "clean_yield": null,
+  "n_distinct_field_pairs_clean": 0,
+  "anchor_ranks": {
+   "pair01-ising-opinion": 1,
+   "pair03-sir-rumour": 1,
+   "pair04-percolation-epidemics": 1,
+   "pair05-lotka-volterra-markets": 1,
+   "pair06-turing-spatial-economy": 1
+  },
+  "anchor_recall@10": 1.0,
+  "n_missing": 0,
+  "missing_examples": []
+ },
+ "per_unit": []
+}

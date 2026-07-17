@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a driven-dissipative dynamics whose commuting local update (addition) operators generate a finite abelian group acting on the configuration space, so the unique attracting steady state and its scaling exponents are fixed algebraically by that group structure",
+  "brief_reason": "The abstract states that the particle-addition operators generate an abelian group identical to the Abelian Sandpile group on the graph, and uses this commuting-operator/group equivalence to determine the critical steady state and critical exponents exactly."
+}

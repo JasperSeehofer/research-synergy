@@ -1,0 +1,406 @@
+{
+  "description": "POSITIVE control set for RS-22 (cross-field-analogy recall/recognition probes): 40 ultra-famous, textbook-standard cross-field scientific analogies authored purely from well-established general knowledge (no study benchmark). Each item gives a generic, non-real representative work on the field_a side whose method shares its underlying machinery with a phenomenon in a DIFFERENT field_b. The recall/recognition probes SHOULD fire on these: a well-read scientist or strong LLM instantly recalls the analogue. side_b_field_label is the intended 'correct answer' for the recognition probe.",
+  "n": 40,
+  "items": [
+    {
+      "id": "pc-000",
+      "field_a": "statistical physics",
+      "field_b": "computational neuroscience",
+      "shared_mechanism": "an energy function over +/-1 spins with symmetric pairwise couplings whose local minima act as stored attractors; asynchronous relaxation flows downhill to the nearest minimum, implementing content-addressable retrieval",
+      "side_a_title": "Metastable States and Retrieval in a Disordered Ising Magnet with Symmetric Random Couplings",
+      "side_a_abstract": "We study a system of N Ising spins interacting through symmetric but sign-varying pairwise couplings drawn from a fixed disordered ensemble. The model admits a Lyapunov energy function that is minimized under asynchronous single-spin updates, so the dynamics always flow downhill to a metastable configuration. We show that the rugged energy landscape contains an extensive number of local minima and characterize how many statistically independent patterns can be embedded as stable minima before they interfere. Below a critical loading the embedded configurations are recovered exactly from noisy initial states; above it recall degrades catastrophically.",
+      "side_b_field_label": "computational neuroscience",
+      "provenance": "The Hopfield network (1982) is the canonical textbook identification of spin-glass energy landscapes with associative neural memory; standard in every statistical-mechanics-of-neural-networks course."
+    },
+    {
+      "id": "pc-001",
+      "field_a": "statistical physics",
+      "field_b": "sociology",
+      "shared_mechanism": "local majority/alignment coupling with noise (temperature) producing an order-disorder phase transition to spontaneous collective consensus",
+      "side_a_title": "Spontaneous Magnetization and Critical Temperature in a Nearest-Neighbor Ising Ferromagnet",
+      "side_a_abstract": "We consider binary spins on a lattice that lower their energy by aligning with their nearest neighbors, subject to thermal noise. Below a critical temperature the system spontaneously breaks symmetry and develops long-range order, so a macroscopic fraction of spins point the same way, while above it fluctuations destroy any global alignment. Near the transition the correlation length diverges and the susceptibility peaks. We compute the order parameter as a function of temperature and coupling strength.",
+      "side_b_field_label": "sociology",
+      "provenance": "Ising / mean-field alignment is the textbook substrate of opinion, voter, and consensus models in sociophysics (majority-rule and Sznajd models)."
+    },
+    {
+      "id": "pc-002",
+      "field_a": "nonlinear dynamics",
+      "field_b": "biology",
+      "shared_mechanism": "a population of phase oscillators with distributed natural frequencies and phase-attractive coupling that undergoes a threshold transition from incoherence to spontaneous phase-locking",
+      "side_a_title": "Onset of Collective Phase-Locking in a Population of Globally Coupled Limit-Cycle Oscillators",
+      "side_a_abstract": "We analyze N oscillators, each described by a single phase advancing at its own natural frequency, coupled through a term that pulls each phase toward the population's mean phase. Below a critical coupling strength the phases drift independently and the mean field is zero; above it a macroscopic cluster locks to a common frequency and an order parameter grows continuously from zero. We derive the critical coupling in terms of the width of the natural-frequency distribution. The transition is a bifurcation of the collective mean field.",
+      "side_b_field_label": "biology",
+      "provenance": "The Kuramoto model is the canonical account of spontaneous synchronization; its textbook biological realization is the in-phase flashing of fireflies (and cardiac pacemaker cells, chorusing crickets)."
+    },
+    {
+      "id": "pc-003",
+      "field_a": "mathematics",
+      "field_b": "nuclear physics",
+      "shared_mechanism": "eigenvalue statistics of large random Hermitian matrices, giving universal level-spacing repulsion (Wigner surmise) independent of microscopic detail",
+      "side_a_title": "Universal Spacing Distribution for Eigenvalues of Large Random Symmetric Matrices",
+      "side_a_abstract": "We study ensembles of large symmetric matrices with independent random entries and ask for the statistical distribution of the gaps between adjacent eigenvalues. We find that eigenvalues repel: the probability of near-degeneracy vanishes linearly with the gap, and the normalized spacing follows a universal law independent of the entry distribution. The result depends only on the symmetry class of the ensemble, not on any microscopic parameters. We contrast this level repulsion with the clustering expected from independent (Poisson) levels.",
+      "side_b_field_label": "nuclear physics",
+      "provenance": "Wigner introduced random-matrix ensembles precisely to model the spacing statistics of highly excited nuclear energy levels; the RMT-nuclear-spectra correspondence is textbook (and extends to quantum chaos)."
+    },
+    {
+      "id": "pc-004",
+      "field_a": "epidemiology",
+      "field_b": "sociology",
+      "shared_mechanism": "compartmental contagion with a basic reproduction number: susceptible-to-infected transmission on contact plus removal, giving a threshold above which a macroscopic outbreak occurs",
+      "side_a_title": "A Compartmental Threshold Model for Contagious Spread in a Well-Mixed Population",
+      "side_a_abstract": "We partition a population into susceptible, infected, and removed compartments and model transmission as a mass-action contact process with a per-contact transmission rate and a recovery rate. The dynamics are governed by a dimensionless reproduction number equal to the ratio of these rates times the contact frequency. When it exceeds one, an initially small infected seed grows exponentially and a finite fraction of the population is eventually affected; below one the outbreak dies out. We compute the final outbreak size as a function of the reproduction number.",
+      "side_b_field_label": "sociology",
+      "provenance": "The SIR / threshold framework is the textbook model of both disease epidemics and rumor / information diffusion (Daley-Kendall rumor model); the mechanism transfers verbatim."
+    },
+    {
+      "id": "pc-005",
+      "field_a": "statistical physics",
+      "field_b": "hydrology",
+      "shared_mechanism": "a connectivity phase transition on a random lattice: above a critical occupation probability a single system-spanning connected cluster appears abruptly, with a diverging correlation length",
+      "side_a_title": "Emergence of a Spanning Cluster in Randomly Occupied Lattices",
+      "side_a_abstract": "We occupy each site (or bond) of a large lattice independently with probability p and study the connected clusters of occupied sites. As p increases there is a sharp critical value above which, with probability approaching one, a single cluster spans the entire system, while below it only finite clusters exist. Near the threshold the mean cluster size and correlation length diverge with universal exponents. We locate the threshold and characterize the geometry of the incipient spanning cluster.",
+      "side_b_field_label": "hydrology",
+      "provenance": "Percolation was introduced to model fluid flow through porous / random media; it is the textbook model for porous-media permeability, forest-fire spread, and material connectivity."
+    },
+    {
+      "id": "pc-006",
+      "field_a": "probability theory",
+      "field_b": "nuclear physics",
+      "shared_mechanism": "a Galton-Watson branching process whose mean offspring number sets a criticality threshold separating almost-sure extinction from explosive exponential growth",
+      "side_a_title": "Extinction and Survival Probabilities in a Galton-Watson Branching Process",
+      "side_a_abstract": "We analyze a stochastic process in which each individual independently produces a random number of offspring according to a fixed distribution, and study the fate of the population over generations. The mean number of offspring per individual is the control parameter: below one the lineage goes extinct almost surely, above one it survives and grows exponentially with positive probability. We compute the extinction probability as the fixed point of the offspring generating function. The behavior changes qualitatively exactly at mean offspring equal to one.",
+      "side_b_field_label": "nuclear physics",
+      "provenance": "Branching processes were used to model neutron multiplication in fission; the critical mean-offspring = 1 condition is exactly the reactor criticality (k = 1) condition, a standard textbook correspondence."
+    },
+    {
+      "id": "pc-007",
+      "field_a": "economics",
+      "field_b": "evolutionary biology",
+      "shared_mechanism": "the replicator equation: types reproduce at a rate proportional to their payoff / fitness relative to the population mean, i.e. frequency-dependent selection converging to invasion-resistant equilibria",
+      "side_a_title": "Frequency-Dependent Payoff Dynamics in a Population of Strategy-Playing Agents",
+      "side_a_abstract": "We model a large population of agents each committed to one of several strategies that earn payoffs by interacting pairwise according to a fixed payoff matrix. The fraction of agents using a strategy grows in proportion to how much that strategy's expected payoff exceeds the population-average payoff. The resulting dynamics converge to fixed points that we identify with the game's stable equilibria, and we characterize which strategy mixtures resist invasion by rare alternatives. Payoffs are frequency-dependent: a strategy's success depends on how common it already is.",
+      "side_b_field_label": "evolutionary biology",
+      "provenance": "The replicator equation and evolutionarily stable strategies are the textbook bridge between economic game theory and Darwinian selection (Maynard Smith)."
+    },
+    {
+      "id": "pc-008",
+      "field_a": "mathematical finance",
+      "field_b": "physics",
+      "shared_mechanism": "a linear parabolic partial differential equation (the diffusion / heat equation) obtained after a change of variables; the option value diffuses in price-time exactly as temperature diffuses",
+      "side_a_title": "A Parabolic Partial Differential Equation for the Fair Price of a Contingent Claim",
+      "side_a_abstract": "Assuming the underlying asset follows geometric Brownian motion and that a continuously rebalanced hedging portfolio eliminates risk, we derive a deterministic partial differential equation for the value of a contingent claim as a function of asset price and time. A logarithmic change of variable transforms it into a standard linear parabolic equation with constant coefficients. The terminal payoff plays the role of an initial condition, and the solution is a Gaussian-weighted average of payoffs. We solve it in closed form.",
+      "side_b_field_label": "physics",
+      "provenance": "The Black-Scholes equation is famously reducible to the heat / diffusion equation by a change of variables, a standard result in every mathematical-finance and PDE textbook."
+    },
+    {
+      "id": "pc-009",
+      "field_a": "statistical physics",
+      "field_b": "electrical engineering",
+      "shared_mechanism": "Laplacian growth: an interface advances with probability set by the local gradient of a harmonic field, producing branched self-similar fractal (dendritic) patterns via a tip-screening instability",
+      "side_a_title": "Fractal Cluster Growth by Diffusion-Controlled Particle Aggregation",
+      "side_a_abstract": "Particles released far away random-walk until they contact and stick to a growing cluster, whose growth probability at any surface site is proportional to the local gradient of the (harmonic) particle-concentration field. The resulting aggregates are open, branched, self-similar fractals with a dimension below that of the embedding space. Screening makes protruding tips grow faster than shielded fjords, amplifying branching instabilities. We measure the fractal dimension and the growth-probability distribution along the interface.",
+      "side_b_field_label": "electrical engineering",
+      "provenance": "Diffusion-limited aggregation and the dielectric-breakdown model are the same Laplacian-growth process; the DLA-breakdown / electrodeposition correspondence is a textbook example of fractal pattern formation."
+    },
+    {
+      "id": "pc-010",
+      "field_a": "statistical physics",
+      "field_b": "fluid dynamics",
+      "shared_mechanism": "a self-similar cascade of a conserved quantity across a continuum of length scales with universal power-law scaling exponents, made precise by a coarse-graining flow and its fixed points",
+      "side_a_title": "Scale Invariance and Coarse-Graining of Fluctuations Near a Critical Point",
+      "side_a_abstract": "Near a continuous phase transition, fluctuations occur on all length scales up to a diverging correlation length, and no single scale dominates. We construct a coarse-graining transformation that repeatedly averages out short-wavelength fluctuations and rescales, generating a flow in the space of coupling constants. The system's large-scale behavior is controlled by the fixed points of this flow, and the associated eigenvalues yield universal power-law exponents independent of microscopic detail. Physical quantities transfer self-similarly from one scale to the next.",
+      "side_b_field_label": "fluid dynamics",
+      "provenance": "The renormalization-group scale-by-scale cascade picture is the textbook conceptual and mathematical cousin of the Kolmogorov energy cascade in fully developed turbulence."
+    },
+    {
+      "id": "pc-011",
+      "field_a": "applied mathematics",
+      "field_b": "developmental biology",
+      "shared_mechanism": "a reaction-diffusion (Turing) instability: a short-range activator and a long-range inhibitor with differing diffusion rates destabilize a uniform state into stationary periodic spatial patterns with an intrinsic wavelength",
+      "side_a_title": "Diffusion-Driven Instability and Spontaneous Pattern Formation in a Two-Species Reaction System",
+      "side_a_abstract": "We analyze two interacting chemical species, a self-enhancing activator and an inhibitor it produces, that react locally and diffuse at different rates. A spatially uniform steady state that is stable in the absence of diffusion becomes unstable when the inhibitor diffuses sufficiently faster than the activator, selecting a finite band of unstable wavelengths. The instability grows into a stationary, spatially periodic concentration pattern with an intrinsic length scale set by the diffusion ratio. We derive the conditions on the kinetics and diffusion constants for spots versus stripes.",
+      "side_b_field_label": "developmental biology",
+      "provenance": "Turing's reaction-diffusion instability is the textbook mechanism proposed for biological morphogenesis, including animal coat markings, shell patterns, and digit spacing."
+    },
+    {
+      "id": "pc-012",
+      "field_a": "statistical mechanics",
+      "field_b": "statistics",
+      "shared_mechanism": "maximizing entropy subject to expectation constraints yields the unique least-biased (exponential-family / Gibbs) distribution, with Lagrange multipliers acting as generalized temperatures",
+      "side_a_title": "The Least-Biased Distribution Consistent with Prescribed Average Constraints",
+      "side_a_abstract": "Given only a set of measured average values of certain observables, we seek the probability distribution that is maximally noncommittal about everything else. We show that maximizing the entropy subject to the measured averages as constraints yields a unique exponential-family distribution, with Lagrange multipliers fixed by the constraints. Any other distribution matching the same averages has lower entropy and therefore smuggles in unjustified assumptions. We interpret the multipliers as generalized temperatures conjugate to the constrained observables.",
+      "side_b_field_label": "statistics",
+      "provenance": "Jaynes's maximum-entropy principle is the textbook bridge showing that equilibrium statistical mechanics (Gibbs distributions) and statistical inference are the same variational problem."
+    },
+    {
+      "id": "pc-013",
+      "field_a": "statistical physics",
+      "field_b": "linguistics",
+      "shared_mechanism": "a scale-free power-law (Zipf / Pareto) rank-size distribution with no characteristic scale, generated by proportional (rich-get-richer) random growth",
+      "side_a_title": "Rank-Size Power Laws in Growing Systems with Proportional Growth",
+      "side_a_abstract": "We study the size distribution of elements in a growing population where each element's growth rate is, on average, independent of its current size (proportional random growth) and new elements enter over time. The stationary distribution is a power law: the frequency of an element of size s falls off as s to a negative power, and equivalently the size of the rank-r element scales as one over r. There is no typical size; the distribution is scale-free over many decades. We derive the exponent from the entry and growth rates.",
+      "side_b_field_label": "linguistics",
+      "provenance": "Zipf's law is the canonical cross-domain power law: word frequencies, city sizes, firm sizes, and incomes all follow the same rank-size mechanism."
+    },
+    {
+      "id": "pc-014",
+      "field_a": "physics",
+      "field_b": "mathematical finance",
+      "shared_mechanism": "a continuous-time random walk (Wiener process / diffusion) with independent Gaussian increments whose variance grows linearly in time",
+      "side_a_title": "Mean-Square Displacement of a Particle Undergoing Incessant Random Impacts",
+      "side_a_abstract": "A small particle suspended in a fluid is buffeted by innumerable independent molecular impacts, producing an erratic, non-differentiable trajectory. We show that its displacement is a Gaussian random variable whose mean is zero and whose variance grows linearly with elapsed time, defining a diffusion coefficient. Increments over disjoint time intervals are statistically independent. The probability density of the position obeys a diffusion equation.",
+      "side_b_field_label": "mathematical finance",
+      "provenance": "Bachelier modeled stock-price movements as this same random walk five years before Einstein's Brownian-motion paper; the Wiener-process / diffusion mechanism is the shared textbook foundation of both."
+    },
+    {
+      "id": "pc-015",
+      "field_a": "theoretical ecology",
+      "field_b": "economics",
+      "shared_mechanism": "coupled nonlinear predator-prey (Lotka-Volterra) equations producing self-sustained closed-orbit oscillations of two mutually regulating populations with a quarter-cycle phase lag",
+      "side_a_title": "Sustained Oscillations in a Coupled Predator-Prey Population Model",
+      "side_a_abstract": "We model two interacting populations: a prey that grows when alone and a predator that starves when alone, coupled so that predation raises predator numbers while depleting prey. The resulting pair of nonlinear differential equations has no stable interior fixed point but instead closed periodic orbits: prey and predator abundances oscillate perpetually, with the predator peak lagging the prey peak by a quarter cycle. The oscillation amplitude is set by initial conditions and the period by the interaction rates. We show the time-averaged populations equal the coexistence equilibrium.",
+      "side_b_field_label": "economics",
+      "provenance": "Goodwin's growth-cycle model recasts Lotka-Volterra predator-prey dynamics as employment-versus-wage-share oscillations, the textbook economics analogue of ecological cycles."
+    },
+    {
+      "id": "pc-016",
+      "field_a": "probability theory",
+      "field_b": "polymer chemistry",
+      "shared_mechanism": "a self-avoiding random walk whose end-to-end size scales with the number of steps to a nontrivial universal exponent set by excluded volume and spatial dimension",
+      "side_a_title": "End-to-End Scaling of Self-Avoiding Walks on a Lattice",
+      "side_a_abstract": "We enumerate random walks on a lattice that are forbidden from revisiting any site, modeling a chain that cannot overlap itself. The typical end-to-end distance grows as the number of steps raised to a universal exponent larger than the one-half of an ordinary random walk, reflecting swelling due to excluded volume. The exponent depends only on the spatial dimension, not on lattice details. We estimate it and the number of distinct walks of a given length.",
+      "side_b_field_label": "polymer chemistry",
+      "provenance": "The self-avoiding walk is the textbook model of a polymer chain in a good solvent (Flory, de Gennes); the excluded-volume scaling exponent is shared between combinatorics and polymer physics."
+    },
+    {
+      "id": "pc-017",
+      "field_a": "network science",
+      "field_b": "evolutionary biology",
+      "shared_mechanism": "cumulative-advantage (preferential-attachment / Yule) growth in which the rate of acquiring new members is proportional to current size, yielding a power-law size distribution with a few dominant hubs",
+      "side_a_title": "Growth of a Network by Preferential Attachment of New Nodes",
+      "side_a_abstract": "We grow a network by adding one node at a time, each connecting to existing nodes with probability proportional to how many connections those nodes already have. This rich-get-richer rule makes early, well-connected nodes accumulate links ever faster. In the large-network limit the degree distribution converges to a power law whose exponent we derive from the attachment rule. The mechanism produces a few enormous hubs and many poorly connected nodes without any parameter tuning.",
+      "side_b_field_label": "evolutionary biology",
+      "provenance": "Preferential attachment is mathematically the Yule process introduced to explain the power-law distribution of species per genus in macroevolution; the same cumulative-advantage mechanism recurs across networks, citations, and biology."
+    },
+    {
+      "id": "pc-018",
+      "field_a": "statistical physics",
+      "field_b": "climate science",
+      "shared_mechanism": "a slow, linearly damped variable integrating fast white-noise forcing into red-noise (Ornstein-Uhlenbeck) mean-reverting fluctuations with a Lorentzian spectrum, obeying a fluctuation-dissipation balance",
+      "side_a_title": "Integration of Fast Random Forcing by a Slow Damped Variable",
+      "side_a_abstract": "We consider a slowly varying degree of freedom subject to linear damping and continually kicked by rapid, effectively random forcing from many fast degrees of freedom. Modeling the fast kicks as white noise, the slow variable obeys a Langevin equation whose stationary fluctuations have a Lorentzian (red) spectrum: power rises at low frequencies and rolls off above a corner frequency set by the damping. The variable performs a mean-reverting random walk. We relate the fluctuation amplitude to the forcing strength and damping via a fluctuation-dissipation balance.",
+      "side_b_field_label": "climate science",
+      "provenance": "Hasselmann's stochastic climate model, in which slow ocean / climate variables integrate fast weather noise into red-spectrum variability, is exactly the Langevin / Ornstein-Uhlenbeck paradigm (2021 Nobel Prize in Physics)."
+    },
+    {
+      "id": "pc-019",
+      "field_a": "combinatorial optimization",
+      "field_b": "metallurgy",
+      "shared_mechanism": "sampling configurations by a Metropolis acceptance rule at a slowly lowered effective temperature so the system escapes local minima while hot and settles into a near-global energy minimum as it cools",
+      "side_a_title": "Escaping Local Minima in Hard Combinatorial Optimization by Temperature-Controlled Random Search",
+      "side_a_abstract": "We minimize a rugged cost function over a huge discrete configuration space by treating the cost as an energy and sampling configurations with a temperature-dependent acceptance rule that sometimes accepts uphill moves. Starting hot, the search wanders freely and crosses barriers; as the temperature is lowered slowly the accepted moves become increasingly downhill and the system concentrates in low-cost states. Cooling too fast freezes the system into a poor local minimum, while sufficiently slow cooling approaches the global optimum. We give an explicit cooling schedule and acceptance probability.",
+      "side_b_field_label": "metallurgy",
+      "provenance": "Simulated annealing (Kirkpatrick et al., 1983) is named for and explicitly modeled on the physical annealing of metals and glasses: slow cooling to reach a low-defect crystalline ground state."
+    },
+    {
+      "id": "pc-020",
+      "field_a": "information theory",
+      "field_b": "thermodynamics",
+      "shared_mechanism": "the same functional, minus the sum of each probability times its logarithm, measures uncertainty / disorder; maximizing it under constraints yields the equilibrium (least-informative) distribution",
+      "side_a_title": "A Quantitative Measure of Uncertainty for a Source Emitting Symbols with Fixed Probabilities",
+      "side_a_abstract": "We seek a measure of the uncertainty of a random source that is continuous in the probabilities, increases with the number of equally likely outcomes, and is additive over independent choices. We prove these axioms force the measure to be, up to a multiplicative constant, minus the sum of each probability times its logarithm. This quantity is maximal for the uniform distribution and zero for a certain outcome, and it sets the minimum average code length needed to represent the source. We interpret it as the information content per symbol.",
+      "side_b_field_label": "thermodynamics",
+      "provenance": "Shannon's information entropy is functionally identical to Boltzmann-Gibbs thermodynamic entropy; the identification is a standard textbook cornerstone linking information theory and statistical mechanics."
+    },
+    {
+      "id": "pc-021",
+      "field_a": "computer science",
+      "field_b": "cardiac physiology",
+      "shared_mechanism": "an excitable medium of locally coupled cells cycling through rest-excited-refractory states, supporting propagating annihilating waves and, when a front breaks, self-sustaining rotating spiral waves",
+      "side_a_title": "Spiral Waves in a Lattice of Locally Coupled Excitable Automata",
+      "side_a_abstract": "We define a grid of cells each in one of three states, resting, excited, or refractory, updated by a simple local rule: a resting cell becomes excited if enough neighbors are excited, then passes through a refractory period before it can fire again. The rule supports self-sustaining waves of excitation that annihilate on collision, and, when a wavefront is broken, it curls into a rotating spiral that pumps periodic waves through the medium indefinitely. We characterize wave speed and the conditions for spiral formation and breakup.",
+      "side_b_field_label": "cardiac physiology",
+      "provenance": "Excitable-media cellular automata are the textbook model of wave propagation in heart muscle; reentrant spiral and scroll waves correspond to arrhythmias such as tachycardia and fibrillation."
+    },
+    {
+      "id": "pc-022",
+      "field_a": "biophysics",
+      "field_b": "statistical physics",
+      "shared_mechanism": "relaxation on a high-dimensional rugged energy landscape riddled with metastable minima, biased by an overall funnel toward a unique global minimum, giving glassy non-exponential kinetics",
+      "side_a_title": "Funneled Rugged Energy Landscapes and the Kinetics of Reaching the Native State",
+      "side_a_abstract": "We describe the configurations of a heteropolymer by an energy that is a rugged function of its many internal coordinates, riddled with local minima separated by barriers. Reaching the unique low-energy native structure is possible because the landscape, though rough, is globally funneled: the energy decreases on average as the molecule becomes more native-like, guiding an otherwise astronomically slow random search. We relate the folding rate and trapping to the ratio of the funnel slope to the roughness. Competing traps produce glassy, non-exponential kinetics.",
+      "side_b_field_label": "statistical physics",
+      "provenance": "The protein-folding energy-landscape / funnel theory is explicitly built on spin-glass physics (rugged landscapes, random-energy and replica models), a canonical biophysics-to-statistical-physics bridge."
+    },
+    {
+      "id": "pc-023",
+      "field_a": "probability theory",
+      "field_b": "electrical engineering",
+      "shared_mechanism": "harmonic functions on a graph: the hitting / escape probabilities of a random walk equal node voltages in a resistor network, both solving the discrete Laplace equation with identical boundary conditions",
+      "side_a_title": "Hitting Probabilities of a Random Walk on a Weighted Graph",
+      "side_a_abstract": "We study a random walker that hops between nodes of a weighted graph, moving to each neighbor with probability proportional to the connecting edge weight, and ask for the probability it reaches one marked set of nodes before another. We show this probability is a harmonic function on the graph: at every interior node it equals the weighted average of its neighbors' values, with fixed values at the two marked sets. The solution is unique and obeys a discrete maximum principle. We compute effective escape probabilities and expected hitting times.",
+      "side_b_field_label": "electrical engineering",
+      "provenance": "The random-walk / electric-network correspondence, with hitting probabilities as voltages, edge weights as conductances, and effective resistance as commute time, is a standard textbook result (Doyle and Snell)."
+    },
+    {
+      "id": "pc-024",
+      "field_a": "statistical physics",
+      "field_b": "seismology",
+      "shared_mechanism": "self-organized criticality: slow driving builds up stress that is released in scale-free avalanches with a power-law size distribution and no characteristic event size, without parameter tuning",
+      "side_a_title": "Scale-Free Avalanches in a Slowly Driven Threshold Relaxation Model",
+      "side_a_abstract": "We slowly add units of a conserved quantity to a lattice whose sites topple and redistribute to their neighbors whenever they exceed a fixed threshold, possibly triggering neighbors to topple in turn. Without tuning any parameter the system organizes into a stationary state in which relaxation events (avalanches) have no characteristic size: their sizes and durations follow power-law distributions cut off only by the system size. Small perturbations occasionally cascade into system-spanning events. We measure the avalanche-size exponent.",
+      "side_b_field_label": "seismology",
+      "provenance": "Self-organized criticality (the Bak-Tang-Wiesenfeld sandpile) is the textbook explanation for the power-law Gutenberg-Richter magnitude distribution of earthquakes (and for neuronal avalanches)."
+    },
+    {
+      "id": "pc-025",
+      "field_a": "mathematics",
+      "field_b": "geography",
+      "shared_mechanism": "statistical self-similarity with a non-integer fractal dimension: the measured length of a rough curve grows as a power of the shrinking ruler size, so length is scale-dependent while dimension is well defined",
+      "side_a_title": "Measured Length of an Irregular Curve as a Function of Ruler Size",
+      "side_a_abstract": "We study curves that look equally rough at every magnification and quantify their irregularity by how their measured length depends on the length of the measuring ruler. As the ruler shrinks, ever finer wiggles are resolved and the total measured length grows without bound as a power of the ruler size, with an exponent that defines a non-integer (fractal) dimension between one and two. The curve has no well-defined length but a well-defined fractal dimension. We relate the dimension to the roughness of the generating process.",
+      "side_b_field_label": "geography",
+      "provenance": "Mandelbrot's 'How long is the coast of Britain?' is the founding textbook example of fractal dimension; coastlines, river networks, and terrain are statistically self-similar."
+    },
+    {
+      "id": "pc-026",
+      "field_a": "fluid dynamics",
+      "field_b": "nonlinear optics",
+      "shared_mechanism": "the nonlinear Schrodinger equation for a slowly varying wave envelope, balancing dispersion against cubic self-focusing to give envelope solitons, modulation instability, and occasional anomalously large pulses",
+      "side_a_title": "Envelope Dynamics of Weakly Nonlinear Deep-Water Wave Packets",
+      "side_a_abstract": "We derive the evolution equation for the slowly varying envelope of a narrow-band train of deep-water gravity waves, keeping the leading dispersion and the lowest-order nonlinearity. The result is a nonlinear Schrodinger equation in which dispersive spreading competes with an amplitude-dependent phase (self-focusing). A uniform wave train is unstable to sideband modulations, concentrating energy into localized envelope solitons and occasional anomalously large pulses. We give the soliton solution and the modulation-instability growth rate.",
+      "side_b_field_label": "nonlinear optics",
+      "provenance": "The nonlinear Schrodinger equation governs deep-water wave envelopes, pulses in optical fibers, and Bose-Einstein condensates alike; the water-wave-to-optical-soliton (and rogue-wave) correspondence is textbook nonlinear science."
+    },
+    {
+      "id": "pc-027",
+      "field_a": "traffic engineering",
+      "field_b": "fluid dynamics",
+      "shared_mechanism": "a nonlinear hyperbolic conservation law (kinematic waves) whose characteristics travel at density-dependent speeds and cross to form propagating shock fronts and rarefactions",
+      "side_a_title": "Kinematic Density Waves and Shock Formation in Single-Lane Vehicle Flow",
+      "side_a_abstract": "We treat vehicle traffic as a compressible one-dimensional continuum obeying conservation of vehicles, with the local flow rate a given increasing-then-decreasing function of density. The resulting first-order nonlinear wave equation propagates disturbances along characteristics whose speed depends on the local density. Where faster characteristics overtake slower ones, they cross and a sharp discontinuity, a stop-and-go shock front, forms and travels backward against the flow. We compute the shock speed from the jump in density and flow.",
+      "side_b_field_label": "fluid dynamics",
+      "provenance": "The Lighthill-Whitham-Richards kinematic-wave model treats traffic exactly like compressible gas dynamics; stop-and-go jams are shock waves, a standard applied-mathematics correspondence."
+    },
+    {
+      "id": "pc-028",
+      "field_a": "economic geography",
+      "field_b": "physics",
+      "shared_mechanism": "an interaction between two bodies proportional to the product of their masses (sizes) and decaying as an inverse power (near the square) of the distance between them",
+      "side_a_title": "A Mass-and-Distance Law for the Volume of Interaction Between Two Regions",
+      "side_a_abstract": "We model the flow of interactions such as trade, migration, and communication between two spatial regions and find it well described by a simple law: the interaction volume is proportional to the product of the two regions' sizes and falls off as a power of the distance separating them, typically near the inverse square. Larger regions attract more interaction, and remoteness suppresses it. We estimate the mass and distance exponents from aggregate flow data. The functional form is strikingly reminiscent of an attractive central-force law between two masses.",
+      "side_b_field_label": "physics",
+      "provenance": "The 'gravity model' of trade and migration is named for its explicit formal analogy to Newton's law of universal gravitation (mass times mass over distance squared), a textbook staple of spatial economics."
+    },
+    {
+      "id": "pc-029",
+      "field_a": "quantum mechanics",
+      "field_b": "classical mechanics",
+      "shared_mechanism": "geometric holonomy (anholonomy): a system transported slowly around a closed loop in parameter space acquires an extra angle / phase equal to the enclosed solid angle, independent of the traversal rate",
+      "side_a_title": "Anholonomy of a Quantum State Transported Slowly Around a Closed Parameter Loop",
+      "side_a_abstract": "We adiabatically vary the parameters of a quantum Hamiltonian around a closed circuit and track an eigenstate that returns to itself. Beyond the expected dynamical phase, the state acquires an additional phase determined purely by the geometry of the path in parameter space, specifically the solid angle it encloses, and independent of how slowly the loop is traversed. This geometric phase is gauge-invariant and observable through interference. We express it as the flux of a curvature through the enclosed area.",
+      "side_b_field_label": "classical mechanics",
+      "provenance": "Berry's geometric phase has a classical twin: the Foucault pendulum's swing plane rotates by the solid angle its latitude circle subtends, the standard textbook classical realization of anholonomy."
+    },
+    {
+      "id": "pc-030",
+      "field_a": "condensed matter physics",
+      "field_b": "optics",
+      "shared_mechanism": "coherent multiple scattering in a disordered medium producing exponentially localized eigenmodes and a mobility-edge transition from wave transport to interference-driven arrest",
+      "side_a_title": "Absence of Diffusion of Quantum Waves in a Sufficiently Disordered Lattice",
+      "side_a_abstract": "We study a wave (an electron) hopping on a lattice with random on-site energies and ask when the disorder halts transport. We show that above a critical disorder strength the wave's eigenstates cease to extend through the sample and instead become exponentially localized about random centers, so an initially localized packet never diffuses away. In three dimensions a mobility edge in energy separates localized from extended states; in low dimensions arbitrarily weak disorder localizes. Localization arises from the coherent interference of multiply scattered partial waves.",
+      "side_b_field_label": "optics",
+      "provenance": "Anderson localization of electrons transfers directly to classical waves: light, microwaves, sound, and cold atoms all show the same interference-driven localization, a canonical wave-physics correspondence."
+    },
+    {
+      "id": "pc-031",
+      "field_a": "computer science",
+      "field_b": "evolutionary biology",
+      "shared_mechanism": "iterated variation (mutation and recombination) plus fitness-proportional selection and inheritance, driving a population of encoded candidates toward higher fitness over generations",
+      "side_a_title": "Population-Based Optimization by Selection, Recombination, and Mutation of Encoded Solutions",
+      "side_a_abstract": "We optimize a difficult objective by maintaining a population of candidate solutions encoded as strings and evolving them over generations. Each generation, solutions are copied in proportion to their measured fitness, pairs exchange substrings (recombination), and occasional random symbol flips (mutation) inject novelty. Over many generations the population's average fitness climbs and building blocks of high-fitness partial solutions proliferate and combine. We analyze how selection pressure and mutation rate trade off exploration against convergence.",
+      "side_b_field_label": "evolutionary biology",
+      "provenance": "Genetic algorithms are explicitly modeled on Darwinian evolution (variation, selection, inheritance); the correspondence is the textbook basis of evolutionary computation (Holland)."
+    },
+    {
+      "id": "pc-032",
+      "field_a": "computer science",
+      "field_b": "collective animal behavior",
+      "shared_mechanism": "stigmergy: indirect coordination through a shared, decaying, positively reinforced trail (pheromone) that autocatalytically concentrates traffic on the shortest / best paths",
+      "side_a_title": "Shortest-Path Discovery by Agents Depositing and Following a Reinforcing Trail",
+      "side_a_abstract": "We route many simple agents through a graph in search of good paths between two nodes. Each agent lays a trail marker along the edges it uses and probabilistically prefers edges carrying stronger markers, while markers evaporate over time. Shorter paths get traversed and reinforced sooner, so their markers accumulate faster than they evaporate, and the agent population converges onto near-optimal routes with no central controller. We show how the evaporation rate and reinforcement strength govern convergence and prevent premature lock-in.",
+      "side_b_field_label": "collective animal behavior",
+      "provenance": "Ant-colony optimization is named for and modeled on real ant foraging via pheromone stigmergy; the algorithm-to-insect-behavior correspondence is a textbook swarm-intelligence example."
+    },
+    {
+      "id": "pc-033",
+      "field_a": "chemical kinetics",
+      "field_b": "population ecology",
+      "shared_mechanism": "a continuous-time Markov birth-death (jump) process on integer counts governed by a master equation, whose relative fluctuations scale as one over the square root of the system size",
+      "side_a_title": "Discrete-Molecule Stochastic Kinetics of a Small Reacting System",
+      "side_a_abstract": "When the number of reacting molecules is small, concentrations are not smooth: reactions fire as discrete random events that change integer molecule counts one step at a time. We describe the system by a master equation giving the probability of each count vector, with transition rates set by the reaction propensities, and we simulate exact stochastic trajectories. Fluctuations about the deterministic rate-equation prediction scale inversely with the square root of the copy number and can qualitatively alter the dynamics of rare species. We compute the stationary count distribution and the noise magnitude.",
+      "side_b_field_label": "population ecology",
+      "provenance": "The chemical master equation and Gillespie algorithm are mathematically identical to birth-death models of demographic stochasticity in small populations: the same continuous-time Markov jump process."
+    },
+    {
+      "id": "pc-034",
+      "field_a": "mathematics",
+      "field_b": "structural engineering",
+      "shared_mechanism": "a fold / cusp catastrophe: a smooth change of control parameters past a fold makes a stable equilibrium collide with an unstable one and vanish, forcing a sudden discontinuous jump with hysteresis and bistability",
+      "side_a_title": "Sudden Jumps and Hysteresis from Fold Singularities of an Equilibrium Surface",
+      "side_a_abstract": "We study systems whose equilibria are the critical points of a potential depending on a few control parameters, and classify how equilibria appear and vanish as the controls vary. At a fold of the equilibrium surface a stable and an unstable equilibrium collide and annihilate, so a smoothly changing control forces the state to jump discontinuously to a distant branch. Reversing the control returns the state along a different path, producing hysteresis and bistability within a cusp-shaped region of control space. We enumerate the elementary singularities and their unfoldings.",
+      "side_b_field_label": "structural engineering",
+      "provenance": "Catastrophe theory's cusp and fold are the textbook description of elastic buckling snap-through and of first-order phase transitions: discontinuous jumps produced by a smooth parameter change."
+    },
+    {
+      "id": "pc-035",
+      "field_a": "statistical physics",
+      "field_b": "computer vision",
+      "shared_mechanism": "a Gibbs / Markov-random-field energy combining a local neighbor-agreement (smoothness) coupling with a data-fidelity external field, whose most probable configuration is found by energy minimization",
+      "side_a_title": "Ground States of a Lattice Field with Neighbor-Coupling and a Noisy External Field",
+      "side_a_abstract": "We assign a discrete label to each site of a lattice and define an energy that rewards neighboring sites for agreeing (a smoothness coupling) while penalizing disagreement with a noisy site-wise external field (a data term). The most probable configuration is the one minimizing this total energy, drawn from the corresponding Gibbs distribution at low temperature. Strong coupling produces large uniform domains, while the external field pins the domains toward the observed values. We describe how to find low-energy configurations and how the coupling and field trade off.",
+      "side_b_field_label": "computer vision",
+      "provenance": "Markov-random-field / Ising models with smoothness priors are the textbook foundation of Bayesian image restoration and segmentation (Geman and Geman, Besag): statistical physics transferred to vision."
+    },
+    {
+      "id": "pc-036",
+      "field_a": "mathematical physics",
+      "field_b": "structural biology",
+      "shared_mechanism": "the far-field diffraction amplitude is the Fourier transform of the scattering density; reconstructing the real-space structure requires inverting the transform using intensities plus the lost phases",
+      "side_a_title": "Far-Field Scattering Pattern as the Fourier Transform of a Periodic Density",
+      "side_a_abstract": "We compute the pattern produced when a coherent wave scatters off a periodic arrangement of scatterers and is observed far away. The amplitude in a given direction is the Fourier transform of the scattering density evaluated at the corresponding spatial frequency, so a periodic density yields sharp peaks on a reciprocal lattice whose intensities encode the contents of one repeating unit. Recovering the real-space density requires inverting the transform, which needs both the measured intensities and the relative phases that direct measurement discards. We relate peak positions to the lattice and intensities to the unit-cell density.",
+      "side_b_field_label": "structural biology",
+      "provenance": "X-ray crystallography determines molecular structure (proteins, DNA) by inverting exactly this Fourier / diffraction relationship, the textbook link between Fourier optics and structural biology."
+    },
+    {
+      "id": "pc-037",
+      "field_a": "epidemiology",
+      "field_b": "computer security",
+      "shared_mechanism": "a susceptible-infected-susceptible contact process on a network with an epidemic threshold set by the largest eigenvalue (spectral radius) of the adjacency matrix, below which infection dies out",
+      "side_a_title": "Persistence Threshold for a Susceptible-Infected-Susceptible Contagion on a Contact Network",
+      "side_a_abstract": "We model a contagion that spreads along the edges of a contact network, where infected nodes transmit to their neighbors at a fixed rate and recover back to the susceptible state, able to be reinfected. Whether the infection persists endemically or dies out is governed by the ratio of transmission to recovery relative to a threshold set by the largest eigenvalue of the network's adjacency matrix. Highly heterogeneous networks with large hubs have a vanishingly small threshold, so infection persists even at low transmissibility. We derive the threshold and the endemic prevalence.",
+      "side_b_field_label": "computer security",
+      "provenance": "The network SIS epidemic threshold applies verbatim to computer-virus, worm, and malware propagation on communication networks, a standard epidemiology-to-security correspondence."
+    },
+    {
+      "id": "pc-038",
+      "field_a": "statistical physics",
+      "field_b": "network science",
+      "shared_mechanism": "Bose-Einstein condensation: below a critical temperature a single lowest-energy state captures a macroscopic finite fraction of all particles, mapped onto a fitness-driven winner-takes-all condensation",
+      "side_a_title": "Macroscopic Occupation of the Lowest State in an Ideal Bose Gas",
+      "side_a_abstract": "We study non-interacting bosons distributed over single-particle energy levels according to Bose-Einstein statistics. Below a critical temperature the excited levels can no longer hold all the particles, and a finite fraction abruptly piles into the single lowest-energy state, forming a condensate, even though that state is one among infinitely many. The condensate fraction grows continuously from zero as the temperature falls through the transition. We derive the critical temperature and the condensate fraction as functions of density.",
+      "side_b_field_label": "network science",
+      "provenance": "Bianconi and Barabasi mapped fitness-driven growing networks onto a Bose gas: a single fittest node can seize a macroscopic share of all links exactly as bosons condense into the ground state, a celebrated physics-to-network-science correspondence."
+    },
+    {
+      "id": "pc-039",
+      "field_a": "neurophysiology",
+      "field_b": "combustion science",
+      "shared_mechanism": "a self-sustaining traveling wave in an excitable reaction-diffusion medium: local threshold-triggered autocatalytic release diffuses ahead to ignite neighbors, propagating at a fixed speed and profile with a trailing refractory zone",
+      "side_a_title": "Propagation of a Self-Regenerating Excitation Pulse Along an Excitable Fiber",
+      "side_a_abstract": "We model a long excitable fiber in which a local, threshold-triggered, self-amplifying process couples to its neighbors by diffusion. A supra-threshold stimulus launches a pulse that regenerates itself as it travels: the leading edge diffuses ahead, drives neighboring elements past threshold, and they in turn fire, so the pulse moves at a constant speed and shape independent of the stimulus details. A refractory zone behind the pulse prevents back-propagation and sets a minimum spacing between successive pulses. We compute the propagation speed from the diffusion constant and the excitation kinetics.",
+      "side_b_field_label": "combustion science",
+      "provenance": "The nerve-impulse traveling wave (Hodgkin-Huxley, FitzHugh-Nagumo) is the same excitable reaction-diffusion front as a propagating flame or combustion wave, a textbook cross-field correspondence."
+    }
+  ]
+}

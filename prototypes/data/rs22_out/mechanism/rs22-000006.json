@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "linear (spectral) stability analysis of an open, dissipative system via its complex resonant eigenfrequencies, where the sign of the imaginary part of each mode determines exponential decay versus growth of small perturbations",
+  "brief_reason": "The abstract computes the real and imaginary parts of the quasinormal (leaky-resonance) frequencies as a control parameter is varied and infers stability from the absence of a sign change in the imaginary part, which is exactly reading exponential growth/decay off the complex spectrum of a perturbed system."
+}

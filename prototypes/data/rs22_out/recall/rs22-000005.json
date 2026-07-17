@@ -1,0 +1,6 @@
+{
+  "target_field": "analytic number theory",
+  "shared_mechanism": "a trace/explicit formula that writes a spectral counting function as a sum over primitive closed 'orbits' (primes playing the role of periodic orbits), with the resulting spectral fluctuations obeying random-matrix (GUE) statistics",
+  "confidence": 0.82,
+  "brief_reason": "The nontrivial zeros of the Riemann zeta function are the analogue of the quantum spectrum: the Riemann-Weil explicit formula expresses their density as a sum over prime powers exactly as the periodic-orbit trace formula sums over closed orbits, and the Montgomery-Odlyzko pair correlation of the zeros follows the same GUE random-matrix statistics seen in the quantum-graph spectrum."
+}

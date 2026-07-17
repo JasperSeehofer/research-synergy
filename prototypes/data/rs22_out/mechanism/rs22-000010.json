@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A twistor-type correspondence that linearizes a nonlinear integrable equation by putting its solution space in one-to-one correspondence with holomorphic geometric data — rational curves of a prescribed normal bundle on an auxiliary complex manifold — with an associated Lax (compatibility of a spectral-parameter linear system) representation whose integrability condition reproduces the nonlinear equation",
+  "brief_reason": "The abstract establishes a one-to-one correspondence between (complex) solutions of the nonlinear equation and minitwistor spaces containing a rational curve of normal bundle O(2), and exhibits a Lax representation, which is exactly the twistor/spectral-parameter linearization machinery of integrable systems."
+}

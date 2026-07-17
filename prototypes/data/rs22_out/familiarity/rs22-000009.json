@@ -1,0 +1,5 @@
+{
+  "recognized": true,
+  "stated_result_or_null": "Introduces the deterministic 'Eulerian walker' (rotor-router) model, in which a walker rotates the directional arrow at each visited site before stepping, and shows the medium self-organizes into a critical state where the walker's trajectory eventually forms an Eulerian circuit; the model is closely connected to the abelian sandpile.",
+  "confidence": 0.8
+}

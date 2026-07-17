@@ -1,0 +1,10 @@
+{
+  "mapping": [
+    {"a_element": "the dispersionless KP (and Toda) integrable hierarchy taken in its dispersionless limit", "b_element": "the dispersionless KP (dKP) equation (u_t - u u_x)_x = u_yy that the Einstein-Weyl structure reduces to"},
+    {"a_element": "the (dispersionless) Lax/Hirota structure of the integrable hierarchy", "b_element": "the Lax representation found for the Einstein-Weyl / dKP condition"},
+    {"a_element": "tau-function of the dispersionless hierarchy as the master data encoding solutions", "b_element": "the minitwistor space / potential u(x,y,t) as the master data encoding solutions of dKP"},
+    {"a_element": "distinguished solution families (conformal maps from dispersionless Toda; finite-variable WDVV solutions)", "b_element": "distinguished solution families (EW metrics depending on one arbitrary function; solutions from minitwistor constructions)"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both papers are driven by the same governing integrable system — the dispersionless KP hierarchy with its dispersionless Lax structure — but in different fields: paper A extracts WDVV/associativity solutions from dispersionless KP/Toda tau-functions ('dispersionless limit of the Hirota equations for KP and Toda'), while paper B realizes the very same dKP equation as a symmetry reduction of Einstein-Weyl geometry and solves it via twistor theory ('a Lax representation of the EW condition is found', minitwistor spaces). The shared transferable machinery is the dispersionless-Lax integrable hierarchy centered on dKP, so a role-for-role mapping (governing equation, Lax structure, solution-generating data) holds."
+}

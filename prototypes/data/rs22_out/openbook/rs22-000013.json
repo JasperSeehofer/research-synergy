@@ -1,0 +1,11 @@
+{
+  "mapping": [
+    {"a_element": "a tiling", "b_element": "a projection-method point pattern"},
+    {"a_element": "the groupoid induced by translations of the tiling", "b_element": "the pattern groupoid of the projection point pattern"},
+    {"a_element": "the hull of the tiling as a dynamical system", "b_element": "the dynamical systems obtained from projection point patterns"},
+    {"a_element": "the scaled ordered K_0-group as the topological invariant of the tiling groupoid (gap labelling)", "b_element": "the cocycle cohomology of the pattern groupoid as the topological invariant"},
+    {"a_element": "computation for one-dimensional tilings and their Cartesian products", "b_element": "calculation for canonical projection method tilings of codimension at most 3"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both build a groupoid from the translations of an aperiodic tiling/point pattern (its hull as a dynamical system) and extract a topological invariant of that groupoid; A uses the ordered K_0-group of the tiling C*-algebra for gap labelling while B uses the cocycle cohomology of the pattern groupoid, but the transferable machinery -- groupoid-based topological invariants of tilings computed on specific families -- is the same."
+}

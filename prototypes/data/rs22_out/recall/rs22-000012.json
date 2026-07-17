@@ -1,0 +1,6 @@
+{
+  "target_field": "condensed matter physics",
+  "shared_mechanism": "Élie Cartan's classification of symmetric spaces used as a selection constraint on admissible structures — here demanding the scalar manifold be a homogeneous quaternionic-Kähler symmetric space, which fixes the allowed gauge-group field content",
+  "confidence": 0.5,
+  "brief_reason": "The Altland-Zirnbauer 'tenfold way' classifying topological insulators/superconductors and disordered random-matrix ensembles rests on the same Cartan classification of symmetric spaces that restricts the allowed homogeneous quaternionic scalar manifolds (and thereby the SO(10)/E(6) field content) in this 5D supergravity construction; in both, requiring a structure to be a symmetric space of a given holonomy/type picks out the permissible representations."
+}

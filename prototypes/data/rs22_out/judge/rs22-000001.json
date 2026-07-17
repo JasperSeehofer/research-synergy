@@ -1,0 +1,6 @@
+{
+  "field_match": false,
+  "mechanism_match": false,
+  "overall_equivalent": false,
+  "rationale": "Classical cryptography / information-theoretic security is a genuinely different specific field from quantum physics, so field_match fails. The stated mechanism describes one-time-pad-style reconstruction of a message from a pre-shared correlated secret plus a uniformly-random public transmission that carries zero information, whereas the reference mechanism is a positive-semidefiniteness / matrix-cone (covariance-matrix) separability test under a partial sign-flip involution with a bound regime — entirely different machinery — so mechanism_match fails and the answer is not equivalent."
+}

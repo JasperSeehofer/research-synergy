@@ -1,0 +1,6 @@
+{
+  "target_field": "classical cryptography (information-theoretic security)",
+  "shared_mechanism": "reconstruction of an unknown message from a pre-shared correlated secret resource combined with a public classical transmission, where the transmitted data is uniformly random and individually carries zero information about the message",
+  "confidence": 0.6,
+  "brief_reason": "The one-time pad (Vernam cipher) reconstructs a secret message by XOR-combining a pre-shared random key with a public ciphertext that, on its own, is uniformly random and reveals nothing; teleportation reconstructs an unknown quantum state by combining a pre-shared entangled pair with uniformly-random classical measurement outcomes, making the classical bits a one-time-pad encryption of the state."
+}

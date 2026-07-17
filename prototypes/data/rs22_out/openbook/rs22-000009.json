@@ -1,0 +1,10 @@
+{
+  "mapping": [
+    {"a_element": "the rotor-router model, a deterministic analogue of random walk in which a particle follows the rotor/arrow at each site", "b_element": "the Eulerian walker: a particle that moves along the directions specified by arrows at each site"},
+    {"a_element": "updating (rotating) the rotor direction each time the particle passes through a site, by a fixed rule", "b_element": "changing the direction of the arrows at each site according to fixed rules as the particle moves"},
+    {"a_element": "the abelian sandpile / divisible sandpile structure underlying the rotor-router growth model", "b_element": "the Abelian Sandpile Model, whose abelian group of particle-addition operators is the same as that of the Eulerian-walker particle additions"},
+    {"a_element": "particle aggregation on the lattice (sites become occupied as particles settle)", "b_element": "particle addition/dropping on the lattice with eventual exit (open graphs) driving the dynamics"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Paper A's rotor-router model and Paper B's Eulerian walker are the same deterministic process: a particle routed by arrows at each site that are updated by a fixed rule on each visit, and both are explicitly tied to the Abelian Sandpile Model's abelian group structure. The machinery is identical even though A analyzes the aggregate's asymptotic (spherical) shape while B extracts self-organized-criticality exponents from the same group equivalence."
+}

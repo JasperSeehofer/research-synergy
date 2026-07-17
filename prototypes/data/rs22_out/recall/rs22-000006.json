@@ -1,0 +1,6 @@
+{
+  "target_field": "condensed matter physics (ultracold quantum gases / superfluids)",
+  "shared_mechanism": "a transonic fluid flow whose linearized perturbations obey a wave equation in an emergent Lorentzian 'acoustic metric', so the sonic (speed = sound-speed) point behaves as an effective event horizon",
+  "confidence": 0.7,
+  "brief_reason": "Sonic (acoustic) black holes in flowing Bose-Einstein condensates and superfluid helium are governed by the same machinery: sound perturbations in a moving medium propagate as if in a curved effective spacetime, and the transonic crossing point acts as an acoustic horizon that emits analogue Hawking radiation, exactly the acoustic-geometry construction the accretion paper derives from its perturbation equation."
+}

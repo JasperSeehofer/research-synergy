@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a stationary constant-flux cascade of a conserved quantity across a continuum of scales, i.e. a scale-invariant power-law (Kolmogorov-type) spectrum carrying a constant flux from small to large scales in an integro-differential kinetic (collision) equation, extracted via a Zakharov conformal transformation of the collision integral, with a locality (convergence) criterion on the kernel's asymptotics and a flux-reaches-infinite-scale (blow-up) threshold",
+  "brief_reason": "The abstract analyzes stationary solutions of a homogeneous-kernel aggregation (collision) equation via Zakharov transformations, finding Kolmogorov-type distributions that carry a constant flux of the conserved quantity from small to large scales, governed by a locality criterion and a capacity threshold separating flux-conserving from flux-to-infinity (gelation) regimes."
+}

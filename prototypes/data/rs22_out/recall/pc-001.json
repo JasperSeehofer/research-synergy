@@ -1,0 +1,6 @@
+{
+  "target_field": "opinion dynamics (sociophysics)",
+  "shared_mechanism": "continuous (second-order) order-disorder transition with spontaneous breaking of a Z2 up/down symmetry: below a critical noise level a global order parameter (net alignment) emerges from short-range majority coupling, with diverging correlation length and susceptibility at the critical point",
+  "confidence": 0.82,
+  "brief_reason": "In noisy majority-vote / voter models of opinion dynamics, agents copy the local majority against a background of social noise; below a critical noise the population spontaneously reaches consensus (nonzero mean opinion) while above it opinions stay disordered, which is the exact same symmetry-breaking critical transition as spontaneous magnetization in the Ising ferromagnet (opinion = spin, social pressure = coupling, noise = temperature)."
+}

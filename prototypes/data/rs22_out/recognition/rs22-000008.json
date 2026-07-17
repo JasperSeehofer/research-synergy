@@ -1,0 +1,5 @@
+{
+  "chosen_field": "quantum algebra",
+  "confidence": 0.72,
+  "brief_reason": "The paper's core machinery is the deformation-quantization of higher (d-)algebraic structures via BV cohomology, which is precisely the subject matter of quantum algebra's quantization of operadic/algebraic structures."
+}

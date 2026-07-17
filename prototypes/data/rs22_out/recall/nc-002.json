@@ -1,0 +1,6 @@
+{
+  "target_field": null,
+  "shared_mechanism": null,
+  "confidence": 0.08,
+  "brief_reason": "The paper's method is a target-specific compiler peephole pass: local matching of short instruction patterns after register allocation and semantics-preserving rewrite rules enumerated per addressing mode on one 8-bit ISA. This is a narrow engineering optimization tied to a specific instruction set; beyond the generic notion of local rewriting no specific phenomenon in a genuinely different scientific field shares that exact machinery, so nothing specific came to mind."
+}

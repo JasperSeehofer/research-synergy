@@ -1,0 +1,12 @@
+{
+  "mapping": [
+    {"a_element": "the DuVal singularity C^2/G for a finite G subset SU(2) (ADE type)", "b_element": "the singularity C^2/Z_n (the A_{n-1} case of the same Kleinian family)"},
+    {"a_element": "minimal resolution Y of C^2/G", "b_element": "the resolution of C^2/Z_n whose local geometry sits inside the K3"},
+    {"a_element": "ADE root system canonically associated to G via the McKay correspondence", "b_element": "A_{n-1} root system / gauge algebra attached to the geometry, with explicit remarks on the McKay correspondence"},
+    {"a_element": "exceptional curves of the resolution realizing the simple roots", "b_element": "exceptional curves of the classical geometry manifesting the simple roots"},
+    {"a_element": "quantum cohomology / quantum product (A-model Gromov-Witten) that encodes the full root-system structure", "b_element": "quantum geometry obtained from local mirror symmetry (B-model) that exhibits all positive roots, not just the simple ones"},
+    {"a_element": "equivariant Gromov-Witten potential / Frobenius manifold computed for the resolution", "b_element": "D-brane central charges / periods obtained by solving the GKZ system of the local geometry (the mirror-dual generating data)"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both describe the quantum geometry of the resolution of the Kleinian singularity C^2/G and encode it in an ADE root system through the McKay correspondence, with the classical exceptional curves realizing the simple roots and the quantum-corrected structure revealing the full (positive) root system. A computes this via equivariant quantum cohomology (A-model Gromov-Witten) while B computes it via local mirror symmetry and the GKZ period system (B-model); these are mirror-dual computations of the same underlying object, so the machinery role-maps element for element."
+}

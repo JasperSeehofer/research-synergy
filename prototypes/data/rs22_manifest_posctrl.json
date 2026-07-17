@@ -1,0 +1,727 @@
+{
+ "units_spec": "posctrl",
+ "n_units": 40,
+ "n_records": 80,
+ "records": [
+  {
+   "instr": "recall",
+   "key": "pc-000",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-000.json",
+   "input_sha256": "91513d9e6424b2d72e7e0db205e4e9560a8cdc82844a5db3e42b27d7ecf5e5fd",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-000.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-000.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-000",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-000.json",
+   "input_sha256": "66ee09867f6cc2ad4b025f3076fe7cdec62bb428e8748d7018187d37423d391f",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-000.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-000.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-001",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-001.json",
+   "input_sha256": "d288cf4860d6f9e096d24167c64bb51bdfdba845e8d48d77d81a286e9483a014",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-001.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-001.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-001",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-001.json",
+   "input_sha256": "89e1d92b7cff5aeb751223356319db73a54168cf8e3906351252b530b9837c01",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-001.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-001.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-002",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-002.json",
+   "input_sha256": "7f3b5d433f05ee060cb094bff93a15fdc6d99cbae9cf77ce80e02e9c60951638",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-002.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-002.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-002",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-002.json",
+   "input_sha256": "29df0726f5cbcb0fc40febc32e8c70275c9e05c72482a004e266bf314027e818",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-002.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-002.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-003",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-003.json",
+   "input_sha256": "108bf9b80d51c02e0ee48a915883c9f096bc9334630719b765fbf71391a1db63",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-003.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-003.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-003",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-003.json",
+   "input_sha256": "420dfc5bed08d990e5263514f72f386be91a973a1122b2856a3e40dee30a48e4",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-003.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-003.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-004",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-004.json",
+   "input_sha256": "beb4a38e8ec2c566e185f4cb46c44a40a9fc64762ff539d4ad8cee78f60b2ad8",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-004.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-004.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-004",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-004.json",
+   "input_sha256": "2298eb4ec72dd4fbef86251122ea630c6a69e8c562ff5e28b346eee128ff9c2b",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-004.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-004.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-005",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-005.json",
+   "input_sha256": "b8321f195ee699bc50c387d35b6692f0529ef7b1bd1e36c5db2a3ec18c4069ca",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-005.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-005.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-005",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-005.json",
+   "input_sha256": "a0cc0643bec0fef1153734bebb72013dd9a9867298bb891003ff1f20771ca23e",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-005.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-005.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-006",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-006.json",
+   "input_sha256": "840a8c578c9a384bada2ef4a6854aa3ad3410c57225f8197b329acb99e22a5b8",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-006.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-006.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-006",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-006.json",
+   "input_sha256": "0b5f6198a58183dc3223feafd6552de207ff937e6f93c136cf6a004939ae977a",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-006.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-006.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-007",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-007.json",
+   "input_sha256": "85a679bcb572252452892d19a5b7b9df2596392f8c23e1a1e41733197200553d",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-007.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-007.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-007",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-007.json",
+   "input_sha256": "1bc15d6c15ccb2c0b55fadf132f8c40fff0cfe0238640bb1d807fd05b2b04e6a",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-007.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-007.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-008",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-008.json",
+   "input_sha256": "179cf6b38875ccffc34a254ef091582c4584d21df1649d536f4cd8bc76812bd2",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-008.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-008.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-008",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-008.json",
+   "input_sha256": "fe5dab974049bb454c272f3755f416576b0424764f1e5a372f610d567fdca027",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-008.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-008.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-009",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-009.json",
+   "input_sha256": "3623d402afbda5cd83e961b1569a593f70ee01ae92fc1d3804cea6f5f0a6cb92",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-009.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-009.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-009",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-009.json",
+   "input_sha256": "ef0ba12cf4f10ef96c40d1522af2b047ea995c020c642ea4d6fa2469f3ecd332",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-009.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-009.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-010",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-010.json",
+   "input_sha256": "8774d2e515ac5319b1ab8b34fa6b33540d493726889e66aaaeefbe23b00a2210",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-010.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-010.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-010",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-010.json",
+   "input_sha256": "28c90438c1f2ae60cfd2239e770c1954290aa3484a39519abfdf6b4841b8580e",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-010.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-010.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-011",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-011.json",
+   "input_sha256": "493d6f91a047e612f8216d45309fc2744233f9d91a8be1edce991e02d7e40ce2",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-011.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-011.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-011",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-011.json",
+   "input_sha256": "41a4a587dfb42f9e4ee8debdb69a69332d61b0eb0e71880cdc849f9ce4883f44",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-011.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-011.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-012",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-012.json",
+   "input_sha256": "af4d35ae66813d89489c42ed38c5cd910f4ff3694bb2a66cf29a0f3fb6f23f02",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-012.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-012.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-012",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-012.json",
+   "input_sha256": "2cf2d3955f16f9b27294fbe34bd9eef2bf0673c11816313d091a62193a87323b",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-012.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-012.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-013",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-013.json",
+   "input_sha256": "36d2da43deea838395a0996fcf440700c14e0b17a4c40b89e5b0780588c613ea",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-013.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-013.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-013",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-013.json",
+   "input_sha256": "9c8d3a974574e42aaf9eaf28a896527c829ed627851ea8f7276073f89ff890c0",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-013.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-013.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-014",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-014.json",
+   "input_sha256": "ffff06579306a329a6db9fa837f58ea9668ae3063254b6e1c052170d7441f9f5",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-014.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-014.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-014",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-014.json",
+   "input_sha256": "623244a30d4352af324ad7ac7fbea6176d09ff6154e2d7e59a56165f321834d2",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-014.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-014.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-015",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-015.json",
+   "input_sha256": "896c14fd45039bfcd8c6d351cbcfd88b1374425ef3b77e72e39eed0dfae9b6e2",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-015.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-015.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-015",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-015.json",
+   "input_sha256": "f7ffd248e57548e3a5ee1fb1ae77101024420e6d95e6279c35d0d7a4f1cf295b",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-015.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-015.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-016",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-016.json",
+   "input_sha256": "efe4fa262c044fba834a442ee39cc792331b3ae1076ea6e43acf8ff397735eae",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-016.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-016.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-016",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-016.json",
+   "input_sha256": "d27543227e2845a5bc97593c364786c4928b587ba1a9026f0fd230d821c3280f",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-016.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-016.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-017",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-017.json",
+   "input_sha256": "7a8ecadf025fc31421b0721695a7959fe9ae3bcf4012661cd8820d0966eb5f3a",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-017.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-017.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-017",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-017.json",
+   "input_sha256": "94293f9bddea9beaea938016f7f698f1e6bd4831aab9661e16b4fe6459536022",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-017.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-017.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-018",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-018.json",
+   "input_sha256": "fb6efa6213044d71974019c365d858d4c89665654ccb4875f67b5754fcda0239",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-018.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-018.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-018",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-018.json",
+   "input_sha256": "e2da6b0da7628f953e08921a331fd0b2a597d3017c5d0a2649ba978e1887b747",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-018.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-018.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-019",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-019.json",
+   "input_sha256": "3c5c7694d4b2faec49ab1c027cf465b1240f7a5774494f54629f75ce9e757b7e",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-019.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-019.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-019",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-019.json",
+   "input_sha256": "2616389dd611e89d540b9c4443b57e511631e380538731364c4115d667ea8b4e",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-019.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-019.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-020",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-020.json",
+   "input_sha256": "13588ed220dcd22a709db31ce7238ec6b5c704ecc9d2ba8abd4be2499df32481",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-020.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-020.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-020",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-020.json",
+   "input_sha256": "e9af17f2d5a9448f1e52a642141a19b09d1221ede3b74e488de8f0bb4b33edb2",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-020.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-020.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-021",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-021.json",
+   "input_sha256": "cecbcc51a9b60eb3612361b212e04c2109f9a7836a825a1446e9200ced2ba704",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-021.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-021.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-021",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-021.json",
+   "input_sha256": "0c42062fd8b6447b44d7091a0feb95f4bdc079101bc2ef12154080322c939b2f",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-021.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-021.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-022",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-022.json",
+   "input_sha256": "f82f5e705f73a94f55bfacf4425abf6cbe30c04e17666f5c743571bbb8ec7c39",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-022.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-022.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-022",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-022.json",
+   "input_sha256": "7e1e6afa6348d773480b6ecf5af01cb5ade20fdfa4b503f5129892cbcba6674c",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-022.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-022.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-023",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-023.json",
+   "input_sha256": "7956badbeb6f98fae6ed4bf33615427f7cead3a93449dd1017bcb760e1bae496",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-023.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-023.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-023",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-023.json",
+   "input_sha256": "a3553ae3d1f3ffba68ef167adca8e66dd0e1b502a92eee59f2d55f249a11c0d8",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-023.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-023.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-024",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-024.json",
+   "input_sha256": "d554e51fb7adf16506aa8132bbd187a9a8dc572d725acb6afa0ef5226ec8c21a",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-024.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-024.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-024",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-024.json",
+   "input_sha256": "6fe858d71c2b6926644b3311bf9396020eaa6cbce1a0ef060b199bc8da6d76b5",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-024.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-024.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-025",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-025.json",
+   "input_sha256": "32731cd9e69e0de2c4107e6abddacf28e305aaddae1965899c46fbbff745dfb9",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-025.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-025.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-025",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-025.json",
+   "input_sha256": "d5b5c2c39302c6ce3e9e94e6799c6bd749b1f2c9cd0c2f384a81e3a6c2e9a76b",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-025.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-025.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-026",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-026.json",
+   "input_sha256": "5b5fdb373e13683a9df2b087d1cf504280b1fab4a66cc102f974589d32e373bc",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-026.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-026.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-026",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-026.json",
+   "input_sha256": "59ffb987bf14e34071f04a93f7dbc7b2e91040c917e2db8cf9ee44180be01439",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-026.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-026.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-027",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-027.json",
+   "input_sha256": "f1568302cbd69bafb735d86e45cd7e0bbc691e60964066447e7175f52dcb00b1",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-027.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-027.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-027",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-027.json",
+   "input_sha256": "ffe0dd5b54142958e6a951a9f54a2a19a8f70301a03c6d3a96776e39893b41e8",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-027.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-027.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-028",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-028.json",
+   "input_sha256": "1f46d29c6eb5301924179de90840c737a044addde1acfce2cccb9c9d249c5a1c",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-028.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-028.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-028",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-028.json",
+   "input_sha256": "01e30103153d017a6d657accd30ace201e35ceb86dba827923222d4e9b93992d",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-028.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-028.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-029",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-029.json",
+   "input_sha256": "605474fa77d4f88682c57b371b69418ccf6f93ec4b3f43f5380f5f1792ba4f1d",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-029.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-029.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-029",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-029.json",
+   "input_sha256": "181ab7fe20f483f91bba4952af6689349a8f4817c43d63025005698c3032adff",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-029.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-029.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-030",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-030.json",
+   "input_sha256": "549295ca9d33dc16e4a56ea3a7705e0ce2a42dd14a3132918bb98600471ba760",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-030.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-030.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-030",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-030.json",
+   "input_sha256": "00e32fe4060101214d5e18754cfae872eb0873a516eb0d6889dbc99be863c5aa",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-030.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-030.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-031",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-031.json",
+   "input_sha256": "a0667264aba23ce0f3fe4179a045b7ec99f2137db87e1782101f986db340473c",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-031.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-031.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-031",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-031.json",
+   "input_sha256": "910afd8ad5038729722be7160851ff6978f16c4af3d126177651349418fafa9f",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-031.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-031.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-032",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-032.json",
+   "input_sha256": "d8b0386080282a428b620fbb356262bc7b86c527c2c9785e03eb3d6dcaebb501",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-032.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-032.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-032",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-032.json",
+   "input_sha256": "e599692a9fc457ff63ae90eb22746ab1e43bee10955bb1b1d5686969f39d0fac",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-032.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-032.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-033",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-033.json",
+   "input_sha256": "dbd9f87a773aa2b3b569fff0c1c87dd93c4986f032053850add7f48ebf0e7b62",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-033.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-033.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-033",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-033.json",
+   "input_sha256": "f3cf4a5b4495b72546301f5bdef230aa6e1a57cca9b33ba74a26c8b5f9cdfc81",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-033.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-033.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-034",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-034.json",
+   "input_sha256": "1eb265812b09085e43c545ff00c7a24889530809f3e847520b76b94ed1a79faa",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-034.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-034.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-034",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-034.json",
+   "input_sha256": "1c42d4fe8f47aa81baae7e231d080cbc310af7997b63c9207412abe8379fca4b",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-034.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-034.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-035",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-035.json",
+   "input_sha256": "3d1a7b791590ab8c42dc0f1146eaa6ff4415505f95f4fbd80075c8293d049526",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-035.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-035.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-035",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-035.json",
+   "input_sha256": "467129b84352348be74a4aabc2e28bc5046c6a76f9be7fca440cdf1b9dd6111a",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-035.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-035.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-036",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-036.json",
+   "input_sha256": "d2df58b00eaab2af0a9e67f08dc0d6a3fc5754f0ac3f8ac18a176ea42af1463e",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-036.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-036.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-036",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-036.json",
+   "input_sha256": "17ef88b932c58e5b1aaab64edd8f52917e54f493b01426bdf7d797e2032602aa",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-036.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-036.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-037",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-037.json",
+   "input_sha256": "77d0ea8ded38c71d029fa5a889523d44f582bfe55c2d55cef08950699725c76e",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-037.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-037.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-037",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-037.json",
+   "input_sha256": "7434a17f2ea518b42dd777f1502bdd19b2045a0fae9139f74e6405aaf380c02d",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-037.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-037.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-038",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-038.json",
+   "input_sha256": "eca61b922789bf98460f91c9e37afc9035354db803afd55d279dc9efe1112d5f",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-038.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-038.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-038",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-038.json",
+   "input_sha256": "7a0be42cfd2959f3b572ce563c494f89ab4b715f8015da23b9959dd3a0e089b9",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-038.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-038.json"
+  },
+  {
+   "instr": "recall",
+   "key": "pc-039",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recall/pc-039.json",
+   "input_sha256": "8d17c42711b1268a481186bb2b29c08c4279c261e5d4ee0e71005d177fc4862c",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recall/pc-039.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recall/pc-039.json"
+  },
+  {
+   "instr": "recognition",
+   "key": "pc-039",
+   "utype": "posctrl",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_in/recognition/pc-039.json",
+   "input_sha256": "e1b5bd3edc695e031fefb762d66b282da8034a083c3c6023edf2490d3588c173",
+   "out_claude": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out/recognition/pc-039.json",
+   "out_mistral": "/home/jasper/Repositories/research-synergy/prototypes/data/rs22_out_mistral/recognition/pc-039.json"
+  }
+ ]
+}

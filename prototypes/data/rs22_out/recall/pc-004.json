@@ -1,0 +1,6 @@
+{
+  "target_field": "nuclear reactor physics",
+  "shared_mechanism": "mass-action multiplication with a critical threshold at unit reproduction/multiplication factor: supercritical exponential growth versus subcritical decay, plus a self-limiting final yield",
+  "confidence": 0.82,
+  "brief_reason": "A neutron chain reaction in a fissile assembly is governed by the multiplication factor k, the exact analogue of the reproduction number: k>1 gives an exponentially growing supercritical chain, k<1 lets the reaction die out, and k=1 is the critical boundary, mirroring the SIR threshold and its saturating final outbreak size."
+}

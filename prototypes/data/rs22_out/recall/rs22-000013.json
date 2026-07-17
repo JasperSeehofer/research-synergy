@@ -1,0 +1,6 @@
+{
+  "target_field": "condensed-matter physics (the integer quantum Hall effect)",
+  "shared_mechanism": "K-theoretic gap labelling: a trace / invariant ergodic measure on the observable crossed-product C*-algebra evaluated on K_0 classes, forcing a spectral quantity to take values only in a discrete, topologically fixed module of labels",
+  "confidence": 0.62,
+  "brief_reason": "In the integer quantum Hall effect the Hall conductance sits on plateaus quantized to integer (Chern/TKNN) values that are the trace of a K-theory class of the same non-commutative observable algebra; this is exactly the gap-labelling machinery here, where the trace/invariant measure on the hull pins the integrated density of states in each spectral gap to a countable module."
+}

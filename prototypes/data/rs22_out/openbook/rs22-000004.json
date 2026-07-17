@@ -1,0 +1,11 @@
+{
+  "mapping": [
+    {"a_element": "nonlinear Schrodinger equation governing the optical wave in the nonlinear medium", "b_element": "wave propagation equation in the nonlinear Kerr medium"},
+    {"a_element": "partially incoherent plane wave with random phase fluctuations", "b_element": "partially coherent wave characterized by its incoherent field spectrum"},
+    {"a_element": "evolution equation for the Wigner transform (kinetic/transport equation for the field's spectral density)", "b_element": "dispersion relation for modulational instability as a functional of the incoherence spectrum"},
+    {"a_element": "Landau-like damping from the spread of random phases", "b_element": "spectral-width dependence that suppresses (or enhances) the modulational-instability growth rate"},
+    {"a_element": "stabilization / modification of the modulational instability of the incoherent field", "b_element": "modification of the range and existence of modulationally unstable wave numbers"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both perform a linear stability (modulational-instability) analysis of a partially incoherent field governed by the nonlinear Schrodinger/Kerr equation, in which the growth rate follows from an integral dispersion relation set by the field's incoherence spectrum; paper A's Wigner-transport-derived Landau-like damping is exactly the spectrum-dependent mechanism whose non-monotonic effect on the unstable band paper B explores, so the same kinetic MI machinery drives both."
+}

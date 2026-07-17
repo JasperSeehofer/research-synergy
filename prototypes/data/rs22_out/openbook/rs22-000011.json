@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "three-dimensional optical lattice potential hosting the atoms", "b_element": "the lattice on which the classical degrees of freedom interact"},
+    {"a_element": "atoms localized at individual lattice sites in the Mott-insulator phase", "b_element": "spatially localized discrete-breather solution on the lattice"},
+    {"a_element": "critical value of the ratio of the two competing energy terms (tunneling vs. on-site interaction) that triggers the transition", "b_element": "critical lattice dimension d_c above which breather energies have a positive lower bound"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The overlap is only the shared setting (a lattice) and the word 'localization' plus the presence of some 'critical value'; the governing machinery differs decisively. Paper A is a quantum many-body phase transition of a Bose-Einstein condensate driven by the competition of tunneling and on-site interaction energies crossing a critical ratio (collective ground-state coherence vs. number-localized Mott phase), whereas Paper B is classical nonlinear Hamiltonian lattice dynamics concerning the existence and energy lower bounds of time-periodic discrete breathers as a function of spatial dimension — no governing equation, order parameter, or transition mechanism corresponds role-for-role."
+}

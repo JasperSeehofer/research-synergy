@@ -1,0 +1,5 @@
+{
+  "chosen_field": "optimization and control",
+  "confidence": 0.55,
+  "brief_reason": "Both hinge on the same machinery of convex polytopes carved out by linear inequality constraints and the enumeration of their integer lattice points, which is precisely the feasible-region/transportation-polytope structure of linear and integer programming."
+}

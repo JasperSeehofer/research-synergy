@@ -1,0 +1,12 @@
+{
+  "mapping": [
+    {"a_element": "5D N=2 Yang-Mills-Einstein supergravity theories (YMESGTs) used as the model-building framework", "b_element": "the general D=5, N=2 gauged supergravity theory whose full Lagrangian and SUSY transformation rules are constructed"},
+    {"a_element": "charged hypermultiplets in lowest-dimensional reps", "b_element": "hyper-multiplets coupled to the supergravity"},
+    {"a_element": "coupling of tensors / charged tensor couplings in 5D", "b_element": "tensor-multiplets in the general matter coupling"},
+    {"a_element": "gauging of SU(5)/SO(10)/E(6) and non-compact gaugings", "b_element": "gauging of the R-symmetry SU(2)_R and a subgroup K of the isometries of the scalar manifold"},
+    {"a_element": "homogeneous quaternionic scalar manifolds classifying the hypermultiplet scalars", "b_element": "the scalar-manifold geometry whose isometries are gauged"},
+    {"a_element": "M-theory taken as motivating background", "b_element": "connection to type IIB on the T^{11} manifold (string/M-theory embedding)"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both papers work inside the identical machinery of five-dimensional N=2 gauged supergravity coupled to vector, tensor, and hypermultiplets, with gauging of scalar-manifold isometries and the quaternionic hyper-scalar geometry as the governing structure; paper B constructs the general Lagrangian and SUSY rules of this theory, while paper A applies the same YMESGT construction (its special case) to embed orbifold-GUTs, so a role-for-role mapping of multiplets and gaugings holds directly."
+}

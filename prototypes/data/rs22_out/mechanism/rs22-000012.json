@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "gauging: promoting a chosen subgroup of the isometry (symmetry) group of a curved target/configuration manifold from a global symmetry to a position-dependent local one, with every interaction and coupling term uniquely fixed by demanding that an underlying graded symmetry algebra close consistently on the fields",
+  "brief_reason": "The method builds the complete Lagrangian and transformation rules by 'gauging of the R-symmetry group SU(2)_R as well as a subgroup K of the isometries of the scalar manifold', i.e. turning selected isometries of the target manifold into a local symmetry whose consistency (closure of the supersymmetry algebra) dictates the full coupling structure."
+}

@@ -1,0 +1,5 @@
+{
+  "chosen_field": "functional analysis",
+  "confidence": 0.58,
+  "brief_reason": "Both rest on the spectral theory of self-adjoint operators and trace formulas that link an operator's eigenvalue spectrum to periodic orbits, making functional analysis' study of operator spectra and Selberg-type trace formulas the same underlying machinery as the paper's quantum-graph spectral theory."
+}

@@ -1,0 +1,11 @@
+{
+  "mapping": [
+    {"a_element": "Cliffordization: the twisted/deformed Hopf-algebra product that reorganizes operator products", "b_element": "twisted products (Rota cliffordizations) induced by branching operators in the symmetric-function algebra"},
+    {"a_element": "Wick's theorem / Wick normal re-ordering of quantum fields", "b_element": "re-expression of symmetric-function products under the twisted (cliffordized) product, e.g. yielding orthogonal/symplectic-type bases"},
+    {"a_element": "underlying Hopf algebra of QFT field operators", "b_element": "Hopf and bi-algebra structure of the ring of symmetric functions"},
+    {"a_element": "Rota-Stein combinatorial formula driving the reordering", "b_element": "branching operators / Laplace pairing generating the twisted product"},
+    {"a_element": "closed algebraic expressions obtained from the Hopf-algebraic identity", "b_element": "explicit symmetric-function operations realizing the same cliffordization"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both papers are built on the identical machinery of 'Cliffordization' — deforming a Hopf algebra's product into a twisted product via a Laplace-pairing/branching cocycle (the Rota-Stein construction); paper A uses it to realize Wick's theorem for QFT operators, and paper B uses the very same Rota cliffordization, induced by branching operators, on the Hopf algebra of symmetric functions, so the governing algebraic structure corresponds role-for-role."
+}

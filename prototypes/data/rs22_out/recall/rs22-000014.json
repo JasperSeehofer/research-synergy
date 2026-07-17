@@ -1,0 +1,6 @@
+{
+  "target_field": "physical oceanography (wind-driven ocean surface waves)",
+  "shared_mechanism": "weak/wave-turbulence closure: a wave-kinetic (Boltzmann-type) equation for the spectral energy density derived from resonant multi-wave interactions, admitting Kolmogorov-Zakharov power-law stationary spectra",
+  "confidence": 0.8,
+  "brief_reason": "The wind-wave energy spectrum in oceanography evolves via Hasselmann's kinetic equation, assembled from resonant wave-wave interactions just like the three-wave kinetic equations for the MHD spectral densities here; both are instances of Zakharov weak-turbulence theory yielding exact power-law spectra."
+}

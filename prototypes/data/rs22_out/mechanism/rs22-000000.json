@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a distinguished anti-automorphism of an algebraic structure whose iterate (its fourth power) is forced to equal conjugation by a distinguished invertible element (a Radford-type inner-automorphism identity), so that the map has finite order modulo inner automorphisms, with a trace invariant of its square serving as a decomposability/semisimplicity criterion",
+  "brief_reason": "The abstract derives an analogue of Radford's formula for the fourth power of the antipode S showing S^4 is a trivial (inner) automorphism and hence S has finite order, and uses Tr(S^2) as a sufficient condition for semisimplicity."
+}

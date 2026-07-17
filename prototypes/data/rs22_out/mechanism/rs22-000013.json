@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "assigning an algebraic-topological invariant to a structure by forming the groupoid of its translational/dynamical equivalences and taking that groupoid's cocycle cohomology as a classifying invariant",
+  "brief_reason": "The abstract defines the cohomology of a point pattern as the cocycle cohomology of its associated pattern groupoid (built from dynamical systems on the pattern) and computes this invariant, which is the transferable groupoid-cohomology construction independent of the tiling subject matter."
+}

@@ -1,0 +1,6 @@
+{
+  "target_field": "fluid dynamics (interfacial / Hele-Shaw flow)",
+  "shared_mechanism": "the semiclassical (dispersionless) limit of the Toda integrable hierarchy, whose tau-function encodes the deformation of a two-dimensional domain through conformal maps and a set of commuting flows in the domain's exterior harmonic (multipole) moments",
+  "confidence": 0.7,
+  "brief_reason": "Laplacian growth / viscous fingering of a fluid interface in a Hele-Shaw cell evolves as exactly this dispersionless-Toda flow: the exterior harmonic moments of the growing domain are the Toda times and the conformal map to the domain is the dynamical object, so the interface motion is governed by the same integrable tau-function structure the paper derives for the associativity/WDVV equations."
+}

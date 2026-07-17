@@ -17,3 +17,9 @@ prototypes/data/embed_cache/
 
 # RS-22 mining validation slices (throwaway)
 prototypes/data/rs22_*_probe.json
+
+# RS-22 blind instrument INPUTS (deterministically regenerable via rs22_probe.py emit-inputs)
+prototypes/data/rs22_in/
+# RS-22 detached mine run log (ephemeral; provenance is in rs22_mining_snapshot.json)
+prototypes/rs22_mine_run.log
+prototypes/data/rs22_probe_cache/

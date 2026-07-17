@@ -1,0 +1,11 @@
+{
+ "note": "SLICE-BASED posctrl (n=15 pairs + 5 posctrl + 3 negctrl + 5 anchors); Mistral arm/audit/kappa/false-miss NOT run (terminal verdict on slice evidence, human decision).",
+ "posctrl_fire_rate": 1.0,
+ "negative_control_holds": true,
+ "anchor_recall_at_10": 1.0,
+ "audit_passed": false,
+ "probe_false_miss_rate": 1.0,
+ "n_clean": 0,
+ "n_distinct_field_pairs": 0,
+ "strength_kappa": 0.0
+}

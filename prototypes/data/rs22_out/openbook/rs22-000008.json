@@ -1,0 +1,13 @@
+{
+  "mapping": [
+    {"a_element": "Batalin-Vilkovisky path-integral / BV quantization of the QFT", "b_element": "differential Gerstenhaber-Batalin-Vilkovisky (dGBV) algebra of the Barannikov-Kontsevich construction"},
+    {"a_element": "moduli space M parametrizing the flat family of QFTs", "b_element": "the Frobenius manifold (deformation/unfolding space of the theory)"},
+    {"a_element": "tangent space at the initial QFT = space of all observables", "b_element": "tangent space of the Frobenius manifold carrying the commutative product (cohomology of the dGBV algebra)"},
+    {"a_element": "flat quantum connection on the tangent bundle over M", "b_element": "the flat structure / flat (Dubrovin-type) connection of the Frobenius manifold"},
+    {"a_element": "flat connection used to determine all correlation functions of the family", "b_element": "the potential/prepotential of the Frobenius manifold encoding its structure constants (e.g. Gromov-Witten correlators in Quantum Cohomology)"},
+    {"a_element": "products of quantum observables are not observables, forcing the whole family", "b_element": "the product structure deforming over the Frobenius manifold rather than being fixed pointwise"},
+    {"a_element": "tensor products of d-algebras under the universal quantization machine", "b_element": "tensor products of Frobenius manifolds (Kunneth in QC, direct sum of singularities, tensor product of dGBV algebras)"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both papers construct a flat structure (a flat connection over a moduli/deformation space whose flat coordinates encode correlation functions) out of a Batalin-Vilkovisky algebra: paper A's BV path integral yields a family of QFTs over M with a flat quantum connection determining all correlators, which is exactly paper B's Frobenius-manifold flat structure produced from a differential GBV algebra in the Barannikov-Kontsevich construction, matching down to the parallel notion of tensor products."
+}

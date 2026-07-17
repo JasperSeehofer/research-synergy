@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a flat/integrable family of commutative associative (Frobenius) algebras varying over a base and compatible with a metric — i.e. a potential satisfying the WDVV associativity constraints — that carries a structure-preserving tensor product and whose distinct realizations are matched by structure-preserving isomorphisms",
+  "brief_reason": "The abstract compares three separate constructions that each produce the same object (a Frobenius manifold), studies tensor products of these objects and the isomorphisms identifying different realizations, so the shared machinery is the Frobenius-manifold / WDVV-associativity structure independent of the objects each construction is built from."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reduction of a joint distribution's structural property to positive-semidefiniteness (matrix-cone membership) tests on its second-moment/covariance matrix, including under a partial linear involution (a sign-flip applied to only a subset of coordinates), with a 'bound' regime where the weaker cone condition holds but the stronger decomposability into a mixture of independent factors does not",
+  "brief_reason": "The abstract characterizes both separability and positivity of the partial transpose purely through the covariance matrix and exhibits a parametric family where partial-transpose positivity holds yet separability fails, i.e. a gap between two positive-semidefiniteness conditions on a second-moment matrix under a partial coordinate sign-flip."
+}

@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "the metric graph of bonds and vertices being quantized", "b_element": "the graph on which the Schroedinger operator is defined"},
+    {"a_element": "the quantum spectrum of the operator on the graph", "b_element": "the spectrum of the Schroedinger operator on the graph"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Both study the spectrum of a quantum/Schroedinger operator on a graph, but their transferable machinery differs: paper A derives an exact semiclassical trace formula expressing the spectrum as a sum over exponentially proliferating classical periodic orbits, linking spectral statistics to random matrix theory and chaotic dynamics, whereas paper B uses an exact spectral duality that reduces the continuous graph Schroedinger operator to a discrete Jacobi (difference) matrix of Kronig-Penney/Maryland type. Beyond the shared 'operator on a graph' setting, no role-for-role correspondence between periodic-orbit/RMT analysis and operator-to-Jacobi-matrix reduction holds, so they do not share an underlying method."
+}

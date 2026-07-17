@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a critical-embedding-dimension threshold governing self-localized, time-periodic nonlinear modes: below a critical spatial dimension such localized excitations persist down to arbitrarily small amplitude/cost, while at or above it a strictly positive lower bound (an energy gap) must be paid to sustain one",
+  "brief_reason": "The abstract states breather energies acquire a positive lower bound only when the lattice dimension reaches a critical value d_c, whereas below it (or in special cases) localized modes of arbitrarily low energy exist, which is exactly a dimension-dependent existence/cost threshold for self-localized periodic excitations."
+}

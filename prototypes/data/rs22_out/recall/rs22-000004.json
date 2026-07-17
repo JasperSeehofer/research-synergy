@@ -1,0 +1,6 @@
+{
+  "target_field": "plasma physics",
+  "shared_mechanism": "kinetic Vlasov-type transport equation for a phase-space quasi-distribution (the Wigner function playing the role of the velocity distribution), with collisionless Landau damping arising from resonant phase mixing that suppresses a wave instability",
+  "confidence": 0.83,
+  "brief_reason": "In plasma physics, Langmuir (electron plasma) waves are damped by collisionless Landau damping described by the Vlasov equation for the particle velocity distribution; the Wigner transform of the nonlinear Schrodinger equation here yields the same Vlasov-like kinetic equation in which the incoherent field's phase-space spread produces an identical Landau-damping mechanism that stabilizes the modulational instability."
+}

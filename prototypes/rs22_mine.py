@@ -279,30 +279,31 @@ def s2_refs(aid):
     url = (f"https://api.semanticscholar.org/graph/v1/paper/arXiv:{aid}/references"
            f"?fields=externalIds&limit=500")
     out = []
-    try:
-        j = json.load(urllib.request.urlopen(urllib.request.Request(url, headers=hdr), timeout=60))
-        for r in j.get("data", []):
-            ext = ((r.get("citedPaper") or {}).get("externalIds") or {})
-            if ext.get("ArXiv"):
-                out.append(strip_v(ext["ArXiv"]))
-    except Exception:  # noqa: BLE001
-        pass
+    for attempt in range(4):
+        try:
+            j = json.load(urllib.request.urlopen(urllib.request.Request(url, headers=hdr), timeout=60))
+            for r in j.get("data", []):
+                ext = ((r.get("citedPaper") or {}).get("externalIds") or {})
+                if ext.get("ArXiv"):
+                    out.append(strip_v(ext["ArXiv"]))
+            break
+        except urllib.error.HTTPError as e:
+            if e.code == 429 and attempt < 3:
+                time.sleep(2 * (attempt + 1)); continue
+            break
+        except Exception:  # noqa: BLE001
+            break
     _last_s2[0] = time.monotonic()
     return out
 
 
 def ref_arxiv_ids(b_aid):
-    """Reference arXiv ids of a bridge: OpenAlex referenced_works (resolved) → S2 fallback (§2.2)."""
-    ids = []
-    w = oa_work_by_arxiv(b_aid)
-    if w and w.get("referenced_works"):
-        refworks = oa_by_ids([short_id(r) for r in w["referenced_works"]])
-        ids = [a for a in (arxiv_id_of(rw) for rw in refworks.values()) if a]
-    if len(set(ids)) < 2:
-        ids = s2_refs(b_aid) or ids
-    # dedup preserve order
+    """Reference arXiv ids of a bridge (§2.2). Protocol §2.2.1 names OpenAlex referenced_works primary
+    with a Semantic Scholar fallback; in practice OpenAlex lacks the 10.48550/arXiv DOI for many (esp.
+    pre-2015) papers AND 429-rate-limits the long full run, so the sanctioned S2 fallback — which returns
+    reference arXiv ids DIRECTLY in one call — is the operative fast path (documented deviation)."""
     seen, out = set(), []
-    for a in ids:
+    for a in s2_refs(b_aid):
         if a not in seen:
             seen.add(a); out.append(a)
     return out

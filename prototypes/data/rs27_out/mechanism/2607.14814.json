@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "nonparametric two-sample hypothesis testing applied to predefined subsets of components to attribute a detected discontinuity to particular parts, with formal Type I error control under conditioning on the prior detection event (post-selection inference)",
+  "brief_reason": "The abstract proposes post hoc two-sample (nonparametric) testing procedures, run after a change has been located, to decide which of two predefined coordinate blocks carries the change, with theoretical guarantees for Type I error control."
+}

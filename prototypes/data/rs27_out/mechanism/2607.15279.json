@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "constituent/parton-model factorization: decomposing an extended composite object into the bundle of quanta that make it up and computing the output as a sum of independent pairwise on-shell scatterings among those constituents, valid in a high-energy limit where the composites pass through each other nearly freely",
+  "brief_reason": "The abstract replaces an off-shell 'decay of the background' picture with a formalism 'analogous to the partonic description of high-energy collisions' in which the ultra-relativistic objects undergo 'nearly free passage' and production 'arises from on-shell scatterings among the quanta constituting' them."
+}

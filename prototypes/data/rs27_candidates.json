@@ -1,0 +1,2285 @@
+{
+ "n": 228,
+ "candidates": [
+  {
+   "query_id": "2607.15083",
+   "query_title": "Defects extremal surfaces and interface CFTs",
+   "query_cat": "hep-th",
+   "cand_id": "2607.15133",
+   "cand_title": "Solid-solid phase transitions with space-dependent wells",
+   "cand_cat": "math.AP",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0
+  },
+  {
+   "query_id": "2607.14914",
+   "query_title": "Stochastic ultimatum game: Spite-driven resource feedback fosters fairness",
+   "query_cat": "nlin.AO",
+   "cand_id": "2607.13281",
+   "cand_title": "Predator-dependent replicator dynamics or a predator-prey model with two prey types and frequency dependence",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0031
+  },
+  {
+   "query_id": "2607.14805",
+   "query_title": "RACiMo: Red Ambiental Ciudadana de Monitoreo: A Student-Centred Citizen Science Network for Environmental Monitoring, Data Literacy, and Climate Awareness in Colombia",
+   "query_cat": "physics.soc-ph",
+   "cand_id": "2607.14904",
+   "cand_title": "The VST ATLAS Survey -- IV: Galaxy, LRG and QSO bias and HODs via ACT CMB Lensing",
+   "cand_cat": "astro-ph.CO",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0036
+  },
+  {
+   "query_id": "2607.15119",
+   "query_title": "Thermodynamic theory of voting and EU elections",
+   "query_cat": "cond-mat.stat-mech",
+   "cand_id": "2607.06355",
+   "cand_title": "Entropic Dynamics of Jump-Diffusion Option Pricing",
+   "cand_cat": "q-fin.PR",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0042
+  },
+  {
+   "query_id": "2607.15233",
+   "query_title": "Study of Duffing oscillator using an improved Lindstedt Poincare method and relevant comparisons",
+   "query_cat": "math-ph",
+   "cand_id": "2607.14797",
+   "cand_title": "Robustness of periodicity in Grover walks under a magnetic vector potential",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0045
+  },
+  {
+   "query_id": "2607.14623",
+   "query_title": "Multiverse analysis, abdication of responsibility and manufacturing of doubt",
+   "query_cat": "stat.ME",
+   "cand_id": "2607.15210",
+   "cand_title": "Counterexamples to additivity of minimum output $p$-Rényi entropy of quantum channels for $p&gt;3/4$ and $0\\leq p&lt;1/4$",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0064
+  },
+  {
+   "query_id": "2607.14918",
+   "query_title": "A C++ implementation of the G-Scheme stiff ODE solver with multi-resolution sparse hash-table kernel lookup",
+   "query_cat": "math-ph",
+   "cand_id": "2607.14797",
+   "cand_title": "Robustness of periodicity in Grover walks under a magnetic vector potential",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0073
+  },
+  {
+   "query_id": "2607.15158",
+   "query_title": "Fast two-dimensional tensor-network contraction via subspace iteration",
+   "query_cat": "cond-mat.str-el",
+   "cand_id": "2607.15242",
+   "cand_title": "Mutable Low-Rank Sketches for Retrain-Free Recommendation",
+   "cand_cat": "cs.LG",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0079
+  },
+  {
+   "query_id": "2607.14785",
+   "query_title": "Enabling Cosmic Web Analysis at Gigaparsec Scales: A Multi Block Approach for DisPerSE",
+   "query_cat": "astro-ph.GA",
+   "cand_id": "2607.15007",
+   "cand_title": "Observers, local measurements, and topology",
+   "cand_cat": "hep-th",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0085
+  },
+  {
+   "query_id": "2607.15258",
+   "query_title": "Decoding Market Emotion from Blockchain Activity: A Data-Driven Sentiment Classifier",
+   "query_cat": "cs.LG",
+   "cand_id": "2607.15015",
+   "cand_title": "Augmenting goodness-of-fit tests with sequentially calibrated secondary statistics",
+   "cand_cat": "stat.ME",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0091
+  },
+  {
+   "query_id": "2607.15187",
+   "query_title": "Type I/II Vortex Dynamics With Excited Normal Modes",
+   "query_cat": "hep-th",
+   "cand_id": "2607.14892",
+   "cand_title": "Sharp decay thresholds in weighted $L^\\infty$ for wave kinetic equations with power-law dispersion",
+   "cand_cat": "math.AP",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0111
+  },
+  {
+   "query_id": "2607.15007",
+   "query_title": "Observers, local measurements, and topology",
+   "query_cat": "hep-th",
+   "cand_id": "2607.09906",
+   "cand_title": "Depth-Efficient Quantum Topological Data Analysis for Regime-Specific Detection of Financial Stress",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0112
+  },
+  {
+   "query_id": "2607.15207",
+   "query_title": "BadWAM: When World-Action Models Dream Right but Act Wrong",
+   "query_cat": "cs.LG",
+   "cand_id": "2607.06373",
+   "cand_title": "Error Propagation in Spectral Functionals of Shrinkage Covariance Estimators: Perturbation Bounds and Calibrated Inference",
+   "cand_cat": "stat.ME",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0115
+  },
+  {
+   "query_id": "2607.14784",
+   "query_title": "Photovoltaics beyond the panel: system-level net energy under grid and firming constraints",
+   "query_cat": "physics.soc-ph",
+   "cand_id": "2607.15196",
+   "cand_title": "Subjective Risk Decomposition: A New View for Uncertainty Quantification",
+   "cand_cat": "stat.ML",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0122
+  },
+  {
+   "query_id": "2607.15276",
+   "query_title": "Locality of deep thermalisation through the lens of entanglement teleportation",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.06355",
+   "cand_title": "Entropic Dynamics of Jump-Diffusion Option Pricing",
+   "cand_cat": "q-fin.PR",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0127
+  },
+  {
+   "query_id": "2607.15181",
+   "query_title": "Sharp asymptotics for higher-order Hardy constants on lattices",
+   "query_cat": "math.FA",
+   "cand_id": "2607.15013",
+   "cand_title": "Quasi-Pfaffian Solutions to Integrable Systems via Sylvester-Moutard Transformations",
+   "cand_cat": "math-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0146
+  },
+  {
+   "query_id": "2607.15208",
+   "query_title": "Delocalization of bias in unadjusted Hamiltonian Monte Carlo and underdamped Langevin",
+   "query_cat": "stat.CO",
+   "cand_id": "2607.14549",
+   "cand_title": "Lyapunov spectrum scaling transition for quasiperiodic nonlinear unitaries",
+   "cand_cat": "nlin.CD",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0162
+  },
+  {
+   "query_id": "2607.15261",
+   "query_title": "Relativistic time-commutative dynamics with $κ$-plane noncommutativity",
+   "query_cat": "hep-th",
+   "cand_id": "2607.14910",
+   "cand_title": "Kerr black holes without primary hairs",
+   "cand_cat": "gr-qc",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0162
+  },
+  {
+   "query_id": "2607.15126",
+   "query_title": "Spacelike-Collinear Scattering by the Method of Regions",
+   "query_cat": "hep-ph",
+   "cand_id": "2607.15042",
+   "cand_title": "The $L^p$ Neumann problem for the Stokes system in nonsmooth domains",
+   "cand_cat": "math.AP",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0163
+  },
+  {
+   "query_id": "2607.15217",
+   "query_title": "NeuronSoup: Evolving Asynchronous, Shared-Neuron Temporal Graphs without Backpropagation",
+   "query_cat": "cs.NE",
+   "cand_id": "2607.12673",
+   "cand_title": "Contrasting statistical patterns in melodic and molecular evolution reveal distinctive constraints in a culturally evolving system",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0169
+  },
+  {
+   "query_id": "2607.15015",
+   "query_title": "Augmenting goodness-of-fit tests with sequentially calibrated secondary statistics",
+   "query_cat": "stat.ME",
+   "cand_id": "2607.14762",
+   "cand_title": "Bayesian Basin Tracking: Efficient Global Continuation of Multistable Dynamical Systems",
+   "cand_cat": "nlin.CD",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0171
+  },
+  {
+   "query_id": "2607.15232",
+   "query_title": "In-Place Tokenizer Expansion for Pre-trained LLMs",
+   "query_cat": "cs.CL",
+   "cand_id": "2607.12673",
+   "cand_title": "Contrasting statistical patterns in melodic and molecular evolution reveal distinctive constraints in a culturally evolving system",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0187
+  },
+  {
+   "query_id": "2607.14953",
+   "query_title": "Stochastic process model of rough surface contact",
+   "query_cat": "cond-mat.soft",
+   "cand_id": "2607.06355",
+   "cand_title": "Entropic Dynamics of Jump-Diffusion Option Pricing",
+   "cand_cat": "q-fin.PR",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0194
+  },
+  {
+   "query_id": "2607.14950",
+   "query_title": "Emergence of polymorphism in stochastic evolutionary games",
+   "query_cat": "q-bio.PE",
+   "cand_id": "2607.06220",
+   "cand_title": "Stable Sentiment and Persistent Dynamics in U.S. Economic News over 45 Years",
+   "cand_cat": "physics.soc-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0203
+  },
+  {
+   "query_id": "2607.14929",
+   "query_title": "Tomographic flow regime vs even-odd effect for the magnetotransport in the Corbino geometry",
+   "query_cat": "cond-mat.mes-hall",
+   "cand_id": "2607.14867",
+   "cand_title": "Thermal Masses and Bubble-Wall Friction in Cosmological Phase Transitions",
+   "cand_cat": "hep-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0205
+  },
+  {
+   "query_id": "2607.15266",
+   "query_title": "Tunable Mpemba effect in a polymer-bead system with inertia",
+   "query_cat": "cond-mat.soft",
+   "cand_id": "2607.06220",
+   "cand_title": "Stable Sentiment and Persistent Dynamics in U.S. Economic News over 45 Years",
+   "cand_cat": "physics.soc-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0206
+  },
+  {
+   "query_id": "2607.14904",
+   "query_title": "The VST ATLAS Survey -- IV: Galaxy, LRG and QSO bias and HODs via ACT CMB Lensing",
+   "query_cat": "astro-ph.CO",
+   "cand_id": "2607.14860",
+   "cand_title": "Assing Preferential Sampling in Retail Survival Data: A Bayesian Joint LGCP and Spatial Probit Model for Mini-Supermarket Closure in Tokyo",
+   "cand_cat": "stat.ME",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0209
+  },
+  {
+   "query_id": "2607.15104",
+   "query_title": "A model with exposure in the epidemiological sense. Part 1 -- Base model",
+   "query_cat": "q-bio.PE",
+   "cand_id": "2607.13636",
+   "cand_title": "Measuring What the Crawler Sees: Discovery Curves, Core Persistence, and Shell Dynamics in Longitudinal Web Crawls",
+   "cand_cat": "physics.soc-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0214
+  },
+  {
+   "query_id": "2607.15028",
+   "query_title": "Refining primordial black hole dark matter constraints with dust heating: the role of spin and halo profile dependence",
+   "query_cat": "astro-ph.CO",
+   "cand_id": "2607.15119",
+   "cand_title": "Thermodynamic theory of voting and EU elections",
+   "cand_cat": "cond-mat.stat-mech",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0217
+  },
+  {
+   "query_id": "2607.14663",
+   "query_title": "Tuning the universality class of a quantum process by Trotterization",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.14950",
+   "cand_title": "Emergence of polymorphism in stochastic evolutionary games",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0223
+  },
+  {
+   "query_id": "2607.14632",
+   "query_title": "Criticality and reduced dynamical resilience in PM2.5 pollution systems",
+   "query_cat": "physics.soc-ph",
+   "cand_id": "2607.06355",
+   "cand_title": "Entropic Dynamics of Jump-Diffusion Option Pricing",
+   "cand_cat": "q-fin.PR",
+   "reduction_rank": 1,
+   "lexical_cos": 0.023
+  },
+  {
+   "query_id": "2607.14699",
+   "query_title": "Exact Computation of Non-Gaussian Mismatch Penalties in Wiener-Hermite Cross-Correlation Identification",
+   "query_cat": "stat.ME",
+   "cand_id": "2607.14843",
+   "cand_title": "Analytical covariances for catalogue-based pseudo-$C_\\ell$s",
+   "cand_cat": "astro-ph.CO",
+   "reduction_rank": 1,
+   "lexical_cos": 0.024
+  },
+  {
+   "query_id": "2607.06373",
+   "query_title": "Error Propagation in Spectral Functionals of Shrinkage Covariance Estimators: Perturbation Bounds and Calibrated Inference",
+   "query_cat": "stat.ME",
+   "cand_id": "2607.14797",
+   "cand_title": "Robustness of periodicity in Grover walks under a magnetic vector potential",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0243
+  },
+  {
+   "query_id": "2607.15196",
+   "query_title": "Subjective Risk Decomposition: A New View for Uncertainty Quantification",
+   "query_cat": "stat.ML",
+   "cand_id": "2607.14738",
+   "cand_title": "Quantifying the complexity of trajectory ensembles with clustering-weighted multivariate multiscale sample entropy",
+   "cand_cat": "eess.SP",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0252
+  },
+  {
+   "query_id": "2607.13438",
+   "query_title": "Impacts of social and impact heterogeneity on social-climate outcomes",
+   "query_cat": "physics.soc-ph",
+   "cand_id": "2607.13281",
+   "cand_title": "Predator-dependent replicator dynamics or a predator-prey model with two prey types and frequency dependence",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0257
+  },
+  {
+   "query_id": "2607.14854",
+   "query_title": "CAMB v2: cosmological power spectra for high-precision surveys",
+   "query_cat": "astro-ph.CO",
+   "cand_id": "2607.15237",
+   "cand_title": "\"Goldfish'' equations for infinitely many particles",
+   "cand_cat": "math-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0271
+  },
+  {
+   "query_id": "2607.15059",
+   "query_title": "Female participation in science in the past 125 years: An analysis of the Matilda effect over time",
+   "query_cat": "cs.DL",
+   "cand_id": "2607.14738",
+   "cand_title": "Quantifying the complexity of trajectory ensembles with clustering-weighted multivariate multiscale sample entropy",
+   "cand_cat": "eess.SP",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0275
+  },
+  {
+   "query_id": "2607.14937",
+   "query_title": "A Minimal Interpretable Architecture for Zero-Shot Reconstruction of Dynamical Systems",
+   "query_cat": "cs.LG",
+   "cand_id": "2607.14771",
+   "cand_title": "Mixed-Frequency Time Series Forecasting via Depth-Separable Neural Networks",
+   "cand_cat": "stat.ME",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0289
+  },
+  {
+   "query_id": "2607.14653",
+   "query_title": "Revisiting a random model of lateral gene transfer in phylogenetics",
+   "query_cat": "q-bio.PE",
+   "cand_id": "2607.13636",
+   "cand_title": "Measuring What the Crawler Sees: Discovery Curves, Core Persistence, and Shell Dynamics in Longitudinal Web Crawls",
+   "cand_cat": "physics.soc-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0296
+  },
+  {
+   "query_id": "2607.14910",
+   "query_title": "Kerr black holes without primary hairs",
+   "query_cat": "gr-qc",
+   "cand_id": "2607.15236",
+   "cand_title": "Analytical and Numerical Study of Quartic Nonlinear Electrodynamics in Holographic Fermion Systems",
+   "cand_cat": "hep-th",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0296
+  },
+  {
+   "query_id": "2607.15074",
+   "query_title": "Mirror symmetry in 3d in 3d mirror symmetry",
+   "query_cat": "hep-th",
+   "cand_id": "2607.15177",
+   "cand_title": "On the geometry of Coulomb branches",
+   "cand_cat": "math.AG",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0302
+  },
+  {
+   "query_id": "2607.06690",
+   "query_title": "tsbootstrap: Distribution-Free Uncertainty Quantification and Conformal Prediction for Time Series",
+   "query_cat": "stat.ME",
+   "cand_id": "2607.15060",
+   "cand_title": "Learning the Fermion sign structure in path-integral Monte Carlo",
+   "cand_cat": "cond-mat.stat-mech",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0312
+  },
+  {
+   "query_id": "2607.15273",
+   "query_title": "MeanFlowNFT: Bringing Forward-Process RL to Average-Velocity Generators",
+   "query_cat": "cs.CV",
+   "cand_id": "2607.15184",
+   "cand_title": "Backpropagating Pauli Propagation",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0314
+  },
+  {
+   "query_id": "2607.13693",
+   "query_title": "Social Simulations: from Agent-Based Modeling to Digital Twins",
+   "query_cat": "cs.MA",
+   "cand_id": "2607.11520",
+   "cand_title": "Stochastic individual-bases models",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0322
+  },
+  {
+   "query_id": "2607.15256",
+   "query_title": "Analytic finite-rank corrections for singularly weighted estimates in a computer-assisted proof of 3D Euler singularity",
+   "query_cat": "math.AP",
+   "cand_id": "2607.15242",
+   "cand_title": "Mutable Low-Rank Sketches for Retrain-Free Recommendation",
+   "cand_cat": "cs.LG",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0324
+  },
+  {
+   "query_id": "2607.06908",
+   "query_title": "Iterative detection of global factors near the BBP phase transition",
+   "query_cat": "q-fin.ST",
+   "cand_id": "2607.13231",
+   "cand_title": "Conflict, mobility and fragmentation in the African interurban network",
+   "cand_cat": "physics.soc-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0329
+  },
+  {
+   "query_id": "2607.15191",
+   "query_title": "Massive On-shell Splitting Functions in Spinor-Helicity Formalism",
+   "query_cat": "hep-ph",
+   "cand_id": "2607.12673",
+   "cand_title": "Contrasting statistical patterns in melodic and molecular evolution reveal distinctive constraints in a culturally evolving system",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0336
+  },
+  {
+   "query_id": "2607.15215",
+   "query_title": "Stochastic binary networks with asymmetric and time-delayed interactions",
+   "query_cat": "physics.app-ph",
+   "cand_id": "2607.14950",
+   "cand_title": "Emergence of polymorphism in stochastic evolutionary games",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0354
+  },
+  {
+   "query_id": "2607.12995",
+   "query_title": "One Shot, Twenty-One Balls: Existence and Rarity of a Total Clearance in a Single Stroke of Snooker",
+   "query_cat": "cs.CG",
+   "cand_id": "2607.12093",
+   "cand_title": "Harvesting Reshapes Dynamical Populations",
+   "cand_cat": "cond-mat.stat-mech",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0358
+  },
+  {
+   "query_id": "2607.14531",
+   "query_title": "Overlapping Network Community Detection Using Sparse Backbones",
+   "query_cat": "cs.SI",
+   "cand_id": "2607.15000",
+   "cand_title": "Flood risk estimation via geometric extremal graphical models",
+   "cand_cat": "stat.AP",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0367
+  },
+  {
+   "query_id": "2607.08500",
+   "query_title": "Estimating the Stochastic Discount Factor from Option Prices and Predicting the Equity Premium",
+   "query_cat": "q-fin.MF",
+   "cand_id": "2607.15196",
+   "cand_title": "Subjective Risk Decomposition: A New View for Uncertainty Quantification",
+   "cand_cat": "stat.ML",
+   "reduction_rank": 1,
+   "lexical_cos": 0.037
+  },
+  {
+   "query_id": "2607.15236",
+   "query_title": "Analytical and Numerical Study of Quartic Nonlinear Electrodynamics in Holographic Fermion Systems",
+   "query_cat": "hep-th",
+   "cand_id": "2607.14916",
+   "cand_title": "Classical Symmetries and Painleve Analysis for the (1+3) Kudryashov-Sinelshchikov Equation",
+   "cand_cat": "nlin.SI",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0376
+  },
+  {
+   "query_id": "2607.15060",
+   "query_title": "Learning the Fermion sign structure in path-integral Monte Carlo",
+   "query_cat": "cond-mat.stat-mech",
+   "cand_id": "2607.14762",
+   "cand_title": "Bayesian Basin Tracking: Efficient Global Continuation of Multistable Dynamical Systems",
+   "cand_cat": "nlin.CD",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0383
+  },
+  {
+   "query_id": "2607.15169",
+   "query_title": "Driven-dissipative superconductivity in moiré heterostructure without attraction",
+   "query_cat": "cond-mat.str-el",
+   "cand_id": "2607.14223",
+   "cand_title": "Quantum many-body mixed phase space revealed by hybrid feedback control",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0387
+  },
+  {
+   "query_id": "2607.10297",
+   "query_title": "Recovering Structural Organization in Noisy Correlation Networks Using Financial Systems as a Testbed",
+   "query_cat": "q-fin.ST",
+   "cand_id": "2607.06373",
+   "cand_title": "Error Propagation in Spectral Functionals of Shrinkage Covariance Estimators: Perturbation Bounds and Calibrated Inference",
+   "cand_cat": "stat.ME",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0388
+  },
+  {
+   "query_id": "2607.15159",
+   "query_title": "LDGM-Based Quantum Codes for Fault-Tolerant Quantum Computation",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.15000",
+   "cand_title": "Flood risk estimation via geometric extremal graphical models",
+   "cand_cat": "stat.AP",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0388
+  },
+  {
+   "query_id": "2607.15279",
+   "query_title": "Particle production from bubble collisions",
+   "query_cat": "hep-ph",
+   "cand_id": "2607.15251",
+   "cand_title": "New exact bispectrum shapes in multifield inflation",
+   "cand_cat": "hep-th",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0388
+  },
+  {
+   "query_id": "2607.15145",
+   "query_title": "Semiclassical estimates near threshold energies and resonance counting on Schwarzschild black holes",
+   "query_cat": "math.AP",
+   "cand_id": "2607.14797",
+   "cand_title": "Robustness of periodicity in Grover walks under a magnetic vector potential",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0391
+  },
+  {
+   "query_id": "2607.14799",
+   "query_title": "The distribution of eccentricities in random regular graphs",
+   "query_cat": "cond-mat.stat-mech",
+   "cand_id": "2607.15000",
+   "cand_title": "Flood risk estimation via geometric extremal graphical models",
+   "cand_cat": "stat.AP",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0395
+  },
+  {
+   "query_id": "2607.15200",
+   "query_title": "Mask-Aware Policy Gradients for Diffusion Language Models",
+   "query_cat": "cs.CL",
+   "cand_id": "2607.15196",
+   "cand_title": "Subjective Risk Decomposition: A New View for Uncertainty Quantification",
+   "cand_cat": "stat.ML",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0397
+  },
+  {
+   "query_id": "2607.14174",
+   "query_title": "How Much of a 10-K Matters? Aggregation-Dependent Value of Full-Text versus Risk-Factor Sentiment",
+   "query_cat": "cs.LG",
+   "cand_id": "2607.14738",
+   "cand_title": "Quantifying the complexity of trajectory ensembles with clustering-weighted multivariate multiscale sample entropy",
+   "cand_cat": "eess.SP",
+   "reduction_rank": 1,
+   "lexical_cos": 0.042
+  },
+  {
+   "query_id": "2607.13171",
+   "query_title": "Human population dynamics as a Bayesian inverse transport problem",
+   "query_cat": "physics.soc-ph",
+   "cand_id": "2607.06355",
+   "cand_title": "Entropic Dynamics of Jump-Diffusion Option Pricing",
+   "cand_cat": "q-fin.PR",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0425
+  },
+  {
+   "query_id": "2607.12407",
+   "query_title": "Statistical Properties and Power Analysis of Divergence Measures for Credit Risk Model Monitoring",
+   "query_cat": "q-fin.ST",
+   "cand_id": "2607.14814",
+   "cand_title": "Post Hoc Inference for Component Attribution in Multivariate Change-Point Detection",
+   "cand_cat": "stat.ME",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0426
+  },
+  {
+   "query_id": "2607.14594",
+   "query_title": "Numerical and experimental framework for bending elasticity of highly flexible slender structures",
+   "query_cat": "cond-mat.soft",
+   "cand_id": "2607.13171",
+   "cand_title": "Human population dynamics as a Bayesian inverse transport problem",
+   "cand_cat": "physics.soc-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0428
+  },
+  {
+   "query_id": "2607.12585",
+   "query_title": "From phase space to Krylov space, one shell at a time",
+   "query_cat": "cond-mat.stat-mech",
+   "cand_id": "2607.15013",
+   "cand_title": "Quasi-Pfaffian Solutions to Integrable Systems via Sylvester-Moutard Transformations",
+   "cand_cat": "math-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.043
+  },
+  {
+   "query_id": "2607.14604",
+   "query_title": "Accelerating A/B-Tests with Counterfactual Estimation: Reducing Variance through Policy Overlap",
+   "query_cat": "cs.LG",
+   "cand_id": "2607.15060",
+   "cand_title": "Learning the Fermion sign structure in path-integral Monte Carlo",
+   "cand_cat": "cond-mat.stat-mech",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0468
+  },
+  {
+   "query_id": "2607.11520",
+   "query_title": "Stochastic individual-bases models",
+   "query_cat": "q-bio.PE",
+   "cand_id": "2607.06355",
+   "cand_title": "Entropic Dynamics of Jump-Diffusion Option Pricing",
+   "cand_cat": "q-fin.PR",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0521
+  },
+  {
+   "query_id": "2607.15262",
+   "query_title": "Dynamic Entanglement Distribution for Multi-User and Multi-Protocol Quantum Networking",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.13231",
+   "cand_title": "Conflict, mobility and fragmentation in the African interurban network",
+   "cand_cat": "physics.soc-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0561
+  },
+  {
+   "query_id": "2607.14916",
+   "query_title": "Classical Symmetries and Painleve Analysis for the (1+3) Kudryashov-Sinelshchikov Equation",
+   "query_cat": "nlin.SI",
+   "cand_id": "2607.15013",
+   "cand_title": "Quasi-Pfaffian Solutions to Integrable Systems via Sylvester-Moutard Transformations",
+   "cand_cat": "math-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0595
+  },
+  {
+   "query_id": "2607.15059",
+   "query_title": "Female participation in science in the past 125 years: An analysis of the Matilda effect over time",
+   "query_cat": "cs.DL",
+   "cand_id": "2607.06690",
+   "cand_title": "tsbootstrap: Distribution-Free Uncertainty Quantification and Conformal Prediction for Time Series",
+   "cand_cat": "stat.ME",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0
+  },
+  {
+   "query_id": "2607.15273",
+   "query_title": "MeanFlowNFT: Bringing Forward-Process RL to Average-Velocity Generators",
+   "query_cat": "cs.CV",
+   "cand_id": "2607.15152",
+   "cand_title": "Ultradifferentiable regularity properties of a class of hypoelliptic operators",
+   "cand_cat": "math.AP",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0
+  },
+  {
+   "query_id": "2607.06908",
+   "query_title": "Iterative detection of global factors near the BBP phase transition",
+   "query_cat": "q-fin.ST",
+   "cand_id": "2607.14549",
+   "cand_title": "Lyapunov spectrum scaling transition for quasiperiodic nonlinear unitaries",
+   "cand_cat": "nlin.CD",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0012
+  },
+  {
+   "query_id": "2607.15126",
+   "query_title": "Spacelike-Collinear Scattering by the Method of Regions",
+   "query_cat": "hep-ph",
+   "cand_id": "2607.15181",
+   "cand_title": "Sharp asymptotics for higher-order Hardy constants on lattices",
+   "cand_cat": "math.FA",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0024
+  },
+  {
+   "query_id": "2607.15007",
+   "query_title": "Observers, local measurements, and topology",
+   "query_cat": "hep-th",
+   "cand_id": "2607.12919",
+   "cand_title": "On Tree-Network Distinguishability and Full Identifiability of Phylogenetic Networks",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0027
+  },
+  {
+   "query_id": "2607.15201",
+   "query_title": "Entanglement Detection for Two-Qubit and Three-Qubit Pure States via Unitary Transformations and Ancilla State Measurements",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.14891",
+   "cand_title": "Cosmological Collider Signals at Strong Mixing",
+   "cand_cat": "hep-th",
+   "reduction_rank": 2,
+   "lexical_cos": 0.003
+  },
+  {
+   "query_id": "2607.15028",
+   "query_title": "Refining primordial black hole dark matter constraints with dust heating: the role of spin and halo profile dependence",
+   "query_cat": "astro-ph.CO",
+   "cand_id": "2607.15169",
+   "cand_title": "Driven-dissipative superconductivity in moiré heterostructure without attraction",
+   "cand_cat": "cond-mat.str-el",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0037
+  },
+  {
+   "query_id": "2607.15250",
+   "query_title": "Equivalence of the Compton and Bethe-Feynman Yield Formulas",
+   "query_cat": "physics.soc-ph",
+   "cand_id": "2607.14663",
+   "cand_title": "Tuning the universality class of a quantum process by Trotterization",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0056
+  },
+  {
+   "query_id": "2607.14910",
+   "query_title": "Kerr black holes without primary hairs",
+   "query_cat": "gr-qc",
+   "cand_id": "2607.14854",
+   "cand_title": "CAMB v2: cosmological power spectra for high-precision surveys",
+   "cand_cat": "astro-ph.CO",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0063
+  },
+  {
+   "query_id": "2607.15104",
+   "query_title": "A model with exposure in the epidemiological sense. Part 1 -- Base model",
+   "query_cat": "q-bio.PE",
+   "cand_id": "2607.14914",
+   "cand_title": "Stochastic ultimatum game: Spite-driven resource feedback fosters fairness",
+   "cand_cat": "nlin.AO",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0077
+  },
+  {
+   "query_id": "2607.13650",
+   "query_title": "Calming traffic in unsignalized bidirectional streets by introducing one-lane bottlenecks",
+   "query_cat": "physics.soc-ph",
+   "cand_id": "2607.14914",
+   "cand_title": "Stochastic ultimatum game: Spite-driven resource feedback fosters fairness",
+   "cand_cat": "nlin.AO",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0088
+  },
+  {
+   "query_id": "2607.14490",
+   "query_title": "The Symbolic Partition of Chaotic Flows Based on Ordinal Patterns",
+   "query_cat": "nlin.CD",
+   "cand_id": "2607.14874",
+   "cand_title": "Fermion-doubling problem in Chiral discretizations of Quantum field theory: Definitive proof, Fixing, and Computation of two-point correlation function",
+   "cand_cat": "hep-lat",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0088
+  },
+  {
+   "query_id": "2607.14785",
+   "query_title": "Enabling Cosmic Web Analysis at Gigaparsec Scales: A Multi Block Approach for DisPerSE",
+   "query_cat": "astro-ph.GA",
+   "cand_id": "2607.15177",
+   "cand_title": "On the geometry of Coulomb branches",
+   "cand_cat": "math.AG",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0097
+  },
+  {
+   "query_id": "2607.15159",
+   "query_title": "LDGM-Based Quantum Codes for Fault-Tolerant Quantum Computation",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.12919",
+   "cand_title": "On Tree-Network Distinguishability and Full Identifiability of Phylogenetic Networks",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 2,
+   "lexical_cos": 0.01
+  },
+  {
+   "query_id": "2607.15252",
+   "query_title": "Coulomb blockade in microscopic material defects as a source of decoherence and noise in solid-state quantum circuits",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.06220",
+   "cand_title": "Stable Sentiment and Persistent Dynamics in U.S. Economic News over 45 Years",
+   "cand_cat": "physics.soc-ph",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0107
+  },
+  {
+   "query_id": "2607.15232",
+   "query_title": "In-Place Tokenizer Expansion for Pre-trained LLMs",
+   "query_cat": "cs.CL",
+   "cand_id": "2607.15158",
+   "cand_title": "Fast two-dimensional tensor-network contraction via subspace iteration",
+   "cand_cat": "cond-mat.str-el",
+   "reduction_rank": 2,
+   "lexical_cos": 0.011
+  },
+  {
+   "query_id": "2607.11325",
+   "query_title": "Proximity Measures for Classes of Phylogenetic Networks",
+   "query_cat": "math.CO",
+   "cand_id": "2607.14724",
+   "cand_title": "Testing equivalence to binary generalized linear models with application to logistic regression",
+   "cand_cat": "stat.ME",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0113
+  },
+  {
+   "query_id": "2607.15208",
+   "query_title": "Delocalization of bias in unadjusted Hamiltonian Monte Carlo and underdamped Langevin",
+   "query_cat": "stat.CO",
+   "cand_id": "2607.14950",
+   "cand_title": "Emergence of polymorphism in stochastic evolutionary games",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0118
+  },
+  {
+   "query_id": "2607.15187",
+   "query_title": "Type I/II Vortex Dynamics With Excited Normal Modes",
+   "query_cat": "hep-th",
+   "cand_id": "2607.15119",
+   "cand_title": "Thermodynamic theory of voting and EU elections",
+   "cand_cat": "cond-mat.stat-mech",
+   "reduction_rank": 2,
+   "lexical_cos": 0.012
+  },
+  {
+   "query_id": "2607.14632",
+   "query_title": "Criticality and reduced dynamical resilience in PM2.5 pollution systems",
+   "query_cat": "physics.soc-ph",
+   "cand_id": "2607.14950",
+   "cand_title": "Emergence of polymorphism in stochastic evolutionary games",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0123
+  },
+  {
+   "query_id": "2607.13281",
+   "query_title": "Predator-dependent replicator dynamics or a predator-prey model with two prey types and frequency dependence",
+   "query_cat": "q-bio.PE",
+   "cand_id": "2607.14223",
+   "cand_title": "Quantum many-body mixed phase space revealed by hybrid feedback control",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0125
+  },
+  {
+   "query_id": "2607.14762",
+   "query_title": "Bayesian Basin Tracking: Efficient Global Continuation of Multistable Dynamical Systems",
+   "query_cat": "nlin.CD",
+   "cand_id": "2607.14653",
+   "cand_title": "Revisiting a random model of lateral gene transfer in phylogenetics",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0152
+  },
+  {
+   "query_id": "2607.15217",
+   "query_title": "NeuronSoup: Evolving Asynchronous, Shared-Neuron Temporal Graphs without Backpropagation",
+   "query_cat": "cs.NE",
+   "cand_id": "2607.14223",
+   "cand_title": "Quantum many-body mixed phase space revealed by hybrid feedback control",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0153
+  },
+  {
+   "query_id": "2607.14918",
+   "query_title": "A C++ implementation of the G-Scheme stiff ODE solver with multi-resolution sparse hash-table kernel lookup",
+   "query_cat": "math-ph",
+   "cand_id": "2607.14223",
+   "cand_title": "Quantum many-body mixed phase space revealed by hybrid feedback control",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0156
+  },
+  {
+   "query_id": "2607.14799",
+   "query_title": "The distribution of eccentricities in random regular graphs",
+   "query_cat": "cond-mat.stat-mech",
+   "cand_id": "2607.14653",
+   "cand_title": "Revisiting a random model of lateral gene transfer in phylogenetics",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0164
+  },
+  {
+   "query_id": "2607.15236",
+   "query_title": "Analytical and Numerical Study of Quartic Nonlinear Electrodynamics in Holographic Fermion Systems",
+   "query_cat": "hep-th",
+   "cand_id": "2607.15042",
+   "cand_title": "The $L^p$ Neumann problem for the Stokes system in nonsmooth domains",
+   "cand_cat": "math.AP",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0164
+  },
+  {
+   "query_id": "2607.15169",
+   "query_title": "Driven-dissipative superconductivity in moiré heterostructure without attraction",
+   "query_cat": "cond-mat.str-el",
+   "cand_id": "2607.14914",
+   "cand_title": "Stochastic ultimatum game: Spite-driven resource feedback fosters fairness",
+   "cand_cat": "nlin.AO",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0165
+  },
+  {
+   "query_id": "2607.13693",
+   "query_title": "Social Simulations: from Agent-Based Modeling to Digital Twins",
+   "query_cat": "cs.MA",
+   "cand_id": "2607.14914",
+   "cand_title": "Stochastic ultimatum game: Spite-driven resource feedback fosters fairness",
+   "cand_cat": "nlin.AO",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0175
+  },
+  {
+   "query_id": "2607.15210",
+   "query_title": "Counterexamples to additivity of minimum output $p$-Rényi entropy of quantum channels for $p&gt;3/4$ and $0\\leq p&lt;1/4$",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.15000",
+   "cand_title": "Flood risk estimation via geometric extremal graphical models",
+   "cand_cat": "stat.AP",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0175
+  },
+  {
+   "query_id": "2607.14914",
+   "query_title": "Stochastic ultimatum game: Spite-driven resource feedback fosters fairness",
+   "query_cat": "nlin.AO",
+   "cand_id": "2607.11520",
+   "cand_title": "Stochastic individual-bases models",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 2,
+   "lexical_cos": 0.018
+  },
+  {
+   "query_id": "2607.15279",
+   "query_title": "Particle production from bubble collisions",
+   "query_cat": "hep-ph",
+   "cand_id": "2607.14843",
+   "cand_title": "Analytical covariances for catalogue-based pseudo-$C_\\ell$s",
+   "cand_cat": "astro-ph.CO",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0186
+  },
+  {
+   "query_id": "2607.14549",
+   "query_title": "Lyapunov spectrum scaling transition for quasiperiodic nonlinear unitaries",
+   "query_cat": "nlin.CD",
+   "cand_id": "2607.13629",
+   "cand_title": "Advanced Techniques in Stability Analysis of Trans-Neptunian Objects",
+   "cand_cat": "astro-ph.EP",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0188
+  },
+  {
+   "query_id": "2607.13231",
+   "query_title": "Conflict, mobility and fragmentation in the African interurban network",
+   "query_cat": "physics.soc-ph",
+   "cand_id": "2607.14663",
+   "cand_title": "Tuning the universality class of a quantum process by Trotterization",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0194
+  },
+  {
+   "query_id": "2607.15070",
+   "query_title": "Casimir effect for a massive scalar field confined between parallel plates with a spatially varying effective mass",
+   "query_cat": "hep-th",
+   "cand_id": "2607.14981",
+   "cand_title": "The divisor of the twisted Selberg zeta function",
+   "cand_cat": "math.SP",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0203
+  },
+  {
+   "query_id": "2607.14594",
+   "query_title": "Numerical and experimental framework for bending elasticity of highly flexible slender structures",
+   "query_cat": "cond-mat.soft",
+   "cand_id": "2607.15124",
+   "cand_title": "On the origin of finite entanglement scaling",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0204
+  },
+  {
+   "query_id": "2607.06355",
+   "query_title": "Entropic Dynamics of Jump-Diffusion Option Pricing",
+   "query_cat": "q-fin.PR",
+   "cand_id": "2607.14950",
+   "cand_title": "Emergence of polymorphism in stochastic evolutionary games",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0208
+  },
+  {
+   "query_id": "2607.15060",
+   "query_title": "Learning the Fermion sign structure in path-integral Monte Carlo",
+   "query_cat": "cond-mat.stat-mech",
+   "cand_id": "2607.15219",
+   "cand_title": "Cosmic string gravitational wave backgrounds at LISA: II. Reconstruction of conventional signals over astrophysical foregrounds",
+   "cand_cat": "astro-ph.CO",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0221
+  },
+  {
+   "query_id": "2607.12248",
+   "query_title": "When Directional Accuracy Lies: A Base-Rate-Honest Benchmark for LoRA-Adapted TimesFM on Equity Forecasting",
+   "query_cat": "q-fin.ST",
+   "cand_id": "2607.14814",
+   "cand_title": "Post Hoc Inference for Component Attribution in Multivariate Change-Point Detection",
+   "cand_cat": "stat.ME",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0222
+  },
+  {
+   "query_id": "2607.12407",
+   "query_title": "Statistical Properties and Power Analysis of Divergence Measures for Credit Risk Model Monitoring",
+   "query_cat": "q-fin.ST",
+   "cand_id": "2607.14762",
+   "cand_title": "Bayesian Basin Tracking: Efficient Global Continuation of Multistable Dynamical Systems",
+   "cand_cat": "nlin.CD",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0248
+  },
+  {
+   "query_id": "2607.15212",
+   "query_title": "Magnetic corrections to the fermionic Casimir effect with Lorentz symmetry violation and a compactified extra dimension",
+   "query_cat": "hep-th",
+   "cand_id": "2607.14981",
+   "cand_title": "The divisor of the twisted Selberg zeta function",
+   "cand_cat": "math.SP",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0254
+  },
+  {
+   "query_id": "2607.06690",
+   "query_title": "tsbootstrap: Distribution-Free Uncertainty Quantification and Conformal Prediction for Time Series",
+   "query_cat": "stat.ME",
+   "cand_id": "2607.13636",
+   "cand_title": "Measuring What the Crawler Sees: Discovery Curves, Core Persistence, and Shell Dynamics in Longitudinal Web Crawls",
+   "cand_cat": "physics.soc-ph",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0261
+  },
+  {
+   "query_id": "2607.15012",
+   "query_title": "Comment on \"Non-linear interactions in cosmologies with energy exchange\"",
+   "query_cat": "gr-qc",
+   "cand_id": "2607.15236",
+   "cand_title": "Analytical and Numerical Study of Quartic Nonlinear Electrodynamics in Holographic Fermion Systems",
+   "cand_cat": "hep-th",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0264
+  },
+  {
+   "query_id": "2607.15132",
+   "query_title": "Periodic orbits and quantum many-body scars in integrable spin chains",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.13629",
+   "cand_title": "Advanced Techniques in Stability Analysis of Trans-Neptunian Objects",
+   "cand_cat": "astro-ph.EP",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0266
+  },
+  {
+   "query_id": "2607.15256",
+   "query_title": "Analytic finite-rank corrections for singularly weighted estimates in a computer-assisted proof of 3D Euler singularity",
+   "query_cat": "math.AP",
+   "cand_id": "2607.15158",
+   "cand_title": "Fast two-dimensional tensor-network contraction via subspace iteration",
+   "cand_cat": "cond-mat.str-el",
+   "reduction_rank": 2,
+   "lexical_cos": 0.027
+  },
+  {
+   "query_id": "2607.12673",
+   "query_title": "Contrasting statistical patterns in melodic and molecular evolution reveal distinctive constraints in a culturally evolving system",
+   "query_cat": "q-bio.PE",
+   "cand_id": "2607.14490",
+   "cand_title": "The Symbolic Partition of Chaotic Flows Based on Ordinal Patterns",
+   "cand_cat": "nlin.CD",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0271
+  },
+  {
+   "query_id": "2607.06373",
+   "query_title": "Error Propagation in Spectral Functionals of Shrinkage Covariance Estimators: Perturbation Bounds and Calibrated Inference",
+   "query_cat": "stat.ME",
+   "cand_id": "2607.12585",
+   "cand_title": "From phase space to Krylov space, one shell at a time",
+   "cand_cat": "cond-mat.stat-mech",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0275
+  },
+  {
+   "query_id": "2607.15140",
+   "query_title": "Absence of blow-up in the 3D Navier-Stokes equations with transport noise",
+   "query_cat": "math.PR",
+   "cand_id": "2607.14950",
+   "cand_title": "Emergence of polymorphism in stochastic evolutionary games",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0284
+  },
+  {
+   "query_id": "2607.14174",
+   "query_title": "How Much of a 10-K Matters? Aggregation-Dependent Value of Full-Text versus Risk-Factor Sentiment",
+   "query_cat": "cs.LG",
+   "cand_id": "2607.15196",
+   "cand_title": "Subjective Risk Decomposition: A New View for Uncertainty Quantification",
+   "cand_cat": "stat.ML",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0292
+  },
+  {
+   "query_id": "2607.12093",
+   "query_title": "Harvesting Reshapes Dynamical Populations",
+   "query_cat": "cond-mat.stat-mech",
+   "cand_id": "2607.14490",
+   "cand_title": "The Symbolic Partition of Chaotic Flows Based on Ordinal Patterns",
+   "cand_cat": "nlin.CD",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0302
+  },
+  {
+   "query_id": "2607.05291",
+   "query_title": "Forecasting Realized Volatility with Time Series Foundation Models: A Comparison with Econometric Benchmarks",
+   "query_cat": "q-fin.ST",
+   "cand_id": "2607.14814",
+   "cand_title": "Post Hoc Inference for Component Attribution in Multivariate Change-Point Detection",
+   "cand_cat": "stat.ME",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0308
+  },
+  {
+   "query_id": "2607.15262",
+   "query_title": "Dynamic Entanglement Distribution for Multi-User and Multi-Protocol Quantum Networking",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.14805",
+   "cand_title": "RACiMo: Red Ambiental Ciudadana de Monitoreo: A Student-Centred Citizen Science Network for Environmental Monitoring, Data Literacy, and Climate Awareness in Colombia",
+   "cand_cat": "physics.soc-ph",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0319
+  },
+  {
+   "query_id": "2607.14604",
+   "query_title": "Accelerating A/B-Tests with Counterfactual Estimation: Reducing Variance through Policy Overlap",
+   "query_cat": "cs.LG",
+   "cand_id": "2607.15196",
+   "cand_title": "Subjective Risk Decomposition: A New View for Uncertainty Quantification",
+   "cand_cat": "stat.ML",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0327
+  },
+  {
+   "query_id": "2607.14360",
+   "query_title": "Infectious Disease Induces Emergent Oscillations, Extinction and Changes in Community Persistence in a Food Chain",
+   "query_cat": "q-bio.PE",
+   "cand_id": "2607.12864",
+   "cand_title": "Can deleterious mutations surf deterministic population waves?",
+   "cand_cat": "math.AP",
+   "reduction_rank": 2,
+   "lexical_cos": 0.034
+  },
+  {
+   "query_id": "2607.12995",
+   "query_title": "One Shot, Twenty-One Balls: Existence and Rarity of a Total Clearance in a Single Stroke of Snooker",
+   "query_cat": "cs.CG",
+   "cand_id": "2607.06355",
+   "cand_title": "Entropic Dynamics of Jump-Diffusion Option Pricing",
+   "cand_cat": "q-fin.PR",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0341
+  },
+  {
+   "query_id": "2607.14805",
+   "query_title": "RACiMo: Red Ambiental Ciudadana de Monitoreo: A Student-Centred Citizen Science Network for Environmental Monitoring, Data Literacy, and Climate Awareness in Colombia",
+   "query_cat": "physics.soc-ph",
+   "cand_id": "2607.14790",
+   "cand_title": "Probing Graviton Mass with MeerKAT PTA and SKA--PTA Forecasts",
+   "cand_cat": "astro-ph.CO",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0348
+  },
+  {
+   "query_id": "2607.15083",
+   "query_title": "Defects extremal surfaces and interface CFTs",
+   "query_cat": "hep-th",
+   "cand_id": "2607.15210",
+   "cand_title": "Counterexamples to additivity of minimum output $p$-Rényi entropy of quantum channels for $p&gt;3/4$ and $0\\leq p&lt;1/4$",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 2,
+   "lexical_cos": 0.035
+  },
+  {
+   "query_id": "2607.15275",
+   "query_title": "RoboTTT: Context Scaling for Robot Policies",
+   "query_cat": "cs.RO",
+   "cand_id": "2607.15184",
+   "cand_title": "Backpropagating Pauli Propagation",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 2,
+   "lexical_cos": 0.035
+  },
+  {
+   "query_id": "2607.13956",
+   "query_title": "Metamorphosis of transition between states of limit cycle oscillations in aeroacoustic system",
+   "query_cat": "physics.flu-dyn",
+   "cand_id": "2607.13281",
+   "cand_title": "Predator-dependent replicator dynamics or a predator-prey model with two prey types and frequency dependence",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0356
+  },
+  {
+   "query_id": "2607.15184",
+   "query_title": "Backpropagating Pauli Propagation",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.15195",
+   "cand_title": "SciPhy Reinforcement Learning for Portfolio Optimization",
+   "cand_cat": "q-fin.PM",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0375
+  },
+  {
+   "query_id": "2607.15119",
+   "query_title": "Thermodynamic theory of voting and EU elections",
+   "query_cat": "cond-mat.stat-mech",
+   "cand_id": "2607.14950",
+   "cand_title": "Emergence of polymorphism in stochastic evolutionary games",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0377
+  },
+  {
+   "query_id": "2607.14891",
+   "query_title": "Cosmological Collider Signals at Strong Mixing",
+   "query_cat": "hep-th",
+   "cand_id": "2607.15233",
+   "cand_title": "Study of Duffing oscillator using an improved Lindstedt Poincare method and relevant comparisons",
+   "cand_cat": "math-ph",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0391
+  },
+  {
+   "query_id": "2607.15276",
+   "query_title": "Locality of deep thermalisation through the lens of entanglement teleportation",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.15215",
+   "cand_title": "Stochastic binary networks with asymmetric and time-delayed interactions",
+   "cand_cat": "physics.app-ph",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0394
+  },
+  {
+   "query_id": "2607.14929",
+   "query_title": "Tomographic flow regime vs even-odd effect for the magnetotransport in the Corbino geometry",
+   "query_cat": "cond-mat.mes-hall",
+   "cand_id": "2607.14017",
+   "cand_title": "The Wulff bio-heat transfer model revisited: directional blood enthalpy transport, the biological Peclet number, and implications for laser-induced thermal therapy",
+   "cand_cat": "physics.soc-ph",
+   "reduction_rank": 2,
+   "lexical_cos": 0.04
+  },
+  {
+   "query_id": "2607.15124",
+   "query_title": "On the origin of finite entanglement scaling",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.15042",
+   "cand_title": "The $L^p$ Neumann problem for the Stokes system in nonsmooth domains",
+   "cand_cat": "math.AP",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0406
+  },
+  {
+   "query_id": "2607.15160",
+   "query_title": "Parameter-Shift Rules for Gradients in Boson Sampling Experiments",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.14981",
+   "cand_title": "The divisor of the twisted Selberg zeta function",
+   "cand_cat": "math.SP",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0417
+  },
+  {
+   "query_id": "2607.14854",
+   "query_title": "CAMB v2: cosmological power spectra for high-precision surveys",
+   "query_cat": "astro-ph.CO",
+   "cand_id": "2607.15013",
+   "cand_title": "Quasi-Pfaffian Solutions to Integrable Systems via Sylvester-Moutard Transformations",
+   "cand_cat": "math-ph",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0418
+  },
+  {
+   "query_id": "2607.14663",
+   "query_title": "Tuning the universality class of a quantum process by Trotterization",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.11520",
+   "cand_title": "Stochastic individual-bases models",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 2,
+   "lexical_cos": 0.042
+  },
+  {
+   "query_id": "2607.14531",
+   "query_title": "Overlapping Network Community Detection Using Sparse Backbones",
+   "query_cat": "cs.SI",
+   "cand_id": "2607.15018",
+   "cand_title": "cGAP: Generalized Association Plots with HOMALS-Guided Heatmaps for Visualization of High-Dimensional Categorical Data",
+   "cand_cat": "stat.ML",
+   "reduction_rank": 2,
+   "lexical_cos": 0.045
+  },
+  {
+   "query_id": "2607.15215",
+   "query_title": "Stochastic binary networks with asymmetric and time-delayed interactions",
+   "query_cat": "physics.app-ph",
+   "cand_id": "2607.11520",
+   "cand_title": "Stochastic individual-bases models",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0474
+  },
+  {
+   "query_id": "2607.14699",
+   "query_title": "Exact Computation of Non-Gaussian Mismatch Penalties in Wiener-Hermite Cross-Correlation Identification",
+   "query_cat": "stat.ME",
+   "cand_id": "2607.15158",
+   "cand_title": "Fast two-dimensional tensor-network contraction via subspace iteration",
+   "cand_cat": "cond-mat.str-el",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0475
+  },
+  {
+   "query_id": "2607.15018",
+   "query_title": "cGAP: Generalized Association Plots with HOMALS-Guided Heatmaps for Visualization of High-Dimensional Categorical Data",
+   "query_cat": "stat.ML",
+   "cand_id": "2607.15158",
+   "cand_title": "Fast two-dimensional tensor-network contraction via subspace iteration",
+   "cand_cat": "cond-mat.str-el",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0513
+  },
+  {
+   "query_id": "2607.14953",
+   "query_title": "Stochastic process model of rough surface contact",
+   "query_cat": "cond-mat.soft",
+   "cand_id": "2607.11520",
+   "cand_title": "Stochastic individual-bases models",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0518
+  },
+  {
+   "query_id": "2607.14950",
+   "query_title": "Emergence of polymorphism in stochastic evolutionary games",
+   "query_cat": "q-bio.PE",
+   "cand_id": "2607.12093",
+   "cand_title": "Harvesting Reshapes Dynamical Populations",
+   "cand_cat": "cond-mat.stat-mech",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0533
+  },
+  {
+   "query_id": "2607.14653",
+   "query_title": "Revisiting a random model of lateral gene transfer in phylogenetics",
+   "query_cat": "q-bio.PE",
+   "cand_id": "2607.15179",
+   "cand_title": "A Complete-Data Likelihood for Epidemic Processes on Partially Observed Dynamic Networks",
+   "cand_cat": "stat.ME",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0575
+  },
+  {
+   "query_id": "2607.13171",
+   "query_title": "Human population dynamics as a Bayesian inverse transport problem",
+   "query_cat": "physics.soc-ph",
+   "cand_id": "2607.14790",
+   "cand_title": "Probing Graviton Mass with MeerKAT PTA and SKA--PTA Forecasts",
+   "cand_cat": "astro-ph.CO",
+   "reduction_rank": 2,
+   "lexical_cos": 0.0596
+  },
+  {
+   "query_id": "2607.15074",
+   "query_title": "Mirror symmetry in 3d in 3d mirror symmetry",
+   "query_cat": "hep-th",
+   "cand_id": "2607.15152",
+   "cand_title": "Ultradifferentiable regularity properties of a class of hypoelliptic operators",
+   "cand_cat": "math.AP",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0
+  },
+  {
+   "query_id": "2607.15233",
+   "query_title": "Study of Duffing oscillator using an improved Lindstedt Poincare method and relevant comparisons",
+   "query_cat": "math-ph",
+   "cand_id": "2607.15132",
+   "cand_title": "Periodic orbits and quantum many-body scars in integrable spin chains",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0
+  },
+  {
+   "query_id": "2607.14784",
+   "query_title": "Photovoltaics beyond the panel: system-level net energy under grid and firming constraints",
+   "query_cat": "physics.soc-ph",
+   "cand_id": "2607.15083",
+   "cand_title": "Defects extremal surfaces and interface CFTs",
+   "cand_cat": "hep-th",
+   "reduction_rank": 3,
+   "lexical_cos": 0.001
+  },
+  {
+   "query_id": "2607.15212",
+   "query_title": "Magnetic corrections to the fermionic Casimir effect with Lorentz symmetry violation and a compactified extra dimension",
+   "query_cat": "hep-th",
+   "cand_id": "2607.09906",
+   "cand_title": "Depth-Efficient Quantum Topological Data Analysis for Regime-Specific Detection of Financial Stress",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0022
+  },
+  {
+   "query_id": "2607.15250",
+   "query_title": "Equivalence of the Compton and Bethe-Feynman Yield Formulas",
+   "query_cat": "physics.soc-ph",
+   "cand_id": "2607.14914",
+   "cand_title": "Stochastic ultimatum game: Spite-driven resource feedback fosters fairness",
+   "cand_cat": "nlin.AO",
+   "reduction_rank": 3,
+   "lexical_cos": 0.003
+  },
+  {
+   "query_id": "2607.15252",
+   "query_title": "Coulomb blockade in microscopic material defects as a source of decoherence and noise in solid-state quantum circuits",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.15187",
+   "cand_title": "Type I/II Vortex Dynamics With Excited Normal Modes",
+   "cand_cat": "hep-th",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0035
+  },
+  {
+   "query_id": "2607.15151",
+   "query_title": "Superadditivity for Entanglement-Assisted Communication",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.15181",
+   "cand_title": "Sharp asymptotics for higher-order Hardy constants on lattices",
+   "cand_cat": "math.FA",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0043
+  },
+  {
+   "query_id": "2607.15160",
+   "query_title": "Parameter-Shift Rules for Gradients in Boson Sampling Experiments",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.15012",
+   "cand_title": "Comment on \"Non-linear interactions in cosmologies with energy exchange\"",
+   "cand_cat": "gr-qc",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0043
+  },
+  {
+   "query_id": "2607.14594",
+   "query_title": "Numerical and experimental framework for bending elasticity of highly flexible slender structures",
+   "query_cat": "cond-mat.soft",
+   "cand_id": "2607.15236",
+   "cand_title": "Analytical and Numerical Study of Quartic Nonlinear Electrodynamics in Holographic Fermion Systems",
+   "cand_cat": "hep-th",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0053
+  },
+  {
+   "query_id": "2607.15119",
+   "query_title": "Thermodynamic theory of voting and EU elections",
+   "query_cat": "cond-mat.stat-mech",
+   "cand_id": "2607.13281",
+   "cand_title": "Predator-dependent replicator dynamics or a predator-prey model with two prey types and frequency dependence",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0056
+  },
+  {
+   "query_id": "2607.08500",
+   "query_title": "Estimating the Stochastic Discount Factor from Option Prices and Predicting the Equity Premium",
+   "query_cat": "q-fin.MF",
+   "cand_id": "2607.12995",
+   "cand_title": "One Shot, Twenty-One Balls: Existence and Rarity of a Total Clearance in a Single Stroke of Snooker",
+   "cand_cat": "cs.CG",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0063
+  },
+  {
+   "query_id": "2607.14891",
+   "query_title": "Cosmological Collider Signals at Strong Mixing",
+   "query_cat": "hep-th",
+   "cand_id": "2607.14797",
+   "cand_title": "Robustness of periodicity in Grover walks under a magnetic vector potential",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0065
+  },
+  {
+   "query_id": "2607.15012",
+   "query_title": "Comment on \"Non-linear interactions in cosmologies with energy exchange\"",
+   "query_cat": "gr-qc",
+   "cand_id": "2607.15237",
+   "cand_title": "\"Goldfish'' equations for infinitely many particles",
+   "cand_cat": "math-ph",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0067
+  },
+  {
+   "query_id": "2607.11325",
+   "query_title": "Proximity Measures for Classes of Phylogenetic Networks",
+   "query_cat": "math.CO",
+   "cand_id": "2607.09906",
+   "cand_title": "Depth-Efficient Quantum Topological Data Analysis for Regime-Specific Detection of Financial Stress",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0069
+  },
+  {
+   "query_id": "2607.15007",
+   "query_title": "Observers, local measurements, and topology",
+   "query_cat": "hep-th",
+   "cand_id": "2607.15177",
+   "cand_title": "On the geometry of Coulomb branches",
+   "cand_cat": "math.AG",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0069
+  },
+  {
+   "query_id": "2607.14867",
+   "query_title": "Thermal Masses and Bubble-Wall Friction in Cosmological Phase Transitions",
+   "query_cat": "hep-ph",
+   "cand_id": "2607.14953",
+   "cand_title": "Stochastic process model of rough surface contact",
+   "cand_cat": "cond-mat.soft",
+   "reduction_rank": 3,
+   "lexical_cos": 0.007
+  },
+  {
+   "query_id": "2607.15015",
+   "query_title": "Augmenting goodness-of-fit tests with sequentially calibrated secondary statistics",
+   "query_cat": "stat.ME",
+   "cand_id": "2607.13636",
+   "cand_title": "Measuring What the Crawler Sees: Discovery Curves, Core Persistence, and Shell Dynamics in Longitudinal Web Crawls",
+   "cand_cat": "physics.soc-ph",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0078
+  },
+  {
+   "query_id": "2607.14785",
+   "query_title": "Enabling Cosmic Web Analysis at Gigaparsec Scales: A Multi Block Approach for DisPerSE",
+   "query_cat": "astro-ph.GA",
+   "cand_id": "2607.14874",
+   "cand_title": "Fermion-doubling problem in Chiral discretizations of Quantum field theory: Definitive proof, Fixing, and Computation of two-point correlation function",
+   "cand_cat": "hep-lat",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0084
+  },
+  {
+   "query_id": "2607.15210",
+   "query_title": "Counterexamples to additivity of minimum output $p$-Rényi entropy of quantum channels for $p&gt;3/4$ and $0\\leq p&lt;1/4$",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.15242",
+   "cand_title": "Mutable Low-Rank Sketches for Retrain-Free Recommendation",
+   "cand_cat": "cs.LG",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0089
+  },
+  {
+   "query_id": "2607.12673",
+   "query_title": "Contrasting statistical patterns in melodic and molecular evolution reveal distinctive constraints in a culturally evolving system",
+   "query_cat": "q-bio.PE",
+   "cand_id": "2607.11325",
+   "cand_title": "Proximity Measures for Classes of Phylogenetic Networks",
+   "cand_cat": "math.CO",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0103
+  },
+  {
+   "query_id": "2607.15181",
+   "query_title": "Sharp asymptotics for higher-order Hardy constants on lattices",
+   "query_cat": "math.FA",
+   "cand_id": "2607.12585",
+   "cand_title": "From phase space to Krylov space, one shell at a time",
+   "cand_cat": "cond-mat.stat-mech",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0106
+  },
+  {
+   "query_id": "2607.15279",
+   "query_title": "Particle production from bubble collisions",
+   "query_cat": "hep-ph",
+   "cand_id": "2607.15000",
+   "cand_title": "Flood risk estimation via geometric extremal graphical models",
+   "cand_cat": "stat.AP",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0113
+  },
+  {
+   "query_id": "2607.13693",
+   "query_title": "Social Simulations: from Agent-Based Modeling to Digital Twins",
+   "query_cat": "cs.MA",
+   "cand_id": "2607.14360",
+   "cand_title": "Infectious Disease Induces Emergent Oscillations, Extinction and Changes in Community Persistence in a Food Chain",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0117
+  },
+  {
+   "query_id": "2607.14911",
+   "query_title": "Finite-Dimensional Feedback Stabilization of Nonautonomous Stochastic Parabolic Equations",
+   "query_cat": "math.OC",
+   "cand_id": "2607.15208",
+   "cand_title": "Delocalization of bias in unadjusted Hamiltonian Monte Carlo and underdamped Langevin",
+   "cand_cat": "stat.CO",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0125
+  },
+  {
+   "query_id": "2607.15159",
+   "query_title": "LDGM-Based Quantum Codes for Fault-Tolerant Quantum Computation",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.15208",
+   "cand_title": "Delocalization of bias in unadjusted Hamiltonian Monte Carlo and underdamped Langevin",
+   "cand_cat": "stat.CO",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0134
+  },
+  {
+   "query_id": "2607.15215",
+   "query_title": "Stochastic binary networks with asymmetric and time-delayed interactions",
+   "query_cat": "physics.app-ph",
+   "cand_id": "2607.14360",
+   "cand_title": "Infectious Disease Induces Emergent Oscillations, Extinction and Changes in Community Persistence in a Food Chain",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0134
+  },
+  {
+   "query_id": "2607.15273",
+   "query_title": "MeanFlowNFT: Bringing Forward-Process RL to Average-Velocity Generators",
+   "query_cat": "cs.CV",
+   "cand_id": "2607.13171",
+   "cand_title": "Human population dynamics as a Bayesian inverse transport problem",
+   "cand_cat": "physics.soc-ph",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0135
+  },
+  {
+   "query_id": "2607.14929",
+   "query_title": "Tomographic flow regime vs even-odd effect for the magnetotransport in the Corbino geometry",
+   "query_cat": "cond-mat.mes-hall",
+   "cand_id": "2607.14918",
+   "cand_title": "A C++ implementation of the G-Scheme stiff ODE solver with multi-resolution sparse hash-table kernel lookup",
+   "cand_cat": "math-ph",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0136
+  },
+  {
+   "query_id": "2607.15132",
+   "query_title": "Periodic orbits and quantum many-body scars in integrable spin chains",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.14490",
+   "cand_title": "The Symbolic Partition of Chaotic Flows Based on Ordinal Patterns",
+   "cand_cat": "nlin.CD",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0141
+  },
+  {
+   "query_id": "2607.15271",
+   "query_title": "Online Neural Space Time Memory for Dynamic Novel View Synthesis",
+   "query_cat": "cs.CV",
+   "cand_id": "2607.08500",
+   "cand_title": "Estimating the Stochastic Discount Factor from Option Prices and Predicting the Equity Premium",
+   "cand_cat": "q-fin.MF",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0149
+  },
+  {
+   "query_id": "2607.15195",
+   "query_title": "SciPhy Reinforcement Learning for Portfolio Optimization",
+   "query_cat": "q-fin.PM",
+   "cand_id": "2607.12995",
+   "cand_title": "One Shot, Twenty-One Balls: Existence and Rarity of a Total Clearance in a Single Stroke of Snooker",
+   "cand_cat": "cs.CG",
+   "reduction_rank": 3,
+   "lexical_cos": 0.015
+  },
+  {
+   "query_id": "2607.15145",
+   "query_title": "Semiclassical estimates near threshold energies and resonance counting on Schwarzschild black holes",
+   "query_cat": "math.AP",
+   "cand_id": "2607.15212",
+   "cand_title": "Magnetic corrections to the fermionic Casimir effect with Lorentz symmetry violation and a compactified extra dimension",
+   "cand_cat": "hep-th",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0156
+  },
+  {
+   "query_id": "2607.15229",
+   "query_title": "Data Driven Block Replacement Scheduling",
+   "query_cat": "cs.LG",
+   "cand_id": "2607.05291",
+   "cand_title": "Forecasting Realized Volatility with Time Series Foundation Models: A Comparison with Econometric Benchmarks",
+   "cand_cat": "q-fin.ST",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0177
+  },
+  {
+   "query_id": "2607.14632",
+   "query_title": "Criticality and reduced dynamical resilience in PM2.5 pollution systems",
+   "query_cat": "physics.soc-ph",
+   "cand_id": "2607.06908",
+   "cand_title": "Iterative detection of global factors near the BBP phase transition",
+   "cand_cat": "q-fin.ST",
+   "reduction_rank": 3,
+   "lexical_cos": 0.019
+  },
+  {
+   "query_id": "2607.14604",
+   "query_title": "Accelerating A/B-Tests with Counterfactual Estimation: Reducing Variance through Policy Overlap",
+   "query_cat": "cs.LG",
+   "cand_id": "2607.14860",
+   "cand_title": "Assing Preferential Sampling in Retail Survival Data: A Bayesian Joint LGCP and Spatial Probit Model for Mini-Supermarket Closure in Tokyo",
+   "cand_cat": "stat.ME",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0195
+  },
+  {
+   "query_id": "2607.15276",
+   "query_title": "Locality of deep thermalisation through the lens of entanglement teleportation",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.15208",
+   "cand_title": "Delocalization of bias in unadjusted Hamiltonian Monte Carlo and underdamped Langevin",
+   "cand_cat": "stat.CO",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0198
+  },
+  {
+   "query_id": "2607.14738",
+   "query_title": "Quantifying the complexity of trajectory ensembles with clustering-weighted multivariate multiscale sample entropy",
+   "query_cat": "eess.SP",
+   "cand_id": "2607.14623",
+   "cand_title": "Multiverse analysis, abdication of responsibility and manufacturing of doubt",
+   "cand_cat": "stat.ME",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0199
+  },
+  {
+   "query_id": "2607.15217",
+   "query_title": "NeuronSoup: Evolving Asynchronous, Shared-Neuron Temporal Graphs without Backpropagation",
+   "query_cat": "cs.NE",
+   "cand_id": "2607.15191",
+   "cand_title": "Massive On-shell Splitting Functions in Spinor-Helicity Formalism",
+   "cand_cat": "hep-ph",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0201
+  },
+  {
+   "query_id": "2607.15177",
+   "query_title": "On the geometry of Coulomb branches",
+   "query_cat": "math.AG",
+   "cand_id": "2607.09906",
+   "cand_title": "Depth-Efficient Quantum Topological Data Analysis for Regime-Specific Detection of Financial Stress",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0209
+  },
+  {
+   "query_id": "2607.12995",
+   "query_title": "One Shot, Twenty-One Balls: Existence and Rarity of a Total Clearance in a Single Stroke of Snooker",
+   "query_cat": "cs.CG",
+   "cand_id": "2607.11520",
+   "cand_title": "Stochastic individual-bases models",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 3,
+   "lexical_cos": 0.021
+  },
+  {
+   "query_id": "2607.15266",
+   "query_title": "Tunable Mpemba effect in a polymer-bead system with inertia",
+   "query_cat": "cond-mat.soft",
+   "cand_id": "2607.14663",
+   "cand_title": "Tuning the universality class of a quantum process by Trotterization",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0212
+  },
+  {
+   "query_id": "2607.14953",
+   "query_title": "Stochastic process model of rough surface contact",
+   "query_cat": "cond-mat.soft",
+   "cand_id": "2607.14490",
+   "cand_title": "The Symbolic Partition of Chaotic Flows Based on Ordinal Patterns",
+   "cand_cat": "nlin.CD",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0223
+  },
+  {
+   "query_id": "2607.14805",
+   "query_title": "RACiMo: Red Ambiental Ciudadana de Monitoreo: A Student-Centred Citizen Science Network for Environmental Monitoring, Data Literacy, and Climate Awareness in Colombia",
+   "query_cat": "physics.soc-ph",
+   "cand_id": "2607.14937",
+   "cand_title": "A Minimal Interpretable Architecture for Zero-Shot Reconstruction of Dynamical Systems",
+   "cand_cat": "cs.LG",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0227
+  },
+  {
+   "query_id": "2607.14663",
+   "query_title": "Tuning the universality class of a quantum process by Trotterization",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.12864",
+   "cand_title": "Can deleterious mutations surf deterministic population waves?",
+   "cand_cat": "math.AP",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0242
+  },
+  {
+   "query_id": "2607.15133",
+   "query_title": "Solid-solid phase transitions with space-dependent wells",
+   "query_cat": "math.AP",
+   "cand_id": "2607.15212",
+   "cand_title": "Magnetic corrections to the fermionic Casimir effect with Lorentz symmetry violation and a compactified extra dimension",
+   "cand_cat": "hep-th",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0257
+  },
+  {
+   "query_id": "2607.14762",
+   "query_title": "Bayesian Basin Tracking: Efficient Global Continuation of Multistable Dynamical Systems",
+   "query_cat": "nlin.CD",
+   "cand_id": "2607.15219",
+   "cand_title": "Cosmic string gravitational wave backgrounds at LISA: II. Reconstruction of conventional signals over astrophysical foregrounds",
+   "cand_cat": "astro-ph.CO",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0258
+  },
+  {
+   "query_id": "2607.15059",
+   "query_title": "Female participation in science in the past 125 years: An analysis of the Matilda effect over time",
+   "query_cat": "cs.DL",
+   "cand_id": "2607.12407",
+   "cand_title": "Statistical Properties and Power Analysis of Divergence Measures for Credit Risk Model Monitoring",
+   "cand_cat": "q-fin.ST",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0267
+  },
+  {
+   "query_id": "2607.15236",
+   "query_title": "Analytical and Numerical Study of Quartic Nonlinear Electrodynamics in Holographic Fermion Systems",
+   "query_cat": "hep-th",
+   "cand_id": "2607.15152",
+   "cand_title": "Ultradifferentiable regularity properties of a class of hypoelliptic operators",
+   "cand_cat": "math.AP",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0268
+  },
+  {
+   "query_id": "2607.13171",
+   "query_title": "Human population dynamics as a Bayesian inverse transport problem",
+   "query_cat": "physics.soc-ph",
+   "cand_id": "2607.15219",
+   "cand_title": "Cosmic string gravitational wave backgrounds at LISA: II. Reconstruction of conventional signals over astrophysical foregrounds",
+   "cand_cat": "astro-ph.CO",
+   "reduction_rank": 3,
+   "lexical_cos": 0.027
+  },
+  {
+   "query_id": "2607.15158",
+   "query_title": "Fast two-dimensional tensor-network contraction via subspace iteration",
+   "query_cat": "cond-mat.str-el",
+   "cand_id": "2607.06373",
+   "cand_title": "Error Propagation in Spectral Functionals of Shrinkage Covariance Estimators: Perturbation Bounds and Calibrated Inference",
+   "cand_cat": "stat.ME",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0283
+  },
+  {
+   "query_id": "2607.10297",
+   "query_title": "Recovering Structural Organization in Noisy Correlation Networks Using Financial Systems as a Testbed",
+   "query_cat": "q-fin.ST",
+   "cand_id": "2607.14843",
+   "cand_title": "Analytical covariances for catalogue-based pseudo-$C_\\ell$s",
+   "cand_cat": "astro-ph.CO",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0288
+  },
+  {
+   "query_id": "2607.06690",
+   "query_title": "tsbootstrap: Distribution-Free Uncertainty Quantification and Conformal Prediction for Time Series",
+   "query_cat": "stat.ME",
+   "cand_id": "2607.14762",
+   "cand_title": "Bayesian Basin Tracking: Efficient Global Continuation of Multistable Dynamical Systems",
+   "cand_cat": "nlin.CD",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0303
+  },
+  {
+   "query_id": "2607.15207",
+   "query_title": "BadWAM: When World-Action Models Dream Right but Act Wrong",
+   "query_cat": "cs.LG",
+   "cand_id": "2607.14771",
+   "cand_title": "Mixed-Frequency Time Series Forecasting via Depth-Separable Neural Networks",
+   "cand_cat": "stat.ME",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0306
+  },
+  {
+   "query_id": "2607.14724",
+   "query_title": "Testing equivalence to binary generalized linear models with application to logistic regression",
+   "query_cat": "stat.ME",
+   "cand_id": "2607.15060",
+   "cand_title": "Learning the Fermion sign structure in path-integral Monte Carlo",
+   "cand_cat": "cond-mat.stat-mech",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0308
+  },
+  {
+   "query_id": "2607.15020",
+   "query_title": "High resolution Lyman-α forest constraints on dark matter-neutrino scattering",
+   "query_cat": "astro-ph.CO",
+   "cand_id": "2607.14762",
+   "cand_title": "Bayesian Basin Tracking: Efficient Global Continuation of Multistable Dynamical Systems",
+   "cand_cat": "nlin.CD",
+   "reduction_rank": 3,
+   "lexical_cos": 0.031
+  },
+  {
+   "query_id": "2607.14860",
+   "query_title": "Assing Preferential Sampling in Retail Survival Data: A Bayesian Joint LGCP and Spatial Probit Model for Mini-Supermarket Closure in Tokyo",
+   "query_cat": "stat.ME",
+   "cand_id": "2607.14653",
+   "cand_title": "Revisiting a random model of lateral gene transfer in phylogenetics",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0315
+  },
+  {
+   "query_id": "2607.15121",
+   "query_title": "Quantum Lock-In Detection via Successive Adiabatic Evolution",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.10297",
+   "cand_title": "Recovering Structural Organization in Noisy Correlation Networks Using Financial Systems as a Testbed",
+   "cand_cat": "q-fin.ST",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0315
+  },
+  {
+   "query_id": "2607.15124",
+   "query_title": "On the origin of finite entanglement scaling",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.15208",
+   "cand_title": "Delocalization of bias in unadjusted Hamiltonian Monte Carlo and underdamped Langevin",
+   "cand_cat": "stat.CO",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0318
+  },
+  {
+   "query_id": "2607.14771",
+   "query_title": "Mixed-Frequency Time Series Forecasting via Depth-Separable Neural Networks",
+   "query_cat": "stat.ME",
+   "cand_id": "2607.15184",
+   "cand_title": "Backpropagating Pauli Propagation",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0321
+  },
+  {
+   "query_id": "2607.14017",
+   "query_title": "The Wulff bio-heat transfer model revisited: directional blood enthalpy transport, the biological Peclet number, and implications for laser-induced thermal therapy",
+   "query_cat": "physics.soc-ph",
+   "cand_id": "2607.14953",
+   "cand_title": "Stochastic process model of rough surface contact",
+   "cand_cat": "cond-mat.soft",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0322
+  },
+  {
+   "query_id": "2607.15028",
+   "query_title": "Refining primordial black hole dark matter constraints with dust heating: the role of spin and halo profile dependence",
+   "query_cat": "astro-ph.CO",
+   "cand_id": "2607.14867",
+   "cand_title": "Thermal Masses and Bubble-Wall Friction in Cosmological Phase Transitions",
+   "cand_cat": "hep-ph",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0342
+  },
+  {
+   "query_id": "2607.09906",
+   "query_title": "Depth-Efficient Quantum Topological Data Analysis for Regime-Specific Detection of Financial Stress",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.06373",
+   "cand_title": "Error Propagation in Spectral Functionals of Shrinkage Covariance Estimators: Perturbation Bounds and Calibrated Inference",
+   "cand_cat": "stat.ME",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0355
+  },
+  {
+   "query_id": "2607.13438",
+   "query_title": "Impacts of social and impact heterogeneity on social-climate outcomes",
+   "query_cat": "physics.soc-ph",
+   "cand_id": "2607.14360",
+   "cand_title": "Infectious Disease Induces Emergent Oscillations, Extinction and Changes in Community Persistence in a Food Chain",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0363
+  },
+  {
+   "query_id": "2607.15191",
+   "query_title": "Massive On-shell Splitting Functions in Spinor-Helicity Formalism",
+   "query_cat": "hep-ph",
+   "cand_id": "2607.14771",
+   "cand_title": "Mixed-Frequency Time Series Forecasting via Depth-Separable Neural Networks",
+   "cand_cat": "stat.ME",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0363
+  },
+  {
+   "query_id": "2607.15000",
+   "query_title": "Flood risk estimation via geometric extremal graphical models",
+   "query_cat": "stat.AP",
+   "cand_id": "2607.14653",
+   "cand_title": "Revisiting a random model of lateral gene transfer in phylogenetics",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0364
+  },
+  {
+   "query_id": "2607.12093",
+   "query_title": "Harvesting Reshapes Dynamical Populations",
+   "query_cat": "cond-mat.stat-mech",
+   "cand_id": "2607.11520",
+   "cand_title": "Stochastic individual-bases models",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0392
+  },
+  {
+   "query_id": "2607.15261",
+   "query_title": "Relativistic time-commutative dynamics with $κ$-plane noncommutativity",
+   "query_cat": "hep-th",
+   "cand_id": "2607.15013",
+   "cand_title": "Quasi-Pfaffian Solutions to Integrable Systems via Sylvester-Moutard Transformations",
+   "cand_cat": "math-ph",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0392
+  },
+  {
+   "query_id": "2607.12248",
+   "query_title": "When Directional Accuracy Lies: A Base-Rate-Honest Benchmark for LoRA-Adapted TimesFM on Equity Forecasting",
+   "query_cat": "q-fin.ST",
+   "cand_id": "2607.14174",
+   "cand_title": "How Much of a 10-K Matters? Aggregation-Dependent Value of Full-Text versus Risk-Factor Sentiment",
+   "cand_cat": "cs.LG",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0398
+  },
+  {
+   "query_id": "2607.15152",
+   "query_title": "Ultradifferentiable regularity properties of a class of hypoelliptic operators",
+   "query_cat": "math.AP",
+   "cand_id": "2607.14916",
+   "cand_title": "Classical Symmetries and Painleve Analysis for the (1+3) Kudryashov-Sinelshchikov Equation",
+   "cand_cat": "nlin.SI",
+   "reduction_rank": 3,
+   "lexical_cos": 0.04
+  },
+  {
+   "query_id": "2607.14874",
+   "query_title": "Fermion-doubling problem in Chiral discretizations of Quantum field theory: Definitive proof, Fixing, and Computation of two-point correlation function",
+   "query_cat": "hep-lat",
+   "cand_id": "2607.15132",
+   "cand_title": "Periodic orbits and quantum many-body scars in integrable spin chains",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0404
+  },
+  {
+   "query_id": "2607.13636",
+   "query_title": "Measuring What the Crawler Sees: Discovery Curves, Core Persistence, and Shell Dynamics in Longitudinal Web Crawls",
+   "query_cat": "physics.soc-ph",
+   "cand_id": "2607.14860",
+   "cand_title": "Assing Preferential Sampling in Retail Survival Data: A Bayesian Joint LGCP and Spatial Probit Model for Mini-Supermarket Closure in Tokyo",
+   "cand_cat": "stat.ME",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0424
+  },
+  {
+   "query_id": "2607.14910",
+   "query_title": "Kerr black holes without primary hairs",
+   "query_cat": "gr-qc",
+   "cand_id": "2607.15237",
+   "cand_title": "\"Goldfish'' equations for infinitely many particles",
+   "cand_cat": "math-ph",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0424
+  },
+  {
+   "query_id": "2607.15262",
+   "query_title": "Dynamic Entanglement Distribution for Multi-User and Multi-Protocol Quantum Networking",
+   "query_cat": "quant-ph",
+   "cand_id": "2607.14531",
+   "cand_title": "Overlapping Network Community Detection Using Sparse Backbones",
+   "cand_cat": "cs.SI",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0435
+  },
+  {
+   "query_id": "2607.05291",
+   "query_title": "Forecasting Realized Volatility with Time Series Foundation Models: A Comparison with Econometric Benchmarks",
+   "query_cat": "q-fin.ST",
+   "cand_id": "2607.15196",
+   "cand_title": "Subjective Risk Decomposition: A New View for Uncertainty Quantification",
+   "cand_cat": "stat.ML",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0451
+  },
+  {
+   "query_id": "2607.12864",
+   "query_title": "Can deleterious mutations surf deterministic population waves?",
+   "query_cat": "math.AP",
+   "cand_id": "2607.13281",
+   "cand_title": "Predator-dependent replicator dynamics or a predator-prey model with two prey types and frequency dependence",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0452
+  },
+  {
+   "query_id": "2607.14531",
+   "query_title": "Overlapping Network Community Detection Using Sparse Backbones",
+   "query_cat": "cs.SI",
+   "cand_id": "2607.15159",
+   "cand_title": "LDGM-Based Quantum Codes for Fault-Tolerant Quantum Computation",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0455
+  },
+  {
+   "query_id": "2607.06373",
+   "query_title": "Error Propagation in Spectral Functionals of Shrinkage Covariance Estimators: Perturbation Bounds and Calibrated Inference",
+   "query_cat": "stat.ME",
+   "cand_id": "2607.14843",
+   "cand_title": "Analytical covariances for catalogue-based pseudo-$C_\\ell$s",
+   "cand_cat": "astro-ph.CO",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0505
+  },
+  {
+   "query_id": "2607.15140",
+   "query_title": "Absence of blow-up in the 3D Navier-Stokes equations with transport noise",
+   "query_cat": "math.PR",
+   "cand_id": "2607.12093",
+   "cand_title": "Harvesting Reshapes Dynamical Populations",
+   "cand_cat": "cond-mat.stat-mech",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0519
+  },
+  {
+   "query_id": "2607.15070",
+   "query_title": "Casimir effect for a massive scalar field confined between parallel plates with a spatially varying effective mass",
+   "query_cat": "hep-th",
+   "cand_id": "2607.15145",
+   "cand_title": "Semiclassical estimates near threshold energies and resonance counting on Schwarzschild black holes",
+   "cand_cat": "math.AP",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0534
+  },
+  {
+   "query_id": "2607.14914",
+   "query_title": "Stochastic ultimatum game: Spite-driven resource feedback fosters fairness",
+   "query_cat": "nlin.AO",
+   "cand_id": "2607.14950",
+   "cand_title": "Emergence of polymorphism in stochastic evolutionary games",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0542
+  },
+  {
+   "query_id": "2607.14854",
+   "query_title": "CAMB v2: cosmological power spectra for high-precision surveys",
+   "query_cat": "astro-ph.CO",
+   "cand_id": "2607.14916",
+   "cand_title": "Classical Symmetries and Painleve Analysis for the (1+3) Kudryashov-Sinelshchikov Equation",
+   "cand_cat": "nlin.SI",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0568
+  },
+  {
+   "query_id": "2607.06355",
+   "query_title": "Entropic Dynamics of Jump-Diffusion Option Pricing",
+   "query_cat": "q-fin.PR",
+   "cand_id": "2607.12093",
+   "cand_title": "Harvesting Reshapes Dynamical Populations",
+   "cand_cat": "cond-mat.stat-mech",
+   "reduction_rank": 3,
+   "lexical_cos": 0.058
+  },
+  {
+   "query_id": "2607.15179",
+   "query_title": "A Complete-Data Likelihood for Epidemic Processes on Partially Observed Dynamic Networks",
+   "query_cat": "stat.ME",
+   "cand_id": "2607.06355",
+   "cand_title": "Entropic Dynamics of Jump-Diffusion Option Pricing",
+   "cand_cat": "q-fin.PR",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0588
+  },
+  {
+   "query_id": "2607.15083",
+   "query_title": "Defects extremal surfaces and interface CFTs",
+   "query_cat": "hep-th",
+   "cand_id": "2607.15124",
+   "cand_title": "On the origin of finite entanglement scaling",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 3,
+   "lexical_cos": 0.0591
+  }
+ ]
+}

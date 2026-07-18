@@ -1,0 +1,7 @@
+{
+  "mapping": [
+    {"a_element": "stochastic/dissipative fluctuations that qualitatively change the process outcome", "b_element": "demographic noise that qualitatively changes the population state"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A studies an absorbing-state phase transition and its universality class (quantum vs. directed-percolation) in a discretized quantum contact process, where Trotterization and destructive quantum interference tune criticality. Paper B studies noise-induced metastable polymorphism in a finite-population Hawk-Dove evolutionary game via timescale separation, with no phase transition or universality class. Beyond the generic overlap that both are noisy non-equilibrium systems, there is no role-for-role correspondence between a critical-point universality mechanism and a timescale-separated demographic-noise metastability mechanism."
+}

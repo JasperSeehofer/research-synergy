@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A constant-rate Poisson point process of random events superimposed on a branching genealogical structure, yielding closed-form marginal probabilities of discrete outcome configurations that are then tested for parameter identifiability and for distinguishability between two competing generative processes",
+  "brief_reason": "The abstract models transfer events as a Poisson process with a constant rate on a species/gene tree and derives gene-tree and site-pattern probabilities to assess identifiability and whether two event-generating processes can be told apart."
+}

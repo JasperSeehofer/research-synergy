@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "finite-size (demographic) intrinsic noise driving a stochastic dynamical system into long-lived metastable states that differ qualitatively from its deterministic mean-field fixed point, made analytically tractable by timescale separation (adiabatic elimination of the fast variable)",
+  "brief_reason": "The abstract attributes the emergence of long-lasting polymorphic states to demographic noise in finite populations acting against the deterministic prediction, resolved through a timescale-separation analysis, which is a generic intrinsic-noise-induced metastability mechanism handled by fast-slow adiabatic reduction."
+}

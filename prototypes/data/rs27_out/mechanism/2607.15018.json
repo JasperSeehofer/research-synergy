@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "joint low-dimensional Euclidean embedding of both objects (rows) and their discrete attribute-levels (columns) from a shared object-by-category incidence matrix, obtained by minimizing a homogeneity / within-category dispersion loss via eigen-decomposition (an optimal-scaling / correspondence-analysis spectral embedding of a bipartite association structure), followed by seriation reordering of the coordinates to expose block structure",
+  "brief_reason": "The abstract states the method uses Homogeneity Analysis (HOMALS) to embed subjects and category levels together in a three-dimensional Euclidean space so that similar patterns receive nearby coordinates, then applies seriation to reorder rows and columns to reveal clusters and structure."
+}

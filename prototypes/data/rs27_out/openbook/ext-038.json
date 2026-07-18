@@ -1,0 +1,10 @@
+{
+  "mapping": [
+    {"a_element": "constant LGT transfer rate driving a Poisson process of events", "b_element": "per-round survival alpha and coverage c parameters of the urn"},
+    {"a_element": "closed-form gene tree / site pattern probabilities as functions of the rate", "b_element": "closed-form containment and discovery curve U(s,T) as functions of (alpha, c)"},
+    {"a_element": "identifiability question: can LGT and ILS be distinguished from the probabilities", "b_element": "two projections agree under a homogeneous urn, disagreement signaling a second component"},
+    {"a_element": "two competing discordance processes (LGT vs ILS)", "b_element": "single vs two-component (persistent core kappa + shell) urn"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The correspondences are only at the generic level of probabilistic modeling and parameter identifiability from closed-form probabilities; the actual generative machinery differs — A is a continuous-time Poisson point process of transfer events overlaid on a multispecies-coalescent genealogy, whereas B is a discrete-round urn sampling model of population survival and replacement, so no role-for-role mapping of the same governing process holds."
+}

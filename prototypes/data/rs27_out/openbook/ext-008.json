@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "the input point set (92M halo positions) from which structure is inferred", "b_element": "the record of projective local measurements along the observer's worldline"},
+    {"a_element": "the simplicial complex (Delaunay tessellation) built over the points", "b_element": "the simplicial complex assembled from the recorded measurements"},
+    {"a_element": "the recovered cosmic-web filament network / topology of large-scale structure", "b_element": "the topological information about (fluctuating) spacetime the complex is claimed to capture"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only real correspondence is the high-level, generic idea of building a simplicial complex from data to read off topology; the actual transferable machinery differs entirely. Paper A's method is a computational-geometry pipeline — Delaunay tessellation plus DisPerSE's discrete-Morse persistence, scaled by an overlapping-block decomposition with a circumsphere validity criterion and boundary stitching — with no analogue of Paper B's von Neumann algebra of observables, trace, or projection-valued measurements, and vice versa, so no role-for-role machinery mapping (thresholds, governing construction, generating rule) holds."
+}

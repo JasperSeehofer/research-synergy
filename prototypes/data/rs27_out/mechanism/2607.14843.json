@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Analytic covariance of a quadratic (spectral) estimator computed by Gaussian moment factorization: decomposing the estimator's fourth-order moment into sums of products of pairwise second-order moments (Wick/Isserlis contraction), with a narrow-kernel (slowly-varying convolution) approximation for the mode-coupling and exact separation of discrete self-pair (Poisson shot-noise) terms",
+  "brief_reason": "The abstract estimates the 'disconnected (Gaussian)' covariance of angular power spectra of a discretely-sampled field, which is exactly the Wick factorization of the estimator's four-point moment into products of two-point functions, using the Narrow-Kernel Approximation for distinct source pairs while treating self-pair (Poisson-like) noise contributions exactly."
+}

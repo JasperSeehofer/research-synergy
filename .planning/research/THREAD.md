@@ -57,8 +57,23 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 
 ## Active experiment
 
-**NONE active — EXP-RS-26 DISCOVERY run WORKS (2026-07-18). The chapter has an end-to-end unsupervised
-cross-field bridge FINDER.** Next = scale to a large external corpus + a literature-novelty check.
+**NONE active — EXP-RS-27 EXTERNAL discovery WORKS (2026-07-18). The finder generalizes to fresh papers.**
+Next = web/literature-novelty verification of the surprising bridges + a domain-expert pass + scale to
+thousands (with the cascade re-rank). Awaiting human go.
+
+### (just-concluded, WORKS 2026-07-18) EXP-RS-27 → Phase 46 — External-Corpus Discovery
+
+**The finder generalizes to a GENUINELY un-mined corpus.** Fetched 140 fresh arXiv papers (12 diverse
+cats × 12, by submission date, NOT via bridge papers) → reduce → hidden bridges (reduction-embed top-3 ∧
+cross-archive ∧ lexical<0.06) → open-book cards → blind adjudication. **228 candidates → 40 carded → 6
+shared-method → 5 GENUINE after blind adjudication (hit-rate 0.15 ≈ RS-26's 0.20; 3 rated SURPRISING),
+all lexical ~0.003–0.021.** The surprising ones: **galaxy-clustering/CMB-lensing ↔ Bayesian retail-store
+survival (both log-Gaussian Cox processes)**; **rough-surface contact ↔ option pricing (both Fokker–
+Planck)**; **spacetime topology ↔ quantum finance-TDA (both simplicial homology)**. + specialist E0
+(replicator eco-evo) + textbook E4 (linearized Boltzmann: magnetotransport↔cosmological bubble-wall
+friction). 1 reject (voting↔option = generic MaxEnt meta-principle). Method is corpus-robust. Novelty =
+adjudicator rating (web-verification of surprising ones deferred). `.planning/phases/46-external-discovery/46-VERIFICATION.md`;
+`prototypes/rs27_external.py`.
 
 ### (just-concluded, WORKS 2026-07-18) EXP-RS-26 → Phase 45 — Discovery Run (hidden bridges)
 

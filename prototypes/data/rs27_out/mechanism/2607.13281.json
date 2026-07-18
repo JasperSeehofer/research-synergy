@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Bifurcation analysis of the fixed points of a system of coupled nonlinear first-order ODEs (replicator / Lotka-Volterra type with density- and frequency-dependent coefficients) as a single control parameter is swept, tracing a cascade of local bifurcations in which lower-dimensional equilibria exchange stability (transcritical) with coexistence equilibria and Hopf bifurcations give rise to stable limit cycles",
+  "brief_reason": "The abstract derives existence and stability conditions for equilibria of a Lotka-Volterra/replicator ODE system and links stability changes of two-species equilibria to the appearance/disappearance of three-species equilibria, reporting a 'rich cascade of bifurcations' with limit cycles as one carrying-capacity parameter varies."
+}

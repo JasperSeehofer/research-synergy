@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a sharp critical-exponent threshold in a regularity/control parameter that separates boundedness (well-posedness) from unboundedness (ill-posedness) of a nonlinear multilinear interaction operator, with the critical value fixed by a scaling balance between the power-law high-frequency growth of the interaction kernel and the dimension/geometry of the resonant interaction manifold, proved by matching multilinear boundedness estimates above the threshold against a resonance-concentrated counterexample below it",
+  "brief_reason": "The abstract pins down an explicit sharp threshold s_c = 4β + 3 - a/2 that balances the kernel's high-frequency strength against the geometry of the resonant manifold, proving trilinear bounds (well-posedness) for s > s_c and constructing high-low-low-high resonance-concentrated data (ill-posedness) for s < s_c."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "first-order (linearized) perturbation propagation of a small stochastic perturbation of a symmetric matrix through its spectral decomposition, yielding a null law for the resulting motion of the eigen-projectors and eigenvalue functionals (Davis-Kahan-type perturbation bounds separating genuine change from noise)",
+  "brief_reason": "The abstract derives a first-order null law for the movement of the dominant eigenprojector between overlapping windows and uses a Davis-Kahan band plus perturbation bounds on scalar spectral functionals to calibrate how much eigenspace/functional motion is expected from estimation noise alone."
+}

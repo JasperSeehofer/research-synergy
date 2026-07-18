@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "maximum-entropy (entropic) inference of a stochastic transition law from imposed moment/continuity constraints: constraints on disjoint parts of the microstate factorize the evolution into independent channels, yielding a master (integro-differential) equation whose small-jump limit is a Fokker-Planck diffusion",
+  "brief_reason": "The abstract states it 'develops an entropic inference framework that derives these processes from information constraints,' with constraints on disjoint microstate parts factorizing into a continuous and a jump channel to give the Kolmogorov-Feller equation (Fokker-Planck in the no-jump limit), emphasizing that only the supplied information, not the inference, changes across models."
+}

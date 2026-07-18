@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Resolving a singular space into a uniform local model by realizing it as iterated blowups of a combinatorial (toric fan/polytope) compactification, then using that local model to stratify the space into smooth strata whose transverse local geometry is recursively a smaller instance of the same class of object",
+  "brief_reason": "The abstract's method rests on giving 'a geometric description of these varieties in terms of blowups of toric compactifications' and then using that local description to classify the strata (symplectic leaves) and describe their transverse slices via the zero-dimensional leaves of smaller instances, i.e. a combinatorial blowup-resolution feeding a self-similar recursive stratification."
+}

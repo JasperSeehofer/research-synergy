@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "derivative-free population-based evolutionary search (a genetic algorithm) over a single flat real-valued genome that jointly encodes both discrete structure/topology and continuous parameters, optimizing the whole configuration by selection and recombination rather than by gradients",
+  "brief_reason": "The abstract states that topology, weights, delays, and connectivity are co-evolved by a genetic algorithm on a flat real-valued genome of 14,602 genes, with the authors arguing genetic algorithms are the correct optimization tool and that no differentiable computation graph is needed."
+}

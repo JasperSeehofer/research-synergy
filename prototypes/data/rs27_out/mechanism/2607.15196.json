@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "additive decomposition of an expected loss under a strictly proper scoring rule into a minimal-achievable baseline (generalized-entropy) term plus a Bregman-divergence discrepancy term measuring departure from a reference distribution",
+  "brief_reason": "The abstract derives 'epistemic' and 'aleatoric' components by decomposing a subjective risk built on a strictly proper loss, with reverse cross-entropy recovering the classic entropy-plus-divergence information-theoretic terms — the canonical proper-scoring-rule / Bregman decomposition of expected loss."
+}

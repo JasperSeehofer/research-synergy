@@ -1,0 +1,74 @@
+{
+ "experiment": "EXP-RS-27",
+ "n_carded": 40,
+ "n_confirmed": 6,
+ "hit_rate": 0.15,
+ "confirmed_bridges": [
+  {
+   "query_id": "2607.14914",
+   "query_title": "Stochastic ultimatum game: Spite-driven resource feedback fosters fairness",
+   "query_cat": "nlin.AO",
+   "cand_id": "2607.13281",
+   "cand_title": "Predator-dependent replicator dynamics or a predator-prey model with two prey types and frequency dependence",
+   "cand_cat": "q-bio.PE",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0031,
+   "shared_mechanism": "Both are eco-evolutionary game dynamics: payoff-matrix-driven replicator/evolutionary selection of frequency-dependent strategies (spite/fairness vs. prey types) coupled bidirectionally to an ecological resource variable, with a single growth/carrying-capacity control parameter that tunes the system between qualitatively distinct regimes. The role-for-role mapping holds despite A being a stochastic ultimatum game with an abiotic self-renewing resource and B a deterministic Lotka-Volterra predator-prey model analysed for equilibria and bifurcations."
+  },
+  {
+   "query_id": "2607.15119",
+   "query_title": "Thermodynamic theory of voting and EU elections",
+   "query_cat": "cond-mat.stat-mech",
+   "cand_id": "2607.06355",
+   "cand_title": "Entropic Dynamics of Jump-Diffusion Option Pricing",
+   "cand_cat": "q-fin.PR",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0042,
+   "shared_mechanism": "Both rest on the same transferable engine: a distribution/dynamics is fixed by maximizing entropy subject to the domain's constraints, the Jaynes correspondence linking equilibrium statistical mechanics to Bayesian/entropic inference. Paper A obtains the Rayleigh-Jeans state from conservation of energy and norm ('constraint driven condensation known in statistical mechanics'), while Paper B 'derives these processes from information constraints' and stresses that 'what changes from one model to another is not the inference, but the information supplied to it' — the same maximum-entropy machinery with different constraints, even though A yields an equilibrium distribution and B a derived stochastic process."
+  },
+  {
+   "query_id": "2607.15007",
+   "query_title": "Observers, local measurements, and topology",
+   "query_cat": "hep-th",
+   "cand_id": "2607.09906",
+   "cand_title": "Depth-Efficient Quantum Topological Data Analysis for Regime-Specific Detection of Financial Stress",
+   "cand_cat": "quant-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0112,
+   "shared_mechanism": "Both build a simplicial complex from a discrete set of observations and read off its homology/Betti numbers to characterize the topology of an underlying, possibly fluctuating space — the machinery of simplicial topological data analysis. Paper A does this from worldline measurements to probe spacetime topology; paper B does it via a Vietoris-Rips filtration and combinatorial Laplacians to probe the topology of financial time-series data, so a coherent role-for-role mapping holds despite the quantum-gravity vs quantum-computing/finance domains."
+  },
+  {
+   "query_id": "2607.14953",
+   "query_title": "Stochastic process model of rough surface contact",
+   "query_cat": "cond-mat.soft",
+   "cand_id": "2607.06355",
+   "cand_title": "Entropic Dynamics of Jump-Diffusion Option Pricing",
+   "cand_cat": "q-fin.PR",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0194,
+   "shared_mechanism": "Both reduce their problem to solving a parabolic diffusion / Fokker-Planck PDE for the probability density of a stochastic variable evolving in a time-like parameter -- magnification in Persson's contact theory, real time in the option model -- so the continuous-diffusion machinery maps role-for-role (matching the heat-diffusion analogy calibration case); B additionally carries a jump channel (the Kolmogorov-Feller integral term) plus an entropic-inference/no-arbitrage wrapper that A's purely elastic normal contact lacks, but the shared governing equation is the Fokker-Planck/diffusion PDE."
+  },
+  {
+   "query_id": "2607.14929",
+   "query_title": "Tomographic flow regime vs even-odd effect for the magnetotransport in the Corbino geometry",
+   "query_cat": "cond-mat.mes-hall",
+   "cand_id": "2607.14867",
+   "cand_title": "Thermal Masses and Bubble-Wall Friction in Cosmological Phase Transitions",
+   "cand_cat": "hep-ph",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0205,
+   "shared_mechanism": "Both compute a transport/dissipation quantity by solving the same governing equation - the linearized Boltzmann kinetic equation with a Liouville streaming operator and a collision integral - for out-of-equilibrium perturbations of a particle distribution function; paper A applies it to 2D electron flow (Corbino magnetoresistance/viscosity) and paper B to plasma particles at a bubble wall (friction/wall velocity), with the electron-electron collision integral playing the role of the plasma interaction rates and the magnetic-field-driven streaming playing the role of the wall-sourced Liouville term."
+  },
+  {
+   "query_id": "2607.14904",
+   "query_title": "The VST ATLAS Survey -- IV: Galaxy, LRG and QSO bias and HODs via ACT CMB Lensing",
+   "query_cat": "astro-ph.CO",
+   "cand_id": "2607.14860",
+   "cand_title": "Assing Preferential Sampling in Retail Survival Data: A Bayesian Joint LGCP and Spatial Probit Model for Mini-Supermarket Closure in Tokyo",
+   "cand_cat": "stat.ME",
+   "reduction_rank": 1,
+   "lexical_cos": 0.0209,
+   "shared_mechanism": "Both treat a spatial point pattern (galaxy/QSO positions; mini-supermarket locations) as a Poisson/Cox process whose intensity is modulated by a latent Gaussian random field (the dark-matter density field probed by CMB lensing; the LGCP's spatial GP), and both use a single scalar coupling parameter -- tracer bias b in A, loading in B -- to quantify how strongly a second co-located observable (CMB-lensing convergence; store survival) shares that same latent field, inferred from their cross-correlation (P_gK; joint-likelihood loading). The transferable machinery is the biased-tracer / log-Gaussian Cox process framework common to both."
+  }
+ ]
+}

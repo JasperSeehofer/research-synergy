@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "critical slowing down of a mean-reverting (multiplicative Ornstein-Uhlenbeck / AR(1)-type relaxation) stochastic process whose restoring rate weakens toward zero near a critical transition, diagnosed by the generic early-warning signatures of rising autocorrelation, longer memory, and amplified variance",
+  "brief_reason": "The abstract builds a finite-memory multiplicative reversion process and reports co-occurring critical signatures — stronger memory, rising autocorrelation, amplified variance and reduced restoring capacity ('critical slowing down') — which are exactly the loss-of-restoring-rate signatures of a relaxation process approaching a critical threshold."
+}

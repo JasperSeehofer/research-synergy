@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "spectral wall (a critical threshold that prevents/enables formation of bound states)", "b_element": "sharp decay threshold s_c separating well-posedness from ill-posedness"},
+    {"a_element": "shape normal-mode resonances of the vortex", "b_element": "high-low-low-high resonant configuration on the resonant manifold"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The machinery differs: paper A is finite-dimensional effective dynamics of interacting topological solitons (inter-vortex forces, centrifugal terms, orbits, spectral walls from mode-to-mode energy transfer in a classical field theory), while paper B is functional-analytic well-posedness theory for a four-wave kinetic PDE (trilinear L^infinity estimates and ill-posedness by concentration near a resonant manifold). The only overlap is generic vocabulary ('threshold', 'resonance', 'modes'); there is no role-for-role correspondence between a dynamical barrier in soliton phase space and a critical regularity exponent, so no shared transferable machinery holds."
+}

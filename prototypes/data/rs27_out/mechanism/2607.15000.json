@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A graphical-model (conditional-independence) factorization of a high-dimensional joint tail-dependence structure, in which the limiting shape function describing extreme co-occurrences decomposes along the cliques/blocks of a graph, yielding a parsimonious low-parameter model that extrapolates far beyond the observed range",
+  "brief_reason": "The abstract builds a parsimonious high-dimensional model of joint extremes by defining the gauge function (the object encoding extremal dependence) in a structured way via block graphs, which impose graph-based conditional-independence factorization and enable strong extrapolation."
+}

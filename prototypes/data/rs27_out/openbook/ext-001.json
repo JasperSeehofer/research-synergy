@@ -1,0 +1,12 @@
+{
+  "mapping": [
+    {"a_element": "two competing behavioural strategies (spite vs. fairness) under mutation-selection", "b_element": "the two prey types under frequency-dependent reproduction/selection"},
+    {"a_element": "ultimatum-game payoff structure (offerer/accepter payoffs)", "b_element": "the two pay-off matrices (prey reproduction and prey-predator interaction)"},
+    {"a_element": "replicator-type evolutionary dynamics of strategy frequencies", "b_element": "replicator dynamics with predator-dependent fitnesses for the prey"},
+    {"a_element": "self-renewable resource whose state is depleted/replenished by game outcomes (game-environment feedback)", "b_element": "the coupled ecological variable (logistically-limited prey / predator population) whose abundance modulates and is modulated by prey fitness"},
+    {"a_element": "resource growth rate as the control parameter tuning the outcome", "b_element": "the carrying-capacity-regulating parameter as the control parameter"},
+    {"a_element": "spite<->fairness feedback loop and resource-state transitions as the parameter varies", "b_element": "cascade of bifurcations, coexistence equilibria, and stable limit cycles as the parameter varies"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both are eco-evolutionary game dynamics: payoff-matrix-driven replicator/evolutionary selection of frequency-dependent strategies (spite/fairness vs. prey types) coupled bidirectionally to an ecological resource variable, with a single growth/carrying-capacity control parameter that tunes the system between qualitatively distinct regimes. The role-for-role mapping holds despite A being a stochastic ultimatum game with an abiotic self-renewing resource and B a deterministic Lotka-Volterra predator-prey model analysed for equilibria and bifurcations."
+}

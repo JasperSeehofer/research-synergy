@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "sparsification of a weighted graph down to a sparse 'backbone' subgraph of its most salient edges, on which overlapping (multi-membership) clusters are then inferred so each node can carry fractional membership in several clusters at once",
+  "brief_reason": "The method 'exploits the sparse backbone of the input network to perform efficient community inference' for overlapping clustering where 'nodes may belong to multiple clusters', i.e. reducing the graph to a significant-edge skeleton and then assigning soft multi-cluster memberships on it."
+}

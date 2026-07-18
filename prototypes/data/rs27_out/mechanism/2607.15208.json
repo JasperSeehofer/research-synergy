@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "dimension-free propagation of local discretization error under weak or sparse coupling: for a numerically time-stepped high-dimensional coupled stochastic dynamics, the error accumulated in any K-dimensional marginal is governed by the locality of interactions and grows only with the marginal size (as sqrt(K)), decoupled from the ambient dimension d — a decay-of-correlations / localization argument, made analytically tractable by expressing the one-step evolution (propagator) as a polynomial in the interaction matrix",
+  "brief_reason": "The abstract shows that O(sqrt(K)) integration steps suffice to control the W_2 bias of any K-dimensional marginal of a high-dimensional distribution assuming weak or sparse interactions, with the propagators of the discrete-time integrators characterized via a matrix-polynomial framework."
+}

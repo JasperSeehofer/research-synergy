@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "bidirectional feedback coupling between a mutation-selection stochastic evolutionary (birth-death) process on agent strategy frequencies and a self-renewing environmental state variable that is depleted or replenished by those strategies, forming a closed slow-fast feedback loop whose selected regime bifurcates with the resource's renewal rate",
+  "brief_reason": "The abstract couples mutation-selection driven two-species stochastic evolutionary dynamics to a self-renewable resource that agreements deplete and disagreements replenish, yielding a growth-rate-dependent feedback loop that flips the system between spite-dominated (depleted) and fairness-dominated (replete) states."
+}

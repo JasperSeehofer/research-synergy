@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Unbiased off-policy / importance-weighted (counterfactual) estimation of the difference in expected outcome between two sampling distributions, where the shared-support (overlap) region contributes cancelling terms so the estimator's variance scales with the divergence between the two distributions rather than the raw outcome variance",
+  "brief_reason": "The abstract frames the randomised assignment as a meta-policy and uses Δ-off-policy estimation to obtain unbiased treatment-effect estimates whose variance scales with the divergence between policies (vanishing on the overlap where the two policies agree) rather than with raw outcome variance."
+}

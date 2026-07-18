@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "social-climate tipping point into an alternative slow-mitigation, high-temperature state", "b_element": "bifurcation / stability change producing an alternative equilibrium (e.g. predator extinction)"},
+    {"a_element": "coexistence of stable states (fast- vs slow-mitigation) selected by regional/initial conditions", "b_element": "multiple stable equilibria (one/two/three-species coexistence, limit cycles) selected by parameters"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A is a coupled social-climate feedback model driven by regional heterogeneity in climate impacts and public mitigation support, exhibiting a tipping point into an alternative stable state; Paper B is a predator-prey / replicator population-dynamics model with payoff matrices, frequency-dependent capture/reproduction coefficients, a bifurcation cascade and limit cycles. Their only overlap is the generic dynamical-systems phenomenology of multiple equilibria and bifurcations/alternative stable states, not a shared governing process, so the specific driving mechanisms (social-climate coupling vs. trophic replicator dynamics) do not map role-for-role."
+}

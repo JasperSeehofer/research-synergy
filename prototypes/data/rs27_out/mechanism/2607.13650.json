@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A queueing/capacity-region analysis of a shared single-server resource contended by two opposing arrival streams under a service-scheduling discipline, yielding a throughput trade-off frontier (stability region) where the servable rate in one direction decreases as the other rises, separating a queue-free regime from an oversaturated regime with unbounded queue growth; serial composition of such resources reshapes this frontier (adding a server in series can enlarge it).",
+  "brief_reason": "The abstract defines system capacity as the pair of oppositely-directed flows (d1,d2) served under oversaturation with a boundary such that arrival pairs below it clear without queues while those above cannot, and studies how service policies (FIFO vs. directional priority) and multiple in-series bottlenecks reshape this capacity boundary and expected delay."
+}

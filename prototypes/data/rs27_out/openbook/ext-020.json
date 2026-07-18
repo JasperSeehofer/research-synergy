@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "ordered stages indexed by successive secondary statistics", "b_element": "successive parameter values along the continuation path"},
+    {"a_element": "conditioning each stage's calibration on acceptance at all preceding stages (carrying history forward)", "b_element": "updating the prior with newly sampled data at each nearby parameter value (carrying the posterior forward)"},
+    {"a_element": "calibrated acceptance-region level controlling stagewise Type I error", "b_element": "log Bayes factor threshold triggering dense resampling"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The overlap is only the generic 'sequential statistical decision that carries prior stages forward'; the actual machinery differs. Paper A is frequentist sequential goodness-of-fit testing whose transferable engine is conditional calibration of acceptance regions giving a multiplicative Type I error decomposition over a fixed ordered set of statistics on one sample, whereas Paper B is Bayesian conjugate (Dirichlet-multinomial) posterior updating along a parameter continuation with a log-Bayes-factor change detector acting on attractor basins in phase space. Different estimation principles (Type I error control vs. Bayesian belief updating), different objects, and a 'sequence' running over different axes mean no role-for-role governing-process mapping holds."
+}

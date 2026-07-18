@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A symmetry-constrained recursive bootstrap: generating all higher-order interaction structures from a small fixed set of lower-order building blocks via a universal substitution rule whose form is dictated by an underlying group symmetry, with the objects decomposed in a fixed reference-vector basis and matched order-by-order in a small expansion parameter",
+  "brief_reason": "The abstract builds leading/subleading structures by matching to low-point building blocks and then obtains all higher-point cases 'through the recursive bootstrap relation with a universal substitution rule as a consequence of the Galilean symmetry,' with momenta and spinors decomposed along fixed lightlike vectors and expanded in the small-mass alignment regime."
+}

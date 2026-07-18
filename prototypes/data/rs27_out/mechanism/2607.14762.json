@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "sequential conjugate Bayesian updating of a Dirichlet-multinomial (categorical) distribution propagated along a continuously varying parameter, reusing each posterior as the prior at the next step, with a log-Bayes-factor statistic acting as a change-point detector that triggers adaptive resampling when the carried-over prior becomes statistically implausible",
+  "brief_reason": "The abstract models the probability that a sample falls into each category via a Dirichlet-multinomial model, estimates the next parameter's probabilities by updating that prior with new data, and uses the log Bayes factor as an information-theoretic sensor to detect structural changes and trigger dense resampling."
+}

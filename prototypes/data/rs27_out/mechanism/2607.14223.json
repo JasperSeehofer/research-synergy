@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a closed-loop feedback-control scheme that stabilizes otherwise unstable trajectories of a high-dimensional dynamical system by iterating short forward-evolution steps with an optimization step that projects the state back onto a constrained low-dimensional manifold (a predictor-corrector / control-by-projection loop)",
+  "brief_reason": "The abstract's protocol repeatedly combines short-time evolution with a classical optimization that projects the dynamics onto a low-entanglement variational manifold to autonomously discover and stabilize long-lived regular trajectories, which is exactly an iterated feedback-projection stabilization loop."
+}

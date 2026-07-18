@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Non-normal transient amplification of a linear operator: because the operator's eigenvectors are non-orthogonal, a perturbation injected along one direction is transiently re-expressed along another, so a spectrum guaranteeing asymptotic decay coexists with large transient (or noise-driven) growth, governed by the degree of eigenvector non-orthogonality relative to a critical threshold set by the eigenvalue splitting.",
+  "brief_reason": "The abstract states the amplification is 'geometric rather than spectral', invisible to eigenvalue analysis, and quantifies it via eigenvector non-orthogonality K against a critical threshold K_c(Δ) that separates decaying from transiently amplifying dynamics."
+}

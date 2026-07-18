@@ -1,0 +1,12 @@
+{
+  "mapping": [
+    {"a_element": "galaxy/LRG/QSO angular positions treated as a clustering point pattern", "b_element": "mini-supermarket store locations modeled as a log-Gaussian Cox point process"},
+    {"a_element": "underlying dark-matter density field whose clustering the tracers sample", "b_element": "latent Gaussian-process spatial effect shared by the two model components"},
+    {"a_element": "tracer bias b linking galaxy/QSO overdensity to the mass field", "b_element": "loading parameter linking the shared latent field to the survival outcome"},
+    {"a_element": "ACT CMB-lensing convergence map, a second field tracing the same mass", "b_element": "binary store-survival probit outcome, a second observable driven by the same latent field"},
+    {"a_element": "galaxy x lensing cross-power spectrum P_gK used to infer the coupling", "b_element": "shared-GP term in the joint LGCP+probit likelihood measuring the placement-survival association"},
+    {"a_element": "clustering amplitude sigma_8 / power-spectrum normalization", "b_element": "Gaussian-process variance/covariance parameters"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both treat a spatial point pattern (galaxy/QSO positions; mini-supermarket locations) as a Poisson/Cox process whose intensity is modulated by a latent Gaussian random field (the dark-matter density field probed by CMB lensing; the LGCP's spatial GP), and both use a single scalar coupling parameter -- tracer bias b in A, loading in B -- to quantify how strongly a second co-located observable (CMB-lensing convergence; store survival) shares that same latent field, inferred from their cross-correlation (P_gK; joint-likelihood loading). The transferable machinery is the biased-tracer / log-Gaussian Cox process framework common to both."
+}

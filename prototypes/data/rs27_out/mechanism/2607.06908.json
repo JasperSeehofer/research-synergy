@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a critical-threshold (spiked-matrix / BBP) phase transition in the spectrum of a large random matrix, in which an outlier eigenvalue detaches from the continuous noise bulk and its eigenvector localizes once a signal-to-noise coupling exceeds a critical value, diagnosed jointly by eigenvalue separation from the bulk edge and by an eigenvector participation-ratio (localization vs. delocalization) criterion",
+  "brief_reason": "The abstract's method rests on the Baik–Ben Arous–Péché transition at the Marčenko–Pastur spectral edge, where signal directions separate from noise only above a critical strength, and it retains components by combining that spectral separation with a participation-ratio delocalization test on the eigenvectors."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Random-matrix-theory spectral filtering of a sample covariance/correlation matrix: eigen-decompose the matrix and compare its eigenvalue spectrum to the Marchenko-Pastur null distribution for pure noise, retaining only the eigenmodes whose eigenvalues lie outside the random-matrix bounds to reconstruct a denoised, signal-bearing operator.",
+  "brief_reason": "The abstract applies spectral decomposition to split the empirical correlation matrix into a structured component (eigenvalues exceeding the Marchenko-Pastur bounds) and a random noise component, reconstructing the signal from only the outlier eigenmodes."
+}

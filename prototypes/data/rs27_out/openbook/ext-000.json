@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "codimension-one end-of-the-world brane separating two AdS geometries", "b_element": "codimension-one phase interface separating two elastic wells (laminate boundary)"},
+    {"a_element": "extremal (minimal-area) surface anchoring the entanglement entropy", "b_element": "interfacial energy of the Gamma-limit concentrated on the interface"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The overlap is only the keyword 'interface' and the generic fact that both end up assigning energy/entropy to a codimension-one surface; the actual machinery differs entirely. Paper A computes holographic fine-grained entanglement entropy via the defect-extremal-surface/island prescription in an AdS bulk, while Paper B proves Gamma-convergence of a second-order Modica-Mortola singular-perturbation elasticity functional to a local interfacial energy — no holography, entropy, RT/island extremization, or singular-perturbation Gamma-limit maps role-for-role between them."
+}

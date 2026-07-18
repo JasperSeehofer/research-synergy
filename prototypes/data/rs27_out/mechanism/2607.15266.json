@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Inertia-assisted crossing of a flat plateau (bottleneck) in an effective potential landscape, producing non-monotonic (anomalous) ordering of relaxation times in which a state's approach-to-equilibrium speed is set by accumulated kinetic energy needed to traverse the plateau rather than by its initial distance from equilibrium, and is tunable via an inertial-mass parameter",
+  "brief_reason": "The abstract attributes the (inverse) Mpemba effect to a force-extension plateau that slows relaxation, with hotter/weaker-stretch initial states accumulating more kinetic energy to cross the plateau faster and larger bead mass broadening the operating range, identifying inertia-driven bottleneck crossing as the machinery behind the anomalous relaxation."
+}

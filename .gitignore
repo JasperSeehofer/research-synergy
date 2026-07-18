@@ -38,3 +38,6 @@ prototypes/data/rs24_in/openbook_hard*/
 
 # RS-26 discovery inputs (regenerable via rs26_discover.py extract)
 prototypes/data/rs26_in/
+
+# RS-27 external discovery inputs (regenerable)
+prototypes/data/rs27_in/

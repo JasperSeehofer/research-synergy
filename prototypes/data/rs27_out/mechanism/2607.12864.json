@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A coupled hierarchy of reaction-diffusion equations admitting a Fisher-KPP-type traveling front that invades an unstable/empty state at a selected spreading speed, where components exchange mass through a one-directional linear transition operator, analyzed via tracer/lineage-tracking dynamics along the moving front",
+  "brief_reason": "The abstract poses the model as an infinite system of reaction-diffusion equations with migration, a linear (mutation) transition between components, and density-dependent reproduction/death, then extracts a Fisher-KPP spreading speed of the front into an empty habitat and uses a tracer-dynamics approach to trace ancestry at the expansion front."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reconfigurable add-drop multiplexing of a single shared broadband resource into wavelength-addressed channels that are dynamically routed to chosen endpoint pairs, realizing arbitrary programmable connectivity graphs (full-mesh, partial-mesh, or partitioned sub-network slices) on demand",
+  "brief_reason": "The abstract centers on a q-ROADM that spectrally slices one broadband source and dynamically distributes its channels to six users, programmatically reconfiguring full-mesh, partial-mesh, and sliced sub-network topologies according to link and service conditions."
+}

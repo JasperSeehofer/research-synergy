@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "measurement/sparsity ratio governing detectability (m relative to k log(n-k))", "b_element": "clause-to-variable density alpha governing satisfiability"},
+    {"a_element": "sharp recoverable/non-recoverable threshold in the measurement scaling", "b_element": "SAT/UNSAT phase transition threshold"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Beyond the generic 'sharp threshold in a random high-dimensional ensemble' motif, the governing machinery differs: paper A derives its threshold from information-theoretic converse bounds and a maximum-correlation estimator (estimation/SNR analysis, explicitly avoiding sophisticated methods), whereas paper B uses the statistical-mechanics cavity method at zero temperature, computing a spin-glass phase diagram with metastable-state proliferation and deriving a survey-propagation algorithm. There is no role-for-role correspondence between max-correlation estimation and cavity/survey propagation, and A has no analogue of B's RSB intermediate phase, so the transferable mechanism is not shared."
+}

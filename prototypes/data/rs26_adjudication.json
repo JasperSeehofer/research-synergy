@@ -1,0 +1,59 @@
+{
+ "verdicts": [
+  {
+   "id": "B0",
+   "mechanism_real": true,
+   "novelty": "textbook",
+   "one_line": "The shared object is the WDVV (associativity) equations, which by Dubrovin's theorem are exactly the defining PDEs of a Frobenius manifold (a potential F whose third derivatives are associative structure constants in flat coordinates), so a WDVV solution IS a Frobenius-manifold structure and the bridge genuinely holds."
+  },
+  {
+   "id": "B1",
+   "mechanism_real": true,
+   "novelty": "textbook",
+   "one_line": "Both are instances of the Jaynes maximum-(relative-)entropy principle — maximizing entropy subject to constraints yields an exponential-family/Gibbs distribution with Lagrange multipliers — with A's moment constraints mapping role-for-role onto B's conserved-charge expectation values in the generalized Gibbs ensemble; genuine, though the shared object is the foundational MaxEnt principle itself."
+  },
+  {
+   "id": "B2",
+   "mechanism_real": true,
+   "novelty": "specialist",
+   "one_line": "The shared object is the secular determinant / spectral function written as Tr ln(1 - [scattering operator]), whose geometric-series expansion enumerates closed multiple-scattering paths (Casimir TGTG expansion) that map exactly onto periodic orbits on the graph (Kottos-Smilansky trace formula), so the log-det-of-scattering-operator machinery is genuinely shared."
+  },
+  {
+   "id": "B3",
+   "mechanism_real": false,
+   "novelty": "specialist",
+   "one_line": "The resemblance is the generic 'count rare objects from the tail of a fluctuating field above a threshold' motif — Press-Schechter excursion-set/first-crossing with a spherical-collapse threshold is genuinely different machinery from disorder-induced local-Tc optimal fluctuations (Lifshitz/Griffiths rare regions), so it is a thematic statistical analogy, not the same governing equation."
+  },
+  {
+   "id": "B4",
+   "mechanism_real": false,
+   "novelty": "textbook",
+   "one_line": "The laser paper has a real frustrated spin-glass Hamiltonian (mode phases as spins) but the economics paper explicitly presents spin glasses only as a 'metaphor' with no shared specific Hamiltonian, so this is the generic 'both invoke spin-glass ideas' resemblance rather than a shared governing equation."
+  },
+  {
+   "id": "B5",
+   "mechanism_real": false,
+   "novelty": "textbook",
+   "one_line": "Same pair as B4 in reverse: the mode-locked-laser side computes an explicit spin-glass phase diagram while the economics essay only advocates spin glasses as a metaphor, so there is no shared concrete Hamiltonian — a generic paradigm match, not identical machinery."
+  },
+  {
+   "id": "B6",
+   "mechanism_real": true,
+   "novelty": "surprising",
+   "one_line": "Both reduce to the extremal eigenvector (Perron-Frobenius ground state) of a permutation-invariant mean-field Hamiltonian = diagonal landscape (fitness / random energy) + off-diagonal term where the mutation operator plays exactly the role of the transverse field, with the quasispecies error threshold onto a sharp fitness peak being the same localization transition as the first-order quantum transition of the (quantum) Random Energy Model; genuinely holds for the linear core (recombination adds a nonlinearity absent in B)."
+  },
+  {
+   "id": "B7",
+   "mechanism_real": true,
+   "novelty": "specialist",
+   "one_line": "The shared object is the 2x2 matrix Riemann-Hilbert/d-bar problem whose scalar g-function/complex phase is fixed by a logarithmic-potential equilibrium (variational) problem, with support geometry (Schwarz function / finite-gap bands) governing the semiclassical asymptotics — A's weighted-energy equilibrium measure and B's Lax-Levermore variational principle are the same potential-theoretic machinery, so the bridge holds."
+  }
+ ],
+ "summary": {
+  "n_real": 5,
+  "n_textbook": 4,
+  "n_surprising": 1,
+  "n_specialist": 3,
+  "overall": "The pipeline does surface real cross-field bridges: 5 of 8 hold as genuine shared machinery, and its two textbook hits (WDVV = Frobenius manifolds; MaxEnt = generalized Gibbs ensemble) are correct famous equivalences that validate the method rather than being noise. The most compelling finds are the specialist/surprising ones that are true: B6 (quasispecies error-threshold mapping onto the quantum Random Energy Model / annealing via the mutation-as-transverse-field equivalence), B2 (Casimir energy and quantum-graph spectra as the same Tr ln(1 - scattering-operator) trace-formula expansion), and B7 (orthogonal-polynomial asymptotics and semiclassical focusing NLS via the same Riemann-Hilbert equilibrium-measure machinery). The three rejects are honest failures — the two spin-glass economy/laser pairs (B4/B5), where the economics side is explicitly only a metaphor with no shared Hamiltonian, and the cosmology/superconductor pair (B3), which shares only the generic rare-region/threshold-crossing statistical motif rather than an identical governing equation."
+ }
+}

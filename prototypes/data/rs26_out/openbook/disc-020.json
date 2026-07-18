@@ -1,0 +1,12 @@
+{
+  "mapping": [
+    {"a_element": "phases of the electromagnetic modes acting as Ising-like spins", "b_element": "heterogeneous economic agents as the interacting degrees of freedom"},
+    {"a_element": "structural randomness / multiple-scattering disorder giving quenched random couplings", "b_element": "heterogeneities among agents (quenched disorder)"},
+    {"a_element": "nonlinear mode competition in the gain medium", "b_element": "competition among agents"},
+    {"a_element": "spin-glass phase: field phases frozen in an exponentially large number of configurations", "b_element": "long epochs of stasis arising from many metastable states"},
+    {"a_element": "hyper-sensitivity / criticality near the spin-glass transition", "b_element": "hyper-sensitivity to small changes of the environment and crises"},
+    {"a_element": "mean-field spin-glass Hamiltonian and its phase diagram", "b_element": "spin-glass models and agent-based simulations proposed for the economy"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both rest on the same spin-glass machinery: quenched disorder plus frustration/competition producing a rugged landscape with an exponentially large number of frozen/metastable states and hyper-sensitivity to perturbations. Paper A computes this explicitly (mean-field Hamiltonian, phase diagram, spin-glass phase of frozen field phases) for mode-locked lasers, while paper B advocates the identical spin-glass framework — competition + heterogeneity generating metastable stasis punctuated by crises and hyper-sensitivity — for economic systems, so a coherent role-for-role mapping holds."
+}

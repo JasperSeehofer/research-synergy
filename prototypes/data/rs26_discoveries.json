@@ -1,0 +1,317 @@
+{
+ "experiment": "EXP-RS-26",
+ "n_candidates_total": 75,
+ "n_carded": 40,
+ "n_confirmed_shared_mechanism": 8,
+ "hit_rate": 0.2,
+ "confirmed_bridges": [
+  {
+   "query_id": "hep-th/0105260",
+   "query_title": "On Associativity Equations in Dispersionless Integrable Hierarchies",
+   "query_cat": "hep-th",
+   "cand_id": "math/9801006",
+   "cand_title": "Three constructions of Frobenius manifolds: a comparative study",
+   "cand_cat": "math.QA",
+   "cascade_rank": 2,
+   "lexical_cos": 0.0153,
+   "cross_archive": true,
+   "src_pair": "rs22-000010",
+   "cand_is_some_partner": true,
+   "shares_method": true,
+   "shared_mechanism": "The WDVV/associativity equations that paper A solves are exactly the defining equations of the Frobenius manifolds that paper B constructs and compares: a potential F whose third derivatives yield associative structure constants in flat coordinates. Both papers are about the same governing object (a solution of WDVV = a Frobenius-manifold structure), reached from integrable-hierarchy tau-functions in A and from quantum cohomology / singularity theory / mirror-symmetry constructions in B, so the underlying mathematical machinery is shared.",
+   "mapping": [
+    {
+     "a_element": "prepotential F whose third derivatives give structure constants satisfying the WDVV associativity equations",
+     "b_element": "Frobenius manifold potential whose third derivatives define the associative Frobenius-algebra multiplication on tangent spaces"
+    },
+    {
+     "a_element": "the associativity (WDVV) equations themselves",
+     "b_element": "the associativity condition that defines a Frobenius manifold structure"
+    },
+    {
+     "a_element": "the infinitely-many (or finitely-many) flat times / variables of the dispersionless hierarchy on which F depends",
+     "b_element": "the flat coordinates on the Frobenius manifold"
+    },
+    {
+     "a_element": "tau-function of dispersionless KP/Toda hierarchy furnishing a solution to WDVV",
+     "b_element": "geometric constructions (quantum cohomology, Saito unfolding of singularities, Barannikov-Kontsevich) furnishing a Frobenius manifold"
+    }
+   ]
+  },
+  {
+   "query_id": "0708.1593",
+   "query_title": "Updating Probabilities with Data and Moments",
+   "query_cat": "physics.data-an",
+   "cand_id": "0707.2789",
+   "cand_title": "Nonthermal steady states after an interaction quench in the Falicov-Kimball model",
+   "cand_cat": "cond-mat.str-el",
+   "cascade_rank": 2,
+   "lexical_cos": 0.0172,
+   "cross_archive": true,
+   "src_pair": "rs22-000039",
+   "cand_is_some_partner": false,
+   "shares_method": true,
+   "shared_mechanism": "Paper A derives the canonical exponential-family distribution obtained by maximizing (relative) entropy subject to moment constraints, and Paper B describes its post-quench steady state via a generalized Gibbs ensemble — which is exactly that same maximum-entropy-under-constraints construction, with the conserved-quantity expectation values playing the role of A's moments and the GGE's Lagrange multipliers playing the role of A's; the shared machinery is the MaxEnt/Gibbs variational principle. The rest of B's dynamical-mean-field-theory time evolution is not shared, but the statistical characterization of its endpoint maps role-for-role onto A's method.",
+   "mapping": [
+    {
+     "a_element": "maximizing (relative) entropy subject to a set of constraints to fix the distribution",
+     "b_element": "constructing the generalized Gibbs ensemble by maximizing entropy subject to the conserved-quantity constraints"
+    },
+    {
+     "a_element": "the imposed moment constraints ⟨f_i⟩ = F_i on the distribution",
+     "b_element": "the fixed expectation values of the model's conserved quantities (integrals of motion) that define the GGE"
+    },
+    {
+     "a_element": "Lagrange multipliers λ_i conjugate to the moment constraints",
+     "b_element": "the generalized inverse temperatures / Lagrange multipliers of the GGE conjugate to each conserved quantity"
+    },
+    {
+     "a_element": "the resulting canonical (exponential-family) posterior distribution",
+     "b_element": "the GGE steady-state density matrix ρ ∝ exp(−Σ λ_i I_i)"
+    }
+   ]
+  },
+  {
+   "query_id": "0707.4017",
+   "query_title": "Casimir forces in a T operator approach",
+   "query_cat": "quant-ph",
+   "cand_id": "chao-dyn/9812005",
+   "cand_title": "Periodic Orbit Theory and Spectral Statistics for Quantum Graphs",
+   "cand_cat": "nlin.CD",
+   "cascade_rank": 2,
+   "lexical_cos": 0.024,
+   "cross_archive": true,
+   "src_pair": "rs22-000027",
+   "cand_is_some_partner": false,
+   "shares_method": true,
+   "shared_mechanism": "Both are the same scattering-determinant machinery: a spectral quantity is written as Tr ln(1 - [scattering operator]) — a T-operator round-trip T_a G0 T_b G0 for the Casimir energy (A) versus the bond S-matrix det(1 - S(k)) for the graph spectrum (B) — and the log-det is expanded as a geometric series whose n-th term sums over closed multiple-scattering paths (A) = periodic orbits (B). The T-operators map role-for-role onto the bond scattering amplitudes and the free Green's function onto the bond propagation phase, so the trace-formula / multiple-scattering expansion is the shared underlying method.",
+   "mapping": [
+    {
+     "a_element": "transition (T) operator describing scattering off each body",
+     "b_element": "per-bond/vertex scattering amplitude (unitary S-matrix element) of the quantized graph"
+    },
+    {
+     "a_element": "free Green's function G0 propagating the field between scatterers",
+     "b_element": "free propagation phase exp(ikL) along a bond of length L"
+    },
+    {
+     "a_element": "round-trip operator T_a G0 T_b G0 built from T-operators and propagators",
+     "b_element": "bond-scattering evolution operator S(k) that maps directed bonds to directed bonds"
+    },
+    {
+     "a_element": "Casimir energy written as Tr ln(1 - T_a G0 T_b G0) (Kenneth-Klich scattering formula)",
+     "b_element": "secular determinant det(1 - S(k)) whose ln-det/trace generates the quantum spectrum"
+    },
+    {
+     "a_element": "multiple-scattering expansion: Tr ln(1-.) as a sum over closed paths bouncing between the bodies",
+     "b_element": "periodic-orbit trace formula: the same geometric expansion as a sum over periodic orbits on the graph"
+    },
+    {
+     "a_element": "Casimir (zero-point) energy / force being computed",
+     "b_element": "density of states / quantum spectrum being computed"
+    }
+   ]
+  },
+  {
+   "query_id": "0706.1340",
+   "query_title": "Cluster abundances and S-Z power spectra: effects of non-Gaussianity and early dark energy",
+   "query_cat": "astro-ph",
+   "cand_id": "0708.3841",
+   "cand_title": "Mesoscopic gap fluctuations in an unconventional superconductor",
+   "cand_cat": "cond-mat.supr-con",
+   "cascade_rank": 2,
+   "lexical_cos": 0.0264,
+   "cross_archive": true,
+   "src_pair": "rs22-000076",
+   "cand_is_some_partner": false,
+   "shares_method": true,
+   "shared_mechanism": "Both derive the abundance and spatial arrangement of discrete objects from the tail of a fluctuating random field's probability distribution above a critical threshold: paper A computes cluster counts from the density-field PDF (Gaussian/chi^2) exceeding the collapse threshold, and paper B computes superconducting islands from the derived PDF of local pairing temperatures exceeding the local ordering condition above the mean-field transition. The collapse threshold plays the role of the local pairing condition, and enhancing the PDF tail (non-Gaussianity / disorder fluctuations) increases the number of discrete objects in both, so the threshold-crossing/rare-region statistics is the same machinery.",
+   "mapping": [
+    {
+     "a_element": "primordial density fluctuation field",
+     "b_element": "disorder-induced local pairing-temperature field"
+    },
+    {
+     "a_element": "probability distribution of the density field (Gaussian vs chi^2_1 non-Gaussian)",
+     "b_element": "derived probability distribution function of local pairing temperatures/gaps"
+    },
+    {
+     "a_element": "critical collapse threshold above which a region forms a cluster",
+     "b_element": "local condition for pairing above the mean-field transition (region becomes a superconducting island)"
+    },
+    {
+     "a_element": "collapsed galaxy clusters",
+     "b_element": "superconducting islands (embedded in metallic regions)"
+    },
+    {
+     "a_element": "cluster abundance / number counts set by the high-density tail of the PDF",
+     "b_element": "abundance/network of superconducting islands set by the tail of the pairing-temperature PDF"
+    },
+    {
+     "a_element": "non-Gaussianity enhancing the tail to raise cluster abundance",
+     "b_element": "mesoscopic disorder fluctuations enhancing the tail to produce islands above the mean-field T_c"
+    }
+   ]
+  },
+  {
+   "query_id": "0806.2809",
+   "query_title": "Phase diagram and complexity of mode-locked lasers: from order to disorder",
+   "query_cat": "physics.optics",
+   "cand_id": "0904.0805",
+   "cand_title": "The (unfortunate) complexity of the economy",
+   "cand_cat": "q-fin.GN",
+   "cascade_rank": 2,
+   "lexical_cos": 0.0295,
+   "cross_archive": true,
+   "src_pair": "rs22-000077",
+   "cand_is_some_partner": false,
+   "shares_method": true,
+   "shared_mechanism": "Both rest on the same spin-glass machinery: quenched disorder plus frustration/competition producing a rugged landscape with an exponentially large number of frozen/metastable states and hyper-sensitivity to perturbations. Paper A computes this explicitly (mean-field Hamiltonian, phase diagram, spin-glass phase of frozen field phases) for mode-locked lasers, while paper B advocates the identical spin-glass framework — competition + heterogeneity generating metastable stasis punctuated by crises and hyper-sensitivity — for economic systems, so a coherent role-for-role mapping holds.",
+   "mapping": [
+    {
+     "a_element": "phases of the electromagnetic modes acting as Ising-like spins",
+     "b_element": "heterogeneous economic agents as the interacting degrees of freedom"
+    },
+    {
+     "a_element": "structural randomness / multiple-scattering disorder giving quenched random couplings",
+     "b_element": "heterogeneities among agents (quenched disorder)"
+    },
+    {
+     "a_element": "nonlinear mode competition in the gain medium",
+     "b_element": "competition among agents"
+    },
+    {
+     "a_element": "spin-glass phase: field phases frozen in an exponentially large number of configurations",
+     "b_element": "long epochs of stasis arising from many metastable states"
+    },
+    {
+     "a_element": "hyper-sensitivity / criticality near the spin-glass transition",
+     "b_element": "hyper-sensitivity to small changes of the environment and crises"
+    },
+    {
+     "a_element": "mean-field spin-glass Hamiltonian and its phase diagram",
+     "b_element": "spin-glass models and agent-based simulations proposed for the economy"
+    }
+   ]
+  },
+  {
+   "query_id": "0904.0805",
+   "query_title": "The (unfortunate) complexity of the economy",
+   "query_cat": "q-fin.GN",
+   "cand_id": "0806.2809",
+   "cand_title": "Phase diagram and complexity of mode-locked lasers: from order to disorder",
+   "cand_cat": "physics.optics",
+   "cascade_rank": 2,
+   "lexical_cos": 0.0295,
+   "cross_archive": true,
+   "src_pair": "rs22-000059",
+   "cand_is_some_partner": false,
+   "shares_method": true,
+   "shared_mechanism": "Both rest on the same spin-glass machinery: frustration from competition/heterogeneity (A) or a random mean-field Hamiltonian (B) produces a rugged landscape with an exponentially large number of frozen metastable states, giving stasis punctuated by transitions and hypersensitivity. A invokes spin-glass theory as the mechanism behind endogenous market complexity, while B computes it explicitly as a phase diagram for mode-locked lasers, so the underlying method corresponds role-for-role.",
+   "mapping": [
+    {
+     "a_element": "competition among economic agents combined with heterogeneities",
+     "b_element": "quenched randomness of the mean-field Hamiltonian set by the degree of structural disorder"
+    },
+    {
+     "a_element": "long epochs of stasis (the economy stuck in a metastable state)",
+     "b_element": "spin-glass phase in which the field phases are frozen in an exponentially large number of configurations"
+    },
+    {
+     "a_element": "crises interrupting the calm (abrupt regime changes)",
+     "b_element": "transitions between the paramagnetic/ferromagnetic/spin-glass phases in the pumping-rate vs disorder phase diagram"
+    },
+    {
+     "a_element": "hyper-sensitivity to small changes of the environment",
+     "b_element": "the rugged energy landscape of the spin-glass phase with its many nearly-degenerate metastable states"
+    },
+    {
+     "a_element": "spin-glass framing of the complexity of the economic system",
+     "b_element": "spin-glass mean-field Hamiltonian describing the mode-locked laser modes"
+    }
+   ]
+  },
+  {
+   "query_id": "0810.2954",
+   "query_title": "Quasispecies Theory for Horizontal Gene Transfer and Recombination",
+   "query_cat": "q-bio.PE",
+   "cand_id": "0806.4144",
+   "cand_title": "Simple Glass Models and their Quantum Annealing",
+   "cand_cat": "quant-ph",
+   "cascade_rank": 2,
+   "lexical_cos": 0.0312,
+   "cross_archive": true,
+   "src_pair": "rs22-000065",
+   "cand_is_some_partner": true,
+   "shares_method": true,
+   "shared_mechanism": "Both reduce to finding the extremal eigenstate of a mean-field/permutation-invariant spin Hamiltonian written as a diagonal landscape term (fitness in A, random energy in B) plus an off-diagonal field (the mutation operator in A plays exactly the role of the transverse field in B), obtained via a variational/maximum principle. Each shows a sharp transition at which the extremal eigenstate localizes onto a single peak/ground state (A's error threshold onto the sharp fitness peak, B's first-order quantum transition projecting onto the unperturbed ground state), with the sharp-peak landscape corresponding to the (quantum) REM.",
+   "mapping": [
+    {
+     "a_element": "steady-state mean fitness (largest eigenvalue of the mutation-selection evolution operator)",
+     "b_element": "ground-state energy (lowest eigenvalue of the quantum spin-glass Hamiltonian)"
+    },
+    {
+     "a_element": "point-mutation term, off-diagonal in genotype space (Crow-Kimura/Eigen)",
+     "b_element": "transverse field, the off-diagonal spin-flip term"
+    },
+    {
+     "a_element": "fitness / replication-rate landscape, diagonal over genotypes",
+     "b_element": "random energy landscape, diagonal over spin configurations"
+    },
+    {
+     "a_element": "single sharp peak fitness landscape",
+     "b_element": "(quantum) Random Energy Model"
+    },
+    {
+     "a_element": "maximum principle / variational solution for the mean fitness",
+     "b_element": "mean-field solution for the ground state"
+    },
+    {
+     "a_element": "selected/localized phase (population condensed on the fittest genotype)",
+     "b_element": "phase where the eigenstate projects onto the unperturbed ground state"
+    },
+    {
+     "a_element": "selection phase transition / error threshold",
+     "b_element": "first-order quantum phase transition"
+    }
+   ]
+  },
+  {
+   "query_id": "0808.1770",
+   "query_title": "Superharmonic Perturbations of a Gaussian Measure, Equilibrium Measures and Orthogonal Polynomials",
+   "query_cat": "math-ph",
+   "cand_id": "nlin/0012034",
+   "cand_title": "Semiclassical Soliton Ensembles for the Focusing Nonlinear Schroedinger Equation",
+   "cand_cat": "nlin.SI",
+   "cascade_rank": 2,
+   "lexical_cos": 0.0567,
+   "cross_archive": true,
+   "src_pair": "rs22-000058",
+   "cand_is_some_partner": true,
+   "shares_method": true,
+   "shared_mechanism": "Both run the same machinery: a 2x2 matrix Riemann-Hilbert/d-bar problem analyzed in a semiclassical limit, where a scalar complex phase function is fixed by a potential-theoretic variational/equilibrium principle and the geometry of the support controls the asymptotics. Paper A's weighted-energy equilibrium measure plays the role of paper B's Lax-Levermore-type variational principle, and its Schwarz-function curve corresponds to B's finite-gap band structure.",
+   "mapping": [
+    {
+     "a_element": "2x2 matrix d-bar problem encoding the (planar) orthogonal polynomials",
+     "b_element": "2x2 matrix Riemann-Hilbert problem encoding the NLS solutions (d-bar generalizes RH)"
+    },
+    {
+     "a_element": "weighted-energy equilibrium measure / variational problem in the external field U^mu",
+     "b_element": "variational principle characterizing the phase via critical points of a functional, generalizing the Lax-Levermore principle"
+    },
+    {
+     "a_element": "semi-classical scaling limit of the orthogonal polynomials",
+     "b_element": "semiclassical limit of the focusing nonlinear Schroedinger equation"
+    },
+    {
+     "a_element": "Schwarz function of the curve bounding the support of the equilibrium measure",
+     "b_element": "finite-gap ansatz fixing the scalar complex phase function and its band/gap geometry"
+    },
+    {
+     "a_element": "asymptotic distribution of the zeros of the orthogonal polynomials",
+     "b_element": "strong locally uniform asymptotics of the exact NLS solutions in regions of the (x,t) plane"
+    }
+   ]
+  }
+ ]
+}

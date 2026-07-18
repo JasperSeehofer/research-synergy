@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "compactification on a Z6-II orbifold to reach 4D", "b_element": "orbifold compactification of the 5D theory to reach 4D"},
+    {"a_element": "SO(10) and E6 local GUT structures", "b_element": "SO(10) and E6 gauge groups / field content"},
+    {"a_element": "string worldsheet selection rules (the 'gamma-rule') that decide which couplings and matter states are allowed", "b_element": "classification of homogeneous quaternionic scalar manifolds / supergravity constraints that decide which hypermultiplet couplings and matter content are allowed"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Both build SO(10)/E6 orbifold-GUTs, but that is a shared design goal and vocabulary, not shared machinery: paper A's engine is a top-down heterotic string worldsheet construction whose spectrum and couplings come from stringy selection rules and D-flat decoupling, whereas paper B's engine is a bottom-up 5D N=2 Yang-Mills-Einstein supergravity in which the allowed matter/couplings are fixed by the geometric classification of quaternionic-Kahler scalar manifolds. The two mechanisms that actually select the matter content (string selection rules vs. quaternionic-manifold classification) have no role-for-role correspondence, so the underlying method differs."
+}

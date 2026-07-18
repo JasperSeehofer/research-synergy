@@ -57,10 +57,24 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 
 ## Active experiment
 
-**NONE active — EXP-RS-24 (CONFIRM, n=12) + EXP-RS-25 cascade (WORKS, 0.775) both concluded 2026-07-18.**
-The chapter now has a working, scalable LBD retriever. Next candidate = a genuine DISCOVERY run (cascade
-on a no-known-partner query → LLM names + audits the shared mechanism = the transfer card) and/or scale
-the cascade + tune K_each. Awaiting human go.
+**NONE active — EXP-RS-26 DISCOVERY run WORKS (2026-07-18). The chapter has an end-to-end unsupervised
+cross-field bridge FINDER.** Next = scale to a large external corpus + a literature-novelty check.
+
+### (just-concluded, WORKS 2026-07-18) EXP-RS-26 → Phase 45 — Discovery Run (hidden bridges)
+
+**The LBD payoff.** Reuse the RS-25 cascade to surface HIDDEN cross-field bridges: for each query, the
+top-3 cascade candidate that is cross-archive ∧ non-partner ∧ **lexical cos < 0.06 (surface-invisible)**
+→ Claude open-book transfer card → blind skeptical adjudication. **75 candidates → 40 carded → 8
+shared-method → 5 survive blind adjudication as GENUINE shared machinery (end-to-end precision ~12.5%).**
+The 5 (all lexical ~0.01–0.06): **B0** WDVV≡Frobenius manifolds + **B1** MaxEnt≡generalized-Gibbs
+(textbook = method-validating: rediscovers famous equivalences from abstracts with ~0 word overlap);
+**B6** quasispecies↔quantum-annealing (mutation≡transverse field; error-threshold=quantum-REM transition,
+SURPRISING), **B2** Casimir↔quantum-graph spectra (Tr ln(1−scattering-op) trace formula), **B7** orthogonal-
+polynomials↔semiclassical-NLS (shared Riemann–Hilbert equilibrium problem) — real specialist bridges
+surface retrieval CANNOT find. 3 honest rejects (spin-glass laser↔economics = metaphor; cluster-abundance↔
+SC-gap = generic threshold motif). Pipeline = `raw∪reduction → LLM re-rank → open-book card → blind
+adjudication`. `.planning/phases/45-discovery/45-VERIFICATION.md`; `prototypes/rs26_discover.py`,
+`data/rs26_{candidates,discoveries,adjudication}.json`.
 
 ### (just-concluded, WORKS 2026-07-18) EXP-RS-25 → Phase 44 — raw∪reduction→LLM-rerank Cascade
 

@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "nonthermal steady state reached after an interaction quench", "b_element": "nonequilibrium stationary state of a driven many-particle system"},
+    {"a_element": "generalized Gibbs ensemble describing the final steady state", "b_element": "Sinai-Ruelle-Bowen (SRB) distribution describing the stationary state"},
+    {"a_element": "many-body quantum lattice system (Falicov-Kimball model)", "b_element": "many-particle classical fluid under shear"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Both only share the generic problem of finding a statistical ensemble for a nonequilibrium stationary state; the machinery differs and is in fact opposite. Paper A's steady state is described by a generalized Gibbs ensemble arising from the conserved quantities of an (integrable) quantum quench via non-equilibrium DMFT, whereas paper B invokes the SRB measure of a hyperbolic, strongly chaotic deterministic dynamical system, so no role-for-role correspondence between the two mechanisms holds."
+}

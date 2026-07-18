@@ -1,0 +1,13 @@
+{
+  "mapping": [
+    {"a_element": "steady-state mean fitness (largest eigenvalue of the mutation-selection evolution operator)", "b_element": "ground-state energy (lowest eigenvalue of the quantum spin-glass Hamiltonian)"},
+    {"a_element": "point-mutation term, off-diagonal in genotype space (Crow-Kimura/Eigen)", "b_element": "transverse field, the off-diagonal spin-flip term"},
+    {"a_element": "fitness / replication-rate landscape, diagonal over genotypes", "b_element": "random energy landscape, diagonal over spin configurations"},
+    {"a_element": "single sharp peak fitness landscape", "b_element": "(quantum) Random Energy Model"},
+    {"a_element": "maximum principle / variational solution for the mean fitness", "b_element": "mean-field solution for the ground state"},
+    {"a_element": "selected/localized phase (population condensed on the fittest genotype)", "b_element": "phase where the eigenstate projects onto the unperturbed ground state"},
+    {"a_element": "selection phase transition / error threshold", "b_element": "first-order quantum phase transition"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both reduce to finding the extremal eigenstate of a mean-field/permutation-invariant spin Hamiltonian written as a diagonal landscape term (fitness in A, random energy in B) plus an off-diagonal field (the mutation operator in A plays exactly the role of the transverse field in B), obtained via a variational/maximum principle. Each shows a sharp transition at which the extremal eigenstate localizes onto a single peak/ground state (A's error threshold onto the sharp fitness peak, B's first-order quantum transition projecting onto the unperturbed ground state), with the sharp-peak landscape corresponding to the (quantum) REM."
+}

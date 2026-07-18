@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "orbifold projection used to break the GUT gauge group", "b_element": "Z6-II orbifold with local GUTs breaking the gauge group"},
+    {"a_element": "GUT groups SU(5)/SO(10)/E6 as the unified starting point", "b_element": "SO(10) and E6 local GUT structures as the unified starting point"},
+    {"a_element": "target of a phenomenologically realistic 4D SUSY spectrum", "b_element": "target of the MSSM spectrum with R parity"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Both share the goal and vocabulary of orbifold-GUT SUSY model building (orbifold breaking of SO(10)/E6), but the driving machinery differs: paper A is a 5D N=2 Yang-Mills-Einstein supergravity effective field theory whose allowed matter couplings are fixed by the classification of homogeneous quaternionic scalar manifolds, whereas paper B is a top-down heterotic-string orbifold landscape scan governed by string selection rules, D-flat directions, and modular constraints. Neither engine (quaternionic-manifold supergravity geometry vs. heterotic string selection rules / landscape search) maps role-for-role onto the other, so the overlap is shared framework, not shared method."
+}

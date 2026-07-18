@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "extended object being propagated (a classical winding string)", "b_element": "extended object being propagated (an NLS soliton)"},
+    {"a_element": "time-dependent background geometry (compactified Milne / contracting-re-expanding orbifold)", "b_element": "spatially adiabatic external potential"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The overlap is only the generic notion of an extended object moving through a background, but the driving machinery differs: paper A solves the (essentially linear) classical string wave equation via a non-zero-mode expansion to show the trajectory stays non-singular while crossing a cosmological (Milne) singularity, whereas paper B analyzes the nonlinear Schrodinger equation, reducing colliding solitons to effective center-of-mass particle dynamics in a potential with radiation-damping error terms. There is no shared governing equation, no shared threshold/transition, and no coherent role-for-role correspondence between singularity crossing and effective soliton-collision dynamics."
+}

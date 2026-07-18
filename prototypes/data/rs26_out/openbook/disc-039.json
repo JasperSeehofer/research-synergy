@@ -1,0 +1,11 @@
+{
+  "mapping": [
+    {"a_element": "2x2 matrix d-bar problem encoding the (planar) orthogonal polynomials", "b_element": "2x2 matrix Riemann-Hilbert problem encoding the NLS solutions (d-bar generalizes RH)"},
+    {"a_element": "weighted-energy equilibrium measure / variational problem in the external field U^mu", "b_element": "variational principle characterizing the phase via critical points of a functional, generalizing the Lax-Levermore principle"},
+    {"a_element": "semi-classical scaling limit of the orthogonal polynomials", "b_element": "semiclassical limit of the focusing nonlinear Schroedinger equation"},
+    {"a_element": "Schwarz function of the curve bounding the support of the equilibrium measure", "b_element": "finite-gap ansatz fixing the scalar complex phase function and its band/gap geometry"},
+    {"a_element": "asymptotic distribution of the zeros of the orthogonal polynomials", "b_element": "strong locally uniform asymptotics of the exact NLS solutions in regions of the (x,t) plane"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both run the same machinery: a 2x2 matrix Riemann-Hilbert/d-bar problem analyzed in a semiclassical limit, where a scalar complex phase function is fixed by a potential-theoretic variational/equilibrium principle and the geometry of the support controls the asymptotics. Paper A's weighted-energy equilibrium measure plays the role of paper B's Lax-Levermore-type variational principle, and its Schwarz-function curve corresponds to B's finite-gap band structure."
+}

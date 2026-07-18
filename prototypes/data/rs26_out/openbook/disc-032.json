@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "stationary transonic accretion flow being perturbed", "b_element": "coherent plane-wave light background being perturbed"},
+    {"a_element": "linear perturbation added to the stationary solution", "b_element": "modulational sideband perturbation of the wave"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is the generic act of linearly perturbing a stationary state and asking whether the perturbation grows, which the guidance flags as too generic to count. A's actual machinery is dynamical-systems classification of transonic critical points (saddle/centre) plus an acoustic-geometry perturbation equation that concludes stability, whereas B's is a modulational-instability dispersion relation in a Kerr medium whose unstable band is reshaped by the incoherence spectrum; there is no counterpart in A for the incoherence spectrum or Kerr nonlinearity, nor any counterpart in B for the critical-point classification, so the driving mechanisms differ."
+}

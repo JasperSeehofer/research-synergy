@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "winding string in an excited (non-zero) mode as the coherent object", "b_element": "incident soliton as the coherent object"},
+    {"a_element": "the compactified Milne singularity (contraction-to-a-point then re-expansion) as the localized feature encountered", "b_element": "the attractive delta-function impurity as the localized feature encountered"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is the generic picture of a coherent excitation passing a localized feature; the governing machinery differs. Paper B is nonlinear soliton scattering governed by the Gross-Pitaevskii (cubic NLS) equation with a high-velocity asymptotic split into reflected + transmitted solitons plus dispersion, whereas paper A is the linear classical dynamics of a winding string through a time-dependent orbifold (cosmological) singularity, demonstrating non-singular passage rather than any reflection/transmission decomposition, so no role-for-role mapping of the driving process holds."
+}

@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "Laplacian of errors governing smooth modes in the codon-to-amino-acid mapping",
+   "b_element": "Laplacian on a graph G governing the eigenspace of the second eigenvalue λ2"
+  },
+  {
+   "a_element": "topology of the error-graph (codons connected if likely to be confused)",
+   "b_element": "graph G and its genus γ(G)"
+  },
+  {
+   "a_element": "upper bound on the number of possible amino-acids related to the map-coloring problem (chromatic number)",
+   "b_element": "Colin de Verdière's upper bound on λ2-multiplicity related to chromatic number chr(γ(G))"
+  },
+  {
+   "a_element": "phase transition in the noisy information channel where the genetic code emerges",
+   "b_element": "tight mapping of the graph into an m-dimensional Euclidean space defined by the λ2 eigenspace"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ the Laplacian spectrum of a graph to derive bounds on dimensionality or multiplicity, with the topology of the graph (error-graph in A, genus in B) constraining the solution via chromatic-number-related limits. The phase transition in A corresponds to the tight mapping in B, both governed by the same underlying spectral machinery."
+}

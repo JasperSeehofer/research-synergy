@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "statistical fluctuations in time-averaged properties of many-particle systems driven to nonequilibrium states",
+   "b_element": "fluctuations of the unique non-equilibrium steady state in driven mechanical systems"
+  },
+  {
+   "a_element": "fluctuation theorems providing analytical expressions for nonequilibrium states",
+   "b_element": "existence, uniqueness, and properties (e.g., energy flux, convergence) of non-equilibrium steady states under general conditions"
+  },
+  {
+   "a_element": "irreversibility emerging from reversible dynamics in finite systems",
+   "b_element": "exponentially fast convergence to a unique non-equilibrium steady state in driven systems"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both abstracts address nonequilibrium systems and their fluctuations, Paper A focuses on fluctuation theorems as exact statistical mechanical relationships governing irreversibility and free energy changes, whereas Paper B emphasizes the existence, uniqueness, and convergence properties of non-equilibrium steady states using controllability and Hörmander conditions. The underlying machinery differs: fluctuation theorems rely on symmetry principles and time-reversal, while Paper B uses stochastic analysis and PDE techniques."
+}

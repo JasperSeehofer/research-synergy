@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "fluctuations in speed and direction of motion with independent characteristic time-scales",
+   "b_element": "transition from directed propulsion (short times) to random walk (longer times) with a time-scale separation"
+  },
+  {
+   "a_element": "persistent and directed random walks as angular dynamics",
+   "b_element": "directed motion at short times and random walk at longer times"
+  },
+  {
+   "a_element": "additive corrections to the diffusion coefficient",
+   "b_element": "substantially enhanced diffusion coefficient in the random walk regime"
+  },
+  {
+   "a_element": "velocity autocorrelation as a sum of exponential forms",
+   "b_element": "time-dependent transition from directed to diffusive motion"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers describe a transition between directed/persistent motion and random/diffusive motion driven by independent time-scales, with the diffusion coefficient modified by the active dynamics. The underlying mechanism is a time-scale-separated stochastic process governing the crossover from ballistic to diffusive regimes."
+}

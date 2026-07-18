@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "renormalization-group scale flow of a coupling that develops a non-trivial infrared fixed point as a control parameter is tuned, with a critical threshold of that parameter separating a spontaneously-broken-symmetry phase from a scale-invariant (fixed-point) phase",
+  "brief_reason": "The abstract says raising the control parameter drives the system to a non-trivial infrared fixed point (scale invariance) above a critical value while below it the symmetry is spontaneously broken, which is exactly an RG scale-flow whose fixed-point structure changes across a critical threshold in a tuning parameter."
+}

@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "proximity-induced superconducting state on the surface of a topological insulator (spinless p_x+ip_y superconductor)",
+   "b_element": "low-energy effective Hamiltonian H_{eff} obtained via unitary transformation"
+  },
+  {
+   "a_element": "coupling between s-wave superconductor and topological insulator surface states",
+   "b_element": "perturbative decoupling of low-energy and high-energy subspaces via Schrieffer-Wolff transformation"
+  },
+  {
+   "a_element": "emergence of Majorana bound states as low-energy excitations",
+   "b_element": "ground state and low-energy excitations described by H_{eff}"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers involve deriving effective low-energy descriptions (superconducting state in A, H_{eff} in B), the mechanisms are fundamentally different: Paper A relies on a physical proximity effect and emergent topological superconductivity, whereas Paper B uses a formal unitary transformation (Schrieffer-Wolff) to perturbatively decouple subspaces. The core machinery—topological phase emergence vs. perturbative subspace projection—does not align."
+}

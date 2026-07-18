@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "extreme points of the convex set of density matrices with positive partial transpose (PPT)",
+   "b_element": "lowest rank non-separable PPT states (rank 4 in 3x3 systems)"
+  },
+  {
+   "a_element": "necessary and sufficient condition for extremality in PPT set",
+   "b_element": "characterization of rank-4 PPT states as projections onto the orthogonal complement of a subspace spanned by an orthogonal Unextendible Product Basis (UPB)"
+  },
+  {
+   "a_element": "algorithm for finding extreme points of PPT set",
+   "b_element": "local equivalence transformation to orthogonal UPB form for rank-4 PPT states"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers study the structure of positive partial transpose (PPT) states, Paper A focuses on extremality conditions and convex geometry of the PPT set, whereas Paper B relies on algebraic geometry (Bezout's Theorem) and unextendible product bases to characterize specific low-rank PPT states. The underlying machinery—convex analysis vs. algebraic geometry—differs fundamentally."
+}

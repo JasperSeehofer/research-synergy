@@ -29,3 +29,9 @@ prototypes/data/rs22_probe_cache/
 # RS-24 openbook inputs (regenerable via rs24_validate.py emit)
 prototypes/data/rs24_in/
 prototypes/rs24_mistral.log
+
+# RS-25 cascade inputs (regenerable via rs25_cascade.py emit) + mistral logs
+prototypes/data/rs25_in/
+prototypes/rs25_mistral.log
+prototypes/rs24_mistral*.log
+prototypes/data/rs24_in/openbook_hard*/

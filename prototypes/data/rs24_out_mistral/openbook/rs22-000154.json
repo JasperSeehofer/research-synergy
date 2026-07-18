@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "iterative elimination of configurations with the highest exit rate in configuration space",
+   "b_element": "analysis of spectral gap and mixing time under boundary conditions in tree structures"
+  },
+  {
+   "a_element": "renormalized exit barriers defined as negative logarithm of exit rates (-ln W_out)",
+   "b_element": "logarithmic measures of mixing time (log-Sobolev constant, spectral gap)"
+  },
+  {
+   "a_element": "broadening distribution of renormalized exit barriers leading to asymptotic exactness at large time scales",
+   "b_element": "bounded spectral gap and log-Sobolev constant implying O(log n) mixing time"
+  },
+  {
+   "a_element": "master equation with transition rates between configurations",
+   "b_element": "Glauber dynamics for Ising model or other spin systems"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers analyze dynamical processes on discrete structures (configuration space vs. tree graphs) and use logarithmic measures of rates or mixing times, Paper A employs a strong-disorder renormalization group (RG) procedure to iteratively eliminate configurations, whereas Paper B focuses on spectral gaps and log-Sobolev constants under boundary conditions. The core mechanisms—RG-based coarse-graining vs. functional analytic bounds on mixing—are fundamentally distinct."
+}

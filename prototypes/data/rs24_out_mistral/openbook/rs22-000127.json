@@ -1,0 +1,30 @@
+{
+ "mapping": [
+  {
+   "a_element": "replica formalism",
+   "b_element": "replica symmetry breaking"
+  },
+  {
+   "a_element": "Parisi's solution of the Sherrington-Kirkpatrick model",
+   "b_element": "overlap distribution and replica symmetry breaking in the p-spin spherical model"
+  },
+  {
+   "a_element": "overlap order parameters",
+   "b_element": "overlaps and overlap distribution"
+  },
+  {
+   "a_element": "thermodynamic analysis of spin glasses",
+   "b_element": "thermodynamics of the p-spin spherical model (pure states, static transition)"
+  },
+  {
+   "a_element": "supersymmetric quantum mechanics and D-brane landscapes",
+   "b_element": null
+  },
+  {
+   "a_element": "black hole duals",
+   "b_element": null
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers share the core machinery of mean-field spin-glass theory, including the replica formalism, overlap order parameters, and replica symmetry breaking. The abstracts explicitly reference these methods, with Paper A focusing on the Sherrington-Kirkpatrick model and Paper B on the p-spin spherical model, both of which are canonical examples of spin-glass systems."
+}

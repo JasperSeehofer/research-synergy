@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "3-point function (bispectrum) of primordial perturbations",
+   "b_element": "CMB bispectrum"
+  },
+  {
+   "a_element": "consistency relation for the 3-point function in single-field inflation",
+   "b_element": "primordial non-Gaussian shapes (e.g., local, equilateral) and their observational independence"
+  },
+  {
+   "a_element": "effective field theory for inflationary perturbations",
+   "b_element": "formalisms for computing and comparing CMB bispectra"
+  },
+  {
+   "a_element": "slow-roll parameters as expansion parameters",
+   "b_element": "shape correlator and eigenmode decomposition for model comparison"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers address the bispectrum of primordial perturbations and its observational implications, Paper A focuses on a *specific theoretical constraint* (the consistency relation) derived from single-field inflation dynamics, whereas Paper B develops *computational and comparative tools* for arbitrary primordial bispectra. The underlying machinery differs: A uses effective field theory to prove a relation, while B uses interpolation, shape correlators, and eigenmode decomposition for model classification and computation."
+}

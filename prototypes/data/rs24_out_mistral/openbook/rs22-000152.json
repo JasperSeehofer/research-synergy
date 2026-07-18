@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "invariant transformation (change-of-variables) method for cloaking",
+   "b_element": "transformation or change-of-variables method for mapping the cloaked region"
+  },
+  {
+   "a_element": "designing the potential and effective mass of matter waves in the cloaking region",
+   "b_element": "anisotropic mass density or mechanical stiffness in the acoustic cloak"
+  },
+  {
+   "a_element": "cloaking at given energy (quantum mechanical)",
+   "b_element": "perfect cloaking of sound waves (acoustic)"
+  },
+  {
+   "a_element": "wave and particle (classical) approaches confirming cloaking conditions",
+   "b_element": "phase and wave speeds of pseudo-acoustic waves in the cloak being unique"
+  },
+  {
+   "a_element": "optical lattices for cold atoms as a realization",
+   "b_element": "pentamode materials as a realization of anisotropic stiffness"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ the transformation or change-of-variables method to achieve cloaking by designing spatially varying material properties (potential/effective mass in quantum mechanics, anisotropic density/stiffness in acoustics). The core machinery—coordinate transformation to suppress scattering—is identical, with domain-specific parameters playing analogous roles."
+}

@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "adaptive bias potential to explore collective variables",
+   "b_element": "bias potential constructed from locally valid collective coordinates"
+  },
+  {
+   "a_element": "collective variables as order parameters for free energy landscape",
+   "b_element": "collective coordinates derived from trajectory analyses"
+  },
+  {
+   "a_element": "tunable parameters to focus computational effort on physically relevant regions",
+   "b_element": "adaptive collective coordinates that adjust to new features during simulation"
+  },
+  {
+   "a_element": "unified framework with metadynamics as a limiting case",
+   "b_element": "methodology that enhances sampling in molecular dynamics (metadynamics-inspired)"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both methods employ an adaptive bias potential to explore collective variables/coordinates in molecular dynamics, aiming to enhance sampling and reconstruct free energy landscapes. The core machinery involves dynamically adjusting the bias to focus on relevant regions of the order parameter space, with metadynamics as a shared conceptual foundation."
+}

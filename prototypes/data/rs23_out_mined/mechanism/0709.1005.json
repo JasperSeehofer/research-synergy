@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "qualitative phase-space (fixed-point) analysis of an autonomous dynamical system: recasting a governing evolution law as a flow on a bounded/compactified state space, classifying its critical points by stability into sources, saddles, and sinks, and organizing trajectories as connecting orbits from a past attractor through saddles to future attractors within invariant subspaces",
+  "brief_reason": "The abstract reformulates the evolution as a 3-dimensional dynamical system with six critical points on a bounded/compactified phase space with invariant subspaces, and traces solution curves from a past attractor (source) through saddle points to future attractors (sinks)."
+}

@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "modular form with pole structure governing degeneracies of dyonic states",
+   "b_element": "assignment of discrete subgroups of PSL2 to nodes of the affine E8 Dynkin diagram"
+  },
+  {
+   "a_element": "contour prescription resolving ambiguity in counting formula due to poles",
+   "b_element": "elementary properties of PSL2 explaining the correspondence between nodes and subgroups"
+  },
+  {
+   "a_element": "walls of marginal stability where bound states (dis)appear",
+   "b_element": "conjugacy classes in the Monster or Conway group linked to Dynkin nodes"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "Paper A relies on the pole structure of Siegel modular forms and contour integration to resolve degeneracies in dyonic state counting, while Paper B uses group-theoretic properties of PSL2 and conjugacy classes to explain a correspondence between Dynkin diagrams and discrete groups. The underlying mechanisms—modular forms with analytic continuations versus group-theoretic assignments—are distinct, despite superficial parallels in addressing ambiguities or correspondences."
+}

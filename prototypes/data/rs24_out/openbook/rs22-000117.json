@@ -1,0 +1,10 @@
+{
+  "mapping": [
+    {"a_element": "two-species 2D Coulomb gas of +/- unit charges interacting via a logarithmic potential", "b_element": "the multi-flavor Schwinger model (2D fermions coupled to a U(1) gauge field)"},
+    {"a_element": "exact equivalence of the Coulomb gas to an integrable sine-Gordon field model (bosonization)", "b_element": "bosonization of the Schwinger model into a (multi-component) sine-Gordon-type bosonic field theory"},
+    {"a_element": "inverse temperature beta, which fixes the sine-Gordon coupling beta^2", "b_element": "fermion mass / gauge coupling, which fixes the effective coupling of the bosonized theory"},
+    {"a_element": "qualitative change (limit non-commutativity / discontinuity) in the density correlation asymptotics between beta>0 and the beta->0 Debye-Hueckel limit", "b_element": "phase structure and reflection-symmetry breaking that changes with flavor number N and weak/strong coupling regime"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both 2D systems are governed by the same sine-Gordon field theory reached through bosonization: paper A explicitly maps its two-species logarithmic Coulomb gas onto an integrable sine-Gordon model, while paper B studies the bosonized multi-flavor Schwinger model, whose bosonic form is a sine-Gordon-type theory, with A's inverse temperature beta playing the role of the coupling/mass parameter that tunes the sine-Gordon coupling in B. The analytic tools differ (integrable form factors vs. RG flow), but the underlying governing field theory driving both is shared."
+}

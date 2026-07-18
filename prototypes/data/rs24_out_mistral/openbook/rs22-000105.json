@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "numerical sampling schemes (Wang-Landau and Lee entropic sampling) to study phase transitions",
+   "b_element": "renormalisation group approach to study correlation functions at criticality"
+  },
+  {
+   "a_element": "free-energy barrier method (Lee-Kosterlitz) to determine transition nature",
+   "b_element": "perturbation series around conformal field theories to analyze crossover behavior"
+  },
+  {
+   "a_element": "3D bimodal random-field Ising model with disorder strength h",
+   "b_element": "2D random bond Ising and Potts models with randomness"
+  },
+  {
+   "a_element": "first-order vs. continuous transition determination",
+   "b_element": "crossover in critical exponents or amplitudes due to randomness"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers study disordered spin systems and phase transitions, Paper A uses numerical sampling and free-energy barriers to analyze the nature of a transition (first-order vs. continuous), whereas Paper B employs renormalisation group and conformal field theory to compute correlation functions and critical exponents. The underlying machinery (numerical sampling vs. analytical renormalisation) and the core questions (transition type vs. correlation behavior) differ fundamentally."
+}

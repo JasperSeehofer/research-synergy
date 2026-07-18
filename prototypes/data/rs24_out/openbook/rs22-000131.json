@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "conformal factor multiplying the Lorentz-Minkowski metric to reproduce the Robertson-Walker metric", "b_element": "warp factor multiplying the 4D Poincare-invariant (Minkowski) metric along the extra dimension"},
+    {"a_element": "flat Lorentz-Minkowski base metric that the RW metric is made conformal to", "b_element": "4D Minkowski slice on which the warped 5D braneworld metric is built"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only real overlap is the superficial one that both write a scalar factor times a Minkowski metric, but the machinery differs decisively: paper A is a purely kinematic differential-geometry classification, deriving all coordinate transformations and conformal factors that recast the 4D Robertson-Walker metric into forms conformal to flat spacetime, with no field equations or dynamics. Paper B instead solves 5D Weyl-integrable (non-Riemannian Kaluza-Klein) field equations to obtain a dynamical braneworld solution whose warp factor localizes the graviton and resolves the mass hierarchy a la Randall-Sundrum, so there is no shared governing process to map role-for-role."
+}

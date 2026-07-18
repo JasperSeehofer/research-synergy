@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Renormalization-group (coarse-graining) flow of an effective potential's coupling constants toward a scale-invariant fixed point, whose location partitions coupling-constant space into distinct phases and, with a temperature-driven effective-dimension crossover, controls the associated continuous phase transitions",
+  "brief_reason": "The abstract derives RG flow equations for the effective superpotential that flow to a Wilson-Fisher-type fixed point, uses that flow to draw phase-transition lines in coupling-constant space, and exhibits an infrared dimensional reduction from 3 to 2 dimensions at finite temperature."
+}

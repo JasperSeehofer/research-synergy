@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "Hopf algebra symmetries in braided quantum field theories",
+   "b_element": "renormalization group symmetries and universality in lattice quantum gravity"
+  },
+  {
+   "a_element": "non-perturbative relations among correlation functions due to symmetries",
+   "b_element": "non-perturbative lattice results connecting to continuum renormalization group"
+  },
+  {
+   "a_element": "algebraic conditions for symmetries to hold in braided QFTs",
+   "b_element": "renormalization group fixed points and scaling relations in lattice gravity"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both abstracts address non-perturbative aspects of quantum field theories and symmetries, paper A focuses on algebraic (Hopf algebra) symmetries in braided QFTs, whereas paper B centers on the renormalization group and lattice methods for quantum gravity. The underlying machinery—algebraic symmetry conditions vs. lattice-based renormalization group flow—differs fundamentally, despite superficial overlap in non-perturbative language."
+}

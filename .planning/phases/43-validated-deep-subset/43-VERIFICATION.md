@@ -1,8 +1,21 @@
 # EXP-RS-24 — Phase 43 Verification: Orbiter-Validated Deep-Analogy Subset
 
-- **Status**: CONCLUDED — **WEAK-CONFIRM** (frozen gate). Reduction confirmed as a deep-analogy
-  specialist where testable (validated-deep 0.80 vs raw 0.00), but the validated-deep stratum is small
-  (n=5) → underpowered. Plus a strong descriptive **cascade-value** result and a clean orbiter audit.
+- **Status**: CONCLUDED — **CONFIRM** (upgraded from WEAK by the same-session expansion to N=160, below).
+  The reduction is a validated deep-analogy specialist: validated-deep reduction R@10 = 0.75 vs raw 0.00
+  at **n=12 ≥ 8**. Plus a strong descriptive cascade-value result and a clean orbiter audit.
+
+> **EXPANSION ADDENDUM (2026-07-18, N=160 — upgrades WEAK→CONFIRM).** Doubled the self-contained sample
+> to 160 pairs (320 papers, all reduced; Mistral open-book validity on all 160 + Claude on the 61
+> surface-hard). **VALIDATED-DEEP (n=12): reduction R@10 = 0.75 vs raw 0.00 vs lexical 0.17;
+> VALIDATED-EASY (n=47): raw 1.00 vs reduction 0.64.** P1 ∧ P2 hold with n=12 ≥ 8 → **CONFIRM** per the
+> frozen gate. Orbiter audit at the 71-pair overlap: **κ = 0.77** (agree 0.90); Mistral now slightly
+> LENIENT (over-prune 2 / under-prune 5) — at n=80 it was κ=0.89 with over-prune 1. So Mistral stays a
+> usable coarse-validity executor (κ 0.77–0.89) with a mild, granularity-dependent bias direction. Data:
+> `data/rs24_results.json` (n=160). The original n=80 WEAK run is preserved below as the record.
+
+---
+
+## Original run (n=80, WEAK) — preserved record
 - **Date**: 2026-07-18
 - **Orbiter**: first faithful executor/overseer loop on a coarse-validity task — Mistral executor (80
   pairs) + Claude overseer (27 deep pairs + audit). `pi-migration-ledger` row filed.

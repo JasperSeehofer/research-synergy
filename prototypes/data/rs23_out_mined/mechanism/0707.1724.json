@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "parametric (dispersive) coupling between two resonant modes in which one oscillator's displacement modulates the resonant frequency of the other, operated at a symmetric point so the frequency shift depends on the square of the displacement — yielding a measurement coupled to the oscillator's invariant (energy/amplitude) rather than its instantaneous position",
+  "brief_reason": "The abstract describes a cavity whose resonance is detuned by the motion of a membrane placed between fixed mirrors, giving direct measurement of the square of the displacement and hence access to the oscillator's energy eigenstate rather than its position."
+}

@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "elastic interface in a random potential with discrete jumps (static avalanches)",
+   "b_element": "height functions of random perfect matchings (dimer configurations) on a weighted graph"
+  },
+  {
+   "a_element": "distribution of avalanche sizes and cumulants derived via functional renormalization",
+   "b_element": "explicit formulas for surface tension and local Gibbs measure probabilities derived via spectral curve of the Kasteleyn operator"
+  },
+  {
+   "a_element": "epsilon=4-d expansion and tree/1-loop resummation for critical behavior",
+   "b_element": "Harnack curve properties of the spectral curve governing phase behavior and fluctuations"
+  },
+  {
+   "a_element": "Burgers equation as a connection to dynamics",
+   "b_element": "Ronkin function and its Legendre dual as a connection to surface tension"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers study random surfaces and their statistical properties, Paper A focuses on a renormalization-group approach to critical behavior in a disordered elastic system with avalanches, whereas Paper B derives exact probabilistic formulas for dimer models using algebraic geometry (spectral curves and Harnack curves). The underlying machinery—functional renormalization vs. algebraic integrability—differs fundamentally."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Identification of a global quantity's degree with a homological invariant of a cell complex — a Betti number obtained as the kernel-modulo-image dimension (rank of a (co)homology group) of the boundary/coboundary operators in the complex's chain complex, via cellular cohomology",
+  "brief_reason": "The abstract equates the divergence degree of the path-integral measure with the second Betti number of the 2-complex in the simply-connected or Abelian cases, i.e. it reads a topological invariant off the complex's cellular (co)homology."
+}

@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "Whitham modulation approach for dispersive shock waves",
+   "b_element": "nonlinear hydrodynamics equations (KdV/mKdV type) for soliton excitations"
+  },
+  {
+   "a_element": "sharp step-like initial discontinuity in light beam intensity",
+   "b_element": "decay of the density step in ultracold bosonic atoms"
+  },
+  {
+   "a_element": "dispersive shock wave formation in photorefractive media",
+   "b_element": "soliton formation and dynamics in optical lattices"
+  },
+  {
+   "a_element": "one-dimensional strip-like geometry",
+   "b_element": "one-dimensional solutions in optical lattices"
+  },
+  {
+   "a_element": "numerical simulations confirming modulation theory",
+   "b_element": "stability analysis of solutions to transverse fluctuations"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers study the evolution of step-like initial discontinuities in nonlinear media, leading to dispersive shock waves or solitons. Paper A uses the Whitham modulation approach, while Paper B derives Korteweg-de Vries (KdV) type equations, both of which are frameworks for describing nonlinear wave propagation and shock formation in dispersive systems."
+}

@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "adaptive resolution molecular dynamics scheme allowing free exchange of particles between regions of different resolution",
+   "b_element": "adaptive resolution molecular dynamics simulation allowing free exchange of molecules between open regions of different resolution"
+  },
+  {
+   "a_element": "use of auxiliary 'switching' functions to change resolution (force-based vs. potential energy-based approaches)",
+   "b_element": "coupling to an internal particle reservoir as a generalized grand canonical approach for resolution adjustment"
+  },
+  {
+   "a_element": "potential energy-based approach for resolution switching",
+   "b_element": "effective generalized grand canonical approach for resolution adjustment"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers address adaptive resolution molecular dynamics with particle exchange between regions, Paper A focuses on the conceptual limitations of a potential energy-based switching mechanism, whereas Paper B introduces a generalized grand canonical approach for resolution adjustment. The core machinery differs: Paper A critiques specific algorithmic designs (force vs. potential energy), while Paper B proposes a thermodynamic reservoir-based method, making the underlying mechanisms distinct."
+}

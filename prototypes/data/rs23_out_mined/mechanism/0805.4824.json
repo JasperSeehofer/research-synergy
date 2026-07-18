@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a measurement-feedback loop that converts acquired information into an entropy reduction, bounded by the mutual information the controller gains, yielding a tightened conservation inequality that caps the amount of extractable work/free energy",
+  "brief_reason": "The abstract computes the entropy reduction caused by repeated operation of a feedback controller and uses it to derive the maximum work extractable, i.e. an information-to-work bound in which measurement information relaxes the second-law-type limit on work extraction."
+}

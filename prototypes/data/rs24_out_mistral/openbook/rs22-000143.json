@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "stability condition of critical points in moduli potential (dependent on uplifting amount)",
+   "b_element": "probability of large deviations of eigenvalues (dependent on barrier positions ζ₁, ζ₂)"
+  },
+  {
+   "a_element": "supersymmetric critical points (AdS maxima or minima of the Kähler function)",
+   "b_element": "eigenvalue distributions constrained by barriers [ζ₁, ζ₂]"
+  },
+  {
+   "a_element": "parameter space region where critical points remain stable for any uplifting",
+   "b_element": "universal exponent θ(0) governing the decay of the probability that all eigenvalues lie in a fixed interval"
+  },
+  {
+   "a_element": "displacement of potential minimum due to uplifting",
+   "b_element": "shift in eigenvalue density due to barrier constraints (inverse square-root singularity)"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "Paper A analyzes stability of critical points in a moduli potential under F-term uplifting using supersymmetry and Kähler invariance, while Paper B studies extreme value statistics of eigenvalues in Gaussian random matrices via large deviation theory and barrier constraints. The shared language of 'stability' and 'critical points' masks fundamentally different mechanisms: one is a dynamical system in string theory, the other a probabilistic ensemble in random matrix theory."
+}

@@ -1,0 +1,30 @@
+{
+ "mapping": [
+  {
+   "a_element": "classical molecular dynamics simulation of charged particles in a magnetic field",
+   "b_element": "analytical/numerical study of charged billiard ball dynamics in a magnetic field"
+  },
+  {
+   "a_element": "rectangular billiard geometry with external magnetic field",
+   "b_element": "billiard in plane domains (e.g., square) with perpendicular magnetic field"
+  },
+  {
+   "a_element": "regularity islands at integer aspect ratios (single-particle case)",
+   "b_element": "invariant tori corresponding to skipping trajectories in convex domains"
+  },
+  {
+   "a_element": "chaotic behavior in two-particle Coulomb-interacting system",
+   "b_element": "ergodicity and chaotic scattering in multi-obstacle billiards (e.g., two circles)"
+  },
+  {
+   "a_element": "transition from quasiperiodicity to chaos with varying interaction strength",
+   "b_element": "bifurcation and stability analysis of periodic orbits via Jacobian matrix of the bouncing map"
+  },
+  {
+   "a_element": "strong magnetic field leading to regular trajectories",
+   "b_element": "adiabatic invariants in strong magnetic fields over exponentially long times"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers study the dynamics of charged particles in a magnetic field within a billiard framework, sharing the core mechanism of Hamiltonian chaos and integrability in magnetic fields. The molecular dynamics approach in A maps to the bouncing map and stability analysis in B, with regular/chaotic transitions and magnetic field effects playing analogous roles in both."
+}

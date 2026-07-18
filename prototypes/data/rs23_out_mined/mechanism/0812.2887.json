@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Linear, time-reversible overdamped (inertia-free) response in which generalized forces and velocities are coupled through a symmetric resistance/mobility matrix built from linear-flow singularities, so that net displacement over a periodic actuation cycle is possible only if the cycle is non-reciprocal (breaks time-reversal symmetry)",
+  "brief_reason": "The abstract centers on locomotion in the inertia-less low-Reynolds-number regime, using resistance matrices for bodies, flow singularities, and slender-body/resistive-force theory, and stresses the kinematic requirements for net translation, which is exactly the linear time-reversible drag structure that forbids reciprocal strokes from producing net motion."
+}

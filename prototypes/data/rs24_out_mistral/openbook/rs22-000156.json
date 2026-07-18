@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "quantum phase transition driven by dissipation and charge fluctuations",
+   "b_element": "quantum simulation of tunable spin-spin interactions in a many-body system"
+  },
+  {
+   "a_element": "Josephson junction array as a 2D system exhibiting a superconductor-to-insulator transition",
+   "b_element": "2D triangular lattice of trapped ions simulating Ising-type spin interactions"
+  },
+  {
+   "a_element": "Fermi energy in graphene controlling the phase transition via gate voltage",
+   "b_element": "tunable power-law exponent (a) controlling the range and strength of spin-spin interactions"
+  },
+  {
+   "a_element": "Coulomb blockade and Josephson effect interplay",
+   "b_element": "spin-dependent optical dipole force generating Ising interactions"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers study quantum many-body systems in 2D lattices, Paper A focuses on a dissipation-driven quantum phase transition in a superconductor-graphene system governed by charge fluctuations and the Josephson effect, whereas Paper B simulates tunable Ising-type spin interactions in a trapped-ion quantum simulator. The underlying mechanisms—dissipative quantum criticality vs. engineered spin-spin interactions—are fundamentally distinct, despite superficial similarities in lattice geometry and tunability."
+}

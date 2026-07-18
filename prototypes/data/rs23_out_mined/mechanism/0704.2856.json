@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "spontaneous macroscopic condensation of many identical units into a single collective mode located at a non-zero-wavevector minimum of a periodic band structure, producing an emergent long-range-ordered coherent state; enabled by loading a metastable excited band whose decay time is long compared to the inter-unit coupling time (a separation of timescales that makes the excited manifold behave as a quasi-equilibrium sector)",
+  "brief_reason": "The abstract prepares a long-lived excited-band population (lifetime 10-100x the tunneling time) and then observes the dynamical emergence of coherence 'compatible with Bose-Einstein condensation to a non-zero momentum state', i.e. spontaneous macroscopic occupation of a finite-momentum band minimum."
+}

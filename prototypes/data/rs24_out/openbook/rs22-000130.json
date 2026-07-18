@@ -1,0 +1,7 @@
+{
+  "mapping": [
+    {"a_element": "the cosmological constant / dark energy invoked as the origin of cosmic acceleration", "b_element": "the cosmological constant Lambda taken as a universal constant measuring residual spacetime curvature"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is the shared object 'cosmological constant Lambda', not shared machinery. Paper A is observational statistical inference of the expansion history from distance measurements (SN Ia luminosity distances, BAO/CMB angular scales, growth of density fluctuations), whereas Paper B is a group-theoretic reformulation of special-relativity kinematics based on the de Sitter group SO(1,4); there is no common governing equation, dynamical law, or estimation principle linking measurement-based cosmography to a symmetry-postulate kinematics, so no role-for-role mapping holds."
+}

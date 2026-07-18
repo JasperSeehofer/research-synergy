@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "radio-frequency spectroscopy to probe excitation spectra in a Fermi gas",
+   "b_element": "depletion spectroscopy combined with resonant-enhanced multi-photon ionization to determine molecular states"
+  },
+  {
+   "a_element": "spatially resolved spectral response obtained via in situ phase-contrast imaging and 3D reconstruction",
+   "b_element": "time-of-flight spectroscopy to resolve molecular states"
+  },
+  {
+   "a_element": "asymmetric excitation line shape with a peak at 0.48(4)ε_F",
+   "b_element": "selective production of specific rovibrational states (e.g., v\"=0, J\"=0 or J\"=2)"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers use spectroscopic techniques to probe quantum states, paper A focuses on a many-body Fermi gas with resonant interactions and a spectral gap driven by collective physics, whereas paper B employs photo-association and depletion spectroscopy to selectively populate and detect discrete molecular rovibrational states. The underlying mechanisms (many-body physics vs. molecular spectroscopy) and governing equations differ fundamentally."
+}

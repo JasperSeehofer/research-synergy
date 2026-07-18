@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A topological (Berezinskii-Kosterlitz-Thouless) phase transition: an infinite-order transition driven by the thermal unbinding of bound pairs of oppositely-charged topological defects, which converts a phase with only quasi-long-range order into a disordered phase at a sharp critical point, distinct from a conventional symmetry-breaking condensation.",
+  "brief_reason": "The abstract centers on a well-defined critical point separating a high-temperature disordered state from a low-temperature ordered state that cannot be explained by conventional (symmetry-breaking) condensation and is instead captured by importing the Berezinskii-Kosterlitz-Thouless transition of the uniform system, whose defining machinery is topological-defect-pair unbinding."
+}

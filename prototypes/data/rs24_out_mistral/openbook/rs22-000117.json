@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "high-temperature limit (β → 0) in Coulomb fluids",
+   "b_element": "small fermion mass limit in the multi-flavor Schwinger model"
+  },
+  {
+   "a_element": "asymptotic large-distance behavior of correlation functions (charge and number density)",
+   "b_element": "low-energy behavior of the N-flavor model under RG flow"
+  },
+  {
+   "a_element": "interference between leading and subleading asymptotic terms in the number density correlation function",
+   "b_element": "breakdown of reflection symmetry in the N>1 Schwinger model due to non-linearities in the RG flow"
+  },
+  {
+   "a_element": "non-commutativity of limits (large-distance asymptotics vs. high-temperature limit)",
+   "b_element": "distinct low-energy behavior depending on the fermion mass regime (small vs. large)"
+  },
+  {
+   "a_element": "Debye-Hückel theory as the β → 0 limit",
+   "b_element": "linearized RG flow in the small fermion mass limit"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers investigate the non-commutativity of limits in field-theoretic or statistical systems: Paper A examines the discontinuity in the large-distance asymptotics of correlation functions when taking the high-temperature limit, while Paper B studies how the low-energy behavior of a quantum field model depends on the fermion mass regime. The underlying machinery involves analyzing asymptotic or renormalization group (RG) flows, with critical behavior emerging from the interplay of leading and subleading terms (or linear vs. non-linear RG effects)."
+}

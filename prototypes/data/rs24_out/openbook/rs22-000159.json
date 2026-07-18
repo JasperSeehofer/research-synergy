@@ -1,0 +1,10 @@
+{
+  "mapping": [
+    {"a_element": "the extreme value (maximum of N iid/weakly-correlated variables) whose distribution is studied", "b_element": "the maximal height of N non-intersecting Brownian excursions / largest eigenvalue of a random matrix"},
+    {"a_element": "the limit distribution of the extreme (Gumbel/Frechet/Weibull iid universality classes)", "b_element": "the Tracy-Widom limit distribution (strongly-correlated universality class)"},
+    {"a_element": "finite size N of the data set and its scaling", "b_element": "system size L / number of walkers N in the large-N limit"},
+    {"a_element": "finite-size convergence exponent setting the shape-correction function", "b_element": "scaling near the critical point L_c ~ sqrt(N) of the third-order phase transition"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Both study the limiting distribution of a maximum and its scaling with system size, but the underlying machinery differs: A applies a renormalization method to classify iid/weakly-correlated extreme-value universality classes (Gumbel-type) via finite-size shape corrections, whereas B relies on an exact mapping of reunion probabilities to Yang-Mills/random-matrix partition functions that produces a third-order phase transition and the Tracy-Widom law -- a distinct strongly-correlated EVS class that A's iid machinery does not generate. The shared element is the object (an extremal distribution) and the goal (system-size scaling), not the governing mechanism."
+}

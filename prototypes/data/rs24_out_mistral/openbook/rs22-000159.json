@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "finite-size corrections to extreme value distributions in iid and correlated systems",
+   "b_element": "finite-size scaling of reunion probabilities near a third-order phase transition in non-intersecting Brownian motions"
+  },
+  {
+   "a_element": "renormalization method for finite-size shape corrections",
+   "b_element": "scaling limit near the critical point L_c(N) yielding Tracy-Widom distributions"
+  },
+  {
+   "a_element": "exponent governing finite-size convergence in iid universality classes",
+   "b_element": "critical exponent governing the third-order phase transition at L=L_c(N)"
+  },
+  {
+   "a_element": "limit distribution of extreme values (e.g., Gumbel, Fréchet, Weibull)",
+   "b_element": "Tracy-Widom distribution (GUE/GOE) for reunion probabilities or maximal height"
+  },
+  {
+   "a_element": "correlated systems (subcritical percolation, 1/f^alpha noise)",
+   "b_element": "non-intersecting Brownian motions with boundary constraints (periodic, absorbing, reflecting)"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers study finite-size scaling corrections to universal limit distributions: Paper A focuses on extreme value statistics in iid and correlated systems, while Paper B examines reunion probabilities and maximal heights in non-intersecting Brownian motions near a phase transition. The shared machinery is the renormalization/scaling approach to finite-size effects, with Tracy-Widom distributions (Paper B) playing the role of the universal extreme value distributions (Paper A)."
+}

@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "non-perturbative dependence on laser intensity and frequency in vacuum polarization",
+   "b_element": "non-perturbative particle production rate from time-dependent external fields"
+  },
+  {
+   "a_element": "merging of laser photons due to vacuum polarization in a strong laser field",
+   "b_element": "e+e- pair production from vacuum in a time-dependent electric field"
+  },
+  {
+   "a_element": "exact calculation of photon merging probability in a laser-proton collision",
+   "b_element": "Bogoliubov transformation between in and out vacua to compute particle production rate"
+  },
+  {
+   "a_element": "laser field as a time-dependent background",
+   "b_element": "time-dependent electric field with sub-cycle pulse structure"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers involve non-perturbative effects in strong laser fields and vacuum phenomena, paper A focuses on photon merging via vacuum polarization in a proton-laser collision, whereas paper B addresses particle pair production via Bogoliubov transformations and the Stokes phenomenon in time-dependent fields. The core mechanisms (vacuum polarization vs. particle production via Stokes phenomenon) and mathematical frameworks differ fundamentally."
+}

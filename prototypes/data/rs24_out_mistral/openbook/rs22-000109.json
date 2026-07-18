@@ -1,0 +1,30 @@
+{
+ "mapping": [
+  {
+   "a_element": "totally asymmetric simple exclusion process (TASEP) with particles of size ℓ ≥ 1",
+   "b_element": "model of ribosome traffic with steric exclusion on mRNA track"
+  },
+  {
+   "a_element": "local inhomogeneities (slow sites with hopping rate q < 1)",
+   "b_element": "alternating sequence of translocation and pause in ribosome movement"
+  },
+  {
+   "a_element": "stationary current of particles",
+   "b_element": "average velocity of ribosomes on mRNA"
+  },
+  {
+   "a_element": "dependence of current on location of slow sites",
+   "b_element": "dependence of ribosome velocity on mechanochemical cycle parameters"
+  },
+  {
+   "a_element": "density profiles of particles in steady state",
+   "b_element": "phase diagram of ribosome traffic in parameter space"
+  },
+  {
+   "a_element": "mean-field theory for exclusion process",
+   "b_element": "analytical expression for dwell time distribution and force-velocity relation"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers model driven transport processes with exclusion interactions: TASEP for extended particles and ribosome traffic on mRNA. The slow sites in TASEP correspond to pauses in ribosome translocation, and the stationary current maps to ribosome velocity. Both use exclusion principles and analyze steady-state behavior, sharing the same underlying stochastic particle-hopping machinery with spatial constraints."
+}

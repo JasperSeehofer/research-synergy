@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "overdamped diffusion processes driven out of thermal equilibrium",
+   "b_element": "stochastic differential equations with a new interpretation specifying dynamics"
+  },
+  {
+   "a_element": "thermodynamic interpretation of joint fluctuations of occupation times and currents",
+   "b_element": "built-in Boltzmann-Gibbs distribution in the new interpretation of SDE"
+  },
+  {
+   "a_element": "canonical structure of joint fluctuations (time-symmetric and time-antisymmetric sectors)",
+   "b_element": "potential function revealing local and global dynamics in the new interpretation"
+  },
+  {
+   "a_element": "decoupling of occupation and current fluctuations close-to-equilibrium",
+   "b_element": "relation between the new interpretation and Ito process (classical equilibrium-like behavior)"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers address the structure of fluctuations in stochastic processes, with Paper A focusing on driven diffusions and thermodynamic sectors, while Paper B introduces a new SDE interpretation with a built-in Boltzmann-Gibbs distribution and potential function. The shared machinery lies in the equilibrium/non-equilibrium statistical framework, where occupation statistics and potential functions play analogous roles in describing steady-state dynamics."
+}

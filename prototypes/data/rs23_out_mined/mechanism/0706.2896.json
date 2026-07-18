@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "critical-point / phase-plane classification of steady solutions of a nonlinear conservation-law system, partitioning the space of the conserved first integrals into regions of qualitatively distinct solution topology separated by bifurcations, with singular (sonic/saddle) points selecting the admissible transonic branches and discontinuous jumps (shocks) bridging branches",
+  "brief_reason": "The abstract solves conservation-law (MHD) equations, enumerates 'all possible solution topologies', divides a parameter space spanned by two conserved quantities (energy and angular momentum) by those topologies, and analyzes shock (discontinuous-jump) formation — i.e., a topological/bifurcation classification of a conservative dynamical system's solutions organized by its conserved integrals."
+}

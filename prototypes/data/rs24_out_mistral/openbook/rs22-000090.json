@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "Geometry of Interaction (GoI) as an algebraic weighting of paths in proofnets",
+   "b_element": "Geometry of Interaction (GoI) applied to the category of sets and partial functions (GoI(Setp)) for path composition"
+  },
+  {
+   "a_element": "Differential Interaction Nets extending MELL with non-deterministic behavior",
+   "b_element": "Proof nets for multiplicative linear logic with units"
+  },
+  {
+   "a_element": "Equational theory for GoI of MELL and its extensions",
+   "b_element": "Direct and strongly normalizing cut elimination in proof nets"
+  },
+  {
+   "a_element": "Reversible computation in Differential Interaction Nets",
+   "b_element": "Path composition as the dynamics in GoI(Setp)"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ the Geometry of Interaction (GoI) framework to model dynamics in proofnets or related structures, with a focus on algebraic or categorical path-based semantics. The core machinery—GoI as a means of capturing computation via path composition or weighting—is shared, despite differences in the specific logical fragments (MELL with extensions vs. multiplicative linear logic with units)."
+}

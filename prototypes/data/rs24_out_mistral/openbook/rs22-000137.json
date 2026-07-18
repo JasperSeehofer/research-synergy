@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "number of binary nucleon-nucleon collisions (ν) as a measure of centrality",
+   "b_element": "centrality classes in the clustering of color sources model"
+  },
+  {
+   "a_element": "transverse momentum (p_T) spectra of charged hadrons",
+   "b_element": "transverse momentum (p_T) dependence of azimuthal asymmetries (v2)"
+  },
+  {
+   "a_element": "saturation of yield per nucleon-nucleon collision for high momentum particles",
+   "b_element": "nuclear modification factor's dependence on azimuthal angle and centrality"
+  },
+  {
+   "a_element": "spectator nucleon tagging for event selection",
+   "b_element": "clustering of color sources as a framework for partonic interactions"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers study particle production in high-energy collisions and use centrality as a variable, paper A focuses on binary nucleon-nucleon collision scaling and yield saturation, whereas paper B models collective partonic interactions via color source clustering to explain azimuthal asymmetries (v2). The core mechanisms—binary collision scaling vs. collective flow from partonic clustering—are distinct."
+}

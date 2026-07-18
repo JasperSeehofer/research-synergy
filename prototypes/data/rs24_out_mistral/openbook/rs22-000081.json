@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "pre-calculated fragment configurations and interactions (fragment libraries)",
+   "b_element": "pre-computed histograms or ensembles from generalized-ensemble simulations (e.g., single/multiple-histogram reweighting)"
+  },
+  {
+   "a_element": "growing a molecule by combining fragments to estimate absolute free energy",
+   "b_element": "performing a random walk in potential energy space to sample configurations across temperatures"
+  },
+  {
+   "a_element": "equilibrium ensembles generated at no additional computational cost for validation",
+   "b_element": "canonical-ensemble averages obtained from a single generalized-ensemble simulation run"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both methods aim to improve computational efficiency in sampling molecular configurations, Paper A relies on a combinatorial fragment-based approach to estimate absolute free energies, whereas Paper B uses generalized-ensemble algorithms (e.g., multicanonical, replica-exchange) to overcome quasi-ergodicity via energy-space random walks. The core mechanisms—fragment assembly vs. ensemble reweighting—are fundamentally different."
+}

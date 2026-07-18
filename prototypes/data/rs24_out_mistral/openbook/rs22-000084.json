@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "quantum sine-Gordon (SG) model describing the low-energy excitations of KCuGaF6 in a magnetic field",
+   "b_element": "sine-Gordon-massive Thirring (sG-mT) model in a periodic box"
+  },
+  {
+   "a_element": "staggered magnetic field h induced perpendicular to external field H, parameterized by c_s = h/H",
+   "b_element": "external magnetic field h_z in the XXZ chain or the periodic box size in the sG-mT model"
+  },
+  {
+   "a_element": "resonance modes (solitons, breathers, interbreather transitions) described by quantum SG field theory",
+   "b_element": "finite size corrections and thermodynamic quantities derived from the non-linear integral equation (NLIE) for the sG-mT model"
+  },
+  {
+   "a_element": "adjustable parameter c_s = h/H governing the resonance conditions",
+   "b_element": "parameters in the NLIE governing the free energy and excitations in the sG-mT model"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ the quantum sine-Gordon model as the underlying mathematical framework: Paper A uses it to describe elementary excitations in a 1D antiferromagnet, while Paper B derives a unified non-linear integral equation (NLIE) for the sine-Gordon-massive Thirring model to compute thermodynamic properties. The core machinery—solving the sine-Gordon model's dynamics or thermodynamics—is shared, with role-for-role correspondences in parameters and excitations."
+}

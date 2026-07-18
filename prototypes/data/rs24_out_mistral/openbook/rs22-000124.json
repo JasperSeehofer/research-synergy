@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "empirical spectral distribution of complex random matrices with i.i.d. entries (mean 0, variance 1/n)",
+   "b_element": "correlation functions of ensembles of asymmetric real matrices (e.g., real Ginibre ensemble)"
+  },
+  {
+   "a_element": "convergence to uniform distribution over the unit disk (circular law) via potential theory and extreme singular values",
+   "b_element": "scaling limits (bulk and edge) of correlation functions via Pfaffian of an antisymmetric matrix kernel"
+  },
+  {
+   "a_element": "finite fourth moment assumption on matrix elements",
+   "b_element": "asymptotic analysis of matrix size (no explicit moment condition mentioned, but scaling limits imply regularity)"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers study large random matrices, Paper A uses potential theory and extreme singular value analysis to prove spectral convergence to the circular law, whereas Paper B derives correlation functions via Pfaffian kernels and scaling limits. The core machinery (potential theory vs. Pfaffian determinants) and objectives (spectral distribution vs. correlation functions) differ fundamentally."
+}

@@ -1,0 +1,38 @@
+{
+ "mapping": [
+  {
+   "a_element": "minimum spanning tree (MST) as a combinatorial optimization problem on a graph with edge costs",
+   "b_element": "minimum spanning tree (MST) method for clusterization in heavy-ion collisions"
+  },
+  {
+   "a_element": "edge costs as independent random variables (quenched disorder)",
+   "b_element": "edge weights derived from spatial proximity or binding energy in nuclear fragments"
+  },
+  {
+   "a_element": "Kruskal's greedy algorithm for constructing the MST",
+   "b_element": "MST-based clusterization algorithm for fragment formation"
+  },
+  {
+   "a_element": "Bethe lattice (BL) as a mean-field approximation",
+   "b_element": "no direct correspondence (Bethe lattice not used in B)"
+  },
+  {
+   "a_element": "fractal dimension D=6 of connected components in the MST",
+   "b_element": "no direct correspondence (no fractal dimension analysis in B)"
+  },
+  {
+   "a_element": "scaling properties and critical dimension d_c=6",
+   "b_element": "no direct correspondence (no scaling or critical dimension analysis in B)"
+  },
+  {
+   "a_element": "strongly-disordered spin-glass model mapping to MST",
+   "b_element": "no direct correspondence (no spin-glass model in B)"
+  },
+  {
+   "a_element": "bond percolation relation to MST construction",
+   "b_element": "no direct correspondence (no percolation framework in B)"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers use the minimum spanning tree (MST) as a tool, paper A focuses on the statistical mechanics and scaling properties of random MSTs in disordered systems (e.g., spin-glass models, percolation, and fractal dimensions), whereas paper B applies MST as a clusterization algorithm in nuclear physics with binding-energy constraints. The core machinery (mean-field theory, critical dimensions, and percolation mappings) in A has no counterpart in B, which is purely an application of MST with empirical modifications."
+}

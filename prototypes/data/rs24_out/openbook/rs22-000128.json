@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "multi-atom cold ensemble used as the storage medium for light", "b_element": "cold-atom cloud used as the gain-plus-scattering medium for light"},
+    {"a_element": "atom-light interaction that maps optical spatial modes onto collective atomic coherences", "b_element": "atom-light interaction (atomic polarizability of a pumped two-level atom) that provides gain and scattering"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only genuine overlap is the physical substrate (light interacting with a cold multi-atom ensemble); the transferable machinery differs. Paper A is a coherent, linear quantum-state storage/retrieval protocol maximizing multimode capacity with no threshold, whereas Paper B is a lasing-threshold/critical-phenomenon governed by a single critical parameter (on-resonance optical thickness b0) balancing gain against multiple-scattering losses, so no role-for-role mapping of the driving mechanism holds."
+}

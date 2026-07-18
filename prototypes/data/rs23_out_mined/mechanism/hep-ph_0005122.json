@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an exact renormalization-group flow equation that continuously coarse-grains a system by integrating out fluctuations above a running infrared cutoff, tracking the scale-dependence of an effective free energy/action so as to interpolate between microscopic laws and emergent macroscopic behavior and extract universal scaling near critical thresholds",
+  "brief_reason": "The abstract is built on an exact renormalization group equation describing the dependence of the coarse-grained free energy (effective average action) on an infrared cutoff, which interpolates between microphysical laws and universal macroscopic critical phenomena at phase transitions."
+}

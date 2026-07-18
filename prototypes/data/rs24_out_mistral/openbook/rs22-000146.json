@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "quasiclassical Eilenberger theory governing superconducting pair potentials and magnetic fields",
+   "b_element": "Abelian Higgs model with two charged scalar fields governing vortex structure and electromagnetic fields"
+  },
+  {
+   "a_element": "π-phase shift of the pair potential at FFLO nodal planes or vortex cores",
+   "b_element": "nested pipelike structure of vortices with layered electromagnetic fields"
+  },
+  {
+   "a_element": "local paramagnetic moments enhanced by sharp peak states in local density of states",
+   "b_element": "longitudinal electric currents in opposite directions within charged pipes"
+  },
+  {
+   "a_element": "vortex core as a region of modified superconducting order",
+   "b_element": "geometric center of the vortex with concentrated magnetic field at a distance"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers study vortex structures in systems with broken symmetries, Paper A relies on quasiclassical superconductivity theory (Eilenberger equations) to describe FFLO modulations and paramagnetic effects, whereas Paper B uses a field-theoretic Abelian Higgs model to analyze pipelike electromagnetic currents in two-component condensates. The underlying mechanisms (quasiclassical vs. topological field theory) and governing equations differ fundamentally."
+}

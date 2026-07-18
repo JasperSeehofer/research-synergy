@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "Szekeres inhomogeneous relativistic models (exact solutions to Einstein's equations with no symmetries)",
+   "b_element": "Lemaître–Tolman–Bondi (LTB) inhomogeneous dust solutions (exact solutions to Einstein's equations for dust)"
+  },
+  {
+   "a_element": "spatial curvature function in Szekeres models",
+   "b_element": "average density parameter <Ω> in LTB phase space"
+  },
+  {
+   "a_element": "null geodesics in Szekeres models (non-radial)",
+   "b_element": "solution curves in LTB phase space (evolving between critical points)"
+  },
+  {
+   "a_element": "fitting supernova data to infer apparent acceleration without dark energy",
+   "b_element": "phase space evolution of dust configurations (e.g., void formation, re-collapsing universes)"
+  },
+  {
+   "a_element": "requirement of spatial flatness at CMB scales in Szekeres models",
+   "b_element": "invariant subspace corresponding to FLRW dust in LTB phase space"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ exact inhomogeneous solutions to Einstein's equations (Szekeres and LTB models) to explore cosmological dynamics without dark energy. The Szekeres spatial curvature function and LTB average density parameter <Ω> play analogous roles in governing the evolution of the universe, while the phase space critical points in LTB correspond to the observational constraints (e.g., supernova data, CMB flatness) in Szekeres. The shared machinery is the use of inhomogeneous relativistic models to replace or reinterpret dark energy via dynamical or geometric effects."
+}

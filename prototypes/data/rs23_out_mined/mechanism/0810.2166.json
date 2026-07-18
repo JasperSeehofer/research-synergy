@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a multiplicative stochastic cascade across scales, in which quantities are repeatedly multiplied by independent random factors so that their logarithms sum and the result converges to a scale-independent (universal) lognormal distribution",
+  "brief_reason": "The abstract reports lognormal fluctuations of energy measures that are universal across conditions and attributes their likely origin to a multiplicative stochastic process arising from interactions among scales."
+}

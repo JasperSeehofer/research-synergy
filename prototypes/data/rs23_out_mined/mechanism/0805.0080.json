@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "exploiting the form-invariance of a governing wave/field equation under a change of coordinates, so that a coordinate map compressing a region to a point is realized as a spatially-varying anisotropic material/coefficient tensor that reroutes the field around it with zero scattering",
+  "brief_reason": "The abstract builds the cloak via the transformation (change-of-variables) method that maps the cloaked region to a point of vanishing scattering, which forces the medium's coefficients (mass density / stiffness) to become anisotropic — i.e. the coordinate transformation is absorbed into transformed equation coefficients."
+}

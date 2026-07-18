@@ -1,0 +1,10 @@
+{
+  "mapping": [
+    {"a_element": "phases of the coupled electromagnetic field modes in the laser cavity", "b_element": "modes of the classical defocusing-NLS wave field"},
+    {"a_element": "pumping rate as the control parameter driving the transition", "b_element": "energy density as the control parameter driving the transition"},
+    {"a_element": "ferromagnetic / mode-locked phase (onset of coherent pulse emission)", "b_element": "condensate (onset of a large-scale coherent structure)"},
+    {"a_element": "mode-locking threshold", "b_element": "condensation transition threshold"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A's machinery is mean-field spin-glass statistical mechanics of a quenched-disordered Hamiltonian, whose defining outputs are paramagnetic/ferromagnetic/spin-glass phases and an exponentially large number of frozen configurations (a replica/complexity structure); Paper B's machinery is wave-turbulence kinetic theory with a UV cutoff applied to a clean (disorder-free) defocusing NLS, yielding a Bose-Einstein-like, subcritical, dimension-dependent condensation. Both apply equilibrium statistical mechanics to nonlinearly-coupled optical modes and find a coherence phase transition, but that overlap is generic: A's central disorder/spin-glass/complexity apparatus has no counterpart in B, and B's wave-turbulence condensation apparatus has no counterpart in A, so the governing methods differ."
+}

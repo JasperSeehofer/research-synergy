@@ -1,0 +1,30 @@
+{
+ "mapping": [
+  {
+   "a_element": "supersymmetric renormalization group (RG) flow equations for the effective superpotential",
+   "b_element": "exact renormalization group equation for the free energy or effective average action"
+  },
+  {
+   "a_element": "Wilson-Fisher fixed-point in the Wess-Zumino model",
+   "b_element": "critical phenomena for second-order phase transitions in O(N)-symmetric scalar models"
+  },
+  {
+   "a_element": "phase-transition line in coupling-constant space separating supersymmetric from non-supersymmetric phase",
+   "b_element": "critical equation of state and phase transitions (e.g., liquid-gas transition) in statistical physics"
+  },
+  {
+   "a_element": "dimensional reduction from 3 to 2 dimensions in the infrared regime at finite temperature",
+   "b_element": "high temperature symmetry restoration and dimensional reduction in quantum field theories"
+  },
+  {
+   "a_element": "restoration of global Z₂-symmetry at finite temperature",
+   "b_element": "high temperature symmetry restoration in quantum field theories with spontaneous symmetry breaking"
+  },
+  {
+   "a_element": "Stefan-Boltzmann law for massless bosons in 2+1 dimensions at high temperature",
+   "b_element": "quantum statistics in thermal equilibrium or thermal quantum field theory with bosons"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ renormalization group (RG) flow equations to study phase transitions and critical phenomena, with Paper A focusing on a supersymmetric model and Paper B on general quantum field theory and statistical physics. The core machinery—RG flow, fixed points, symmetry restoration, and dimensional reduction—is shared, with analogous roles for coupling constants, critical thresholds, and thermal effects in both abstracts."
+}

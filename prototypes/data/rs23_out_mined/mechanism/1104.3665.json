@@ -1,0 +1,4 @@
+{
+ "core_mechanism": "maximum-likelihood inference of a low-rank pairwise-coupling matrix from measured means and pairwise correlations, which reduces to a truncated spectral / principal-component decomposition of the correlation matrix, with a perturbative small-amplitude expansion supplying corrections",
+ "brief_reason": "The abstract infers a rank-much-smaller-than-N interaction matrix of a pairwise (Ising/Hopfield) model from frequencies and pairwise correlations and shows Maximum Likelihood inference is deeply related to Principal Component Analysis, computing corrections to first order in the pattern amplitude via statistical mechanics."
+}

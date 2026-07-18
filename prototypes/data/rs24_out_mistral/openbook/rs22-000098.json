@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "nonequilibrium entropy limiters that control spurious oscillations and artificial dissipation in lattice Boltzmann methods (LBM)",
+   "b_element": "theoretical approaches (macroscopic, mesoscopic, microscopic) that model elastic interactions and phase separation dynamics in alloys"
+  },
+  {
+   "a_element": "entropy \"trimming\" and entropy filtering as mechanisms to restrict or filter nonequilibrium entropy",
+   "b_element": "elastic interactions (e.g., lattice misfit, modulus differences) that influence phase separation kinetics and morphology"
+  },
+  {
+   "a_element": "control of entropy production and artificial dissipation in LBM",
+   "b_element": "control of precipitate shapes and arrangements via elastic anisotropy or external stresses in alloys"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers address mechanisms to control numerical or physical artifacts (spurious oscillations in LBM vs. elastic misfit in alloys), their underlying machinery differs fundamentally. Paper A focuses on entropy-based numerical limiters to stabilize simulations, whereas Paper B models phase separation driven by elastic interactions and continuum/atomistic theories. No shared governing equation or process unifies them."
+}

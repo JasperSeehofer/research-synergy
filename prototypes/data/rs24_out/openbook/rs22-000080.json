@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "momentum probability distribution whose statistical structure is analyzed", "b_element": "random codeword ensemble / interfering-signal distribution being analyzed"},
+    {"a_element": "statistical-mechanics framing of an ideal gas", "b_element": "statistical-physics analytical tools applied to the decoder"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is the broad 'statistical physics' umbrella: paper A's machinery is a definition of thermodynamic temperature tied to the Fisher information of the momentum distribution, whereas paper B's machinery is a large-deviation / partition-function derivation of error exponents for optimum decoding of an interference channel. These are different governing structures (an estimation-theoretic temperature definition vs. exponential-rate asymptotics of a codeword ensemble), so no coherent role-for-role mapping holds."
+}

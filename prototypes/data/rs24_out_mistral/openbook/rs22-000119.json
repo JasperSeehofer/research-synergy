@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "noise bias (dephasing dominating other noise types)",
+   "b_element": "probability bias (p_c representing the dominance of ferromagnetic bonds over antiferromagnetic ones)"
+  },
+  {
+   "a_element": "accuracy threshold for fault-tolerant quantum computation",
+   "b_element": "multicritical point location (p_c) in spin glasses"
+  },
+  {
+   "a_element": "asymmetry in noise channels (biased noise)",
+   "b_element": "asymmetry in bond probabilities (biased ±J distribution)"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers exploit asymmetry in their respective systems (noise bias in quantum computation vs. bond probability bias in spin glasses), the underlying mechanisms differ fundamentally: Paper A relies on quantum error correction and threshold theorems for biased noise, whereas Paper B uses duality and partition function relationships in classical statistical mechanics to locate multicritical points. The core machinery is not transferable."
+}

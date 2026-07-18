@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "counting the discrete intersection points of a fixed algebraic variety of factorizable (rank-one, tensor-product) vectors with a linear subspace by solving the associated system of polynomial equations, with the number of solutions governed by Bezout's theorem from intersection theory in algebraic geometry",
+  "brief_reason": "The method reduces to locating the product (rank-one) vectors that lie in the kernel subspace of a state, and the abstract states the results rely heavily on Bezout's theorem from algebraic geometry, i.e. counting intersections of the variety of factorizable vectors with a linear subspace."
+}

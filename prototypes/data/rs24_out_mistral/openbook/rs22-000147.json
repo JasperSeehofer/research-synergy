@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "Bose-Einstein condensate (BEC) with time-dependent scattering length as an analogue model for cosmological particle creation",
+   "b_element": "Bose-Einstein condensate (BEC) of group field theory (GFT) quanta as a model for emergent continuum spacetime"
+  },
+  {
+   "a_element": "classical field method via the truncated Wigner approximation to simulate the BEC dynamics",
+   "b_element": "effective dynamics extracted from the GFT condensate phase to compare with continuum gravity theories"
+  },
+  {
+   "a_element": "time-dependent scattering length in the BEC, mimicking the expansion of a FRW universe",
+   "b_element": "phase transition or condensation process in GFT, leading to emergent continuum spacetime"
+  },
+  {
+   "a_element": "particle production in the long wavelength limit, consistent with cosmological theory",
+   "b_element": "emergence of continuum spacetime from discrete quantum structures (GFT quanta)"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ the machinery of Bose-Einstein condensation as a framework to model emergent phenomena: Paper A uses a BEC with a time-dependent scattering length to simulate cosmological particle creation in an expanding universe, while Paper B proposes a BEC of GFT quanta to describe the emergence of continuum spacetime. The underlying method in both is the use of condensate physics to bridge discrete quantum structures and continuum dynamics."
+}

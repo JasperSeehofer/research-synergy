@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "matrix product form representing the steady-state distribution of microstates in driven diffusive systems",
+   "b_element": "block-diagonalization or orbit theory to exploit symmetries in the transition probability matrix of a Markov chain"
+  },
+  {
+   "a_element": "macroscopic physical quantities derived from the matrix product state (e.g., phase transitions, shocks)",
+   "b_element": "optimization of the second-largest eigenvalue modulus to determine mixing time in Markov chains"
+  },
+  {
+   "a_element": "algebraic structure (matrix product) enabling exact solutions for steady states",
+   "b_element": "algebraic structure (symmetry exploitation) enabling efficient computation of optimal transition probabilities"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers leverage algebraic structures to simplify complex systems (matrix product states for nonequilibrium steady states vs. symmetry exploitation for Markov chains), the underlying machinery differs: Paper A focuses on exact solutions via matrix product ansatz for steady-state distributions, whereas Paper B optimizes spectral properties of transition matrices using symmetry reductions. The core mechanisms (matrix product vs. symmetry-based eigenvalue optimization) are distinct."
+}

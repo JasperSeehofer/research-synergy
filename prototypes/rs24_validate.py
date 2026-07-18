@@ -35,8 +35,8 @@ SLICE_OB = os.path.join(DATA, "rs22_out", "openbook")      # existing Claude ope
 OB_PROMPT = os.path.join(HERE, "rs22_probe_openbook.md")
 
 
-def ctx():
-    all_ids, by_id, pairs = RS.load_mined(N)
+def ctx(n=N):
+    all_ids, by_id, pairs = RS.load_mined(n)
     return all_ids, by_id, {p["id"]: p for p in pairs}, pairs
 
 
@@ -62,8 +62,8 @@ def surface_hard(all_ids, by_id, pairs, raw_s):
     return set(hard)
 
 
-def emit():
-    all_ids, by_id, pmap, pairs = ctx()
+def emit(n=N):
+    all_ids, by_id, pmap, pairs = ctx(n)
     os.makedirs(IN_OB, exist_ok=True)
     for p in pairs:
         a, b = by_id[p["side_a"]], by_id[p["side_b"]]
@@ -106,8 +106,8 @@ def run_mistral(model, workers):
         print("  errs:", errs[:5])
 
 
-def hard_keys():
-    all_ids, by_id, pmap, pairs = ctx()
+def hard_keys(n=N):
+    all_ids, by_id, pmap, pairs = ctx(n)
     _, raw_s, _ = emb_scorers(all_ids, by_id)
     hard = sorted(surface_hard(all_ids, by_id, pairs, raw_s))
     print(f"surface-HARD pairs (n={len(hard)}):")
@@ -139,8 +139,8 @@ def kappa(pairs):
     return ((po - pe) / (1 - pe) if pe != 1 else 1.0), po
 
 
-def score():
-    all_ids, by_id, pmap, pairs = ctx()
+def score(n=N):
+    all_ids, by_id, pmap, pairs = ctx(n)
     red_s, raw_s, lex_s = emb_scorers(all_ids, by_id)
     hard = surface_hard(all_ids, by_id, pairs, raw_s)
 
@@ -208,20 +208,20 @@ def score():
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
-    sub.add_parser("emit")
+    e=sub.add_parser("emit"); e.add_argument("--n",type=int,default=N)
     rm = sub.add_parser("run-mistral"); rm.add_argument("--model", default="mistral-large-latest")
     rm.add_argument("--workers", type=int, default=4)
-    sub.add_parser("hard-keys")
-    sub.add_parser("score")
+    hk=sub.add_parser("hard-keys"); hk.add_argument("--n",type=int,default=N)
+    sc=sub.add_parser("score"); sc.add_argument("--n",type=int,default=N)
     a = ap.parse_args()
     if a.cmd == "emit":
-        emit()
+        emit(a.n)
     elif a.cmd == "run-mistral":
         run_mistral(a.model, a.workers)
     elif a.cmd == "hard-keys":
-        hard_keys()
+        hard_keys(a.n)
     elif a.cmd == "score":
-        score()
+        score(a.n)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "graph Laplacian matrix and its eigenvalues/eigenvectors",
+   "b_element": "Laplacian matrix and its bottom k eigenvalues/eigenvectors"
+  },
+  {
+   "a_element": "spectral clustering algorithm using eigenvectors of the Laplacian to embed vertices into R^k",
+   "b_element": "embedding vertices into R^k using the bottom k eigenvectors of the Laplacian for partitioning"
+  },
+  {
+   "a_element": "clustering based on geometric considerations in the embedded space",
+   "b_element": "partitioning the vertex set into k subsets based on the embedded space"
+  },
+  {
+   "a_element": "intuition that spectral clustering captures connected components or sparse cuts",
+   "b_element": "higher-order Cheeger inequalities characterizing sparse cuts via eigenvalues close to zero"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers rely on the spectral properties of the graph Laplacian, specifically the use of its eigenvalues and eigenvectors to partition or cluster the graph. Paper A describes spectral clustering as embedding vertices into a space defined by eigenvectors, while Paper B formalizes this intuition by proving higher-order Cheeger inequalities that justify such embeddings for multi-way partitioning."
+}

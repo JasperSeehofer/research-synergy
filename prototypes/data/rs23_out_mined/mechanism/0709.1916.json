@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a local-coupling rule on a collection of interacting units in which each unit couples to a fixed number k of its nearest neighbours (topological / rank-based connectivity) rather than to every unit within a fixed metric radius, making the interaction network invariant to the density of the medium and thereby preserving global cohesion under density perturbations",
+  "brief_reason": "The abstract establishes that each bird interacts on average with a fixed number of neighbours (six-seven) rather than with all neighbours inside a fixed metric distance, and argues this fixed-count topological coupling keeps the aggregation cohesive against large density changes."
+}

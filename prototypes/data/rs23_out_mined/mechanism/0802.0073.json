@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "finite-size scaling of the free-energy barrier separating the two minima of a double-well (bimodal) probability landscape to classify a transition as discontinuous vs continuous, with the landscape reconstructed from the system's full density of states via flat-histogram (entropic) sampling",
+  "brief_reason": "The abstract builds the density of states with Wang-Landau/Lee entropic sampling and then applies the Lee-Kosterlitz free-energy barrier method to decide whether the barrier between coexisting states signals a genuine first-order (discontinuous) transition or a continuous one."
+}

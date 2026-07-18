@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "high-finesse optical cavity with rigid mirrors",
+   "b_element": "photonic crystal zipper cavity formed by two nanobeams"
+  },
+  {
+   "a_element": "thin dielectric membrane as the mechanical element",
+   "b_element": "picogram-scale silicon nitride nanobeams as the mechanical element"
+  },
+  {
+   "a_element": "cavity detuning by membrane motion via radiation pressure",
+   "b_element": "optical spring effect and opto-mechanical coupling via gradient force"
+  },
+  {
+   "a_element": "direct measurement of the square of the membrane's displacement (energy eigenstate readout)",
+   "b_element": "exploration of opto-mechanical damping regimes due to small heat capacity"
+  },
+  {
+   "a_element": "segregation of optical and mechanical functionality to distinct structures",
+   "b_element": "co-localization of optical and mechanical energy in the same volume via photonic crystal patterning"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ opto-mechanical coupling between an optical cavity and a mechanical oscillator, where the motion of the mechanical element (membrane or nanobeams) modulates the optical resonance. The core mechanism—radiation pressure or gradient force inducing dispersive coupling—is the same, with the optical cavity's detuning playing a central role in both systems. The key difference lies in implementation (distinct vs. co-localized structures), but the underlying physics of opto-mechanical interaction is shared."
+}

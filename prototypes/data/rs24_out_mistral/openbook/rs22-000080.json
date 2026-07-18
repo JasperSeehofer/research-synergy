@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "Fisher information associated with the distribution of momenta as a measure of thermodynamic temperature",
+   "b_element": "analytical tools rooted in statistical physics used to derive error exponents"
+  },
+  {
+   "a_element": "general probability density function for a physical system",
+   "b_element": "finite-alphabet interference channel with codewords (non-i.i.d. process)"
+  },
+  {
+   "a_element": "thermodynamic temperature as a derived quantity from information-theoretic properties",
+   "b_element": "error exponents as derived quantities from statistical physics techniques"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers invoke statistical physics concepts, paper A defines a thermodynamic quantity (temperature) via Fisher information for a general distribution, whereas paper B uses statistical physics tools to analyze error exponents in a communication channel. The core mechanisms differ: A focuses on information-theoretic definitions of temperature, while B applies statistical physics to derive performance bounds for decoding, with no direct role-for-role correspondence in their underlying mathematics."
+}

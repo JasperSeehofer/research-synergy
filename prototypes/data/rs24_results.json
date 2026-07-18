@@ -1,44 +1,51 @@
 {
  "experiment": "EXP-RS-24",
- "n_pairs": 80,
- "n_surface_hard": 27,
+ "n_pairs": 160,
+ "n_surface_hard": 61,
  "audit": {
-  "n_overlap": 38,
-  "cohens_kappa": 0.8869047619047618,
-  "raw_agreement": 0.9473684210526315,
-  "mistral_over_prune(Claude_keep_Mistral_drop)": 1,
-  "mistral_under_prune": 1,
-  "n_mistral_validated": 34,
-  "n_claude_validated_overlap": 14
+  "n_overlap": 71,
+  "cohens_kappa": 0.76699484294421,
+  "raw_agreement": 0.9014084507042254,
+  "mistral_over_prune(Claude_keep_Mistral_drop)": 2,
+  "mistral_under_prune": 5,
+  "n_mistral_validated": 62,
+  "n_claude_validated_overlap": 20
  },
  "validated_deep": {
-  "n": 5,
+  "n": 12,
   "ids": [
+   "rs22-000008",
    "rs22-000014",
+   "rs22-000023",
    "rs22-000029",
    "rs22-000039",
    "rs22-000061",
-   "rs22-000069"
+   "rs22-000069",
+   "rs22-000085",
+   "rs22-000087",
+   "rs22-000093",
+   "rs22-000109",
+   "rs22-000117"
   ]
  },
  "validated_easy": {
-  "n": 29
+  "n": 47
  },
  "VALIDATED_DEEP": {
-  "n": 5,
-  "reduction_bge": 0.8,
+  "n": 12,
+  "reduction_bge": 0.75,
   "raw_bge": 0.0,
-  "lexical": 0.2
+  "lexical": 0.16666666666666666
  },
  "VALIDATED_EASY": {
-  "n": 29,
-  "reduction_bge": 0.7931034482758621,
+  "n": 47,
+  "reduction_bge": 0.6382978723404256,
   "raw_bge": 1.0,
-  "lexical": 0.896551724137931
+  "lexical": 0.8723404255319149
  },
  "predictions": {
   "P1_reduction>raw_on_deep": true,
   "P2_raw>=reduction_on_easy": true
  },
- "verdict": "WEAK — reduction>raw on validated-deep but n=5<8; expand the sample before building"
+ "verdict": "CONFIRM — reduction is a validated deep-analogy specialist (n>=8); build the router/cascade"
 }

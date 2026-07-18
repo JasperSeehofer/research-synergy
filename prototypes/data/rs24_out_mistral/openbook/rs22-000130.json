@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "cosmic expansion rate and its acceleration (driven by cosmological parameters)",
+   "b_element": "de Sitter spacetime geometry with residual curvature (cosmological constant Λ)"
+  },
+  {
+   "a_element": "cosmological constant as a driver of cosmic acceleration",
+   "b_element": "cosmological constant Λ as a universal constant defining spacetime curvature"
+  },
+  {
+   "a_element": "measurement of luminosity distances (Type Ia supernovae) to probe expansion",
+   "b_element": "kinematical group SO(1,4) as the symmetry group of spacetime with Λ"
+  },
+  {
+   "a_element": "theoretical framework for interpreting expansion (e.g., general relativity with dark energy)",
+   "b_element": "de Sitter relativity as a framework for special relativity with Λ"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers involve the cosmological constant Λ and its role in cosmic expansion or spacetime geometry, Paper A focuses on empirical mapping of expansion history using observational probes (e.g., supernovae, BAO) and theoretical modeling of growth of structure, whereas Paper B constructs a symmetry-based kinematical framework for special relativity in de Sitter spacetime. The underlying methods—observational cosmology vs. group-theoretic kinematics—are distinct, despite shared terminology."
+}

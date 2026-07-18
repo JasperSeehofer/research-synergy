@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "2D Bose fluid exhibiting superfluidity despite absence of true long-range order (Bose-Einstein condensation)",
+   "b_element": "2D photon fluid exhibiting Bogoliubov dispersion and sound waves as signatures of superfluidity"
+  },
+  {
+   "a_element": "thermal and quantum fluctuations destroying long-range order in 2D",
+   "b_element": "photon-photon collisions mediated by atoms leading to effective interactions enabling superfluid-like behavior"
+  },
+  {
+   "a_element": "quasi-long-range order in finite-size 2D Bose systems",
+   "b_element": "Bogoliubov dispersion relation for low-lying excitations in the photon fluid"
+  },
+  {
+   "a_element": "interplay between superfluidity and condensation in finite-size systems",
+   "b_element": "Landau critical-velocity criterion as a test for superfluidity in the photon fluid"
+  },
+  {
+   "a_element": "Bose-Einstein condensation in interacting 2D Bose systems",
+   "b_element": "Bose-Einstein condensation of photons in the nonlinear cavity"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers investigate superfluidity in 2D Bose systems, where the underlying mechanism is the emergence of low-lying collective excitations described by a Bogoliubov-like dispersion relation. The role of thermal/quantum fluctuations in destroying long-range order in 2D Bose fluids (A) corresponds to the effective photon-photon interactions enabling superfluid-like behavior in the photon fluid (B). The shared machinery is the physics of interacting 2D Bose gases, including quasi-long-range order and superfluidity criteria."
+}

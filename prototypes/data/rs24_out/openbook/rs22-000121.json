@@ -1,0 +1,7 @@
+{
+  "mapping": [
+    {"a_element": "effective low-energy description of the TI surface (an effective spinless p_x+ip_y superconductor emerging from the s-wave + Dirac surface states)", "b_element": "effective low-energy Hamiltonian H_eff obtained by decoupling low- and high-energy subspaces"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is the generic notion of an 'effective low-energy' description, not shared machinery: paper A's mechanism is proximity-induced topological superconductivity giving p+ip pairing and Majorana bound states at vortices, whereas paper B's mechanism is the Schrieffer-Wolff unitary transformation / degenerate perturbation theory that decouples subspaces and generates a diagrammatic high-order expansion. No governing process, transformation, or threshold in A plays the role of the SW rotation and perturbative series in B, so no role-for-role mapping of the actual machinery holds."
+}

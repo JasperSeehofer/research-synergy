@@ -52,15 +52,40 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 | A dense semantic-embedding substrate (whole-abstract cosine) recovers cross-domain analogy where TF-IDF cannot | **FALSIFIED — clean class-negative** (Phase 40 EXP-RS-21, 2026-07-16) — NO embedding beats the 0.40 lexical null on Feynman fwd: bge 0.20 / gte 0.20 (general open, BELOW null) / specter2+proximity 0.40 / mistral-embed 0.40 (TIE null). strict-P1 False ∀ 4 LIVE models → class↑ False → KILL (grid-verified total-function gate). Mechanism = topical/field dominance (objective P5 card: pair04 margin not distinctive, random control ~0.81). One real-but-insufficient signal: scientific embeddings pull pair04 rank 17→5/7 (recover the anchor the null misses) but lose lexically-easy pair05, net zero. P3 REFUTED (citation-training HELPS cross-domain, opposite of hypothesis; n≈1). Both static-representation routes (lexical + dense-embedding) now fail 0.60 → only full-context LLM reasoning recovers it. | `.planning/phases/40-embedding-substrate/40-VERIFICATION.md`, `prototypes/data/embed_verdict.json` |
 | The incumbent 0.60 brute-force LLM baseline contains a demonstrable cross-domain REASONING component (survives removing memory+lexical+embedding) | **INCONCLUSIVE — cannot confirm** (Phase 41 EXP-RS-22, 2026-07-17) — frozen-gate `INVALID/INCONCLUSIVE`. Instruments validated (posctrl 5/5 fire, negctrl 0/3 spurious). Clean (memory-absent) stratum STARVED (recall fails 15/15 but recognition never low-confidence → 0/15 clean); where memory IS absent the LLM only ties the lexical null (d≈0); reasoning-win ⟂ memory-absent. NOT a memorization claim (not falsifiable, per scope). | `.planning/phases/41-benchmark-validity/41-VERIFICATION.md`, `prototypes/data/rs22_verdict_slice.json` |
 | The "0.60 brute-force-LLM bar" that RS-16→21 all failed is a fixed property of the cross-field-analogy task | **FALSIFIED — the bar is MODEL-RELATIVE** (Phase 41 EXP-RS-22 F1, 2026-07-17) — pinned Opus 4.8 scores recall@10 = **1.00** on the 5 Feynman anchors (all side_b rank 1, incl. pair01/pair06 the C-20 baseline ranked #12/#15), vs the EXP-RS-10/16 incumbent's 0.60. The 0.60 was one (weaker/earlier) Claude's ranking; the task is near-trivial for a current model. Every RS-16→21 comparison-to-baseline should be read as model-relative. | `41-VERIFICATION.md` §3 F1, `prototypes/data/rs22_score_anchors_claude.json` |
-| A field-neutral LLM mechanism-reduction, embedded, is a UNIVERSAL retriever that beats raw-text/embedding | **REFUTED as universal; CONFIRMED as a deep-analogy SPECIALIST** (Phase 42 EXP-RS-23, 2026-07-18) — Feynman curated deep analogies: reduction 0.60 > lexical 0.40 > raw-bge 0.20 (first compressed substrate to beat the null); broad topical mine: reduction 0.53 < raw-bge 0.66. Rescues the deep cross-vocabulary tail surface methods miss (9/27 raw-failed pairs → top-10) but over-abstracts topical pairs; reduction-win ⟂ raw-win. First substrate to recover analogies BOTH lexical AND dense-embedding miss. | `.planning/phases/42-mechanism-reduction/42-VERIFICATION.md`, `prototypes/data/rs23_results{,_mined}.json` |
+| A field-neutral LLM mechanism-reduction, embedded, is a UNIVERSAL retriever that beats raw-text/embedding | **REFUTED as universal; CONFIRMED as a deep-analogy SPECIALIST** (Phase 42 EXP-RS-23, 2026-07-18) — Feynman curated deep analogies: reduction 0.60 > lexical 0.40 > raw-bge 0.20 (first compressed substrate to beat the null); broad topical mine: reduction 0.53 < raw-bge 0.66. Rescues the deep cross-vocabulary tail surface methods miss (9/27 raw-failed pairs → top-10) but over-abstracts topical pairs; reduction-win ⟂ raw-win. First substrate to recover analogies BOTH lexical AND dense-embedding miss. **CONFIRMED at n=12 (EXP-RS-24 N=160): validated-deep reduction 0.75 vs raw 0.00.** | `.planning/phases/42-mechanism-reduction/42-VERIFICATION.md`, `.planning/phases/43-validated-deep-subset/43-VERIFICATION.md`, `prototypes/data/rs23_results{,_mined}.json` |
+| A raw∪reduction→LLM-rerank cascade is a scalable retriever that beats raw-alone on a mixed cross-field corpus | **VERIFIED (Phase 44 EXP-RS-25, 2026-07-18)** — cascade (Claude re-rank of the ~25-candidate union) recall@10 = **0.775** vs raw-alone 0.662 (+11 pts, ≈ union ceiling 0.80), MRR 0.74. Orbiter W-SYN: Mistral re-rank DEGRADES to 0.637 (< raw-alone) → the re-rank/precision stage must be Claude. O(N) retrieval + O(#queries) small LLM re-ranks = scalable vs the O(N²) all-pairs LLM baseline. | `.planning/phases/44-cascade/44-VERIFICATION.md`, `prototypes/data/rs25_results.json` |
 
 ## Active experiment
 
-**NONE active — EXP-RS-24 concluded WEAK-CONFIRM, 2026-07-18. Awaiting human go on the recommended build.**
-The reduction is a validated deep-analogy specialist (validated-deep reduction 0.80 vs raw 0.00; but
-n=5, underpowered) and the **two-retriever UNION cascade lifts mixed-corpus recall 0.66→0.78 (+9 pairs)**.
-Recommended: build the **raw ∪ reduction → LLM-rerank cascade** + expand the validated-deep set (orbiter,
-Mistral now trusted at κ=0.89 for coarse validity).
+**NONE active — EXP-RS-24 (CONFIRM, n=12) + EXP-RS-25 cascade (WORKS, 0.775) both concluded 2026-07-18.**
+The chapter now has a working, scalable LBD retriever. Next candidate = a genuine DISCOVERY run (cascade
+on a no-known-partner query → LLM names + audits the shared mechanism = the transfer card) and/or scale
+the cascade + tune K_each. Awaiting human go.
+
+### (just-concluded, WORKS 2026-07-18) EXP-RS-25 → Phase 44 — raw∪reduction→LLM-rerank Cascade
+
+**The scalable LBD retriever — WORKS.** Two cheap embedding retrievers (raw-abstract bge covering the
+topical bulk + the RS-23/24 reduction bge = the deep-analogy specialist) each surface top-15 → UNION
+(dedup, ~25 candidates) → LLM re-ranks the union (frozen `rs22_retrieval_prompt.md`). On the mixed 80:
+- **CASCADE (Claude re-rank): recall@10 = 0.775, MRR 0.74** — +11.3 pts over raw-alone (0.662),
+  essentially the union ceiling (0.800), recovering the deep tail raw misses AND ranking side_b high.
+- **Orbiter W-SYN: the re-rank MUST be Claude.** Mistral re-rank = 0.637 (BELOW raw-alone!), MRR 0.36 —
+  cross-field re-ranking is synthesis; the Mistral executor degrades it. Route precision to Claude.
+- Architecture: O(N) cheap retrieval (raw + O(N) LLM reductions + free cosine) + O(#queries) small LLM
+  re-ranks → scalable vs the O(N²) all-pairs LLM baseline. UNION (not RRF fusion, which diluted to 0.64)
+  because it feeds BOTH candidate sets to the precision stage. `.planning/phases/44-cascade/44-VERIFICATION.md`;
+  `prototypes/rs25_cascade.py`.
+
+### (just-concluded, CONFIRM 2026-07-18) EXP-RS-24 → Phase 43 — Orbiter-Validated Deep Subset (expanded N=160)
+
+**Confirms EXP-RS-23's specialist claim on VALIDATED analogies (WEAK n=5 → CONFIRM n=12 via same-session
+expansion).** Orbiter loop: Mistral executor (open-book validity on all 160) + Claude overseer (61
+surface-hard + audit). **VALIDATED-DEEP (n=12): reduction R@10 = 0.75 vs raw 0.00 vs lexical 0.17;
+VALIDATED-EASY (n=47): raw 1.00 vs reduction 0.64** → P1 ∧ P2 hold, n≥8 → CONFIRM. **Orbiter audit:
+Claude↔Mistral open-book κ=0.77–0.89** (n=80: 0.89/over-prune 1; n=160: 0.77/under-prune 5) — Mistral a
+usable coarse-validity executor with a mild granularity-dependent bias. Only ~5–8% of mined pairs are
+validated-deep → confirms the mine is mostly topical. `.planning/phases/43-validated-deep-subset/43-{PREREG,VERIFICATION}.md`;
+`prototypes/rs24_validate.py`.
 
 ### (just-concluded, WEAK-CONFIRM 2026-07-18) EXP-RS-24 → Phase 43 — Orbiter-Validated Deep Subset
 

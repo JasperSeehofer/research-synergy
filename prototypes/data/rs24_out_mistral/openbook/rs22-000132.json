@@ -1,0 +1,30 @@
+{
+ "mapping": [
+  {
+   "a_element": "diffusion process on small-world networks with distance-dependent random links",
+   "b_element": "spread of infection on small-world networks"
+  },
+  {
+   "a_element": "random walker or surface motion on the network",
+   "b_element": "infected subpopulation dynamics"
+  },
+  {
+   "a_element": "phase diagram with transient and recurrent phases in random walks",
+   "b_element": "transition from fluctuating endemic state to self-sustained oscillations"
+  },
+  {
+   "a_element": "annealed (fast link rearrangement) and quenched (slow link rearrangement) cases",
+   "b_element": "network disorder parameter (from ordered lattices to random graphs)"
+  },
+  {
+   "a_element": "breakdown of mean-field scaling in low-dimensional small-world networks",
+   "b_element": "transition to self-sustained oscillations at finite disorder"
+  },
+  {
+   "a_element": "network Laplacian and its eigenvalues governing diffusion",
+   "b_element": "dynamics of infection spread governed by network structure"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers study dynamical processes (diffusion vs. infection spread) on small-world networks, where the network's disorder parameter drives a phase transition. The diffusion process's transient/recurrent phases and mean-field breakdown correspond to the epidemiological model's transition from endemic states to self-sustained oscillations, with the network Laplacian and disorder parameter playing analogous roles in governing the dynamics."
+}

@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "random process of adding edges to an initially empty graph",
+   "b_element": "graph evolution process adding edges to an initially empty graph"
+  },
+  {
+   "a_element": "choice among K randomly presented edges at each round",
+   "b_element": "selection of one edge from a small set of potential edges at each step"
+  },
+  {
+   "a_element": "threshold for Hamiltonicity (appearance of a Hamilton cycle) depending on K",
+   "b_element": "discontinuous percolation transition (emergence of a giant component)"
+  },
+  {
+   "a_element": "regimes of behavior (subcritical, critical, supercritical) based on K's relation to log n",
+   "b_element": "scaling behaviors and phase transition characteristics differing from classic models"
+  },
+  {
+   "a_element": "analysis via combinatorial and probabilistic methods to determine thresholds",
+   "b_element": "analysis via system of differential equations to describe evolution"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers study edge-addition processes in random graphs with choice, Paper A focuses on the combinatorial threshold for Hamiltonicity (a specific cycle structure) using probabilistic methods, whereas Paper B analyzes the emergence of a giant component via differential equations describing local cluster aggregation. The core mechanisms—Hamilton cycle formation vs. percolation transition—are fundamentally different, despite superficial similarities in edge-selection dynamics."
+}

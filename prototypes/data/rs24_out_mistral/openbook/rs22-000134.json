@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "N×N matrix field theory formulation of RNA folding",
+   "b_element": "matrix model formulation for RNA contact structures"
+  },
+  {
+   "a_element": "partition function terms classified by topological character",
+   "b_element": "enumeration of RNA structures by genus (topological character of pseudoknots)"
+  },
+  {
+   "a_element": "limit N→∞ yielding secondary structure (Hartree theory)",
+   "b_element": "simplified case of RNA with infinitely flexible backbone (no base-pairing restrictions)"
+  },
+  {
+   "a_element": "1/N² corrections accounting for tertiary structure and pseudoknots",
+   "b_element": "genus distribution of pseudoknots as a function of nucleotide count"
+  },
+  {
+   "a_element": "Hartree recursion relation for secondary structure",
+   "b_element": "exact enumeration results for RNA contact structures"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ a matrix model framework to analyze RNA folding, where the topological classification of structures (via genus or 1/N² corrections) and the partition function's role in enumerating configurations are fundamentally the same. The machinery of matrix field theory and its topological expansion drives both approaches."
+}

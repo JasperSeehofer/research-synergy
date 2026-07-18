@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "qubit system coupled to a spin bath",
+   "b_element": "electron spins coupled to a nuclear spin bath"
+  },
+  {
+   "a_element": "non-Markovian master equations (time-convolutionless, Nakajima-Zwanzig, post-Markovian)",
+   "b_element": "non-Markovian bath dynamics due to nuclear spin pair-flips"
+  },
+  {
+   "a_element": "infinite bath correlation time leading to non-Markovian behavior",
+   "b_element": "energy renormalization of nuclear spin pair-flips modifying bath dynamics"
+  },
+  {
+   "a_element": "performance comparison of master equations against exact solution",
+   "b_element": "decoherence behavior transition from exponential to power-law decay under ensemble averaging"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers address non-Markovian dynamics in spin systems coupled to baths, Paper A focuses on the performance of master equations (time-convolutionless, Nakajima-Zwanzig) against an exact solution, whereas Paper B examines the physical mechanism of energy renormalization in nuclear spin dynamics leading to distinct decoherence behaviors. The underlying machinery differs: Paper A evaluates approximation methods, while Paper B analyzes a specific physical transition in decoherence regimes."
+}

@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "3D bubbles in GFT Feynman diagrams (sites of divergences)",
+   "b_element": "bubbles in the 2-complex (sites of divergences in lattice topological field theories)"
+  },
+  {
+   "a_element": "2D triangulations characterizing the boundary of 3D bubbles",
+   "b_element": "2-complex (cellular structure) in lattice models"
+  },
+  {
+   "a_element": "power counting of divergences in the Boulatov model",
+   "b_element": "divergence degree given by the second Betti number of the 2-complex"
+  },
+  {
+   "a_element": "special class of graphs with complete contraction procedure",
+   "b_element": "special cases (simply connected 2-complex or Abelian structure group)"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers address the origin and quantification of divergences in discrete quantum gravity models, where divergences arise from topological structures (3D bubbles in GFT vs. bubbles in 2-complexes). The power counting in A and the divergence degree in B are both determined by topological invariants (boundary triangulations vs. Betti numbers), and both restrict to special cases where the machinery simplifies."
+}

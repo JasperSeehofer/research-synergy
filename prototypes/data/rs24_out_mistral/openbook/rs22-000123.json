@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "strong correlations in ultracold gases (e.g., Mott-Hubbard transition, BCS-BEC crossover)",
+   "b_element": "effective nonlocal interactions leading to roton-maxon excitation spectrum and supersolid formation"
+  },
+  {
+   "a_element": "optical lattices or Feshbach resonances as mechanisms to tune interactions",
+   "b_element": "Rydberg dressing to induce effective nonlocal interactions"
+  },
+  {
+   "a_element": "phase transitions driven by strong interactions (e.g., Mott insulator to superfluid)",
+   "b_element": "transition to a supersolid state driven by roton instability"
+  },
+  {
+   "a_element": "lowest Landau level physics in rotating gases (quasi-2D systems)",
+   "b_element": "three-dimensional condensates with roton-maxon spectrum (momentum-space attraction)"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers study phase transitions and excitation spectra in ultracold atomic systems, Paper A focuses on strong local correlations (e.g., Mott-Hubbard physics) and lattice effects, whereas Paper B relies on nonlocal, momentum-space interactions leading to roton instabilities. The underlying mechanisms (local Hubbard physics vs. nonlocal Rydberg-induced interactions) are distinct, despite superficial similarities in studying quantum phases."
+}

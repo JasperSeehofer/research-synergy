@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "interaction based on topological distance (fixed number of neighbors)",
+   "b_element": "interaction matrix defined through a set of patterns (fixed rank, independent of system size N)"
+  },
+  {
+   "a_element": "maintaining cohesion against density changes (external perturbations)",
+   "b_element": "inference stability against sampling noise and system size variations"
+  },
+  {
+   "a_element": "fixed number of interacting neighbors (six-seven)",
+   "b_element": "fixed rank of interaction matrix (much smaller than N)"
+  },
+  {
+   "a_element": "numerical simulations validating topological interaction",
+   "b_element": "statistical mechanics techniques validating pattern corrections"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers involve interactions constrained by non-metric properties (topological distance in A, pattern rank in B), their core mechanisms differ fundamentally. Paper A studies emergent collective behavior via local topological rules in a physical system, whereas Paper B focuses on inferring high-dimensional interactions in a statistical model using Principal Component Analysis and corrections derived from the Hopfield model. The shared concept of 'fixed constraints' does not translate to the same underlying machinery."
+}

@@ -1,0 +1,10 @@
+{
+  "mapping": [
+    {"a_element": "iso-height contour lines on the WO3 surface (domain-wall / interface curves)", "b_element": "boundaries of critical percolation clusters on the triangular grid"},
+    {"a_element": "conformal invariance of the critical curves, i.e. the SLE_kappa description", "b_element": "conformal invariance of critical percolation in the scaling limit that yields the asymptotic surrounding/crossing formula"},
+    {"a_element": "SLE diffusivity kappa ~ 3 fixing the critical Ising universality class", "b_element": "the critical-percolation universality class (SLE_6) of the triangular-grid interfaces"},
+    {"a_element": "statistics of the random contour curves (domain-wall statistics)", "b_element": "probability that a cluster boundary surrounds the interior point 0 while touching the boundary arc A"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both study conformally invariant random curves at a 2D critical point - iso-height/domain-wall contours in A and critical-percolation cluster boundaries in B - characterized by the same Schramm-Loewner Evolution / conformal-invariance machinery. A's SLE_kappa critical interfaces play the role of B's critical-percolation (SLE_6) cluster boundaries, and B's asymptotic surrounding formula is exactly the conformally invariant interface probability this framework governs."
+}

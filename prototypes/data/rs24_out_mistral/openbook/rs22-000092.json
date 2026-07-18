@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "lognormal fluctuations of energy dissipation and related quantities across segments",
+   "b_element": "power-law scaling of the two-point correlation function of energy dissipation"
+  },
+  {
+   "a_element": "multiplicative stochastic process driving fluctuations across scales",
+   "b_element": "intermittency exponent mu characterizing scaling in the inertial range"
+  },
+  {
+   "a_element": "segment length within the range of large scales with weak velocity correlations",
+   "b_element": "separation distances in the inertial range where power-law scaling holds"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "Paper A identifies a lognormal distribution of fluctuations in turbulence quantities driven by a multiplicative stochastic process, while Paper B focuses on power-law scaling and an intermittency exponent in the correlation function of energy dissipation. Though both address turbulence and energy dissipation, the core mechanisms—lognormality from multiplicative processes versus power-law scaling from surrogacy effects—are distinct and not role-for-role equivalent."
+}

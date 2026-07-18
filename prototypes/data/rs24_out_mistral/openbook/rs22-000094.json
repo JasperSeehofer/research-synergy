@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "effective Polyakov-loop models for SU(3) Yang-Mills theory",
+   "b_element": "dimensionally reduced effective theory for SU(2) Yang-Mills theory respecting center symmetry"
+  },
+  {
+   "a_element": "inverse Monte Carlo procedure based on Schwinger-Dyson equations to determine effective couplings",
+   "b_element": "perturbative matching to the full theory followed by non-perturbative lattice simulations"
+  },
+  {
+   "a_element": "first-order phase transition in SU(3) Yang-Mills theory",
+   "b_element": "second-order confining phase transition in SU(2) Yang-Mills theory"
+  },
+  {
+   "a_element": "symmetries of the Haar measure used in Schwinger-Dyson equations",
+   "b_element": "center symmetry incorporated in the effective theory"
+  },
+  {
+   "a_element": "fine-tuning problem due to first-order transition",
+   "b_element": "applicability of dimensional reduction near the confinement transition"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers construct effective theories for Yang-Mills theories and study phase transitions, the core mechanisms differ: Paper A uses an inverse Monte Carlo procedure with Schwinger-Dyson equations to derive effective couplings, focusing on a first-order transition and fine-tuning issues. Paper B employs perturbative matching and lattice simulations to study a second-order transition driven by center symmetry, with no shared mathematical machinery for determining effective parameters or handling transitions."
+}

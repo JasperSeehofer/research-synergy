@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "semidefinite programming (SDP) relaxation as an optimization framework for combinatorial problems (TSP/QAP)",
+   "b_element": "exact symbolic computation and algebraic sampling in real algebraic sets via polynomial-time procedures"
+  },
+  {
+   "a_element": "quadratic assignment problem (QAP) as a generalization of TSP",
+   "b_element": "quadratic map Q : K^n -> K^k defining the algebraic set Z"
+  },
+  {
+   "a_element": "SDP bound dominating or being incomparable to linear programming (Held-Karp) bounds",
+   "b_element": "polynomial-time complexity (dn)^O(k) for sampling, improving over exponential dependence in prior methods"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "Paper A uses semidefinite programming (SDP) as a convex relaxation to approximate combinatorial optimization problems (TSP/QAP), while Paper B employs exact symbolic computation and algebraic geometry to sample points in real algebraic sets defined by quadratic maps. The underlying machinery—convex optimization vs. real algebraic geometry—differs fundamentally, despite both involving quadratic structures."
+}

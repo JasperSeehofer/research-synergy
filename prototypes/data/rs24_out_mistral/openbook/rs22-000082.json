@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "maximum work extracted from multi-heat baths with quantum feedback control",
+   "b_element": "maximum work extracted from isothermal feedback controlled systems"
+  },
+  {
+   "a_element": "free-energy difference as a bound on work extraction",
+   "b_element": "entropy reduction due to feedback as a bound on work extraction"
+  },
+  {
+   "a_element": "generalized mutual information between system and feedback controller",
+   "b_element": "information processing by the controller enabling entropy reduction"
+  },
+  {
+   "a_element": "work required for information processing of the feedback controller",
+   "b_element": "thermodynamic cost of operating the feedback controller"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers derive the maximum work extractable from a thermodynamic system under feedback control, where the bound is set by a combination of free-energy/entropy reduction and the information processed by the controller. The core machinery is the same: a feedback loop that leverages information to exceed classical thermodynamic limits, with the controller's information processing incurring a thermodynamic cost."
+}

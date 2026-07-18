@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "multi-atom ensemble storing spatial modes of light (quantum memory)",
+   "b_element": "cloud of cold atoms providing gain and scattering (random laser medium)"
+  },
+  {
+   "a_element": "optical parallelism enabling higher information capacity",
+   "b_element": "light transport in a scattering medium enabling lasing"
+  },
+  {
+   "a_element": "quantum features (multimode superposition, entanglement) stored in the ensemble",
+   "b_element": "coherent light emission (lasing) arising from collective atomic interactions"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers involve light-matter interactions in atomic ensembles, paper A focuses on quantum memory via coherent storage of spatial modes, whereas paper B addresses a random laser threshold via light transport and gain in a scattering medium. The core mechanisms—quantum state preservation vs. lasing via multiple scattering—are fundamentally distinct, despite superficial overlap in using atomic ensembles and optical fields."
+}

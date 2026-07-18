@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "field-theoretic methods based on the Doi-Peliti representation of the master equation for stochastic particle interaction models",
+   "b_element": "non-perturbative renormalization group (NPRG) formalism for stochastic models"
+  },
+  {
+   "a_element": "mapping the action near the absorbing state phase transition to Reggeon field theory",
+   "b_element": "NPRG framework applied to critical dynamics and non-equilibrium steady states"
+  },
+  {
+   "a_element": "fluctuation-induced renormalizations of population oscillation frequency, damping, and diffusion coefficients",
+   "b_element": "NPRG analysis of critical dynamics and renormalization of parameters in non-equilibrium systems"
+  },
+  {
+   "a_element": "continuous non-equilibrium phase transition governed by directed-percolation universality class",
+   "b_element": "critical dynamics in non-equilibrium steady states studied via NPRG"
+  },
+  {
+   "a_element": "stochastic noise and spatial structure in predator-prey models",
+   "b_element": "stochastic models in non-equilibrium steady states"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ field-theoretic and renormalization group methods to analyze stochastic, spatially structured non-equilibrium systems. Paper A uses the Doi-Peliti representation and maps to Reggeon field theory near phase transitions, while Paper B develops the NPRG framework for non-equilibrium steady states, with both addressing fluctuation-induced renormalizations and critical dynamics."
+}

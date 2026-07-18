@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "Molecular Dynamics simulations of ion interactions in neutron star crusts",
+   "b_element": "Quantum Molecular Dynamics (QMD) simulations of nuclear pasta formation in supernovae"
+  },
+  {
+   "a_element": "semi-analytical methods considering binary collisions of ions",
+   "b_element": "transition process involving fusion of spherical nuclei into elongated structures"
+  },
+  {
+   "a_element": "density-dependent behavior of shear viscosity in neutron star crusts",
+   "b_element": "compression-driven structural phase transitions in supernova cores"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers employ Molecular Dynamics simulations to study dense nuclear matter, Paper A focuses on calculating shear viscosity via ion collisions and transport properties, whereas Paper B investigates structural phase transitions (e.g., lattice deformations) under compression. The core mechanisms—transport phenomena vs. morphological phase transitions—are fundamentally distinct."
+}

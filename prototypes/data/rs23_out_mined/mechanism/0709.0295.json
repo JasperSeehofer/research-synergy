@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A symmetry-derived Ward identity (a soft-mode / squeezed-limit theorem) that fixes the long-wavelength limit of a higher-order correlation function entirely in terms of a lower-order one, yielding a model-independent constraint that holds whenever the system has a single dynamical degree of freedom.",
+  "brief_reason": "The abstract's central object is a 'consistency relation' for the 3-point function that is claimed to hold for every model with only one dynamical degree of freedom and is re-proven via an effective field theory of perturbations, which is exactly a symmetry-based identity constraining the soft limit of a higher correlator in terms of lower-order structure."
+}

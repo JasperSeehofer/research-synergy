@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "Matrix Product States (MPS) representation for ground state calculation",
+   "b_element": "Density Matrix Renormalization Group (DMRG) method for ground state calculation"
+  },
+  {
+   "a_element": "factorization procedure for long products of MPS matrices to reduce computational effort",
+   "b_element": "deformation parameter λ altering interaction strength in the Hamiltonian"
+  },
+  {
+   "a_element": "periodic boundary conditions in 1D lattice models",
+   "b_element": "non-uniform (deformed) nearest-neighbor interactions in 1D lattice models"
+  },
+  {
+   "a_element": "computational scaling improvement (m^5 to m^3)",
+   "b_element": "exponential decay of spin correlation functions with increasing λ"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers use DMRG/MPS for ground state calculations in 1D spin chains, Paper A focuses on algorithmic efficiency improvements for periodic boundary conditions via matrix factorization, whereas Paper B introduces a hyperbolic deformation of the Hamiltonian itself to study spatial non-uniformity and boundary effects. The core mechanisms (matrix factorization vs. Hamiltonian deformation) are distinct."
+}

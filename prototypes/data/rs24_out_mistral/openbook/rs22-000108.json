@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "transition between a passive phase and an active phase with spontaneous flow",
+   "b_element": "phase transition from a disordered to a flocking state"
+  },
+  {
+   "a_element": "activity parameter (extensile/contractile rods) driving the transition",
+   "b_element": "particle speed and alignment interactions driving the flocking transition"
+  },
+  {
+   "a_element": "hydrodynamic equations governing momentum and order parameter dynamics",
+   "b_element": "macroscopic transport equations derived from kinetic theory"
+  },
+  {
+   "a_element": "lattice Boltzmann method for momentum transport",
+   "b_element": "Enskog-type kinetic theory for coarse-graining microscopic dynamics"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers study phase transitions in active systems and derive hydrodynamic-like equations, the underlying mechanisms differ: Paper A uses a hybrid lattice Boltzmann approach for active nematics with anchoring conditions and order parameter dynamics, whereas Paper B employs kinetic theory to coarse-grain the Vicsek model's microscopic flocking dynamics. The core machinery (LB vs. kinetic theory) and the nature of the transitions (spontaneous flow vs. alignment-driven flocking) are distinct."
+}

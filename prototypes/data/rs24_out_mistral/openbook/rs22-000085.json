@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "conformally invariant curves (iso-height lines on WO3 surface) described by Schramm-Loewner evolution (SLE_κ)",
+   "b_element": "percolation cluster boundaries in critical site percolation on the triangular grid, which are also known to be described by SLE_κ"
+  },
+  {
+   "a_element": "diffusivity parameter κ ∼ 3 for SLE curves",
+   "b_element": "SLE_κ with κ = 6 for critical percolation cluster boundaries"
+  },
+  {
+   "a_element": "domain walls in the critical Ising model (κ = 3)",
+   "b_element": "percolation cluster boundaries in critical site percolation (κ = 6)"
+  },
+  {
+   "a_element": "conformal invariance of iso-height lines on WO3 surface",
+   "b_element": "conformal invariance of percolation cluster boundaries in the unit disk"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers involve conformally invariant curves described by Schramm-Loewner evolution (SLE_κ), with the WO3 surface iso-height lines and percolation cluster boundaries playing analogous roles. While the specific κ values differ (κ ∼ 3 for Ising-like domain walls vs. κ = 6 for percolation), the underlying SLE machinery and conformal invariance are shared."
+}

@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "tadpole correction to the local expansion rate (as a proposed indicator of decaying effective cosmological constant Λ)",
+   "b_element": "excess energy from spontaneous graviton creation due to imbalance in virtual graviton processes"
+  },
+  {
+   "a_element": "gauge invariant operator measuring renormalized curvature scalar smeared over a window function",
+   "b_element": "self-consistent one-loop quantum gravity equations with BBGKY hierarchy yielding exact acceleration solutions"
+  },
+  {
+   "a_element": "infrared gravitons in de Sitter space",
+   "b_element": "virtual gravitons in expanding universe"
+  },
+  {
+   "a_element": "perturbative analysis of secular screening (or lack thereof)",
+   "b_element": "quantum fluctuations of geometry leading to macroscopic acceleration"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers address quantum gravitational effects on cosmological expansion, Paper A focuses on gauge invariance and the absence of secular screening in a perturbative framework, whereas Paper B relies on a non-perturbative BBGKY hierarchy and self-consistent one-loop quantum gravity to derive acceleration from virtual graviton imbalance. The core mechanisms (gauge-invariant renormalization vs. self-consistent graviton creation dynamics) differ fundamentally."
+}

@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "Z_4 spin lattice representation of the Ashkin-Teller model at the Fateev-Zamolodchikov point",
+   "b_element": "two-dimensional 4-state Potts model at criticality"
+  },
+  {
+   "a_element": "fractal dimensions of interfaces in the Ashkin-Teller model",
+   "b_element": "scaling and finite-size-scaling behavior (e.g., susceptibility, specific heat) in the 4-state Potts model"
+  },
+  {
+   "a_element": "critical line described by Z_4 parafermionic theory (c=1)",
+   "b_element": "critical behavior of the 4-state Potts model with logarithmic corrections"
+  },
+  {
+   "a_element": "classification of primary operators of the parafermionic algebra",
+   "b_element": "universal and non-universal logarithmic corrections to scaling"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers study critical phenomena in Z_4-symmetric models (Ashkin-Teller and 4-state Potts), their core mechanisms differ: Paper A focuses on geometric properties (fractal dimensions of interfaces) governed by parafermionic conformal field theory, whereas Paper B analyzes logarithmic corrections to thermodynamic scaling laws. The shared symmetry does not imply shared underlying machinery."
+}

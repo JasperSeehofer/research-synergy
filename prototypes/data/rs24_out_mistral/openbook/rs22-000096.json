@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "GPU-based parallel computation for accelerating numerical simulations (MD algorithms)",
+   "b_element": "steepest descent analysis for solving stochastic partial differential equations (KPZ/SHE)"
+  },
+  {
+   "a_element": "short-ranged and long-ranged interaction algorithms in MD",
+   "b_element": "crossover distributions interpolating between Gaussian and Tracy-Widom (GUE) limits"
+  },
+  {
+   "a_element": "performance speedup (flops/$) as a metric of computational efficiency",
+   "b_element": "explicit formulas for marginal distributions as a metric of analytical tractability"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "Paper A focuses on hardware-accelerated numerical computation (GPU parallelization) for molecular dynamics, while Paper B employs analytical and asymptotic methods (steepest descent, weak asymmetry limits) to derive probability distributions for a stochastic PDE. The underlying mechanisms—parallelized simulation vs. rigorous mathematical analysis—are fundamentally distinct."
+}

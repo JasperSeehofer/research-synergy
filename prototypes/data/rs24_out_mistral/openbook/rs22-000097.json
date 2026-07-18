@@ -1,0 +1,5 @@
+{
+ "mapping": [],
+ "shares_method": false,
+ "brief_justification": "Paper A constructs supergravity solutions using geometric and topological methods (warped compactifications, hyper-Kähler base spaces, and ambi-polar metrics), while Paper B performs a next-to-leading order quantum field theory calculation (gluon fusion Higgs production) matched with parton shower algorithms. The underlying machinery—differential geometry and singularity resolution in A versus perturbative QCD and Monte Carlo event generation in B—is entirely distinct."
+}

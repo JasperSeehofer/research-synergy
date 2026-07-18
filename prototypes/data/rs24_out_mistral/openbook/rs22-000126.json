@@ -1,0 +1,30 @@
+{
+ "mapping": [
+  {
+   "a_element": "integral equation formulation of the magnetic induction equation",
+   "b_element": "kinematic α² dynamo model with anisotropic α tensor"
+  },
+  {
+   "a_element": "electrically conducting fluid region and its boundary as computational domain",
+   "b_element": "finite cylinder geometry with specified aspect ratio and annular flow space"
+  },
+  {
+   "a_element": "Beltrami-like flows driving dynamo action",
+   "b_element": "columnar flow derived anisotropic α effect driving dynamo action"
+  },
+  {
+   "a_element": "onset of dynamo action (self-excitation threshold)",
+   "b_element": "critical aspect ratio for dominant magnetic field structure transition"
+  },
+  {
+   "a_element": "externally added layers modifying dynamo onset",
+   "b_element": "thickness of annular space affecting dynamo field structure"
+  },
+  {
+   "a_element": "simulation of VKS and Riga dynamo experiments",
+   "b_element": "modifications of Karlsruhe dynamo facility"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers investigate kinematic dynamo mechanisms in cylindrical geometries, where the core machinery involves solving the magnetic induction equation—either via integral equation transformation (A) or via an anisotropic α² model (B). The role of geometry (aspect ratio, annular space) and flow-driven dynamo action (Beltrami-like flows ↔ columnar flow-derived α effect) maps directly, with thresholds (self-excitation ↔ critical aspect ratio) governing field structure transitions."
+}

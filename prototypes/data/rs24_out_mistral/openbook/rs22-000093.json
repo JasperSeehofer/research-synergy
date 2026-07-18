@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "MHD equations governing axisymmetric flows",
+   "b_element": "wave equation for time-dependent perturbation in shallow-water flow"
+  },
+  {
+   "a_element": "parameter space spanned by conserved energy and angular momentum",
+   "b_element": "sub-critical and super-critical flow regimes in shallow-water"
+  },
+  {
+   "a_element": "MHD shock waves",
+   "b_element": "hydraulic jump as a shock-like transition"
+  },
+  {
+   "a_element": "solution topologies in MHD flows",
+   "b_element": "standing and travelling wave behaviors in shallow-water flow"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers study wave-like phenomena and shock structures in fluid systems, paper A focuses on MHD equations and conserved quantities in accretion flows, whereas paper B uses a nonlinear wave equation in shallow-water theory with critical flow regimes. The underlying mathematical machinery (MHD vs. shallow-water wave equations) and the physical contexts differ, preventing a direct role-for-role mapping of the core mechanisms."
+}

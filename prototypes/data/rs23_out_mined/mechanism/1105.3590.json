@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "graph-based agglomerative clustering via a minimum spanning tree (grouping elements into clusters by nearest-neighbour proximity/connectivity), refined by accepting or rejecting each candidate cluster against a per-cluster stability threshold criterion",
+  "brief_reason": "The abstract builds fragments by extending the minimum spanning tree method for clusterization and then subjects each resulting cluster to a binding-energy (stability threshold) check, which is exactly proximity-linkage clustering augmented with a per-cluster acceptance criterion."
+}

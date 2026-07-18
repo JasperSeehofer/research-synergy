@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "hydrodynamic behavior of finite-temperature field theory and its low-momentum limit of correlation functions",
+   "b_element": "thermodynamic interpretation of gravitational field equations and entropy maximization principle"
+  },
+  {
+   "a_element": "viscosity/entropy ratio and its universality in theories with gravity duals",
+   "b_element": "horizon entropy and its relation to Noether charge in gravitational dynamics"
+  },
+  {
+   "a_element": "low-lying quasinormal modes of the AdS black p-brane metric",
+   "b_element": "thermodynamic properties associated with horizons (e.g., temperature, entropy)"
+  },
+  {
+   "a_element": "AdS/CFT correspondence as a duality between field theory and gravity",
+   "b_element": "connection between horizon thermodynamics and gravitational dynamics"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers explore the deep connection between gravitational dynamics and thermodynamic principles, particularly entropy and temperature associated with horizons. Paper A uses the AdS/CFT framework to derive hydrodynamic properties (e.g., viscosity) from gravitational duals, while Paper B derives gravitational field equations from thermodynamic entropy maximization, showing that the underlying machinery in both is the equivalence of gravitational and thermodynamic descriptions."
+}

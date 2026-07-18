@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "hydrodynamic interactions between sperm via flow fields created by beating tails",
+   "b_element": "hydrodynamic interactions in swimming microorganisms at low Reynolds number"
+  },
+  {
+   "a_element": "multi-particle collision dynamics (MPC) simulation method for fluid dynamics",
+   "b_element": "resistive-force theory and slender-body theory for flagellar locomotion"
+  },
+  {
+   "a_element": "synchronization and attraction of sperm due to hydrodynamic effects",
+   "b_element": "hydrodynamic interactions leading to collective behavior in microorganisms"
+  },
+  {
+   "a_element": "beating-phase difference and relative sperm position",
+   "b_element": "kinematic requirements for net translation in swimming microorganisms"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers address hydrodynamic interactions at low Reynolds number, Paper A focuses on a specific simulation method (MPC) to study synchronization, attraction, and aggregation of sperm, whereas Paper B is a review of general biophysical principles and classical theoretical frameworks (e.g., resistive-force and slender-body theories). The shared hydrodynamic concepts are foundational but do not constitute the same underlying machinery or transferable process."
+}

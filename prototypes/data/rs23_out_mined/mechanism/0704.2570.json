@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "inverse-problem inference of a coarse-grained effective model's coupling constants by matching the sampled expectation values (correlators) of the full system, with the inversion closed by exact algebraic identities derived from the invariance of the integration measure (Schwinger-Dyson / integration-by-parts relations)",
+  "brief_reason": "The abstract states the effective couplings of a reduced Polyakov-loop model are fixed by an inverse Monte Carlo procedure built on Schwinger-Dyson equations that exploit the symmetries of the Haar measure, i.e. solving for reduced-model parameters from measured statistics via measure-invariance identities."
+}

@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "conformal transformation of a metric to a Lorentz-Minkowski form",
+   "b_element": "Weyl-integrable structure replacing Riemannian geometry to achieve Poincaré invariance"
+  },
+  {
+   "a_element": "conformal factor in the Robertson-Walker metric",
+   "b_element": "warp factor or brane thickness profile in the extra dimension"
+  },
+  {
+   "a_element": "maximally-symmetric spacetimes and their conformal forms",
+   "b_element": "4D Poincaré-invariant solution with thick branes in a 5D Weyl-integrable manifold"
+  },
+  {
+   "a_element": "set-theoretical relationships between spacetimes (e.g., Robertson-Walker as a subset of more general spacetimes)",
+   "b_element": "hierarchical structure of branes and localization of fields (graviton vs. matter degrees of freedom)"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers involve transformations of geometric structures (conformal mappings in A vs. Weyl-integrable geometry in B) and address symmetry or hierarchy problems, their core mechanisms differ fundamentally. Paper A focuses on deriving conformal factors and classifying spacetimes via coordinate transformations, whereas Paper B constructs a non-Riemannian framework to localize fields and resolve mass hierarchy, with no shared dynamical or mathematical machinery beyond generic geometric language."
+}

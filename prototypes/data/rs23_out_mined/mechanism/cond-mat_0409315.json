@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reduction of small perturbations about a steady background flow to a wave equation governed by an effective curved-space (acoustic) metric with a horizon at the critical surface where the background flow speed equals the local signal speed, separating a sub-critical (stable) from a super-critical (unstable) region",
+  "brief_reason": "The abstract linearizes a time-dependent perturbation about the steady solution into a wave equation that 'emulates the metric of an acoustic white hole,' with the sub-critical/super-critical transition (the jump) acting as the analogue horizon that separates stable from unstable perturbations."
+}

@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "overdamped diffusion process driven out of equilibrium (the underlying Langevin/SDE dynamics)", "b_element": "the stochastic differential equation / Ito process (the underlying stochastic dynamics)"},
+    {"a_element": "close-to-equilibrium Boltzmann structure underlying entropy-production principles", "b_element": "the built-in Boltzmann-Gibbs distribution and potential function of the new interpretation"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Both papers concern overdamped stochastic diffusions with a Boltzmann-Gibbs / potential-function stationary structure, but their transferable machinery differs: A applies steady-state large-deviation/fluctuation analysis, decomposing joint occupation-time and current statistics into a time-symmetric 'traffic' sector and a time-antisymmetric entropy-production sector, whereas B works in the calculus of stochastic-integration conventions, deriving the drift relation between a new SDE interpretation and the Ito process. The shared object (Langevin diffusion) is the domain, not a shared operational method, and no role-for-role correspondence between fluctuation functionals and interpretation-conversion formulas holds."
+}

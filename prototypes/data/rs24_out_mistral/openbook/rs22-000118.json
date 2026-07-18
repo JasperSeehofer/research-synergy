@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "isolated quantum many-body system relaxing to a universal stationary state (thermalization)",
+   "b_element": "quantum gas undergoing a phase transition to a self-organized supersolid phase"
+  },
+  {
+   "a_element": "eigenstate thermalization scenario (individual eigenstates encoding thermal averages)",
+   "b_element": "Dicke Hamiltonian describing the phase transition and spontaneous symmetry breaking"
+  },
+  {
+   "a_element": "microcanonical energy window where all eigenstates yield the same thermal averages",
+   "b_element": "critical boundary of the phase transition mapped in agreement with the Dicke model"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers address quantum many-body systems, Paper A focuses on thermalization via eigenstate properties in isolated systems, whereas Paper B describes a quantum phase transition driven by long-ranged interactions and symmetry breaking in an open system. The underlying mechanisms—eigenstate thermalization vs. Dicke model phase transition—are distinct, despite superficial overlap in quantum many-body dynamics."
+}

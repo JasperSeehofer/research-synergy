@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "gauge-invariant coherent states on graphs with SU(2) symmetry",
+   "b_element": "dynamical graphs on N vertices with permutation symmetry at high energy"
+  },
+  {
+   "a_element": "gauge-invariant phase space and its singularities (degenerate gauge orbits)",
+   "b_element": "low-energy phase where permutation symmetry is broken and the graph becomes ordered/local"
+  },
+  {
+   "a_element": "Gauss-peaked overlap of coherent states in non-degenerate regions",
+   "b_element": "thermodynamic stability of the low-energy local graph phase under perturbations"
+  },
+  {
+   "a_element": "geometry of the gauge-invariant configuration space influencing semiclassical properties",
+   "b_element": "emergent locality and spatial geometry from the graph's low-energy phase"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers involve graphs and symmetry breaking, Paper A focuses on the mathematical structure of gauge-invariant coherent states and their semiclassical properties in a quantum gravity context, whereas Paper B models emergent locality and spatial geometry through thermodynamic phases of dynamical graphs. The core mechanisms—coherent state overlaps in gauge theory vs. phase transitions in graph connectivity—are distinct, despite superficial similarities in graph-based representations."
+}

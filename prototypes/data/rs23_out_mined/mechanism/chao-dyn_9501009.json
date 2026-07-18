@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reduction of a continuous conservative (area-preserving) flow to a discrete return/Poincare map — here a twist map with a generating function — whose Jacobian (monodromy/linearization) matrix determines the linear stability and bifurcation of periodic orbits, with KAM-type invariant tori persisting under perturbation",
+  "brief_reason": "The abstract builds the whole analysis on a discrete 'bouncing map' whose Jacobian matrix fixes stability and bifurcation values of periodic orbits, treats it as a twist map with a generating function, and proves the survival of invariant tori, which is exactly a Poincare-return-map plus linearized-stability/KAM construction."
+}

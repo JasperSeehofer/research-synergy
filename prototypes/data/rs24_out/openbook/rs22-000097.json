@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A constructs classical five-dimensional supergravity solutions by warped compactification on ambi-polar hyper-Kahler base spaces (Atiyah-Hitchin, Eguchi-Hanson) and analyzing regularity/bubbling of the geometry, whereas paper B performs a perturbative NLO QCD cross-section calculation of gluon-fusion Higgs production matched to stochastic parton-shower Monte Carlo via the POWHEG method; solution-construction differential geometry and perturbative-QFT-plus-shower resummation are entirely different machinery with no role-for-role correspondence."
+}

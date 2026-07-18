@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "q-exponential discount function based on Tsallis' statistics",
+   "b_element": "entropic parameter q in nonextensive statistical mechanics"
+  },
+  {
+   "a_element": "parameter q quantifying impulsivity and inconsistency in intertemporal choice",
+   "b_element": "parameter q gauging risk aversion/risk-seeking in economic transactions"
+  },
+  {
+   "a_element": "depressive patients exhibiting altered q values (impulsivity/inconsistency)",
+   "b_element": "operators with different q values leading to distinct long-term asset redistribution patterns"
+  },
+  {
+   "a_element": "Tsallis' statistics as a framework for modeling decision-making under uncertainty",
+   "b_element": "nonextensive statistical mechanics as a framework for modeling economic transactions under risk"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ Tsallis' nonextensive statistics (via the q-exponential function/entropic parameter q) as the core mathematical machinery to model deviations from classical exponential behavior in decision-making under uncertainty. In A, q captures impulsivity/inconsistency in intertemporal choice, while in B, q captures risk aversion/risk-seeking in economic transactions, but the underlying statistical framework and role of q as a non-classical parameter are identical."
+}

@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "lattice action (improved) used to study QCD with multiple flavours",
+   "b_element": "lattice field theory methods (including improved effective actions) for strongly interacting systems"
+  },
+  {
+   "a_element": "thermal transition and chiral symmetry breaking in QCD",
+   "b_element": "thermal properties and ground-state calculations in non-relativistic many-body systems"
+  },
+  {
+   "a_element": "critical number of flavours determining the conformal window in QCD",
+   "b_element": "systematic effects and phase transitions in strongly interacting few- and many-body systems"
+  },
+  {
+   "a_element": "algorithms allowing for larger lattices and lower quark masses in QCD",
+   "b_element": "hybrid Monte Carlo and sampling algorithms for lattice simulations"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers employ lattice field theory methods, Paper A focuses on a specific physical phenomenon (the conformal window in QCD via chiral symmetry breaking and thermal transitions), whereas Paper B is a methodological review of lattice techniques applied broadly to non-relativistic many-body systems. The core machinery—QCD's conformal window and chiral symmetry breaking—has no direct analogue in Paper B's general lattice methods for condensed matter or atomic systems."
+}

@@ -1,0 +1,12 @@
+{
+  "mapping": [
+    {"a_element": "cavity-method message passing on the K-SAT factor graph", "b_element": "message passing between variables in the densely connected system"},
+    {"a_element": "surveys of local magnetic fields over the various possible states (survey propagation)", "b_element": "condensed messages representing macroscopic averages of the microscopic messages"},
+    {"a_element": "intermediate phase where metastable states proliferate and the solution space fragments (1-RSB clustering)", "b_element": "the case where fragmentation of the solution space occurs, which the improved method targets"},
+    {"a_element": "simple satisfiable region where ordinary belief propagation over single fields suffices", "b_element": "previous work applying to cases where the solution space is contiguous"},
+    {"a_element": "3-SAT hard combinatorial optimization problem being solved", "b_element": "CDMA signal-detection inference problem being solved"},
+    {"a_element": "efficient survey-propagation solver derived from the analysis", "b_element": "highly efficient practical algorithm derived from the analysis"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both are cavity-method / message-passing inference on a graphical model, upgraded from ordinary single-message belief propagation to messages that summarize the multiple states of a fragmented solution space: A's 'surveys of local fields over the possible states' (survey propagation) play exactly the role of B's 'condensed messages representing macroscopic averages of microscopic messages', and both explicitly extend from the contiguous/replica-symmetric regime to the fragmented (metastable-state) regime. The 3-SAT and CDMA applications differ, but the transferable machinery — survey/condensed message passing to cope with a clustered solution space — is the same."
+}

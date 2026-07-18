@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "supersymmetric vacua of N=2 gauge theories",
+   "b_element": "hidden supersymmetric properties in Euclidean random matrix models"
+  },
+  {
+   "a_element": "integrable spin chain Hamiltonians (e.g., Heisenberg, XXZ, XYZ)",
+   "b_element": "phase transition between phonon and saddle phases in translation-invariant Euclidean matrices"
+  },
+  {
+   "a_element": "Bethe ansatz equations for spin chains",
+   "b_element": "analytical framework describing the phonon-saddle transition"
+  },
+  {
+   "a_element": "compactifications of gauge theories on spheres/tori leading to instanton-corrected Bethe equations",
+   "b_element": "mode coupling approximation framework for dynamical phase transitions in glasses"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both abstracts mention supersymmetry and phase transitions, Paper A focuses on a correspondence between supersymmetric vacua and integrable spin chain models via Bethe ansatz, whereas Paper B describes a phase transition in Euclidean random matrices linked to glassy dynamics. The core mechanisms (Bethe ansatz for spin chains vs. random matrix theory for phase transitions) are distinct, and the mapping elements are superficial or contextually unrelated."
+}

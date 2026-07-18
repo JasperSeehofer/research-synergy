@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "critical point separating high-temperature normal state and low-temperature state with bimodal density distribution",
+   "b_element": "resonance frequencies and altered Rabi frequency separating different regimes of scattered light spectrum"
+  },
+  {
+   "a_element": "Berezinskii-Kosterlitz-Thouless (BKT) transition in a 2D Bose gas",
+   "b_element": "parametric oscillator behavior in a two-level quantum system"
+  },
+  {
+   "a_element": "interaction strength modifying the critical atom number",
+   "b_element": "strength of coupling electromagnetic field controlling the Rabi frequency"
+  },
+  {
+   "a_element": "local density approximation combining mean-field theory with BKT transition",
+   "b_element": "theoretical demonstration of parametric oscillator behavior under strong electromagnetic fields"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both abstracts describe critical transitions in quantum systems (a phase transition in a Bose gas and resonance behavior in a two-level system), the underlying mechanisms differ fundamentally. Paper A involves a topological phase transition (BKT) driven by vortex-antivortex unbinding in a 2D system, whereas Paper B describes parametric oscillation and Rabi frequency modulation in a driven two-level quantum system. The mathematical structures (e.g., mean-field + BKT vs. driven oscillator equations) are distinct."
+}

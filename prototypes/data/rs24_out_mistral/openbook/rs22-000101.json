@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "Monte Carlo simulations of a spatially localized signaling complex (kinase cascade on scaffolds)",
+   "b_element": "cavity equation techniques applied to local connectivity constraints in networks"
+  },
+  {
+   "a_element": "spatial localization of kinase components on scaffolds influencing signal dynamics",
+   "b_element": "translation of global connectivity constraints into local ones for Steiner trees"
+  },
+  {
+   "a_element": "distribution of kinase activation times as a function of scaffold concentration",
+   "b_element": "statistical mechanics properties of Steiner trees on random graphs"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "Paper A uses Monte Carlo simulations to study the temporal dynamics of spatially localized signaling cascades, while Paper B employs cavity equation techniques from statistical mechanics to analyze local constraints in combinatorial optimization. The underlying machinery differs: A focuses on stochastic simulation of biochemical kinetics, whereas B uses analytical statistical mechanics methods for optimization problems. The partial correspondences are superficial (e.g., 'localization' or 'statistical properties') and do not reflect shared governing processes."
+}

@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "bosonization of charge degrees of freedom (separating charge and spin excitations)",
+   "b_element": "approximation neglecting pion contributions (focusing on quark Green function dynamics)"
+  },
+  {
+   "a_element": "energy scale separation (J << epsilon << E_F) with a critical threshold (J)",
+   "b_element": "critical coupling constant (alpha_c = 0.43) separating subcritical and supercritical regimes"
+  },
+  {
+   "a_element": "spectral function singularities near 3k_F (shadow band features)",
+   "b_element": "qualitatively different behavior of the quark mass function above alpha_c (chiral symmetry breaking)"
+  },
+  {
+   "a_element": "exact treatment of spin excitations alongside bosonized charge",
+   "b_element": "non-perturbative treatment of the quark Green function in the infrared region"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers address critical thresholds in strongly interacting systems (spin exchange coupling J vs. coupling constant alpha_c) and separate degrees of freedom (charge/spin vs. quark/pion), their underlying machinery differs: Paper A uses bosonization and Tomonaga-Luttinger liquid theory, while Paper B relies on Gribov's equation for the quark Green function in QCD. The mathematical structures (bosonization vs. integral equations for propagators) are distinct."
+}

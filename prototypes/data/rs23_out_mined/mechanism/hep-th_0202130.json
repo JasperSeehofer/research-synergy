@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Exponential localization of a field's lowest eigenmode as a bound state in a smooth confining potential well (a Sturm-Liouville / Schroedinger-type eigenvalue problem), where the exponentially small spatial overlap between two separated localized modes generates an exponentially large ratio of scales, while the operator's discrete eigenvalue spectrum stays strictly non-negative (no unstable modes)",
+  "brief_reason": "The abstract resolves a large hierarchy of scales through the small overlap of an exponentially localized zero-mode (the graviton) with a second, spatially separated localized mode, and reports a quantized, tachyon-free spectrum of massive modes -- the signature of a bound-state eigenvalue problem in a smooth potential well."
+}

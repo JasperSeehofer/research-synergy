@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "constructive interference in a sum-over-paths amplitude-transport process: a complex-weighted random-walk-like propagation over a state space whose many paths reaching a target reinforce into a large signal only when their phases are aligned, otherwise averaging out toward a uniform diffusion profile",
+  "brief_reason": "The abstract separates amplitude transport (whose normalized distribution drifts toward the uniform random configuration) from coherent phase interference, showing a target signal emerges only when the phases of the many paths reaching a target add coherently, giving a certified lower bound on the target amplitude."
+}

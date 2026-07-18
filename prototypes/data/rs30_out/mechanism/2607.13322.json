@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a noise-controlled collective-synchronization phase transition in a population of coupled stochastic (limit-cycle) oscillators, where a single order parameter emerges above a critical value of the per-oscillator coherence and exhibits distinct critical scaling on either side of the threshold",
+  "brief_reason": "The abstract reports a phase transition to synchronization among stochastic oscillators that depends only on single-oscillator coherence, with different scaling above and below the transition, which is exactly a coupled-noisy-oscillator synchronization transition governed by individual-unit coherence."
+}

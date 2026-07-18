@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an iterative bootstrap (a-priori-estimate continuation) scheme that closes global-in-time control by feeding back pointwise decay bounds extracted from the cancellation of a rapidly oscillating phase over a characteristic time scale (stationary/non-stationary-phase smoothing), with symmetry and conservation laws supplying the reduction that makes the oscillatory decay quantifiable",
+  "brief_reason": "The abstract centers on pointwise estimates whose defining feature is assessment against the magnitude of the oscillation phase over characteristic time (quantifying a smoothing effect) fed into an iterative smoothing scheme and closed by a bootstrap argument, with symmetry and conservation laws exploited to obtain them."
+}

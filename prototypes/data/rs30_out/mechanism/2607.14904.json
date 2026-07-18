@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Inference of the linear coupling (bias/gain) coefficient between two jointly-fluctuating random fields from the ratio of their second-order two-point statistics — the auto-spectrum of one field divided by its cross-spectrum with the other (with a conditional occupation model relating discrete tracers to host structures as a secondary, small-scale refinement)",
+  "brief_reason": "The method estimates the proportionality coefficient b as the ratio of an auto-power spectrum to a cross-power spectrum (b = P_gg/P_gK) built from angular correlation and power-spectral analyses of one field cross-correlated with another, which is exactly recovering a linear transfer/gain between two correlated stochastic fields from their auto- and cross-spectra."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "regularized reconstruction of an ill-posed / underdetermined inverse problem from sparse, noisy measurements, where non-uniqueness forces a choice of prior or regularizer and confidence is assessed by the spread of admissible solutions across that ensemble of choices",
+  "brief_reason": "The abstract states that recovering a single image from extremely noisy and sparse data required selecting among multiple plausible processing approaches at each stage, and that the real evidential value lies in the limited variability of solutions across those choices — the hallmark of characterizing an underdetermined inverse problem by the spread over its regularization/prior choices."
+}

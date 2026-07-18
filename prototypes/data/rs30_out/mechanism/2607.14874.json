@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Spectral aliasing / mode-doubling from representing a continuous first-order derivative (transport) operator as a local finite-difference update stencil on a periodic lattice: the periodic discrete dispersion relation vanishes at more than one point of the Brillouin zone, spawning spurious duplicate low-energy modes that are suppressed by staggering an auxiliary degree of freedom.",
+  "brief_reason": "The abstract's central result proves that a lattice/cellular-automaton discretization of the continuous Dirac evolution suffers 'fermion doubling' (extra spurious modes), fixed by staggering an artificial flavor — the generic aliasing artifact of putting a first-order continuum operator on a periodic grid — after which the operator's two-point Green's function (propagator) is obtained in closed form."
+}

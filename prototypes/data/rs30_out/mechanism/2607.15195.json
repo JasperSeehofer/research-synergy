@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "continuous-time optimal control via dynamic programming, in which the value function satisfies a Hamilton-Jacobi-Bellman partial differential equation whose PDE residual is minimized by a function approximator directly on sampled trajectories, yielding a Gibbs/Boltzmann-weighted optimal policy",
+  "brief_reason": "The abstract reduces the optimization to solving an HJB equation cast as a pathwise Hamilton-Jacobi equation, solved from data by a PINN (PDE-residual minimization) in a single sweep and producing a Gibbs policy, which is exactly dynamic-programming optimal control through the HJB value-function PDE."
+}

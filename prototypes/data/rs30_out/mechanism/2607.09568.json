@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A coupled multi-agent equilibrium expressed as the fixed point of regularized best-response maps and characterized/solved as a monotone variational inequality on a dual space, guaranteeing existence and uniqueness even under asymmetric, non-separable interactions",
+  "brief_reason": "The abstract formulates the equilibrium as a variational-inequality problem on the dual cost space with proven existence and uniqueness that accommodates non-separable and asymmetric cost structures, where each agent's best response is supplied by a convex-surplus (perturbed-utility) regularized Bellman operator whose gradient yields the optimal policy."
+}

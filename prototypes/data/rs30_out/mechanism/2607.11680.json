@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an iterative closed-loop state-refinement process: a provisional state is initialized, then at each step transformed by one of a fixed discrete set of feedback-conditioned update operators (maintain, specialize, perturb, correct, or replace), tracing a trajectory through a configuration space",
+  "brief_reason": "The abstract frames an initial prompt as establishing a provisional macro-frame (initial state) and each subsequent turn as choosing to maintain, specify, challenge, repair, or transform that organization, yielding a sequence (trajectory) of states evolved by a fixed set of update moves under feedback."
+}

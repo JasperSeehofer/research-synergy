@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Nash-equilibrium analysis of a congestion game: many self-interested agents each choose among alternative strategies for accessing a shared finite resource, where each agent's payoff depends on the aggregate load (a congestion externality) produced by all agents' choices, so individual optimal choices and their rankings are determined self-consistently at equilibrium and can flip or vary non-monotonically as system parameters change.",
+  "brief_reason": "The abstract frames users choosing between two costly options that consume shared scarce resources, with 'congestion from other users' choices' reshaping incentives and equilibrium consumption exhibiting non-monotonicity and regime-flipping rankings, which is exactly a congestion/crowding game solved at Nash equilibrium."
+}

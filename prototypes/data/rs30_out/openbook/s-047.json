@@ -1,0 +1,11 @@
+{
+  "mapping": [
+    {"a_element": "fission neutron chain reaction (each fission liberates neutrons that induce further fissions)", "b_element": "SIR transmission process (each infected individual infects further susceptibles)"},
+    {"a_element": "neutron multiplication factor / criticality (critical mass, k around 1)", "b_element": "epidemic reproduction / critical boosting threshold (R0-type threshold above which the outbreak grows)"},
+    {"a_element": "self-termination of the reaction (fissile burnup / hydrodynamic disassembly halting multiplication)", "b_element": "depletion of the susceptible pool that halts the outbreak (and the 'silent exposures' that dry up once suppression succeeds)"},
+    {"a_element": "total explosive yield (integrated energy released by the chain reaction)", "b_element": "total attack rate / final epidemic size (integrated fraction infected)"},
+    {"a_element": "closed-form Bethe-Feynman / Compton yield formula for the integrated output", "b_element": "closed-form final-size relation linking total attack rate to the driving parameters"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both papers derive a closed-form expression for the total integrated output of a supercritical branching (multiplicative) process governed by a critical threshold and self-terminated by exhaustion of its driver: paper A's fission chain reaction with its criticality/critical-mass threshold and Bethe-Feynman yield formula plays the same role as paper B's SIR transmission with its reproduction/boosting threshold and closed-form final-size (attack-rate) relation, so the yield formula and the epidemic final-size relation are the same machinery across fields."
+}

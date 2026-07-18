@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "closed-form optimal affine (convex) combination of two estimators along a ridge-regularization path to minimize mean-squared risk — a shrinkage / Stein-type blending whose optimal mixing weight and sign are set by the curvature (nonstationarity) of the risk profile and tuned by generalized cross-validation",
+  "brief_reason": "The abstract derives, in closed form, the optimal coefficient for mixing a regularized 'true' estimate with a suboptimal 'teacher' estimate, proving strict risk improvement whenever the teacher risk is nonstationary along the regularization path (with a sign rule for the weight) and selecting it via one-shot GCV rather than grid search."
+}

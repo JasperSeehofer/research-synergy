@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a coupled agent ensemble in which each unit carries both a spatial coordinate driven by attraction-repulsion pair kernels and an internal scalar state updated by threshold-gated pairwise averaging (bounded-confidence dynamics), with a confidence threshold controlling the number of emergent consensus clusters and a coupling strength gating whether clusters merge or stay separated",
+  "brief_reason": "The abstract couples attraction-repulsion spatial interactions to a Deffuant-type opinion update whose confidence threshold sets the cluster count and whose opinion-dependent attraction strength decides whether clusters spatially merge, i.e. threshold-gated averaging coupled to distance-based attraction-repulsion forces."
+}

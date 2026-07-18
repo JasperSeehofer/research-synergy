@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a constant-rate (homogeneous) Poisson point process generating random discrete events along a branching structure, from whose event statistics one derives closed-form probabilities of the resulting configurations and tests parameter identifiability (whether two distinct generative processes yield distinguishable distributions)",
+  "brief_reason": "The abstract models transfer events as 'a Poisson process with a constant transfer rate' and derives outcome (gene tree / site pattern) probabilities to assess identifiability and whether two such stochastic processes can be distinguished."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "mean-field limit / propagation of chaos for a large system of stochastically coupled interacting units: as the number of noisy particles grows, their empirical distribution decouples into independent copies governed by a single self-consistent nonlinear (McKean-Vlasov) equation, with the finite-size deviation controlled by a relative-entropy bound of order k/N and Gaussian fluctuations quantified by a central-limit-theorem / Berry-Esseen estimate",
+  "brief_reason": "The abstract proves a quantitative propagation-of-chaos relative-entropy bound (order k/N) and a central limit theorem for an N-particle system converging to its mean-field (McKean-Vlasov) law, which is exactly the mean-field-limit / propagation-of-chaos machinery with Gaussian fluctuation control."
+}

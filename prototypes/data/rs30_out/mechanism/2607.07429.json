@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a threshold-triggered excitable dynamical system in which a continuously integrated state variable evolves by differential-equation dynamics until it crosses a critical threshold, emitting a discrete pulse event and resetting — hybrid continuous-evolution-plus-discrete-reset pulse (spike) generation",
+  "brief_reason": "The abstract centers on modeling membrane-potential dynamics that produce spikes, i.e. the shared integrate-toward-a-threshold, fire-a-discrete-pulse, and reset machinery underlying the surveyed single-entity spiking neuron models."
+}

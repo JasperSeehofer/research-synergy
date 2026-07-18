@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "strict superadditivity of a Rényi-parametrized information functional under multi-copy (tensor) composition — the functional evaluated on a jointly optimized, classically correlated multi-copy input strictly exceeds the sum of its single-copy values, even while a related first-order functional (the capacity) stays exactly additive",
+  "brief_reason": "The abstract proves the Petz-Rényi channel information is strictly superadditive for every alpha in [1/2,1), giving a multi-copy enhancement witnessed by a separable classically correlated two-copy input, while the entanglement-assisted capacity remains additive."
+}

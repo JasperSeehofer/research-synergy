@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a compartmental contagion (SIR-type) dynamical system over a stratified population, governed by a control reproduction number with a critical threshold at R=1 separating a decaying spread from a self-sustaining outbreak, where an external intervention shifts flows between compartments",
+  "brief_reason": "The abstract builds a stage-structured, age-stratified Susceptible-Infected-Recovered model and analyzes whether an intervention pushes the control reproduction number below the epidemic threshold, which is the defining machinery of threshold-driven compartmental spreading dynamics."
+}

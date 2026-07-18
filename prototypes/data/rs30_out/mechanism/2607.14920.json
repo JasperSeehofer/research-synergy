@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a MacWilliams/Delsarte-type duality: a Fourier-type dual transform on a (symplectic) configuration space that maps a distribution to its dual and, through positivity (positive-semidefinite moment) constraints on the transformed measure, yields a linear/semidefinite-programming bound certifying the extremal object",
+  "brief_reason": "The abstract constructs a MacWilliams identity with a closed-form integral kernel on a symplectic configuration space and uses it to derive semidefinite-programming bounds on code dimension, with the higher-order (three-point) term governed entirely by positivity constraints — the hallmark of a dual-transform-plus-positivity SDP extremality bound."
+}

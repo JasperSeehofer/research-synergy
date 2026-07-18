@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "gray-matter brain regions as nodes of a connectivity graph", "b_element": "agents (conformists, rebels, stubborn) as nodes of the game network"},
+    {"a_element": "structural connectivity links between brain regions", "b_element": "edges between neighboring players"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is that both are defined on a graph of nodes and edges; the driving machinery is entirely different. Paper A is an empirical neuroimaging study that statistically identifies brain regions with increased or decreased structural connectivity in dementia, whereas Paper B is a game-theoretic analysis deriving existence conditions for pure-strategy Nash equilibria under conformist/rebel/stubborn update rules. There is no strategy, equilibrium, or best-response process in A, and no imaging or connectivity-difference estimation in B, so no role-for-role mechanism mapping holds beyond the generic 'both live on a network.'"
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "exact analytic differentiation of a parameter-dependent expectation by evaluating that same quantity at a small finite set of discrete shifts of the parameter and taking a fixed weighted linear combination of the results — valid because the quantity is a finite trigonometric (Fourier) polynomial in the parameter, so a bounded number of shifts reconstructs the exact derivative",
+  "brief_reason": "The paper derives n-th order 'parameter-shift rules' that recover exact gradients of transition probabilities from values at shifted parameter settings, with the finite order (twice the number of detected photons) reflecting the finite Fourier-series dependence of the probabilities on each parameter."
+}

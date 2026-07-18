@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "maximum-entropy characterization of a distribution subject to a fixed set of prescribed moment constraints (the moment-constrained maximum-entropy / indeterminate moment problem), and testing whether a given distribution actually attains the entropy maximum within the class of all distributions sharing those moments",
+  "brief_reason": "The abstract concerns the claim that one density maximizes entropy among all densities having the same moments and disproves it by exhibiting a higher-entropy family, which is precisely the machinery of selecting/verifying the maximum-entropy distribution under fixed moment constraints."
+}

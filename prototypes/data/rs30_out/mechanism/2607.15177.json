@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "recursive self-similar stratification of a singular space into a partially ordered set of strata, resolved by blowing up a combinatorial (toric fan/polytope) compactification to obtain a uniform local normal form, with each stratum's transverse slice identified as a smaller copy of the same construction",
+  "brief_reason": "The abstract builds a geometric description of the varieties via blowups of toric compactifications and uses that local model to classify the strata (symplectic leaves) and to describe their transverse slices in terms of the strata of certain smaller instances of the same object."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "assignment of an integer topological invariant (a winding number / Poincaré-Hopf index) to the isolated zeros of a gradient-type vector field derived from a scalar potential, classifying each critical point as stable or unstable and thereby characterizing the transitions between the potential's competing states",
+  "brief_reason": "The method builds a generalized off-shell free-energy potential, treats its stationary points as the physical states, and computes a winding number that characterizes the phase transitions—i.e. a topological-charge count of the critical points of a potential field."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "amortized variational inference with a probabilistic latent-variable model (variational autoencoder): an encoder maps each input to a distribution over a low-dimensional stochastic latent code, trained end-to-end by maximizing an evidence lower bound (reconstruction fidelity minus divergence of the latent posterior from a prior), yielding a compressed, noise-robust representation from which downstream tasks are decoded",
+  "brief_reason": "The abstract's method rests on replacing deterministic encoding with probabilistic latent representations trained end-to-end to jointly reconstruct and classify while drastically compressing what is transmitted, which is exactly a variational-autoencoder / lower-bound-optimized stochastic latent encoding."
+}

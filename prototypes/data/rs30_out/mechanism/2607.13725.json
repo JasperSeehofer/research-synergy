@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "symmetry-adapted (representation-theoretic) diagonalization of a linear operator in an orthogonal basis of group characters, so that the operator's matrix elements reduce to closed-form combinatorial character sums over cosets and double cosets of a finite permutation group",
+  "brief_reason": "The abstract diagonalizes the free Hamiltonian in an orthogonal Schur-polynomial basis and evaluates interaction matrix elements via a group-theoretic reduction to cosets and double cosets plus character sums on the symmetric group, which is a representation-theoretic block-diagonalization reducing operator evaluation to combinatorial character algebra."
+}

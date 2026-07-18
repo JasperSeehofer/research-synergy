@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A latent finite-state Markov chain (hidden Markov model) emitting state-conditional observation densities, where the transition matrix's eigenvalue spectrum sets the temporal autocorrelation decay while the per-state emission family sets the marginal, fitted by expectation-maximization via forward-backward recursions",
+  "brief_reason": "The abstract builds a continuous hidden Markov model whose regime chain governs autocorrelation and whose per-regime densities govern the marginal, fitted under shared forward-backward EM recursions with a spectral identity bounding decay modes by the rank of the centred transition matrix."
+}

@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "spherical superfluid shell / charged particle constrained to a sphere", "b_element": "the sphere S^d that the negative-energy Coulomb/Kepler problem is mapped onto via Moser regularization"},
+    {"a_element": "cyclotron-like vortex motion matched quantitatively to Gross-Pitaevskii (quantum) simulations", "b_element": "semiclassical measures describing how eigenfunctions concentrate on classical invariant sets"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The overlap is only surface vocabulary (sphere, monopole/Coulomb, quantization): paper A's machinery is an emergent Dirac-monopole gauge bundle (Wu-Yang patching, topological frustration, Kelvin-Helmholtz instability) arising from superfluid vortex dynamics, whereas paper B's machinery is microlocal/semiclassical analysis using the Moser-Fock map to characterize eigenfunction quantum limits as probability measures invariant under the regularized Kepler flow. These are different governing structures with no coherent role-for-role correspondence of the actual mechanisms."
+}

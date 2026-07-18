@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "amplification of fluctuations (variance) and cross-correlations as a system is driven toward a critical point of a second-order phase transition, with the fluctuation/correlation response modeled as a low-order (quadratic) polynomial expansion in a scalar control/order parameter",
+  "brief_reason": "The abstract observes that volatilities and correlations grow as the control variable (trend strength) intensifies, quantifies this growth by quadratic polynomials of that variable, and explicitly interprets it as the system approaching the critical point of a lattice gas — i.e. the near-critical divergence of fluctuations and correlations."
+}

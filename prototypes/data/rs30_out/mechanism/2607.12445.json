@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a resampling (bootstrap) estimator that replicates the full 'best-of-many-candidates' maximum-selection step inside each resample so the resampling distribution captures and cancels the winner's-curse (extreme-value selection) bias in a post-selection estimate",
+  "brief_reason": "The abstract's fix re-runs the best-of-several selection within each bootstrap resample (comparator held fixed) precisely to restore the winner's-curse term that the standard single-model optimism correction omits, exposing a generic bootstrap-the-selection machinery for correcting maximum-over-candidates bias."
+}

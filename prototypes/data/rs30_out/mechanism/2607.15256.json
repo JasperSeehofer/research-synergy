@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a finite-rank (low-rank) correction applied to an approximate solution to analytically enforce a small set of exact local linear constraints, built by adding corrections spanned by a few basis modes whose coefficients are fixed from local Taylor-expansion data",
+  "brief_reason": "The abstract's method enforces exact local vanishing conditions -- not preserved by the equations or the numerics -- through low-rank corrections derived from Taylor expansions in a smooth basis, i.e. a finite-rank perturbation that exactly satisfies a handful of constraints."
+}

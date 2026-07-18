@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "exact change of variables mapping a strongly-interacting system onto an equivalent free (non-interacting, quadratic) one, rendering it exactly solvable and allowing non-perturbative resummation of the secular divergences that spoil the naive perturbative series",
+  "brief_reason": "The abstract states that although the model is strongly interacting in its original formulation it becomes exactly solvable 'on account of fermionisation,' and this exact free-variable representation is what lets divergent late-time secular terms be resummed non-perturbatively."
+}

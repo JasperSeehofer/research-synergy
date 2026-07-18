@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a Boltzmann-type kinetic (collision) equation for the mode-occupation spectrum, in which resonant weakly-nonlinear interactions redistribute a conserved density among modes while preserving multiple invariants and relax the system toward a maximum-entropy (Rayleigh-Jeans) equilibrium, with a non-local inverse transfer condensing the density into the lowest modes",
+  "brief_reason": "The abstract centers on a wave-kinetic equation for ensembles of weak random waves whose resonant interactions redistribute energy in Fourier space, conserve infinitely many invariants, and thermalize to Rayleigh-Jeans states via non-local spectral transfer that builds a low-wavenumber peak akin to Bose-Einstein condensation."
+}

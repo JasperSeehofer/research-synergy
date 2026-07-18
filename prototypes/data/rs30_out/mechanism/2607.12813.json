@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "autocatalytic positive-feedback amplification of an infinitesimal symmetry-breaking bias into a macroscopic ordered state, modeled as noise-driven bistable stochastic dynamics (an Ito stochastic differential equation) whose weak deterministic tilt selects one of two otherwise-degenerate mirror states",
+  "brief_reason": "The abstract describes a weak directional bias between two mirror configurations being amplified by autocatalysis and stochastic fluctuations, with the resulting probability distribution of an asymmetry order parameter obtained from Ito stochastic equations."
+}

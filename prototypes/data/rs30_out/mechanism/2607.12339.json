@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "inverse spectral (scattering-transform) method for an integrable nonlinear evolution equation: the field is encoded as a discrete set of spectral eigenvalues that are invariant under the evolution, and an integral-equation inverse problem reconstructs an unknown perturbation from measured shifts in those eigenvalues",
+  "brief_reason": "The abstract represents the nonlinear pulse by a discrete set of eigenvalues that are conserved along propagation under the governing integrable equation, then poses an integral equation to invert measured eigenvalue deviations back into the unknown field distortion."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a bilinear latent-factor decomposition that expresses observed signals as a small set of shared latent factors weighted by a loading matrix whose nonzero pattern encodes overlapping group memberships, with the loading matrix identifiable up to permutation (label switching)",
+  "brief_reason": "The method rests on a latent factor model with functional factors and a real-valued loading matrix encoding overlapping memberships, whose identifiability up to permutation guarantees the overlapping structure is recoverable up to label switching."
+}

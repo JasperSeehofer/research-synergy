@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "computing a sharp critical integrability exponent of a function with an isolated singularity by resolving the singularity (birational log-resolution / blow-ups) into a monomial normal form and reading the threshold off the resulting vanishing-order and discrepancy data — the log-canonical-threshold construction",
+  "brief_reason": "The abstract determines the exact admissible exponent range as p < min_i (a_i+1)/(2N_i - M_i) from vanishing orders and discrepancies of a log-resolution, with the real log-canonical threshold as the computable bound, and states the proof reduces the singular object to a monomial model via resolution of singularities."
+}

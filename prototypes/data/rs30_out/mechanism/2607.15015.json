@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "sequential nested-conditioning that multiplicatively factors a fixed global probability budget into a product of stagewise conditional pass/fail probabilities, with disjoint first-crossing regions partitioning outcomes so the total budget can be reallocated across stages",
+  "brief_reason": "The abstract calibrates each stage's acceptance region under the null conditional on acceptance at all preceding stages, yielding a multiplicative decomposition of the overall Type I error and a disjoint first-rejection partition of the outcome space."
+}

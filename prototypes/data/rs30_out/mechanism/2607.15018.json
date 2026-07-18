@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "spectral co-embedding of two coupled sets of entities (objects and their discrete attribute-levels) into a shared low-dimensional Euclidean space by minimizing a homogeneity / least-squares loss on an incidence matrix (eigendecomposition-based optimal scaling, i.e. correspondence/homogeneity analysis), followed by seriation to permute rows and columns into a block-revealing order",
+  "brief_reason": "The abstract's method rests on Homogeneity Analysis (HOMALS) embedding subjects and category levels jointly in a low-dimensional Euclidean space so similar patterns lie close together, then using seriation algorithms to reorder rows and columns to expose clusters and structure."
+}

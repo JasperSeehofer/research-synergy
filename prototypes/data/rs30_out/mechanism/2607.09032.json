@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "direct-product factorization of an algebraic structure into a small non-distributive (non-commutative) 'context' factor and a distributive/Boolean 'content' factor, with a surjective quotient homomorphism that collapses the non-distributive factor and recovers the commutative structure as a many-to-one, information-losing image",
+  "brief_reason": "The abstract decomposes the free orthomodular lattice on two generators as a direct product of a six-element non-distributive factor and a sixteen-element Boolean factor, then proves that forgetting the context is a surjective orthocomplemented-lattice homomorphism whose quotient is the classical Boolean algebra (a six-to-one, information-losing image)."
+}

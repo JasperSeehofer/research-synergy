@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "profiling a model's residual error as a function of a predetermined ordering coordinate (a residual-vs-covariate diagnostic curve), distinguishing global goodness-of-fit from coordinate-resolved local behaviour such as flattening, overshoot, or sign-crossing of the residual along that axis",
+  "brief_reason": "The abstract traces model alphas (pricing errors) across the full order induced by a predetermined characteristic and classifies where corrections land along that axis (flatten, overshoot, cross zero), contrasting this with a single scalar spanning/Sharpe measure."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "optimal control of a dynamical system via Pontryagin's maximum principle, yielding a bang-bang (single-switch) extremal control, together with a reachable-set constraint that bounds the attainable states and hence the achievable objective",
+  "brief_reason": "The abstract formulates the preparation stage as an optimal-control problem that extremises a state functional (the excess kurtosis), solves it with Pontryagin's maximum principle to obtain a one-bang protocol, and shows the outcome is limited by non-trivial reachable-state constraints on the accessible states."
+}

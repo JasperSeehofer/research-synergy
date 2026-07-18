@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "data-driven functional parcellation: clustering a high-dimensional internal-feature/activation space into a stable, reproducible set of coherent modules ('parcels') that form an interpretable coordinate system, then mapping each module's activity onto external target variables via regression/correspondence to attribute function and to localize failures as module-specific disruptions",
+  "brief_reason": "The abstract organizes internal features into stable, semantically coherent functional parcels that are partly conserved across models and links them to functions, behavioural outputs, and human cortical responses, with specific failures corresponding to distinct disruptions in particular parcels/systems."
+}

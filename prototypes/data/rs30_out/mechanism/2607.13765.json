@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a homotopy (L-infinity / differential-graded Lie) algebra construction in which constraints are encoded by a nilpotent differential obeying a Maurer-Cartan / master equation, and the obstruction to that nilpotency (an anomaly) is measured as a curvature term deforming the algebra",
+  "brief_reason": "The abstract encodes constraints via classical and quantum master equations and states that the failure of the quantum master equation is captured by a nontrivial curvature term making the homotopy dg Lie (L-infinity) algebra curved."
+}

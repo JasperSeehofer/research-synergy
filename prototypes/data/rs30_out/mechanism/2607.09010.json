@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Persistent-homology (topological data analysis) tracking of a time-evolving weighted network, using the birth/death of homology cycles and the Wasserstein distance between successive persistence diagrams as an order parameter that crosses a sharp critical threshold at a structural fragmentation transition, with the rate of change of that distance serving as a divergence-based early-warning observable.",
+  "brief_reason": "The abstract builds filtered networks and applies the persistent homology formalism with a fixed collapse threshold, detecting a fragmentation transition through diverging Betti-1 cycles and a cross-network Wasserstein distance that jumps from zero, whose velocity acts as an early-warning indicator."
+}

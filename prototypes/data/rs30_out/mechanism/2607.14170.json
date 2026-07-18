@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "parameter-driven KAM-type breakup of invariant tori in a Hamiltonian dynamical system, producing a transition from integrable (regular) motion to a mixed regular-chaotic phase space, diagnosed via Poincaré sections, Lyapunov exponents, and Kolmogorov-Sinai entropy",
+  "brief_reason": "The abstract tracks how increasing control parameters deform and fragment invariant tori and grow the Lyapunov exponents and KS entropy, i.e. the classic route by which a nearly-integrable Hamiltonian system develops coexisting regular and chaotic regions in phase space."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an information-bottleneck compression principle — constraining a system to a minimal low-dimensional representation that retains only the information predictive of future states, i.e. a rate-distortion trade-off between compressing the input and preserving predictive information, with an information-theoretic order parameter that moves non-monotonically (dip then peak) across the memorization-to-generalization transition and whose magnitude predicts out-of-distribution performance",
+  "brief_reason": "The abstract states that an explicit information bottleneck forcing a low-dimensional representation is necessary for out-of-distribution generalization, and that an information-theoretic causal-emergence measure follows a non-monotonic trajectory (initial decrease, minimum, rise to maximum) whose magnitude reliably predicts generalization."
+}

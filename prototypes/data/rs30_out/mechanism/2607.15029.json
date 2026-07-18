@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "asymptotic zero-one / convergence law for logically-definable properties of a growing random discrete structure: as the structure's size tends to infinity, the probability that any fixed definable property holds converges to a limit that is either strictly between 0 and 1 (convergence law) or pinned to 0 or 1 (zero-one law)",
+  "brief_reason": "The abstract builds a random-graph probability model of large structures and proves that, as size grows to infinity, the probability of each logical formula either converges to a limit or converges to 0 or 1, which is exactly the zero-one/convergence-law dichotomy for definable properties of random structures."
+}

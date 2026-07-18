@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a combinatorial blocking/covering duality on a partially ordered ground set: an object is certified 'minimal/irreducible' exactly when an associated point set 'cuts' (intersects) every member of a family of substructures, with an accompanying bounded weight-ratio threshold criterion determining when this covering condition holds",
+  "brief_reason": "The abstract characterizes r-minimal codes via 'cutting r-blocking maps' that generalize the equivalence between minimal codes and cutting blocking sets, plus a necessary-and-sufficient weight-based (Ashikhmin-Barg-type) condition, which is exactly a covering/blocking-set duality over a poset-structured coordinate set with a weight-ratio threshold."
+}

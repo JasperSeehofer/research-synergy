@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "finite abelian (Z_N-type) group acting to orbifold the Fermat Calabi-Yau threefold", "b_element": "Z_N discrete abelian gauge group of the lattice gauge theory"},
+    {"a_element": "G-invariant / orbifold quotient carving out the relevant geometry from the covering space", "b_element": "gauge-invariant subspace of the full Hilbert space singled out by the Gauss-law / stabilizer constraints"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Both invoke a finite abelian Z_N symmetry group and the generic notion of an invariant subspace/quotient, but the transferable machinery differs decisively: paper A computes topological invariants (Roan/Hodge numbers, stringy Euler numbers via Vafa's twisted-sector formula) and mirror dualities (Borcea-Voisin, Berglund-Hubsch-Krawitz) of Calabi-Yau orbifolds, whereas paper B constructs a commuting-operator stabilizer group defining a gauge-invariant Hilbert subspace for quantum error correction and gauge fixing. Cohomology/Euler-number counting is not the same governing process as stabilizer-code algebra, so the overlap is only the shared keyword of group symmetry."
+}

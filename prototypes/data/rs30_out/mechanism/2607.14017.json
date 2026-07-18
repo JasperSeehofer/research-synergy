@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an advection-diffusion (convection-diffusion) transport equation in which a scalar is carried by directional flux of a moving medium in addition to diffusive spreading, with the balance between the two governed by a Peclet number",
+  "brief_reason": "The abstract contrasts an isotropic volumetric-source diffusion model with one that adds directional enthalpy transport into the heat flux and defines a (biological) Peclet number quantifying advective transport relative to thermal diffusion, i.e. an advection-diffusion balance."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a latent-reservoir reactivation threshold: a hidden state variable retained during an apparently absorbing quiescent phase acts as a sufficient statistic whose scalar recruitment capacity sets a sharp threshold separating extinction from spontaneous reignition of a new activity cycle",
+  "brief_reason": "The abstract shows the residual synaptic snapshot at the first silent state, summarized by a scalar Latent Excitatory Recruitment capacity (cumulative fresh excitatory units), near-perfectly predicts whether the system dies after one cycle or spontaneously regenerates another, i.e., a hidden reservoir threshold governing escape from an absorbing state."
+}

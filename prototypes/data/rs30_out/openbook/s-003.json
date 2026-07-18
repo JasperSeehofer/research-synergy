@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "an economic agent (the researcher) making an intertemporal choice", "b_element": "economic agents (traders) making intertemporal choices"},
+    {"a_element": "consistency of an ex-ante optimal rule when re-evaluated at a later interim date", "b_element": "long-run survival of a trader as the market evolves over time"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A is single-agent statistical decision theory: it axiomatizes optimality criteria (e.g. minimax regret) so that ex-ante optimal decision rules stay dynamically consistent after seeing data. Paper B is multi-agent general-equilibrium asset pricing: it derives parameter restrictions guaranteeing existence of a Radner equilibrium and long-run trader survival. Beyond both being intertemporal economics with the word 'dynamic', the driving machinery differs entirely — axiomatic decision-rule consistency versus fixed-point/equilibrium-existence analysis with heterogeneous CRRA traders — so no role-for-role mapping of mechanisms holds."
+}

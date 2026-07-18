@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "linear (Lyapunov) spectral stability analysis of a self-similar fixed point/attractor: linearize the dynamics about the invariant solution and classify perturbation modes by the sign of the eigenvalues of the linearized operator (negative = stable, positive = unstable, zero = marginal modes along a continuous symmetry manifold), with a universal Laplacian eigenvalue problem as the leading operator",
+  "brief_reason": "The abstract computes exact perturbation spectra (λ=cot²>0 unstable, λ_m=-sec²<0 stable) about self-similar ensemble solutions, identifies tangent zero modes along a symmetry manifold, and finds the leading stability operator to be a universal angular Laplacian — i.e. eigenvalue-sign classification of linearized perturbations around a fixed point."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "expectation-maximization estimation of a latent-variable finite mixture, in which each component's high-dimensional covariance is compressed onto a shared low-rank (factor) subspace and parsimony is imposed by constraining those factor/scale parameters across components",
+  "brief_reason": "The abstract builds a family of mixture models fit by an AECM (alternating expectation-conditional-maximization) algorithm, using bilinear factor analyzers to reduce dimensionality and constraining parameters over clusters to cut over-parameterization."
+}

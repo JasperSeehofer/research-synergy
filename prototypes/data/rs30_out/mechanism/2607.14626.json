@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a metric-weighted diffusion / random-walk process governed by a Fokker-Planck equation on a curved (Riemannian) manifold, where the geometry reshapes transition rates, first-passage/escape probabilities, and the resulting spectral density",
+  "brief_reason": "The abstract formulates the dynamics as a curvature-weighted random walk solved via the Fokker-Planck equation on a curved background, whose metric stretching alters escape probabilities and low/high-frequency spectral slopes."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "implicit differentiation via the implicit function theorem: computing the gradient of a quantity that is defined implicitly as the solution of a fixed-point/characteristic equation by differentiating that equation directly, instead of unrolling and backpropagating through the iterative solver that produces the solution",
+  "brief_reason": "The abstract reformulates the core gradient step as 'a single characteristic equation' for the fixed-point environment and takes derivatives of that equation rather than of the contraction subroutines, which is exactly implicit differentiation of an implicitly-defined solution."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "recasting an exact-reconstruction task as a per-candidate binary hypothesis test (deciding 'was this specific item sent?' rather than recovering the item), which lets the number of resolvable candidates grow double-exponentially in the resource budget instead of exponentially",
+  "brief_reason": "The abstract replaces message decoding with the receiver merely deciding whether a particular message was sent, and states this hypothesis-testing reformulation yields double-exponential growth in the number of identifiable messages with blocklength."
+}

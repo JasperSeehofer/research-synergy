@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a Blackwell informativeness partial ordering of statistical experiments (extreme/ranked order statistics) whose direction is decided by log-supermodularity (total positivity) of the cumulative hazard / reverse-hazard function of the underlying distribution",
+  "brief_reason": "The abstract establishes that one order statistic is more accurate (Blackwell more informative) than another if and only if the cumulative (reverse) hazard -log F or -log(1-F) is log-supermodular, so the whole method rests on ranking experiments by a total-positivity condition on hazard functions."
+}

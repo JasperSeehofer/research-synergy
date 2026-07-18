@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an empirical power-law scaling relation between a performance/error quantity and an expended-resource quantity, fit on a bounded low-range subset and extrapolated across several orders of magnitude to predict the out-of-sample high-range frontier",
+  "brief_reason": "The abstract fits a power law to the low- and mid-compute predictive-loss-versus-forward-work frontier and shows it extrapolates across multiple orders of magnitude to a held-out high-compute target with R^2=0.941, which is a scaling-law extrapolation of a power-law cost-performance curve."
+}

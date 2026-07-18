@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "fractional-order differencing operator (Grünwald–Letnikov discrete fractional derivative, a power-law-weighted convolution filter) applied to a long-range-dependent self-similar signal to strip out its low-frequency long-memory singularity while preserving the finite-dimensional self-similar scaling, thereby restoring a non-degenerate limiting law for an empirical-process / goodness-of-fit statistic that otherwise collapses across a critical-exponent phase transition",
+  "brief_reason": "The abstract states the GL fractional-derivative filter 'removes the low-frequency long-memory singularity while preserving the finite-dimensional H-self-similarity needed for distributional identification,' repairing the KS empirical-process limit that degenerates via a phase transition at H>1/2."
+}

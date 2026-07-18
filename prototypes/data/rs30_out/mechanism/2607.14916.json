@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Reduction of a governing differential system by exploiting its invariance under a continuous (Lie point) symmetry group: the symmetry generators (here an infinite-dimensional algebra parametrized by arbitrary functions) are used to construct group-invariant reductions that lower the number of independent variables, after which the movable-singularity (Painleve) structure of the reduced equation certifies integrability.",
+  "brief_reason": "The abstract derives point symmetries forming an infinite-dimensional Lie algebra with arbitrary functions, substitutes these into the general symmetry vectors to drive the reduction, and then applies singularity (Painleve) analysis to the resulting lower-order equation as the integrability test."
+}

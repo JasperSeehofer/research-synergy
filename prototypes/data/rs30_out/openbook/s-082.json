@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "stochastic (noise) forcing of the metastable energy-balance model", "b_element": "demographic noise in the finite-population Hawk-Dove game"},
+    {"a_element": "reduced transfer-operator / slow-mode projection separating fast bulk relaxation from the slow escape direction", "b_element": "timescale separation used to reduce the game dynamics"},
+    {"a_element": "long-lived metastable pre-tipping state", "b_element": "long-lasting polymorphic state"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The overlap is only generic: both are noise-driven metastable stochastic systems analyzed with a fast/slow (timescale) reduction. But A's actual transferable machinery -- Ruelle--Pollicott resonance spectral-gap closing, extreme-value tail statistics, and DAHM phase decoherence used as early-warning diagnostics of an approaching tipping -- has no counterpart in B, whose engine is demographic-noise-induced emergence of polymorphism in an evolutionary game; the specific governing processes do not correspond role-for-role."
+}

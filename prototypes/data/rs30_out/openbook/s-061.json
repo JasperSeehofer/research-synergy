@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "the real-world network/graph being represented", "b_element": "the (fluctuating) spacetime being probed"},
+    {"a_element": "a geometric representation of the object (a hyperbolic embedding of the graph)", "b_element": "a combinatorial representation of the object (a simplicial complex built from measurements)"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is the vague theme of assigning a geometric/topological representation to an underlying structure; the actual machinery differs. Paper A performs a metric hyperbolic embedding of a scale-free network to achieve lossless compression, whereas paper B uses projections in an observer's von Neumann algebra to assemble a simplicial complex that captures the topology of spacetime — a metric-embedding optimization versus an algebraic-measurement topological construction, with no role-for-role correspondence of driving equations, thresholds, or processes."
+}

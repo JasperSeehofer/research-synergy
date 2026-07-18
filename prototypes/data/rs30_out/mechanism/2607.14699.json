@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Oblique (weighted-L2) least-squares projection onto a fixed basis via the normal equations, where the basis's Gram matrix is non-diagonal under the true measure, and the exact excess error of substituting the diagonal (orthogonality-assuming) inverse is expressed as a quadratic form in the moments computed from Cholesky factorizations of the associated Hankel moment matrices",
+  "brief_reason": "The abstract states the computation is a weighted-L2 projection whose basis Gram matrix gains off-diagonal terms when orthogonality fails, and gives the exact excess L2 risk of the diagonal rule as a moment quadratic form obtained from two Hankel-Cholesky factorizations and one diagonal solve."
+}

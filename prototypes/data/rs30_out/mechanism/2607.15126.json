@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "asymptotic expansion of an integral by decomposition into distinct scaling regions (method of regions), where a limit acquires an extra 'hidden' scaling region absent in its crossing-related counterpart, so the two limits are no longer analytically connected",
+  "brief_reason": "The abstract expands the amplitude in the collinear limit via the Method of Regions and traces the extra kinematic dependence to a unique hidden region present in one asymptotic limit but absent in the crossing-related one, which breaks the analytic connection between them."
+}

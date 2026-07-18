@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "regularity analysis (local Lipschitz continuity) of the first-focalization / cut-time function of an extremal (geodesic) flow — the boundary time at which a trajectory stops being a local minimizer — used to bound the Hausdorff codimension of its singular (cut) locus",
+  "brief_reason": "The abstract proves the focalization/cut time is locally Lipschitz continuous along the flow, derives quantitative Lipschitz-constant estimates near degenerate (null) directions, and from this regularity concludes the cut locus has Hausdorff codimension at least 1 — a value-function-regularity-to-singular-set-dimension argument."
+}

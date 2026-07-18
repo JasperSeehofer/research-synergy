@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a threshold spreading/contagion process with higher-order (group) coupling that exhibits bistability and a discontinuous (first-order) transition in the steady-state active fraction as a control parameter varies, so the final state depends on the initial active fraction (hysteresis)",
+  "brief_reason": "The abstract reports bistability and discontinuous transitions in prevalence as the immunization fraction varies, with effectiveness depending on initial prevalence — the signature of a higher-order contagion process with a saddle-node/first-order bifurcation and initial-condition-dependent outcomes."
+}

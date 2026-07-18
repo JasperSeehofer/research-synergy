@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a bulk-boundary (dimensional-lift) duality that maps the observables of a lower-dimensional strongly-coupled system onto the geometric flow of a higher-dimensional dynamical system along an added radial 'scale' coordinate, so that distinct asymptotic/interior regimes of that flow are read off from boundary two-point correlators",
+  "brief_reason": "The whole construction is a holographic model in which a strongly coupled boundary field theory is dual to a higher-dimensional interior geometry whose deep-flow regime (Little Rip vs Kasner) is distinguished through boundary heavy-operator correlators."
+}

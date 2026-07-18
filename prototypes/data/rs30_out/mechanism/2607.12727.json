@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "periodic partial resetting of a process's internal state (a renewal process) that segments the evolution into independent intervals, screening long-range correlations so that accumulated independent increments converge to an advection-diffusion (drift plus Gaussian spreading) limit with small residual corrections",
+  "brief_reason": "The abstract describes periodically resetting only the internal degrees of freedom while preserving position, with each restart fragmenting the state into independent secondary sources that screen long-range correlations and yield a drifted-diffusion regime whose drift and diffusivity are set by the reset period, exactly a partial-reset renewal process producing an advection-diffusion limit."
+}

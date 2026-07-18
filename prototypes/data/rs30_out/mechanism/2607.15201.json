@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "ancilla-assisted probe-coupling readout that encodes a nonlinear scalar functional of a system's state directly onto the measurement probabilities of an auxiliary register via controlled coupling operations, bypassing full state reconstruction",
+  "brief_reason": "The abstract states the scheme introduces auxiliary qubits and specific controlled unitary operations to map the analytical expressions of the entanglement measures onto the output-state measurement probabilities, enabling direct quantitative measurement without full state tomography."
+}

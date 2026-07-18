@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "recovery of the interior coefficients of a governing field equation from boundary source-to-response (Dirichlet-to-Neumann) measurements, achieved by probing the medium with specially constructed exponentially-weighted oscillating test solutions and exponential-weight (Carleman) energy estimates that reduce coefficient identifiability to inversion of an integral (X-ray/Radon-type) transform",
+  "brief_reason": "The abstract frames the work as an inverse problem of uniquely determining a PDE's coefficients from a partial Dirichlet-to-Neumann map, using special solutions, Carleman estimates with nonlinear weights, and partial-data results for the X-ray transform."
+}

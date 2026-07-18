@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "scale-to-scale flux of a conserved quantity across a continuum/hierarchy of scales (a turbulent cascade), diagnosed by the sign and magnitude of the spectral flux — forward/direct versus upscale/inverse transfer — together with power-law scaling of the modal energy spectrum, all governed by a single dimensionless control ratio that drives a sequence of regime transitions",
+  "brief_reason": "The abstract's method rests on measuring spectral energy transfer across scales (predominantly forward, with negative perpendicular flux at large scales interpreted as anisotropic redistribution rather than a true inverse cascade) and steepening one-dimensional power-law energy spectra as a single control parameter (the Froude number) is swept through successive regimes."
+}

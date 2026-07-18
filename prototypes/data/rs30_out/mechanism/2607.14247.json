@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a feedback-driven sequential-allocation / optimal-stopping policy that maps an observed state signal to a predicted minimal additional resource increment needed to cross a success threshold, deciding each round whether the target is already met, how much more to allocate, or whether to abandon",
+  "brief_reason": "The abstract's method learns a mapping from an observed quality measure to the minimum extra budget for successful completion and makes per-item early decisions (already decodable / how many more increments needed / abandon), which is a predictive state-to-threshold stopping-and-allocation rule over repeated attempts."
+}

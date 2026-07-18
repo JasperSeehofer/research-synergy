@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "capacity-constrained (rate-distortion) optimization: maximizing expected payoff subject to a bound on the mutual information between environment states and outputs, yielding a Gibbs/softmax output distribution that interpolates between deterministic optimization at infinite capacity and a fixed prior at zero capacity",
+  "brief_reason": "The abstract models the agent as a finite-capacity information channel that compresses its world to the detail attention affords so its output is a probability distribution, recovering the deterministic optimum in the unlimited-attention limit and a fixed default (habit/prior) in the zero-attention limit — the signature of payoff maximization under a channel-capacity/mutual-information constraint."
+}

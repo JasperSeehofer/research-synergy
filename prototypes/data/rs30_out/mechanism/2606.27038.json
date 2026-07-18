@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "beyond-all-orders (exponential) asymptotics: a two-scale singular-perturbation expansion carried to high order whose divergent asymptotic series is optimally truncated to expose an exponentially small correction invisible at every finite order",
+  "brief_reason": "The abstract carries a multiple-scale (slow/fast) perturbation analysis to arbitrarily large order, confronts the divergent asymptotic series, and uses optimal truncation to extract a non-trivial exponentially small phase shift — the signature of asymptotics beyond all orders."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "confidence-bound-based sequential allocation over a finite set of actions (a stochastic multi-armed bandit) that balances exploration and exploitation via concentration-inequality confidence intervals to achieve logarithmic cumulative regret against the best fixed action, matching the Lai-Robbins lower bound",
+  "brief_reason": "The abstract formulates choosing the interval k as a stochastic multi-armed bandit and proposes Hoeffding- and Bernstein-based lower-confidence-bound algorithms achieving O(K log T) regret matching the Lai-Robbins bound, which is exactly the confidence-bound exploration-exploitation trade-off underlying bandit allocation."
+}

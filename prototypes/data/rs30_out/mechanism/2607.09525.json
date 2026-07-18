@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a Hopf bifurcation birthing a self-sustained limit-cycle oscillation whose single nonlinear (cubic/autocatalytic) term pumps energy into a phase-locked ladder of evenly spaced harmonics of one fundamental frequency (a frequency comb), with successive harmonics monotonically weakening",
+  "brief_reason": "The abstract derives a Hopf bifurcation condition, identifies the trimolecular autocatalytic term as the sole source of nonlinear harmonic content, and reports that above threshold the oscillation yields a fundamental with a long, evenly spaced, monotonically weakening ladder of harmonics."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a solution-generating (orbit) construction that takes a single seed solution of a variational energy-minimization problem and deforms it into a parametrized family of new solutions of the same and related energy functionals",
+  "brief_reason": "The abstract builds families of harmonic maps (critical points of the Dirichlet energy) from one fixed harmonic map via Toth's machinery that generates eigenmaps from a given eigenmap, then reuses these families to construct solutions of associated variational problems (biharmonic, p-harmonic, polyharmonic)."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a cumulative-advantage (preferential-reinforcement) stochastic process in which the selection probability of an option is weighted by a latent, accumulating state variable rather than raw frequency, producing heavy-tailed frequency inequalities and long-lived dominance that is occasionally overturned by rare large fluctuations reshaping the ranking",
+  "brief_reason": "The abstract drives name selection by the prestige accumulated by prior rulers bearing the same name (reinforcement of a hidden accumulating variable), reproducing pronounced frequency inequality, persistence of dominant names, and abrupt rises triggered by rare historical events."
+}

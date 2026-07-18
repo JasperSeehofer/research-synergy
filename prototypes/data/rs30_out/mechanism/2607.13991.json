@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "time-dependent diffusive transport of a population injected from a localized source through a medium, where energy- and distance-dependent propagation reshapes the injected spectrum before the transported population reacts with a separate static target field to produce the observable signal",
+  "brief_reason": "The abstract models particles that escape a source and propagate through the interstellar medium with transport-induced spectral modifications, then interact with (illuminate) nearby molecular gas to generate the emission, i.e. a source-injection plus transport plus target-interaction chain."
+}

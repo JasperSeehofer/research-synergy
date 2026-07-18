@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Bayesian model-based estimation of an aggregate expectation: instead of averaging raw samples with a direct ratio estimator, sample data are stratified by an equivalence class and used to infer latent per-class probability and value models constrained by priors that enforce known asymptotic limits, with a flexible learner fitting only the residual on top of the constrained baseline, and the target expectation reconstructed analytically from the combined models.",
+  "brief_reason": "The abstract recasts the arithmetic calculation of an observable as a statistical inference problem in which samples binned by conjugacy class train prior-constrained baseline models (enforcing known asymptotic limits) plus an LSTM that learns only the residual correlations, and the overall quantity is inferred from these models rather than from a direct ratio estimator."
+}

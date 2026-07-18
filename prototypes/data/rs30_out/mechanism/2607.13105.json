@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "concatenation of error-correcting block codes — composing an outer maximum-distance-separable algebraic (finite-field) code with an inner repetition code and decoding hierarchically in stages, so the composite error-suppression exponent multiplies and the residual failure probability scales as a high power of the per-element failure probability",
+  "brief_reason": "The Tornado architecture wraps every position of an outer Reed-Solomon code in an inner distance-three repetition code and decodes in two stages (majority vote then lookup table), driving the logical error rate to scale as p^6 versus p^2 and p^3 for the two constituent codes alone."
+}

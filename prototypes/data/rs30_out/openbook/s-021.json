@@ -1,0 +1,7 @@
+{
+  "mapping": [
+    {"a_element": "critical coupling parameters m_hat_01, m_hat_02 dividing parameter space into distinct topological phases", "b_element": "critical bond dimension separating ordered/disordered regimes of the lattice model"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A classifies regular black-hole thermodynamics via phi-mapping topological current theory, assigning winding numbers and a global topological charge W to horizon defects; paper B estimates lattice critical points using Kramers-Wannier-type duality combined with a star-triangle transformation on permutation models. Beyond the generic notion of a threshold that separates regimes, the driving machinery is entirely different (winding-number/topological-charge classification versus lattice self-duality), and no role-for-role mapping of the core processes holds."
+}

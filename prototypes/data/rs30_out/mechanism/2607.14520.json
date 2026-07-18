@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reservoir computing with a higher-order-moment readout: inputs drive a fixed nonlinear stochastic dynamical system, and the elementwise polynomial moments of its finite-time response (mean, second, fourth) form a high-dimensional feature vector on which a linear map is trained, with several heterogeneous reservoirs fused into one joint feature representation",
+  "brief_reason": "The abstract represents each driven reservoir by a response vector built from the raw polynomial moments E[x], E[x^2], E[x^4] of its fluctuating dynamics and fuses three heterogeneous reservoirs into a joint 2304-dimensional representation feeding a trained classifier, which is a driven-dynamical-system feature map with a linear readout (reservoir computing) generalized to higher-order response statistics."
+}

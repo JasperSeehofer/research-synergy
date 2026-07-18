@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "narrowband resonant absorption feeding a single-quantum counting readout, so weak continuous-signal detection reduces to a shot-noise (Poisson) limited counting problem over an array of tuned resonant cells, with uncorrelated background suppressed by cross-element coincidence and sensitivity traded between narrowband long-integration accumulation and broadband transient (matched) detection",
+  "brief_reason": "The abstract casts the stationary source as a 'shot-noise-limited counting problem' best served by a 'narrow, resonance-enhanced, long-integration search' using an array of resonant cells read out by single-phonon sensors whose segmentation provides favourable counting statistics and coincidence-based background rejection, versus a fast broad-band coincidence search for the transient chirp."
+}

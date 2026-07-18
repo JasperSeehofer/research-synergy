@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A kinetic (Boltzmann-type) transport equation for a phase-space density of many elastically interacting quasiparticles, in which pairwise collisions produce cumulative position shifts that renormalize each particle's effective propagation velocity through a self-consistent integral over the distribution",
+  "brief_reason": "The abstract formulates a general system of kinetic equations for a non-stationary gas of elastically interacting line solitons and validates its predictions for soliton-gas interactions against direct N-body simulations, which is precisely a collisional kinetic-transport description of a density over the particles' spectral parameters."
+}

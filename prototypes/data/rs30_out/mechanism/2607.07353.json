@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reference-dependent valuation: a value function scoring the signed deviation of an agent's state from a reference level derived from the population, with asymmetric (kinked) sensitivity to positive versus negative deviations around that reference point",
+  "brief_reason": "The best-fitting model evaluates outcomes by contrasting envy and pride (upward vs downward comparisons to peers) through a Prospect-Theory value function, which is exactly an asymmetric reference-dependent scoring of deviations from a comparison reference."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "the Stokes phenomenon of asymptotic analysis — the abrupt switching-on of an exponentially subdominant solution branch as a parameter is varied across a Stokes line near a turning point, which connects an exponentially amplifying (gap) branch to the scattered branches of a linear equation, with a nonlinear saturation term arresting the growth into a stable localized (soliton) mode",
+  "brief_reason": "The abstract states that two otherwise-distinct processes (amplification inside a momentum k gap and scattering at a boundary) are 'connected by the time domain Stokes phenomenon,' i.e. an asymptotic Stokes connection between dominant and subdominant branches that also seeds mode conversion, with Kerr nonlinearity saturating the unbounded amplification into stabilized solitons."
+}

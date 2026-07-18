@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A is an empirical, information-theoretic characterization of ranking time series (permanence distributions, chart-similarity decay, rank-turbulence divergence, entropy, trajectory clustering) with no generative model, whereas Paper B is a mechanistic stochastic evolutionary-game analysis of the Hawk-Dove game using timescale separation and demographic noise to explain monomorphism vs. polymorphism; the only overlap is the generic theme of temporal/'stochastic' dynamics and persistence, not a shared governing process, so no role-for-role mapping holds."
+}

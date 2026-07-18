@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "nearest-neighbor analog forecasting: predict a trajectory's next state by finding the closest previously-observed state in a reference set, advancing along its recorded temporal successor, and linearly blending that with the current state",
+  "brief_reason": "The abstract states the method produces forecasts through a linear blend of the current latent state and the nearest in-context neighbor and its temporal successor, which is exactly nearest-neighbor analog prediction interpolated with the present state."
+}

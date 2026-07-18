@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "spectral eigenfunction decomposition of an integral (covariance) operator — a Karhunen-Loève/Mercer expansion — that diagonalizes a correlated random field into a truncated sum of orthogonal, statistically independent modes ranked by eigenvalue",
+  "brief_reason": "The method represents a Gaussian random field via a KL expansion whose basis functions and weights are the eigenpairs of the integral eigenvalue problem for the covariance kernel, reducing the field to a finite set of independent spectral modes."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a percolation-type connectivity phase transition on a two-dimensional medium, where absence of an infinite connected component exactly at the critical threshold is derived axiomatically from monotonicity, ergodicity/stationarity, positive association (FKG-type positive correlations), and a quantitative decoupling (correlation-decay) condition",
+  "brief_reason": "The abstract establishes a general criterion for no infinite connected components at criticality in dependent percolation from an abstract set of hypotheses (monotonicity, stationarity, ergodicity, positive association, quantitative decoupling, continuity in the parameter), which is exactly a threshold connectivity/percolation transition characterized through positive correlations plus correlation decay rather than a specific model."
+}

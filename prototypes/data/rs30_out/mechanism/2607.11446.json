@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Memory/relaxation characterization of a discrete-time stochastic process over ranked states, combining heavy-tailed residence-time (dwell/survival) distributions with the decay of overlap-similarity between successive configurations (temporal autocorrelation) and the entropy of state-to-state transitions as a predictability measure",
+  "brief_reason": "The abstract analyzes an evolving ranking by its permanence (dwell-time) distribution, how fast similarity between successive charts decays, and entropy of rank movements, which together amount to quantifying the memory, persistence, and unpredictability of a stochastic process on ranked states."
+}

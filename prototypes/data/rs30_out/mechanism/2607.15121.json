@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "synchronous (lock-in / phase-sensitive) detection: correlating a noisy input against a periodic reference modulation at a known carrier frequency and integrating to recover a weak coherent component, with the reference waveform shaped to be smooth/triangular so its spectrum is compact and side-lobe (spectral) leakage is suppressed",
+  "brief_reason": "The abstract recovers weak signals buried in noise by modulating the probe at the signal frequency and demodulating, and replaces pulsed (square-wave) modulation with adiabatically-generated triangular modulation specifically to eliminate spectral leakage, which is the defining move of shaped-reference synchronous detection."
+}

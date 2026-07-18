@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "deciding whether two structured objects lie in the same orbit under a group of symmetry transformations (an isomorphism / orbit-membership decision problem), whose conjectured computational intractability is used as a one-way hardness assumption",
+  "brief_reason": "The abstract's entire subject is the 'code equivalence problem and its variants,' relating problem formulations, algorithmic attacks, and 'hardness assumptions' about the 'hardness of code equivalence,' which is precisely an equivalence-under-group-action (isomorphism) decision problem leveraged as a hardness primitive."
+}

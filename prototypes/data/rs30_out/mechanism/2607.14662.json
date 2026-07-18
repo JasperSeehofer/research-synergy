@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "cobordism-theoretic classification (Thom) used as an algebraic-topological obstruction detecting whether a homology cycle admits a manifold representative (Steenrod realizability), yielding invariants that differ on general simplicial complexes versus manifolds",
+  "brief_reason": "The abstract classifies the phases via ordinary cohomology plus beyond-cohomology contributions and recasts them through Thom's cobordism theory answering Steenrod's question of homology cycles without manifold representatives, with Dijkgraaf-Witten invariants that are nontrivial on simplicial complexes but trivial on manifolds."
+}

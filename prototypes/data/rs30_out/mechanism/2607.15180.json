@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Expectation-Maximization-style alternating (block-coordinate) estimation that iterates between inferring hidden states from partial noisy observations via a forward-backward recursive Bayesian smoother (Kalman/RTS fixed-interval smoothing on a state-space model) and gradient-based fitting of the model's unknown parameters given those smoothed trajectories, repeated until convergence",
+  "brief_reason": "The abstract describes a two-stage loop that alternates a Rauch-Tung-Striebel smoother to infer latent states (parameters fixed) with backpropagation to estimate parameters (states fixed), iterating until a criterion is met, which is the canonical coordinate-ascent/EM pattern of smoother-based state inference plus parameter update."
+}

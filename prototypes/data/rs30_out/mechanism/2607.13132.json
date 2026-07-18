@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A localized energy/momentum source term injected into the compressible-fluid conservation equations (mass, momentum, energy), driving outflows that heat and redistribute the surrounding continuum, with the thermodynamic response inversely sensitive to the local medium density",
+  "brief_reason": "The method injects energy and momentum from a driving source into a fluid medium and its central result is that the heating imprint is only ~10% in dense cores/filaments but ~100% in under-dense regions, exposing the transferable machinery as source-driven compressible transport whose footprint scales inversely with ambient density."
+}

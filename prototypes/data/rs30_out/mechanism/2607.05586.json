@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A driven accretion/growth process in which a system's cumulative size scales sublinearly (as a power law) with the number of triggering events, so the rate of creating new elements decelerates over time (Heaps'-law-type diminishing-novelty scaling)",
+  "brief_reason": "The abstract reports the rule-book growing exponentially in time yet sublinearly with matches played and new situations spawning new rules at a decelerating rate — a sublinear scaling of accumulated novelty against cumulative driving events — with the additional signature of abrupt phase transitions in the growing regulatory network."
+}

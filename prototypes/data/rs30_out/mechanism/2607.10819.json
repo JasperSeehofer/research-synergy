@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a large-system (many-particle) limit in which a microscopic biasing parameter becomes self-averaging and asymptotically irrelevant, so two structurally different stochastic allocation rules converge to the same limiting distribution of a macroscopic observable",
+  "brief_reason": "The abstract shows that the priority-based rule's advantage vanishes as the market grows large under a random ensemble, converging to the same incidence of justified envy as a priority-blind rule -- a large-system limit where a microscopic distinguishing parameter washes out."
+}

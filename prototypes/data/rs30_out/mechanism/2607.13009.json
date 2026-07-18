@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "nonparametric smoothing-spline reconstruction of a latent function from noisy indirect measurements, followed by a localized-residual significance test that flags a statistically significant bump-like departure of the reconstructed curve from a reference-model baseline",
+  "brief_reason": "The abstract builds a model-independent spline reconstruction from noisy observational data and then identifies a localized ~3.5-sigma deviation over a bounded interval relative to a reference (LambdaCDM) prediction, validated against reconstruction bias via mock analyses."
+}

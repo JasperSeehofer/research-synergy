@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "provisional macro-frame set by the initial prompt (problem, representations, assumptions, criteria)", "b_element": "persistent long-horizon memory of the scene"},
+    {"a_element": "each subsequent learner turn maintaining/specifying/challenging/repairing/transforming the frame", "b_element": "periodic gradient-based memory updates"},
+    {"a_element": "prompt framing trajectory (the ordered sequence of prompt-response-uptake turns)", "b_element": "the stream of incoming per-frame video observations over time"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is a loose metaphor of maintaining and iteratively updating a persistent state across a sequence (frames vs. prompt turns), not shared transferable machinery: paper A is a qualitative epistemological/educational framework about human interpretation and disciplinary framing of LLM prompts, whereas paper B is a concrete deep-learning system defined by gradient-based Test-Time-Training memory updates, cross-view attention, an auxiliary memory loss, and caching to prevent catastrophic drift. There is no common governing equation, threshold, or estimation/optimization process linking them, so no role-for-role mechanism mapping holds."
+}

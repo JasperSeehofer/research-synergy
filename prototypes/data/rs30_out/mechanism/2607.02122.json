@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A phase-locked-loop feedback dynamics — a nonlinear control loop that feeds back the phase error between an oscillator and a reference to drive phase/frequency toward lock — tuned so the closed loop produces self-sustained slow-fast (bursting) limit-cycle oscillations.",
+  "brief_reason": "The abstract states the device is a circuit implementation of the equations of a phase-locked-loop system, with phenomenological equations adjusted to reproduce the demanded bursting oscillatory regimes."
+}

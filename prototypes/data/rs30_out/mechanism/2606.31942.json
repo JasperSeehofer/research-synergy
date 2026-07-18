@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a self-referential spatial growth process in which the range at which new offspring/sub-units are seeded scales as a power law of the current system size (offspring distance ~ size^μ), giving governing dynamical equations whose single exponent μ tunes between qualitatively distinct asymptotic regimes — linear, power-law, exponential, and finite-time blow-up",
+  "brief_reason": "The abstract couples the dispersal range of a colony to its own linear size as r^μ and derives dynamical equations whose exponent μ selects among linear expansion, power-law growth, exponential growth, and finite-time blow-up, i.e. a size-dependent positive-feedback expansion law with a tunable-exponent bifurcation between growth regimes including a movable singularity."
+}

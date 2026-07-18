@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "frequency-domain multipath interference of time-delayed contributions on a network, where linear scattering at graph vertices superposes signals carrying path-dependent phase delays, so that a reflection null occurs only when the delays synchronize and commensurable delay differences generate a periodic comb of frequency-selective cancellation zeros",
+  "brief_reason": "The abstract reduces transparency at a junction to synchronization of path travel times, with the upstream reflection governed in frequency space by the width-weighted distribution of path delays and commensurable path-length differences producing a periodic comb of frequency-selective zeros."
+}

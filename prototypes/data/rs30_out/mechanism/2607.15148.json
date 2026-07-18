@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "branch-and-bound tree search for a mixed-integer optimization: recursively partition a combinatorial selection space and prune subtrees using bounds to find the global optimum of a continuous objective under a discrete subset-selection (cardinality) constraint",
+  "brief_reason": "The abstract formulates a joint discrete-activation-plus-continuous-design problem as a mixed-integer optimization with a limit on the number of active sub-units and solves it optimally with a branch-and-bound algorithm."
+}

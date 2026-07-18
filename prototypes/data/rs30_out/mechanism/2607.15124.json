@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "implicit differentiation (implicit-function-theorem sensitivity analysis): obtaining forward and adjoint parameter derivatives of a quantity defined implicitly by a fixed-point/contraction condition by solving a sparse linear system, instead of unrolling and backpropagating through the iterative solver",
+  "brief_reason": "The abstract's method is a sparse linear solver that computes forward and backward derivatives of the (implicitly defined, contracted) network with respect to its defining parameters 'in an implicit way,' providing a gradient primitive that avoids the instabilities of unrolled automatic differentiation."
+}

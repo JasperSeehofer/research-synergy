@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A is a solid-state gravitational-wave detector whose core machinery is signal detection via cryogenic single-phonon counting statistics, resonant long-integration versus broad-band coincidence-tagged searches; Paper B's machinery is a quantum-circuit algorithm that applies controlled unitary transformations to ancilla qubits to map entanglement invariants (concurrence, 3-tangle) onto output measurement probabilities. Beyond the generic notion of extracting a quantity from measurement outcomes, there is no shared governing process, equation, or role-for-role structure, so the machinery differs."
+}

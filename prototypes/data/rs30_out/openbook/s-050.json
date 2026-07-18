@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "the predictor-to-target alignment map from higher-frequency indicators to the low-frequency forecast target", "b_element": "the parameter-to-feature map from model parameters to dynamical observables"},
+    {"a_element": "depth-separable neural network approximating that map in the forward direction to produce a prediction", "b_element": "conditional score-based diffusion model used in the inverse direction to sample parameters consistent with target features"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The overlap is only generic (both fit neural-network maps over dynamical/time-series data). Paper A does forward, discriminative function approximation with a non-asymptotic prediction error bound, whereas Paper B does the opposite operation: it characterizes and generatively samples the inverse image (pre-image) of a parameter-to-feature map via score-based diffusion, reasoning about codimension and manifold geometry. Forward point-forecast approximation versus generative inverse-problem sampling are different underlying machinery, so no role-for-role correspondence of the core mechanism holds."
+}

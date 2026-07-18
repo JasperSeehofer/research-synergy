@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a coupled latent-state state-space dynamical system, in which external inputs drive a chain of coupled internal state-transition maps that produce observable outputs, with convergence and robustness certified via contraction and input-to-state stability of the state dynamics",
+  "brief_reason": "The abstract proposes a modular state-space model whose coupled mappings link inputs to outputs through latent internal states and for which it establishes boundedness, forward invariance, contraction under constant input, and input-to-state stability."
+}

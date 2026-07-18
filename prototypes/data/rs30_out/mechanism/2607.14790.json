@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Bayesian posterior inference of a credible upper bound on a dispersion-relation parameter from its imprint on the shape of a two-point angular correlation function of a signal measured across an array of sensors, with the constraint carried by the quadrupolar (spherical-harmonic) component of that correlation",
+  "brief_reason": "The abstract models a modified dispersion relation and its tensor angular-correlation function, then performs Bayesian inference on angular-correlation measurements to set credible upper limits, noting the bounds are driven by the quadrupolar term rather than monopole/dipole contributions."
+}

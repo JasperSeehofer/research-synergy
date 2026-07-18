@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A masked dual-axis attention mechanism that weights each observation against both its own present variables (within-record) and other observations in the batch (between-record relational coupling), excluding missing entries from the attention weights so inference runs directly on partially observed records instead of filling in the gaps",
+  "brief_reason": "The abstract's method jointly models within-patient feature dependencies and between-patient relational structure through masked and intersample attention to learn directly from partially observed records rather than imputing them (with a downstream mask-proportional uncertainty adjustment)."
+}

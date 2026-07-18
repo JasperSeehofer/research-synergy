@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "asymptotic fluctuation analysis of the ratio of two coupled additive (partial-sum) processes, obtaining exact moments of the ratio as a one-dimensional integral of the increment pair's joint moment-generating function, with an Edgeworth expansion refining the central-limit-theorem Gaussian and a Laplace/saddle-point evaluation yielding the leading O(1/n) bias and variance constants",
+  "brief_reason": "The abstract studies R_n = Λ_n/Σ_n, a ratio of two random cumulative sums over n increments, deriving every integer moment as a one-dimensional integral of single-increment moment generating functions, an Edgeworth CDF approximation more accurate than the CLT, and closed-form 1/n bias and variance constants via the Laplace method."
+}

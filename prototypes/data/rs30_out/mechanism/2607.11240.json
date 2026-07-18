@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a two-stage imperfect-information screening/signaling game solved by perfect Bayesian equilibrium, exhibiting a ratchet effect under limited commitment: because the principal can re-use agents' first-stage revealed signals when setting second-stage terms, agents anticipate ex-post extraction and shade or pool their early moves, and full commitment collapses the game to the static optimal-mechanism benchmark",
+  "brief_reason": "The abstract frames the setting as a two-stage auction with verifiable messages where an early bid is both offer and signal, and shows a ratchet distortion (builders shade/pool anticipating ex-post extraction) that is a commitment failure eliminated under full commitment where the optimum reduces to the static Myerson auction."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "detection of a stability-boundary crossing in a coupled continuous-time dynamical system, using a Lyapunov-based stability criterion on the joint state of two mutually-coupled subsystems to flag the transition from a stable basin of attraction into an unstable regime",
+  "brief_reason": "The abstract models two coupled subsystems whose joint latent state is monitored by a Stability Manifold classifier that detects boundary crossing via Lyapunov-inspired stability metrics, i.e. flagging loss of stability in a coupled dynamical system."
+}

@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "iterative online process (compactly supported Metropolis fixed-point walk) updating a running state", "b_element": "iterative doctor-proposing cumulative offer process updating a running allocation"},
+    {"a_element": "the fixed point / stationary state the walk converges to", "b_element": "the greatest stable allocation (greatest element of the lattice) the offer process terminates at"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is the generic idea of an iterative process converging to a 'fixed point', but the driving machinery differs: paper A uses a stochastic Metropolis random walk (probabilistic/martingale control of prefix discrepancy in combinatorial discrepancy theory), whereas paper B uses an order-theoretic monotone process on a finite lattice of stable allocations (Knaster-Tarski-style greatest fixed point under the Blair order in matching/market design). No role-for-role mapping of the actual mechanisms holds, so this is shared vocabulary, not shared machinery."
+}

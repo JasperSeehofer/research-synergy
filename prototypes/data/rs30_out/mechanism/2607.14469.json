@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A Lipschitz-type continuity/stability bound that controls the variation of a scalar functional by a metric distance between the perturbed and reference states, with the bound's tightness certified by an attaining example and refined via alternative distance measures",
+  "brief_reason": "The abstract establishes a continuity bound on the leakage functional in terms of the trace distance between ideal and perturbed states, shows it is attainable, and derives fidelity- and relative-entropy-based sufficient conditions bounding the functional's variation."
+}

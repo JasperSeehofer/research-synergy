@@ -1,0 +1,11 @@
+{
+  "mapping": [
+    {"a_element": "subjective risk: the expectation of a strictly proper loss (e.g. reverse cross-entropy) that serves as the scalar information functional to be decomposed", "b_element": "expected path log-likelihood: the expectation of the Radon-Nikodym log-derivative of the true path law against a clamped reference law"},
+    {"a_element": "additive decomposition of the subjective risk into interpretable terms", "b_element": "additive separation of the path log-likelihood (equivalently multiplicative separation of the Radon-Nikodym derivative)"},
+    {"a_element": "aleatoric uncertainty: the irreducible entropy term left after decomposition", "b_element": "the separable/factorised component of the path law obtained when boundary (Markov-blanket) factorisation holds exactly"},
+    {"a_element": "epistemic uncertainty: the reducible divergence term (a KL/mutual-information-type quantity) recovered by the reverse-cross-entropy decomposition", "b_element": "conditional mutual information, i.e. the relative entropy between the true boundary-conditioned path law and the product of its conditional marginals, measuring the residual coupling when factorisation fails"},
+    {"a_element": "the reverse-cross-entropy = entropy + divergence identity underlying the UQ split", "b_element": "the relative-entropy chain rule expressing a joint law's departure from a product factorisation as a (conditional) mutual information"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both papers run the same machinery: the additive decomposition of a relative-entropy / log-likelihood functional into an irreducible entropy term plus a mutual-information-type divergence that quantifies the reducible or coupling part. Paper A's aleatoric/epistemic split of a subjective risk (via reverse cross-entropy = entropy + KL) is structurally the same entropy-plus-mutual-information decomposition that Paper B uses to detect path-law factorisation and to measure the residual coupling by conditional mutual information."
+}

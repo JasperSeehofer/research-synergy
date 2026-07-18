@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "distributional reinforcement learning — an entropy-regularized actor-critic policy-optimization scheme for a Markov sequential-decision process that learns the full probability distribution of the discounted cumulative return rather than only its expected value, using that distribution to stabilize the learned policy",
+  "brief_reason": "The abstract's method is a refined distributional soft actor-critic (DSAC-T) that 'models return distributions rather than only expected values' to improve policy stability, which is the defining machinery of distributional reinforcement learning."
+}

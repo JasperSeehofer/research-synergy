@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "spectral-norm (operator-norm) concentration of a random matrix around its expectation, treated as a low-rank signal-plus-noise decomposition whose latent structure is recovered from the leading eigenspace via perturbation bounds",
+  "brief_reason": "The abstract's core results are a high-probability bound on the operator norm of the deviation from the mean, followed by recovery of the latent geometry (vectors and Gram matrix) and exact label recovery from the leading eigenspace, i.e. extracting a low-rank signal from a concentrated random matrix."
+}

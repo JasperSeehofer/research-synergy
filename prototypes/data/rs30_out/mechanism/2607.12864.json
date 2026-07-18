@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Fisher-KPP-type reaction-diffusion front propagation: a traveling wave invading an unstable/empty state at a selected (linearly determined) spreading speed, with lineage/tracer tracing of which components accumulate at the advancing front",
+  "brief_reason": "The abstract analyses an infinite system of reaction-diffusion PDEs with a Fisher-KPP condition to derive the spreading speed into an empty habitat and uses a tracer dynamics approach to track which sub-populations are carried at the propagating wave front."
+}

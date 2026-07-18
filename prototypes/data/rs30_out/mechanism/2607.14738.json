@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A cluster-weighted Shannon entropy of a partition-induced distribution over an ensemble: partition population members into behavioral groups, weight each group's occupancy probability by that group's internal complexity, and take the entropy of the resulting weighted distribution, which additively decomposes total complexity into a within-group (individual) term and a between-group (diversity) term, estimated by a strongly consistent empirical plug-in estimator for a fixed finite partition.",
+  "brief_reason": "The abstract defines CWMMSE as a weighted entropy of the population's pattern distribution formed by grouping trajectories into patterns and weighting each by its dynamical complexity, explicitly separating individual complexity from population diversity via a strongly consistent plug-in estimator on a fixed finite partition."
+}

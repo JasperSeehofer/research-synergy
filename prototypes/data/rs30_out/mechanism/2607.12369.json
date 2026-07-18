@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "penalized segmentation of an ordered, serially-dependent sequence into piecewise-homogeneous blocks by placing boundaries where the empirical distribution shifts, with the number of boundaries chosen by a complexity-penalized model-selection criterion whose guarantee rests on a uniform (DKW/Rademacher-type) concentration bound for the empirical distribution of a dependent process",
+  "brief_reason": "The abstract detects distribution-change points in a Markovian (non-i.i.d.) sequence by bridging a DKW-type concentration inequality derived from Rademacher complexities of regenerating Markov chains with an adaptive clustering algorithm that recovers segment boundaries via penalisation."
+}

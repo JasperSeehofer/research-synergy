@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "universal large-size asymptotics of a counting sequence extracted from the singularity/scaling structure of its generating function, with the leading term fixed by the continuum limit of an orthogonal-polynomial three-term recurrence governed by an integrable nonlinear (Painlevé) equation, so the asymptotic depends on only finitely many parameters",
+  "brief_reason": "The abstract obtains a 'universal' leading-order asymptotic depending on finitely many characteristics by combining analytic combinatorics of several variables (singularity analysis of a multivariate generating function) with the recurrence coefficients of a family of orthogonal polynomials whose constant factor is tied to the Painlevé I equation."
+}

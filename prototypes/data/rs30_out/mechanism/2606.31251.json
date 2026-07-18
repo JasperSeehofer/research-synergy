@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "covariate-conditioned distributional regression, in which every parameter (location, scale, and shape) of a parametric response distribution is modelled as a function of external state variables, so that comparisons are made between conditional distributions rather than single summary statistics",
+  "brief_reason": "The abstract fits a GAMLSS with a Zero-Adjusted Gamma response whose location, scale, and shape parameters are conditioned on regime covariates (realised volatility and cumulative momentum), then compares expected value and variance analytically across regimes with parametric bootstrap tests."
+}

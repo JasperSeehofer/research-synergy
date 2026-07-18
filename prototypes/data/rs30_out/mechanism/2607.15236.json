@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "linear-response (retarded Green's function / spectral-function) probe of a non-back-reacting test field in a fixed nonlinear background, where the background is obtained from an exact first integral (conserved quantity) of the nonlinear governing equation and treated perturbatively in a weak-coupling expansion around the solvable limit",
+  "brief_reason": "The abstract derives an exact first integral of the gauge equation to fix the background in the probe approximation and then computes the retarded Green's function and spectral function of a probe field to track how the small quartic coupling shifts response observables (peak location, weight, threshold)."
+}

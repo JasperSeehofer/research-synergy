@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a self-duality argument that locates a system's critical threshold as the fixed point of a duality transformation, implemented on a local star-triangle (Y-Delta) rewiring unit rather than a single bond as the finite basis element",
+  "brief_reason": "The abstract performs a duality analysis in conjunction with the star-triangle transformation, takes the star-triangle block (not a bare bond) as the finite-basis unit, and reads off critical thresholds from the resulting single-bond duality relation."
+}

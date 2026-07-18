@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "non-adiabatic excitation of a quantized mode whose effective frequency/gap is modulated by a slowly-rolling then oscillating time-dependent background, producing a sequence of Landau-Zener-type transitions at each non-adiabatic passage with occupation saturating against a hard exclusion (fermionic Pauli) bound",
+  "brief_reason": "The abstract describes a rolling/oscillating background driving 'repeated non-adiabatic production events' with a helicity-dependent effective momentum, momentum cutoff, and Pauli blocking, which is the generic machinery of driven non-adiabatic (Landau-Zener) mode excitation with exclusion-limited occupation."
+}

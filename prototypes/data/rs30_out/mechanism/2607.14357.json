@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "An exact regret-gap (optimality-gap) identity characterizing incentive compatibility: the value of deviating from a faithful input to a constrained agent/optimizer equals the regret of the agent's realized action against the best action reachable within its feasible set, so honest input is optimal exactly when that regret is zero (a fixed-point condition), which in turn forces an impossibility trilemma among three properties where any two preclude the third.",
+  "brief_reason": "The abstract states 'the most a principal can gain by misreporting equals the regret of the proxy's honest-report action against those the principal could have steered it to take,' and that honest self-description is optimal exactly when the proxy already plays the best action it can reach, with the derived guardrail trilemma (binding, truthful, capability-preserving) as a direct consequence."
+}

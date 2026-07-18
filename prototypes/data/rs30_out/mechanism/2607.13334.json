@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A two-parameter sensitivity bound that quantifies how much an unobserved latent factor could bias a linear estimate, by parameterizing the bias through the fractions of residual variance that the factor could share with two observed quantities (partial correlations / partial R-squared), together with a between-group vs. within-group variance decomposition that discards the variance component the latent factor cannot span.",
+  "brief_reason": "The abstract parameterizes omitted-variable bias via two partial-R-squared parameters (residual variation an omitted confounder explains in the treatment and in the outcome) and corrects the bound by separating between- and within-group variation, since only between-group variance is reachable by a group-level confounder."
+}

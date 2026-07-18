@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "spontaneous breaking of a discrete order-two (Z2) symmetry of a driven dynamical system: solutions either remain invariant under the involution (imposing a parity selection rule that admits locking only at odd harmonics) or appear as degenerate symmetry-conjugate pairs, one member being selected at a bifurcation while the pair collectively restores the symmetry",
+  "brief_reason": "The abstract identifies antiperiodic orbits as exactly those invariant under the half-period-shift involution S:(x,x_dot,t)->(-x,-x_dot,t+T_d/2), yielding a parity selection rule (odd-multiple locking) for invariant orbits and symmetry-conjugate pairs with one member selected by spontaneous symmetry breaking near bifurcations for non-invariant ones."
+}

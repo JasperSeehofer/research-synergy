@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a distributional-balance (covariate-balance) diagnostic that checks whether reweighting an observationally-sampled sequential process equalizes the distribution of state variables across the decision/intervention arms of a memoryless (Markov) multi-step process, used as a test for hidden confounding / distributional mismatch between the sampling regime and the counterfactual target regime",
+  "brief_reason": "The abstract frames the method as applying covariate balance diagnostics to a long-horizon Markov decision process to detect hidden confounding/model mis-specification, i.e. testing whether the sampled state distribution is balanced across treatment arms."
+}

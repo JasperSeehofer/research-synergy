@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an attention-based (Transformer) sequence-to-sequence model trained end-to-end as a single learned inverse map that reconstructs a source signal from its noisy, redundantly-encoded observation, collapsing a cascade of separately-designed estimation/decoding stages into one jointly-optimized estimator, with large-scale pre-training for zero-shot transfer to unseen conditions",
+  "brief_reason": "The abstract describes a grouped error-correction-code Transformer performing symbol-level decoding that fuses the previously separate inner and outer receivers into a single framework mapping received signals directly to recovered bits, with a multi-stage pre-training strategy giving zero-shot generalization to new configurations."
+}

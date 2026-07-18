@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a latent-state sequence model (hidden Markov chain) that resolves observation aliasing by allocating many hidden states ('clones') to each emitted symbol, so that the hidden transition graph can be recovered from ambiguous observation/action sequences — with inference recast from expectation-maximization to end-to-end gradient descent",
+  "brief_reason": "The abstract describes CSCG learning an interpretable latent map (adjacency graph) from heavily aliased observations by cloning hidden states behind repeated sensory patterns, reformulated from its EM form into a fully differentiable module trained by gradient flow."
+}

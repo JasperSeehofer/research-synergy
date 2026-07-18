@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Nash-equilibrium fixed point of a linear-quadratic game on a network, in which each node's equilibrium action equals its Katz-Bonacich centrality, layered with an assortative-matching optimization that pairs node types to positions to shape the incentive structure",
+  "brief_reason": "The abstract states equilibrium effort rises with a position's Katz-Bonacich centrality in the competition network and that the planner jointly optimizes the assignment (positive/negative assortative matching) and the evaluation weight, which is the signature of a network linear-quadratic game solved by centrality coupled to a matching problem."
+}

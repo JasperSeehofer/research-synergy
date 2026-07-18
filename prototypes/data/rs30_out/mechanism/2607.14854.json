@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "uniform (turning-point / WKB-Olver) asymptotic reduction that maps one second-order linear differential equation onto a solvable canonical reference equation by matching their phase integrals (actions) across the turning point, giving an approximation that stays smooth through the turning point and becomes exact in a limiting case",
+  "brief_reason": "The abstract's central development is a 'leading-order Olver construction' that maps the curved radial equation onto the flat spherical Bessel equation 'by matching their actions through the turning point,' yielding an approximation exact in the flat limit and smooth through the turning point."
+}

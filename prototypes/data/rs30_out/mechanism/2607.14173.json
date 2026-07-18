@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "classification of a system's solution branches by the integer winding numbers (topological degree / index) of a vector field around its zeros, summing to a conserved global topological charge, with critical parameter thresholds triggering bifurcations that change the winding-number signature",
+  "brief_reason": "The abstract uses phi-mapping topological current theory to assign winding-number signatures and a global topological charge W to solution branches, and identifies critical coupling parameters that partition parameter space into distinct topological phases by altering that winding-number structure."
+}

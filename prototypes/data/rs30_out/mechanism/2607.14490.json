@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reduction of a continuous-time deterministic dynamical system to a discrete finite-alphabet symbol sequence by intersecting its trajectories with a transversal surface to form a return map (Poincare-section symbolic dynamics), with the partition boundaries placed using rank-order (ordinal) encodings of successive states and the operator-spectral (Koopman) linear representation of the nonlinear evolution",
+  "brief_reason": "The abstract achieves symbolic partitioning of continuous chaotic flows by constructing candidate Poincare sections from ordinal patterns and combining them with a Koopman-analysis-based return-map approach, thereby coarse-graining continuous trajectories into discrete symbol sequences."
+}

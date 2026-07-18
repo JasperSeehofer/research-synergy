@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "singular-perturbation (Gamma-convergence) limit of a two-term energy in which a vanishing parameter balances a multi-well bulk potential against a higher-order gradient penalty, so that as the parameter goes to zero the functional converges to a sharp-interface energy concentrated on the transition layers between wells",
+  "brief_reason": "The abstract studies a parameter-epsilon functional summing a well potential W times 1/epsilon and an epsilon-weighted second-gradient penalty, and proves it Gamma-converges to a local interfacial energy on laminate-type configurations, i.e. a Modica-Mortola-type sharp-interface asymptotic reduction."
+}

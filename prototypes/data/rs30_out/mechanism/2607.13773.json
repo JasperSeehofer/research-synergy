@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "iterative algebraic dressing (Darboux-transformation) of an integrable nonlinear system's linear spectral/Lax pair, generating new exact localized solutions from a seed background solution, with the eigenvalue/pole data (zeros and poles in the spectral complex plane) encoding an integer topological winding/monopole index",
+  "brief_reason": "The abstract derives its soliton families 'via the Darboux transformation method' from a plane-wave seed of an integrable (Fokas-Lenells) system and reports that a topological 'virtual monopole field' is fixed by the intensity zeros and poles in the complex plane, which is the classic spectral-dressing-plus-winding-number machinery."
+}

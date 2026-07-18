@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "constrained convex optimization of the weights of a linear combination of correlated random variables to minimize a risk functional (variance or the expected value in the tail beyond a quantile, i.e. CVaR/expected shortfall) traded off against expected reward, exploiting the covariance/dependence structure among components",
+  "brief_reason": "The abstract's whole method rests on choosing allocation weights across correlated funds under linear (long-only / long-short) constraints to minimize variance or CVaR against a return objective, which is exactly a mean-variance/CVaR constrained convex allocation over dependent components."
+}

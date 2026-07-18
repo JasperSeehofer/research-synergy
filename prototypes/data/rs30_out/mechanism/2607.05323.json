@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "detection of invariance under a group symmetry operation by cross-recurrence: comparing a trajectory in state space against its image under a candidate symmetry transformation (an involution composed with a phase/time shift) and quantifying how densely the two coincide, so a high coincidence rate certifies the dynamics respects the symmetry",
+  "brief_reason": "The abstract builds an 'anti-recurrence plot' from the cross recurrence between a trajectory and its point-reflected image and uses a high anti-recurrence rate to detect when the system's state is the symmetry-transformed image of its half-period-earlier state."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a tunable homotopy/interpolation parameter that continuously deforms a system's governing evolution equation between an exact fully-coupled description and a self-consistent (state-dependent) mean-field closure, driving a crossover between collective many-unit and effective single-unit behaviour",
+  "brief_reason": "The method rests on introducing an interpolation parameter between the fully coupled (quantum) Hamiltonian and a state-dependent mean-field description, tracked via dissipative Gisin-Schrodinger relaxation dynamics to trace the crossover between the two regimes."
+}

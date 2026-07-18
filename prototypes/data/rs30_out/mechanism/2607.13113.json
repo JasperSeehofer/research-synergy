@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "amortized simulation-based (likelihood-free) inference: training a neural estimator on synthetic realizations drawn from a generative stochastic model with intractable likelihood to recover its parameters, with the parameter space decomposed so a tractable component is estimated in closed form and only the intractable-likelihood latent component is inferred via simulation",
+  "brief_reason": "The abstract estimates the latent-field parameters of a doubly-stochastic (Cox) generative model by simulation-based inference with neural networks, splitting off a classical Poisson estimate for the first-order parameters, which is exactly a likelihood-free neural-estimator scheme layered on a profiling/two-step parameter decomposition."
+}

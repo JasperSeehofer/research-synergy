@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "mutual-invasibility criterion for coexistence: each interacting component's invasion growth rate is evaluated against the other's single-component steady state, and positivity of both boundary invasion rates guarantees persistence of the coupled system",
+  "brief_reason": "The abstract's central result is that mutual invasibility of each species' monospecific equilibrium is a sufficient (and, per the simulations, near-necessary) condition for long-time survival of both populations in the coupled dynamical model."
+}

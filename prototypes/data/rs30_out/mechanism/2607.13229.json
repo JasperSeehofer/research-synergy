@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "anomalous (superdiffusive) transport governed by a fractional-Laplacian nonlocal diffusion equation, derived as the anomalous-scaling hydrodynamic limit (t ~ n^{3/2}) of a microscopic stochastic exchange process, with nonlocal boundary operators at the domain endpoints",
+  "brief_reason": "The abstract proves that the microscopic energy profile of a stochastic chain converges under superdiffusive time scaling to a temperature field solving a fractional heat equation whose generator is a fractional Laplacian with additional nonlocal boundary terms."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a sharp critical-exponent threshold in a control parameter that separates a bounded/well-posed regime from an unbounded/ill-posed one, located by balancing the high-frequency growth of a nonlinear multi-mode interaction (collision) integral against the geometry of the resonance (conservation-law) manifold on which those interactions are supported",
+  "brief_reason": "The abstract identifies an explicit critical exponent s_c=4β+3-a/2 above which trilinear bounds give well-posedness and below which resonantly-concentrated data force ill-posedness, with the threshold set by the competition between the kernel's high-frequency strength and the geometry of the resonant manifold."
+}

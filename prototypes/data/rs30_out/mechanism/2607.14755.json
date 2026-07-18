@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "budget-constrained combinatorial subset selection of basis elements that tighten a convergent convex (semidefinite) relaxation bound, where the elements' contributions are non-additive (higher-order synergistic) so that global stochastic search beats greedy selection",
+  "brief_reason": "The abstract reframes moment selection as combinatorial subset selection under a fixed computational budget, shows it is governed by higher-order synergistic interactions among moments quantified by a synergy diagnostic, and solves it with stochastic global-optimization methods that substantially outperform greedy approaches."
+}

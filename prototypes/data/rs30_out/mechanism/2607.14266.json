@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "random-time (Poisson-rate) exchange coupling of otherwise-independent stochastic diffusion processes — a Markov-modulated jump-diffusion in which system states are permuted/swapped at random instants, with the transition density governed by a forward Kolmogorov (master) equation",
+  "brief_reason": "The abstract describes two independently evolving jump-diffusion particles whose positions are exchanged at random times (a continuous-time replica-exchange), for which it derives a forward Kolmogorov equation for the transition density and compares this random swapping to regime-switching."
+}

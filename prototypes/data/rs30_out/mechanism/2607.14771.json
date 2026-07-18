@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a weight-tied (parameter-shared) deep compositional nonlinear map that recursively fuses streams sampled at different rates onto a common resolution — replacing a fixed linear projection with a stagewise-shared learned operator whose depth grows with the number of inputs — accompanied by a universal-approximation result and a non-asymptotic error bound",
+  "brief_reason": "The abstract replaces linear frequency alignment with a per-frequency deep network using parameter sharing across stages to allow deeper networks for more high-frequency inputs, and proves an approximation theory plus a non-asymptotic prediction-error bound for this shared compositional map."
+}

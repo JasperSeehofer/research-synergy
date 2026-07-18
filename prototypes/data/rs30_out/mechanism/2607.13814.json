@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "short-time parametrix construction for a linear evolution semigroup: an approximate fundamental-solution (propagator kernel) built as a leading short-time asymptotic term plus a controllably small remainder that approximately inverts the generator, then bootstrapped into resolvent and spectral (eigenvalue-counting / pseudospectral) estimates",
+  "brief_reason": "The abstract builds a short-time parametrix for the Fokker–Planck semigroup and uses this approximate short-time propagator to derive an approximate polar decomposition, a resolvent parametrix, pseudospectral estimates, and eigenvalue-count asymptotics, which is the generic machinery of approximating a linear evolution semigroup's kernel to extract spectral information."
+}

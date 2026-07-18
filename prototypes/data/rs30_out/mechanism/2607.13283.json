@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "comparative statistical model selection over a fixed set of competing hypotheses evaluated against common data, ranked jointly by Bayesian evidence (marginal-likelihood/posterior model comparison) and frequentist test statistics, with systematic robustness/sensitivity analysis across data subsets and analysis choices",
+  "brief_reason": "The abstract subjects fourteen candidate models to a common analysis using shared datasets and likelihoods, scores them with both Bayesian and Frequentist tests of performance, and then re-checks the leading ones under alternative datasets and cuts — i.e. a standardized multi-hypothesis model-comparison-plus-robustness protocol."
+}

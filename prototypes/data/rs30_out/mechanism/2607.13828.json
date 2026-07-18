@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an entropy-conserving streaming transformation that converts a maximum-entropy i.i.d. symbol source into draws from an arbitrary target distribution at expected cost equal to the distribution's Shannon entropy, realized by recursive interval subdivision (arithmetic-coding duality) but with a bounded, recycled local state instead of unbounded global precision",
+  "brief_reason": "The abstract generates samples X_i ~ F_i from fair coin flips using at most E[H(F_1)+...+H(F_n)] + O(log n) flips (the Shannon-entropy optimum) by replacing the global arithmetic-decoding scheme with a local discrete-uniform state, which is exactly an entropy-optimal interval-subdivision/source-coding mechanism operating with bounded recycled state."
+}

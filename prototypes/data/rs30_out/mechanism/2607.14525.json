@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "conditional normalising flow: an invertible change-of-variables map that transforms a simple base distribution into a complex target probability distribution conditioned on observed inputs, giving a tractable estimate of the full conditional density",
+  "brief_reason": "The abstract's method estimates full conditional probability distributions of a target variable directly from multi-band input maps using conditional normalising flows, i.e. a learned invertible transform that yields a conditional density rather than a point estimate."
+}

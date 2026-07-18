@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "proximal-gradient (operator-splitting) fixed-point iteration that alternates a gradient step on a smooth cost with an approximate proximal map, whose convergence to a stationary point follows an O(1/K) rate plus an additive error term proportional to the average squared deviation of the applied map from the exact proximal operator",
+  "brief_reason": "The abstract frames each denoising update as an inexact proximal step in a proximal-gradient-descent scheme and derives a stationarity bound decaying at O(1/K) with an extra term proportional to the average squared proximal mismatch, which is exactly an operator-splitting fixed-point iteration with an inexact-operator error bound."
+}

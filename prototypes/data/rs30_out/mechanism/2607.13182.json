@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "shape-constrained (log-concavity) maximum-likelihood reconstruction of a latent continuous density from interval-aggregated (grouped/binned) counts, using the concavity-of-the-log convex constraint plus a moment (mean) matching adjustment in place of a tunable smoothing/bandwidth parameter",
+  "brief_reason": "The abstract recovers the density of ungrouped data from interval occurrence-counts by imposing a log-concave shape constraint with a mean adjustment, giving a bandwidth-free, distribution-free estimator — i.e. constrained optimization under a shape restriction rather than kernel smoothing."
+}

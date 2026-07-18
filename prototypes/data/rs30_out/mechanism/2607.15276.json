@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "convergence of an outcome-conditioned ensemble to a universal fixed-point distribution, whose relaxation timescale is gated by a correlation/information-transfer channel between two regions with a logarithmic-in-distance light cone (finite, distance-independent timescale in the special case of perfect information transmission)",
+  "brief_reason": "The abstract describes subsystems approaching a universal state ensemble under conditioning on random measurement outcomes, with the approach and the entanglement-transfer that bounds it scaling logarithmically with the separation between regions (and becoming finite when randomness is perfectly transmitted), i.e. a conditioning-driven relaxation to a fixed-point ensemble limited by a logarithmic correlation-propagation channel."
+}

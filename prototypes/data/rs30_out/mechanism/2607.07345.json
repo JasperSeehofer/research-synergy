@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "generation of exact, doubly-localized soliton (lump) solutions of an integrable nonlinear wave equation by iterated Darboux-transformation dressing of a seed background solution, with an external transport term entering the localization coordinate as a continuous geometric deformation parameter",
+  "brief_reason": "The abstract builds exact fundamental and higher-order localized solutions on a background via the Darboux transformation of an integrable system, then shows a control term entering the localization coordinate continuously deforms the whole hierarchy of solutions."
+}

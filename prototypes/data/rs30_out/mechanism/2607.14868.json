@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A geometry-induced (curvature) linear coupling that mixes an otherwise-decoupled transverse mode into the channel of an antisymmetric, time-reversal-odd ('Hall') response tensor, so that second-order (mean-square) geometric distortion rectifies into a steady, definite-sign directed output",
+  "brief_reason": "The abstract states that static curvature converts normal (flexural) motion into in-plane strain, opening a Hall-active channel whose time average over isotropic ripples has a definite sign fixed by the Hall viscosity, yielding a steady torque proportional to the mean-square curvature."
+}

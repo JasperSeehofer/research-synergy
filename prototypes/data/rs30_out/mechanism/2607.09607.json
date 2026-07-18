@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "modulational (Benjamin–Feir-type) instability of a uniform steady state of a nonlinear dispersive wave equation, where a finite-wavelength perturbation band grows and the balance between dispersion/diffraction and competing (focusing–defocusing) nonlinearity self-organizes the energy into a periodic train of stable self-localized solitary waves under a confining potential",
+  "brief_reason": "The abstract analyzes the modulational instability of continuous-wave solutions of a cubic-quintic nonlinear (Schrödinger-type) system in a trapping potential and finds the resulting stable states to be periodic chains of self-trapped solitons, which is precisely a dispersion-versus-nonlinearity balance turning a uniform state's finite-wavelength instability into a lattice of solitary waves."
+}

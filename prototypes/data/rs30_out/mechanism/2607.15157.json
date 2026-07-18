@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "sparse Bayesian variable selection via a spike-and-slab mixture prior, with a stochastic (MCMC-style) search over the discrete inclusion space yielding per-component posterior inclusion probabilities",
+  "brief_reason": "The abstract's method rests on a spike-and-slab prior that promotes sparsity over a large set of candidate components, explored by a stochastic search algorithm that returns posterior inclusion probabilities quantifying each candidate's relevance."
+}

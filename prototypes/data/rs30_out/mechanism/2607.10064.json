@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "axiomatic uniqueness characterization — proving that a single aggregation/selection rule is the ONLY map satisfying a given minimal set of mutually independent, individually-necessary axioms (a representation/characterization theorem)",
+  "brief_reason": "The abstract's whole result is that one rule 'is the only rule that satisfies' an enumerated list of properties and that 'all axioms are necessary', which is precisely a uniqueness-by-independent-axioms characterization theorem."
+}

@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A is nonlinear elliptic PDE regularity theory, deriving pointwise gradient bounds for obstacle problems with measure data via Riesz potentials of the data; Paper B is quantum many-body resource theory, relating stabilizer-Renyi-entropy curvature to quantum Fisher information and building Clifford pruning circuits on forest graphs. The governing objects, equations, and processes have no role-for-role correspondence, so no shared transferable machinery holds."
+}

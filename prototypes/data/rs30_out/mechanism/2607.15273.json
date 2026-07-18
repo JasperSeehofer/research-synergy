@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a differential identity (fundamental-theorem-of-calculus relation) linking the average of a rate field over a finite interval to its instantaneous pointwise value plus the interval-derivative of that average, used to reconstruct the pointwise field from the interval-averaged one so that an objective defined on the pointwise field can be transported onto the averaged representation while sampling still uses the averaged field",
+  "brief_reason": "The abstract builds the method on the 'MeanFlow identity, which bridges average and instantaneous velocities' to construct an induced instantaneous-velocity predictor, making an objective defined on instantaneous velocities well-defined for the average-velocity generator without changing how sampling uses the average velocity."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Reference-carrier-assisted coherent phase estimation: locking to a strong co-propagating pilot/carrier tone to recover the phase of a much weaker co-transmitted signal at very low signal-to-noise ratio, so the weak signal can be coherently demodulated despite a dominant co-channel interferer while excess noise is held below a critical threshold that separates a positive extractable-information rate from zero.",
+  "brief_reason": "The abstract states the method rests on 'residual-carrier-assisted' phase recovery to solve low-SNR phase estimation for weak quantum states coexisting with strong classical channels, i.e. using a shared strong carrier as a phase reference to demodulate a weak co-propagating signal while keeping the excess-noise budget below the point where the secret-key (extractable-information) rate would vanish."
+}

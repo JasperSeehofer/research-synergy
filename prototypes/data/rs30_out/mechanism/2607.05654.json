@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "two-state differential comparison of local edge weights on a weighted graph, localizing nodes/regions where connection strength significantly increases versus decreases between the two conditions",
+  "brief_reason": "The abstract represents the system as a network of small regions with structural connectivity weights and contrasts two states (demented vs. healthy) to pinpoint sub-structures with decreased connectivity (hippocampus, temporal lobe) versus increased connectivity (precuneus, cuneus, insula), which is a per-node two-condition contrast of a weighted graph's local connectivity."
+}

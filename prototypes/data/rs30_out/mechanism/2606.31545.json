@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "codimension-2 bifurcation organizing center (a cusp-of-cycles / generalized-Hopf point) that, together with saddle-node bifurcations of periodic orbits, generates detached (disconnected) branches of limit cycles — isolas — and coexisting stable oscillatory states, yielding parameter-threshold-dependent onset and multistable selection among periodic attractors",
+  "brief_reason": "The abstract centers on bifurcation-theory / numerical-continuation analysis in which a codimension-2 cusp-of-cycles point plus saddle-node bifurcations of limit cycles create isolated branches of periodic orbits and coexisting stable oscillations, giving threshold-dependent onset and multistability."
+}

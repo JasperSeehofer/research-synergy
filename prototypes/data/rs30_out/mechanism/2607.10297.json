@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "random-matrix-theory spectral denoising of a sample correlation matrix, using the Marchenko-Pastur bound on the noise eigenvalue spectrum as a threshold to separate signal-carrying eigenmodes from statistical-noise eigenmodes and reconstruct a cleaned operator from only the above-threshold modes",
+  "brief_reason": "The abstract applies spectral decomposition to split an empirical correlation matrix into a structured component tied to eigenvalues exceeding the Marchenko-Pastur bounds and a random component below them, reconstructing the signal from a handful of top eigenmodes."
+}

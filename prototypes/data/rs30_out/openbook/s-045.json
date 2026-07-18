@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "self-duality / anti-self-duality of 2-forms (Hodge involution on differential forms)", "b_element": "particle-hole symmetry (\"duality\") protecting sectors at half-filling"},
+    {"a_element": "SO(3) gauge symmetry and its removal by polar decomposition / index theorem", "b_element": "discrete point-group symmetry and Mulliken classification of eigenstates"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The overlap is only lexical (\"self-dual\"/\"duality\" and \"symmetry\"): paper A solves a nonlinear elliptic Yang-Mills PDE on a 4-manifold using the Hodge self-dual/anti-self-dual splitting of 2-forms plus gauge-fixing and a Fredholm index theorem, whereas paper B diagonalizes a finite-dimensional tight-binding Hubbard Hamiltonian and classifies eigenstates by point-group representations with particle-hole duality. Continuous gauge-theoretic PDE machinery versus discrete quantum spectral/representation-theory machinery do not correspond role-for-role, so no shared underlying method holds."
+}

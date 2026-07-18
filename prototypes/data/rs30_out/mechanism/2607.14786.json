@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "non-normal transient amplification: a locally-estimated linear operator whose non-orthogonal eigenvectors let perturbations grow transiently along a different direction than they entered, even while every eigenvalue decays (asymptotic stability), with a critical non-orthogonality threshold K_c separating amplifying from purely decaying regimes",
+  "brief_reason": "The abstract states amplification is 'geometric rather than spectral' — asymptotic decay coexists with strong transient growth because input directions are re-expressed along non-orthogonal response directions, quantified by eigenvector non-orthogonality K relative to a threshold K_c(Δ), which is exactly the non-normal transient-growth mechanism."
+}

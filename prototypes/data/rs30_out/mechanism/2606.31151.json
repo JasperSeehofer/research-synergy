@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Causal-state (epsilon-machine) reconstruction of a stochastic process: partitioning histories into minimal equivalence classes that share identical conditional future distributions to build a probabilistic finite-state (hidden-Markov) machine, whose entropy over transition probabilities between causal states serves as an order parameter detecting a qualitative change in the machine's structure as a control parameter is tuned.",
+  "brief_reason": "The abstract works 'from the perspective of the epsilon-machine,' using transition probabilities between causal states to define an entropy that acts as an effective order parameter marking a switch in predictability (a phase transition tied to topological change) as the drive frequency is varied."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "uncertainty-guided sequential experimental design (Bayesian active learning): iteratively selecting the next probe that most reduces posterior ambiguity of a Beta-Bernoulli belief over a sparse interaction matrix, so the full matrix is reconstructed from a small fraction of measurements",
+  "brief_reason": "The abstract combines Beta-Bernoulli connectivity inference with an ambiguity-based acquisition heuristic and learned priors to pick informative perturbations under a limited trial budget, recovering an exhaustive connectome from only 5% of trials."
+}

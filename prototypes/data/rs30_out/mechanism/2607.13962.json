@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an order-by-order asymptotic perturbative expansion in a small coupling parameter whose dominant large-logarithmic terms near a phase-space boundary are collected and resummed to all orders into a closed form factor",
+  "brief_reason": "The abstract builds fixed-order perturbative calculations up to four loops in which large logarithms appear and are then resummed to all orders into form factors, which is the generic small-parameter expansion-plus-leading-log-resummation machinery."
+}

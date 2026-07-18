@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "delay-coordinate (Takens) embedding of a scalar time series into a point cloud followed by a Vietoris-Rips persistent-homology filtration, yielding time-varying Betti numbers that quantify the topology of the reconstructed state-space attractor",
+  "brief_reason": "The abstract builds its features from sliding-window Takens delay embeddings and Vietoris-Rips filtrations that extract Dynamic Betti Curves characterizing the geometric/topological architecture of the signal rather than its energy."
+}

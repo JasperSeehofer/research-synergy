@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "spatially heterogeneous, patchy soil (pores of varying structure/chemistry)", "b_element": "spatially heterogeneous landscape composed of two habitat types"},
+    {"a_element": "bacterial populations living and growing within the environment", "b_element": "the two competing species whose populations are tracked"},
+    {"a_element": "coarse-graining from the single pore up through the mesoscale to the landscape", "b_element": "finite-dimensional ODE model that approximates the continuous dynamics by averaging over a finite number of habitat types"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only real overlap is the shared theme of biological populations in a spatially heterogeneous environment: paper A is a review of the physics of bacterial motility, growth, and sensing under two-way bacteria-soil feedback, with no specified governing dynamical system, whereas paper B's transferable machinery is a rigorous competition-persistence theory (integro-differential/ODE population dynamics with a mutual-invasibility criterion for coexistence). Paper A contains no second competing species, no invasion criterion, and no explicit governing equation, so the coexistence/invasibility machinery that drives B is absent, leaving only surface-level correspondences rather than a shared mechanism."
+}

@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "fluctuations on top of a multi-component field configuration (the multi-vector condensate)", "b_element": "fluctuations of the temperature field decomposed into harmonic/spectral modes"},
+    {"a_element": "weak-mixing vs strong-mixing regime of the coupled vector-field perturbations", "b_element": "harmonization of slow modes and broadening/decoherence of the DAHM phase distribution"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The overlap is only the generic notion of a multi-component field whose perturbations can mix, but the driving machinery differs: paper A is inflationary misalignment production of vector dark matter constrained by non-Gaussianity and isocurvature statistics, whereas paper B is transfer-operator spectral analysis (Ruelle--Pollicott resonances), extreme value theory, and data-adaptive harmonic modes detecting a metastable climate tipping transition. There is no shared governing process -- no critical slowing down / tipping in A and no misalignment / cosmological production in B -- so no coherent role-for-role mapping of the actual mechanism holds."
+}

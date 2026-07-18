@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reconfigurable add-drop multiplexing that partitions a shared broadband (frequency-multiplexed) resource into paired channels and switchably routes those pairs among a set of nodes, dynamically realizing arbitrary point-to-multipoint topologies (full-mesh, partial-mesh, sliced sub-networks) with programmable resource allocation",
+  "brief_reason": "The abstract's method rests on a reconfigurable optical add-drop multiplexer that dynamically distributes frequency-correlated pairs from one broadband source to six users, allocating pairwise links to form programmable full-mesh, partial-mesh, and sliced network configurations."
+}

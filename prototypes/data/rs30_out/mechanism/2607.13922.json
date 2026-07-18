@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "dynamic self-affine scaling of a stochastically roughening front, in which the fluctuation width grows as a power law in time (growth exponent) and saturates as a power law in system size (roughness exponent), collapsing onto a single universal scaling function that defines a universality class",
+  "brief_reason": "The abstract characterizes the growth model entirely by its Family-Vicsek scaling of interface width with measured growth exponent beta and roughness exponent alpha (with finite-size corrections), which is precisely the power-law-in-time / power-law-in-size dynamic scaling machinery that classifies stochastic roughening into universality classes, with the Cauchy-Lorentz-distributed height increments signaling heavy-tailed jump statistics."
+}

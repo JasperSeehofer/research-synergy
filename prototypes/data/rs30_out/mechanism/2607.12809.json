@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Bias correction for informative (non-ignorable) sampling by conditioning on a constructed proxy covariate — a function of the local density/spacing of the sample points (nearest-neighbour distances) — that captures the stochastic dependence between where samples are taken and the latent field, restoring conditional independence (ignorability) so standard estimators become unbiased.",
+  "brief_reason": "The abstract removes the bias created when sampling locations depend stochastically on the underlying spatial process by adding a covariate built from average nearest-neighbour distances that captures that dependence, after which conventional inference can be applied without a more complex joint model."
+}

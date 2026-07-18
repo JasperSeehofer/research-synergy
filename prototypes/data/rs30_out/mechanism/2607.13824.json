@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Combinatorial occupation-statistics entropy of a lattice gas: counting the ways to place N occupied units on a fixed set of sites so that entropy equals the logarithm of that configuration count, with the equilibrium filling fixed by extremizing this entropy under a chemical-potential / particle-number constraint",
+  "brief_reason": "The abstract resolves the system into N total sites with N occupied, obtains the entropy directly from the combinatorics of this partial occupation (maximal-entropy filling giving the leading term plus logarithmic and inverse-size corrections), and introduces a chemical potential in an extended first law to select the equilibrium occupation, which is exactly a lattice-gas occupation-number statistical model."
+}

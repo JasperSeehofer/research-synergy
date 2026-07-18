@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "adapting a frozen high-dimensional feature representation with a small set of learnable query vectors that aggregate the fixed feature set through softmax-weighted (cross-attention) pooling, so few free parameters retune the whole model while the attention weights double as an intrinsic importance/localization distribution over the input elements",
+  "brief_reason": "The abstract keeps a frozen encoder and learns only a handful of prompt tokens that act as queries in a cross-attention layer over the fixed patch features, with those same attention maps providing spatial explainability as a structural consequence of the architecture."
+}

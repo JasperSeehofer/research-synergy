@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a sharp information-theoretic recovery threshold for identifying a hidden one-to-one correspondence between two noisy copies of a random structure, where feasibility is governed by a self-overlap order parameter measuring how well the structure can imitate itself under a non-trivial relabelling",
+  "brief_reason": "The abstract characterizes when a hidden matching between correlated random graphs can be recovered by deriving sharp feasibility thresholds controlled by a new 'self-overlap' parameter quantifying the structure's near-symmetry under a non-trivial relabelling."
+}

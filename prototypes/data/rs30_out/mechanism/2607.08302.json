@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "dissipative imaginary-time (gradient-flow) evolution of a norm-preserving nonlinear field on a state space under a non-Hermitian generator, whose Hermitian part spreads/broadcasts the field while its anti-Hermitian part relaxes it toward minima of a complex potential landscape, producing a threshold-gated transition to a localized bound state once the well depth and drive exceed critical values",
+  "brief_reason": "The abstract's method rests on a nonlinear Schrodinger-type equation in imaginary time with a non-Hermitian Hamiltonian whose Hermitian/anti-Hermitian parts give spreading versus dissipative localization at potential-well minima, with a bound state emerging only above threshold values of landscape depth and drive."
+}

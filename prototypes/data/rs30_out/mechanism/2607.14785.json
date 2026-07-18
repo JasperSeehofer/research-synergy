@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "overlapping domain decomposition (divide-and-conquer) of a global geometric construction, in which each subdomain is computed independently and only locally-produced elements certified as globally valid by a local geometric criterion (the empty-circumsphere / Delaunay condition) are retained, then overlaps are reconciled by deduplication and boundary stitching to recover the exact global structure",
+  "brief_reason": "The abstract's frozen-core method decomposes the volume into overlapping blocks whose tessellations are filtered by a circumsphere criterion keeping only globally valid tetrahedra and then merges the tiled outputs via core filtering, deduplication, and boundary stitching while preserving the global topology."
+}

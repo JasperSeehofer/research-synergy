@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "decentralized coordination protocol for shared-resource contention avoidance, in which independent agents exchange operational-state data to dynamically de-conflict overlapping access to a common channel (data-sharing-based mutual-exclusion / interference-avoidance scheduling)",
+  "brief_reason": "The abstract is a lessons-learned coordination summary rather than a formal method, but its central machinery is the Operational Data Sharing system through which two parties exchange usage/operational data to mutually avoid overlapping use of a shared spectrum resource — a domain-neutral shared-state exchange for contention/interference avoidance."
+}

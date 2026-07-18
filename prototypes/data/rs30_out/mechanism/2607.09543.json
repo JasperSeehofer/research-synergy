@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "contrastive self-supervised representation learning: learning an embedding by pulling together representations of related (positive) instance pairs and pushing apart unrelated (negative) ones, used as the pretraining objective in place of masked-input reconstruction",
+  "brief_reason": "The abstract's method is a contrastive-pretrained model whose central claim is the viability of contrastive learning as the pretraining objective, ablated against and outperforming masked reconstruction pretraining."
+}

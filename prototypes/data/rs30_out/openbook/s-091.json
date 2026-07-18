@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "the scalar non-Gaussianity functional (squared 2-Wasserstein distance to the Gaussian)", "b_element": "the scalar minimum output p-Renyi entropy functional of a channel"},
+    {"a_element": "linear combination of independent standardized sources", "b_element": "tensor product of two quantum channels fed an entangled input"},
+    {"a_element": "strict inequality: non-Gaussianity of the combination < weighted sum of source non-Gaussianities", "b_element": "nonadditivity: minimum output entropy of the product channel < sum of individual minimum output entropies"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is the abstract shape 'a scalar functional is strictly sub-/non-additive when subsystems are combined,' which is too generic to count as shared machinery. The actual mechanisms differ decisively: A uses optimal-transport (Wasserstein) geometry with a deterministic CLT-driven inequality (mixing Gaussianizes) to identify an ICA unmixing matrix, whereas B constructs correlated random-projection quantum channels whose entangled inputs make minimum output Renyi entropy fail additivity -- different functionals, different combination operations (linear mixture vs. tensor-product channel), and different driving phenomena (transport/CLT vs. quantum entanglement + random matrices)."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "critical slowing down of a mean-reverting stochastic relaxation process, whose restoring rate toward equilibrium weakens as a control parameter approaches a critical threshold, so that recovery time, temporal memory, autocorrelation and variance all grow as generic early-warning signatures of an approaching transition",
+  "brief_reason": "The abstract builds a finite-memory multiplicative reversion (a mean-reverting stochastic process) and reads elevated regimes as showing stronger memory, rising autocorrelation, amplified variance and reduced resilience, i.e. critical slowing down expressed as a loss of restoring capacity near a critical point."
+}

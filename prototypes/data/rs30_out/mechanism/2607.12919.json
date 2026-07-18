@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "identifiability of a latent hidden-variable graphical model — proving that the map from a discrete hidden structure to the observable joint distribution it induces via a Markov process is injective, so the hidden structure is uniquely recoverable from the observed distribution",
+  "brief_reason": "The abstract's entire method rests on establishing that a phylogenetic network's topology is fully identifiable from the leaf-pattern distribution induced by a Markov substitution model, and that distinct hidden structures (network vs. tree) induce distinct observable distributions."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "translating a free-form query into an executable program built only from a closed, typed library of verified operators, then running that program against a structured symbolic representation of each record to select matches (constrained semantic parsing / query-to-program retrieval, rather than direct similarity matching)",
+  "brief_reason": "The abstract encodes each video as structured text and then has an LLM coding agent parse that structured text using functions from a custom parsing library to retrieve records, deliberately restricting the query interpreter to a bounded operator set to curb hallucination."
+}

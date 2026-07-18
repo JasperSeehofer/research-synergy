@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "analog / nearest-neighbor retrieval in a state space: infer the outcome for a current query state by selecting historically similar states and aggregating their behavior into a ranking rule, under a strict causal constraint that only information available at decision time may enter the retrieval",
+  "brief_reason": "The method selects historical macro-analog states similar to the current month, compresses them into a tactical rule used to score factors, and its signal is matched by an explicit kNN macro-analog baseline, showing the machinery is case-based nearest-neighbor prediction from a decision-time-only information set."
+}

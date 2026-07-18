@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "self-attention: representing each element of an ordered sequence as a content-dependent, query-key-similarity-weighted average of all other elements, so that pairwise dependencies across arbitrary distances are captured by a learned weighting kernel",
+  "brief_reason": "The method is a Transformer applied to one-step sequence forecasting, and the Transformer's defining transferable machinery is self-attention that adaptively weights and aggregates all sequence positions, with the cosine-annealing learning-rate schedule and shifted-data-augmentation acting only as training-stabilization add-ons on top of it."
+}

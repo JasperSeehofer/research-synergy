@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "angular-harmonic (Fourier-mode) decomposition of a linearized kinetic transport/relaxation equation in which distinct modes decay at different, mode-parity-dependent relaxation rates, solved via the method of characteristics that recasts the linear transport differential operator as a coupled system of integral equations",
+  "brief_reason": "The abstract frames its whole analysis around even vs. odd angular harmonics of the distribution function relaxing at different rates and explicitly recasts the linearized Boltzmann equation into a system of integral equations using the method of characteristics."
+}

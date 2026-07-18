@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "polar (amplitude-phase) decomposition of a fluctuating complex field into a fixed-phase factor times a fluctuating non-negative magnitude, so the entire hierarchy of moments/correlation functions is determined by the probability distribution of that single magnitude variable, and the first-moment (coherent) amplitude captures only a distribution-set fraction of the mean squared modulus",
+  "brief_reason": "The abstract decomposes the mode operator into phase and density, assumes a well-defined phase with fluctuating density, and derives that the full correlation-function hierarchy follows from the density statistics while the squared mean amplitude equals only (pi/4) of the total density."
+}

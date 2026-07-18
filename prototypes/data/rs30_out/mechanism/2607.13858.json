@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "asymptotic (gradient) expansion of the log-determinant / trace of a perturbed linear operator to extract an effective coupling coefficient, with the otherwise-divergent spectral integrals rendered finite by inserting a smooth entire damping function of the operator's eigenvalues (a spectral cutoff set by a single scale), supplemented by resummation of a borderline divergent series",
+  "brief_reason": "The method obtains the induced coefficient from the derivative expansion of the one-loop fermionic determinant and makes the loop (spectral) integrals converge by using entire form-factor functions of the Dirac operator as a smooth damping/regulator, falling back to an Abel summation prescription when the integral is only marginally divergent."
+}

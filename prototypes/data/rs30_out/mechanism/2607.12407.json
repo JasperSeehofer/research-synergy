@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a two-sample hypothesis test that uses the asymptotic chi-square null distribution of an information-theoretic divergence statistic between two empirical distributions, with a critical-value threshold and an explicit Type I error vs. statistical-power trade-off",
+  "brief_reason": "The abstract derives statistical properties and chi-square benchmark values for divergence measures, establishes that these divergences follow chi-square distributions under the null, and evaluates them by Type I error control and statistical power for detecting distributional shifts."
+}

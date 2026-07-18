@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "embedding a discrete graph into a continuous negatively-curved (hyperbolic) metric space, so that connectivity is encoded as coordinates and pairwise distances in a low-dimensional geometry",
+  "brief_reason": "The abstract rests on representing a network's structure via hyperbolic-geometry embedders that assign geometric coordinates to nodes, exploiting the metric-space representation to losslessly encode (compress) the graph."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Bayesian inference of a hidden binary state (a common/systemic vs. idiosyncratic/localized latent cause) from a partial signal, feeding a threshold decision rule in which each observer acts only when the posterior probability of the common state exceeds a cost-determined cutoff, and the signal's informativeness (the correlation between observers' stakes) controls whether that threshold is crossed.",
+  "brief_reason": "The abstract has bystanders inferring from a first observed attack whether the aggressor's intent is 'particularized' or 'systemic' and abstaining unless that inference is strong enough, with higher costs and lower correlation between victims' fates keeping the posterior below the cutoff to intervene — a latent-type Bayesian inference driving a threshold action rule."
+}

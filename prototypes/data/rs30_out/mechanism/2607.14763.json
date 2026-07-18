@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "pointwise bounding of a solution to a constrained nonlinear diffusion/elliptic operator by convolving its driving source measure with a scale-invariant power-law (Riesz) kernel — a potential-theoretic estimate that translates the distribution of source data into local (gradient) behaviour of the solution",
+  "brief_reason": "The abstract establishes pointwise gradient estimates for solutions of a nonlinear elliptic (obstacle-constrained) problem with measure data expressed in terms of Riesz potentials of that data, i.e. bounding the solution locally via a power-law-kernel convolution of the source."
+}

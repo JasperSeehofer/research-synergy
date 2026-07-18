@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "decomposition of massive momenta and spinors with respect to fixed lightlike vectors n, n-bar to fix a collinear frame", "b_element": "pointwise polar decomposition of the self-dual curvature to fix an orientation-preserving frame and remove gauge freedom"},
+    {"a_element": "gauge fields of the Standard Model whose splitting is computed", "b_element": "SO(3) gauge connection on the bundle of self-dual 2-forms"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A is a perturbative on-shell amplitude bootstrap: it constructs collinear splitting functions via spinor-helicity variables, matching to massless three- and four-point amplitudes and a recursive substitution rule from a light-front Galilean symmetry. Paper B is a geometric-analytic reformulation of the Yang-Mills equation on a 4-manifold as an exactly-determined elliptic second-order PDE studied with a variational principle, elliptic regularity, and a Fredholm index theorem. There is no role-for-role correspondence between an algebraic amplitude recursion and an elliptic existence/regularity theory; the shared 'gauge theory', 'frame/decomposition', and 'spinor/self-dual' terms are vocabulary, not transferable machinery."
+}

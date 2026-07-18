@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "soft (overlapping) partitioning of a graph's nodes into groups by first sparsifying the network to a 'backbone' subgraph that retains only its structurally most significant edges and then inferring multi-membership cluster assignments on that reduced skeleton",
+  "brief_reason": "The abstract's method rests on exploiting the 'sparse backbone of the input network' to make scalable community inference that assigns nodes to possibly multiple clusters, i.e. graph sparsification feeding an overlapping node-clustering procedure."
+}

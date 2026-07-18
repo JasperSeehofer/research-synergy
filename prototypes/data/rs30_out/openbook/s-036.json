@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A is a leakage-controlled retrieval-augmented LLM forecasting pipeline evaluated by Spearman rank information coefficient (macro-analog kNN retrieval, critic/actor LLMs, statistical benchmarking of equity-factor rankings), whereas Paper B is a computational-mechanics (epsilon-machine) analysis of a chaotic optomechanical system where causal-state transition probabilities define an entropy order parameter marking a topological phase transition in phase space. The only overlap is the loose word 'predictability/uncertainty'; there is no shared governing process (no branching, dynamical law, estimation principle, or transition threshold common to both), so no role-for-role mapping holds."
+}

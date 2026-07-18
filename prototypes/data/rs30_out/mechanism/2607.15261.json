@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a parameter-controlled deformation of a Lie algebra of symmetry generators (deforming the generators' commutation/composition relations) together with the construction of an irreducible representation carrying that deformed algebra, in which the deformation of the algebra is locked to a deformation of the interaction/coupling law",
+  "brief_reason": "The abstract's method rests on finding a fully characterized deformed Poincare/Galilei symmetry algebra, building a single-particle model carrying an irreducible representation of it, and showing the two-particle generators' structure is intimately connected to the deformation of the interaction law."
+}

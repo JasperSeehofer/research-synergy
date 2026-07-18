@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "sequential Bayesian updating of a hierarchical generative model over a symbol stream, inferring latent transition/structure probabilities online to predict the next element and to sample new sequences from the learned posterior",
+  "brief_reason": "The abstract uses a Hierarchical Bayesian model to track individual learning trajectories over structured sequences and to generate novel sequences highly similar to the originals, which is exactly online Bayesian posterior updating of a hierarchical generative sequence model."
+}

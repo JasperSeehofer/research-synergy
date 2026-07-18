@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "construction of a linear combination of multiple simultaneous measurement channels engineered to lie in the null space of unwanted signal components, so those components cancel and only a chosen orthogonal component survives (null-steering / null-projection filtering)",
+  "brief_reason": "The abstract's method rests on the null-response channel, a specific interferometric combination of detector outputs designed to suppress (cancel) contributions from all other polarization modes in order to isolate the single targeted transverse scalar mode."
+}

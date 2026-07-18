@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a rigidity/uniqueness argument in which a sufficiently strong optimization constraint collapses the symmetry (gauge) group of admissible optimal solutions, so that a weak equivalence between any two constrained-optimal solutions (equivalence up to a broad affine transformation group) is forced to a strong equivalence (equivalence up to only a small residual symmetry that singles out privileged coordinate axes), with this rigidity propagating compositionally layer-by-layer through a hierarchical/nested structure",
+  "brief_reason": "The abstract states that for any two minimal solutions to a sufficiently hard task, weak alignment via affine mappings guarantees strong alignment of privileged axes and this alignment 'zippers up' the hierarchy, i.e. a strong constraint shrinks the freedom (symmetry) so that broadly-equivalent optima must coincide up to a much smaller residual symmetry, propagated compositionally."
+}

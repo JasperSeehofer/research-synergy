@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "linear diffusion (heat-equation) dynamics on a graph governed by the graph Laplacian, spreading a scalar quantity from high- to low-concentration nodes along weighted edges",
+  "brief_reason": "The abstract explicitly builds the model on the concept of heat diffusion from physics operating over a graph, using graph-theoretic dynamics on a transfer graph to move a conserved scalar (knowledge) between connected nodes."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "competition between two opposing rate processes acting on a single evolving scalar quantity — an externally-driven power-law growth term coupled to a slowly-varying control parameter versus a state-dependent self-depletion term — solved as a first-order ODE under a quasi-adiabatic (instantaneous-rate) approximation, where the balance of the two rates sets whether the quantity decays to extinction or grows without bound",
+  "brief_reason": "The abstract models the mass by a first-order evolution in which power-law growth with the scale factor ($M \\propto a^k$) competes against a mass-dependent depletion (Hawking) rate evaluated at the instantaneous value (quasi-adiabatic), and the coupling strength $k$ decides between delayed extinction and asymptotic unbounded growth."
+}

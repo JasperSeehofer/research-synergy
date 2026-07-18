@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "maximum-entropy (entropic) inference that derives a system's stochastic evolution equation from imposed information constraints (continuity plus rate-and-moment constraints on disjoint microstate channels that factorize), yielding a jump-diffusion master equation (Kolmogorov-Feller) whose no-jump limit is the Fokker-Planck equation",
+  "brief_reason": "The abstract states the dynamics are not postulated but derived by an entropic inference framework from information constraints on two factorizing channels, producing the Kolmogorov-Feller equation with a Fokker-Planck no-jump limit, where 'what changes is not the inference but the information supplied to it.'"
+}

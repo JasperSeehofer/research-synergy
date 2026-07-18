@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a spatially explicit, stochastic individual-based (agent-based) birth-death-dispersal process, in which discrete agents reproduce, die, move across a heterogeneous medium, and transmit heritable state to their offspring, so that the propagation of an introduced heritable trait through the population is tracked as an ensemble of stochastic trajectories with replicate-to-replicate variance",
+  "brief_reason": "The abstract describes simulating discrete individuals whose stochastic demographic effects, life-history traits, and heterogeneous dispersal drive population trajectories, and whose introduced genetic constructs (heritable state) spread and suppress the population, matching observed trajectory variability."
+}

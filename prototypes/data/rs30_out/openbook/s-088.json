@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "fast-timescale species population dynamics", "b_element": "fast per-frame memory application via cross-view attention"},
+    {"a_element": "slow-timescale evolution of the fitness landscape matrix", "b_element": "slow periodic gradient-based memory update"},
+    {"a_element": "two-timescale separation of fast and slow variables", "b_element": "decoupling of the update frequency from the application frequency"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only genuine overlap is the generic design pattern of separating a fast process from a slow one; the actual machinery differs. Paper A's core is a Tikhonov singular-perturbation reduction to a quasi-steady state followed by maximizing mean fitness over a convex set via linear programming, with an error-catastrophe-like threshold. Paper B has no steady-state reduction, no optimization functional, and no threshold: it is a heuristic frequency-decoupling of gradient updates with attention-based warping and anti-drift regularization losses, so no role-for-role mapping of the operative mechanism holds."
+}

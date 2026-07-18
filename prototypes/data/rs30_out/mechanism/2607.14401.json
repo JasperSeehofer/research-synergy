@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "certifying a lower bound on the spectral gap of a positive semidefinite operator from the zero-free region (in the complex unit polydisk) of an associated multilinear polynomial — an analyticity/zero-freeness certificate that translates absence of complex zeros into a quantitative gap, which in turn licenses adiabatic (homotopy) continuation along a parameter path",
+  "brief_reason": "The abstract states the method rests on a new inequality relating the spectral gap of a positive semidefinite operator to its Lee-Yang radius (the zero-free radius of the associated multilinear polynomial inside the unit polydisk), and uses the resulting gap bound to run an adiabatic algorithm."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "joint likelihood-based parameter inference that fuses several independent measurement channels into combined constraints on the parameters of a parametric model, extended by Fisher-information forecasting of how much a future measurement would tighten those bounds",
+  "brief_reason": "The method combines CMB and BAO data to constrain the model's parameters and then forecasts a future survey's constraining power, i.e. joint-likelihood inference across independent data channels plus Fisher-style sensitivity forecasting."
+}

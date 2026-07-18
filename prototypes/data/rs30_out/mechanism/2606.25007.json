@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "attention-based fusion of multiple parallel time-ordered sequences: each stream is encoded independently by self-attention over its own elements, then the per-stream representations are combined by learned cross-stream attention/gating weights into a joint representation",
+  "brief_reason": "The abstract encodes each heterogeneous event stream with its own Transformer (self-attention) encoder and merges them via configurable fusion mechanisms (cross-stream attention, gated fusion, time-aware positional encoding), so the method rests on self-attention over sequences plus a learned attention-weighted fusion across streams."
+}

@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A is a finite-combinatorial construction: it builds single-track cyclic Gray codes over prime fields F_p by requiring all n tracks to be cyclic shifts of one track, proving existence of length-p^t codes with p^{p^t} codewords. Paper B is geometric analysis of the SO(3) Yang-Mills equation on a 4-manifold, reducing the gauge connection via pointwise polar decomposition to a positive-definite matrix field h and studying the resulting second-order elliptic PDE (variational formulation, Fredholm index, anti-self-duality, constant scalar curvature). The driving machinery differs entirely — discrete cyclic-shift/finite-field combinatorics versus nonlinear elliptic PDE and gauge geometry — with no role-for-role correspondence beyond both incidentally invoking an algebraic group/field, so they do not share an underlying method."
+}

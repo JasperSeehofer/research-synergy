@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A weighted a-priori energy-estimate (bootstrap) method for nonlinear hyperbolic evolution equations: propagate a coercive conserved quantity through a hierarchy of spatially-weighted (r^p) energy functionals plus integrated local-energy-decay bounds, while an algebraic cancellation in the quadratic self-interaction (a 'null structure') removes the most singular terms, closing a small-perturbation global-existence-and-decay argument around a background.",
+  "brief_reason": "The abstract's method rests on combining a conserved energy identity with integrated local energy decay and r^p-weighted energy hierarchies into a coupled energy method, where the key step is an algebraic (Clifford/null-decomposition) compatibility that excludes the most singular nonlinear interactions to yield global small-data existence and decay."
+}

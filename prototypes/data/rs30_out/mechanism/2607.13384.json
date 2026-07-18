@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "projection-operator coarse-graining (Mori-Zwanzig type) that eliminates unresolved degrees of freedom to produce a reduced, non-Markovian equation of motion with a history-dependent memory kernel bound to the residual random force by a fluctuation-dissipation relation",
+  "brief_reason": "The abstract derives a generalized Langevin equation through a modified Mori-Zwanzig projection (with the operator supplied by a chordal Loewner conformal-map evolution), yielding memory-kernel dynamics and fluctuation-dissipation relations that share a common energy-dissipation scaling law."
+}

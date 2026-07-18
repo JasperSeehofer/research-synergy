@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a generalized-linear-model link construction that maps a linear predictor through a monotone (possibly asymmetric/skewed) squashing link function to a bounded [0,1] response probability, with the predictor built from a first-order Fourier (sine-cosine) harmonic embedding of a periodic input variable to enforce periodicity on the domain",
+  "brief_reason": "The abstract expresses the linear predictor through the cosine and sine of a periodic covariate (a first-harmonic Fourier embedding) and models a binary/binomial response under a generalized linear model while comparing symmetric versus asymmetric link functions, so the shared machinery is the GLM link mapping applied to a harmonic basis of an angular input."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a steady-state source-sink energy balance (absorbed injection power = radiative dissipation power) whose observed equilibrium level, after integrating a computed source-emission spectrum over a spatial density distribution of sources, is inverted into an upper bound on the source abundance",
+  "brief_reason": "The abstract sets the injected radiation flux from the sources against how efficiently the absorbing grains cool (silicate vs. graphite) to fix a heating level, and inverts that equilibrium — weighted over five spatial density profiles — into upper limits on the source fraction."
+}

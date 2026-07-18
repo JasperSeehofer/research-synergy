@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a leave-one-out (jackknife) influence/perturbation statistic that quantifies how a fitted estimate at a point changes when that same point is deleted, made cheap by an exact closed-form rank-one incremental update that avoids full refitting",
+  "brief_reason": "The abstract defines a score comparing the full-sample fitted density at an observation to the density fitted after removing that observation (a leave-one-out self-influence measure) and stresses that this has an exact closed-form update so the estimator need not be refitted per point."
+}

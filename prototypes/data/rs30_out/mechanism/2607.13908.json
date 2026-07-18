@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a Cramer-Rao (inverse-Fisher-information) lower bound on the variance of an unbiased estimator, used as a tractable analytical surrogate for best-achievable estimation accuracy and shown to scale as the inverse square of the logarithm of the number of independent cooperating observers",
+  "brief_reason": "The abstract derives the Cramer-Rao lower bound for state estimation and characterizes its approximate ln^-2 J scaling with the number of cooperating base stations, then feeds this bound (alongside a miss-detection probability) into a constrained resource-allocation trade-off, making the Fisher-information bound the analytical machinery the method rests on."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A cumulative partial-sum (running-integral) process indexed by position along an ordering coordinate, rescaled so its null fluctuations converge to a pinned Gaussian process (a Brownian-bridge), enabling functional/supremum tests that localize where an accumulated quantity departs from zero along the axis",
+  "brief_reason": "The abstract builds a 'bridge-alpha curve' from cumulative capitalization prefixes that localizes departures from zero along the cap axis and validates it with finite-grid HAC-Gaussian inference and size-controlled functional tests, which is a partial-sum process converging to a pinned Gaussian (bridge) used for functional testing."
+}

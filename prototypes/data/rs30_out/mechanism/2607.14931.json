@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a no-global-section obstruction on a system of overlapping local contexts: a finite combinatorial/sheaf-theoretic construction in which each local context admits a consistent value-assignment drawn from an allowed value set, yet the locally consistent assignments provably cannot be glued into a single globally consistent assignment",
+  "brief_reason": "The abstract builds finite measurement configurations and a generalized Kochen-Specker theorem showing, in the Abramsky-Brandenburger sheaf framework, that no global section of the finite-valued presheaves exists despite locally admissible outcome assignments."
+}

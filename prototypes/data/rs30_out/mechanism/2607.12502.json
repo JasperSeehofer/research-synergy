@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "weak-form sparse regression that identifies the coefficients of an unknown second-order evolution generator from noisy sampled trajectories by projecting the dynamics against test functions and selecting a sparse subset from an overcomplete candidate-term dictionary via LASSO-type regularization, with a positive-semidefiniteness constraint imposed on the recovered second-order (diffusion) tensor",
+  "brief_reason": "The abstract frames the WG-SINDy estimator as recovering an Ito generator's drift and diffusion tensor from trajectory data using bivariate weak designs, a ridge-stabilized local-polynomial projection, adaptive-LASSO/STLSQ term selection, and a PSD-projection readout, which is weak-form sparse identification of an operator's coefficients under a positive-semidefinite constraint."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a spatially distributed multi-node sensing network in which many independent local nodes each acquire measurements that are aggregated and curated into a single shared data repository",
+  "brief_reason": "The abstract describes a network of monitoring stations across multiple municipalities whose locally-collected meteorological and air-quality readings are pooled into open shared repositories, but it is otherwise a citizen-science/pedagogy program with no underlying dynamical or mathematical machinery, so distributed multi-node measurement aggregation is the most specific defensible transferable structure."
+}

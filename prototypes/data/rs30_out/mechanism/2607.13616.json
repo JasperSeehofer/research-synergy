@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "coevolving adaptive-network dynamics: a stochastic binary-state copying process with nonlinear (state-fraction-dependent) flip rates coupled to topology that rewires or severs discordant links, driving the system into absorbing configurations separated by a fragmentation/consensus transition",
+  "brief_reason": "The abstract couples nonlinear voter (binary-state imitation) dynamics to a coevolving graph whose discordant links are rewired or deleted, yielding absorbing states that differ in both order (magnetization) and network structure (mean degree, fragmentation) — the signature of an adaptive-network process with a fragmentation transition."
+}

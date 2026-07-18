@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "causal-intervention (targeted-perturbation / ablation) localization: functionally identify a subset of components by their correlation with a target signal, then perturb those components and measure the specific downstream response to establish a causal, dissociable link between the components and one behavior while a control condition confirms other functions are spared",
+  "brief_reason": "The abstract functionally identifies reward-anticipatory units, perturbs them, and shows the perturbation induces a specific behavioral deficit while baseline performance is preserved when the reward-based choice is removed — a targeted knock-out intervention establishing a dissociable causal link."
+}

@@ -1,0 +1,11 @@
+{
+  "mapping": [
+    {"a_element": "parameters of the Dark Dimension dark-matter model (graviton mass, time-dependent kick velocity)", "b_element": "physical parameters to be estimated (blockage shape, range, source directions of arrival)"},
+    {"a_element": "cosmological observables (CMB, BAO, Stage-IV tomographic survey data)", "b_element": "measured diffraction-pattern / channel observations"},
+    {"a_element": "likelihood-based constraint of the model parameters from the data", "b_element": "maximum-likelihood (ML) estimator of the parameters"},
+    {"a_element": "Stage-IV survey forecast of the parameter-constraining power (Fisher-matrix forecast)", "b_element": "Cramer-Rao bound (CRB) quantifying the fundamental estimation precision"},
+    {"a_element": "survey depth / data quality that sets how tightly the parameters can be pinned down", "b_element": "signal-to-noise ratio (SNR) governing how closely the ML estimator approaches the CRB"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both are the same estimation-theoretic machinery: infer the parameters of a physical forward model from noisy observations and quantify the fundamental achievable precision via Fisher information / the Cramer-Rao bound. Paper A's 'forecast' of the dark-sector parameters for a Stage-IV survey is precisely a Fisher/CRB forecast, the same object Paper B derives explicitly (ML estimator approaching the CRB) for blockage and DoA sensing, so the estimation framework maps role-for-role despite the disjoint cosmology-vs-wireless domains."
+}

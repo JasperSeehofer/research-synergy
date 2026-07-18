@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a periodic-orbit (semiclassical) correspondence in which isolated closed orbits of a dynamical system support a special non-ergodic subset of modes that evade generic mixing, producing an evenly-spaced (equidistant) ladder of spectral levels embedded in an otherwise ergodic spectrum",
+  "brief_reason": "The abstract's whole method applies a periodic-orbit framework to locate and track closed orbits across the spectrum, tie them to a non-thermalising subset of eigenstates, and derive analytically the equidistant tower spacing of those modes that persists even after the underlying system is perturbed."
+}

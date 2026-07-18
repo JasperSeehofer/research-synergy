@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "constrained worst-case (adversarial) input perturbation that maximizes the divergence between two normally-coupled outputs of a joint predictor while a penalty term holds one of those outputs invariant — i.e., a minimal-norm optimization that breaks a consistency/coupling relation between two co-generated quantities",
+  "brief_reason": "The abstract designs small input perturbations that maximize disruption of the executed output while an 'imagination-preserving' regularizer keeps the predicted-future output close to its unperturbed value, deliberately decoupling two outputs that a model produces jointly."
+}

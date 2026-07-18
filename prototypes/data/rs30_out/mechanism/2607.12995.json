@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "measure-theoretic characterization of a target outcome's solution set as an open set of positive Lebesgue measure in a continuous parameter space — proving the outcome is robust under perturbation (a stable, non-degenerate event) rather than a measure-zero coincidence, and estimating the small nonzero measure of the rare-event set by Monte Carlo sampling with tail extrapolation",
+  "brief_reason": "The abstract's central claim is that the set of successful strokes 'has positive Lebesgue measure in the natural shot space' (open events, not flukes of measure zero), with Monte Carlo experiments estimating the decay of P(k) to place the target probability far below observability — the distinction between measure zero and unobservably small."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "characterization of stationary (invariant) probability measures — i.i.d. product measures and translation-invariant Markov measures — preserved under a deterministic local update rule acting as a measure-preserving transformation on a bi-infinite lattice of states",
+  "brief_reason": "The abstract formulates a time evolution on bi-infinite configuration spaces and derives sufficient conditions for the invariance of Bernoulli product measures and a criterion for the invariance of two-sided space-homogeneous Markov distributions under that deterministic dynamics."
+}

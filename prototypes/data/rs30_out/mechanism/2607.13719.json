@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "iterative message-passing fixed-point decoding on a product graph of overlapping local constraints, where each element's estimate is repeatedly updated from neighboring constraints using dynamically-updated reliability/confidence weights that steer error-and-erasure correction until convergence",
+  "brief_reason": "The abstract describes an iterative hard-message-passing error-and-erasure decoder for product-structured codes that carries dynamic reliability scores between component constraints, i.e. repeated local constraint updates weighted by evolving confidence values propagating over a coupled constraint structure."
+}

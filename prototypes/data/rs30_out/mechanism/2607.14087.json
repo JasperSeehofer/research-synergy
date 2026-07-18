@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "stochastic-ordering (stochastic dominance) comparison of an extreme-value statistic — the maximum of a correlated ensemble is dominated by that of an independent baseline ensemble whenever a positive-semidefinite covariance-domination condition holds — established by combining a product inequality for log-concave functions with an adaptive exponential change-of-measure (tilting) applied to one-sided threshold events",
+  "brief_reason": "The abstract proves max_i X_i <=_st max_i Z_i (equivalently P{all X_i <= c} >= Phi(c)^m) for a correlated Gaussian vector versus independent Gaussians under the condition R - 11^T/m >= 0, via a Gaussian product inequality for log-concave functions plus an adaptive tilting argument on the one-sided threshold events defining the maximum."
+}

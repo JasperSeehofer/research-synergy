@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "the multiverse: the space of all admissible analytic-choice combinations", "b_element": "the shot space: the space of all admissible cue strokes / ball configurations"},
+    {"a_element": "evaluating the multiverse by its single worst-case universe (a min over the space)", "b_element": "measuring the Lebesgue measure / Monte-Carlo probability of clearance strokes over the shot space"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only real overlap is the loose notion of a 'space of possibilities' (analytic multiverse vs. billiard shot space); the governing machinery differs entirely. Paper A is a normative meta-science argument proposing rhetorical/evaluative conventions (judge by the worst universe, treat size as weakness), whereas paper B is a rigorous measure-theoretic and Monte-Carlo analysis of billiard dynamics (positive Lebesgue measure, P(k) decay, measure-zero vs. unobservably small), so no role-for-role governing process corresponds."
+}

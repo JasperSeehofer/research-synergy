@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a two-species reaction-diffusion (Gray-Scott activator-substrate) system whose diffusion-driven (Turing-type) instability produces a multistable landscape of many coexisting stable spatial-pattern steady states rather than a single fixed point",
+  "brief_reason": "The abstract adapts the Gray-Scott reaction-diffusion model of two interacting diffusing species and reports numerical discovery of numerous distinct stable steady-state spatial patterns, i.e. multistable diffusion-driven pattern formation."
+}

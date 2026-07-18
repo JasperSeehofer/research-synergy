@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "autoparametric (internal) resonance between two nonlinearly coupled oscillator modes, in which pumping one mode transfers energy to a second mode only above an activation threshold, with amplitude saturation and phase synchronization organizing the response near resonance manifolds",
+  "brief_reason": "The abstract reduces the system to a two-mode autoparametric resonance model whose behavior is governed by detuning, drive amplitude, and damping, with a common origin in autoparametric resonance, nonlinear saturation, and coupling-induced synchronization and a sharp activation threshold."
+}

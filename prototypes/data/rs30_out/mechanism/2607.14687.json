@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "group-representation-theoretic block-diagonalization of a linear operator by its discrete symmetry group, decomposing the spectrum into symmetry sectors (irreducible representations) so that a control parameter breaking a symmetry lifts protected degeneracies and produces avoided level crossings, while a residual involution symmetry protects selected sectors",
+  "brief_reason": "The abstract analyses the many-body spectrum via group-theoretical classification of eigenstates into symmetry sectors, with an external flux (Zeeman term) lifting degeneracies into avoided crossings and a particle-hole duality protecting selected sectors, which is exactly a representation-theoretic decomposition of an operator under its symmetry group plus symmetry-breaking perturbation."
+}

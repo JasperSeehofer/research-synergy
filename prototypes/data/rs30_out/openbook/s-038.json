@@ -1,0 +1,11 @@
+{
+  "mapping": [
+    {"a_element": "the INC endofunctor T_INC iterated to build the tower D, TD, T^2D, ... of tangent unfoldings", "b_element": "the doctor-proposing cumulative offer process iterated along its trajectories of contract offers"},
+    {"a_element": "the tangent functor T acting as a structure-preserving (monotone) operator on the learning sketch", "b_element": "the monotone offer/choice operator induced by substitutable, irrelevance-of-rejected-contracts choice functions"},
+    {"a_element": "the coalgebraic greatest/terminal fixed point nu-T_INC at which successive tangent unfoldings stabilize", "b_element": "the greatest stable allocation, i.e. the greatest element of the finite lattice, at which the offer-process trajectory terminates"},
+    {"a_element": "Aczel-Mendler theorem guaranteeing existence of the final INC coalgebra", "b_element": "the lattice/Tarski-style guarantee that the finite lattice of weakly hospital-quasi-stable allocations has a stable greatest element"},
+    {"a_element": "stabilization of the iterated tangent lifts as reaching the fixed point", "b_element": "termination of the cumulative offer process at the fixed-point (doctor-optimal) allocation"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both are greatest-fixed-point constructions: a monotone / structure-preserving operator is iterated until it stabilizes at its greatest (terminal) fixed point, whose existence is secured by a named fixed-point theorem -- Aczel-Mendler final-coalgebra existence (nu-T_INC) in A and the Tarski-style greatest element of the stable-allocation lattice reached by the cumulative offer process in B. Final coalgebras generalize order-theoretic greatest fixed points, so the same nu-fixed-point machinery drives both despite A living in tangent-category/ML language and B in many-to-many matching theory."
+}

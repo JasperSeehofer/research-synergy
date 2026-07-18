@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "time-to-event (survival) analysis with a proportional-hazards model: a baseline hazard rate for an absorbing transition is multiplicatively scaled by covariates (hazard ratios), fit under right-censoring, with nonparametric Kaplan-Meier survival-curve estimation and log-rank comparison of subpopulations",
+  "brief_reason": "The abstract's method rests on Kaplan-Meier estimation, log-rank tests, and Cox proportional-hazards regression yielding covariate hazard ratios and a concordance statistic for the time-to-graduation outcome."
+}

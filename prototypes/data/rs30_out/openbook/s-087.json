@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A's machinery is modular/operator-algebra theory of a quantum observer — crossed-product von Neumann algebras, KMS states, traces, commutants, and OTOC/shockwave scrambling near a cosmological horizon — whereas paper B's machinery is quantum-group representation theory of twisted Yangians via R-matrix and Drinfeld current presentations, reflection equations, Gaussian decomposition, and PBW bases. The only overlap is the generic word 'algebra'; no role-for-role correspondence holds between horizon-scrambling modular theory and the algebraic presentation theory of coideal Yangians, so they do not share a transferable method."
+}

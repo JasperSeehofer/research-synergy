@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "detection of a signal spike separating from a random-matrix noise bulk at a critical spectral-edge threshold (spiked / BBP phase transition), combined with an eigenvector-localization order parameter (participation ratio) that jumps between an extended value for the coherent signal direction and a delocalized value for noise directions",
+  "brief_reason": "The abstract identifies weak signal directions by testing eigenvalue separation past the Marcenko-Pastur bulk edge near the BBP transition and by a participation-ratio criterion where the coherent eigenvector has PR/p -> 1 while noise eigenvectors delocalize to PR/p -> 1/3, i.e. a threshold-crossing spike detection plus a localization order parameter."
+}

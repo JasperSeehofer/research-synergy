@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "quantifying the discrepancy between two states/distributions by the spectral relaxation (mixing) rate at which a reversible Markov chain with a prescribed stationary distribution converges to that stationary state, governed by the eigenvalue spectrum of its transition operator",
+  "brief_reason": "The abstract defines its distance as the rate of convergence of f to g under a Metropolis-Hastings Markov chain whose stationary distribution is g, with exact spectral formulas for convergence tying the measure to the transition operator's graph spectra."
+}

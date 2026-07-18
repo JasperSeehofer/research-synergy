@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "linear-quadratic payoff optimization on a network in which pairwise influence is captured by a Katz-Bonacich resolvent matrix (I - alpha A)^{-1}, so that a perturbation's effect decomposes exactly into a linear benefit term minus a quadratic interaction/overlap cost, yielding a closed-form element ranking and an inclusion threshold",
+  "brief_reason": "The abstract states that a network intervention's effect on accuracy splits exactly into an information gain and a quadratic bias cost governed by a Katz-Bonacich influence-overlap matrix, producing an exact source-ranking rule and a closed-form amplification threshold."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "statistical model selection / hypothesis ranking of many competing generative models against a null baseline, using complementary frequentist goodness-of-fit statistics and Bayesian evidence (model-comparison) measures to score how well each candidate reconciles two discrepant independent estimates of a shared parameter and improves the joint fit to pooled datasets",
+  "brief_reason": "The abstract compares fourteen alternative models to a baseline (LCDM) with complementary frequentist and Bayesian measures of residual calibration tension and joint-fit improvement, producing the same ranking hierarchy — i.e., an evidence-based model-selection procedure over competing hypotheses."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a diffusion / Fokker-Planck partial differential equation governing the evolution of a probability density, in which a resolution/scale parameter plays the role of the time variable, so that coarse-graining across scales spreads and reshapes the distribution",
+  "brief_reason": "The abstract frames the method as a multi-scale stochastic-process model that solves for the probability density of contact pressure and interfacial gap via partial differential equations, i.e. a scale-parametrized diffusion equation for an evolving probability distribution."
+}

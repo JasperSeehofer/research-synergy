@@ -1,0 +1,691 @@
+{
+ "verdicts": [
+  {
+   "id": "S1",
+   "novelty_class": "specialist_known",
+   "confidence": "high",
+   "both_hunters_not_found": false,
+   "h1_status": "partially_noted",
+   "h2_status": "partially_noted",
+   "fieldA": "economic theory (econ.TH) — bifurcation ",
+   "fieldB": "gravitation (gr-qc) — scalarization of a",
+   "decisive": "Both hunters independently confirm the shared mechanism — symmetry-breaking (pitchfork) bifurcation of a nontrivial branch off a symmetric/trivial branch at a critical control parameter, with the symm"
+  },
+  {
+   "id": "S7",
+   "novelty_class": "specialist_known",
+   "confidence": "high",
+   "both_hunters_not_found": false,
+   "h1_status": "partially_noted",
+   "h2_status": "partially_noted",
+   "fieldA": "nonlinear/pattern physics (nlin.PS) — Th",
+   "fieldB": "particle physics (hep-ph) — right-handed",
+   "decisive": "Both hunters independently confirm the shared mechanism — non-adiabatic Bogoliubov mode occupation in the instantaneous Hamiltonian-diagonal basis — is textbook-standard within EACH field: the nlin.PS"
+  },
+  {
+   "id": "S10",
+   "novelty_class": "known_crossfield",
+   "confidence": "high",
+   "both_hunters_not_found": false,
+   "h1_status": "partially_noted",
+   "h2_status": "partially_noted",
+   "fieldA": "cosmology (astro-ph.CO) — Stage-IV combi",
+   "fieldB": "signal processing (eess.SP) — parametric",
+   "decisive": "The \"shared mechanism\" is the Fisher information matrix / Cramér-Rao bound (Rao 1945, Cramér 1946) — the single most standard estimation-theory theorem, and the SAME named object in both fields, not a"
+  },
+  {
+   "id": "S11",
+   "novelty_class": "known_crossfield",
+   "confidence": "high",
+   "both_hunters_not_found": false,
+   "h1_status": "explicitly_published",
+   "h2_status": "partially_noted",
+   "fieldA": "statistics (stat.ME) — higher-order spil",
+   "fieldB": "machine learning (cs.LG) — kernel-weight",
+   "decisive": "The importance-sampling/IPW identity (Horvitz-Thompson = unnormalized IS, Hajek = self-normalized IS, correcting a behavior->target distribution shift) is textbook-standard within BOTH fields independ"
+  },
+  {
+   "id": "S13",
+   "novelty_class": "known_crossfield",
+   "confidence": "high",
+   "both_hunters_not_found": false,
+   "h1_status": "partially_noted",
+   "h2_status": "partially_noted",
+   "fieldA": "neuroscience/ML (q-bio.NC) — emergent ge",
+   "fieldB": "economic theory (econ.TH) — choice at fi",
+   "decisive": "Independent third-party sources explicitly make the cross-field mechanism identity, not just each side separately. Ortega & Braun 2015 (arXiv 1512.06789) present ONE rate-distortion/free-energy functi"
+  }
+ ],
+ "full": [
+  {
+   "id": "S1",
+   "fieldA": "economic theory (econ.TH) — bifurcation at a sustain point of a long narrow economy (twin-city emergence)",
+   "fieldB": "gravitation (gr-qc) — scalarization of a charged black hole in Gauss-Bonnet extended gravity",
+   "verdict": {
+    "id": "2607.10204__2607.14620",
+    "novelty_class": "specialist_known",
+    "confidence": "high",
+    "decisive_evidence": "Both hunters independently confirm the shared mechanism — symmetry-breaking (pitchfork) bifurcation of a nontrivial branch off a symmetric/trivial branch at a critical control parameter, with the symmetric branch going linearly unstable via a zero mode — is INDEPENDENTLY TEXTBOOK-STANDARD within EACH field. Field A: the Ikeda-Murota-Akamatsu program (two Springer monographs on 'Bifurcation Theory of Pattern Formation in Economic Geography', built on Golubitsky-Stewart group-theoretic bifurcation) treats break/sustain-point agglomeration and twin-city emergence exactly as this pitchfork; the Field-A paper itself is a routine instance. Field B: spontaneous scalarization is UNIVERSALLY defined as the scalarized branch bifurcating off the bald Schwarzschild/RN solution at a critical horizon radius/coupling, routinely cast as a Landau-type 2nd-/1st-order phase transition (arXiv 2503.11385, EPJC s10052-025-14744-3, MDPI Symmetry 12/12/2057, 2401.09846). No source states the literal A<->B identity (both hunters: 'partially_noted', literal pairing NOT FOUND after ~11-12 aggressive queries each). But the pairing is subsumed by a well-documented cross-disciplinary universal — equivariant/pitchfork symmetry-breaking bifurcation (synergetics / catastrophe theory / group-theoretic bifurcation), with a Physics-Reports-level review explicitly listing both economics and general relativity among the domains — and both fields already invoke the mechanism by the same name. A specialist in bifurcation theory would immediately recognize the equivalence. This is a genuine unpublished juxtaposition, not an original mechanism; the only physics<->economics SSB bridges that exist (Roegenian RN-thermodynamics, quantum-finance gauge-SSB) are different pairings. Novelty as discovery is LOW. Per the conservative rule, specialist_known.",
+    "best_prior_art_url": "https://www.sciencedirect.com/science/article/abs/pii/0370157390901682"
+   },
+   "h1_status": "partially_noted",
+   "h2_status": "partially_noted",
+   "both_hunters_not_found": false,
+   "h1": {
+    "id": "2607.10204__2607.14620",
+    "queries_tried": [
+     "bifurcation \"black hole scalarization\" analogy \"economic geography\" symmetry breaking",
+     "spontaneous scalarization black hole \"spontaneous symmetry breaking\" economics analogy bifurcation",
+     "\"new economic geography\" pitchfork bifurcation spatial economics symmetry breaking gravitation analogy",
+     "bifurcation nonlinear solution branches critical parameter unify physics economics spontaneous symmetry breaking",
+     "\"economic geography\" agglomeration analogy \"black hole\"/\"general relativity\"/\"gravitation\" bifurcation physics",
+     "catastrophe theory bifurcation unifies economics urban agglomeration gravitational collapse symmetry breaking",
+     "econophysics spatial agglomeration phase transition analogy gravitational scalarization critical control parameter",
+     "\"sustain point\" twin cities bifurcation long narrow economy analogy physics symmetry breaking",
+     "\"spontaneous scalarization\" described as \"pitchfork bifurcation\" bald branch zero mode Gauss-Bonnet",
+     "bifurcation theory universal symmetry breaking across disciplines economics general relativity same mechanism review",
+     "agglomeration symmetry-breaking bifurcation economic geography same as black hole hair scalarization gravity cross-disciplinary",
+     "Ikeda economic geography bifurcation cites gravitation/scalarization/black hole analogy branch emergence"
+    ],
+    "closest_hits": [
+     {
+      "title": "Bifurcation mechanism at a sustain point of a long narrow economy (Field A paper, arXiv 2607.10204)",
+      "url": "https://arxiv.org/html/2607.10204",
+      "relevance": "WebFetched: the econ paper itself makes NO physics/gravitation/black-hole/scalarization analogy and cites no physics literature; its only physics-adjacent term is the unrelated econ 'no-black-hole condition'."
+     },
+     {
+      "title": "Introduction to Bifurcation Analysis in Economic Geography (Springer, Ikeda/Murota school)",
+      "url": "https://link.springer.com/chapter/10.1007/978-3-031-71686-7_1",
+      "relevance": "Establishes that pitchfork/sustain/break-point symmetry-breaking bifurcation off the symmetric distribution is textbook-STANDARD within economic geography (Field A) — no cross-field gravity link."
+     },
+     {
+      "title": "On Pitchforks and Tomahawks (Pflüger, J. Regional Science)",
+      "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-9787.2010.00695.x",
+      "relevance": "Confirms symmetry-breaking pitchfork bifurcation is the canonical framing of agglomeration onset in new economic geography — standard on the econ side, no physics analogy."
+     },
+     {
+      "title": "Phase Structure of Scalarized Black Holes in Einstein-Scalar-Gauss-Bonnet Gravity (arXiv 2603.24164)",
+      "url": "https://arxiv.org/pdf/2603.24164",
+      "relevance": "Establishes that the scalarized branch bifurcates off the bald GR (Schwarzschild/RN) solution at a critical point where the bald solution goes linearly unstable — bifurcation framing is STANDARD within gravitation (Field B)."
+     },
+     {
+      "title": "On the phase transition mechanism of spontaneous scalarization (arXiv 2503.11385)",
+      "url": "https://arxiv.org/html/2503.11385v2",
+      "relevance": "Frames spontaneous scalarization explicitly as a bifurcation/Landau continuous phase transition at a critical parameter — corroborates that Field B independently uses the exact mechanism, but never references economics."
+     },
+     {
+      "title": "Bifurcation and symmetry breaking (Physics Reports review)",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/0370157390901682",
+      "relevance": "The BROADER-UNIFICATION umbrella: equivariant/pitchfork symmetry-breaking bifurcation is a universal cross-disciplinary mechanism spanning hydrodynamics→cosmology→economics; abstractly covers both A and B but does not pair these two specific problems."
+     },
+     {
+      "title": "Entropy of Reissner–Nordström 3D Black Hole in Roegenian Economics (PMC)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7514998/",
+      "relevance": "Closest LITERAL economics↔black-hole crossover found, but a different mechanism — thermodynamic/relativistic entropy mapping (Roegenian economics), NOT scalarization-as-bifurcation of spatial agglomeration; does not make the A↔B connection."
+     },
+     {
+      "title": "Group-Theoretic Bifurcation Mechanism of Economic Agglomerations on a Square Lattice (Int. J. Bifurcation & Chaos)",
+      "url": "https://www.worldscientific.com/doi/abs/10.1142/S0218127421300408",
+      "relevance": "Shows econ-geography agglomeration is analyzed with the same equivariant symmetry-breaking bifurcation math as physical pattern formation — shared mathematics, but the cited analogies are to lattice pattern-formation, not to black-hole scalarization."
+     }
+    ],
+    "cross_field_identity_status": "partially_noted",
+    "each_side_standard": "The proposed shared mechanism — a symmetry-breaking (pitchfork) bifurcation in which a nontrivial solution branch splits off a symmetric/trivial branch at a critical value of a control parameter, rendering the symmetric branch linearly unstable via a zero mode — is INDEPENDENTLY STANDARD, indeed textbook-level, within EACH field. Field A (economic geography): the Ikeda-Murota program treats agglomeration onset (break/sustain points, twin-city and core-periphery emergence) precisely as group-theoretic symmetry-breaking pitchfork bifurcation off the uniform distribution; there are dedicated monographs and a whole 'Bifurcation Analysis in Economic Geography' literature. Field B (gravitation): spontaneous scalarization is uniformly described as the scalarized branch bifurcating off the bald Schwarzschild/Reissner-Nordstrom solution at a critical horizon radius/charge where the GR solution goes tachyonically unstable (zero mode -> nonlinear continuation), and is routinely cast as a Landau-type continuous phase transition. So neither side is novel in using this mechanism internally. What is NOT explicitly published is the LITERAL cross-field identity pairing these two specific problem classes: no paper, review, or textbook was found that states economic-geography agglomeration bifurcation and black-hole scalarization are 'the same mechanism.' The connection is only PARTIALLY NOTED, and only via the broader, generic unification that equivariant/pitchfork symmetry-breaking bifurcation is a discipline-agnostic universal mechanism (a Physics-Reports-level umbrella that lists economics and general relativity among many domains), plus a separate, mechanistically-different 'Roegenian economics' literature that maps economics onto Reissner-Nordstrom black-hole thermodynamics (not scalarization). The finder's specific A<->B bridge is therefore a genuine unpublished juxtaposition of two independently-standard instances of one abstract bifurcation, not a rediscovery of an already-stated cross-field claim."
+   },
+   "h2": {
+    "id": "2607.10204_econTH_x_2607.14620_grqc",
+    "queries_tried": [
+     "spontaneous scalarization black hole bifurcation new economic geography spatial economics analogy",
+     "bifurcation symmetry breaking economic geography twin city black hole scalarization same mechanism",
+     "pitchfork bifurcation universal mechanism across physics economics black hole scalar hair spatial agglomeration review",
+     "spontaneous scalarization analogous phase transition economics agglomeration symmetry breaking interdisciplinary",
+     "\"economic geography\" \"spontaneous scalarization\" bifurcation cross-disciplinary",
+     "sustain point bifurcation core-periphery model equivalent black hole scalarized branch critical horizon radius",
+     "symmetry-breaking bifurcation applications review examples both spatial economics general relativity scalar field",
+     "Ikeda Akamatsu economic geography bifurcation analogy physics gravitation black hole",
+     "synergetics universality symmetry-breaking bifurcation across sciences socioeconomic pattern formation gravitational astrophysical examples",
+     "\"spontaneous scalarization\" pitchfork bifurcation same as pattern formation reaction-diffusion economics review universality",
+     "econophysics black hole gravity analogy market spatial economy scalarization symmetry breaking bridge paper"
+    ],
+    "closest_hits": [
+     {
+      "title": "Bifurcation mechanism at a sustain point of a long narrow economy (Field A paper, arXiv 2607.10204)",
+      "url": "https://arxiv.org/abs/2607.10204",
+      "relevance": "The econ.TH paper itself: twin-city emergence is explicitly a pitchfork/symmetry-breaking bifurcation at a sustain point — confirms the mechanism is the STANDARD framing on the economics side, not a novel import."
+     },
+     {
+      "title": "Ikeda & Murota, Bifurcation Theory of Pattern Formation in Economic Geography (Springer monograph)",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-71686-7",
+      "relevance": "An entire mature subfield: group-theoretic/pitchfork bifurcation of core-periphery and long-narrow-economy models. Establishes break-point/sustain-point bifurcation is textbook in New Economic Geography — the econ side is independently standard."
+     },
+     {
+      "title": "On the phase transition mechanism of spontaneous scalarization (arXiv 2503.11385)",
+      "url": "https://arxiv.org/html/2503.11385v2",
+      "relevance": "Spontaneous scalarization framed as a phase transition / bifurcation off the bald branch (can be 2nd- or 1st-order via Landau free energy). Confirms scalarization-as-bifurcation is the STANDARD framing on the gravity side."
+     },
+     {
+      "title": "Bifurcation and critical phenomena in black hole scalarization (EPJC 2025)",
+      "url": "https://link.springer.com/content/pdf/10.1140/epjc/s10052-025-14744-3.pdf",
+      "relevance": "Explicitly analyzes scalarized branches as bifurcations at critical horizon parameters — direct evidence the gravity-side mechanism is standard, but contains no economics reference."
+     },
+     {
+      "title": "Critical Solutions of Scalarized Black Holes (MDPI Symmetry / arXiv 2011.01326)",
+      "url": "https://www.mdpi.com/2073-8994/12/12/2057",
+      "relevance": "Scalarized branch bifurcates off the bald Schwarzschild/RN solution at a critical point; canonical gravity-side statement of 'scalarization IS a bifurcation'. No cross-field link."
+     },
+     {
+      "title": "Scholarpedia / Haken Synergetics + group-theoretic (Golubitsky-Stewart) bifurcation",
+      "url": "http://www.scholarpedia.org/article/Synergetics",
+      "relevance": "The BROADER UNIFICATION: symmetry-breaking bifurcation / order-parameter instability at a critical control parameter is a documented cross-disciplinary universal spanning physical AND socioeconomic self-organization — subsumes both cases but never names this specific A<->B pairing."
+     },
+     {
+      "title": "Phase structure of holographic superconductors in Einstein-scalar-Gauss-Bonnet with spontaneous scalarization (arXiv 2401.09846)",
+      "url": "https://arxiv.org/pdf/2401.09846",
+      "relevance": "Gauss-Bonnet scalarization treated as a phase transition; nearest to the exact Field-B setting. Confirms standardness, makes no economics connection."
+     },
+     {
+      "title": "Spontaneous Symmetry Breaking in Quantum Finance / Stock Market Speculation (arXiv 2011.05278, cond-mat/0004001)",
+      "url": "https://arxiv.org/pdf/cond-mat/0004001",
+      "relevance": "The ONLY physics<->economics SSB bridges that exist connect valuation/markets to gauge-theory SSB — a DIFFERENT pairing; none touch economic-geography agglomeration or black-hole scalarization. Adversarial near-miss that fails to be the connection."
+     }
+    ],
+    "cross_field_identity_status": "partially_noted",
+    "each_side_standard": "MECHANISM IS INDEPENDENTLY STANDARD IN BOTH FIELDS (strong). Field A (spatial economics): break-point/sustain-point pitchfork bifurcation of core-periphery and long-narrow-economy models producing twin cities is a mature, textbook subfield — two Springer monographs by Ikeda-Murota-Akamatsu-Takayama on 'Bifurcation Theory ... in Economic Geography', built directly on Golubitsky-Stewart group-theoretic bifurcation theory. The Field-A paper (2607.10204) is itself a routine instance. Field B (gravity): spontaneous scalarization is UNIVERSALLY DEFINED as a bifurcation off the bald (Schwarzschild/RN) branch at a critical coupling/horizon radius, and is routinely analyzed as a 2nd- or 1st-order phase transition / critical phenomenon (2503.11385, EPJC 2025 s10052-025-14744-3, MDPI Symmetry 12/12/2057, 2401.09846). So each side already frames its phenomenon in exactly this pitchfork/symmetry-breaking language on its own.\\n\\nLITERAL A<->B CONNECTION: NOT FOUND after 11 aggressive queries. No review, lecture note, or cross-disciplinary paper states that twin-city/agglomeration bifurcation and black-hole scalarization are the same mechanism. The economic-geography bifurcation literature never cites gravitation/black holes; the scalarization literature never cites economics. The one apparent 'connection' surfaced by a search summarizer was a hallucinated juxtaposition of two unrelated hits. The physics<->economics bridges that DO exist are unrelated pairings (Tinbergen gravity-model of trade; 'market as self-gravitating body' for crypto; SSB of stock-market valuation / quantum finance) — none link economic geography to scalarization.\\n\\nWHY 'partially_noted' NOT 'not_found': the proposed shared mechanism is nothing more specific than the generic symmetry-breaking pitchfork bifurcation of a trivial/symmetric branch at a critical control parameter. That template is a well-documented cross-disciplinary universal (synergetics/catastrophe theory/group-theoretic bifurcation) that demonstrably subsumes BOTH application classes, and both fields already invoke it by the same name. The specific pairing is unpublished, but it is 'covered by a broader unification' rather than a genuinely new bridge — so its novelty as a discovery is LOW. Verdict: adjacent/generic, not an original cross-field identity."
+   }
+  },
+  {
+   "id": "S7",
+   "fieldA": "nonlinear/pattern physics (nlin.PS) — Thouless pumping of gap solitons mediated by finite Bogoliubov excitations",
+   "fieldB": "particle physics (hep-ph) — right-handed neutrino production by an axion-like inflaton (leptogenesis)",
+   "verdict": {
+    "id": "S7: 2606.31006 (nlin.PS Thouless pumping of gap solitons via finite Bogoliubov excitations) <-> 2607.13592 (hep-ph right-handed neutrino production by axion-like inflaton, leptogenesis)",
+    "novelty_class": "specialist_known",
+    "confidence": "high",
+    "decisive_evidence": "Both hunters independently confirm the shared mechanism — non-adiabatic Bogoliubov mode occupation in the instantaneous Hamiltonian-diagonal basis — is textbook-standard within EACH field: the nlin.PS paper (2606.31006) natively frames its dynamics as 'finite Bogoliubov excitations under near-adiabatic ramping,' and the hep-ph paper (2607.13592) itself reconciles 'the fermion basis used to identify non-adiabatic production' with 'the Hamiltonian-diagonal basis used to define instantaneous occupation numbers.' This is the Parker (1969) Bogoliubov-coefficient particle-production formalism, foundational in both domains. Moreover, the cross-field equivalence is not merely recognizable but already explicitly published at the mechanism-class level: the analog-gravity / analog-cosmological-reheating program uses the IDENTICAL non-adiabatic Bogoliubov mechanism to equate condensed-matter BEC quasiparticle production with inflaton-decay/reheating particle production (arXiv 2008.02290 'Analog cosmological reheating in an ultracold Bose gas' = PRA 104.023302; review arXiv 1208.4729; Nat. Commun. 2022 quantum-fluid-of-light). What is NOT in print is a single source naming the two exact endpoints (Thouless-pumped gap solitons AND axion-inflaton right-handed-neutrino leptogenesis) as one mechanism — which is why this is not known_crossfield for this precise identity. But a specialist in either field would instantly recognize the equivalence, and an established published unification already covers the mechanism class, so this is comfortably specialist_known, not novel_looking.",
+    "best_prior_art_url": "https://arxiv.org/abs/2008.02290"
+   },
+   "h1_status": "partially_noted",
+   "h2_status": "partially_noted",
+   "both_hunters_not_found": false,
+   "h1": {
+    "id": "2606.31006 (nlin.PS gap-soliton Thouless pumping) <-> 2607.13592 (hep-ph axion-inflaton RH-neutrino leptogenesis); shared mechanism = non-adiabatic Bogoliubov mode occupation / instantaneous Hamiltonian-diagonal basis",
+    "queries_tried": [
+     "Bogoliubov transformation particle production non-adiabatic analogy between cosmological reheating and condensed matter parametric excitation",
+     "time-dependent Bogoliubov mode occupation instantaneous Hamiltonian diagonal basis particle production unifying condensed matter and cosmology",
+     "Thouless pumping gap soliton Bogoliubov excitation analogy leptogenesis inflaton particle production",
+     "analog gravity Bose-Einstein condensate soliton cosmological particle production leptogenesis right-handed neutrino unified mechanism",
+     "adiabatic theorem breakdown Bogoliubov particle creation same mechanism nonlinear optics solitons and reheating neutrinos",
+     "right-handed neutrino production axion inflaton non-adiabatic Bogoliubov coefficients gravitational particle production leptogenesis mechanism",
+     "Bogoliubov transformation universal mechanism review particle production condensed matter cosmology quantum optics squeezing analog",
+     "non-adiabatic mode excitation topological pumping analogy early universe particle creation cross-disciplinary",
+     "gap soliton Thouless pump instability analog cosmological particle creation reheating universe Bogoliubov same physics"
+    ],
+    "closest_hits": [
+     {
+      "title": "Analog cosmological reheating in an ultracold Bose gas (Phys. Rev. A 104, 023302)",
+      "url": "https://arxiv.org/abs/2008.02290",
+      "relevance": "STRONGEST bridge. Explicitly identifies BEC Bogoliubov excitations with 'the particles produced by the decaying inflaton field after inflation' via non-adiabatic parametric amplification — the SAME mechanism, connecting condensed matter to cosmological (pre)reheating particle production. But it names neither Thouless pumping/gap solitons nor leptogenesis/neutrinos, so it covers the A<->B link only at the broad class level."
+     },
+     {
+      "title": "Analogue gravitational phenomena in Bose-Einstein condensates (review)",
+      "url": "https://arxiv.org/abs/1208.4729",
+      "relevance": "Canonical review of the established 'analog gravity' program: BEC Bogoliubov quasiparticles <-> QFT-in-curved-spacetime / cosmological particle creation. Demonstrates the mechanism is a recognized cross-field bridge between condensed matter and cosmology, but does not reach the specific soliton-pumping or leptogenesis endpoints."
+     },
+     {
+      "title": "Analogue cosmological particle creation in an ultracold quantum fluid of light (Nat. Commun. 2022)",
+      "url": "https://www.nature.com/articles/s41467-022-30603-1",
+      "relevance": "Lab realization: quench-induced Bogoliubov mode mixing in a photon/atom fluid reproduces cosmological particle-creation spectra. Same non-adiabatic Bogoliubov mechanism spanning condensed-matter/optics and cosmology; no mention of topological pumping or particle-physics leptogenesis."
+     },
+     {
+      "title": "Right-Handed Neutrino Production by an Axion-like Inflaton: Implications for Leptogenesis (Field B paper)",
+      "url": "https://arxiv.org/abs/2607.13592",
+      "relevance": "The hep-ph paper itself frames its mechanism verbatim as 'non-adiabatic production' and clarifies 'the relation between the fermion basis used to identify non-adiabatic production and the Hamiltonian-diagonal basis used to define instantaneous occupation numbers' — i.e., the proposed shared mechanism is standard textbook framing within the leptogenesis/preheating field, not a novel import."
+     },
+     {
+      "title": "Controllable Thouless Pumping Switching Dynamics of Gap Solitons Mediated by Finite Bogoliubov Excitations (Field A paper)",
+      "url": "https://arxiv.org/abs/2606.31006",
+      "relevance": "The nlin.PS paper itself describes its own dynamics as 'finite Bogoliubov excitations under near-adiabatic ramping' driving particle loss — confirming the mechanism (adiabatic breakdown -> Bogoliubov occupation) is standard native framing within the BEC/topological-pumping field."
+     },
+     {
+      "title": "The Bogoliubov Transformation and its Application to Cosmological Particle Production (1981 PhD thesis, ADS)",
+      "url": "https://ui.adsabs.harvard.edu/abs/1981PhDT.........3D/abstract",
+      "relevance": "Historical marker that Bogoliubov-coefficient particle production in time-dependent backgrounds has been the standard cosmological formalism for 40+ years (Parker lineage) — the mechanism is foundational, not a fresh cross-field insight."
+     },
+     {
+      "title": "An Effective Scaling Framework for Non-Adiabatic Mode Dynamics (arXiv 2605.13376)",
+      "url": "https://arxiv.org/pdf/2605.13376",
+      "relevance": "Proposes a scale-invariant non-adiabaticity parameter for a 'broad class of bosonic and fermionic excitations' across electromagnetic media, condensed matter, and analog-gravity platforms — closest to a universal mechanism statement, but a direct PDF fetch could NOT confirm an explicit condensed-matter<->cosmology bridging sentence, and it does not name the two specific endpoints."
+     }
+    ],
+    "cross_field_identity_status": "partially_noted",
+    "each_side_standard": "The mechanism is independently STANDARD and textbook within EACH field. Field A (nlin.PS / BEC): 'Bogoliubov excitations from non-adiabatic ramping' is the native framing of the gap-soliton pumping paper itself, and instantaneous-Hamiltonian-diagonalized Bogoliubov mode occupation is textbook BEC physics (Bogoliubov-de Gennes). Field B (hep-ph leptogenesis): the paper explicitly frames production as 'non-adiabatic' and reconciles the 'fermion basis used to identify non-adiabatic production' with the 'Hamiltonian-diagonal basis used to define instantaneous occupation numbers' — Bogoliubov-coefficient particle production in a time-dependent (inflaton/gravitational) background has been the standard cosmological formalism since Parker (1969) and the 1981 thesis on the topic. So the proposed 'shared mechanism' is not novel in either field; it is each field's own default language. VERDICT = partially_noted (not explicitly_published): NO source names Thouless-pumped gap solitons AND axion-inflaton right-handed-neutrino leptogenesis together as one mechanism. However, the specific pairing is subsumed by a broadly established, explicitly-published unification — the analog-gravity / analog-cosmological-reheating program (arXiv 2008.02290 = PRA 104.023302; review arXiv 1208.4729; Nat. Commun. 2022 quantum-fluid-of-light) — which uses the IDENTICAL non-adiabatic Bogoliubov mechanism to equate condensed-matter BEC/soliton excitations with inflaton-decay/reheating particle production (the same preheating physics the leptogenesis paper relies on). The A<->B bridge is therefore a specific instance of a mechanism already published as cross-field-universal, just not with these two exact endpoints connected in print."
+   },
+   "h2": {
+    "id": "2606.31006<->2607.13592",
+    "queries_tried": [
+     "Bogoliubov transformation cosmological particle production analogy condensed matter nonlinear physics adiabatic breakdown",
+     "Thouless pumping analogy cosmological particle production leptogenesis Bogoliubov",
+     "gap soliton nonlinear optics analogy preheating inflaton particle production neutrino",
+     "non-adiabatic Bogoliubov excitation unifying condensed matter and particle physics preheating review",
+     "topological Thouless pumping analog cosmological particle creation adiabatic breakdown universal mechanism",
+     "adiabatic theorem breakdown particle production both nonlinear optics and early universe cosmology bridge",
+     "soliton Bogoliubov spectrum analogy right-handed neutrino inflaton axion production",
+     "analog gravity Bose-Einstein condensate leptogenesis neutrino cosmological particle production quasiparticle correspondence",
+     "Landau-Zener Stuckelberg universal mechanism particle production preheating soliton pumping unifying review lecture notes",
+     "\"cosmological particle production\" \"Thouless pump\" OR \"gap soliton\" same mechanism Bogoliubov"
+    ],
+    "closest_hits": [
+     {
+      "title": "Analogue cosmological particle creation in an ultracold quantum fluid of light (Nature Communications 2022)",
+      "url": "https://www.nature.com/articles/s41467-022-30603-1",
+      "relevance": "Closest published bridge: cold-atom/optical Bogoliubov quasiparticle production explicitly framed as an analog of cosmological particle creation — but scalar/phonon modes, NOT soliton/Thouless pumping, and NOT fermionic leptogenesis/neutrinos."
+     },
+     {
+      "title": "Cosmological particle creation in the lab? (arXiv 1203.1173)",
+      "url": "https://arxiv.org/pdf/1203.1173",
+      "relevance": "Review-style bridge from lab BEC systems to cosmological particle production; WebFetch confirmed it does NOT mention gap solitons, Thouless pumping, preheating, leptogenesis or right-handed neutrinos."
+     },
+     {
+      "title": "Landau-Zener-Stuckelberg interference in edge state pumping (arXiv 2408.01629)",
+      "url": "https://arxiv.org/html/2408.01629",
+      "relevance": "Field-A side: the same non-adiabatic LZS/Bogoliubov transition mechanism governs topological (Thouless-type) pumping breakdown — evidence the mechanism is standard in the condensed-matter/nlin field."
+     },
+     {
+      "title": "The exact WKB and the Landau-Zener transition for asymmetry in cosmological particle production (arXiv 2104.02312)",
+      "url": "https://arxiv.org/pdf/2104.02312",
+      "relevance": "Field-B side: identical LZS/Bogoliubov/Stokes-phenomena machinery for cosmological (preheating/inflation) particle production — the mechanism is standard in hep-ph/cosmology too."
+     },
+     {
+      "title": "Cosmological Particle Production: A Review (arXiv 2112.02444)",
+      "url": "https://arxiv.org/pdf/2112.02444",
+      "relevance": "Establishes the Bogoliubov-coefficient / adiabatic-breakdown framework as the canonical formalism of Field B (particle production incl. baryo/leptogenesis contexts)."
+     },
+     {
+      "title": "Quasiparticle Universes in Bose-Einstein Condensates (Mod. Phys. Lett. A, worldscientific)",
+      "url": "https://www.worldscientific.com/doi/abs/10.1142/S0217732304015099",
+      "relevance": "Analog-gravity unification treating BEC quasiparticle (Bogoliubov) production as mirroring cosmological particle creation — the broad bridge, but scalar quasiparticles, no solitons/Thouless, no leptogenesis."
+     },
+     {
+      "title": "Right-Handed Neutrino Production by an Axion-like Inflaton: Implications for Leptogenesis (arXiv 2607.13592)",
+      "url": "https://arxiv.org/abs/2607.13592",
+      "relevance": "The Field-B target paper itself: uses the Bogoliubov-coefficient approach with 'repeated non-adiabatic production events' — confirms the mechanism is intrinsic/standard on this side; it does NOT cite soliton/Thouless-pump or condensed-matter analogs."
+     },
+     {
+      "title": "Controllable Thouless Pumping Switching Dynamics of Gap Solitons Mediated by Finite Bogoliubov Excitations (arXiv 2606.31006)",
+      "url": "https://arxiv.org/abs/2606.31006",
+      "relevance": "The Field-A target paper itself: 'finite Bogoliubov excitations' under near-adiabatic ramping drive the pump breakdown — confirms the mechanism is standard on this side; it does NOT cite cosmology/preheating/leptogenesis."
+     }
+    ],
+    "cross_field_identity_status": "partially_noted",
+    "each_side_standard": "Yes — the mechanism is independently standard within BOTH fields, and neither the connection nor its inverse is novel inside its own domain. FIELD A (nlin.PS / BEC / condensed matter): 'finite Bogoliubov excitations' driving adiabatic-theorem breakdown in Thouless pumping of gap solitons is a canonical, heavily-reused device — the source paper (2606.31006) states it directly, and it recurs across the soliton-pumping cluster (2404.13823, 2401.09148, 2601.01355); the underlying non-adiabatic Landau-Zener-Stuckelberg transition is the standard account of topological-pump breakdown (2408.01629, Nature Phys s41567-023-02145-w). FIELD B (hep-ph / cosmology): Bogoliubov-coefficient particle production with non-adiabatic transitions in preheating/inflation is foundational and reviewed (2112.02444), formalized via exact-WKB / Landau-Zener / Stokes phenomena (2104.02312, 2203.04497); the target neutrino paper (2607.13592) itself computes fermion abundance with the Bogoliubov approach and 'repeated non-adiabatic production events.' The GENERAL bridge between the two fields — condensed-matter/BEC Bogoliubov quasiparticle production as an analog of cosmological particle creation via the shared adiabatic-breakdown skeleton — is extensively published (the analog-gravity / analogue-cosmology program: Nature Comms s41467-022-30603-1, arXiv 1203.1173, MPLA quasiparticle-universes), and the exact same LZS mechanism demonstrably appears on both sides. What is NOT published anywhere I could find is the SPECIFIC A<->B identity as stated: nobody has written that Thouless pumping of gap solitons is 'the same mechanism' as right-handed-neutrino/leptogenesis production by an axion-like inflaton. The existing bridges are always scalar/phonon quasiparticles <-> scalar cosmological creation (Hawking/de Sitter), never topological soliton pumping <-> fermionic leptogenesis. Hence partially_noted: the identity is subsumed by a broad, well-established unification (Bogoliubov transformation + adiabatic breakdown; analog gravity) and is standard on each side, but the particular field-pair pairing is not literally asserted in the literature."
+   }
+  },
+  {
+   "id": "S10",
+   "fieldA": "cosmology (astro-ph.CO) — Stage-IV combined-probe forecast for dark-matter gravitons / string theory",
+   "fieldB": "signal processing (eess.SP) — parametric diffraction-based object sensing, estimation limits",
+   "verdict": {
+    "id": "S10",
+    "novelty_class": "known_crossfield",
+    "confidence": "high",
+    "decisive_evidence": "The \"shared mechanism\" is the Fisher information matrix / Cramér-Rao bound (Rao 1945, Cramér 1946) — the single most standard estimation-theory theorem, and the SAME named object in both fields, not an analogy. Cosmological Fisher forecasting was historically imported DIRECTLY from signal-processing/estimation theory (Tegmark, Taylor & Heavens 1997), and cosmology reviews (arXiv:1205.3984, 1404.2854) derive it explicitly from the Cramér-Rao lower bound. In eess.SP the CRB is the textbook fundamental estimation-limit for diffraction/radar/sensing (Kay, Van Trees). The cross-field universality is explicitly published, not merely specialist-inferable: cross-disciplinary reviews frame Fisher/CRB as one domain-agnostic bound spanning statistics-physics-signal processing, and Zmuidzinas 2003 (JOSAA) is a direct astronomy<->signal-processing CRB bridge. Zero novelty as a cross-field insight.",
+    "best_prior_art_url": "https://opg.optica.org/josaa/abstract.cfm?uri=josaa-20-2-218"
+   },
+   "h1_status": "partially_noted",
+   "h2_status": "partially_noted",
+   "both_hunters_not_found": false,
+   "h1": {
+    "id": "fisher-crb-cosmology-2607.13910_vs_signalprocessing-2607.13417",
+    "queries_tried": [
+     "Fisher information matrix Cramér-Rao bound cosmology signal processing estimation same tool",
+     "Fisher forecasting cosmology Cramer-Rao bound signal processing analogy unifying framework",
+     "Fisher matrix cosmological parameter forecasting review estimation theory Cramer-Rao",
+     "Cramer-Rao bound review physics astronomy signal processing common framework parameter estimation",
+     "Tegmark Taylor Heavens Fisher information matrix cosmology borrowed from signal processing estimation theory",
+     "Fisher information matrix unifying tool across physics engineering radar cosmology gravitational waves parameter estimation",
+     "\"Cramér-Rao\" bound applications cosmology radar sensing \"signal processing\" same statistical bound estimation limit",
+     "Fisher information review physics applications cosmology signal processing quantum metrology gravitational waves single tutorial",
+     "\"Fisher information\" tutorial \"estimation theory\" cosmology forecasting radar sensing same Cramer-Rao lower bound cross-disciplinary"
+    ],
+    "closest_hits": [
+     {
+      "title": "Cramér–Rao bound — Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Cram%C3%A9r%E2%80%93Rao_bound",
+      "relevance": "Presents Fisher information / CRB as a single general estimation-theory theorem (covariance of any unbiased estimator bounded by inverse Fisher matrix) — the exact mechanism, treated as field-agnostic statistics that BOTH cosmology forecasting and signal-processing sensing are instances of."
+     },
+     {
+      "title": "Fisher Matrices and All That: Experimental Design and Data Compression (Heavens, Springer)",
+      "url": "https://link.springer.com/chapter/10.1007/978-3-540-44767-2_2",
+      "relevance": "Cosmology-side review that derives the Fisher-matrix forecasting formalism directly from the general Cramér-Rao / estimation-theory tool imported from statistics — documents the cross-field transfer of the same mechanism into cosmology."
+     },
+     {
+      "title": "On the Validity of Cosmological Fisher Matrix Forecasts (arXiv:1205.3984)",
+      "url": "https://arxiv.org/abs/1205.3984",
+      "relevance": "Establishes that cosmological Fisher forecasting IS the Cramér-Rao lower bound — confirms Field A independently treats the mechanism as standard estimation theory (the SP side of the analogy)."
+     },
+     {
+      "title": "Generalised Fisher Matrices (Heavens et al., arXiv:1404.2854)",
+      "url": "https://arxiv.org/abs/1404.2854",
+      "relevance": "Cosmology forecasting review grounding the Fisher matrix in the general Cramér-Rao estimation framework — the same object used in signal-processing estimation limits."
+     },
+     {
+      "title": "The Cramér-Rao Bound for Signal Parameter Estimation from Quantized Data (arXiv:2209.13182)",
+      "url": "https://arxiv.org/abs/2209.13182",
+      "relevance": "Signal-processing-side canonical use: CRB as the fundamental parametric estimation limit for sensing — confirms Field B independently treats the mechanism as standard (the cosmology side of the analogy)."
+     },
+     {
+      "title": "Cramér-Rao Bound Analysis and Beamforming Design for Integrated Sensing and Communication (arXiv:2406.01937)",
+      "url": "https://arxiv.org/abs/2406.01937",
+      "relevance": "Representative eess.SP sensing paper deriving CRBs for object range/direction/orientation estimation — same Fisher/CRB mechanism as the diffraction-sensing paper (Field B), demonstrating it is textbook-standard there."
+     },
+     {
+      "title": "Statistical Signal Processing in Engineering — Cramér–Rao Bound chapter (Wiley/IEEE)",
+      "url": "https://ieeexplore.ieee.org/document/10523377/",
+      "relevance": "Textbook chapter presenting CRB as THE fundamental estimation benchmark in signal processing — establishes the mechanism as canonical/standard within Field B independent of any cosmology link."
+     },
+     {
+      "title": "Fisher information and the Cramér-Rao bound across disciplines (search synthesis; e.g. Stanford STATS200 notes, cross-field usage)",
+      "url": "https://web.stanford.edu/class/stats200/Lecture15.pdf",
+      "relevance": "General statistics treatment framing Fisher/CRB as the universal minimum-variance bound applied across geophysics, biology, reconstruction, and signal processing — the broader unification that subsumes the proposed A↔B connection but does not name cosmology forecasting and diffraction sensing together specifically."
+     }
+    ],
+    "cross_field_identity_status": "partially_noted",
+    "each_side_standard": "Both sides are independently textbook-standard, which is the decisive point: the 'shared mechanism' is not a novel hidden bridge but a domain-general statistics theorem (Fisher information matrix / Cramér-Rao bound; Rao 1945, Cramér 1946). FIELD A (cosmology, astro-ph.CO): Fisher forecasting is THE canonical survey-forecasting tool — Tegmark, Taylor & Heavens (1997) introduced it by explicitly borrowing from statistical estimation theory, and reviews such as 'On the Validity of Cosmological Fisher Matrix Forecasts' (arXiv:1205.3984) and 'Generalised Fisher Matrices' (arXiv:1404.2854) derive it straight from the Cramér-Rao lower bound. Completely standard. FIELD B (signal processing, eess.SP): the Cramér-Rao bound is THE fundamental parametric estimation-limit benchmark, covered in every statistical-signal-processing textbook (Kay; 'Statistical Signal Processing in Engineering') and used universally in radar/ISAC/array/diffraction sensing (e.g. arXiv:2209.13182, arXiv:2406.01937). Completely standard. CROSS-FIELD IDENTITY: Because the mechanism is the SAME universal statistical object in both fields, the connection is real but trivial/expected rather than a discovered analogy. Sources repeatedly describe Fisher/CRB as a cross-disciplinary universal bound (statistics → signal processing, geophysics, biology, quantum metrology, gravitational waves, cosmology, radar), and the cosmology→estimation-theory transfer is historically documented (Tegmark et al. imported it from SP/estimation theory). However, no single source is dedicated to literally asserting THIS specific 'cosmological Fisher forecast ↔ signal-processing diffraction-sensing CRB' equivalence — none is needed, since both are recognized as instances of one textbook theorem. Hence 'partially_noted': the A↔B link is fully covered by the broader, explicitly-published unification (the Cramér-Rao bound as the universal estimation-precision limit) even though no paper is devoted to naming these two particular problem types side by side. The proposed 'bridge' therefore carries essentially zero novelty as a cross-field insight."
+   },
+   "h2": {
+    "id": "2607.13910-vs-2607.13417",
+    "queries_tried": [
+     "Fisher information matrix cosmology signal processing Cramer-Rao bound common framework",
+     "cosmological Fisher forecast Cramer-Rao bound estimation theory analogy",
+     "Fisher matrix cosmology borrowed from signal processing radar estimation theory review",
+     "Cramer-Rao bound unifying cosmology radar sensing parameter estimation cross-disciplinary",
+     "Fisher information Cramer-Rao bound same tool astronomy engineering estimation lecture notes",
+     "Cramer-Rao bound diffraction imaging resolution limit astronomy signal processing analogy",
+     "cosmology Fisher matrix review Cramer-Rao inequality estimation theory origin Tegmark Heavens Coe",
+     "Fisher information matrix applications physics engineering cosmology radar unified review estimation"
+    ],
+    "closest_hits": [
+     {
+      "title": "Cramer-Rao sensitivity limits for astronomical instruments: implications for interferometer design (Zmuidzinas 2003, JOSAA)",
+      "url": "https://opg.optica.org/josaa/abstract.cfm?uri=josaa-20-2-218",
+      "relevance": "Explicitly imports the signal-processing/estimation-theory Cramer-Rao bound into astronomical instrument/interferometer sensitivity analysis — a direct A(astro)<->B(sensing) CRB bridge, though not cosmological forecasting specifically."
+     },
+     {
+      "title": "Some remarks on Fisher information, the Cramer-Rao inequality, and their applications to physics (ScienceDirect)",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0169716121000298",
+      "relevance": "Cross-field review treating Fisher information / CRB as one domain-agnostic estimation tool spanning statistics and physics — the broader unification that subsumes both fields."
+     },
+     {
+      "title": "Analysis of the sparse super-resolution limit using the Cramer-Rao lower bound (arXiv 2311.03178)",
+      "url": "https://arxiv.org/abs/2311.03178",
+      "relevance": "CRB used for parametric diffraction/super-resolution sensing limits — the exact Field-B tool; ties the classical diffraction/Rayleigh limit to the CRB estimation framework."
+     },
+     {
+      "title": "Semiparametric estimation for incoherent optical imaging (arXiv 1906.04578)",
+      "url": "https://arxiv.org/pdf/1906.04578",
+      "relevance": "Cramer-Rao bound as the standard precision limit for diffraction-limited object sensing, explicitly linking the optical diffraction limit to estimation-theory CRB (Field-B mechanism)."
+     },
+     {
+      "title": "Fisher Matrix for Beginners (Wittman, UC Davis)",
+      "url": "https://wittman.physics.ucdavis.edu/Fisher-matrix-guide.pdf",
+      "relevance": "Cosmology-side pedagogical source that grounds Fisher forecasting explicitly in the Cramer-Rao inequality from general estimation theory — shows the cosmology method is a self-declared application of the shared statistical bound."
+     },
+     {
+      "title": "Fisher information matrix (Frieman, NED/IPAC Level-5 cosmology review)",
+      "url": "https://ned.ipac.caltech.edu/level5/March08/Frieman/Frieman11.html",
+      "relevance": "Cosmology forecast review stating the Fisher-matrix error bars are the Cramer-Rao lower bound — the shared-origin acknowledgement on the Field-A side."
+     },
+     {
+      "title": "Generalisations of Fisher Matrices (Heavens et al., Entropy / arXiv 1606.06455)",
+      "url": "https://arxiv.org/pdf/1606.06455",
+      "relevance": "Cosmology Fisher-forecast methodology paper framed around the Cramer-Rao inequality, treating the cosmological Fisher matrix as an instance of the general statistical estimation bound."
+     }
+    ],
+    "cross_field_identity_status": "partially_noted",
+    "each_side_standard": "Independently textbook-standard in BOTH fields — this is a shared, domain-agnostic statistical tool, not a genuine hidden bridge. Field A (cosmology): the Fisher information matrix / Cramer-Rao bound is the universal forecasting method (Tegmark 1997; Tegmark, Taylor & Heavens 1997; Coe quick-start guide; Wittman 'Fisher for Beginners'; Euclid forecast-validation; ubiquitous in every Stage-IV combined-probe forecast). Field B (signal processing / eess.SP): the Cramer-Rao bound is the bedrock of estimation theory (Kay, Van Trees) and the standard fundamental-limit tool for radar and diffraction-based/optical object sensing and super-resolution. Both fields explicitly present their method as an application of the SAME Cramer-Rao/Fisher bound — cosmological Fisher forecasting was in fact imported into astronomy directly FROM statistical estimation theory. Status set to 'partially_noted' rather than 'explicitly_published' only because no single source literally pairs 'Stage-IV cosmology combined-probe forecast' with 'diffraction object-sensing CRB' as a named analogy; but the identity is fully covered by the well-known broader unification (Fisher/CRB is one statistical tool), and cross-disciplinary sources (Zmuidzinas 2003; the diffraction-imaging CRB literature; the 'applications to physics' review) already bridge astronomical sensing and signal-processing estimation via this exact bound. The 'connection' is a trivial common-statistical-tool coincidence, not a novel cross-field discovery."
+   }
+  },
+  {
+   "id": "S11",
+   "fieldA": "statistics (stat.ME) — higher-order spillover effects under partial interference (Horvitz-Thompson/Hajek)",
+   "fieldB": "machine learning (cs.LG) — kernel-weighted importance sampling for off-policy evaluation in contextual bandits",
+   "verdict": {
+    "id": "2607.12855_x_2607.15067",
+    "novelty_class": "known_crossfield",
+    "confidence": "high",
+    "decisive_evidence": "The importance-sampling/IPW identity (Horvitz-Thompson = unnormalized IS, Hajek = self-normalized IS, correcting a behavior->target distribution shift) is textbook-standard within BOTH fields independently AND explicitly published as a cross-field identity. Field B explicitly imports Hajek: Swaminathan & Joachims (2015) name SNIPS 'the Hajek estimator' and every OPE paper cites Horvitz & Thompson 1952 for IPS. Field A treats HT/Hajek IPW as canonical for spillover under partial interference (Biometrika 2016; arXiv 2312.01234). The general unification is explicitly published (Bottou et al. 2013; arXiv 2204.14121 'Inverse Probability Weighting: from Survey Sampling to Evidence Estimation' ties HT=unnormalized IS and Hajek=self-normalized IS across survey sampling, causal inference, and Monte-Carlo IS). Most decisively, IntOPE (arXiv 2408.13484) co-locates the exact field pair — off-policy evaluation in contextual bandits under network interference/spillover using Horvitz-Thompson/IPW/SNIPW. Hunter 2's 'partially_noted' downgrade rests only on the absence of a single source stating the ultra-narrow sub-area pairing, but the proposed shared mechanism as worded is the general IS/IPW identity, which is ubiquitously published.",
+    "best_prior_art_url": "https://arxiv.org/abs/2408.13484"
+   },
+   "h1_status": "explicitly_published",
+   "h2_status": "partially_noted",
+   "both_hunters_not_found": false,
+   "h1": {
+    "id": "2607.12855_x_2607.15067",
+    "queries_tried": [
+     "Horvitz-Thompson estimator off-policy evaluation importance sampling causal inference connection",
+     "inverse propensity weighting off-policy evaluation contextual bandits causal inference same estimator",
+     "self-normalized importance sampling Hajek estimator off-policy evaluation contextual bandit",
+     "off-policy evaluation causal inference interference spillover importance sampling unification",
+     "off-policy evaluation under interference network Horvitz-Thompson importance sampling bandit",
+     "importance sampling unifies survey sampling causal inference reinforcement learning off-policy evaluation review",
+     "Bottou counterfactual reasoning learning systems importance sampling policy evaluation causal inference",
+     "inverse probability weighting single framework interference partial off-policy evaluation contextual bandit spillover",
+     "Swaminathan Joachims self-normalized inverse propensity SNIPS Hajek estimator counterfactual risk minimization",
+     "partial interference Horvitz-Thompson Hajek inverse probability weighting spillover effects Hudgens Halloran Aronow Samii"
+    ],
+    "closest_hits": [
+     {
+      "title": "IntOPE: Off-Policy Evaluation in the Presence of Interference",
+      "url": "https://arxiv.org/abs/2408.13484",
+      "relevance": "DIRECT A<->B bridge: does off-policy evaluation in contextual bandits under network/partial interference (spillover) using exactly the shared mechanism — Horvitz-Thompson/IPW (cites Horvitz & Thompson 1952), SNIPW (self-normalized), BIPW, SGIPW; verified via WebFetch."
+     },
+     {
+      "title": "Counterfactual Reasoning and Learning Systems (Bottou et al., JMLR 2013)",
+      "url": "https://www.jmlr.org/papers/volume14/bottou13a/bottou13a.pdf",
+      "relevance": "Foundational cross-field unification: frames importance sampling as the common mechanism linking causal inference / counterfactual estimation and policy (off-policy) evaluation in learning systems under covariate/distribution shift."
+     },
+     {
+      "title": "The Self-Normalized Estimator for Counterfactual Learning (Swaminathan & Joachims, NeurIPS 2015)",
+      "url": "https://www.cs.cornell.edu/~tj/publications/swaminathan_joachims_15d.pdf",
+      "relevance": "Explicitly imports the Hajek (self-normalized IPS) estimator from survey sampling/causal inference into bandit off-policy evaluation — 'the self-normalized IPS (the Hajek estimator)'; establishes the Hajek=SNIS identity in Field B."
+     },
+     {
+      "title": "A Review of Off-Policy Evaluation (Uehara, Shi, Kallus, 2022)",
+      "url": "https://arxiv.org/pdf/2212.06355",
+      "relevance": "OPE review that equates the importance-sampling / IPS estimator with the IPW / Horvitz-Thompson estimator, treating them as the same object across statistics/causal inference and contextual-bandit OPE (per search snippet; direct quote extraction blocked by PDF encoding)."
+     },
+     {
+      "title": "On inverse probability-weighted estimators in the presence of interference (Biometrika 2016)",
+      "url": "https://academic.oup.com/biomet/article/103/4/829/2659035",
+      "relevance": "Field-A standardness: Horvitz-Thompson and Hajek-type IPW estimators are the canonical tools for direct/indirect/spillover effects under (partial/general) interference; foundational for the exact Field-A problem."
+     },
+     {
+      "title": "Individualized Policy Evaluation and Learning under Clustered Network Interference",
+      "url": "https://arxiv.org/html/2311.02467",
+      "relevance": "Bridges policy evaluation/learning with partial (clustered network) interference via an additive IPW estimator — same mechanism, spanning the OPE and interference literatures."
+     }
+    ],
+    "cross_field_identity_status": "explicitly_published",
+    "each_side_standard": "The mechanism is textbook-standard within BOTH fields independently. Field A (stat.ME, spillover under partial interference): the Horvitz-Thompson estimator and its self-normalized Hajek variant are THE canonical IPW estimators for direct/indirect/spillover effects — Hudgens & Halloran (2008), Tchetgen Tchetgen & VanderWeele, Aronow & Samii, and 'On inverse probability-weighted estimators in the presence of interference' (Biometrika 2016). Field B (cs.LG, off-policy evaluation in contextual bandits): IPS/IPW is universally identified with importance sampling and the Horvitz-Thompson estimator as the standard baseline, and self-normalized IPS (SNIPS) is explicitly named 'the Hajek estimator' by Swaminathan & Joachims (2015). So Horvitz-Thompson=unnormalized IS and Hajek=self-normalized IS is a commonplace within each field, not a discovery.\\n\\nThe cross-field identity itself is ALSO explicitly published, not merely implied. Off-policy evaluation is widely stated to be equivalent to causal inference of stochastic interventions (importance sampling correcting behavior->target distribution shift), and Bottou et al. (2013) explicitly unified importance-sampling causal inference/counterfactual reasoning with policy evaluation. Most tellingly, IntOPE (arXiv 2408.13484) sits at the exact intersection of the two proposed subfields: it performs off-policy evaluation in contextual bandits UNDER interference/spillover using Horvitz-Thompson/IPW/SNIPW estimators. Verdict: the proposed A<->B connection is well-trodden prior art; the mechanism is a known common denominator, and dedicated work already spans both problem types simultaneously."
+   },
+   "h2": {
+    "id": "2607.12855-vs-2607.15067_importance-sampling_statME-csLG",
+    "queries_tried": [
+     "off-policy evaluation contextual bandits Horvitz-Thompson estimator causal inference inverse propensity weighting",
+     "Horvitz-Thompson Hajek importance sampling off-policy evaluation unified survey sampling causal inference",
+     "self-normalized importance sampling off-policy evaluation Hajek estimator counterfactual learning Swaminathan Joachims",
+     "causal inference interference spillover Horvitz-Thompson estimator connection off-policy evaluation reinforcement learning importance sampling same",
+     "off-policy evaluation equivalent average treatment effect estimation inverse propensity weighting review tutorial bandits causal inference unification",
+     "importance sampling unifying survey sampling causal inference reinforcement learning off-policy interference single framework review",
+     "off-policy evaluation bandits network interference spillover importance sampling connection reinforcement learning causal",
+     "\"off-policy evaluation\" \"Horvitz-Thompson\" IPS estimator originates survey sampling causal inference doubly robust Dudik Langford"
+    ],
+    "closest_hits": [
+     {
+      "title": "IntOPE: Off-Policy Evaluation in the Presence of Interference",
+      "url": "https://arxiv.org/html/2408.13484v1",
+      "relevance": "STRONGEST bridge — a single paper that co-locates BOTH fields: it adapts IPW/IPS-based off-policy evaluation (cites Horvitz & Thompson 1952) to network interference/spillover (cites peer-effect/interference literature, Ogburn et al. 2022). But it frames its 'IntIPW' as an ADAPTATION of IPW to interference, not as an explicit statement that the two literatures share one identical mechanism — so it is adjacent, not a literal A<->B identity claim."
+     },
+     {
+      "title": "Inverse Probability Weighting: from Survey Sampling to Evidence Estimation (arXiv 2204.14121)",
+      "url": "https://arxiv.org/html/2204.14121",
+      "relevance": "Broader unification that explicitly ties Horvitz-Thompson (unnormalized IS) and Hajek (self-normalized IS) across survey sampling, causal-inference ATE, and Monte-Carlo importance sampling / evidence estimation. Confirms the mechanism identity — but it explicitly limits scope to those three domains and does NOT include off-policy/contextual-bandit evaluation or interference/spillover."
+     },
+     {
+      "title": "Horvitz-Thompson Estimator Overview (EmergentMind topic)",
+      "url": "https://www.emergentmind.com/topics/horvitz-thompson-estimator",
+      "relevance": "Aggregated overview that in one place states (a) the classical IPS estimator used in off-policy evaluation is based on Horvitz & Thompson (1952), AND (b) HT/Hajek estimators are used to construct spillover effects under interference — effectively naming both endpoints of the bridge, though as an encyclopedia-style topic page, not a peer-reviewed identity claim for these two sub-areas."
+     },
+     {
+      "title": "A Perspective on Off-Policy Evaluation in Reinforcement Learning (Li 2019)",
+      "url": "https://lihongli.github.io/papers/li19perspective.pdf",
+      "relevance": "Standard reference framing OPE via importance sampling and tracing IPS to the survey-sampling / IPW lineage; part of the ubiquitous 'OPE = causal-inference IPW = Horvitz-Thompson' framing. (PDF text was not cleanly machine-readable in fetch, but the framing is well established across the field.)"
+     },
+     {
+      "title": "The Self-Normalized Estimator for Counterfactual Learning (Swaminathan & Joachims 2015)",
+      "url": "https://www.cs.cornell.edu/~tj/publications/swaminathan_joachims_15d.pdf",
+      "relevance": "Establishes self-normalized IPS (SNIPS) — explicitly the Hajek estimator — as the standard OPE/counterfactual-learning tool in the ML (Field B) literature; confirms Hajek = self-normalized IS is textbook within contextual-bandit OPE."
+     },
+     {
+      "title": "On the admissibility of Horvitz-Thompson estimator for estimating causal effects under network interference (arXiv 2312.01234)",
+      "url": "https://arxiv.org/pdf/2312.01234",
+      "relevance": "Confirms Horvitz-Thompson / Hajek with exposure/inclusion probabilities are THE canonical design-based estimators for spillover/interference in stat.ME (Field A); demonstrates the mechanism is fully standard within Field A independently."
+     },
+     {
+      "title": "Counterfactual Reasoning and Learning Systems (Bottou et al. 2013, arXiv 1209.2355)",
+      "url": "https://arxiv.org/pdf/1209.2355",
+      "relevance": "Foundational work casting off-policy/counterfactual policy evaluation as importance sampling and connecting it to causal inference / IPW; part of the broad, long-standing bridge between ML policy evaluation and the causal-inference IPW family."
+     }
+    ],
+    "cross_field_identity_status": "partially_noted",
+    "each_side_standard": "The importance-sampling / inverse-probability-weighting mechanism is unambiguously STANDARD and textbook within EACH field independently. Field A (stat.ME, interference/spillover): Horvitz-Thompson (unnormalized IS) and Hajek (self-normalized/weighted IS) estimators built on exposure/inclusion probabilities are the canonical design-based tools for spillover effects under partial interference — the target paper itself uses them, and multiple works (e.g. arXiv 2312.01234 on HT admissibility under network interference, PMC clustered-network-interference) treat this as routine. Field B (cs.LG, contextual-bandit OPE): the IPS estimator IS the Horvitz-Thompson estimator (every OPE paper cites Horvitz & Thompson 1952 as its origin) and self-normalized IPS/SNIPS IS the Hajek estimator (Swaminathan & Joachims 2015). So the mechanism is not novel in either field. On the CROSS-FIELD identity: the GENERAL bridge 'off-policy-evaluation importance sampling = causal-inference IPW = survey-sampling Horvitz-Thompson/Hajek' is explicitly and ubiquitously published (Bottou et al. 2013; Li 2019; the 2204.14121 IPW-unification, which however excludes bandits and interference). But NO single source I found literally states the NARROW pairing at issue — 'higher-order spillover estimation under partial interference' <-> 'kernel-weighted IS for OPE in contextual bandits' — as one and the same mechanism. The closest, IntOPE (arXiv 2408.13484), brings both fields into one paper (IPW-based OPE adapted to network interference, citing both Horvitz-Thompson 1952 and the spillover literature) but frames it as an adaptation rather than an explicit equivalence claim. Hence: the mechanism-level connection is covered by a broader, well-known unification and is adjacent/hinted for this exact field pair, but not literally asserted for these two specific sub-areas — 'partially_noted', not 'explicitly_published'."
+   }
+  },
+  {
+   "id": "S13",
+   "fieldA": "neuroscience/ML (q-bio.NC) — emergent generalization by representation learning in ANNs",
+   "fieldB": "economic theory (econ.TH) — choice at finite capacity, bounded agent as an information channel, Walrasian demand",
+   "verdict": {
+    "id": "S13",
+    "novelty_class": "known_crossfield",
+    "confidence": "high",
+    "decisive_evidence": "Independent third-party sources explicitly make the cross-field mechanism identity, not just each side separately. Ortega & Braun 2015 (arXiv 1512.06789) present ONE rate-distortion/free-energy functional with a single capacity (inverse-temperature) parameter interpolating perfectly-rational (full capacity) to prior/habit (low capacity), explicitly named as spanning \"AI, reinforcement learning, computational neuroscience AND economics.\" Leibfried & Braun 2016 (UAI, arXiv 1602.08332) apply the economic finite-capacity-channel formalism directly to neural-network representation learning and generalization/overfitting — the Field-A half. Plus rational-inattention-for-DNN-classification (2102.04594) and rate-distortion generalization across humans+deep models (2603.01568). Each side is separately textbook: economics = rational inattention as the rate-distortion problem with Walrasian demand as the infinite-capacity limit (Sims 2003; JEL 2023 review); ML = information bottleneck as rate-distortion representation learning where compression drives generalization (Tishby & Zaslavsky; eLife 2020). The only element unique to the target paper 2607.12412 is the \"Walrasian demand recovery\" relabeling of the standard infinite-capacity limit, and that paper is one endpoint (not independent prior art) and itself frames its contribution as a unification of already-connected literatures. Both hunters independently converged on the same subsuming prior art. Not a hidden discovery.",
+    "best_prior_art_url": "https://arxiv.org/abs/1512.06789"
+   },
+   "h1_status": "partially_noted",
+   "h2_status": "partially_noted",
+   "both_hunters_not_found": false,
+   "h1": {
+    "id": "bridge:2607.10430(q-bio.NC/ML)<->2607.12412(econ.TH) — information-bottleneck / finite-capacity rate-distortion channel; single capacity parameter interpolates full-capacity (memorization / Walrasian) to low-capacity (habit)",
+    "queries_tried": [
+     "rational inattention rate-distortion information bottleneck representation learning neural networks unified framework",
+     "information bottleneck bounded rationality consumer choice capacity parameter memorization to habit",
+     "rational inattention information bottleneck same principle deep learning generalization neuroscience economics analogy",
+     "rate-distortion theory unifies bounded rationality and neural network representation learning capacity tradeoff",
+     "Ortega Braun information-theoretic bounded rationality free energy neural networks economic decision-making unified",
+     "\"rational inattention\" equivalent \"information bottleneck\" mutual information constraint choice",
+     "efficient coding neuroscience economics rational inattention same information-theoretic principle habit formation compression",
+     "Bounded Rational Decision-Making Feedforward Neural Networks Ortega Braun representation learning generalization",
+     "rational inattention consumer demand converges Walrasian standard demand zero information cost full capacity limit",
+     "information bottleneck unifies deep learning generalization and rational inattention economics single capacity parameter cross-disciplinary bridge"
+    ],
+    "closest_hits": [
+     {
+      "title": "Choice at Finite Capacity: The Bounded Agent as an Information Channel and the Recovery of Walrasian Demand (arXiv 2607.12412 — the Field B paper ITSELF)",
+      "url": "https://arxiv.org/abs/2607.12412",
+      "relevance": "NOT independent prior art (it is one endpoint), but decisive: it LITERALLY states the A<->B identity — 'a machine running a capacity-limited policy, an information-bottleneck representation or a rate-distortion reinforcement learner, is to the theory the same object as the human consumer'; 'the economic decision-maker as a finite channel, the deep network compressing its input... are one object at different budgets'; cites Sims rational inattention; Walrasian demand = beta->infinity (infinite-capacity) limit. So the finder's 'discovery' is self-stated by one of its own two papers."
+     },
+     {
+      "title": "Information-Theoretic Bounded Rationality (Ortega & Braun, arXiv 1512.06789)",
+      "url": "https://arxiv.org/abs/1512.06789",
+      "relevance": "Independent BROADER unification: one free-energy / rate-distortion functional with an inverse-temperature (capacity) parameter interpolating perfectly-rational (full capacity) <-> prior/default (low capacity, habit), explicitly named as spanning 'artificial intelligence, reinforcement learning, computational neuroscience and economics.' This is the A<->B mechanism-level bridge published years earlier, minus the specific 'Walrasian demand / representation-learning-generalization' framings."
+     },
+     {
+      "title": "Bounded Rational Decision-Making in Feedforward Neural Networks (Leibfried & Braun, UAI 2016, arXiv 1602.08332)",
+      "url": "https://arxiv.org/abs/1602.08332",
+      "relevance": "Direct econ->ANN bridge: models each neuron / the whole net as a bounded-rational decision-maker = 'information-theoretic channel with limited transmission rate'; the capacity constraint becomes information-theoretic regularization that improves generalization / prevents overfitting on MNIST. Explicitly connects the finite-capacity-channel (economics) framing to neural-network representation learning and generalization — the Field A side."
+     },
+     {
+      "title": "Rational inattention in neural coding for economic choice (bioRxiv 2024, 10.1101/2024.09.20.614193)",
+      "url": "https://www.biorxiv.org/content/10.1101/2024.09.20.614193v1.full",
+      "relevance": "Bridges the economics side (rational inattention as finite-capacity channel) with neural coding of economic choice — the same rate-distortion/capacity mechanism spanning econ choice and (biological) neural representations."
+     },
+     {
+      "title": "Systems of Bounded Rational Agents with Information-Theoretic Constraints (Genewein/Hihn/Braun, Neural Computation 2019)",
+      "url": "https://direct.mit.edu/neco/article/31/2/440/8448/",
+      "relevance": "Extends the info-theoretic bounded-rationality / rate-distortion capacity principle to networks of agents and abstraction/hierarchy — same single-capacity-parameter machinery presented as domain-general (decision-making + networks)."
+     },
+     {
+      "title": "Rate-distortion theory of neural coding and its implications for working memory (Bates & Jacobs, eLife 2020, article 79450)",
+      "url": "https://elifesciences.org/articles/79450",
+      "relevance": "Establishes that rate-distortion / capacity-limited compression is the STANDARD normative account of neural representation on the ML/neuroscience side (Field A) — capacity parameter trades fidelity for compression, yielding structured 'distortions' (prototypization/specialization)."
+     },
+     {
+      "title": "Rational Inattention: A Review (Maćkowiak, Matějka & Wiederholt, JEL 2023)",
+      "url": "https://www.aeaweb.org/articles?id=10.1257%2Fjel.20211524",
+      "relevance": "Establishes that the finite-Shannon-capacity / mutual-information-cost channel model of the consumer is TEXTBOOK-STANDARD in economics (Field B), with the fully-rational (Walrasian) agent as the unlimited-capacity limit — so Field B's mechanism is not novel."
+     },
+     {
+      "title": "Deep Learning and the Information Bottleneck Principle (Tishby & Zaslavsky, arXiv 1503.02406)",
+      "url": "https://arxiv.org/abs/1503.02406",
+      "relevance": "Establishes the information-bottleneck / rate-distortion view of representation learning and generalization as STANDARD on the ANN side (Field A): a capacity/compression trade-off where compressing the input drives generalization."
+     }
+    ],
+    "cross_field_identity_status": "partially_noted",
+    "each_side_standard": "The mechanism is textbook-standard WITHIN EACH field independently, so it is not novel on either side. Field B (economics): the 'bounded agent as a finite-Shannon-capacity information channel choosing under a mutual-information cost' IS rational inattention (Sims 2003/2010); it is a mainstream research program (JEL 2023 review) and it is a KNOWN standard result that the classical Walrasian/utility-maximizing consumer is recovered exactly as the unlimited-capacity (zero information-cost) limit — the Field B paper's headline result restates this canon. Field A (ML / neuroscience): the information-bottleneck / rate-distortion view of representation learning, where a single capacity/compression parameter (beta) trades fidelity against compression and where compression itself drives generalization, is standard (Tishby-Zaslavsky IB; rate-distortion neural coding, eLife 2020). CROSS-FIELD: the connection is NOT independently novel either. It is covered by a broader, well-established unification — Ortega & Braun's 'information-theoretic bounded rationality' (arXiv 1512.06789; Neural Computation 2019) explicitly presents one free-energy/rate-distortion functional with a capacity/inverse-temperature parameter interpolating perfectly-rational -> prior/habit as spanning 'AI, reinforcement learning, computational neuroscience and economics,' and the UAI-2016 paper (1602.08332) concretely applies the economic finite-capacity-channel formalism to neural-network representation learning and generalization. Decisively, the Field B paper (2607.12412) ITSELF states the identity verbatim ('a machine... information-bottleneck representation or a rate-distortion reinforcement learner... is to the theory the same object as the human consumer'; 'the economic decision-maker as a finite channel, the deep network compressing its input... are one object at different budgets'), so the cross-field bridge is self-published by one of the two endpoints rather than being a hidden discovery. Verdict = partially_noted (not explicitly_published) ONLY because I did not find an INDEPENDENT third source whose thesis is the exact pairing 'emergent generalization by representation learning in ANNs <-> recovery of Walrasian demand'; but the pairing is squarely subsumed by the published information-theoretic-bounded-rationality / rational-inattention = rate-distortion = information-bottleneck unification, and both halves are standard. This bridge should be treated as adjacent/known, not as a genuine hidden cross-field discovery."
+   },
+   "h2": {
+    "id": "arxiv-2607.10430_x_2607.12412",
+    "queries_tried": [
+     "information bottleneck rational inattention rate-distortion economic choice neural network representation learning",
+     "rate-distortion channel capacity connects deep learning representation and rational inattention consumer demand",
+     "information-theoretic bounded rationality machine learning generalization economics same mechanism capacity parameter",
+     "rational inattention information bottleneck analogy neuroscience machine learning unifying framework",
+     "rational inattention equivalent rate-distortion theory Sims economics information bottleneck deep learning same optimization",
+     "capacity parameter interpolates memorization habit Walrasian demand rate-distortion consumer neural network",
+     "artificial neural network generalization economic consumer choice information channel same mechanism analogy",
+     "generalization as compression neural network is habit formation economics rate-distortion Walrasian infinite capacity limit"
+    ],
+    "closest_hits": [
+     {
+      "title": "Information-Theoretic Bounded Rationality (Ortega & Braun, 2015)",
+      "url": "https://arxiv.org/abs/1512.06789",
+      "relevance": "Strongest INDEPENDENT broad unification: casts decision-making under resource limits as one information-cost/free-energy object explicitly spanning AI, reinforcement learning, computational neuroscience AND economics. It is the umbrella that subsumes both fields, but never names ANN representation-learning generalization or Walrasian demand recovery specifically."
+     },
+     {
+      "title": "Rationally Inattentive Utility Maximization for Interpretable Deep Image Classification (arXiv 2102.04594)",
+      "url": "https://arxiv.org/pdf/2102.04594",
+      "relevance": "Genuine pre-existing econ<->ML bridge: imports the economics rational-inattention framework directly onto deep neural-network classifiers, demonstrating the two domains share the same information-cost machinery. Adjacent to, not identical with, the proposed generalization<->Walrasian-demand pairing."
+     },
+     {
+      "title": "Rate-Distortion Signatures of Generalization and Information Trade-off in Humans and Deep Vision Models (arXiv 2603.01568)",
+      "url": "https://arxiv.org/html/2603.01568",
+      "relevance": "Ties GENERALIZATION to rate-distortion jointly across humans and deep vision models (the ML/neuro half of the claim), but stops at perception/vision and does not cross into economic consumer demand."
+     },
+     {
+      "title": "Information theory in economics, Part I: Rational Inattention (The Information Structuralist)",
+      "url": "https://infostructuralist.wordpress.com/2012/06/01/information-theory-in-economics-part-i-rational-inattention/",
+      "relevance": "Confirms rational inattention IS the distortion-rate/rate-distortion problem in economics (the econ half is standard), but WebFetch verified it makes NO mention of machine learning, representation learning, or the information bottleneck."
+     },
+     {
+      "title": "On Rate-Distortion Theory in Capacity-Limited Cognition & Reinforcement Learning (NeurIPS 2022 InfoCog workshop, Arumugam et al.)",
+      "url": "https://dilipa.github.io/papers/nips22_infocog_workshop_rdt_satisficing.pdf",
+      "relevance": "Frames capacity-limited cognition and RL as rate-distortion (the mechanism the paper cites as prior art), unifying cognition/ML but not reaching Walrasian demand theory."
+     },
+     {
+      "title": "An Information Bottleneck Asset Pricing Model (arXiv 2507.23218)",
+      "url": "https://arxiv.org/pdf/2507.23218",
+      "relevance": "Applies the ML information-bottleneck to an economics/finance problem — another adjacent IB<->economics crossing, but asset pricing rather than consumer/Walrasian demand and generalization."
+     },
+     {
+      "title": "Choice at Finite Capacity: The Bounded Agent as an Information Channel and the Recovery of Walrasian Demand (arXiv 2607.12412)",
+      "url": "https://arxiv.org/html/2607.12412",
+      "relevance": "The Field-B target paper itself. It is the ONLY source that literally states the A<->B identity ('the consumer of demand theory ... and the capacity-limited learner of machine learning are one object at different budgets'), and it explicitly frames this as a unification of existing literatures (citing Tishby, Arumugam & Roy, Lai & Gershman, Alemi), claiming novelty only for the demand-theoretic consequence — so it is not independent prior art for the connection."
+     }
+    ],
+    "cross_field_identity_status": "partially_noted",
+    "each_side_standard": "The underlying mechanism is textbook-standard within EACH field independently. ML/neuroscience side: the information bottleneck is explicitly a rate-distortion problem (Tishby et al. 1999; Tishby & Zaslavsky 2015), and capacity-limited/compressed representation learning as the driver of generalization is a well-established view (Alemi et al.; Arumugam & Roy 2021; Lai & Gershman 2021). Economics side: rational inattention is mathematically the rate-distortion / distortion-rate problem (Sims 2003; Matejka-McKay), a standard equivalence, and 'infinite-capacity limit = classical/Walrasian demand, zero-capacity = habit' is the specific contribution of the target paper. So the shared object (a finite-capacity rate-distortion channel with one capacity knob) is a recognized bridge and each side is independently standard. What is NOT independently published is the exact A<->B pairing 'emergent ANN generalization by representation learning == Walrasian demand recovery of the bounded consumer.' The broad unification of economic choice and ML capacity-limited learning under one information-cost framework IS published (Ortega & Braun 2015; rational-inattention-for-DNN-classification 2102.04594; rate-distortion-generalization-in-humans-and-deep-models 2603.01568), which is why this is 'partially_noted' rather than 'not_found' — but the only source stating this precise generalization<->Walrasian identity is the target paper 2607.12412 itself, which presents it as a unification of already-connected literatures, not as an independently pre-existing cross-field result. No third-party source was found asserting THIS specific identity, so it is not 'explicitly_published.'"
+   }
+  }
+ ]
+}

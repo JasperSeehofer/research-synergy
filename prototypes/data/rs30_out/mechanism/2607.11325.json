@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "minimum edit distance to a constrained subclass — the fewest elementary structure-modifying operations (element additions / edge deletions) needed to transform a discrete combinatorial object into a member of a prescribed target class, together with its computational-complexity classification and extremal (worst-case) bounds",
+  "brief_reason": "The abstract defines proximity measures as the minimum number of graph modifications (leaf addition, valid arc deletion, arc deletion) required to turn a network into one belonging to a target class, and studies their comparability, complexity, and extremal bounds — i.e., a minimum-edit-distance-to-a-class construction."
+}

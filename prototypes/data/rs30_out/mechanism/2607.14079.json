@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "release of a boundary-localized extensive quantity (scaling with an internal interface's area) forced by a global monotonicity (second-law) constraint as a discrete control parameter drives that interface to shrink and vanish at a critical threshold, where the conjugate intensive quantity diverges",
+  "brief_reason": "The abstract assigns an area-proportional entropy A_inner/4 to an inner horizon that, by the generalized second law, must be released as the integer collapse parameter n decreases and the interface disappears, with the surface gravity diverging as n->0+ and the integer n yielding a quantized spectrum with a ground state."
+}

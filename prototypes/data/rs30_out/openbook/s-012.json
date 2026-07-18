@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "hazard/survival curve of token graduation over the 24h observation window (Kaplan-Meier + Cox)", "b_element": "emergent mortality curve of organisms over age classes"},
+    {"a_element": "compositional shift toward zero-self-buy tokens driving the cross-regime graduation decline", "b_element": "selective disappearance of damage-rich individuals leaving them under-represented in later age classes"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The overlap is only the surface vocabulary of survival/hazard/mortality curves: Paper A's transferable machinery is empirical survival-analysis statistics (Kaplan-Meier estimation and Cox proportional-hazards regression fitting covariate hazard ratios to observed graduation events), whereas Paper B's machinery is a mechanistic two-level Moran stochastic process whose scaling limits establish a formal equivalence between multi-level (group) selection and damage-accumulation senescence. Estimating hazards from data is a different mechanism from generating mortality curves via a Moran-type selection dynamic, so no coherent role-for-role machinery mapping holds beyond the shared 'survival curve' outcome."
+}

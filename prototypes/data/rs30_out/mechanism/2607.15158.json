@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "iterative subspace projection for low-rank approximation of a large linear operator: extract an approximate dominant-subspace basis via QR/orthogonalization, then perform the expensive spectral/singular-value decomposition only on the small operator restricted to that subspace rather than on the full operator",
+  "brief_reason": "The abstract replaces each large truncated SVD with a QR-based projector plus an SVD of a much smaller matrix, which is exactly the subspace-iteration trick of projecting onto an approximate dominant subspace before decomposing a reduced operator."
+}

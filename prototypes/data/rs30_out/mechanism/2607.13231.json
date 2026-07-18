@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "percolation / connectivity phase transition on a network under progressive removal of elements, exhibiting a sharp critical threshold at which the giant connected component collapses and the medium fragments into disconnected clusters",
+  "brief_reason": "The abstract's central result is a cascade/percolation simulation in which removing edges in order of accumulated intensity produces a tipping point where the giant connected component drops from 85% to 39%, the hallmark of a percolation transition (with the accumulated intensity itself estimated via a secondary Hawkes-style self-exciting memory kernel)."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "representing a nonlinear transformation by the linear composition (Koopman) operator it induces on a space of observables, and testing equivalence of two such systems via an intertwining change-of-basis conjugacy — the operator induced by an invertible state-space coordinate change — rather than an arbitrary orthogonal similarity",
+  "brief_reason": "The abstract builds on finite-dimensional Koopman operator approximations and reformulates system comparison as topological conjugacy realized by the composition operator of a candidate state-space bijection, contrasting this intertwining change of basis with DSA's arbitrary orthogonal alignment."
+}

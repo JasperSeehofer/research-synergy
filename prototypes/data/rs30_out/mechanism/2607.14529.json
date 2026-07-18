@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "nonperturbative all-orders resummation of a bilinear coupling between two linearly-coupled modes by solving the coupled linear equations exactly and building 'dressed' propagators from those solutions, valid at arbitrary coupling strength",
+  "brief_reason": "The abstract uses exact linear solutions for two coupled perturbations to construct dressed propagators that 'resum ... transfer to all orders' in the mixing strength, remaining valid where ordinary perturbation theory in that coupling breaks down."
+}

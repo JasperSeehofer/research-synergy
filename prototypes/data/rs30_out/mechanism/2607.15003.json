@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Monte-Carlo statistical hypothesis testing that certifies a bound on a rare-event (failure) probability at a prescribed confidence level — drawing many independent stochastic simulation runs and applying a concentration / sequential-sampling (Chernoff-Hoeffding-type) argument to guarantee that, with confidence at least 1 - delta, the probability of a specification-violating outcome is at most epsilon — used as the accept/reject certificate inside a derivative-free, population-based stochastic search loop",
+  "brief_reason": "The abstract's certificate — 'with confidence at least 1 - delta, the probability of encountering a scenario where the properties are violated is at most epsilon,' produced by Statistical Model Checking over simulated trajectories and coupled to an Evolutionary-Strategies optimizer — is exactly a sampling-based confidence bound on a tail/failure probability driving a search loop."
+}

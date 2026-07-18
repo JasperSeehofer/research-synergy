@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an order-preservation-vs-reversal dichotomy for noisy probabilistic comparisons: two nonlinear transformations induce mutually consistent (rank-preserving) stochastic rankings under every admissible noise model if and only if the ratio of their local curvatures (second-derivative / Arrow-Pratt-type measures) stays bounded, while an unbounded curvature ratio forces rank inversions",
+  "brief_reason": "The abstract characterizes when two utilities imply reversals for every noise specification precisely by whether their curvature ratio is unbounded, making the boundedness of the pointwise curvature ratio the sharp criterion separating preserved from inverted orderings."
+}

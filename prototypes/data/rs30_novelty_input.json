@@ -1,0 +1,69 @@
+{
+ "bridges": [
+  {
+   "id": "S1",
+   "stratum": "top",
+   "reduction_rank": 1,
+   "fieldA": "econ.TH",
+   "fieldB": "gr-qc",
+   "titleA": "Bifurcation mechanism at a sustain point of a long narrow economy",
+   "titleB": "Scalarization of Charged Black Hole in Gauss-Bonnet Extended Starobinsky-Maxwell Gravity",
+   "arxivA": "2607.10204",
+   "arxivB": "2607.14620",
+   "mechanism": "Both perform a bifurcation analysis of the equilibrium/solution branches of a nonlinear system as a control parameter is varied: paper A tracks a symmetry-breaking 'sustain point' where a uniform population state gives way to emergent twin-city branches, and paper B tracks critical horizon radii where scalarized black-hole solutions emerge, split, and reconnect into a multi-branch structure. The transferable machinery — parametrized solution branches with critical points marking branch emergence and splitting (spontaneous scalarization is itself a bifurcation off the bald solution) — maps role-for-role, so this is shared mechanism rather than mere shared 'branch/bifurcation' vocabulary.",
+   "adj_novelty": "specialist"
+  },
+  {
+   "id": "S7",
+   "stratum": "top",
+   "reduction_rank": 1,
+   "fieldA": "nlin.PS",
+   "fieldB": "hep-ph",
+   "titleA": "Controllable Thouless Pumping Switching Dynamics of Gap Solitons Mediated by Finite Bogoliubov Excitations",
+   "titleB": "Right-Handed Neutrino Production by an Axion-like Inflaton: Implications for Leptogenesis",
+   "arxivA": "2606.31006",
+   "arxivB": "2607.13592",
+   "mechanism": "Both are governed by the same transferable machinery: a mode with a time-dependent effective spectrum driven non-adiabatically produces excitations, counted as Bogoliubov occupation in the instantaneous (Hamiltonian-diagonal) basis when the adiabatic theorem breaks down. In A the near-adiabatic ramp of the periodic-potential phase excites finite Bogoliubov quasiparticles that deplete the soliton; in B the rolling/oscillating inflaton drives non-adiabatic production of neutrino quanta whose occupation is defined in the Hamiltonian-diagonal basis, so the adiabatic-breakdown / Bogoliubov-transformation core is shared even though the topological (Chern-number) and leptogenesis superstructures differ.",
+   "adj_novelty": "specialist"
+  },
+  {
+   "id": "S10",
+   "stratum": "top",
+   "reduction_rank": 1,
+   "fieldA": "astro-ph.CO",
+   "fieldB": "eess.SP",
+   "titleA": "Testing string theory with combined cosmological probes: a case study for dark matter gravitons",
+   "titleB": "Parametric Diffraction-Based Object Sensing: Modeling, Estimation, and Fundamental Limits",
+   "arxivA": "2607.13910",
+   "arxivB": "2607.13417",
+   "mechanism": "Both are the same estimation-theoretic machinery: infer the parameters of a physical forward model from noisy observations and quantify the fundamental achievable precision via Fisher information / the Cramer-Rao bound. Paper A's 'forecast' of the dark-sector parameters for a Stage-IV survey is precisely a Fisher/CRB forecast, the same object Paper B derives explicitly (ML estimator approaching the CRB) for blockage and DoA sensing, so the estimation framework maps role-for-role despite the disjoint cosmology-vs-wireless domains.",
+   "adj_novelty": "textbook"
+  },
+  {
+   "id": "S11",
+   "stratum": "top",
+   "reduction_rank": 1,
+   "fieldA": "stat.ME",
+   "fieldB": "cs.LG",
+   "titleA": "Higher-order Spillover Effects Under Partial Interference",
+   "titleB": "Kernel weighted importance sampling for off-policy evaluation in contextual bandits",
+   "arxivA": "2607.12855",
+   "arxivB": "2607.15067",
+   "mechanism": "Both estimate the expected outcome under a hypothetical/target assignment distribution from data drawn under a different actual distribution via importance-sampling / inverse-probability weighting: paper A's Horvitz-Thompson and Hajek estimators are exactly (unnormalized) importance sampling and its self-normalized 'weighted importance sampling' variant that paper B uses for off-policy evaluation, and both must correct for/absorb bias when the assumed generating mechanism (interference set / exposure mapping vs. behaviour policy) is misspecified.",
+   "adj_novelty": "specialist"
+  },
+  {
+   "id": "S13",
+   "stratum": "top",
+   "reduction_rank": 1,
+   "fieldA": "q-bio.NC",
+   "fieldB": "econ.TH",
+   "titleA": "Emergent Generalization by Representation Learning in Artificial Neural Networks",
+   "titleB": "Choice at Finite Capacity: The Bounded Agent as an Information Channel and the Recovery of Walrasian Demand",
+   "arxivA": "2607.10430",
+   "arxivB": "2607.12412",
+   "mechanism": "Both instantiate the same information-bottleneck / finite-capacity information-channel (rate-distortion) machinery: a system compresses a high-dimensional world into a capacity-limited representation, a single capacity parameter interpolates between a full-capacity limit (memorisation / the Walrasian consumer) and a degenerate low-capacity limit (pure habit), and each paper's central claim is that the emergent structured behaviour (generalisation in A; Slutsky-symmetric, downward-sloping demand in B) arises causally from the compression itself rather than from the conventional explanation.",
+   "adj_novelty": "specialist"
+  }
+ ]
+}

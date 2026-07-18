@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a spontaneous-symmetry-breaking bifurcation of solution branches, in which a trivial solution destabilizes past a critical parameter and nontrivial branches emerge, and the branch diagram reorganizes via fold/saddle-node bifurcations that merge branches at a common limiting parameter value or split them into separate connected/disconnected branches as control parameters vary",
+  "brief_reason": "The abstract centers on how nontrivial solutions split into two smooth branches meeting at a common minimal horizon radius and how, tuning parameters, a single smooth branch transitions into two disconnected branches with an additional disconnected branch appearing — i.e. the topology of the solution-branch (bifurcation) diagram under parameter variation."
+}

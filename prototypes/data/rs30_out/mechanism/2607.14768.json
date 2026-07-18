@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a sharp threshold (zero-one phase transition) in a random ensemble governed by a scaling parameter relative to a critical value, where an order/probability quantity vanishes below the critical scale, converges to a nontrivial limit exactly at it, and saturates to one above it, with the transition law inverted to extract finite-size correction terms",
+  "brief_reason": "The abstract states the random ensemble's error probability undergoes a sharp transition controlled by the codebook-growth scale versus a critical scale (vanishing below, nontrivial limit at, approaching one above), and inverts this transition to obtain leading plus constant-order finite-blocklength corrections."
+}

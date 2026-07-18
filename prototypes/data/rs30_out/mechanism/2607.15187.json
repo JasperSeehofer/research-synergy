@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "coupling of an internal oscillatory (normal-mode) degree of freedom of a localized coherent structure to its translational interaction dynamics, so that energy stored in the internal mode reshapes and can reverse the sign of the effective force between two such structures, with threshold 'spectral wall' barriers appearing where a discrete internal-mode frequency crosses into the continuous spectrum",
+  "brief_reason": "The abstract describes excited shape normal modes competing with the static inter-structure forces to flip attraction into repulsion (and vice versa) and creating spectral walls that block or break up bound states, which is exactly an internal-mode-modulated effective interaction with a spectral-threshold barrier."
+}

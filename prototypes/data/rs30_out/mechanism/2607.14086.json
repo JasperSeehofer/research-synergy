@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "masked-reconstruction self-supervised representation learning: randomly hide a subset of the tokenized input elements and train the model to reconstruct the hidden elements from the visible remainder, jointly with a supervised prediction objective, so that unlabelled records shape the learned latent representation",
+  "brief_reason": "The abstract's MOJO framework combines masked-autoencoding self-supervised learning with a supervised objective, letting unlabelled data improve representations and downstream prediction especially in low-label/few-shot regimes."
+}

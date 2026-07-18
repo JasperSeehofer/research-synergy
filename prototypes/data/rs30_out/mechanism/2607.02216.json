@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "iterated conformal-map growth of a self-similar random fractal driven by a harmonic (Laplacian) boundary field, producing a multifractal measure whose moment-scaling exponents are exactly tied to the aggregate's fractal dimension",
+  "brief_reason": "The abstract builds its argument on the Hastings-Levitov iterated-conformal-map formulation of diffusion-limited aggregation and derives an exact link between the universal amplitude of the third moment of the harmonic-measure multifractal spectrum and the cluster's fractal dimension."
+}

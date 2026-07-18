@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "signal isolation by measuring a weak coupling in a system's background/driving dynamics through the velocity-field statistics (mean-flow and dispersion profiles) of its most underdense, dynamically decoupled subregions, where confounding small-scale interactions vanish and the parameter-to-observable response is captured by a low-order (quadratic) response surface",
+  "brief_reason": "The abstract states the dynamics of low-density regions are decoupled from complex small-scale physics and thus act as clean, sensitive detectors of a weak background coupling parameter, whose ~30% imprint on the radial-velocity and dispersion profiles is well-approximated by a 4-parameter quadratic regression model."
+}

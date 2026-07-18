@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "iterative belief-propagation (sum-product message passing) on a bipartite factor graph, computing approximate marginals through local node-to-node message updates, with a learned function approximator substituted for the nonlinear local update rule",
+  "brief_reason": "The abstract centers on a belief-propagation decoding scheme that preserves the parallelizable message-passing structure over parity-check constraints and replaces the nonlinear tanh/tanh-inverse check-node updates with a trained neural approximator, which is exactly local message-passing marginal inference on a factor graph."
+}

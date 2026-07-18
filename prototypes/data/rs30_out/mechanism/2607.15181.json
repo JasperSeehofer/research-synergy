@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "ground-state substitution (factorization of a quadratic energy form around a known positive ground-state solution) that rewrites the form as a manifestly nonnegative weighted quadratic form to extract a sharp, optimal-constant coercive lower bound, applied recursively to raise the order",
+  "brief_reason": "The abstract establishes the sharp constant by combining a ground state representation formula with a weighted integrated Bochner identity in an iterative scheme, which is exactly the factorization-around-a-positive-ground-state technique for deriving optimal coercivity lower bounds."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Exact, nonperturbative solution of two linearly (bilinearly) coupled oscillatory modes — one heavy, one light — via hypergeometric Green's functions, in which the heavy mode's intrinsic frequency imprints log-periodic, non-analytic oscillations on the light mode's correlations (mode-mixing 'spectroscopy' resolved to all orders in the coupling rather than perturbatively)",
+  "brief_reason": "The abstract treats the constant-turn quadratic mixing between a light curvature mode and a massive field nonperturbatively with exact hypergeometric propagators, then uses a Mellin–Barnes representation to isolate non-analytic late-time branches whose logarithmic-oscillation frequency encodes the heavy mass while amplitude and phase keep the full mixing dependence."
+}

@@ -1,0 +1,12 @@
+{
+  "mapping": [
+    {"a_element": "ramping rate of the relative phase between the periodic potentials (the adiabaticity-controlling drive rate)", "b_element": "rate of the time-dependent inflaton background (slow-rolling during inflation, oscillating during preheating)"},
+    {"a_element": "near-adiabatic ramping that breaks perfect adiabatic following", "b_element": "non-adiabatic production events when the WKB/adiabatic approximation fails"},
+    {"a_element": "finite Bogoliubov excitations (quasiparticles excited above the gap-soliton mean field)", "b_element": "produced right-handed Majorana-neutrino quanta / occupation numbers in the Hamiltonian-diagonal (instantaneous) basis"},
+    {"a_element": "instantaneous mode structure set by soliton chemical potential vs. Bloch topological band", "b_element": "instantaneous Hamiltonian-diagonal basis with helicity-dependent effective momentum used to define occupation"},
+    {"a_element": "spectral band gap of the soliton that sets the scale for non-adiabatic excitation", "b_element": "effective mass gap / momentum cutoff that sets when non-adiabatic production is efficient"},
+    {"a_element": "particle loss / depletion of the solitons from the excited quasiparticles", "b_element": "resulting integrated neutrino abundance from the produced quanta"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both are governed by the same transferable machinery: a mode with a time-dependent effective spectrum driven non-adiabatically produces excitations, counted as Bogoliubov occupation in the instantaneous (Hamiltonian-diagonal) basis when the adiabatic theorem breaks down. In A the near-adiabatic ramp of the periodic-potential phase excites finite Bogoliubov quasiparticles that deplete the soliton; in B the rolling/oscillating inflaton drives non-adiabatic production of neutrino quanta whose occupation is defined in the Hamiltonian-diagonal basis, so the adiabatic-breakdown / Bogoliubov-transformation core is shared even though the topological (Chern-number) and leptogenesis superstructures differ."
+}

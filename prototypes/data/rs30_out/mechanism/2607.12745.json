@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "evolutionary (genetic-algorithm) population-based search over a space of candidate analytic functions — symbolic regression — in which each generated functional form is first passed through hard feasibility/constraint filters and surviving candidates are then scored and selected by goodness-of-fit to observational data",
+  "brief_reason": "The abstract adopts a Genetic Algorithm to reconstruct analytical functional forms, filtering each generated function through viability constraints and then selecting candidates by their fit to BAO and supernova data, which is a constraint-filtered evolutionary symbolic-regression search."
+}

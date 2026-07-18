@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "recovery of a hidden linear transform by extremizing a contrast functional that measures a distribution's distance from a reference (Gaussian) law, exploiting a strict inequality showing that superposing independent components strictly reduces this functional below the weighted sum of the components' values, so the functional is uniquely extremized at the unmixed coordinates",
+  "brief_reason": "The abstract builds its whole method on a strict inequality that any linear combination of independent standardized sources has strictly smaller squared 2-Wasserstein distance to the Gaussian than the weighted sum of the sources' distances, and then maximizes this non-Gaussianity contrast to identify the unmixing matrix and causal order exactly."
+}

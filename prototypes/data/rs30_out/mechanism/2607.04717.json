@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "penalty-based relaxation of an infeasible constraint system by a norm-penalized non-negative slack variable, whose residual converges as the penalty grows to the minimum-norm point of the attainable-violation set — i.e. the projection of zero onto the reachable residual range, quantifying the distance to the nearest feasible instance",
+  "brief_reason": "The abstract slackens the market-clearing constraint with a non-negative variable whose norm is penalized, and shows that as the penalty grows the residual converges to a minimum-norm vector in the feasible range of excess demand that measures the distance to the nearest equilibrium-admitting economy."
+}

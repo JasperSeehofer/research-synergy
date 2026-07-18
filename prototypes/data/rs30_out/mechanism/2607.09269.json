@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "linear best-response equilibrium on a network whose closed-form fixed point is a Katz-Bonacich centrality vector (the resolvent / Neumann series of the weighted adjacency matrix), with a control parameter crossing a critical threshold that flips the sign of the network-position term",
+  "brief_reason": "The abstract states equilibrium prices are obtained in closed form for arbitrary networks with a network-position term proportional to Katz-Bonacich centrality whose sign is set by whether one parameter exceeds a threshold, which is the signature of a resolvent-based linear-response fixed point on a graph with a sign-reversing critical threshold."
+}

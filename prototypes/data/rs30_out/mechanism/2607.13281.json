@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a low-dimensional system of coupled nonlinear ODEs with frequency/density-dependent interaction coefficients (replicator / Lotka-Volterra type), analyzed by tracking how its fixed points exchange stability as a single control parameter is varied, producing a cascade of bifurcations — transcritical bifurcations linking boundary equilibria to interior equilibria and Hopf bifurcations spawning stable limit cycles",
+  "brief_reason": "The abstract frames the system as replicator/Lotka-Volterra dynamics whose two- and three-component equilibria change stability as the carrying-capacity parameter varies, yielding a rich cascade of bifurcations and stable limit cycles."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "construction of a universal (dominating, up to a constant) lower semi-computable semi-measure from the fraction of transformations in a group that leave a given object as their unique fixed point, together with a coding-theorem duality equating the negative logarithm of that measure with a minimal description complexity of the object",
+  "brief_reason": "The abstract defines a 'symmetry prior' as the probability that a random group element has a string as its unique fixed point, proves it is a universal lower semi-computable semi-measure, and establishes a Coding Theorem tying this measure to complexity — the classic universal-semimeasure/description-length correspondence stated over an abstract transformation group."
+}

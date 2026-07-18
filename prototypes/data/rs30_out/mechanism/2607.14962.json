@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "maximization of a submodular sum-of-maxima coverage objective over a group of items — the total value is the sum, across target categories, of the single best (maximum) score any group member achieves in that category, optimized by marginal-gain credit assignment that rewards a member on a category only when it raises that category's group-wise maximum",
+  "brief_reason": "The abstract's multi-axis max@K takes the per-category maximum score across a group of samples and sums these category-wise maxima, giving a sample positive weight on a category only when it increases that category's group-wise maximum — a classic sum-of-maxima (max-coverage) objective with marginal-contribution credit."
+}

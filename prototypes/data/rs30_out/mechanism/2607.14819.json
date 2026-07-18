@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "remote application of an unknown target transformation onto a distant system by consuming a pre-shared correlated (entangled) resource distributed simultaneously across two independent channels/degrees of freedom, followed by local measurement and measurement-conditioned corrective operations — a teleportation-class remote-steering protocol on a multi-channel shared resource",
+  "brief_reason": "The abstract describes implementing an arbitrary operator on an unknown state at a distant location by sharing an entangled resource across two degrees of freedom (polarization and spatial) at once and using local coupling, measurement, and success-probability-weighted corrections, which is the machinery of steering a remote state via a distributed correlated resource plus conditioned local operations."
+}

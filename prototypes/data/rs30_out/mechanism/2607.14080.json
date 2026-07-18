@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "inverse-problem uniqueness for a nonlinear evolution equation — reconstructing an unknown spatially-varying coefficient of the governing law from the asymptotic (large-time / far-field) scattering map that relates incoming to outgoing asymptotic states",
+  "brief_reason": "The abstract's central claim is that the large-data scattering behavior of the equation uniquely determines the inhomogeneity coefficient a(x), i.e. the asymptotic input-output map inverts to recover a parameter of the governing dynamics."
+}

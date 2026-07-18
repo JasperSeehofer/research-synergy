@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a trapdoor one-way construction whose security rests on the computational hardness of solving a system of multivariate (quadratic) polynomial equations over a finite field, made efficiently invertible only via a secret hidden change of variables",
+  "brief_reason": "The abstract builds a quantum-safe scheme on 'multivariate cryptography' with 'rigorous mathematical proofs', i.e. the intractability of inverting a public system of multivariate polynomial equations without the trapdoor."
+}

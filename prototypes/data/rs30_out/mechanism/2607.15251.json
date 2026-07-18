@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Non-perturbative resummation of a bilinear (quadratic) coupling between two linearly-coupled modes into exact dressed propagators/Green's functions, so that a higher-order (cubic-vertex) correlation function collapses to a single vertex integral evaluable by a Schwinger/proper-time parameter representation over factorized per-leg kernels",
+  "brief_reason": "The abstract treats the quadratic mixing between two fluctuation modes non-perturbatively to obtain exact dressed mode functions, then proves all tree-level three-point correlators reduce to one vertex diagram computed via a Schwinger-parameter integral over pre-computable independent leg kernels."
+}

@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "cortical surface as the underlying curved manifold", "b_element": "positive unit sphere as the underlying curved manifold"},
+    {"a_element": "geometry embedded via Laplace-Beltrami eigenmodes", "b_element": "angular variation captured via eigenanalysis of a second-moment matrix of tangent departures"},
+    {"a_element": "using manifold geometry to regularize the estimate", "b_element": "using geodesic/tangent-space structure (anchored to a reference direction) to constrain the estimate"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The overlap is only the generic 'geometry-aware spectral method on a curved manifold'; the actual driving machinery differs. Paper A solves an optimal-transport coupling that aligns two subjects' functional data (a matching/transport problem regularized by Laplace-Beltrami eigenmodes), whereas Paper B performs low-rank dimension reduction of a single extremal angular law by reducing a geodesic loss to eigen-decomposition of a second-moment matrix (a geodesic-PCA problem). Transport/alignment between distributions is not the same governing process as covariance eigen-decomposition, so no role-for-role mapping of the core mechanism holds."
+}

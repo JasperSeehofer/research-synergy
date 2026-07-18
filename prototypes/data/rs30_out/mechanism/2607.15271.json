@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a two-timescale (fast-slow) update scheme that decouples slow, periodic adaptation of a persistent internal state variable from a fast per-step readout of that state, stabilized by an anchoring/regularization term penalizing drift of the slow variable away from a cached reference value",
+  "brief_reason": "The abstract's central move is to decouple the frequency of expensive periodic memory (state) updates from cheap per-frame memory application, adding a Memory Loss and a Memory Caching term that regularize the slowly-updated weights against catastrophic drift from their prior values."
+}

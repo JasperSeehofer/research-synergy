@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "existence (and convergence to) a self-consistent fixed-point equilibrium among multiple coupled optimizing agents with heterogeneous preference parameters, where each agent's optimal strategy is a mutual best response, guaranteed by explicit parameter restrictions on the coupling",
+  "brief_reason": "The abstract's main result derives parameter restrictions ensuring the existence of a Radner equilibrium among traders who each maximize their own utility, i.e. a mutually consistent fixed point of the interacting-agents system, with a companion long-run-survival condition on which agents persist."
+}

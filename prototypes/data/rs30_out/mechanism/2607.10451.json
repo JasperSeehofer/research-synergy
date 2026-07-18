@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "systematic threat-to-countermeasure coverage/gap analysis over an enumerated attack surface: catalogue every failure/attack mode of a system, map each to available mitigations, and expose the uncovered residual gaps",
+  "brief_reason": "The abstract only supports a coarse survey-style description, but its method is to enumerate the breadth of security threats to BCI systems and match existing cybersecurity/hardware/ML defenses against them to identify the remaining unaddressed gaps, i.e. a threat-versus-mitigation coverage mapping."
+}

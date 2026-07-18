@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "subspace-projection (Rayleigh-Ritz) eigenvalue solving: approximating the extremal eigenpair of a large linear operator by restricting it to a low-dimensional subspace spanned by a set of sampled basis vectors and diagonalizing exactly within that subspace, requiring only that the subspace have sufficient overlap with the target state rather than being individually optimized",
+  "brief_reason": "The abstract states the method recovers ground-state energies by classically diagonalizing a Hamiltonian in the subspace spanned by sampled bitstrings and needs only samples with sufficient ground-state overlap, which is exactly a Ritz projection onto a sampled subspace whose robustness is then exploited to prune and quantize the sampler."
+}

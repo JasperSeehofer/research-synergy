@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "construction of periodic orbits from intersections of the stable and unstable invariant manifolds (separatrix tubes) of a hyperbolic periodic orbit, with continuous families born and losing stability through saddle-center bifurcations of the Poincaré return map",
+  "brief_reason": "The abstract builds continuous families of periodic (cycler) trajectories from intersections of the stable and unstable manifold tubes of the L1 Lyapunov orbit and attributes their creation and linear (in)stability to a saddle-center bifurcation of the return map plus isolated parametric resonances."
+}

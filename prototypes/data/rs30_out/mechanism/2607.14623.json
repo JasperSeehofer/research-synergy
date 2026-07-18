@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "exhaustive enumeration of a combinatorial space of admissible specification/parameter choices to generate an ensemble of outcomes (a robustness/sensitivity ensemble), then summarizing that ensemble by a worst-case (minimax) element rather than by its central tendency or size",
+  "brief_reason": "The abstract's subject is 'multiverse analysis' — computing results across every defensible combination of analytic choices to yield a multiverse of outcomes — and it proposes evaluating that ensemble by its single worst universe and treating a larger ensemble as weaker, i.e. a worst-case criterion over a combinatorial choice space."
+}

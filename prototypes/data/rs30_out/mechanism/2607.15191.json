@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a symmetry-constrained recursive bootstrap that builds higher-order objects from a small set of low-order primitives via a universal substitution rule dictated by an underlying symmetry group, combined with an asymptotic expansion in a small parameter made manifest by decomposing quantities along fixed reference directions",
+  "brief_reason": "The abstract constructs higher-point structures from three- and four-point building blocks through a recursive bootstrap relation whose universal substitution rule follows from a (light-front Galilean) symmetry, with an expansion in the small alignment parameter made manifest by decomposing momenta/spinors against fixed lightlike reference vectors."
+}

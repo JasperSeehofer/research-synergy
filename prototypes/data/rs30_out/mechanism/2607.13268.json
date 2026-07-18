@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "surrogate-accelerated Bayesian inversion of a costly forward map — inferring a posterior over model parameters from observational constraints while replacing the expensive parameter-to-observable evaluation with a fast learned emulator",
+  "brief_reason": "The abstract builds a Bayesian inference framework to identify parameter regions consistent with measured constraints and implements it via a neural-network surrogate that accelerates the repeated, expensive mapping from parameters to observables."
+}

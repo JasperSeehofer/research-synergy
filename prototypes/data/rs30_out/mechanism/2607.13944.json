@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "existence of a monotone traveling-wave front connecting two homogeneous steady states in a coupled reaction-diffusion system with density-dependent degenerate diffusion, propagating at any speed above a critical minimum wave speed of Fisher-KPP form (proportional to the square root of the product of the reaction rate and the diffusion coefficient)",
+  "brief_reason": "The abstract constructs traveling wave fronts for a partially diffusive PDE-ODE system with degenerate diffusion (D(1)=0) that connect a tumor-dominant state to a healthy state for every wave speed above the KPP-type threshold 2*sqrt(r*D(0)), with the degeneracy removed via a nonlinear change of variables."
+}

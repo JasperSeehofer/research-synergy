@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "simulation-based (likelihood-free) inference of a mechanistic forward model's latent parameters from indirect observations, using a differentiable simulator to invert designed summary features back onto the generative parameters",
+  "brief_reason": "The abstract fits the latent parameters of a mechanistic Hodgkin-Huxley forward model from indirect (extracellular) measurements by combining differentiable biophysical simulation with simulation-based inference, then uses the fitted forward model to predict responses to unseen inputs."
+}

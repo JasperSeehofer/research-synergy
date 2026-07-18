@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "inverse reconstruction of a latent radially-symmetric field from line-of-sight integrated observables, by forward-modeling a parametric power-law radial profile (field strength tied to a co-located density profile via a fixed exponent) and fitting its single normalization constant to the observed integral statistics",
+  "brief_reason": "The abstract infers the intracluster magnetic field by assuming a radially symmetric profile B(r) ~ n_e(r)^0.5 anchored to an X-ray-derived density model and tuning its normalization (B_500) so the forward-modeled Faraday depth — a line-of-sight integral of the field weighted by density — best matches the observed polarimetric data."
+}

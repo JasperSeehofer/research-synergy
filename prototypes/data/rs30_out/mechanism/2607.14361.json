@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "spectral/orthogonal-series expansion of a square-integrable random object in a complete orthonormal basis (here iterated-integral / polynomial-chaos modes), truncated by best N-term nonlinear (sparse) approximation that retains only the largest coefficients under a compressibility assumption",
+  "brief_reason": "The abstract builds on Wiener-chaos expansions of predictable square-integrable processes and its central guarantee is achieving the best N-term 'chaoslet' approximation rate for compressible coefficients, i.e. sparse truncation of an orthogonal-basis series."
+}

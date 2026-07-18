@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a universal concave power-law (square-root, exponent 1/2) scaling relation between an accumulated input and its aggregate response, with a fixed universality-class exponent and only a system-specific prefactor to calibrate, sustained by the interplay of a long-memory (autocorrelated) input stream and a diffusive (uncorrelated-increment) output",
+  "brief_reason": "The abstract fits response = c*(input/normalizer)^{1/2} with the exponent frozen at the universal value 1/2, decisively prefers this square-root form over linear and logarithmic alternatives, reports a universal tail exponent, and attributes the law to two ingredients — a long-memory input (gamma=0.66) and a diffusive output (Hurst 0.49)."
+}

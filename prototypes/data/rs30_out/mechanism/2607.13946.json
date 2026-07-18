@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "computing a global invariant of a finite-group quotient (orbifold) as a weighted sum of contributions indexed by the group's elements over their fixed-point loci — a twisted-sector / equivariant decomposition that reproduces the quotient's invariant, together with an involutive pairing that exchanges two dual constructions",
+  "brief_reason": "The abstract defines group-quotient invariants (Roan's Hodge numbers) that are proven to correctly count the quotient's total invariant (stringy Euler number via the Vafa formula), which is a sum-over-group-element-sectors construction, and then uses them to establish a duality between two paired constructions."
+}

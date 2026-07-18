@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "self-similar (scale-invariant) solutions of a nonlinear evolution equation describing a cascade that transports a conserved quantity across scales, combining first-kind self-similarity (exponents fixed by conservation/dimensional analysis) and second-kind self-similarity (an anomalous exponent fixed by a nonlinear eigenvalue / universal dimensionless constant governing a propagating front)",
+  "brief_reason": "The abstract identifies self-similar solutions of a nonlinear cascade transferring energy toward small scales, exhibiting both first- and second-kind self-similarity with a universal dimensionless constant governing the propagating front."
+}

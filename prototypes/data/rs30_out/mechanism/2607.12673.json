@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "dynamic-programming alignment of an ensemble of related discrete symbol strings over a finite alphabet to establish position-by-position correspondence, from which per-position substitution frequencies, conservation, and pairwise covariation are estimated to infer the constraints acting on the generating process",
+  "brief_reason": "The abstract treats each item as a one-dimensional sequence from a limited alphabet, builds an alignment method to place variants in positional correspondence, and then reads off mutability, substitution matrices, positional conservation, and covariance to recover the forces shaping the sequences."
+}

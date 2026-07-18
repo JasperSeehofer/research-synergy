@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a discrete-time urn/survival sampling process in which each round retains a fixed fraction of the population and replaces the rest, giving closed-form occupancy statistics whose parameters (per-round survival and coverage) are estimated from two independent projections of the same process, generalized to a two-component mixture separating a persistent core fraction from a turning-over shell",
+  "brief_reason": "The abstract builds an urn model where each round samples a fraction and replaces a fraction to recover survival and coverage rates, checks consistency between two closed-form projections (pairwise containment and the cumulative discovery curve) to detect heterogeneity, and reconciles the mismatch with a two-component urn carrying a persistent core plus shell parameters."
+}

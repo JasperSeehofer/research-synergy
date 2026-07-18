@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a decision-theoretic admissibility / complete-class argument: equipping a space of candidate procedures with a dominance partial order and identifying the minimal complete class of undominated (admissible) elements that collectively dominate every other procedure",
+  "brief_reason": "The abstract defines strong/weak dominance relations, proves every procedure is dominated by an admissible weighted-mean member forming a complete class, and characterizes largest/undominated elements within a symmetric subclass — the classic admissibility and complete-class structure of statistical decision theory."
+}

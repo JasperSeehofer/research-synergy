@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Bayesian posterior inference on a single-parameter deformation of a baseline model — introducing one scalar rescaling parameter that perturbs a component of the model above a threshold, then constraining it against combined data likelihoods to obtain credible-interval bounds on the size of the hypothesized perturbation",
+  "brief_reason": "The abstract introduces a single parameter epsilon that rescales the photon energy density above a redshift and constrains it with Planck/lensing/BAO likelihoods to yield posteriors and 68/95 per cent bounds, which is one-parameter Bayesian bound-setting on a deformation of a reference model."
+}

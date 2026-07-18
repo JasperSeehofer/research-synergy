@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an analytic moment-parameterization mapping the cross-correlation coefficient of two jointly-Gaussian random fields onto the mean and variance of a Gamma-distributed scalar measuring the misalignment between the eigenframes (principal axes) of the two fields' second-derivative (Hessian) matrices",
+  "brief_reason": "The abstract derives a heuristic analytic expression giving the mean and variance of the Gamma-distributed misalignment factor tau (the angle between the principal axes of the density and potential Hessian matrices) as a universal function of the single density-potential cross-correlation coefficient q."
+}

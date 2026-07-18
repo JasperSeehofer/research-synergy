@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a non-compensatory aggregation operator that collapses many heterogeneous component scores into a single scalar via a non-linear mean (e.g. a penalty-adjusted or power/generalized mean rather than a linear weighted average), limiting substitutability between components and penalizing imbalance among them",
+  "brief_reason": "The abstract evaluates ways to combine many contributors into one number against conditions such as limited substitutability, penalisation of imbalances, and non-linear transformation, concluding that only non-linear, non-compensatory aggregation (vs. a linear weighted average) suffices."
+}

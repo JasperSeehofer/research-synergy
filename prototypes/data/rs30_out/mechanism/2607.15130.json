@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "coded-aperture (mask) reconstruction: recovering a source's direction/position by deconvolving or cross-correlating a measured shadow pattern against a known encoding mask, with multiple overlapping exposures co-registered and stacked (mosaicking) to boost signal and coverage",
+  "brief_reason": "The abstract's method rests on 'coded-mask imaging and mosaic techniques' to localize transient sources from detector data, i.e. inverting a known aperture-encoding to reconstruct source position and combining multiple exposures to fill gaps."
+}

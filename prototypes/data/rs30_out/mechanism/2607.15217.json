@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "gradient-free population-based evolutionary (genetic-algorithm) search over a fixed-length real-valued genome that jointly optimizes discrete structure/topology together with continuous parameters, requiring no differentiable objective",
+  "brief_reason": "The abstract states that topology, weights, delays, and connectivity are all co-evolved by a genetic algorithm on a flat 14,602-gene real-valued genome, with the method explicitly avoiding any differentiable computation graph and arguing genetic algorithms (not CMA-ES) are the correct optimizer for this problem class."
+}

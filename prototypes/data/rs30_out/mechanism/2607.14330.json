@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "treating the first variation (differential) of a functional as a 1-form on an infinite-dimensional configuration space and decomposing it into exact vs. non-exact parts, so that only the boundary/edge contribution survives (the bulk term vanishes identically) and the exact-form piece can be integrated away to cancel divergences",
+  "brief_reason": "The abstract renormalizes the variation of the action rather than the action, states that its bulk contribution vanishes so the problem localizes at the boundary, and uses the distinction between exact and non-exact 1-forms on functional space as the subtraction prescription."
+}

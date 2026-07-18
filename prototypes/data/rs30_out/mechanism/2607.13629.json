@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Quantification of deterministic chaos in a conservative (Hamiltonian) dynamical system via the exponential divergence rate of infinitesimally separated trajectories (Lyapunov-type sensitivity-to-initial-conditions indicators), separating regular from chaotic regions of phase space",
+  "brief_reason": "The abstract's quantitative backbone is a battery of trajectory-divergence chaos indicators (Lyapunov exponents, MEGNO, SALI/GALI, frequency-map, Lagrangian-descriptor and recurrence-divergence methods) applied to Hamiltonian dynamics to map regular versus chaotic phase space, with transport additionally characterized by anomalous power-law-in-time diffusion of the mean squared displacement."
+}

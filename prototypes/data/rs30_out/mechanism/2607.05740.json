@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reconstruction of a directed coupling/transfer network from time-lagged cross-correlations between many nodes' event-count time series, with a shared common-mode driver partialled out to isolate direction-specific coupling, plus a network gain (amplification) factor quantifying how a local perturbation is magnified as it propagates through the inferred graph",
+  "brief_reason": "The abstract builds a canton-to-canton spread map from weekly counts using the ~3-week generation interval as the lag, removes the shared seasonal/climatic signal so only direction-specific spread remains, and summarizes it by source/receiver, an amplification factor, and a directionality index, which is exactly lag-based directed-network inference with common-mode removal and a propagation gain."
+}

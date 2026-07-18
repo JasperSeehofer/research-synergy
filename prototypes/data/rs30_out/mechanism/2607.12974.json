@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a driven, damped second-order gradient dynamical system in which a state-dependent (coupling-induced) friction term balances a potential-gradient driving force, producing an extended near-constant-velocity attractor regime whose parameters shift observable output statistics",
+  "brief_reason": "The abstract frames the analysis as a competition between a 'potential force' and a 'coupling-induced friction' that, when balanced for suitable coupling strength, yields an extended constant-roll regime governing the predicted observables."
+}

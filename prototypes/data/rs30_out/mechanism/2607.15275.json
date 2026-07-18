@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a recurrent sequence model whose hidden state is the parameters of an inner model, updated online by gradient descent on each incoming element so that a long input history is compressed into weight space and later read back out",
+  "brief_reason": "The abstract states the recurrent state consists of 'fast weights, parameters updated by gradient descent during both training and inference, compressing histories into weight space and retrieving contextual information,' which is exactly an online gradient-descent inner-loop memory (test-time training) trained via truncated backpropagation through time."
+}

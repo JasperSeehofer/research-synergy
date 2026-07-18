@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "degenerate spectral perturbation theory: a small perturbation of an operator with periodic (rational-spectrum) dynamics is projected onto its degenerate (non-simple) eigenspaces, yielding a reduced effective Hermitian generator whose spectrum governs the slow response and stability of the periodicity",
+  "brief_reason": "The abstract treats the vector potential as a perturbation of a periodic operator and shows the response is controlled by non-simple eigenvalues, from which a Hermitian matrix is derived whose generated (continuous-time) dynamics asymptotically describes the perturbed system — i.e. degenerate perturbation theory producing an effective generator on the degenerate eigenspace."
+}

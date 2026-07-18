@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "exponential divergence of nearby states under a parameter-dependent expanding symbolic map, quantified by a positive Lyapunov exponent (sensitive dependence in which the separation between adjacent lexicographically-ordered configurations grows exponentially as a control parameter is tuned)",
+  "brief_reason": "The abstract reports that the order-distance between adjacent parameterized (β) expansions increases exponentially as the parameter decreases, described explicitly as 'chaotic' with clustered 'Lyapunov exponents,' i.e. exponential sensitivity of a symbolic expansion map."
+}

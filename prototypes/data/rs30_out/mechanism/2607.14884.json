@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "differentiable optimal control in which a governing differential equation is imposed as a soft residual penalty on a parameterized trajectory, and the control inputs, the full state trajectory, and the terminal time are co-optimized by gradient descent against an endpoint objective",
+  "brief_reason": "The abstract learns the control fields, the Bloch-state trajectories, and the total duration together under the Bloch equation as a single differentiable process, i.e. it enforces a governing ODE as a constraint while jointly gradient-optimizing controls, trajectory, and final time toward a target endpoint."
+}

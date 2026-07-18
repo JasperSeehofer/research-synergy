@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "fusion of multiple independent estimators whose systematic errors are statistically uncorrelated, so that cross-combining them cancels each other's systematics and tightens the joint constraint (multi-source data fusion / cross-calibration exploiting error independence)",
+  "brief_reason": "The abstract's central argument is that surveys with 'radically different systematics' can be combined to 'calibrate systematics and increase overall constraining power,' and it repeatedly stresses gaining precision by fusing complementary, independently-biased probes."
+}

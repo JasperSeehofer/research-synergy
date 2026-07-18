@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "encoding a scalar time-series as the potential of a linear self-adjoint (Schrödinger) eigenvalue operator over a sliding window, then using localization of its lowest eigenstate together with a sharp spike/divergence in the smallest eigenvalue's rate of change as an early-warning precursor of an approaching extreme event",
+  "brief_reason": "The abstract constructs a Schrödinger equation whose potential is shaped by the signal within a moving window and reports Anderson localisation of the mode plus a reliably spiking numerical gradient of the minimum eigenvalue at the onset of extreme peaks."
+}

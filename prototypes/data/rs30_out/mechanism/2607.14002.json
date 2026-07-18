@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a vanishing-length-scale (localization) singular limit in which a nonlocal, convolution-kernel-averaged first-order transport/conservation law collapses to a local nonlinear hyperbolic conservation law, with the reduction holding only up to finite-time gradient blow-up (shock formation)",
+  "brief_reason": "The abstract derives classical solutions of the local (Burgers) conservation law as the singular limit of a nonlocal conservation law averaged in density and velocity, valid up until the maximal time before shocks form, which is exactly a kernel-collapse localization limit from a nonlocal to a local hyperbolic equation."
+}

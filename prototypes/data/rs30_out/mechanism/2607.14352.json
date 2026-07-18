@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "constrained variational maximization of a mutual-information (entropy-difference) functional over a probability density subject to a fixed second-moment (variance) constraint, solved via a periodization / Poisson-summation identity on the convolved output density that turns the problem into a Fourier-analytic one",
+  "brief_reason": "The abstract frames the result as a mutual-information maximization over input densities subject to a second-moment constraint and states the key step is a periodization identity for the (noise-convolved) output density enabling Fourier-analytic techniques."
+}

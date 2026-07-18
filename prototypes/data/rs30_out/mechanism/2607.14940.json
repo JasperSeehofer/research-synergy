@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "maximum-pseudo-likelihood estimation of the coupling and external-field parameters of a pairwise-interacting binary field (Ising / pairwise Markov random field with a site-wise external field and a low-rank latent-field component) from a single high-dimensional sample",
+  "brief_reason": "The abstract states the binary outcomes' dependencies are captured by an Ising model with an external field (plus low-rank latent confounders) and that the model parameters are learned via Maximum Pseudo-Likelihood Estimation from a single sample, which is exactly pseudo-likelihood fitting of a pairwise binary Markov random field."
+}

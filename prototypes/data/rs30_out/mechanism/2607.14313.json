@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A correspondence identifying the weak-limit distributions of a sequence of highly-oscillatory, concentrating states with exactly the probability measures on a fixed energy level-set that are invariant under the underlying deterministic (Hamiltonian) flow, made rigorous through a singularity-removing change of variables that conjugates a flow with collisions into a smooth flow on a compact manifold",
+  "brief_reason": "The abstract's main theorem asserts that a measure is a semiclassical (scale-limit) measure of the eigenfunction sequence if and only if it is a probability measure on the energy hypersurface invariant under the regularized Kepler flow, i.e. limits of the quantized states are precisely the flow-invariant measures on that level set, with the Moser regularization map removing the collision singularity so the invariance argument goes through."
+}

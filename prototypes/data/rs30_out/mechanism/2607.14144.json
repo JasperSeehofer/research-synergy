@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "information-theoretic resource lower bounds that partition solvers by capacity, horizon, and circuit-depth thresholds below which a task is provably unsolvable by any single bounded channel, combined with a strictly super-additive composition in which pairing two complementary sub-threshold resources crosses all thresholds at once",
+  "brief_reason": "The abstract erects three lower-bound 'walls' (a Shannon/state-capacity bound, a finite-horizon bound, and a fixed-depth circuit bound conditional on TC0 != NC1) that each rule out a class of architectures, and shows a two-channel hybrid pays each wall's price to cross all three so capability is strictly super-additive under composition."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "fast–slow timescale separation (adiabatic/singular-perturbation reduction) of a finite-size stochastic Markov jump process, isolating how intrinsic demographic noise selects and stabilizes long-lived metastable states among otherwise degenerate deterministic equilibria",
+  "brief_reason": "The abstract resolves whether finite-population demographic noise favors one state over another by a theoretical timescale-separation analysis that characterizes noise-driven, long-lasting metastable (polymorphic) states in a system whose deterministic limit does not distinguish them."
+}

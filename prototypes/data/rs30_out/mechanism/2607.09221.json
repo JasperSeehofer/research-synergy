@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a distance-decaying, direction-dependent (anisotropic) kernel that aggregates the pairwise influence of surrounding discrete elements onto a focal element, with an angular acceptance window gating each contribution by the neighbor's relative orientation",
+  "brief_reason": "The method quantifies each individual's local environment with a 'distance-weighted measure of local crowdedness' whose contributions are down-weighted for neighbors outside the focal element's field of view, i.e. a distance- and angle-weighted summation kernel over surrounding entities."
+}

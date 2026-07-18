@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "scattering of linear waves off a localized coherent excitation (a topological defect) in a discrete medium, quantified by frequency-resolved transmission and reflection coefficients across the propagating band, with band-structure resonances (from Doppler-shifted frequencies and group-velocity extrema) producing net momentum transfer that recoils the scatterer",
+  "brief_reason": "The abstract's whole method is computing transmission/reflection coefficients of small-amplitude waves scattered from a localized structure over the entire wave band on a lattice, showing discreteness-controlled reflection and a resonant net momentum transfer (negative radiation pressure) that accelerates the scatterer."
+}

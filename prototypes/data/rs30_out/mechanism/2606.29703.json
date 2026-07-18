@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "importance splitting of trajectories (branching an ensemble to over-sample rare tail events) with the optimal branch time set by the exponential amplification of an infinitesimal perturbation up to a target magnitude, yielding a logarithmic timing law (log-ratio of target size to perturbation size) that generalizes to a maximum-entropy criterion",
+  "brief_reason": "The abstract prescribes the optimal split time as the time for an initial perturbation to amplify to the inverse rarity of the target event, derives it as a simple log-ratio between perturbation size and event rarity, and generalizes it into a maximum-entropy criterion for splitting an ensemble of alternative extreme scenarios."
+}

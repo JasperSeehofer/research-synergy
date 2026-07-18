@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "synchronization of an ensemble of diffusively coupled self-sustained (limit-cycle) nonlinear oscillators under additive stochastic forcing, with bifurcations marking transitions between incoherent, phase-locked, and chaotic collective states and a continuum/mean-field limit for large populations",
+  "brief_reason": "The abstract centers on oscillators with nonlinear damping joined by linear diffusive coupling and Gaussian white noise, analyzed for how bifurcations, synchronization, and collective chaos arise and how the system behaves in its large-network continuum limit."
+}

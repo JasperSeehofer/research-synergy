@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a linear-response (susceptibility) coefficient measuring the proportional displacement of an observable state variable per unit of signed driving flow, where a transient perturbation is followed by mean-reverting relaxation back to equilibrium (a driven impulse-then-reversion dynamic)",
+  "brief_reason": "The method estimates a coefficient lambda relating signed order flow to the induced move in an observable, and its explanatory content rests on a transient displacement that subsequently normalizes (mean-reverts) to equilibrium."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "fixed-point analysis of a hierarchical transfer-operator recursion on a tree — a local 'integrate-out the children' map applied recursively from leaves toward the root, reduced to a finite-dimensional nonlinear self-map whose unique positive fixed point (and the period structure of its orbits) characterizes the global translation-invariant solution",
+  "brief_reason": "The abstract centers on a local transfer operator (a one-step partial-trace map propagating successor boundary data to the parent) and a translation-invariant boundary equation whose unique positive solution and lack of period->1 admissible points are established, which is exactly the fixed-point/period analysis of a leaf-to-root tree recursion."
+}

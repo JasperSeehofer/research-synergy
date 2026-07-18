@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "deriving on-diagonal decay bounds for the fundamental solution (heat kernel) of a divergence-form (Dirichlet-form) generator by way of a Nash-type functional inequality that bounds the L2-norm of a function by its energy form, even when that form is degenerate/non-uniformly-elliptic and non-local (long-range)",
+  "brief_reason": "The abstract establishes anchored Nash inequalities controlling an L2-norm by non-uniformly-elliptic Dirichlet forms and then uses them to obtain on-diagonal heat kernel upper bounds, which is the classical Nash-inequality-to-semigroup-decay machinery adapted to a degenerate non-local operator."
+}

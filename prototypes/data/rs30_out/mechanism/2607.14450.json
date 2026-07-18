@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "statistical hypothesis test of an ensemble's distribution of a dimensionless normalized ratio (observed quantity divided by a null-model prediction) as a function of a control parameter, detecting a departure from the null that switches on only below a critical value of that parameter (a threshold break in a scaling law), while calibrating and marginalizing over a latent-contaminant mixture fraction using the regime where the null holds",
+  "brief_reason": "The method compares the distribution of the sky-plane relative velocity normalized by the Newtonian circular velocity (a dimensionless ratio) across acceleration bins against the standard-gravity baseline, finding a deviation that appears only below a critical acceleration, with the hidden multiple-star (contaminant) fraction calibrated in the Newtonian regime."
+}

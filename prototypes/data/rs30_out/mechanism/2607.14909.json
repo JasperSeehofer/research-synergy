@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a scale-invariant reverse-Hölder (A-infinity-type) bound on the Radon–Nikodym density of one measure relative to a reference measure, self-improved by a Gehring higher-integrability bootstrap that pushes the density's integrability exponent strictly upward",
+  "brief_reason": "The method's central estimate is a scale-invariant reverse-Hölder inequality for the density dω/dσ on boundary-centered balls, which a weighted Gehring argument then self-improves past exponent 2 to yield solvability across a range of exponents (the square estimates from the Pohozaev identity only serve to establish this reverse-Hölder bound)."
+}

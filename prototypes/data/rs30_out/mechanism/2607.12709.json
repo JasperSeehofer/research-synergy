@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "superposition coding with successive interference cancellation: additively layering multiple independent signals onto one shared channel and decoding them in order of strength, subtracting each decoded component from the received mixture before decoding the residual",
+  "brief_reason": "The abstract superimposes an extra data symbol on the distributed access-point signals and uses successive interference cancellation at the receiver to decode both symbols in sequence, i.e. additive layering followed by ordered decode-and-subtract."
+}

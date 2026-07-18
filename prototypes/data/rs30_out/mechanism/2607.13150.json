@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "self-consistent mean-field (fixed-point) reduction that replaces an all-to-all many-body interaction with an effective single-body field determined self-consistently from the system's own averaged/measured state, becoming exact in the large-system limit",
+  "brief_reason": "The abstract emulates fully-connected transverse interactions by a self-consistent transverse field fixed from transverse-basis measurements, yielding identical dynamics in the large-system limit — the hallmark of a self-consistent mean-field closure of an all-to-all coupling."
+}

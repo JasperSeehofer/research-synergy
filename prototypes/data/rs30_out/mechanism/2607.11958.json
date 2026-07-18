@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "variational free-energy (evidence-lower-bound) minimization over a latent generative model, in which the system's settled 'default' state is a path-dependent, hysteretic (metastable) minimum of that objective selected by a control parameter rather than by the objective's optimum",
+  "brief_reason": "The abstract states the network's evidence-lower-bound objective is mathematically identical up to sign to variational free energy, and that its default generative state depends hysteretically on the rehearsal-ratio r (rising toward the target domain then partially reverting while training is unchanged), i.e. a metastable minimum of that free-energy landscape."
+}

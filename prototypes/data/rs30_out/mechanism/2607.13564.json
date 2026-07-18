@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a goodness-of-fit / discrepancy test comparing an empirical frequency distribution against a fixed scale-invariant reference distribution (the logarithmic first-digit law), with threshold-based flagging of significant deviations as anomalies, applied separately to directional sub-components",
+  "brief_reason": "The abstract detects tampering by measuring how the observed density's leading-digit frequencies deviate from Benford's Law using adapted threshold values, splitting the data into directional components to localize where the empirical distribution departs from the expected reference."
+}

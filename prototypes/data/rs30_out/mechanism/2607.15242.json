@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an incrementally maintained fixed low-rank linear projection (sketch) of a high-dimensional vector, updated online via a sum-aggregating hierarchical index (segment tree) so each new observation refines the projection and provably monotonically tightens the approximation-error bound without recomputing the full factorization",
+  "brief_reason": "The abstract fits a low-rank projection once and recomputes embeddings on-the-fly from a KP-tree (a sparse segment tree with sum aggregation) as new observations arrive, proving (Theorem 1) that each new observation monotonically tightens the prediction-error envelope."
+}

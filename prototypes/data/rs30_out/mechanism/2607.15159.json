@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "iterative message-passing (belief-propagation) inference on a sparse bipartite factor graph, whose performance threshold is predicted by tracking the evolution of the message probability distribution under iteration (a density-evolution / mean-field fixed-point analysis)",
+  "brief_reason": "The abstract builds a code from low-density (sparse) generator and parity-check matrices and decodes it by iterative message passing over the associated graph, using discrete Density Evolution to optimize and bound performance — i.e. sparse-graph belief propagation with a distribution-evolution threshold analysis."
+}

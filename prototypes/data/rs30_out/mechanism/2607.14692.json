@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Gaussian (triangular/LU) factorization of a generating matrix whose entries obey quadratic exchange relations fixed by a solution of a consistency (Yang-Baxter / reflection) equation, used to convert one quadratic generators-and-relations presentation into an equivalent current-type presentation and prove the two presentations isomorphic",
+  "brief_reason": "The abstract builds its method on a transposed presentation governed by a twisted reflection equation that interacts with the Gaussian decomposition of the generating matrix, which is exactly what yields the Drinfeld-type current relations and the claimed isomorphism between the R-matrix and Drinfeld presentations."
+}

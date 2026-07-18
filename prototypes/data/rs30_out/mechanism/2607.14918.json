@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "precomputed multi-resolution lookup-table memoization: replacing an expensive, repeatedly-evaluated function with adaptive-resolution quantization (binning) of its inputs and hash-based retrieval of stored outputs, so the costly online computation is done once and reused",
+  "brief_reason": "The abstract states the method's cost is dominated by re-evaluating a new kernel set at every step and that its central innovation is a multi-resolution sparse hash-table strategy that replaces online kernel computation with retrieval from a precomputed lookup table (100% retrieval, zero online eigendecompositions)."
+}

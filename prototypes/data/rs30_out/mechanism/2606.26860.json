@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "threshold-driven parametric oscillation instability: nonlinear coupling among a set of resonant modes transfers energy from driven (pump) modes into a degenerate signal mode only once the drive amplitude exceeds a critical onset threshold, with that threshold tunable by inserting auxiliary resonances (mode splitting) at selected frequencies",
+  "brief_reason": "The abstract studies excitation of degenerate parametric oscillations that turn on above a pump-power threshold and shows that adding symmetrically placed split modes near the pump lowers this threshold while splitting the central signal mode raises it, which is precisely a parametric instability with a critical onset tuned by auxiliary resonant modes."
+}

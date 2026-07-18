@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a pullback (Fubini-Study / quantum) metric on a family of states parametrized by a continuous variable, measuring the infinitesimal distinguishability (Hilbert-space distance) between neighboring states, which controls the leading deviation from critical/scaling behavior and admits a saturable geometric lower bound tied to an effective-mass (curvature) parameter",
+  "brief_reason": "The abstract defines its central quantity as the Hilbert-space distance between neighboring parametrized (Bloch) states, shows the deviation from critical behavior is governed by this metric (proportional to the fourth-order dispersion), and identifies the family of potentials that saturates a bound on that metric for a given effective-mass tensor."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A two-parameter iterated nonlinear map (low-dimensional discrete-time dynamical system) whose attractors reorganize through codimension-two bifurcations: a Feigenbaum period-doubling cascade to chaos together with quasiperiodic invariant curves exhibiting mode-locking (Arnold tongues) and attractor-destroying boundary/interior crises",
+  "brief_reason": "The abstract centers on a two-parameter bifurcation analysis of a two-dimensional discrete-time coupled update map whose fixed points, invariant curves, phase-locking Arnold tongues, codimension-two resonances, and chaotic attractors created/destroyed via Feigenbaum cascades and boundary crises are exactly the generic route-to-chaos structure of an iterated map."
+}

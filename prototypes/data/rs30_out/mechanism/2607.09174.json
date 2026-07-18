@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A mean-field (annealed) averaging over a broad power-law-heterogeneous distribution of a coupling/connectivity parameter that generates a crossover ('Widom') line in the order-parameter phase diagram, separating two distinct ordered regimes and terminating in a supercritical-like state where they become indistinguishable",
+  "brief_reason": "The abstract derives an analogue of the Widom line from degree heterogeneity in scale-free-network spin models via the annealed network approximation, producing a crossover that separates two ordered regimes and a supercritical-like indistinguishable state governed by the breadth (degree exponent) of the distribution."
+}

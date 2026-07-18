@@ -1,0 +1,34 @@
+{
+ "experiment": "EXP-RS-30",
+ "verdict": "KILL",
+ "carded": {
+  "top": 60,
+  "tail": 40
+ },
+ "genuine": {
+  "top": 5,
+  "tail": 0
+ },
+ "novelty_breakdown": {
+  "known_crossfield": {
+   "top": 3,
+   "tail": 0
+  },
+  "specialist_known": {
+   "top": 2,
+   "tail": 0
+  },
+  "candidate_novel": {
+   "top": 0,
+   "tail": 0
+  },
+  "robust_novel": {
+   "top": 0,
+   "tail": 0
+  }
+ },
+ "n_robust_novel": 0,
+ "n_candidate_novel": 0,
+ "robust_novel_bridges": [],
+ "candidate_novel_bridges": []
+}

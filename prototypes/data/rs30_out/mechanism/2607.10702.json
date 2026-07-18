@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "representation of a relational system as a graph of nodes linked by pairwise interactions, followed by computation and comparison of structural/topological network statistics (connectivity, centrality, degree structure) to quantitatively characterize and contrast the graphs",
+  "brief_reason": "The abstract builds interaction networks from the entities in three texts and uses network analysis to extract quantitative structural measures that are then compared across the systems to classify and relate them."
+}

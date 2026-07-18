@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a self-exciting (Hawkes) point process on an inferred directed network, in which each event transiently raises the arrival rate of future events at connected nodes, with the excitation kernel decomposed into several additive covariate-weighted layers and the latent network and dynamics recovered by Bayesian posterior (MCMC) inference",
+  "brief_reason": "The abstract builds a multiplex network Hawkes model whose multiple excitation layers weighted by edge/node covariates capture how one event triggers further events across a directed transmission network inferred via an MCMC sampler, which is exactly a multi-layer self-exciting point process with Bayesian network inference."
+}

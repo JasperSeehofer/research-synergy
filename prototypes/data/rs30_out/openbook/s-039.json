@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "the underlying graph (integer lattice / supercritical percolation cluster) the operator lives on", "b_element": "the forest graph carrying the commuting Ising evolution"},
+    {"a_element": "Dirichlet form / non-local quadratic form controlling the L^2 norm", "b_element": "curvature of the second stabilizer Renyi entropy (quantum Fisher information) as a quadratic tangent form"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A is analytic probability: it proves anchored Nash (functional) inequalities for degenerate non-local Dirichlet forms and turns them into on-diagonal heat-kernel upper bounds for a classical random walk with random conductances. Paper B is quantum information geometry: it equates the curvature of stabilizer Renyi entropy with quantum Fisher information and uses Clifford pruning on forest graphs to build exactly-solvable spin chains with finite magic and vanishing entanglement. The only overlaps are the word 'graph' and the appearance of a quadratic/curvature form, but they play different roles (state space for a Markov semigroup vs. metrological metric on quantum states) and are driven by entirely different machinery, so no coherent role-for-role mapping holds."
+}

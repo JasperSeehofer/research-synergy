@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "modelling one trajectory as a rigid space-time translation of another — the follower signal equals the leader signal shifted by a constant time lag and a constant spatial offset — with the two shift parameters recovered by minimizing the variance of the residual gap under that translation, plus an endpoint/boundary correction for the finite-interval transitional regimes",
+  "brief_reason": "The abstract's 'trajectory-translation principle' and 'shifting optimization that estimates the optimal parameters by minimizing spacing variance' describe recovering a constant lag-and-offset translation aligning one trajectory to another, with a boundary correction added for interaction endpoints."
+}

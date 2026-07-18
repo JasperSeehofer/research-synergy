@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A convergent hierarchy of semidefinite (sum-of-squares / moment) relaxations that outer-approximates a convex feasible set, whose finite-level inexactness is certified by the existence of a nonnegative polynomial that is not a sum of squares (a Positivstellensatz / Motzkin-type obstruction to sum-of-squares representability)",
+  "brief_reason": "The abstract proves every fixed level of the relaxation strictly contains the target set because a bounded fixed-level error would force the Motzkin polynomial plus a nonnegative constant to be a sum of squares, which is impossible — the classic nonnegative-but-not-SOS certificate blocking finite-level exactness."
+}

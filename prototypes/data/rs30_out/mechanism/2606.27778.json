@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "constrained maximum-entropy (mixing-entropy) variational principle that selects the most-probable coarse-grained equilibrium state subject to an infinite hierarchy of conserved quantities (Casimir invariants), yielding a fixed functional relation between the macroscopic field and its conjugate potential",
+  "brief_reason": "The abstract computes a 'statistical equilibrium' by maximizing a coarse-grained (mixing) entropy under conservation constraints including all Casimir invariants, producing a near-linear functional relation between the macroscopic vorticity and stream function."
+}

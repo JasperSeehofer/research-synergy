@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a multiscale wavelet-modulus cascade (scattering transform): repeated wavelet filtering followed by a magnitude nonlinearity that extracts amplitude envelopes at successive scales, here applied jointly across pairs of signals to quantify cross-signal amplitude-envelope coupling and its gating by slower scales (cross-scale amplitude modulation)",
+  "brief_reason": "The abstract extends the wavelet scattering transform to a multichannel setting, yielding first- and second-order descriptors that capture amplitude-envelope coupling between channels and its periodic modulation across frequency scales — i.e., a cascade of wavelet convolutions and modulus operations across scales."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an iterative closed-loop feedback/control scheme that alternates short forward time-evolution with an optimization step projecting the state back onto a constrained low-dimensional invariant manifold, thereby stabilizing otherwise unstable or marginal trajectories (a control-of-chaos / repeated-manifold-projection stabilization loop)",
+  "brief_reason": "The abstract states that each iteration combines short-time evolution with classical optimization that projects the dynamics back onto a low-entanglement variational manifold to autonomously discover and stabilize long-lived regular trajectories amid chaotic evolution."
+}

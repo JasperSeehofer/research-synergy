@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "metriplectic (port-Hamiltonian) decomposition of a system's evolution into an energy-conserving skew-symmetric interconnection plus a dissipative gradient part, integrated by a structure-preserving scheme with fluctuation-dissipation-consistent stochastic forcing",
+  "brief_reason": "The abstract explicitly builds a conservative gyroscopic interconnection plus a dissipative power-decay port evolved by a metriplectic integrator with a Fluctuation--Dissipation-consistent noise channel, which is the generic structure-preserving conservative-plus-dissipative dynamical machinery."
+}

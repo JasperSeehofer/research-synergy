@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A multiscale quadratic (square-function / Littlewood–Paley-type) estimate that bounds the scale-integrated quadratic energy of a perturbed first-order operator's spectral action, above and below, by the ambient (weighted L2) norm, thereby certifying a bounded functional calculus / spectral resolution for that operator, with a Muckenhoupt-weight-modified norm absorbing the operator's degeneracy and a localisation-and-scaling (self-similarity) step transferring the global model estimate to general geometries",
+  "brief_reason": "The abstract's central claim is proving 'quadratic estimates in weighted L2 space' for perturbed Dirac operators (yielding Kato square-root and Riesz-transform bounds with A2-weight-governed degeneracy, then localised and scaled to general manifolds), i.e. controlling a scale-resolved quadratic energy by the total norm to establish the operator's bounded functional calculus."
+}

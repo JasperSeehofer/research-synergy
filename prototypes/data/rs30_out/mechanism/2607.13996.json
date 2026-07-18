@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a predictor-corrector projection onto an invariant constraint manifold, in which the parameters of a nonlinear equilibrium relation are advected along characteristic (Lagrangian) curves and the evolved state is then re-projected back onto that manifold, absorbing the off-manifold deviation into a single scalar error variable",
+  "brief_reason": "The abstract states the method recovers the mechanical-equilibrium pressure by evolving the affine parameters xi and E0 of the isentropic energy-pressure relation along pathlines and then uses a thermodynamic re-projection that converts the deviation from the isentropic trajectory into an internal-energy error, which is exactly constraint-manifold projection combined with characteristic advection of the constraint's parameters."
+}

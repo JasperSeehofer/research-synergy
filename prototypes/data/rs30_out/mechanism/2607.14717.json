@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a homotopy-continuation (continuity method) existence argument: deform the target nonlinear problem through a one-parameter family from a known solvable case, and use uniform a priori bounds on the solution to show the set of solvable parameters is simultaneously open and closed, hence the whole interval is solvable",
+  "brief_reason": "The abstract states existence and uniqueness are established 'by combining a priori estimates with the continuity method', which is exactly a parameter-homotopy argument closed by uniform a priori bounds."
+}

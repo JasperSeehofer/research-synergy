@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a linear Markovian master equation (a rate/generator equation of GKLS-Lindblad form) governing the relaxation of a small subsystem coupled to a large reservoir toward a stationary non-equilibrium steady state, driven by transition-rate constants tied together by a detailed-balance-type relation",
+  "brief_reason": "The abstract recasts the dynamics into a mathematically equivalent GKLS master equation for a subsystem strongly coupled to its environment, parametrized by an analogue of the detailed balance relation and two coupling-strength constants and yielding thermalisation to a non-canonical steady state."
+}

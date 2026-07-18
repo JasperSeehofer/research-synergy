@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "minimization of an action functional over a measure on a space, whose Euler-Lagrange stationarity conditions on the minimizing support induce a geometry and yield the governing field equations, with systematic corrections obtained as a perturbative power-series expansion in a small regularization parameter",
+  "brief_reason": "The abstract takes a minimizing measure of the causal action and derives that the Euler-Lagrange equations of that action force the Ricci/field (Einstein) equations, with corrections given by a power expansion in the regularization length, which is a variational action-minimization principle generating field equations via stationarity."
+}

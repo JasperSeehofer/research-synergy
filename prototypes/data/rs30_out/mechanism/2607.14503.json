@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a finite-state pigeonhole/short-cycle argument on a state-transition graph coupled to Diophantine lower bounds on fractional parts of integer linear combinations of logarithms, converting bounded memory into an irreducible quantitative defect accumulated around forced cycles",
+  "brief_reason": "The abstract states the proof analyzes how much information a state can hold, uses that finite state spaces force short cycles in the state-transition graph, and reduces the per-cycle loss to Diophantine lower bounds on fractional parts of integer combinations of log-probabilities."
+}

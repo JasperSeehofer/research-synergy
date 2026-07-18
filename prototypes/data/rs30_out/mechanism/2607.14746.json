@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reduction of a test body's motion in a static, spherically symmetric central field to a one-dimensional effective-potential problem parameterized by conserved quantities, whose extrema and their stability fix the equilibrium (circular) orbits and whose slow adiabatic drift lets tiny parameter changes accumulate into a measurable phase deviation of the emitted oscillatory signal",
+  "brief_reason": "The abstract builds an effective potential to study orbital structure and circular-orbit stability and then notes that small (quantum) corrections accumulate over the long inspiral to produce noticeable, detectably constrainable deviations in the waveform, which is the effective-potential-plus-adiabatic-drift machinery of central-field dynamics."
+}

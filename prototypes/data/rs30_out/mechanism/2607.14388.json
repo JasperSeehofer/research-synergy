@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "renormalization-group fixed-point classification of self-similar (scale-invariant) dynamics, in which coarse-graining flow to a fixed point sets the asymptotic scaling and the relevance vs. irrelevance of scaling variables determines which fixed point is reached",
+  "brief_reason": "The abstract builds a unified RG framework for self-similar dynamics whose fixed points fall into distinct classes depending on whether retained length scales stay relevant, yielding universality or memory-retaining anomalous scaling."
+}

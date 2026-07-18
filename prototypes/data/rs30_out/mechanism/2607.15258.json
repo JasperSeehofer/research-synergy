@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "stagewise additive ensemble construction via functional gradient descent (gradient boosting): a strong predictor is built by iteratively adding weak learners, each fit to the negative gradient of the loss of the current ensemble, minimizing a supervised prediction-error functional",
+  "brief_reason": "The abstract's method centers on Gradient Boosting (XGBoost) as the most reliable classifier trained by cross-validation, which is exactly the iterative addition of weak learners along the loss gradient (with a Shapley-value / cooperative-game attribution layer used only afterward for feature-contribution interpretability)."
+}

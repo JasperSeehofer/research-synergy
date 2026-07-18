@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "exact solution of a large-deviation (least-action / optimal-fluctuation-path) variational principle by a canonical (symplectic) transformation that decouples the coupled Hamiltonian field equations into an integrable form, yielding closed-form large-deviation rate functions",
+  "brief_reason": "The abstract frames the problem as macroscopic fluctuation theory (a large-deviation action-minimization) and states that it becomes exactly solvable through a canonical transformation that lets them compute the large-deviation statistics of tracer position and integrated current explicitly."
+}

@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "extremization of a surface functional (the defect extremal surface / island prescription that extremizes a generalized entropy)", "b_element": "extremization of a cost functional via the Pontryagin Minimum Principle"},
+    {"a_element": "quantity being computed by extremization: fine-grained entanglement entropy", "b_element": "quantity being minimized by the optimal control: final size of the infection"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is the generic notion of a variational/extremization principle: paper A geometrically extremizes an area/generalized-entropy functional (RT/defect-extremal-surface plus the island formula in a holographic AdS/ICFT dual) to obtain entanglement entropy, whereas paper B applies the Pontryagin Minimum Principle to a constrained ODE control problem to minimize epidemic final size. The governing machinery differs entirely — curved-spacetime holographic surface extremization on an end-of-the-world brane versus Hamiltonian optimal-control of SI dynamics under an integral supply constraint — so no coherent role-for-role mapping of the actual mechanisms holds."
+}

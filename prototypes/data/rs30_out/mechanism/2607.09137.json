@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "structural identifiability analysis of a parametrized dynamical system through its input-output (observation) map, followed by a reparameterization onto identifiable parameter combinations that converts a non-invertible parameter-to-output map into a globally invertible one, so the inverse estimation problem has a unique, well-conditioned solution",
+  "brief_reason": "The abstract performs a structural identifiability analysis showing the parameters are not globally identifiable and derives a globally identifiable reparameterization via an observational-system approach that eliminates the non-uniqueness of the parameter-to-data inversion."
+}

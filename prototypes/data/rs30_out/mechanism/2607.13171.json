@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Bayesian inversion of a known conservation-law (first-order advection/transport) PDE to infer a latent, time-varying constitutive/flux closure as a posterior distribution, with the conservation law imposed as a hard constraint so that uncertainty propagates and missing states are reconstructed from sparse observations",
+  "brief_reason": "The abstract embeds Bayesian Neural Networks inside exact partial differential equations that enforce mass conservation, treating the unknown constitutive relations as latent quantities inferred with propagated uncertainty from sparse data — i.e., a constrained Bayesian inverse problem over a transport equation."
+}

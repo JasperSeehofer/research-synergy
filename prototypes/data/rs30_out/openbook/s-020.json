@@ -1,0 +1,7 @@
+{
+  "mapping": [
+    {"a_element": "the 'largest group that could speak safely' — a threshold size above/below which collective behavior changes qualitatively", "b_element": "the critical bond dimension — a threshold value at which the lattice model changes phase"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is the generic notion of a critical threshold; the actual machinery differs entirely. Paper A is a game-theoretic coalition-formation / assurance-contract argument, contrasting a step-by-step-safe 'cascade' with a privacy-preserving 'tunnel' (a monotone-reachability/mechanism-design reasoning about who can safely join), whereas Paper B estimates a self-dual critical point via duality analysis combined with the star-triangle transformation on lattices — there is no counterpart in A to duality/star-triangle blocks, nor in B to privacy or assurance contracts, so no role-for-role mapping holds."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an exact low-dimensional mean-field / moment-closure reduction that collapses a large population of coupled units with heterogeneous parameters onto a small set of macroscopic order-parameter equations, extended to arbitrary parameter distributions by decomposing the distribution into a superposition (mixture) of Cauchy/Lorentzian kernels, each of which admits the closed-form reduction",
+  "brief_reason": "The abstract builds on the Ott-Antonsen closed-form dimensionality reduction (exact for Lorentzian frequency distributions) and generalizes it to arbitrary distributions via a multi-ensemble decomposition, yielding a low-dimensional macroscopic description amenable to stability, sensitivity, and bifurcation analysis."
+}

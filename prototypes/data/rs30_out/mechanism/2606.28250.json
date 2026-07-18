@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "perturbative projection of a disturbance onto the complete basis of squared (linearized) eigenfunctions of an integrable system's associated linear scattering operator, splitting the response into slow (adiabatic) evolution equations for a localized coherent structure's parameters plus a continuous-spectrum radiation component",
+  "brief_reason": "The abstract builds the theory from the squared-eigenfunction completeness relation and adjoint structure of the Zakharov-Shabat scattering problem to project perturbations onto discrete and continuous spectral components, yielding leading-order evolution equations for the kink parameters and a radiative shelf."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "construction of a greatest/final fixed point (terminal coalgebra) of an iterated endofunctor, obtained by repeatedly applying the operator to build an unfolding tower and taking the point at which successive applications stabilize, with an existence guarantee from a final-coalgebra theorem",
+  "brief_reason": "The abstract defines an endofunctor that iterates a lift to produce a tower D, TD, T^2D, ... and formulates the target as a coalgebraic fixed point where successive unfoldings stabilize, proving existence of a final coalgebra via the Aczel--Mendler theorem."
+}

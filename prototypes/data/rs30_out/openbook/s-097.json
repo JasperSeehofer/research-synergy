@@ -1,0 +1,7 @@
+{
+  "mapping": [
+    {"a_element": "analytic continuation of replica twist correlators in a complex variable", "b_element": "analyticity/crossing of the scattering amplitude as a function of a complex Mandelstam variable"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only genuine overlap is the generic use of analyticity in a complex variable; the transferable machinery differs decisively — paper A computes timelike entanglement entropy by a replica/analytic-continuation saddle-point selecting complex bulk geodesics (smallest real length), whereas paper B runs a dispersive primal S-matrix bootstrap, i.e. a convex optimization bounding a threshold amplitude under crossing, locality and partial-wave unitarity. A saddle-point entropy computation and a bootstrap bounding/optimization problem are different governing processes, so no coherent role-for-role mapping holds."
+}

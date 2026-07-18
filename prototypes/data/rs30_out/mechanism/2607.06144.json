@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "unanimity/Pareto aggregation of partial pairwise preference relations into a directed precedence graph, followed by linearization that breaks the resulting cycles using a fixed default total order as a tie-breaker (a topological-sort-with-cycle-breaking construction)",
+  "brief_reason": "The abstract builds a global ordering by keeping a pairwise edge only when all agents agree on it, then resolves the cycles this agreement graph can form by falling back to a default order, which is precisely aggregating unanimous pairwise preferences into a directed graph and topologically linearizing it by breaking cycles."
+}

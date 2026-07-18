@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a monogamy (no-simultaneous-sharing) constraint on a conserved bipartite-correlation resource combined with an exact conservation/purity identity, so that once one pair's correlation is driven to saturation the competing pair's correlation is forced discontinuously to zero, selecting a qualitatively distinct joint state past a critical threshold",
+  "brief_reason": "The abstract builds its result from the monogamy of entanglement plus an exact purity identity that, after a critical (Page) time, forces the entanglement between an outgoing mode and its interior partner to vanish and thereby selects a distinct non-smooth state."
+}

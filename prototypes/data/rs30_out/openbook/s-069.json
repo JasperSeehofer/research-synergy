@@ -1,0 +1,11 @@
+{
+  "mapping": [
+    {"a_element": "conditional distribution of future fat-tailed returns p(return | price history)", "b_element": "conditional distribution of redshift p(redshift | multi-band background light maps)"},
+    {"a_element": "backbone that encodes the time-series input (TimesNet/DLinear/N-BEATS/iTransformer)", "b_element": "network that encodes the multi-band image/map input"},
+    {"a_element": "output density head that parametrizes the predicted distribution (single-Gaussian / K=4 Gaussian mixture)", "b_element": "conditional normalising flow that parametrizes the predicted distribution"},
+    {"a_element": "flexible multi-modal mixture capturing fat tails beyond a unimodal Gaussian point estimate", "b_element": "flow-based flexible density capturing the full redshift-distribution shape beyond a simple estimate"},
+    {"a_element": "proper-scoring evaluation of distributional fit (CRPS, pinball, coverage)", "b_element": "sub-per-cent accuracy on the mean and standard deviation of the predicted distribution"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both are instances of neural conditional density estimation: a deep encoder feeds an output module that emits a full learned probability distribution p(y|x) rather than a point estimate, and both papers' central claim is that this flexible distributional head (Gaussian mixture in A, conditional normalising flow in B) recovers distribution shape/tails a point or unimodal estimate misses. The mixture density head plays exactly the role of the conditional normalising flow, so the transferable machinery is the same even though the objects (returns vs redshifts) and parametrizations differ."
+}

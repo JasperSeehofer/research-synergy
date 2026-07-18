@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a continuous-time Markov jump process on coupled two-state (binary) units with non-reciprocal (asymmetric) coupling and time-delayed feedback that breaks detailed balance, producing sustained oscillatory temporal correlations while the stationary distribution is driven toward uniform occupancy",
+  "brief_reason": "The abstract studies stochastic binary networks whose asymmetric, time-delayed interactions generate strong oscillatory temporal correlations yet push steady-state probabilities toward equal occupations in a way explicitly distinguished from equilibrium behavior, i.e. a delayed non-reciprocal stochastic two-state dynamics operating away from detailed balance."
+}

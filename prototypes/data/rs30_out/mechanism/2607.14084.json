@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Model discrimination by fitting rival parametric response curves to the same set of multi-channel (broadband) intensity measurements and selecting the generative model with superior goodness-of-fit, where the favored hypothesis is a resonantly peaked response produced by an ensemble of rotating dipoles with a distribution of characteristic frequencies",
+  "brief_reason": "The abstract measures an intensity-versus-frequency curve across many bands (408 MHz-3 THz) and fits two competing emission models (spinning dust vs. optically thick free-free), declaring the peaked spinning-dust model superior, which is precisely a goodness-of-fit-based selection between competing parametric generative models."
+}

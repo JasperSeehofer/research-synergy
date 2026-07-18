@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "boundary-dependent return-on-investment accounting: a ratio of useful output flow to total invested input flow computed as a stock-and-flow balance over an expandable system boundary, where progressively enlarging the boundary to include supporting subsystems systematically lowers the ratio",
+  "brief_reason": "The abstract builds a fleet-equivalent benchmark that tallies component turnover, storage, overbuild, backup, and fuel supply to compute an energy-return ratio (EROI) and shows this ratio collapses (e.g. from 10.7-16.0 to 0.7-2.3) purely as the accounting boundary is expanded, which is a boundary-dependent input/output balance rather than any specific physical dynamics."
+}

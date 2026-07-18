@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a supercritical Hopf bifurcation of a nonlinear feedback oscillator, in which a self-sustained limit cycle is born as a control parameter crosses a critical threshold with oscillation amplitude scaling as the square root of the distance past threshold (A ∝ (C-C_c)^(1/2)), and where a sublinear (square-root) coupling nonlinearity is required for the instability — a linear coupling suppresses the bifurcation and keeps the fixed point stable",
+  "brief_reason": "The abstract reduces the system to a nonlinear oscillator that undergoes a continuous Hopf transition above a critical threshold C_c with amplitude A ∝ (C-C_c)^α, α≈1/2, whose self-sustained limit cycle exists only under square-root (sublinear) feedback impact and disappears entirely under linear impact."
+}

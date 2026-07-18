@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an asymmetric, tail-reweighted loss functional for empirical risk minimization — deviations of one sign are penalized more heavily than the other, and rare extreme-magnitude regions are given larger weight, so the fitted predictor trades aggregate accuracy for accuracy on the up-weighted extremes",
+  "brief_reason": "The abstract defines a model-agnostic objective (APAL) that penalizes under-predictions more than over-predictions and increases the training weight of peak regions, i.e. an asymmetric, region-weighted loss whose minimization biases the fit toward one error direction and toward rare extremes."
+}

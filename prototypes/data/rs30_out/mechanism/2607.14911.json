@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "stabilization of an infinite-dimensional stochastic evolution equation by a finite-rank feedback control built from oblique projection onto a finite-dimensional subspace, forcing exponential decay of a mean-square (quadratic Lyapunov) energy",
+  "brief_reason": "The abstract constructs a control as a finite linear combination of localized actuators via oblique projections onto finite-dimensional subspaces and proves exponential mean-square (and almost-sure) decay of the closed-loop dynamics, i.e. a low-rank projected-feedback contraction of an infinite-dimensional noisy system."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "spectral decomposition of a networked system's fluctuations onto graph-Laplacian eigenmodes, in which a common-mode (correlated) stochastic forcing projects entirely onto the uniform/consensus eigenvector and, as its strength grows, dominates the topology-encoding transverse modes so that a participation-ratio measure collapses to one independent of the graph",
+  "brief_reason": "The abstract states that correlated forcing error projects onto the graph-invariant consensus mode while topology acts only through transverse modes, and that as rho N grows the consensus-mode variance dominates and the spectral participation ratio approaches one independently of topology."
+}

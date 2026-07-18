@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "noise-induced regularization: a suitably structured multiplicative (transport-type) stochastic perturbation added to a deterministic nonlinear evolution equation suppresses finite-time singularity (blow-up) formation and restores global-in-time existence of smooth solutions with high probability, uniformly over large initial data",
+  "brief_reason": "The abstract reports that a deterministic nonlinear equation whose large-data global smoothness is open acquires global smooth solutions with high probability once driven by a chosen transport noise, i.e. the stochastic perturbation exerts a regularizing effect that prevents blow-up uniformly for arbitrarily large initial data."
+}

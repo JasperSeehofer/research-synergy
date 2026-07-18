@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a single-generator cyclic-group-orbit construction: an entire state space is realized as the orbit of one seed sequence under a cyclic-shift group action, ordered as a closed Hamiltonian cycle in which consecutive states differ in exactly one coordinate (a symmetry-constrained minimal-change / Gray ordering), with existence proved algebraically over finite fields of prime order",
+  "brief_reason": "The abstract defines the object by requiring all coordinate tracks to be cyclic shifts of a single first track (one generator under cyclic shifts) arranged as a cyclic Gray code (a closed single-symbol-change ordering), with existence established over $\\F_p$ for prime $p$."
+}

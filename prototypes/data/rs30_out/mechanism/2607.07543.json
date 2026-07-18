@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "equivalence (interval-hypothesis) testing: inverting the usual point-null test so the null hypothesis asserts the effect lies beyond a fixed indifference/tolerance margin, and 'within-margin' is declared only by rejecting that null, with the margin and significance level fixing a controlled trade-off between the two directional error rates",
+  "brief_reason": "The abstract's method rests on shifting from testing 'no effect' to testing the null that the effect exceeds a specified margin (a 10% reduction), classifying the case as acceptable only when that margin-exceeding null is rejected at a chosen alpha, and comparing two such margin definitions by their shared false-classification trade-off."
+}

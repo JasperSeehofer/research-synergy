@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "carving a feasible region out of a high-dimensional parameter space by intersecting nonlinear equality constraints (from consistency/factorization) with positivity (convex inequality) constraints, so that the bounded allowed domain's extremal points (corners) single out the distinguished admissible solutions",
+  "brief_reason": "The abstract combines tree-level factorization constraints and a parity condition (nonlinear equalities on the Wilson coefficients) with positivity to reduce the allowed coefficient region to a non-convex domain whose two sharp corners are the special extremal solutions."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "coupled-mode theory of evanescent energy exchange between two weakly-coupled propagating modes, whose coupling strength decays with separation, combined with exponential attenuation along the propagation path",
+  "brief_reason": "The abstract's analytical framework rests on evanescent coupling described via coupled-mode theory plus in-waveguide propagation attenuation, i.e. distance-dependent leakage of energy between adjacent guided/free modes."
+}

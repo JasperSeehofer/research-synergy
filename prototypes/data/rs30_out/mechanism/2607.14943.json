@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "linear-quadratic optimal feedback control (LQR) applied to a locally linearized, reduced-order state-space, steering the system's trajectory along low-dimensional contrastive directions in its high-dimensional state by minimizing a quadratic cost",
+  "brief_reason": "The abstract exploits low-dimensional linear separability and local linearity of the activation dynamics to build a reduced-order Linear Quadratic Regulator that gives minimally-invasive feedback steering, which is the classic linearize-then-apply-optimal-quadratic-feedback-control machinery."
+}

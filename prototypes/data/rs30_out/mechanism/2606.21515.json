@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a censored latent-variable (Tobit-type) construction in which an unbounded continuous latent variable is clipped at two thresholds so its tails pile up as discrete point masses at the boundaries of a bounded interval, while a monotone invertible transform maps the uncensored interior onto that interval",
+  "brief_reason": "The abstract builds the model by combining a censored Gaussian variable (which generates the probability mass at the boundaries 0 and 1) with an affine-logit transformation on the open interior, i.e. threshold-censoring of a latent normal plus a monotone reparameterizing link."
+}

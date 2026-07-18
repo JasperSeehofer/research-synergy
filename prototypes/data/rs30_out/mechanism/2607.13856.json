@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a self-similarity / dimensional-analysis scaling argument in which, over a range bounded by two widely-separated cutoff scales (f_low << f_high) and with the mean amplitude as the only remaining constant parameter, the absence of any other scale forces a pure power-law spectrum (here 1/f) — the same inertial-range scaling structure as in turbulence",
+  "brief_reason": "The abstract derives 1/f behavior from a necessary-and-sufficient condition that between two constant frequencies f_low << f_high there be no constant parameter other than the mean amplitude, which is a dimensional/scale-invariance argument (explicitly likened to inertial-range scaling in fluid turbulence) admitting only a power-law spectrum."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Reconstruction of a hidden vector (orientation) field from the local spatial gradients of an observed scalar intensity map, exploiting that anisotropic fine structure is elongated along the underlying field so the direction of steepest intensity gradient runs perpendicular to the field",
+  "brief_reason": "The method applies a synchrotron intensity gradient technique to infer the preferential orientations and topology of the magnetic field from gradients in the observed radio intensity images."
+}

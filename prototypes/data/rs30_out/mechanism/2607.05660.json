@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an axiomatic impossibility theorem showing that a set of normative invariance/consistency axioms imposed on an aggregation rule are mutually inconsistent, so no rule can jointly satisfy all of them",
+  "brief_reason": "The abstract proves that one consistency axiom is 'mutually inconsistent' with three further desiderata (efficiency, anonymity, neutrality) across two preference settings, which is exactly an Arrow-style impossibility result over a set of axioms on an aggregator."
+}

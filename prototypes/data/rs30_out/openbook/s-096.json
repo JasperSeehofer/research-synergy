@@ -1,0 +1,7 @@
+{
+  "mapping": [
+    {"a_element": "market price relaxing over time toward the lower asteroid-mining cost (final state)", "b_element": "two-level system thermalising toward a non-canonical steady state"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A is a non-steady economic system-dynamics simulation of PGM supply/price driven by a supply-shift off-world, whereas paper B is a quantum-optical GKLS/Lindblad master equation for a two-level system strongly coupled to a bath; the only overlap is the generic notion of a system relaxing toward a final state, and there is no role-for-role correspondence between the economic supply/price variables and the master equation's coupling constants and detailed-balance parameters, so they do not share transferable machinery."
+}

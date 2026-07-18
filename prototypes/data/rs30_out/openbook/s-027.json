@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "N one-dimensional random walkers evolving stochastically", "b_element": "finite population of stochastically reproducing players"},
+    {"a_element": "splitting probability of reaching one absorbing boundary before the other", "b_element": "probability of fixation on a pure strategy at the population boundary"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Both are stochastic-dynamics papers, but the transferable machinery differs: paper A solves a first-passage/persistence problem for memory-coupled walkers via an exact representation of a shared trail field (persistence exponents, kth-arrival splitting probabilities), whereas paper B analyzes stochastic evolutionary game dynamics under demographic noise using timescale separation to explain long-lasting interior polymorphic (metastable coexistence) states. There is no role-for-role correspondence between an exactly-solvable trail-field first-passage calculation and a timescale-separated metastability analysis; the only overlap is the generic 'both are stochastic', and paper B's central object (interior polymorphism) is the opposite of reaching an absorbing boundary."
+}

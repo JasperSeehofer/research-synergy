@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "post-selection (conditional) hypothesis testing: two-sample significance tests applied after a data-driven detection event, with guaranteed Type I error control, used to attribute a detected discontinuity to specific subsets of coordinates",
+  "brief_reason": "The abstract proposes post hoc two-sample (nonparametric) testing procedures with theoretical Type I error guarantees to decide, after a change-point has already been located, which predefined blocks of coordinates carry the change."
+}

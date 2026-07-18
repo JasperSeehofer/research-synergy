@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "comparison of two independent metric-space embeddings of the same set of entities via their induced pairwise-distance (similarity) matrices, with the resulting distance geometry validated by correlation against an external reference distance matrix (second-order/representational-similarity analysis)",
+  "brief_reason": "The method embeds the same concepts under two modalities, then contrasts the divergent geometries of those embeddings and scores the sketch-derived pairwise similarities by how closely (45% more) they align with established (cultural) distances, which is exactly comparing induced distance structures of embeddings against a reference metric."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an iterated local update rule that applies a discrete Laplacian to a lattice-valued field reduced modulo an integer (a modular/linear cellular automaton over Z/nZ), producing self-similar growth with a nucleus-driven critical threshold and a switchable modulus whose sparsely timed changes reset the system's phase and select its long-term trajectory",
+  "brief_reason": "The abstract describes modular Laplacian automata evolving under binary and ternary moduli on a lattice, generating self-similar structures with a growth threshold set by growth-capable nuclei, where a few timed insertions of a different modulus (3 into an otherwise-2 sequence) redirect the evolution and reset the 'crisis clock' phase — i.e., a modular discrete-Laplacian iteration whose modulus can be switched to steer the dynamics."
+}

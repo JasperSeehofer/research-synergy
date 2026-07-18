@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a self-improving reverse Hölder (higher-integrability) inequality derived from a nonlinearly-weighted global second-order a priori gradient estimate, used to bootstrap and extend the admissible range of integrability exponents for solvability of a linear boundary-value problem",
+  "brief_reason": "The abstract centers on replacing the standard linear gradient with a nonlinear weighted gradient quantity to obtain a global second-order estimate that yields an improved reverse Hölder inequality, which in turn extends the known range of L^p solvability."
+}

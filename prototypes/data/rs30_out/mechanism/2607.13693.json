@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "agent-based (individual-based) simulation: a population of many autonomous entities each acting under local behavioral interaction rules, whose repeated interactions generate emergent system-level dynamics from the bottom up",
+  "brief_reason": "The abstract centers on models 'in which agents interact according to explicitly defined behavioral rules' to investigate general system-level mechanisms, which is exactly the bottom-up rule-based multi-agent interaction machinery."
+}

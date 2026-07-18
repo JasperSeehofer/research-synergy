@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a nonlinear Perron-Frobenius fixed-point iteration on the probability simplex, whose stability is governed by a contraction-versus-expansion balance in Hilbert's projective metric: a positive primitive linear operator contracts projective distances while a power-law 'escort' renormalization expands them by a factor equal to the exponent's magnitude",
+  "brief_reason": "The abstract states the long-run profile is characterized by a nonlinear Perron-Frobenius fixed point on the simplex whose stability is read off Hilbert's projective metric, where the mixing matrix brings positive profiles closer together while the escort (power-normalization) map scales their projective distance by |θ|."
+}

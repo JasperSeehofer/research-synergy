@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Fokker-Planck (drift-diffusion) equation for a multiplicative-noise stochastic process with state-dependent drift/transfer terms, solved for its stationary distribution",
+  "brief_reason": "The abstract builds a Fokker-Planck description of a stochastic multiplicative process with state-dependent gain/loss (taxation/redistribution) terms and derives closed-form stationary distributions, i.e. the machinery is the stationary solution of a Fokker-Planck equation under multiplicative noise plus state-dependent drift."
+}

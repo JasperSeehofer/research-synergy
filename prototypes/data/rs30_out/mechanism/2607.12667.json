@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a BBP-type spectral phase transition of a low-rank-perturbed random covariance matrix, in which the top (extreme) eigenvalue detaches from the bulk of the noise spectrum only once the signal strength exceeds a sharp critical threshold set by the interplay of perturbation parameters",
+  "brief_reason": "The abstract proves that the extreme eigenvalues of the SMM covariance matrix exhibit a phase transition in high-dimensional regimes governing when embedded signals (spikes) become detectable, giving sharp threshold bounds on signal strength, correlation, and mixture weights."
+}

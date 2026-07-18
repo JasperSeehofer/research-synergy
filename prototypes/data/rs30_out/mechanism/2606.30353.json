@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "weakly-nonlinear, weakly-dispersive long-wave asymptotic reduction of a discrete nonlinear medium to a Korteweg-de Vries equation, whose balance between nonlinearity and dispersion yields solitary/periodic traveling waves and expanding modulated wavetrains (dispersive shock waves) analyzed by modulation/DSW-fitting theory",
+  "brief_reason": "The abstract derives the KdV equation for quasi-one-dimensional propagation to approximate the lattice's solitary and periodic traveling waves and then uses it, together with a DSW-fitting method, to predict the trailing/leading-edge structure of expanding modulated (dispersive shock) waves in the small-jump limit."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a sharp Brascamp-Lieb-type multilinear inequality that bounds a product/integral of functions coupled through linear maps, used to certify that a configuration can simultaneously satisfy a large fraction of linear constraints",
+  "brief_reason": "The abstract states its existential threshold and algorithmic guarantees are all 'obtained through a novel application of a Brascamp-Lieb-type inequality in the MDS setting,' making that bound on coupled linear-constraint satisfaction (paired with list decoding of the dual code) the machinery the whole method rests on."
+}

@@ -1,0 +1,7 @@
+{
+  "mapping": [
+    {"a_element": "a graph built over crypto-domain entities (co-occurrence graph over wallet addresses)", "b_element": "a graph built over crypto-domain entities (cross-asset dependency graph over coins)"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only real overlap is that both construct a graph over crypto entities, but the machinery differs decisively: paper A applies union-find connected-component clustering to surface persistent wallet cohorts and then leans on matched-placebo causal inference (propensity-style selection critique), whereas paper B trains a Graph Attention Network — a learned message-passing neural predictor — to forecast prices from cross-asset dependencies. A combinatorial connected-components detector plus a causal-identification argument is not the same transferable machinery as a supervised attention-based GNN regressor, so no coherent role-for-role mapping of the driving process holds."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "steepest-descent (gradient-flow) dynamics that evolve a configuration down the L2-gradient of a higher-order energy functional, producing a high-order parabolic evolution equation whose short-time existence/uniqueness and global (long-time) existence are established via energy (monotonicity) estimates",
+  "brief_reason": "The abstract defines the flows as the L^2-gradient flow of higher-order functionals of the curvature and proves short-time existence/uniqueness and long-time existence by energy methods, which is exactly steepest-descent gradient-flow dynamics on an energy functional controlled by energy estimates."
+}

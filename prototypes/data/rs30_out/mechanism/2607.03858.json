@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "eigendecomposition of a scale-dependent (aggregation-horizon-dependent) covariance operator to separate a multivariate signal into orthogonal components indexed by how their aggregated variance scales with window length, i.e. by their self-similar long-memory scaling exponents (a spectral generalisation of the variance-ratio / Hurst-type scaling statistic)",
+  "brief_reason": "The abstract generalises the variance ratio (which measures how partial-sum variance scales with aggregation horizon) into a multivariate eigenstructure decomposition that separates persistent, antipersistent, and multi-scale memory components across a cross-section, i.e. it diagnoses signal components by their variance-vs-scale power-law behaviour."
+}

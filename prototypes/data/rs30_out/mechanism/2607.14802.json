@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Evaluation of a semiclassical (WKB-type) action integral as a period/contour integral of a momentum function around the branch points of an associated algebraic (spectral) curve, resummed in closed form via hypergeometric-type special functions",
+  "brief_reason": "The abstract computes a radial action along geodesics with exact resummation into hypergeometric/Fox-Wright functions and identifies it with the quantum a-cycle (period integral) of a Seiberg-Witten-type curve derived from the radial equation, which is exactly the WKB action/period-integral-over-a-spectral-curve machinery."
+}

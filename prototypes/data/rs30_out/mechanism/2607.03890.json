@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "encoding a continuous estimate as the location of a stable fixed-point (attractor) of a coupled excitatory-inhibitory dynamical system that relaxes to equilibrium, so precision is set by the equilibrium's position rather than by the timescale of the dynamics",
+  "brief_reason": "The abstract states the quantity of interest (ITD) is represented as a stable equilibrium of population dynamics reached via excitatory/inhibitory interactions, with high precision emerging from that stable dynamical state despite slow relaxation."
+}

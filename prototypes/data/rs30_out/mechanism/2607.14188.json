@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a sheaf-theoretic local-to-global (microlocal) solvability principle for an initial-value problem of a hyperbolic evolution operator: locally constructed solutions are propagated along the operator's characteristic directions and glued into a unique global solution, with the propagation of singularities controlled microlocally",
+  "brief_reason": "The abstract solves the global Cauchy (initial-value) problem for hyperbolic D-modules using microlocal-sheaf-theoretic methods, i.e. passing from local solvability to a consistent global solution by propagating and gluing along characteristics."
+}

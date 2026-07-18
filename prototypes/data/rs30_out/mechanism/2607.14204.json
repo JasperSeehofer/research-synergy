@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "canonical elimination of group-orbit (symmetry) redundancy via polar decomposition — splitting a general linear map into a positive-definite symmetric factor times an orthogonal factor and using the positive-definite factor as a unique slice representative, converting a symmetry-invariant, underdetermined variational equation into an exactly-determined second-order elliptic (Fredholm) system",
+  "brief_reason": "The abstract removes the gauge freedom by pointwise polar decomposition, replacing the connection with a field of positive-definite symmetric matrices that yields an exactly determined second-order system with elliptic regularity and a Fredholm index for its linearization."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "confinement of a randomly (thermally) fluctuating many-component system to an invariant subspace of a non-commuting (non-Abelian) symmetry group, so that independent local fluctuations aggregate via random-walk / central-limit sqrt(N) scaling into a globally locked collective quantity whose irreducible-representation state-space dimension grows without bound (logarithmically) with system size",
+  "brief_reason": "The abstract states that a strong non-Abelian conservation law restricts the system to a single symmetry (global-singlet) sector where independent local fluctuations produce a collective quantity scaling as j~sqrt(N), and the globally locked irreducible representation of size 2j+1 supplies log_2(2j+1)~(1/2)log_2 N units of the resource."
+}

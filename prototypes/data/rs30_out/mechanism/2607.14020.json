@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "resurgent resummation of a series near its natural boundary — controlling the divergent singular limit of a slowly-converging expansion by re-expressing it as iterated integrals of modular (quasi-periodic) building blocks to obtain a rapidly convergent representation",
+  "brief_reason": "The abstract controls the singular limit as |q| approaches 1 (resurgence) of Lambert-type series precisely by writing them as iterated integrals of holomorphic Eisenstein series twisted by a character, yielding rapidly convergent expressions."
+}

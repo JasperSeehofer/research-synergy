@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a mean-field compartmental (mass-action) spreading process whose conserved first integral collapses the transient dynamics into a self-consistent implicit 'final-size' fixed-point equation for the total fraction of the medium ultimately traversed, containing a critical threshold above which a comparative quantity reverses sign",
+  "brief_reason": "The abstract derives closed-form 'final size relations' that analytically link the total attack rate to the spreading and coverage parameters and identifies a critical threshold above which increasing coverage paradoxically reverses the sign of relative effectiveness, which is the hallmark of a mass-action spreading model reduced to a threshold-bearing self-consistency equation for its terminal extent."
+}

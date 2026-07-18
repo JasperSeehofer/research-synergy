@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Birman-Schwinger reduction: recasting an operator-positivity / zero-mode question as an eigenvalue-crossing-a-critical-value threshold on a bounded auxiliary operator built from a background term and a free (resolvent) kernel, with the diagonal resolvent's Born (perturbative) series as the leading approximation",
+  "brief_reason": "The abstract turns the positivity of the Faddeev-Popov operator into an ordinary spectral threshold reached when an eigenvalue of a bounded dimensionless operator crosses -1, identifies the dressing function with the operator's diagonal resolvent, and recovers the no-pole estimate as the leading Born-order truncation -- the defining structure of a Birman-Schwinger bound-state/threshold reformulation."
+}

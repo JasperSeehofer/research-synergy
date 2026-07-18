@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "decomposition of a system's transient relaxation into a superposition of exponentially-damped sinusoidal normal modes (complex-frequency resonances), whose oscillation frequencies and decay rates are estimated to infer the system's few underlying parameters and test the governing model",
+  "brief_reason": "The abstract treats the signal as a superposition of quasi-normal modes that are damped harmonic oscillations whose frequencies and damping times are fixed by two system parameters, and it fits those frequencies/damping times to constrain the model — i.e. damped-oscillation (Prony-type) spectral estimation of complex resonant modes."
+}

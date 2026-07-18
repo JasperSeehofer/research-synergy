@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "a ruler selecting a name for the next generation (discrete choice among alternatives)", "b_element": "a traveler selecting a route (discrete choice among alternatives)"},
+    {"a_element": "prestige accumulated by prior rulers biasing the selection probability", "b_element": "prospect-theoretic value/probability weighting biasing the decision"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A's machinery is a cumulative stochastic-reinforcement (rich-get-richer / preferential-attachment) process in which prestige accumulated by past name-bearers drives future selection, generating heavy-tailed inequality and persistence across generations; Paper B's machinery is individual decision-making under uncertainty described by cumulative prospect theory and reproduced by an LLM proxy. Both concern 'choice' and both use the word 'cumulative,' but that is shared vocabulary, not shared machinery: a population-level reinforcement dynamic producing frequency inequality has no role-for-role correspondence to a static prospect-theoretic value/probability-weighting model of risky decisions, so they do not share an underlying method."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reverse-mode (adjoint) automatic differentiation over an invertible/reversible chain of transformations, in which intermediate states are reconstructed by running the forward map backward instead of being stored, yielding gradient computation whose memory cost is independent of the number of parameters",
+  "brief_reason": "The abstract computes parameter gradients via a backpropagation algorithm that exploits the reversibility of the forward map to reconstruct intermediate states, cutting memory by a factor O(n_param) versus conventional reverse-mode automatic differentiation."
+}

@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "Tanner/factor graph associated with the LDGM code", "b_element": "social/economic network of players"},
+    {"a_element": "iterative message passing (belief propagation) over the graph", "b_element": "best-response dynamics iterated over the network"},
+    {"a_element": "discrete Density Evolution predicting decoder behavior on large random graphs", "b_element": "deterministic approximation predicting equilibrium frequencies on large sparse random networks"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is generic — both run iterative local updates on a graph and use a mean-field/large-graph asymptotic argument — but the governing machinery differs fundamentally: paper A constructs CSS quantum error-correcting codes and decodes them by probabilistic belief-propagation optimized via density evolution over a depolarizing channel, whereas paper B analyzes existence and convergence of Nash equilibria under best-response dynamics in heterogeneous network games. Code construction plus channel-optimized inference does not play the same role as game-theoretic equilibrium analysis, so no coherent role-for-role mapping of the actual mechanism holds."
+}

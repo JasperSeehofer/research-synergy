@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a nonlinear Schrödinger / Gross-Pitaevskii-type field equation in which an attractive (self-focusing) mean-field nonlinearity is stabilized against collapse by a higher-order repulsive correction term, producing self-bound localized solitary-wave solutions with a sharp collapse threshold and soliton-like collision dynamics (rebound, merger, fragmentation)",
+  "brief_reason": "The method rests on the extended Gross-Pitaevskii equation with Lee-Huang-Yang corrections, where a beyond-mean-field repulsive term balances the attractive interaction to yield self-bound droplets that exist only above a threshold, collapse when the attractive coupling is reduced, and show directional collision outcomes characteristic of solitary waves."
+}

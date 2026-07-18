@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a deterministic mean-field interacting-particle gradient flow driven by a singular pairwise interaction kernel, whose empirical measure converges (in the many-particle and long-time limit, under a bound on relative entropy per particle) to a fixed-point equilibrium distribution",
+  "brief_reason": "The abstract describes particles transported by deterministic kernelized pairwise dynamics whose time-averaged empirical-measure law is proven to converge weakly to the target point mass as particle number and averaging horizon diverge, under a uniform initial relative-entropy-per-particle bound."
+}

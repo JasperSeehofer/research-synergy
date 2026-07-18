@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Representing an operator/interaction structure as a weighted hypergraph and characterizing it through spectral invariants of its Laplacian — chiefly the algebraic connectivity (Fiedler value / spectral gap) — to expose universality classes and structural reorganization, with a complementary optimal-transport comparison of probability measures on the parameter space",
+  "brief_reason": "The abstract builds a weighted-hypergraph / coupling-space framework and introduces a geometric observable comparing the algebraic connectivities of the kinetic and interaction hypergraphs, yielding geometric universality classes and spectral organization (with optimal transport quantifying reorganization in the complementary representation)."
+}

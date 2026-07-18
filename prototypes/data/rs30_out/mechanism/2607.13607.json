@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "mean-field (expected-drift) reduction of a high-dimensional, persistently-noisy stochastic update process, used to predict the long-run time-averaged occupation (stationary-distribution mass) of a region of state space, yielding a threshold boundary in parameter space that separates which regime dominates the occupation",
+  "brief_reason": "The abstract replaces the question of asymptotic convergence with the fraction of time spent in a region under constant exploration and derives a dominance boundary 'based on the expected dynamics' of the intractable high-dimensional stochastic learning process, i.e. a mean-drift approximation predicting time-averaged occupation with a phase threshold."
+}

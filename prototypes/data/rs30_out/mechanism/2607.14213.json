@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "subordination of a one-parameter evolution semigroup: replacing a deterministic propagator by an average of propagators over a randomly fluctuating value of its evolution-time (equivalently inverse-temperature) parameter, weighted by a probability measure that concentrates around a fixed classical value in a small-noise (semiclassical) limit",
+  "brief_reason": "The abstract states the main effect is that the total Euclidean evolution time (or inverse temperature) fluctuates, turning the standard evolution operator into an average of evolutions weighted by a measure over Euclidean times that in the semiclassical limit is peaked around the geodesic distance."
+}

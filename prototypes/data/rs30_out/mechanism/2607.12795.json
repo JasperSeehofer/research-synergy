@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "exact dimensional reduction of a high-dimensional many-body stochastic (master-equation) dynamics onto a closed low-dimensional Markov process describing a finite number of interacting random walkers (the 'shock'/defect coordinates), kept closed by tuned boundary transition rates that make certain excitations reflect while others pass",
+  "brief_reason": "The abstract states that the otherwise intractable non-stationary evolution of an interacting particle system is made manageable because hidden processes take the form of a finite number of interacting random walks, and it introduces boundary rates that preserve this reduced random-walk structure in finite volume by letting ordinary particles through but not the shocks."
+}

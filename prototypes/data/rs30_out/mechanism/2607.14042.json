@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "eikonal resummation of a perturbative scattering series — summing the dominant high-energy terms into a closed exponentiated (eikonal) phase that encodes the backreaction of an impulsive perturbation on a propagating probe — used as an ordering-sensitive out-of-time-ordered correlator that diagnoses non-commutativity and algebraic consistency (cyclicity/positivity)",
+  "brief_reason": "The abstract's method rests on the shockwave formalism and 'resummations of the perturbative eikonal expansion' (with recoil and backreaction) to compute an out-of-time-ordered four-point correlator, whose two distinct resummations interchanged by reordering and monotonic growth expose ordering-dependence and positivity violation."
+}

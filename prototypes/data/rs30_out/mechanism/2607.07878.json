@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "random-matrix universality crossover diagnosed through the scale-free local spacing-ratio statistic of a complex (non-Hermitian) eigenvalue spectrum, where a tunable control parameter smoothly interpolates between a quasi-one-dimensional regime (points clustered along a curve, weak repulsion) and a two-dimensional Ginibre-type regime with full level repulsion, benchmarked against a reference matrix ensemble, with no sharp transition",
+  "brief_reason": "The abstract's whole method rests on the joint distribution of the complex spacing ratio z (ratio of nearest- to next-nearest-neighbour distances) showing a smooth crossover from a quasi-1D spectral regime to a 2D Ginibre-like regime with fully developed level repulsion, converging to a random-matrix-theory benchmark (PTCUE)."
+}

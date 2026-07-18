@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a reference-dependent choice-under-uncertainty model (cumulative prospect theory) that distorts objective probabilities through a nonlinear probability-weighting function and scores outcomes with an asymmetric, loss-averse value function anchored to a reference point, producing systematic departures from expected-utility maximization",
+  "brief_reason": "The abstract frames the whole study around cumulative prospect theory as the framework characterizing systematic non-rational biases (deviations from full rationality) that emerge under uncertainty, which is precisely this reference-dependent probability-weighting plus asymmetric value-function machinery."
+}

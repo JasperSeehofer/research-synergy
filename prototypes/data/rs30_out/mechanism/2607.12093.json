@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "periodic threshold-based truncation (selective removal of the tail above/below a cutoff) of a probability density evolving under a stochastic transport / Fokker-Planck equation between events — a stroboscopic map on distributions whose repeated conditioning drives an attracting, initial-condition-independent quasi-stationary state set only by the cutoff and the truncation frequency",
+  "brief_reason": "The abstract describes repeated removal of the upper or lower portion of an evolving probability density that, at the 'harvesting clock', drives the system to a quasi-steady state depending only on the threshold and frequency and not on initial conditions."
+}

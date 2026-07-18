@@ -1,0 +1,13 @@
+{
+  "mapping": [
+    {"a_element": "recurrent neural network as a learning system that must compress its input", "b_element": "bounded consumer/agent modeled as a limited information channel"},
+    {"a_element": "explicit information bottleneck (rate-limited compression) applied to the network", "b_element": "finite attention/channel capacity that compresses the agent's world"},
+    {"a_element": "high-dimensional neural activity / time-series environment being compressed", "b_element": "the full 'world' of feasible baskets the shopper faces"},
+    {"a_element": "low-dimensional learned representation the network acts on", "b_element": "compressed, stochastic choice (a probability distribution over baskets)"},
+    {"a_element": "bottleneck tightness / capacity as the control parameter (scaling with task complexity)", "b_element": "attention capacity as the control parameter interpolating the agent"},
+    {"a_element": "high-capacity (loose bottleneck) limit giving memorisation", "b_element": "unlimited-attention limit recovering the exact Walrasian/textbook consumer"},
+    {"a_element": "compression itself (not neuron-level activity) causally producing the functional advantage of generalisation", "b_element": "compression plus the budget constraint (not rationality) causally producing Slutsky symmetry and downward-sloping demand"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both instantiate the same information-bottleneck / finite-capacity information-channel (rate-distortion) machinery: a system compresses a high-dimensional world into a capacity-limited representation, a single capacity parameter interpolates between a full-capacity limit (memorisation / the Walrasian consumer) and a degenerate low-capacity limit (pure habit), and each paper's central claim is that the emergent structured behaviour (generalisation in A; Slutsky-symmetric, downward-sloping demand in B) arises causally from the compression itself rather than from the conventional explanation."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "variational (Rayleigh-Ritz/Galerkin) dimensional reduction of a governing field equation: inserting a parameterized trial ansatz into a variational principle to collapse a high-dimensional PDE onto a low-dimensional effective model whose reduced equations govern the ansatz parameters",
+  "brief_reason": "The abstract reduces the full spatial nonlinear Schrodinger equation to a tractable effective model by employing a variational ansatz based on Laguerre-Gauss modes and deriving explicit variational equations for its parameters."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an incrementally-updated hierarchical partition tree over axis-parallel cuts that stores accumulated cell weights so as to draw samples in proportion to those weights (cumulative-weight / roulette-wheel sampling) without materializing the exponentially many refined cells, with the tree's depth probabilistically bounded under adversarial-but-smoothed input ordering",
+  "brief_reason": "The abstract's method is a data structure over piecewise partitions bounded by axis-parallel hyperplanes that supports efficient updates and weight-proportional sampling while avoiding the O(t^d) explicit subregion growth, with proven depth bounds (O(sqrt(sigma*T)), O(log T)) under smoothed/random-order adversaries."
+}

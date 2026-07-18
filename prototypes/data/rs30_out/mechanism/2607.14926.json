@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Fisher-information-based optimal design: choosing controllable experiment parameters to minimize a scalar functional (trace of the inverse Fisher information matrix, i.e. the estimator covariance) subject to a cost budget, cast as a constrained multi-objective (variance-vs-cost) trade-off and solved by a neighborhood-search metaheuristic",
+  "brief_reason": "The abstract minimizes the A-optimality criterion (a scalar summary of the parameter-estimate covariance) against experimental cost, exploiting their conflicting structure to form a Pareto multi-objective search executed by a Variable Neighborhood Search algorithm."
+}

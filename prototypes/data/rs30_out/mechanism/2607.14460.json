@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "duality-based sharp asymptotic evaluation of the extremal value of a random high-dimensional bilinear/quadratic form, obtained by sandwiching it between a dual upper bound and a matching multi-replica lower bound that coincide as the dimension grows",
+  "brief_reason": "The abstract determines the precise limiting spectral-norm error by pairing closed-form RDT upper bounds with a novel bilinear-quadratic lower-bounding mechanism and a two-replica bounding strategy that provably match in the large-dimensional limit."
+}

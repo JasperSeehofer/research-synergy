@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "linear-stability (Lyapunov-exponent) analysis of trajectory divergence near an unstable equilibrium, where the exponential separation rate of nearby orbits is fixed by the local curvature of an effective potential and tested against a universal upper bound that can be saturated or violated",
+  "brief_reason": "The abstract's central quantity is the Lyapunov exponent measuring exponential divergence of nearby particle trajectories and its deviation from a bounding rate (the surface gravity), tracking when a universal bound on the divergence rate is violated."
+}

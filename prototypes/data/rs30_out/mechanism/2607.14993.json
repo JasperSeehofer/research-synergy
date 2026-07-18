@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a sharp critical threshold in a random connectivity (percolation) process on a lattice, where the probability of an unbounded connected cluster jumps from zero (with exponentially decaying finite-cluster sizes) to positive as a control parameter crosses a critical value, with sharpness established via a sharp-threshold / influence (OSSS-type) inequality bounding the derivative of the connection probability by per-element influences",
+  "brief_reason": "The abstract proves 'sharpness of the phase transition' for a percolation model whose edges open with type-dependent probabilities, using the OSSS inequality (a sharp-threshold influence inequality) adapted from the random-cluster method of Duminil-Copin et al. (2017)."
+}

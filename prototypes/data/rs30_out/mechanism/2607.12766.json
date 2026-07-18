@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "dissipative variational gradient-flow dynamics of a single generalized coordinate on a competing-contribution free-energy landscape (Onsager/Rayleighian minimization balancing driving force against a dissipation functional), whose solvability/solubility condition yields critical thresholds and phase boundaries",
+  "brief_reason": "The abstract builds a continuum model 'rooted in the Onsager variational principle' with engulfment depth as the generalized coordinate driven by a free-energy landscape against viscoelastic dissipation, and states that 'the Onsager solubility condition naturally yields the phase boundaries' of a kinetic phase diagram with critical thresholds."
+}

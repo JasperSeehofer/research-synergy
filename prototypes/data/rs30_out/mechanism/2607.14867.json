@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a Boltzmann kinetic transport equation balancing a Liouville streaming/drift operator against collision integrals to compute the effective drag force on a moving interface from the out-of-equilibrium perturbation of a particle distribution, with a mass regulator taming an infrared-divergent contribution",
+  "brief_reason": "The abstract frames friction on the moving wall via a Boltzmann-equation approach with a Liouville operator and collision integrals acting on out-of-equilibrium perturbations, where introducing thermal masses regulates the otherwise artificially enhanced infrared contribution."
+}

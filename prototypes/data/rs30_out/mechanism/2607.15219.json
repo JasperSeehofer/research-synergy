@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "simulation-based (likelihood-free) Bayesian inference that jointly fits a superposition of overlapping spectral components to disentangle a weak target signal from multiple confounding background components and recover a posterior on its amplitude parameter",
+  "brief_reason": "The abstract performs a joint inference on noise, several overlapping foreground components, and the target signal using a simulation-based inference package to estimate the injected parameter and its error, i.e. posterior estimation of a buried component from a mixed spectrum via forward-simulated data rather than an explicit likelihood."
+}

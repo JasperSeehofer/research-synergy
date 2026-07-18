@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "iterative matrix balancing that rescales a nonnegative matrix onto the set of doubly stochastic matrices (unit row and column sums) via alternating row/column normalization (Sinkhorn-Knopp) or alternating projection onto the row-sum and column-sum constraint sets, thereby annihilating a systematic marginal (row-sum) bias",
+  "brief_reason": "The method corrects a bias shown to be governed by the row-sums of a reallocation matrix by mapping that matrix to a doubly stochastic matrix using the Method of Alternating Projections and the Sinkhorn-Knopp algorithm."
+}

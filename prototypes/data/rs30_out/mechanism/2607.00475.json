@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "end-to-end (decision-focused) differentiable policy optimization: a parametric map from observed state directly to action/allocation variables, trained by gradient descent on a single differentiable objective that folds the downstream optimization into the loss, replacing a two-stage predict-then-optimize pipeline",
+  "brief_reason": "The abstract contrasts the standard forecast-then-optimize approach with a policy that maps market states directly to weights in one step, trained on a differentiable Sharpe-ratio loss, which is exactly end-to-end objective-driven policy learning."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "non-monotonic (Mpemba-type) relaxation ordering in which a system initialized farther from equilibrium relaxes faster, driven by inertial (underdamped Langevin) dynamics whose accumulated kinetic energy sets the rate of crossing a flat bottleneck/plateau in the energy landscape that otherwise dominates the relaxation time",
+  "brief_reason": "The abstract attributes faster relaxation from hotter/weaker-force initial states to the bead accumulating greater kinetic energy that lets it cross a relaxation-slowing plateau more rapidly, with inertia (bead mass) tuning the effect — i.e., inertial barrier/bottleneck crossing producing a non-monotonic relaxation-time ordering."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "rate-dependent falling-out-of-equilibrium (dynamical arrest below a stochasticity threshold during a finite-rate quench), leaving a frozen-in residual excess that obeys power-law scaling in the driving rate and system size",
+  "brief_reason": "The abstract reports that during finite-rate cooling the system drops out of equilibrium below a weak stochastic threshold and retains a residual energy E_0 ~ (xi*N)^{2/3}, i.e. a quench-rate-induced arrest whose residual scales as a power law of the driving rate and size."
+}

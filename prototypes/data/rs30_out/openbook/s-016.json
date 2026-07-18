@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A's machinery is continuum solid mechanics: it solves the elastic large-deformation (momentum-balance) problem of slender structures under three-point bending with contact, using a hybrid material-point method that couples cross-sectional and lengthwise bending (Brazier instability). Paper B's machinery is relativistic kinetic theory: it solves the Boltzmann/Liouville transport equation with collision integrals for out-of-equilibrium plasma particles to compute bubble-wall friction and wall velocities in a cosmological phase transition. The governing equations (elasticity PDE vs. Boltzmann transport), the objects acted on (deformable elastic tubes vs. particle distribution functions), and the driving physics differ entirely, so no role-for-role mapping holds; overlap is only the generic 'numerical simulation validated against theory' and coincidental vocabulary ('bending'/'wall')."
+}

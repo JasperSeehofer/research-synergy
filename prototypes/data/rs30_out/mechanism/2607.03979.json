@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "spectral decomposition of a non-normal linear operator into its dominant eigenvalue plus the left/right dominant eigenvector pair, using the geometric misalignment between those left and right eigenvectors (the operator's departure from normality) as a structural quantity bounded by an optimal-transport / Kantorovich-type inequality",
+  "brief_reason": "The abstract reduces its central object to the spectral radius of a matrix and argues the discarded information lives in the dominant left and right eigenvectors and the operator's non-normality, quantifying their angular misalignment via a Kantorovich bound."
+}

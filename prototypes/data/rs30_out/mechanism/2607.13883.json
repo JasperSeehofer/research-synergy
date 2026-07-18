@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a falsification-based verification procedure that certifies whether a candidate expression equals a target quantity by searching the constraint-admissible model class for a distinguishing counterexample, yielding an almost-surely-correct decision under a regular exponential-family (finite-parameter) parametrization",
+  "brief_reason": "The abstract poses verification (does a given formula equal the target?) as distinct from existence/identification and solves it via a falsifier that induces an almost-surely-correct verifier for regular exponential-family models, i.e. a counterexample-search decision procedure over a parametrized model class."
+}

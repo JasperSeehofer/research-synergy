@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A monogamy/conservation trade-off under duplication: applying an independent local copy operation at each of N sites degrades a globally shared correlational resource multiplicatively, so the collective quality factor takes product form c^N and decays exponentially with system size, crossing a fixed threshold to yield a sharp no-go boundary forbidding two simultaneously valid copies.",
+  "brief_reason": "The abstract derives a broadcast fidelity that decays exponentially as [c(R)]^N from each party independently performing 1->2 cloning, and proves that this always leaves both copies below the certification threshold, i.e. a multiplicative per-site degradation of a shared resource producing a threshold no-go."
+}

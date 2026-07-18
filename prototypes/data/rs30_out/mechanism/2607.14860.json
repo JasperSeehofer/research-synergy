@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a shared latent Gaussian random field that simultaneously drives the intensity of a point-location process and the outcome model evaluated at those points, coupled by a single loading parameter whose magnitude tests and corrects for non-random (preferential) placement of the observed points",
+  "brief_reason": "The abstract jointly combines a log-Gaussian Cox process for locations with a probit outcome regression that share one Gaussian-process spatial effect linked by a loading parameter measuring the association between placement and outcome, which is precisely a shared-latent-field coupling used to detect and correct preferential sampling."
+}

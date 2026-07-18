@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "iterative deferred-acceptance (cumulative-offer) dynamics as fixed-point iteration of a monotone operator on a lattice, converging to an extremal (greatest/least) fixed point, with the set of stable configurations forming a lattice under a partial order",
+  "brief_reason": "The abstract shows a doctor-proposing cumulative offer process whose every trajectory terminates at the greatest stable allocation under a partial (Blair) order, and that the (weakly quasi-stable) allocations form a finite lattice with a greatest element, which is the signature of monotone-operator fixed-point iteration reaching the extremal element of a lattice of fixed points."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a scan statistic that maximizes a two-sample comparison metric over all candidate sub-intervals of unknown location and duration to detect a localized window where one signal outperforms another, coupled to an adaptive (regret-minimizing) switching rule that admits a component only over the windows where it dominates",
+  "brief_reason": "The abstract builds its method on a scan test for whether one forecast beats another over an interval with unknown starting point and duration, then feeds the detected windows into an adaptive algorithm that uses the extra signal only when it performs well."
+}

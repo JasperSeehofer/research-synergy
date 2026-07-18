@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Fourier/Floquet-Bloch decomposition of a symmetry-invariant diffusion (heat) generator by its symmetry group into a direct integral of exact finite-dimensional spectral fibers indexed by the group's characters/representations, from which the long-time asymptotic expansion of the propagator is obtained via a spectral trace formula that also equates the spectral sum to a sum over closed periodic orbits",
+  "brief_reason": "The abstract builds long-time heat-kernel expansions from a 'rational Floquet-Bloch theory' whose 'Kirillov restrictions give exact finite-dimensional fibers' and whose normalized-trace identities let the same representation-theoretic quantity govern both the spectral (heat-kernel) and the closed-geodesic (periodic-orbit, Chebotarev-type) asymptotics."
+}

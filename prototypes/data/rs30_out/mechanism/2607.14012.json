@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "analytic continuation of a replicated (multi-sheeted branch-point) correlation function to complex parameter values, with the dominant contribution fixed by a complex steepest-descent saddle that minimizes the real part of an action/length while the branch/operator ordering fixes a discretely quantized imaginary part",
+  "brief_reason": "The method constructs the quantity via analytic continuation of replica twist correlators to complex (timelike) insertions and selects, among complex geodesic saddles, the one with the smallest real part of the length, with operator ordering uniquely determining an imaginary part quantized in units of cπ/6."
+}

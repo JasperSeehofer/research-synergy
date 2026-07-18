@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "unsupervised representation learning via an autoencoder reconstruction bottleneck that compresses high-dimensional inputs into a low-dimensional latent space, followed by clustering in that latent space to discover discrete data-driven groupings",
+  "brief_reason": "The abstract describes a Convolutional Autoencoder that learns groupings from the data itself (rather than from labels or expert annotation) and separates the population into distinct morphological classes, which is exactly an encoder-decoder latent-embedding-plus-clustering mechanism."
+}

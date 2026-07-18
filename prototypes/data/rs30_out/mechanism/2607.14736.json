@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a finite-time blow-up / lifespan threshold for weakly coupled nonlinear evolution equations, obtained by a time-dependent continuation (bootstrap) a priori estimate that balances nonlinear self-amplification against the decay of each component's linear fundamental solution (diffusive L^m-L^r decay for the dissipative part, explicit finite-propagation representation for the wave part), with a zero-mean cancellation condition that removes the leading constant profile to extend the survival time",
+  "brief_reason": "The abstract derives lower and upper bounds on the solution lifespan across a parameter plane by combining diffusion-type L^m-L^r decay estimates for the damped component with the d'Alembert representation in a time-dependent continuation framework, and shows a vanishing-integral condition eliminates the constant interior profile to strictly improve the lifespan bound."
+}

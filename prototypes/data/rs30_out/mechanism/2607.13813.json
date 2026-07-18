@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a singular vanishing-dissipation limit of a dissipative evolution system, in which the small diffusion coefficients are sent to zero and a boundary-layer criterion characterizes whether the energy-dissipation rate persists (remains nonzero and coefficient-independent, i.e. anomalous dissipation) so that solutions converge to those of the ideal non-dissipative system",
+  "brief_reason": "The abstract takes the viscosity and resistivity coefficients to zero and derives a Kato-type boundary criterion under which dissipative (Leray-Hopf) solutions converge to ideal weak solutions with an energy-dissipation rate independent of the vanishing coefficients."
+}

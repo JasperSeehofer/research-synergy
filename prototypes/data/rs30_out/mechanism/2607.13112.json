@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Tangent-space principal-component analysis on a curved manifold: linearizing variation about a fixed reference point and fitting optimal low-dimensional (geodesic) subspaces via eigendecomposition of the second-moment matrix of the tangent-space departures",
+  "brief_reason": "The abstract states that under a bounded sine-squared geodesic loss the problem reduces exactly to eigenanalysis of a second-moment matrix of anchored tangent departures around a chosen reference direction, giving scores, loadings and explained-variation summaries — i.e. PCA generalized to a manifold via its tangent space at an anchor."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a ratio-of-proportions disparity index comparing a subgroup's share of a general population to its share of a selected high-status subset, tracked as a longitudinal time series to detect trend inversions and threshold crossings",
+  "brief_reason": "The method quantifies under-recognition by taking the ratio between the overall share of one class of members and its share among a privileged (corresponding-author) subset, then follows that normalized share-ratio across 125 years to detect a sign inversion — a base-rate-normalized representation ratio tracked over time."
+}

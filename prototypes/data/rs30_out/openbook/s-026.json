@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "inflaton field evolving under a damped equation of motion (potential force vs. coupling-induced friction)", "b_element": "population densities evolving under coupled replicator/Lotka-Volterra ODEs"},
+    {"a_element": "extended constant-roll regime where friction balances the potential force (a dynamical attractor)", "b_element": "stable equilibria / coexistence fixed points where growth balances predation"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is the generic fact that both are nonlinear dynamical systems analyzed via balance/fixed points: paper A is single-field inflaton dynamics (a damped scalar-field ODE with non-minimal coupling producing CMB observables r and n_s), while paper B is multi-species replicator/Lotka-Volterra population dynamics with pay-off matrices, equilibrium stability, bifurcation cascades, and limit cycles. No role-for-role machinery transfers — there is nothing in the inflaton model playing the role of prey/predator interaction or pay-off matrices, and nothing in the ecology model playing the role of the spectral observables or the non-minimal gravitational coupling, so the correspondence is only at the vacuous 'both are nonlinear ODEs' level."
+}

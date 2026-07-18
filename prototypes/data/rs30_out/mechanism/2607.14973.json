@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a Pareto-optimal frontier from multi-objective optimization of the mean of a fluctuating output against its variance, in which higher precision (lower variance) can only be bought by monotonically increasing resource expenditure — a mean-variance / cost-of-precision trade-off, with optimal points sitting near maxima of a Fisher-information (estimation-precision) bound",
+  "brief_reason": "The abstract uses multi-objective optimisation to obtain a Pareto-optimal trade-off between extractable work and its fluctuations where reducing fluctuations entails greater resource costs, and locates optimal designs near local maxima of the Fisher information."
+}

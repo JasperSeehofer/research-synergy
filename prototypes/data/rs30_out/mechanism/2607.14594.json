@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a hybrid Lagrangian-Eulerian (material-point / particle-in-cell) discretization that repeatedly transfers state between moving material carriers and a fixed background grid to resolve large continuum deformation and contact between bodies",
+  "brief_reason": "The abstract states the method is a hybrid-MPM framework 'integrating Lagrangian finite element and Eulerian finite difference frameworks' to simulate large deformation with complex contact, which is exactly a particle-grid transfer scheme."
+}

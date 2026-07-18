@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "representing an input path by its hierarchy of iterated integrals (the path signature / group-like element in the free tensor algebra) as a universal feature basis, and driving a controlled differential equation through this representation so that simple parametrizations can approximate any path-dependent evolution operator",
+  "brief_reason": "The abstract builds its whole method on 'controlled differential equations whose vector fields factor through the signature map,' proving that such simply parametrized signature-driven equations universally approximate the solution of any well-posed path-dependent controlled dynamics."
+}

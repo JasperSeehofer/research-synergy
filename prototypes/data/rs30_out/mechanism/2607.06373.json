@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "first-order matrix-perturbation analysis of the eigendecomposition of a noisily estimated symmetric operator, propagating estimation noise into a null distribution for the movement of spectral projectors and eigenvalue functionals via a Davis-Kahan-type subspace-perturbation bound",
+  "brief_reason": "The abstract derives a first-order null law for the change in the dominant-eigenspace projector between overlapping (correlated-noise) windows and uses a Davis-Kahan band plus bootstrap calibration to gauge how estimation noise perturbs the eigenspace and scalar spectral functionals, which is exactly first-order eigen-perturbation theory of a noisy symmetric matrix."
+}

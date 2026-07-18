@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a structure-preserving (integrable) discrete approximation of a nonlinear elliptic PDE on a refining square lattice, whose discrete geometric solutions provably converge to the continuous solution under mesh refinement with a quantified second-order O(ε²) error bound",
+  "brief_reason": "The abstract discretizes a smooth solution of the sinh-Gordon equation on square grids of edge length ε and proves the discrete (ring-pattern) uniformizing variables converge to the continuous solution in C^∞ with error of order ε² as the lattice is refined."
+}

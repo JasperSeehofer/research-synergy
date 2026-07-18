@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a graph-structured (conditional-independence) factorization of the limiting joint-tail geometry of a multivariate distribution — encoding dependence among many variables via a block-graph decomposition of a homogeneous gauge function — used to build a parsimonious high-dimensional model of rare co-occurring extremes and extrapolate beyond observed data",
+  "brief_reason": "The abstract builds a high-dimensional extreme-value model by defining the gauge function of geometric extremes in a structured way via block graphs (a graphical-model conditional-independence factorization) to keep the model parsimonious and achieve strong extrapolation of joint-tail probabilities."
+}

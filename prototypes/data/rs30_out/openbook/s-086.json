@@ -1,0 +1,12 @@
+{
+  "mapping": [
+    {"a_element": "hypothetical Bernoulli treatment-assignment distribution whose spillover effect is the estimand", "b_element": "target policy whose value is being evaluated"},
+    {"a_element": "actual randomized design / assignment mechanism that generated the observed data", "b_element": "behaviour policy that generated the offline logged data"},
+    {"a_element": "Horvitz-Thompson estimator (inverse-probability / propensity weighting of observed outcomes)", "b_element": "vanilla importance sampling (unnormalized likelihood-ratio reweighting of logged rewards)"},
+    {"a_element": "Hajek estimator (self-normalized inverse-probability-weighted estimator)", "b_element": "weighted importance sampling (self-normalized, bounded IS estimator)"},
+    {"a_element": "exposure mapping / interference set defining each unit's relevant treatment configuration", "b_element": "context in the contextual bandit conditioning the reweighting"},
+    {"a_element": "bias from a wrong interference set or incorrect exposure-mapping function", "b_element": "bias under behaviour-policy misspecification"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both estimate the expected outcome under a hypothetical/target assignment distribution from data drawn under a different actual distribution via importance-sampling / inverse-probability weighting: paper A's Horvitz-Thompson and Hajek estimators are exactly (unnormalized) importance sampling and its self-normalized 'weighted importance sampling' variant that paper B uses for off-policy evaluation, and both must correct for/absorb bias when the assumed generating mechanism (interference set / exposure mapping vs. behaviour policy) is misspecified."
+}

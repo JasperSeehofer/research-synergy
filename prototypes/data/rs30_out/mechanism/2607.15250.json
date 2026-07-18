@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "closed-form estimation of the cumulative output of a supercritical branching/chain-reaction process: exponential runaway multiplication above a critical threshold that self-terminates via a negative feedback (the medium expanding/disassembling back below criticality), with the total yield given by the time-integral of the exponentially growing reaction rate up to the self-quenching point",
+  "brief_reason": "The abstract concerns competing 'yield formulas' that estimate the explosive output of a fission chain reaction, and such a yield is set by runaway exponential multiplication above a critical threshold that is halted when the multiplying medium disassembles below criticality."
+}

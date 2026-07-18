@@ -1,0 +1,7 @@
+{
+  "mapping": [
+    {"a_element": "evaluating a multiverse by the single worst universe it contains (worst-case over the set of analytic specifications)", "b_element": "characterizing the sharp lower bound of the identified set (worst-case over the set of preference distributions consistent with the data)"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is a shallow worst-case-over-a-set heuristic: paper A is a normative/rhetorical critique proposing conventions (judge a multiverse by its worst universe, treat size as weakness) with no formal governing process, whereas paper B is a formal partial-identification result deriving sharp bounds on a causal estimand under endogenous menu assignment with heterogeneous preferences; there is no role-for-role correspondence of driving machinery, so they do not share an underlying method."
+}

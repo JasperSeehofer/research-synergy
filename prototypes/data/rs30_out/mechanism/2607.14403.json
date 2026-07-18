@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a discrete summation-by-parts operator: a matrix approximation of a derivative built to algebraically mimic integration by parts so that the discretized evolution equation inherits a conserved discrete energy/boundary identity guaranteeing provable stability, augmented by interpolation/extrapolation operators that project boundary conditions onto boundaries lying off the regular grid nodes",
+  "brief_reason": "The abstract centers on 'summation by parts (SBP)' derivative operators whose boundary closures are matched by interpolation/extrapolation to enforce conditions on a boundary embedded off the Cartesian grid, i.e. a discrete integration-by-parts construction that yields stable, accuracy-preserving discretization of a governing (wave) equation."
+}

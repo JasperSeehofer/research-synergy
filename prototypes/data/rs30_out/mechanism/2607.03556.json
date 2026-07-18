@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "factorization of an exact gradient into a local outer-product eligibility term and a globally back-transported adjoint error propagated through a tree by successive multiplication of per-edge gains (reverse-mode/adjoint sensitivity propagation), reducing learning to low-rank compression of that propagated error field",
+  "brief_reason": "The abstract states that exact gradients factor into local eligibility x compartment-error terms, where the non-local term is a path-specific error obtained by transporting a soma error through dendritic gains, turning local learning into a credit-signal (low-rank) compression problem."
+}

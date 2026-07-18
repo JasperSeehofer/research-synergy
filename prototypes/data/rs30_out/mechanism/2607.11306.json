@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "receding-horizon (model-predictive) constrained optimal control of a nonlinear dynamical system exhibiting a turnpike, where repeatedly re-solving a finite-horizon cost-minimization over the state trajectory yields feedback control whose optimal paths are drawn to and dwell near a single optimal steady state, conferring practical asymptotic stability",
+  "brief_reason": "The abstract formulates control as a receding-horizon constrained nonlinear optimization minimizing a composite cost, and shows the optimal trajectories anchor to a unique turnpike (steady state) before departing, from which it establishes practical asymptotic stability."
+}

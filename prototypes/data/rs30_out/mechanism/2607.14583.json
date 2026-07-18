@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Fixed-point (invariant-state) analysis of a nonselective averaging/coarse-graining map: characterizing the manifold of states whose one-time marginal distributions are left exactly invariant by the map even though the map disturbs the underlying conditional/branch structure, so that marginal invariance under the map does not imply invariance of the full joint process",
+  "brief_reason": "The abstract introduces common fixed points of nonselective measurement channels and solves the full fixed-point manifold analytically, showing these states leave every later marginal unchanged while the outcome-conditioned branches remain disturbed."
+}

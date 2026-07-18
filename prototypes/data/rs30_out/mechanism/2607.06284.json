@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Bayesian model comparison — adjudicating among competing generative models by their relative marginal evidence (posterior/Bayes-factor weighting) rather than by rejecting a single null hypothesis",
+  "brief_reason": "The abstract contrasts frequentist null-hypothesis testing with a Bayesian framework that 'shifts from rejecting a null hypothesis to quantifying the relative evidence for competing computational hypotheses,' i.e. selecting among models by accumulated relative evidence."
+}

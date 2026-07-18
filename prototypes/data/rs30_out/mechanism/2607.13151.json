@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Gaussian-process surrogate regression (emulator) built over a model's input-parameter space from a sparse sample of expensive simulations, then inverted to calibrate the parameters by fitting the emulated outputs to observed targets",
+  "brief_reason": "The method trains Gaussian-process emulators on a limited set of costly zoom re-simulations to predict expensive observables cheaply across parameter space, then uses those emulators to find the parameter combination that simultaneously fits the measured quantities."
+}

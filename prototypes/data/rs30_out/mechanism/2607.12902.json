@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "sampling from a target measure by running a Markov chain that alternates deterministic energy-conserving (Hamiltonian) flow over random-length time intervals with stochastic refreshment of the auxiliary momentum, whose exponential convergence rate to the invariant distribution is controlled by a transport/functional inequality (Talagrand-type) satisfied by the target",
+  "brief_reason": "The abstract builds a sampler that repeatedly simulates continuous-time Hamiltonian dynamics for random integration times and resets the velocity to an independent Gaussian between simulations, proving exponential KL-divergence convergence under an alpha-Talagrand inequality."
+}

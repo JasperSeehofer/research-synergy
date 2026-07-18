@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a uniqueness/characterization theorem that pins down a single member of a parametric family from an invariance property of a weighted linear combination of the ordered (sorted) values of a sample — i.e., identifying an object uniquely by an algebraic identity satisfied by its order statistics, established through combinatorial sum identities",
+  "brief_reason": "The abstract proves that a linear combination of order statistics characterizes the exponential distribution, with the proof driven by derived identities for Stirling numbers of the second kind, which is exactly an order-statistic uniqueness argument backed by a combinatorial identity."
+}

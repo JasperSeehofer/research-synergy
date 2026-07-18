@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Analytic evaluation of the covariance of a quadratic (second-order) spectral estimator of a stationary random field observed through a sampling/masking window, via Gaussian (Wick) factorization of the estimator's fourth moment into a smooth distinct-pair contribution — approximated by treating the mode-coupling window as a narrow convolution kernel — plus an exactly retained discrete self-pair Poisson shot-noise term",
+  "brief_reason": "The abstract estimates the 'disconnected (Gaussian)' covariance of angular power spectra of fields sampled at discrete points, using the Narrow-Kernel Approximation for distinct source pairs while including the Poisson-like self-pair (discreteness) variance exactly, which is precisely a Gaussian-factorized covariance of a windowed quadratic power-spectrum estimator with an exact shot-noise correction."
+}

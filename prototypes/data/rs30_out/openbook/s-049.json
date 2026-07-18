@@ -1,0 +1,12 @@
+{
+  "mapping": [
+    {"a_element": "the predetermined characteristic that orders assets (the characteristic axis)", "b_element": "redshift z, the coordinate ordering the reconstructed expansion history"},
+    {"a_element": "model alphas / pricing-error curve traced across the characteristic axis", "b_element": "spline-reconstructed distance / expansion-history curve as a function of redshift"},
+    {"a_element": "the counterpart factor model whose predicted corrections are being evaluated", "b_element": "the Planck 2018 LambdaCDM prediction used as the reference model"},
+    {"a_element": "localized departures of the pricing-error curve from zero (value 'overshoots', investment 'crosses zero')", "b_element": "the localized ~3.5-sigma deviation of the reconstruction from LambdaCDM near z=0.47"},
+    {"a_element": "Maximum-Sharpe spanning, a single global scalar that does not reveal where errors land along the axis", "b_element": "the global LambdaCDM fit, which does not expose the coordinate-localized anomaly"},
+    {"a_element": "alternative factor constructions that move the same axes differently (robustness across constructions)", "b_element": "variations of reconstruction methodology, dataset composition, and sound-horizon calibration under which the feature persists"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both replace a single global adequacy statistic with a function-valued residual diagnostic: reconstruct the quantity of interest across an ordering coordinate, compare it to a reference model's prediction, and localize where along that axis the model deviates. A traces pricing-error alphas over a characteristic (versus scalar Sharpe spanning), while B reconstructs distances over redshift and finds a localized ~3.5-sigma departure from LambdaCDM near z=0.47; the machinery of coordinate-resolved deviation detection corresponds role for role."
+}

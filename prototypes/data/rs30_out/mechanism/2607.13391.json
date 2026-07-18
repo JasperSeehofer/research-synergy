@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "conditional-independence factorization of a joint probability measure into a product of conditional marginals (screening), tested by multiplicative separation of a Radon-Nikodym density between the measure and a reference law, with the residual coupling quantified by the Kullback-Leibler divergence between the joint law and the product of its conditional marginals (conditional mutual information)",
+  "brief_reason": "The abstract's central question is when the conditional law of histories factorises, with the boundary property becoming multiplicative separation of a Radon-Nikodym derivative and the failure of factorisation measured by conditional mutual information (relative entropy between the true conditioned law and the product of its conditional marginals)."
+}

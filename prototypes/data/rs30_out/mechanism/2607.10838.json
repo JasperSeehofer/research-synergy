@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a convergent-dynamics / input-to-state-stability argument by which local exponential stability of an unforced dissipative system plus stability with respect to small inputs forces a unique globally attracting bounded trajectory that entrains (phase-locks) to any small recurrent forcing",
+  "brief_reason": "The abstract states that local exponential stability of the unforced system together with input-to-state stability with respect to small inputs guarantees global entrainment to small almost periodic inputs, i.e. a unique globally attracting response tracking the forcing."
+}

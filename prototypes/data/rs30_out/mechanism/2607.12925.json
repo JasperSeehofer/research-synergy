@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "frustration-free parent-operator / null-space engineering: building a positive-semidefinite operator as a sum of local projectors whose common kernel (simultaneous zero-eigenvalue null space) is engineered to be an exactly specified constrained combinatorial configuration space, realized by splitting each unit into virtual sub-units, imposing local pairwise matching/pairing constraints, and projecting back to the physical space",
+  "brief_reason": "The abstract builds a local operator from positive-semidefinite projectors that each annihilate only one local state, making it frustration-free, so its zero-energy manifold is the exact intersection of local constraint kernels — a fully-packed matched-loop configuration space obtained by resolving each unit into two virtual sub-units, forming pairwise singlets, and projecting back."
+}

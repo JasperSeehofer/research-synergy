@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A closed feedback loop in which the state of a nonlinear dynamical system modulates payoff-based (best-response) agent decisions that adjust a control parameter, which feeds back onto the dynamics — with threshold parameters governing fixed-point existence/stability and a Hopf bifurcation carrying a stable equilibrium into self-sustained limit-cycle oscillations",
+  "brief_reason": "The abstract couples payoff-based adoption decisions to system prevalence (endogenous strategic control), characterizes equilibria via thresholds R_0 and R_c, and reports saddle-node and Hopf bifurcations that shift stable endemic states into sustained periodic oscillations."
+}

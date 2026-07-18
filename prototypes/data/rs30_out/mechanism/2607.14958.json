@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "deconvolution / inverse problem in which a convolution integral of a known kernel with an unknown factor is reduced to a pointwise multiplicative relation, so the unknown factor is recovered by dividing the measured signal by the analytically known kernel (a ratio-based inversion)",
+  "brief_reason": "The abstract starts from a convolution factorization dσ = H ⊗ f, reduces the convolution to a multiplicative form, and defines the ratio R = dσ_exp / dσ_hard to invert this relation and recover the unknown distribution f."
+}

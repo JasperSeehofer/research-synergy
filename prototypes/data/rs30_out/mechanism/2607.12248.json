@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "null-hypothesis significance testing of a predictor's excess performance over a naive base-rate null, using paired difference tests (McNemar, Diebold-Mariano) with Benjamini-Hochberg false-discovery-rate correction across multiple hypotheses, evaluated out-of-sample via expanding walk-forward folds",
+  "brief_reason": "The abstract's whole method rests on measuring accuracy in excess of an 'always-up' base rate and confirming or refuting skill through paired McNemar/Diebold-Mariano tests under Benjamini-Hochberg FDR control on walk-forward, held-out splits."
+}

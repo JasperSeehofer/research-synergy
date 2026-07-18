@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a chain of sequential exponential-holding-time stages giving an Erlang/gamma-distributed sojourn (the linear-chain trick), whose mean-preserving large-stage limit collapses the sum-of-exponentials into a fixed deterministic transit delay, converting the compartmental ODE system into a distributed-delay/renewal form in which state quantities become convolution (moving-average) functionals of the input flux",
+  "brief_reason": "The abstract splits the infectious period into k sequential stages and shows that under Erlang scaling (mean-preserving) the multistage model converges to a delay formulation where prevalence and the weighted stage functional become unweighted and triangularly weighted moving averages of incidence, i.e. convolutions of the input flux."
+}

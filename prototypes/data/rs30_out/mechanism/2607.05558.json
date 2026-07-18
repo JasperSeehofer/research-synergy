@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an inclusion preorder on pairs of vectors defined by convex-combination nesting (each vector of the 'larger' pair lies on the segment between the two vectors of the 'smaller' pair), whose unique rotation-invariant scalar completion is the cosine of the angle between the two vectors (inner-product / cosine similarity)",
+  "brief_reason": "The abstract states the measure is 'represented as an inclusion preorder over pairs of subjective models: each model in the more agreeable pair is a convex combination of the two models in the less agreeable pair,' and that 'the measure's unique rotation-invariant scalar completion is cosine similarity.'"
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Slow-fast (two-timescale) singular-perturbation reduction in which fast state variables are adiabatically slaved to the steady state of an inner subsystem, so a slowly-varying control parameter is driven by gradient ascent of a steady-state objective over a convex admissible set (each update posed as a linear program)",
+  "brief_reason": "The abstract invokes Tikhonov's theorem to separate fast species dynamics from a slow 'evolutionary time', reducing adaptation to maximising the steady-state mean fitness over a convex set of matrices via a fitness-variation formula whose optimisation step is a linear program."
+}

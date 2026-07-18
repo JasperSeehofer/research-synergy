@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "extreme-value statistics of a maximum over an exponentially growing set of correlated distances, yielding a Gumbel (double-exponential) limiting tail distribution",
+  "brief_reason": "The eccentricity is the largest of many shortest-path distances and its derived tail distribution has the double-exponential exp(-exp(...)) Gumbel form with a shape parameter b = ln(c-1) set by the exponentially growing number of reachable nodes per shell, the signature of extreme-value (maximum) statistics."
+}

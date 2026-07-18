@@ -1,0 +1,7 @@
+{
+  "mapping": [
+    {"a_element": "small-scale, low-amplitude surface density fluctuations in the lensing cluster (dark-matter minihalos / intracluster stars)", "b_element": "the quasiperiodic (or Anderson) disorder potential imposed on the unitary map"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Only the generic notion of 'small-scale disorder/fluctuations' overlaps; the governing machinery differs decisively. Paper A is gravitational-lensing ray optics — caustic/micro-caustic formation and magnification statistics whose lightcurves probe density perturbations — whereas Paper B is localization theory of a nonlinear quasiperiodic unitary map, tracking Lyapunov-spectrum scaling versus localization length. There is no role-for-role correspondent for the lensing caustic network, nor for the Lyapunov exponent / localization-length crossover, so no coherent shared process holds."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "competitive spreading-activation over a network of dynamically-bound feature representations, in which a finite shared resource (attention) is allocated among simultaneously-active nodes and activation propagates through learned structural correspondences to retrieve associated information, so that a stronger competing signal draws off the resource and delays activation of the target",
+  "brief_reason": "The abstract couples an object-recognition activation network (JIM) with an analogical structure-mapping/retrieval network (LISA) and predicts that a competing signal captures attention and slows retrieval of the target category, with larger competing signals causing larger delays — i.e. competitive resource allocation plus activation propagation through structural correspondences."
+}

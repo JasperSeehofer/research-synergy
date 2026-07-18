@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Lanczos / Krylov-subspace three-term recurrence: iteratively applying a linear evolution operator to a seed vector and orthogonalizing against previous ones (with an inner product on the state space) to build an orthonormal basis and reduce the operator to tridiagonal form, whose recurrence coefficients quantify how the seed spreads",
+  "brief_reason": "The abstract defines Krylov complexity via a Lanczos recursion in which the evolution operator (Poisson bracket / commutator) is repeatedly applied and an inner product (phase-space integral) orthogonalizes successive vectors to generate the Krylov chain."
+}

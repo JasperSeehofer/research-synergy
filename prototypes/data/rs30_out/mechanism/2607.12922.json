@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "change-of-variables/pushforward reparameterization that writes a complicated distribution as the deterministic image of a simple reference measure, so conditioning becomes pulling the likelihood back to that reference space and sampling the reweighted reference law via a guided reverse-time diffusion (probability-flow SDE)",
+  "brief_reason": "The abstract writes the process as f0 = T_theta(xi_0) with xi_0 from a simple reference distribution, then pulls the likelihood back through T_theta and samples the resulting latent law with a guided probability flow (a single reverse-time SDE) before pushing samples forward."
+}

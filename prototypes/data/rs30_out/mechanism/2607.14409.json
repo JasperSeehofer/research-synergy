@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "multiplicative factorization of a generating polynomial into nonnegative-coefficient factors as the inverse of convolution — decomposing the transform of an observed additive quantity into a product of factors that correspond to independent latent components, with the factorizations organized by refinement into a poset carrying an entropy-extremization structure",
+  "brief_reason": "The abstract asks when a probability-generating function admits a factorization into normalized polynomials with nonnegative coefficients (the inverse of convolving independent latent counts) and builds a refinement-ordered factorization poset with a maximal-entropy inequality over it."
+}

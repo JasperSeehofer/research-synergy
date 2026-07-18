@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "spectral analysis of a stochastic system's transfer/evolution operator in which the leading decay-rate eigenvalues (resonances) soften and collapse toward zero as the system nears a noise-induced escape from a metastable state, producing coherent long-memory relaxation tails and enhanced low-frequency susceptibility (critical slowing down of a bundle of slow modes)",
+  "brief_reason": "The abstract estimates reduced transfer-operator (Ruelle--Pollicott) resonances whose dominant decay rates drop and 'harmonize along a common slow direction' near tipping, yielding delayed-recovery Green's-function tails and enhanced low-frequency susceptibility."
+}

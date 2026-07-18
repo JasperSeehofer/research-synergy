@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "model-identifiability / degeneracy-breaking analysis between two distinct parametric generative families tuned to produce near-identical observables, using a calibrated likelihood with nuisance-parameter marginalization and standardized effect-size separations to test which observable channels retain discriminating power",
+  "brief_reason": "The abstract tunes one model's parameter to mimic another's observables (creating a degeneracy), then quantifies their separability via small standardized separations and a shadow-size likelihood marginalized over spin and inclination, asking which channels can still break the tie."
+}

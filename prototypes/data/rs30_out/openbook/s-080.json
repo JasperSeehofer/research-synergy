@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "wallets that co-fire as early buyers", "b_element": "agents moving and holding opinions"},
+    {"a_element": "detected persistent wallet cohorts", "b_element": "emergent opinion/spatial clusters"},
+    {"a_element": "high-tier score/launch-count cutoff for cohorts", "b_element": "Deffuant confidence threshold controlling cluster count"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A is an empirical detection-plus-causal-inference study: union-find on co-occurrence graphs surfaces wallet cohorts, then random-matched, activity-matched-placebo and propensity-score designs test for a causal buyer-flow effect and reveal selection bias. Paper B is a coupled nonlinear multi-agent dynamical model (attraction-repulsion motion plus Deffuant bounded-confidence opinion dynamics) whose confidence threshold produces emergent opinion clusters. The overlap is only vocabulary ('coordinated agents / clusters / thresholds'); the governing machinery — static graph clustering with statistical causal inference versus an evolving dynamical law generating clusters — does not correspond role-for-role."
+}

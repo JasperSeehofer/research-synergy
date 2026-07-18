@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "topologically quantized adiabatic transport, in which a conserved quantity pumped per slow cyclic modulation of a periodic medium is fixed by an integer topological invariant (Chern number) of the band structure, and reverses sign when the adiabatic condition breaks down through instability-driven excitations",
+  "brief_reason": "The abstract centers on Thouless pumping whose transported amount is set by a Chern number tied to a Bloch topological band, with near-adiabatic ramping triggering finite excitations that reverse propagation direction and thereby switch the topological invariant."
+}

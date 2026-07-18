@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a probably-approximately-correct (PAC) finite-sample learnability guarantee: a polynomial bound on the number of observations needed to estimate an unknown stochastic transition model to within a target error and confidence, with the sample count controlled by the expected hitting time (absorption time) to a designated target set",
+  "brief_reason": "The abstract's central result is a polynomial-sample-complexity bound for learning an unknown model to within an error tolerance and failure probability, governed by the Expected Conditional Distance parameter that measures the expected length of reaching the target set."
+}

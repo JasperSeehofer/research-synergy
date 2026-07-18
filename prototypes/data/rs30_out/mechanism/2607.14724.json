@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "minimum-distance discrepancy statistic used to test equivalence (bounded discrepancy) rather than exact difference — a fitted model is accepted when the minimized distance between the empirical distribution and a parametric family falls below a tolerance, with the null calibrated by an asymptotic limiting distribution or by bootstrap resampling",
+  "brief_reason": "The abstract builds its test statistic via the minimum distance method to demonstrate sufficiently good agreement (equivalence) between observed data and a parametric model family, with critical values obtained from an asymptotic approximation or bootstrapping."
+}

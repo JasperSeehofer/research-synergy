@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Fold-catastrophe caustics of a smooth focusing/deflection map — singular loci where the map's Jacobian vanishes and amplification diverges as an inverse-square-root of distance to the caustic — with a random superposition of point perturbers fragmenting a single large caustic into a stochastic network of micro-caustics whose crossing statistics and finite-source crossing profiles are acutely sensitive to small-scale fluctuations in the underlying field",
+  "brief_reason": "The method rests on the divergent magnification of a source lying near a lensing caustic and on point masses turning one large-scale caustic into a 'corrugated network of micro-caustics' whose crossing frequency and lightcurves are extremely sensitive to small-scale, low-amplitude surface-density fluctuations, with limb-darkened crossing profiles resolving the finite source."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "coarse-graining of a stochastic microscopic master equation into a macroscopic nonlinear drift-diffusion transport equation, via a local-equilibrium closure that yields density-dependent transport coefficients (a biased/driven diffusivity and mobility)",
+  "brief_reason": "The abstract states that, starting from the microscopic master equation, the authors derive the hydrodynamic description via a local equilibrium approximation, obtaining explicit energy-current, diffusivity and mobility coefficients that are nonlinear functions of the local density under a net-flow bias."
+}

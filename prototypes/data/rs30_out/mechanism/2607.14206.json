@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "conditional density estimation via a normalizing flow — a learned invertible change-of-variables transformation that maps a simple base distribution to the conditional probability distribution of one parameter set given another, then propagates input uncertainty through this learned mapping to produce a data-driven (simulation-based) informative prior",
+  "brief_reason": "The abstract trains a conditional normalizing flow to learn the conditional distribution p(θ_EFT | θ_HOD) from simulated samples and then propagates measurement sensitivity through that learned mapping to obtain non-Gaussian, correlated priors, which is exactly a flow-based conditional density estimator used for uncertainty propagation."
+}

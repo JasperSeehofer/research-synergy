@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "demand-adaptive speculative pre-provisioning of a perishable resource: a feedback control policy that tunes the background generation/stocking rate from observed request statistics to minimize service (wait) latency, while trading off against a storage-time decay cost of the stockpiled resource — an inventory/prefetching control loop",
+  "brief_reason": "The abstract contrasts reactive on-demand generation with background pre-generation of a decaying resource (EPR pairs) and proposes dynamically adjusting the pre-generation probability from observed communication patterns to cut queueing latency, with purification offsetting storage-time degradation, which is exactly a demand-driven adaptive prefetch/inventory policy for a perishable stock."
+}

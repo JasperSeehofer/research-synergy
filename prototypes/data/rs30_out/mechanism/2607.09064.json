@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a supercritical pitchfork bifurcation in which a collective coordinate's effective potential deforms from a single well to a symmetric double well as a control parameter crosses a critical threshold, producing spontaneous symmetry breaking of the equilibrium position",
+  "brief_reason": "The abstract reduces the system via a Lagrangian variational method to an effective potential for a quasiparticle coordinate that changes from a single well to a double well when the interaction parameter crosses a threshold, shifting the stable state from symmetric-about-the-origin to offset asymmetric positions."
+}

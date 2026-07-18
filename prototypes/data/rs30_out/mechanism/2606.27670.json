@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "attention-weighted message passing on a graph of coupled entities (graph attention), where each node's estimate is formed by aggregating signals from other nodes via learned attention weights over the edges encoding pairwise dependencies",
+  "brief_reason": "The abstract recasts per-entity temporal prediction as a cross-asset graph problem solved by a Graph Attention Network that exploits cross-asset dependencies, i.e., learned attention-weighted aggregation of neighboring nodes' signals rather than within-node time dynamics."
+}

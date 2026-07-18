@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "supervised inverse-problem regression: a trained feedforward neural network (multi-layer perceptron) learns the map from a vector of indirect experimental observables back to a hidden scalar parameter that is not directly measurable",
+  "brief_reason": "The abstract trains an MLP in a supervised framework to estimate the (unobservable) plaquette phase from measured STIRAP transfer efficiencies under varied driving conditions, i.e. inverting accessible observables to recover a latent parameter."
+}

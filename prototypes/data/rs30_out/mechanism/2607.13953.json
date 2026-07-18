@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a logarithmic Sobolev inequality bounding relative-entropy dissipation of a boundary-driven diffusion (Langevin) process, giving a size-uniform constant that forces exponential relaxation of the stochastic dynamics to its stationary measure",
+  "brief_reason": "The abstract proves a full-gradient log-Sobolev inequality with an N-independent constant and derives relative-entropy decay on a fixed relaxation time scale for a Langevin-thermostatted system, i.e. a functional-inequality bound on entropy dissipation controlling convergence to the steady state."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "convex/affine interpolation between two fixed points in a high-dimensional parameter space, where a separate scalar mixing coefficient is assigned per coordinate-block and those coefficients are fitted to optimize a criterion on a small held-out calibration sample",
+  "brief_reason": "The abstract describes composing two frozen source checkpoints by fitting, per aligned parameter tensor, one scalar interpolation coefficient on a small exemplar memory to materialize a single interpolated checkpoint, which is exactly a piecewise linear blend of two endpoints in parameter space with calibration-tuned mixing weights."
+}

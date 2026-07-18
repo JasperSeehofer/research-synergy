@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "amortized conditional sampling of the preimage (level set / fiber) of a many-to-one nonlinear map via a learned score-based diffusion generative model, with the level set's local codimension fixed by the effective rank of the map's Jacobian",
+  "brief_reason": "The abstract defines 'viable parameter manifolds' as the inverse images of target behaviors under a parameter-to-feature map (codimension = effective rank of that map) and trains conditional score-based diffusion models as amortized samplers of those prior-weighted inverse-image sets."
+}

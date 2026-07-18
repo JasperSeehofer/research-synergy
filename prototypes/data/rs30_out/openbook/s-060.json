@@ -1,0 +1,11 @@
+{
+  "mapping": [
+    {"a_element": "long-horizon portfolio return covariance across the cross-section of assets", "b_element": "squared-exponential covariance kernel of the Gaussian random field"},
+    {"a_element": "eigenstructure / spectral decomposition of that covariance (the spectral generalisation of the variance ratio)", "b_element": "Karhunen-Loeve integral eigenvalue problem (IEVP) solved for the kernel's eigenpairs"},
+    {"a_element": "the parsimonious five-factor model (dominant modes retained)", "b_element": "the truncated KL expansion (finite set of retained modes)"},
+    {"a_element": "cross-sectional factor loadings across assets", "b_element": "KL eigenfunctions / basis functions over the spatial domain"},
+    {"a_element": "multi-scale memory components ordered from fast to slow", "b_element": "KL eigenvalues ordering modes by variance contribution"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both are built on the spectral (eigen) decomposition of a covariance object into orthogonal eigenmodes retained as a parsimonious truncated set - the Karhunen-Loeve / PCA machinery. Paper A applies it empirically to a long-horizon portfolio-return covariance to recover a five-factor memory decomposition ('eigenstructure of long-horizon portfolio covariance'), while Paper B applies it analytically to a squared-exponential kernel to form a truncated KL basis; the same covariance-eigendecomposition-and-truncation machinery drives both despite the finance vs. Bayesian-inversion framing."
+}

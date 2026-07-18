@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Mean-field dimensional reduction that collapses a large ensemble of coupled phase-like units onto a single closed low-dimensional macroscopic equation for a collective order parameter, via a self-consistent invariant-manifold ansatz (Ott--Antonsen) combined with multiple-timescale (second-order) averaging",
+  "brief_reason": "The method obtains a one-dimensional reduced equation for the order-parameter dynamics of a large oscillator ensemble by applying the Ott--Antonsen ansatz and second-order averaging (after first recasting the memory/time-delayed coupling as an equivalent delay-free higher-order local expansion)."
+}

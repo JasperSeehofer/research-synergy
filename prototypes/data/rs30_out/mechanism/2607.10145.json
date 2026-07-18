@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "variational (least-squares) characterization of the centroid: the arithmetic mean of a set of vectors is the unique minimizer of the summed squared Euclidean distance to those vectors, equivalently the point maximizing aggregate inner-product/cosine alignment",
+  "brief_reason": "The abstract shows the cosine-similarity rule reduces to the fact that the arithmetic mean of the score vectors is the unique minimizer of the total squared Euclidean distance, i.e. the Euclidean barycenter identified by a least-squares optimization."
+}

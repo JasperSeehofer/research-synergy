@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Arrhenius/Kramers thermally-activated escape of a metastable ordered state over an effective barrier, giving a relaxation (memory) time that scales exponentially in the barrier height, where a nonequilibrium drive parametrically renormalizes (enlarges) that effective barrier and thereby slows the escape",
+  "brief_reason": "The abstract reports that the lifetime of the retained initial magnetization grows exponentially, from exp(O(beta*J)) at zero drive to exp(O((beta*J)^2 v ln v)) above a critical drive speed, i.e. a thermal-activation escape time whose effective barrier is enlarged by the external driving."
+}

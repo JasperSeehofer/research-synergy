@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "using a four-point out-of-time-order correlation function as a diagnostic of how correlations/information spread through a many-body generator, obtained by analytic continuation of thermal correlators onto folded imaginary-time contours, with the direction of spreading (growth vs. suppression) fixed by whether the generator's spectrum is bounded on both ends",
+  "brief_reason": "The abstract diagnoses scrambling vs. 'anti-scrambling' by contrasting a thermal-looking two-point function with the four-point function, and ties the anti-scrambling to a Hamiltonian bounded from both above and below with correlators folded in Euclidean time, i.e. an OTOC-style four-point probe under spectral-boundedness and imaginary-time analytic continuation."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "stabilization by fast switching between two vector fields — rapidly alternating between two individually-diverging dynamical laws yields time-averaged dynamics with qualitatively different (stable) behavior, governed by a critical switching-rate threshold and the sign of a combined/averaged boundary vector field (a Parrondo-type paradox of alternating flows)",
+  "brief_reason": "The abstract shows a state driven to extinction under each of two static parameter regimes can persist once the regime alternates fast enough, with a derived critical switching rate and a single sign-of-averaged-vector-field ('switching rescue function') criterion predicting persistence — the defining signature of fast-switching averaging that stabilizes otherwise-unstable alternating dynamics."
+}

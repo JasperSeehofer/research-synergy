@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "importance-sampling reweighting with kernel-smoothed, self-normalized density-ratio weights — estimating an expectation under a target distribution from samples drawn under a different source distribution by weighting each sample by the target-to-source density ratio, with a kernel/normalization that bounds the weights to control variance",
+  "brief_reason": "The abstract frames the estimator as combining the bounded property of weighted importance sampling with the linearity of plain importance sampling using a kernel weighting, i.e. correcting a mismatch between the sampling (behaviour) distribution and the target distribution via reweighted samples."
+}

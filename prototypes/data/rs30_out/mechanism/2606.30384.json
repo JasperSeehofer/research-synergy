@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Low-dimensional (scalar) reconstruction of a high-dimensional dynamical trajectory that preserves the system's chaotic invariants, characterized by the exponential divergence rate of initially nearby trajectories (maximum Lyapunov exponent) and its associated saturation/decorrelation time",
+  "brief_reason": "The abstract reduces a high-dimensional trajectory to a scalar embedding and shows it reproduces sensitivity to initial conditions, an accurate maximum Lyapunov exponent, and a Lyapunov-like time after which the exponential separation of initially close trajectories saturates."
+}

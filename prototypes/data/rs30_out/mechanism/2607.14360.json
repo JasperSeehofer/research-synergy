@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a coupled system of nonlinear mass-action ordinary differential equations — interacting-population dynamics overlaid with a compartmental flow of individuals between states — whose control parameters drive bifurcations between a fixed-point steady state, sustained limit-cycle oscillations (Hopf-type onset), and threshold-crossing collapse into an absorbing extinction state",
+  "brief_reason": "The method superimposes SIR compartmental transitions on generalized Lotka-Volterra interaction equations and reports emergent sustained population oscillations and parameter-range-dependent extinction absent from either model alone, which is exactly a coupled nonlinear ODE system exhibiting bifurcations to limit cycles and absorbing states."
+}

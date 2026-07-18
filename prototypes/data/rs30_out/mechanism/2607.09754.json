@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "registration of heterogeneous multi-source signals onto a shared canonical reference template (an atlas), producing source-invariant tokens under a single globally-shared parameter set so that a model trained by self-supervised reconstruction transfers zero-shot to unseen sources",
+  "brief_reason": "The abstract's method rests on an atlas-grounded tokenization scheme 'without session-specific components' that maps every subject's recording into one common coordinate frame and learns 'globally shared spatiotemporal representations', which is exactly what yields zero-shot generalization to unseen subjects."
+}

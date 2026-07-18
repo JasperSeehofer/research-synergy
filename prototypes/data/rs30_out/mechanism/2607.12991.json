@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a crossed (full-factorial) design in which two or more factors are varied simultaneously over a shared set of units, so that per-factor main-effect contrasts and their interaction contrasts are estimated jointly from the same data — with orthogonality granting each single-factor estimate the full sample size when interactions are absent",
+  "brief_reason": "The abstract centers on factorial experiments that cross treatment factors across the same units to answer k single-factor questions with one trial's worth of units when no interactions exist, while also enabling robust estimation of interaction contrasts when they do, which is precisely the factorial design-of-experiments crossing/contrast-estimation machinery."
+}

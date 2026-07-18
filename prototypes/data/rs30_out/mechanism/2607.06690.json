@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "dependence-preserving resampling of the observed sample (drawing contiguous blocks or model residuals rather than exchangeable single draws) to empirically reconstruct the sampling distribution of a statistic, coupled with an online feedback rule that adjusts a calibration quantile to hold empirical coverage at a nominal target",
+  "brief_reason": "The abstract builds distribution-free intervals via block/residual/sieve/wild resampling that preserve serial dependence the IID bootstrap ignores, and adaptive conformal calibrators (EnbPI, ACI, NexCP, AgACI) that re-adjust the coverage threshold online under non-exchangeable data."
+}

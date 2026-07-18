@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A diffusion-driven (Turing-type) finite-wavelength instability in coupled reactive fields that is sustained by intrinsic stochastic fluctuations: noise is amplified into a patterned state at a selected nonzero wavenumber even when the deterministic dynamics are stable, and the resulting long-wavelength density fluctuations are anomalously suppressed (window number variance decaying as 1/R rather than as the window volume).",
+  "brief_reason": "The abstract reports that demographic noise generates stochastic Turing patterns in a deterministically stable reaction-diffusion system and that temporal integration yields an intensive number variance approaching a finite floor as 1/R near the instability, i.e. intrinsic fluctuations drive a diffusion-induced finite-scale instability whose fluctuation spectrum is suppressed at large scales (hyperuniformity)."
+}

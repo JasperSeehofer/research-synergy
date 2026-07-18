@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "extremization over the space of functions constrained by analyticity, symmetry/crossing, and positivity — via dispersion relations — to derive a rigorous, saturable outer bound on an observable (a positivity-constrained convex/dispersive bootstrap)",
+  "brief_reason": "The abstract computes the maximal allowed threshold amplitude with a dispersive primal bootstrap using analyticity, crossing symmetry, locality and partial-wave unitarity, i.e. optimizing an analytic function subject to positivity and symmetry constraints to extract an extremal bound."
+}

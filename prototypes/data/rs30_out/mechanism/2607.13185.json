@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Bayesian hierarchical latent-intensity inference in which an unobserved Poisson rate is only partially seen through a logistic detection/thinning probability (a Poisson-logistic thinned point process with spatial random effects), and is reconstructed by fusing observations recorded at mismatched aggregation supports (change-of-support reconciliation of fine- and coarse-scale data)",
+  "brief_reason": "The abstract extends a 'Poisson-logistic framework' with spatial heterogeneity in the presentation probability and imperfect detection, and reconciles spatially misaligned aggregated (passive) and site-level (active) counts to recover a latent true rate — i.e., recovering a hidden Poisson intensity thinned by a detection probability across mismatched spatial supports."
+}

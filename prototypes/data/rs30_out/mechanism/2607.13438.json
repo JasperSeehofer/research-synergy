@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a coupled two-subsystem feedback dynamical model (a fast imitation/contagion-type state variable mutually coupled to a slow accumulating state variable) that exhibits bistability and a saddle-node/fold tipping point, in which heterogeneity or a perturbation in one of several coupled units can push the aggregate system across a critical threshold into an alternative stable state",
+  "brief_reason": "The abstract couples social dynamics (population support driven by peer influence and vulnerability) to a slow accumulating variable (temperature anomaly) and identifies a tipping point where low vulnerability in one region tips the whole system into an alternative slow-mitigation, high-temperature state, which is a coupled-feedback bistable system with a critical threshold."
+}

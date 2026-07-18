@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a series-divergence (summability) dichotomy criterion — the divergence of an infinite sum of reciprocals of weighted magnitudes, sum_t (||p_t|| sum_h ||e_t^h||)^{-1} = infinity — that acts as a sharp boundary test separating efficient/optimal infinite-horizon sequences from inefficient ones",
+  "brief_reason": "The method rests on the generalized Cass criterion, an explicit condition that a weighted infinite series diverges, and this divergence is what characterizes the existence and full identification of efficient (versus inefficient) equilibria over the infinite horizon."
+}

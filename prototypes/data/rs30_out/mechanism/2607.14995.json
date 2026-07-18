@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "contrastive attract-repel embedding optimization — learning a shared representation space by minimizing distance between paired items and maximizing it between unpaired items, with the repulsion softened/reweighted by an auxiliary pairwise-similarity signal so near-duplicate 'negatives' are not pushed apart",
+  "brief_reason": "The abstract describes minimizing distance between matched (positive) samples while maximizing distance between mismatched (negative) samples, then correcting false negatives by using semantic similarity between records as a guiding signal to down-weight repulsion of semantically similar pairs."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reconstruction of a space's global topology from a collection of overlapping local observations by assembling them into a simplicial complex (a nerve/Cech-type construction) and reading off its topological invariants",
+  "brief_reason": "The abstract builds a simplicial complex out of the records of local projection-valued measurements along a worldline and claims this complex captures the topological information of the underlying (fluctuating) space, which is precisely the nerve/Cech construction of recovering topology from overlapping local data."
+}

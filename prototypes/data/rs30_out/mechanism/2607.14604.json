@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "unbiased importance-weighted (off-policy / counterfactual) difference estimator in which the two compared sampling distributions are treated as one meta-distribution, so that contributions from the region where the distributions coincide cancel and the estimator's variance scales with the divergence between the two distributions rather than with the raw outcome variance",
+  "brief_reason": "The abstract frames the randomised treatment assignment as a meta-policy and uses off-policy estimation to obtain unbiased treatment-effect estimates whose variance scales with the divergence between policies rather than raw outcome variance, cancelling the noise contributed where treatment and control agree (common support)."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "mean-field / propagation-of-chaos limit: the empirical measure of many exchangeable stochastically interacting particles converges to the deterministic solution of a nonlinear evolution equation, with an explicit convergence rate quantified in an optimal-transport (Wasserstein) distance",
+  "brief_reason": "The abstract proves an explicit convergence rate from the empirical measure of an interacting (Kac) particle system to the weak solution of the corresponding nonlinear evolution equation in Wasserstein-2 distance, which is precisely a quantitative propagation-of-chaos / mean-field limit."
+}

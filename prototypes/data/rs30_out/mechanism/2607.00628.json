@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "diffusion (Fokker-Planck) approximation of a multivariate Markov jump process projected onto a lower-dimensional constraint surface, yielding a state-dependent diffusion/noise tensor whose structure is set by the microscopic transition rates and is invisible in the deterministic drift",
+  "brief_reason": "The abstract projects a d-species birth-death (jump) process onto a (d-1)-dimensional Moran diffusion and finds a regulation-mechanism-dependent diffusion tensor that leaves the mean-field/deterministic dynamics unchanged yet governs fixation times, fixation probabilities, and the generator's spectral gap."
+}

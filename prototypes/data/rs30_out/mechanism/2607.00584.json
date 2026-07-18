@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Pontryagin minimum principle: minimizing a terminal-time cost functional over the trajectories of a constrained dynamical system by introducing adjoint (costate) variables and a Hamiltonian, subject to an integral (isoperimetric) equality constraint on the control",
+  "brief_reason": "The abstract poses a minimization of the final infection size over a finite horizon, constrained to the system's dynamics and to an integral equality constraint on the control, and solves it by applying the Pontryagin Minimum Principle to characterize the optimal control."
+}

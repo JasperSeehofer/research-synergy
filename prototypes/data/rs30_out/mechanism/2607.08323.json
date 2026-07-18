@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "conditional-mean explained-variance decomposition (a correlation-ratio / nonlinear ANOVA functional) that measures how much of a target variable's variance is deterministically fixed by conditioning on a chosen subset of other variables versus left as residual variance",
+  "brief_reason": "The method quantifies dependence via the correlation-ratio functional R(k|k_cut), explicitly interpreted as conditional-mean explained variance, to map how much of a target mode is deterministically determined (slaved) by a retained subset versus dominated by conditional residual variance."
+}

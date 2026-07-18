@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Markov chain Monte Carlo sampling of a target probability measure that is degenerate along lower-dimensional level-set manifolds (flat/invariant directions), handled by geometry-aware proposals that move within and between those manifolds and by marginalizing onto the quotient of non-degenerate coordinates",
+  "brief_reason": "The abstract centers on MCMC inference over a posterior whose observationally equivalent solutions form lower-dimensional manifolds in parameter space, with proposals that move within and between these non-identifiable manifolds and an alternative that samples the reduced space of identifiable parameter combinations."
+}

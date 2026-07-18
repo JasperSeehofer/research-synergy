@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "self-consistent mean-field (self-consistent-field) closure for two mutually interacting populations sharing a common medium, in which each population's local density sources a shared mediating field that sets a density-dependent effective interaction, solved to a fixed point that yields the system's equation of state",
+  "brief_reason": "The abstract builds a single-fluid relativistic mean-field model where a massive vector mediator produces a density-dependent repulsive coupling between two sectors and the local density of one is fixed self-consistently from the other, generating the equation of state at the mean-field fixed point."
+}

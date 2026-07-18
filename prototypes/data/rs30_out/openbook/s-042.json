@@ -1,0 +1,12 @@
+{
+  "mapping": [
+    {"a_element": "control parameter driving the spatial economy (e.g. transport cost / spatial scale)", "b_element": "control parameter of the gravity theory (horizon radius, coupling, Maxwell charge)"},
+    {"a_element": "symmetric baseline population equilibrium along the line segment", "b_element": "scalar-free (bald) baseline black-hole solution"},
+    {"a_element": "sustain / bifurcation point where the symmetric state loses stability", "b_element": "threshold / minimal-horizon-radius where scalarized branches emerge and connect"},
+    {"a_element": "emergent twin-city agglomeration as a new solution branch", "b_element": "scalarized solution branch that splits off"},
+    {"a_element": "the several bifurcation behaviors / branch structure across models", "b_element": "the multi-branch structure and additional disconnected branch"},
+    {"a_element": "transition between qualitatively different agglomeration patterns", "b_element": "transition from a single smooth branch to two disconnected branches"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both perform a bifurcation analysis of the equilibrium/solution branches of a nonlinear system as a control parameter is varied: paper A tracks a symmetry-breaking 'sustain point' where a uniform population state gives way to emergent twin-city branches, and paper B tracks critical horizon radii where scalarized black-hole solutions emerge, split, and reconnect into a multi-branch structure. The transferable machinery — parametrized solution branches with critical points marking branch emergence and splitting (spontaneous scalarization is itself a bifurcation off the bald solution) — maps role-for-role, so this is shared mechanism rather than mere shared 'branch/bifurcation' vocabulary."
+}

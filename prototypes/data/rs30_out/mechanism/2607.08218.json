@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "partial (set) identification of a counterfactual quantity via sharp worst-case bounds when the conditioning/treatment variable is selected on the same latent heterogeneity that drives the outcome (selection-on-unobservables), with point identification recovered by exploiting variation across multiple sub-populations that share one invariant assignment rule",
+  "brief_reason": "The abstract's method derives sharp bounds on a counterfactual choice-probability estimand under endogenously assigned menus (menus correlated with the latent preferences generating choices) and then obtains unique identification by combining several markets with different latent distributions but a common assignment rule."
+}

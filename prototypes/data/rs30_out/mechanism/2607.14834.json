@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "transform-domain coding of a signal defined on a network: the signal is decorrelated by projecting it onto a basis derived from the domain's connectivity (a graph filter bank / spectral transform of the graph Laplacian), then the coefficients are quantized and entropy-coded, with the signal's smoothness on that domain governing achievable compression",
+  "brief_reason": "The abstract treats edge weights as a graph signal on a (line-)graph, transforms it with a graph filter bank before quantization and entropy coding, and defines a smoothness measure on that domain as a predictor of compression difficulty."
+}

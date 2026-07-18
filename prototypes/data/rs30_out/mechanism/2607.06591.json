@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a complete algebraic invariant built by a recursive bottom-up composition rule that folds a weighted hierarchical (tree) structure into a bivariate polynomial, so that polynomial equality holds if and only if the structures are isomorphic with matching edge weights",
+  "brief_reason": "The abstract introduces a bivariate polynomial computed recursively from leaves to root that encodes branch lengths and is proven to coincide for two trees exactly when their unlabeled shapes are isomorphic and corresponding edge weights are equal, i.e. a recursively-generated complete isomorphism invariant of weighted trees."
+}

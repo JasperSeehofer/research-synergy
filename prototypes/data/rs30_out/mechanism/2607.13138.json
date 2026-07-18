@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "constructing a codimension-one interface operator by applying an exact self-equivalence (duality) change-of-variables to only a subregion of the domain, so the interface encodes the map between a system and its dual and obeys a non-invertible fusion algebra whose products leave a residual lower-dimensional constraint/gauge structure",
+  "brief_reason": "The abstract defines half dualization as performing a duality transformation only in a subregion of spacetime to leave an interface that hosts a non-invertible duality defect, whose fusion with its orientation reverse produces a lower-dimensional gauge theory."
+}

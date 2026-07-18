@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "partial (set) identification of latent model parameters: characterizing the sharp feasible region — the tight range of unobservable parameters consistent with the observable constraints — and using a monotonicity/shape restriction to tighten a one-sided bound into two-sided (upper and lower) bounds",
+  "brief_reason": "The abstract's method characterizes the 'tight range' of two unobserved parameters (permeation and displacement) revealed by the data, finding only an upper bound in general and obtaining a tighter upper plus a lower bound once a monotonicity restriction is imposed."
+}

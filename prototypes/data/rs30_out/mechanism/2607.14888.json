@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a localized perturbation projected onto a dominant shared latent factor, so that adjusting one measured coordinate coherently drags an entire correlated bundle of nominally-independent coordinates in the same direction (low-rank common-mode coupling), with a nonlinear gain that amplifies the state's displacement beyond the magnitude of the driving input",
+  "brief_reason": "The abstract reports that adjusting the model along one narrow axis (economics stance) induces matched shifts across unrelated axes (criminal justice, environment, taste) and pushes further to extremes than the same examples used as input, indicating a common latent direction that couples the axes plus an amplification gain exceeding the stimulus."
+}

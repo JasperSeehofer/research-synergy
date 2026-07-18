@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "loading parameter measuring association between the latent drivers of store placement and store survival", "b_element": "density-potential cross-correlation coefficient q linking the initial density and potential fields"},
+    {"a_element": "shared latent Gaussian process spatial effect coupling the two model components", "b_element": "jointly correlated primordial density and potential Gaussian random fields"},
+    {"a_element": "binary store-survival outcome driven by the latent field (probit link)", "b_element": "spin factor tau (halo angular momentum) determined by the misalignment of density/potential Hessians"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only real overlap is the abstract notion of a scalar coupling between two correlated Gaussian fields (A's loading parameter vs B's cross-correlation coefficient q), but the surrounding machinery does not correspond: A is a Bayesian hierarchical inference model that jointly fits a log-Gaussian Cox point process and a spatial probit via MCMC to estimate the coupling, while B is an analytic derivation of how the Gamma-distribution moments of a geometric Hessian-misalignment angle depend on q, with no analogue of A's point-process/probit likelihood structure. Shared vocabulary of correlation, not shared governing machinery."
+}

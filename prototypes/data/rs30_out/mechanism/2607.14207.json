@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "ensemble-stacking estimation of a centered radial profile: recovering a faint underlying projected-density signal by aligning and averaging a weak, individually-unresolvable distortion field over a very large number of source-target pairs, then fitting a parametric radial model to extract a characteristic mass/scale",
+  "brief_reason": "The abstract derives its result from statistical measurements of the excess surface mass density as a function of cluster-centric distance, drawing 'strong statistical power from the large number of lens-source pairs' and fitting a simple model to constrain the subhalo masses."
+}

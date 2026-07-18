@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "bijective encoding of a random branching/tree structure as a one-dimensional random-walk excursion (a lattice-path coding), reducing the tree's degree statistics to asymptotics of a conditioned random walk, which yields scale-dependent appearance thresholds where rare local configurations pass from absent to Poisson-distributed to a law of large numbers",
+  "brief_reason": "The abstract states the proofs rely on coding the branching trees by their Łukasiewicz paths and asymptotic estimates for the associated random walks, and uses this to locate critical scales k_n ~ c n^{(d-1)/d} at which high-degree vertices go from absent, to Poisson-limited at the threshold, to a law of large numbers above it."
+}

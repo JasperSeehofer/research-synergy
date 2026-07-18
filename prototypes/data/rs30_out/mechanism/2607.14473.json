@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "inference of hidden discrete categories from several conditionally-independent noisy indicators via a finite latent-class mixture model whose likelihood is factorized according to a directed acyclic graphical model, whose conditional-(in)dependence structure fixes the number of latent classes and the model's identifiability",
+  "brief_reason": "The abstract models imperfect test results as noisy indicators of latent measurands using latent class analysis, and uses a DAG of conditional-dependence relations to determine the number of latent classes, rewrite the likelihood, and assess identifiability."
+}

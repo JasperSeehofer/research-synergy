@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "a neuron's membrane potential crossing a firing threshold to emit a spike", "b_element": "an agent's aggregate exposure crossing its activation threshold to turn to harmful behavior"},
+    {"a_element": "the fixed spike/firing threshold of a single neuron", "b_element": "a member's positive activation threshold"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only genuine overlap is the local rule that accumulated input crossing a threshold triggers a discrete event. Beyond that the machinery diverges: paper A is a survey of single-entity, continuous/discrete dynamical models of one neuron's membrane potential (reversible, self-resetting spiking, no network), whereas paper B is a network-level irreversible threshold-cascade whose transferable content is a collective phase transition — a necessary-and-sufficient structural stability condition, signed-influence convex repair, and a mean-field homophily threshold — none of which has a counterpart in a single-neuron survey."
+}

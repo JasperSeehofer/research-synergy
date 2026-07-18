@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "critical switching rate separating persistence from extinction", "b_element": "sharp decay threshold s_c separating well-posedness from ill-posedness"},
+    {"a_element": "sub-/super-critical regime dichotomy (species survives vs dies out)", "b_element": "s>s_c vs s<s_c regime dichotomy (locally well-posed vs ill-posed)"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is the generic presence of a sharp threshold separating two regimes; the machinery differs entirely. Paper A uses averaging of alternating (switched) ODE vector fields, where a sign condition on a 'switching rescue function' built from two boundary vector fields governs persistence, whereas Paper B uses multilinear (trilinear) harmonic-analysis estimates on a four-wave resonant manifold to fix a critical Sobolev-weight exponent for PDE well-posedness. There is no role-for-role correspondence: A's two alternating environments and switching rate have no analogue in B's single collision operator, and B's resonant-manifold geometry and kernel high-frequency growth have no analogue in A."
+}

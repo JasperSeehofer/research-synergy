@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "connected-component clustering (union-find) on a co-occurrence graph to surface persistent groups of agents that repeatedly appear together across many independent events",
+  "brief_reason": "The method's detection stage builds a co-occurrence graph over agents observed in each event and applies union-find to extract connected components as persistent cohorts that systematically co-fire across launches."
+}

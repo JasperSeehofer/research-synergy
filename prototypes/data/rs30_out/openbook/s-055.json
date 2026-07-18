@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "m-element random subset S of [d] drawn from the external-field measure on the hypersimplex", "b_element": "a fully-packed singlet-loop/dimer covering of the corner-sharing lattice"},
+    {"a_element": "covariance matrix Σ of the subset indicator vector X, whose pseudoinverse gives effective resistance", "b_element": "spin correlations within a fixed loop covering, determined by loop connectivity"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is the generic setting of combinatorial configurations on a graph/lattice plus the word 'correlation'; the actual machinery is disjoint. Paper A proves a spectral inequality bounding the effective resistance (e_i-e_j)^T Σ^† (e_i-e_j) of a strongly-Rayleigh subset measure's covariance to obtain a correlated-sampling stretch guarantee, whereas Paper B constructs a frustration-free AKLT-like spin-1 parent Hamiltonian from positive-semidefinite projectors whose zero-energy manifold is a loop state — no shared governing equation or process supports a role-for-role mapping."
+}

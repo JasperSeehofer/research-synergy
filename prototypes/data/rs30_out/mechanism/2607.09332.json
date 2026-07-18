@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "parametric continuation of the complete set of coexisting stable states (attractors) and their basins across a control parameter by globally sampling the whole state space, rather than linearising about single fixed points, to map finite-amplitude threshold transitions between multiple stable regimes",
+  "brief_reason": "The abstract contrasts local (linear) continuation with a method that finds and continues in parallel practically all system attractors and their response to finite perturbations by synthesising information from the whole state space to study multistability and critical transitions."
+}

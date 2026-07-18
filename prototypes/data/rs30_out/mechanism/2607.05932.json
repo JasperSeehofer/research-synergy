@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Fixed-point (equilibrium) analysis of iterated local best-response threshold dynamics for binary node states on a network: each node updates its binary state by a threshold rule on its neighbors' states, and one proves existence of self-consistent fixed points and convergence of the coupled update dynamics, complemented by a mean-field deterministic approximation that predicts aggregate binary-state frequencies from the network's connectivity (assortative/disassortative) structure without solving for fixed points explicitly",
+  "brief_reason": "The abstract's whole method rests on binary-choice best-response dynamics on arbitrary networks — establishing sufficient conditions for pure-strategy Nash equilibrium (fixed-point) existence and convergence of best-response trajectories, plus a deterministic approximation predicting equilibrium strategy frequencies from network homophily/heterophily."
+}

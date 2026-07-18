@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "self-consistent mean-field reduction of a high-dimensional, randomly-coupled interacting system to a single effective element driven by a self-generated noise field, closed by a self-consistency condition on the field's statistics, with the onset of distinct regimes fixed by linear-stability/bifurcation thresholds of the reduced low-dimensional description",
+  "brief_reason": "The abstract builds a dynamical mean-field theory that collapses a large random recurrent system into an effective self-consistent single-unit stochastic process and locates its regime changes through a chaos-onset instability and a Hopf bifurcation captured by a reduced three-dimensional model."
+}

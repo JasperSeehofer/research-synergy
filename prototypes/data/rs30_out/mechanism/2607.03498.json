@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a quadratically-convergent Newton iteration that solves an invariance (fixed-point) functional equation whose linearized correction step requires inverting a near-resonant operator with small divisors, combined with pseudo-arclength continuation to trace the solution branch through fold (turning-point) singularities",
+  "brief_reason": "The abstract states the approach is the parameterization method of KAM theory framed as 'a Newton scheme with small divisors' that solves for an invariant object, made amenable to pseudo-arclength continuation to traverse saddle-node bifurcations."
+}

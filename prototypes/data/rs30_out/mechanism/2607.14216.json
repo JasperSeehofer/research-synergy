@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a non-Hermitian eigenvalue problem for a system of coupled linear differential operators, solved for its discrete complex resonant spectrum, in which the coupling between two fields splits the spectrum into distinct mode families that undergo avoided crossings / eigenvalue repulsion as a parameter is varied",
+  "brief_reason": "The abstract centers on solving two coupled master PDEs for their resonant frequencies, whose coupling yields two families/branches of solutions and an observed onset of eigenvalue repulsion between interacting modes."
+}

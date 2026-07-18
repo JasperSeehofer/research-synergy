@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an online self-correcting bounded random walk — a compactly supported Metropolis / Markov-chain fixed-point iteration — that sequentially assigns signed increments so every running partial (prefix) sum stays confined to a small bounded region",
+  "brief_reason": "The abstract states the algorithm is an efficient online procedure minimizing prefix discrepancy that is based on a compactly supported Metropolis fixed-point walk, i.e. a constrained self-balancing random walk keeping partial sums bounded."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Helmholtz/Hodge-type decomposition of a pairwise antisymmetric interaction (flow) field into a transitive component that is the gradient of a scalar potential (a consistent global ranking) plus a rotational cyclic residual, combined with a statistical test for whether that cyclic residual is significantly nonzero",
+  "brief_reason": "The abstract's 'weighted transitive/cyclic decomposition,' its test of whether the pattern is 'compatible with a transitive scalar fitness hierarchy,' and its 'exact Gaussian cyclicity testing' of cyclic residuals are exactly a split of a pairwise field into a potential-derived (rankable) part and a rotational (cyclic) part with a significance test on the latter."
+}

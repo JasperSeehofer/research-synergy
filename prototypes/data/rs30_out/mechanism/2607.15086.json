@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reduction of a high-dimensional continuous-time evolution to low-dimensional parameter dynamics by, at each time step, projecting the governing flow onto the tangent space of a low-dimensional nonlinear manifold via least-squares residual minimization (a time-dependent variational / Dirac--Frenkel projection)",
+  "brief_reason": "The abstract represents the solution by a parametrized ansatz on a low-dimensional nonlinear manifold and advances it by minimizing the residual of the evolution equation (equivalently discretizing the Dirac--Frenkel variational principle for the parameter dynamics) at each step."
+}

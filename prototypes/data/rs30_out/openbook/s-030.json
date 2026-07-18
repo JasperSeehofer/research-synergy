@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "N interacting Brownian hard rods / exclusion particles", "b_element": "N-particle McKean-Vlasov SDE system"},
+    {"a_element": "deterministic hydrodynamic density profile (macroscopic limit)", "b_element": "McKean-Vlasov mean-field limit measure (propagation-of-chaos limit)"},
+    {"a_element": "large-deviation statistics of tracer position and integrated current", "b_element": "central-limit-theorem fluctuations of the empirical field around the mean-field law"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Both concern the large-N limit of many interacting Brownian particles and the fluctuations of the empirical field around a deterministic macroscopic law, but the machinery differs decisively: A uses a diffusive/hydrodynamic scaling of a short-range hard-core (exclusion) gas and solves the integrable MFT variational equations by a canonical transformation to extract full large-deviation rate functions, whereas B uses a mean-field scaling of a McKean-Vlasov system with singular kernels and proves quantitative propagation of chaos plus a Gaussian CLT via the relative-entropy method, Krylov-Khasminskii estimates, and subgaussian concentration. Different scaling limit, different fluctuation regime (exact large deviations vs. central-limit/Berry-Esseen), and non-overlapping core techniques, so no role-for-role correspondence of the governing method holds."
+}

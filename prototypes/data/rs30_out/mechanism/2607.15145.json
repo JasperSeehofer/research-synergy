@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Weyl-type spectral asymptotic counting law, in which the number of spectral values (eigenvalues/resonances) of a differential operator inside a bounded region grows as a fixed power of the spectral parameter, derived from uniform semiclassical resolvent estimates that localize the spectrum away from a threshold",
+  "brief_reason": "The abstract proves a Weyl law for the number of quasinormal modes with modulus bounded by lambda growing as C*lambda^3, obtained via semiclassical resolvent estimates near threshold energy that exclude spectral points from a growing disc."
+}

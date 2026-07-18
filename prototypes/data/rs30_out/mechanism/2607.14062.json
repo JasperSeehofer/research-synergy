@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a geometric/continuum percolation transition in which nodes are randomly positioned and linked when within a fixed connection range, with a sharp critical value of that range at which an infinite connected component almost surely emerges",
+  "brief_reason": "The abstract places a random point in each grid cell, joins points closer than a radius R, and seeks the critical R above which an infinite connected component exists almost surely — the defining threshold structure of connectivity/percolation."
+}

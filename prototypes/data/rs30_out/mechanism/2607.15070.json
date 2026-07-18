@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "spectral zeta-function regularization: assigning a finite value to the divergent sum of eigenmode energies of a self-adjoint boundary-value operator (with spatially varying coefficient) via analytic continuation, then subtracting a reference spectrum to renormalize",
+  "brief_reason": "The abstract obtains exact normal modes by solving a Klein-Gordon eigenvalue problem with a position-dependent effective mass and evaluates the vacuum (zero-point) energy through generalized zeta-function regularization plus renormalization, which is the core transferable machinery."
+}

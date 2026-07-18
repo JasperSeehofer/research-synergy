@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "reduction of the discrete FPUT lattice to a nonlinear dispersive envelope PDE (the KdV equation)", "b_element": "reduction of the coupled exciton-photon system to a nonlinear dispersive envelope PDE (the Gross-Pitaevskii equation)"},
+    {"a_element": "solitary traveling waves (KdV solitons) supported by the lattice", "b_element": "solitons supported in the polariton waveguide"},
+    {"a_element": "multi-structure mechanism: dispersive shock waves formed from jump initial data, described by Whitham modulation / DSW fitting", "b_element": "multi-soliton mechanism: soliton splitting tuned by gain position and governed by exciton-reservoir dynamics (mode-locking)"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Both study solitons via a nonlinear dispersive PDE, but the distinctive machinery diverges: paper A is a conservative Hamiltonian lattice whose long-wave limit is the KdV equation, with its central results (dispersive shock waves, Whitham modulation, DSW fitting) belonging to conservative dispersive hydrodynamics, whereas paper B is a driven-dissipative Gross-Pitaevskii (nonlinear-Schrodinger) condensate where multi-soliton formation is produced by pump-gain position and reservoir-driven mode-locking. The gain/reservoir splitting mechanism in B has no analogue in A, and the KdV dispersive-shock modulation in A has no analogue in B, so the overlap is the generic 'nonlinear waves with solitons' class rather than shared transferable machinery."
+}

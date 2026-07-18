@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a set-valued Markov process (evolving-set coupling) run alongside a single random trajectory, whose growing/absorbing set reads off exit, hitting, and absorption probabilities and represents a determinantal partition function that factorizes by recursive Schur-complement (block-elimination) into an ordered product",
+  "brief_reason": "The abstract builds a 'punctured Wilson--evolving-set coupling' in which a transformed evolving set carries a Markov trajectory to its exit and yields root/hitting probabilities, and identifies the resulting ordered factorization with a probabilistic Schur-complement decomposition of a determinantal formula."
+}

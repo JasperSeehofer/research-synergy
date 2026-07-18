@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a closed-loop predictive-control (active-inference) scheme in which an internal generative dynamical model produces predictions and self-generated actions feed back to align/entrain the internal dynamics with the external environment, bootstrapping the model through interaction rather than passive fitting",
+  "brief_reason": "The abstract centers on intrinsic dynamics as the foundation for learning, the centrality of action in aligning those dynamics with the external world, and the distinction between self- and world-generated outcomes, which together describe an action-driven closed-loop predictive/control coupling between an internal model and its environment."
+}

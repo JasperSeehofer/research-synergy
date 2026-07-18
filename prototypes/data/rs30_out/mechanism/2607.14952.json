@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a memory-for-computation tradeoff in reverse-mode differentiation over a shared-prefix branching tree: the common prefix is evaluated once without retaining adjoint state, only the minimal downstream-relevant state is cached, and dependent branches are replayed/streamed one at a time so peak working memory stays bounded regardless of branch count",
+  "brief_reason": "The abstract describes evaluating the shared prompt without autograd, retaining only model-specific state needed by later tokens, and replaying short response branches one at a time to shrink the live training graph in exchange for extra replay time, so that adding branches barely increases peak memory."
+}

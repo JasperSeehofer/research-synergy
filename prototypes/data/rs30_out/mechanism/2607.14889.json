@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Closed-form minimization of a convex surrogate (convexified) objective functional whose variables are defined over a finite partition of the domain into equivalence classes, together with analytic conditions distinguishing a unique global minimizer from degenerate (non-unique or infimum-only) regimes.",
+  "brief_reason": "The abstract collapses the data into equivalence classes and then analyzes existence and uniqueness of the global minimum of a convexified empirical-risk functional, deriving explicit analytical formulae for the optimal weights instead of iterating."
+}

@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "high-dimensional stochastic state (many parallel heterogeneous queues, empirical queue-length measure)", "b_element": "high-dimensional stochastic learning state (Q-values of the interacting learners)"},
+    {"a_element": "limiting deterministic descriptors extracted from the process (limiting fairness process / routing measure via the diffusion limit)", "b_element": "expected dynamics of the Q-learning process used to summarize the mean drift"},
+    {"a_element": "asymptotic characterization identifying the optimal tie-breaking regime", "b_element": "boundary predicting when time-averaged cooperative dominance arises"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The overlap is only the generic fact that both analyze a high-dimensional stochastic process through a reduced deterministic descriptor. The actual machinery differs: paper A builds a heavy-traffic Halfin-Whitt DIFFUSION limit of measure-valued queueing processes and proves asymptotic optimality via coupling-based sample-path comparisons, whereas paper B studies the time-averaged stationary behavior of an epsilon-greedy Q-learning Markov chain and derives a stability boundary from its expected (drift) dynamics in a repeated game. No role-for-role correspondence holds between a queueing diffusion approximation and a learning-dynamics stability boundary."
+}

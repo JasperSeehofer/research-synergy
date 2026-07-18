@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "self-distillation representation learning by predicting the latent embeddings of masked-out portions of a signal against targets produced by an exponential-moving-average (slowly-updated) copy of the same encoder, with stop-gradient on the target to prevent representational collapse",
+  "brief_reason": "The abstract's method is a latent-prediction objective that predicts masked-token representations against an EMA-of-tokenizer target under block masks, which is exactly the bootstrapped predict-your-own-slow-average-embedding (JEPA/BYOL-style) self-distillation mechanism."
+}

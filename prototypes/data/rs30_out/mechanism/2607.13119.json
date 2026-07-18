@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "multi-timescale differential (delta) encoding of a temporally-correlated state sequence relative to periodically-refreshed reference states, using a two-level reference hierarchy so the current state stays recoverable from a coarse reference plus available fine increments even when some increments are lost",
+  "brief_reason": "The abstract exploits temporal correlation between consecutive global models to transmit differences instead of full states, and adds a second, coarser reference timescale so a lost differential update can still be reconstructed between full broadcasts — a hierarchical delta-coding scheme with error-resilient reference refresh."
+}

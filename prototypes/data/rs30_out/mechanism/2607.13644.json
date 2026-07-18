@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Temporal/spatial event-coding of information into the timing structure of discrete pulse trains (rate, phase, burst, and first-event-latency modulation formats) injected into a physical dynamical medium, with a readout that decodes/classifies the medium's response, and the encoding format optimized to maximize class separability in a closed feedback loop",
+  "brief_reason": "The abstract's whole method rests on comparing how inputs are modulated into stimulation-pulse timing patterns (rate-, phase-, burst-, and time-to-first-spike codes) delivered spatially and then decoded by a classifier, finding that the choice of temporal/spatial code determines decodability."
+}

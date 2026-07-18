@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "iterative box-covering renormalization (coarse-graining) of a weighted network that merges each node with its strongest neighbors and aggregates weights, revealing scale-invariant self-similarity across successive coarse-grained levels",
+  "brief_reason": "The abstract proposes a Neighbor-Limited Box Covering method that iteratively merges nodes into renormalized nodes and aggregates edge weights, then finds that topological, weighted, and dynamic features are self-similar across the resulting scales."
+}

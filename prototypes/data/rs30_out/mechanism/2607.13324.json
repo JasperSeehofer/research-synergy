@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a group-theoretic quotient construction on a family of orthogonality-constrained structured arrays: the invertible elements form a group under composition, and quotienting by the subgroup of symmetry (orthogonal) transformations yields an abelian group of equivalence classes",
+  "brief_reason": "The abstract states the invertible matrices form a group under matrix multiplication and that the quotient of that group by its subgroup of orthogonal matrices is abelian, which is a quotient-group classification of a set of orthogonality-constrained objects up to a symmetry subgroup."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a monotone, cryptographically-committed state-transition machine: an entity's permitted-capability set can only widen through authenticated signed transitions, each of which updates a single publicly verifiable commitment binding the current state to a tamper-evident, append-only history",
+  "brief_reason": "The abstract's load-bearing construct is that authority, memory schema, embodiment rights and capability roster 'can widen only through signed lifecycle transitions that update a public identity commitment,' which is a monotone permissioned state machine anchored to a public cryptographic commitment rather than any subject-specific agent detail."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "coarse-graining of a stochastic particle system (random walk with creation/annihilation of particles) into coupled reaction-diffusion equations with a moving reaction front / free boundary (Stefan-type interface) whose position is the key derived observable",
+  "brief_reason": "The abstract states the discrete random-walk model of order flow with creation, cancellation and diffusion reduces to coupled reaction--diffusion equations with a moving reaction boundary, from which correlation observables are analytically derived."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "sequential Bayesian updating of a Dirichlet-multinomial (categorical) posterior along a slowly varying control parameter, using the previous state's posterior as the prior for the next, with a log-Bayes-factor change-point detector that flags when the carried-over prior becomes statistically implausible and triggers adaptive dense resampling",
+  "brief_reason": "The abstract models the probability that a sample lands in each category via a Dirichlet-multinomial model, propagates it to a nearby parameter value by updating the prior with new data, and uses the log Bayes factor as an information-theoretic sensor to detect structural change and trigger extra sampling."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a nested two-level stochastic birth-death (Moran-type) process in which a sub-component proliferates within each unit while selection at the aggregate level systematically under-represents units enriched in that sub-component, analyzed through its scaling (diffusion) limits",
+  "brief_reason": "The abstract formulates a two-level Moran-type process with scaling limits in which 'damage begets damage' within an individual and more-damaged individuals are selectively removed, exactly mirroring defectors spreading within groups while defector-rich groups are eliminated by between-group selection."
+}

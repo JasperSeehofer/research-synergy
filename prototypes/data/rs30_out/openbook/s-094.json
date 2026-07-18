@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "path log-likelihood / Radon–Nikodym derivative of the path law", "b_element": "predictive log-likelihood of a Gaussian or mixture density head"},
+    {"a_element": "relative entropy (conditional mutual information) scoring departure from a product law", "b_element": "proper scoring rules (CRPS, pinball) scoring the predictive distribution's fit"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A is a measure-theoretic path-space framework for detecting factorisation / conditional independence of stochastic histories via Girsanov changes of measure, Radon–Nikodym derivatives, relative entropy and Schrödinger-bridge control, whereas Paper B is an empirical benchmark of neural forecasting components (backbones vs. output heads) for fat-tailed returns judged by CRPS/pinball; the only overlap is the generic presence of probability densities and log-likelihoods, not any shared governing process or role-for-role mechanism."
+}

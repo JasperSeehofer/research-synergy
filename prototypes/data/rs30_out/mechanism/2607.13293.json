@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a survival/occupancy-probability-weighted average of the instantaneous cause-specific transition intensity (hazard) of a continuous-time competing-risks multi-state jump process, producing a marginal rate that is invariant to the observation/truncation (censoring) sampling scheme",
+  "brief_reason": "The abstract defines the summary as a survival-weighted rate per event-free person-time built purely from the event-time distribution's cause-specific hazards, deliberately removing dependence on the censoring-time distribution — i.e. averaging an instantaneous transition intensity weighted by state-occupancy (survival) probability."
+}

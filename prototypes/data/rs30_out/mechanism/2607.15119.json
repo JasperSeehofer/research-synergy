@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "constraint-driven equilibrium thermalization of a many-mode system with two conserved quantities (total energy and total norm), yielding a Rayleigh-Jeans equilibrium distribution with condensation of weight into the lowest-energy state",
+  "brief_reason": "The abstract derives the vote (and wealth-inequality) distributions from coupled nonlinear oscillators whose evolution conserves total energy and probability norm, driving Rayleigh-Jeans thermalization and low-energy-state condensation — the statistical-mechanics phenomenon of constraint-driven condensation."
+}

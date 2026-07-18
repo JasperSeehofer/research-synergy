@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "recovery of a low-dimensional latent manifold, including its intrinsic geometry and topology, from high-dimensional multivariate time-series via nonlinear dimensionality reduction (manifold learning)",
+  "brief_reason": "The abstract's central results are restoring a two-dimensional spatial embedding from a collapsed high-dimensional embedding and recovering the expected toroidal topology of an attractor from population signals, i.e. reconstructing a low-dimensional latent manifold from many high-dimensional signals (with a statistical variable-selectivity test filtering which signals inform each recovered latent dimension)."
+}

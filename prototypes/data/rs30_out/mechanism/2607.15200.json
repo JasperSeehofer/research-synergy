@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "score-function (policy-gradient) estimator for a Markov decision process with a factorized two-stage composite action, where the log-probability of the joint action separates additively so the gradient decomposes into a sum of independent per-sub-action gradient terms",
+  "brief_reason": "The abstract formalizes each generation step as a two-stage action MDP (which token to place, which positions to remask) and shows the policy gradient 'naturally decomposes into a token term and a masking term,' which is precisely the additive decomposition of a score-function gradient over a factorized action space."
+}

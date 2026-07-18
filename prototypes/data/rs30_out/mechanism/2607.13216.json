@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "projection of high-dimensional temporal trajectories onto a low-dimensional set of basis functions (an orthogonal/smooth-function expansion yielding a compact coefficient vector), where the low-order/mean component suffices for discrimination but the full set of coefficients is needed to reconstruct the signal",
+  "brief_reason": "The abstract represents joint-coordinate trajectories as weighted sums over temporally smooth basis functions and as projections onto an orthogonal (Legendre) polynomial basis, then shows the average/low-order component drives classification while the full coefficient set drives faithful reconstruction."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a stochastic gradient-descent flow of a probability distribution driven by an entropy functional, combined with an additive diffusive/noise term (a stochastic heat / Dean-Kawasaki-type evolution equation), where the density is transported toward an entropy extremum while being smoothed by diffusion",
+  "brief_reason": "The abstract penalizes a stochastic-heat diffusion on the space of probability measures with an entropy-driven gradient-descent term and shows the resulting density satisfies a corrected Dean-Kawasaki equation, i.e. a noisy entropy gradient flow of a measure."
+}

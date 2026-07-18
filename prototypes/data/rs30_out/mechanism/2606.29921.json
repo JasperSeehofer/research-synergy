@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "bifurcation analysis of a driven dissipative nonlinear dynamical system, mapping the parameter-dependent existence and stability ranges of coexisting localized solution branches (multistability) and using controlled parameter sweeps to steer the system into a chosen attractor",
+  "brief_reason": "The abstract studies the bifurcation structure of solutions in a model, identifying solution-number-dependent existence ranges and exclusive single-solution regions in a control-parameter space and reaching a target state via prescribed parameter sweeps, which is the machinery of tracking coexisting attractor branches and their stability boundaries."
+}

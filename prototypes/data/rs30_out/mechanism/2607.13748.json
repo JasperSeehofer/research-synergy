@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a critical-scaling (heavy-traffic) diffusion limit of a high-dimensional stochastic jump process, in which the empirical distribution over a continuous parameter is carried as a measure-valued process and shown to converge to a limiting diffusion, with coupling-based sample-path comparisons used to derive bounds and prove optimality",
+  "brief_reason": "The abstract centers on taking the diffusion limit of a many-queue Markovian system under Halfin--Whitt (critical) scaling, tracking the state as a measure-valued process over the continuum of service rates and using coupling sample-path comparisons for its optimality bounds."
+}

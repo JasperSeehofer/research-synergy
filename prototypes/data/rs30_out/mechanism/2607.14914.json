@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a bidirectional feedback loop coupling stochastic mutation-selection (Moran-type) evolutionary dynamics of two competing strategies to a self-renewing state variable, where the state modulates the payoffs/fitness while the strategies in turn deplete or replenish the state, yielding regime shifts and a self-sustaining feedback cycle governed by the state's renewal-rate control parameter",
+  "brief_reason": "The abstract couples a two-species mutation-selection stochastic dynamics to a self-renewable resource that is depleted by successful and replenished by unsuccessful interactions, with the emergent regime (and a spite-to-fairness feedback loop) depending on the resource growth rate."
+}

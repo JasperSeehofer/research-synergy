@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "sparsity-promoting regression that selects a small active subset of terms from an overcomplete library of candidate basis functions to recover a compact governing equation from data",
+  "brief_reason": "The abstract states the method performs sparse regression over libraries of candidate nonlinear terms to recover interpretable governing equations from comparatively small datasets, which is a sparse-selection-over-a-dictionary mechanism."
+}

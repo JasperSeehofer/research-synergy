@@ -56,18 +56,38 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 | A raw∪reduction→LLM-rerank cascade is a scalable retriever that beats raw-alone on a mixed cross-field corpus | **VERIFIED (Phase 44 EXP-RS-25, 2026-07-18)** — cascade (Claude re-rank of the ~25-candidate union) recall@10 = **0.775** vs raw-alone 0.662 (+11 pts, ≈ union ceiling 0.80), MRR 0.74. Orbiter W-SYN: Mistral re-rank DEGRADES to 0.637 (< raw-alone) → the re-rank/precision stage must be Claude. O(N) retrieval + O(#queries) small LLM re-ranks = scalable vs the O(N²) all-pairs LLM baseline. | `.planning/phases/44-cascade/44-VERIFICATION.md`, `prototypes/data/rs25_results.json` |
 | The RS-26/27 discovery yield (~12.5% end-to-end genuine bridges) is real reduction-retrieval signal, not LLM confabulation on any surface-disjoint cross-field pair | **VERIFIED — PASS (Phase 47 EXP-RS-28, 2026-07-18)** — the byte-identical card+adjudicator pipeline on 80 RANDOM cross-archive ∧ lexical<0.06 pairs (reduction did NOT flag) confirms **0/80** (card) → **0/80** genuine (end-to-end) vs treatment 6/40 → 5/40 → **10× enrichment, Fisher one-sided p=0.0035**. Reconstructed adjudicator reproduces 5/6 on treatment (harness-valid). The open-book card stage alone rejected all 80 → it is a strong well-calibrated first gate, not a rubber stamp → scaling justified. | `.planning/phases/47-calibration-control/47-{PREREG,VERIFICATION}.md`, `prototypes/data/rs28_verdict.json` |
 | The genuine cross-field bridges surfaced by the finder (RS-26/27) are NOVEL discoveries | **REFUTED (Phase 48 EXP-RS-29, 2026-07-18)** — adversarial web prior-art hunt + skeptical classifier over the 7 genuine non-textbook bridges: **0 novel-looking / 3 specialist-known / 4 explicitly-published cross-field** (B6=Baake-Baake-Wagner PRL 78,559 1997; B2=Fulling-Kaplan-Wilson; B7=Deift RH program; E0=Hofbauer-Sigmund). The bridges are REAL (7/7) but the "surprising" model-knowledge label ≠ unpublished (7/7 not novel). At n=140 the strongest reduction matches ARE the canonical equivalences. **The finder is a validated cross-field analogy-REDISCOVERY engine, not a novelty engine** → forward needs scale + weak-match tail + a literature novelty-gate. | `.planning/phases/48-web-novelty/48-VERIFICATION.md`, `prototypes/data/rs29_novelty.json` |
+| The finder surfaces novel bridges at SCALE + by hunting the weak-match TAIL (RS-29's remaining escape hatch) | **REFUTED — terminal KILL (Phase 49 EXP-RS-30, 2026-07-18)** — 684 papers (~5×), two strata + two-hunter novelty-gate: adjudicated-genuine **top 5, tail 0**; novelty **3 known-crossfield / 2 specialist / 0 novel**. The TAIL (ranks 4-12) yielded 0 genuine bridges (1/40 card-confirmed, 0 adjudicated) → weak matches are spurious, not hidden-novel. Positive control passed (top 8.3%, matches RS-26/27). Converging with RS-29 (0/7 at n=140): **novelty is NOT reachable by scale or tail-hunting; the finder is terminally a validated cross-field REDISCOVERY engine.** | `.planning/phases/49-scaled-novelty-test/49-{PREREG,VERIFICATION}.md`, `prototypes/data/rs30_verdict.json` |
 
 ## Active experiment
 
-**NONE active — EXP-RS-29 WEB-NOVELTY CHECK concluded (2026-07-18): the bridges are REAL but NONE is
-NOVEL.** Both integrity gaps now closed. RS-28: bridges are real (0/80 FP calibration). RS-29: of the 7
-genuine bridges, **0 novel-looking / 3 specialist-known / 4 explicitly-published cross-field** (incl.
-famous Baake-Baake-Wagner 1997 for B6, Hofbauer-Sigmund for E0). **The finder is a validated cross-field
-analogy-REDISCOVERY engine, not (yet) a novelty engine** — the "surprising" label tracked
-non-obvious-to-a-generalist, not unpublished. Reframed forward: scaling to thousands is more motivated
-(novelty needs scale + the weak-match tail) but must add a NOVELTY GATE (auto-demote known equivalences);
-honest current deliverable = "calibrated, validated rediscovery engine," NOT "novel discoveries." Awaiting
-human go/kill/pivot.
+**NONE active — EXP-RS-30 SCALED NOVELTY TEST → KILL (pre-registered, terminal, 2026-07-18). The finder
+is a validated cross-field REDISCOVERY engine, not a novelty engine — CONFIRMED at scale.** At ~5× scale
+(684 papers) WITH explicit weak-match-tail hunting, 0 novel bridges: 5 genuine (all TOP stratum) = 3
+known-crossfield / 2 specialist / 0 novel; **the TAIL (ranks 4-12, where RS-29 predicted novelty) yielded
+0 genuine bridges** (1/40 card-confirmed, 0 adjudicated) → the weak matches are spurious, not hidden-novel.
+Positive control passed (top → 5 genuine, 8.3%, matches RS-26/27). **Discovery arc conclusion:** the
+finder reliably surfaces REAL surface-invisible shared mechanisms (RS-26/27 works; RS-28 0/80 FP; positive
+control 8.3%) but at every scale (n=140 RS-29, 5× RS-30) those are KNOWN/specialist equivalences, and the
+tail is empty of genuine bridges → novelty is NOT reachable by scale or tail-hunting. **Durable deliverable
+= a calibrated, validated, unsupervised cross-field analogy-REDISCOVERY engine** (recovers Baake-Baake-
+Wagner, Hofbauer-Sigmund, Horvitz-Thompson≡IS, Deift-RH from ~0-lexical abstracts). Do NOT call its output
+novel discoveries. **Next = /scribe-debrief + write-up of the rediscovery engine + the clean chapter
+separation (no static representation recovers cross-field analogy; LLM reduction does; calibrated but
+rediscovery-only). Awaiting human go/kill/pivot on write-up vs true-thousands confirm (low EV).**
+
+### (just-concluded, KILL 2026-07-18) EXP-RS-30 → Phase 49 — Scaled Novelty Test
+
+**Does the finder surface ANY novel bridge at scale + tail-hunting? Pre-registered KILL/PASS.** 684 fresh
+papers (18 cats, ~5× RS-27) → 684 blind reductions (78 rate-limited, cleanly re-run) → reduction-embed
+TWO strata (TOP ranks 1-3 control + TAIL ranks 4-12 novelty-hunt; 1009 top / 3406 tail candidates) →
+stratified 100 cards (60 top + 40 tail) → frozen adjudicator → two-hunter adversarial novelty-gate on
+every genuine. **VERDICT: KILL.** Card-confirm top 13/60 (21.7%) vs tail 1/40 (2.5%); adjudicated-genuine
+**top 5, tail 0**; novelty **3 known-crossfield / 2 specialist / 0 candidate-novel / 0 robust-novel**.
+The empty tail is the decisive finding — refutes "novelty in the weak-match tail." The 5 genuine (all
+canonical): S10 Fisher/Cramér-Rao, S11 Horvitz-Thompson≡importance-sampling, S13 rate-distortion/info-
+bottleneck, S1 pitchfork SSB bifurcation (econ-geo↔BH-scalarization), S7 Bogoliubov/adiabatic-breakdown.
+Pre-reg `49-PREREG.md` (harness SHA `e8c45b3f…`); `.planning/phases/49-scaled-novelty-test/49-VERIFICATION.md`;
+`prototypes/rs30_scale.py`, `data/rs30_verdict.json`.
 
 ### (just-concluded, 2026-07-18) EXP-RS-29 → Phase 48 — Web/Literature Novelty Check
 

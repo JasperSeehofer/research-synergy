@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "inference of a population's growth law from the distribution of internal branching (coalescence) times in the reconstructed genealogy of a continuous-time birth-death branching process, where a saturating (logistic) rate shifts that distribution through distinct unimodal/bimodal regimes versus the exponential case",
+  "brief_reason": "The abstract studies continuous-time birth-death models whose inferred phylogenetic trees yield internal branching-time distributions that qualitatively change (unimodal to bimodal to recent-dominated) depending on whether growth is exponential or carrying-capacity-limited, making the branching-time statistic a signature of the underlying growth regime."
+}

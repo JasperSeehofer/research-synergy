@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "construction of a joint linear constraint system over a finite field (GF(2)) from several pairwise mutually-orthogonal linear codes, with rank and orthogonality conditions that decide when an added constraint block is redundant versus genuinely independent, plus derived bounds on the minimum weight of the constrained solution space",
+  "brief_reason": "The abstract builds a parity-check matrix from three pairwise orthogonal binary parity-check matrices and derives algebraic/rank conditions for when the extra ($Y$-type) checks are redundant, together with upper/lower bounds on minimum distance — i.e. combining mutually-orthogonal linear codes and reasoning about constraint redundancy via rank."
+}

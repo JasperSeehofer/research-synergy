@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a perturbation-series expansion with frequency renormalization (strained-coordinate / method-of-strained-parameters) that cancels secular resonant terms order by order to yield a uniformly valid periodic solution of a weakly nonlinear oscillator",
+  "brief_reason": "The abstract centers on the Lindstedt-Poincare method and its modifications for the nonlinear (undamped Duffing) oscillator, which is exactly a strained-frequency perturbation expansion whose improvement is judged by convergence against a high-order numerical integrator."
+}

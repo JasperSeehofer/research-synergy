@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "the percolation parameter tuned to its critical value", "b_element": "the localization length ξ decreased toward the scaling crossover"},
+    {"a_element": "quantitative decoupling / decay-of-correlations hypothesis", "b_element": "long-range correlations of the quasiperiodic localized eigenstates"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is the generic notion of a transition controlled by a tuning parameter (percolation parameter vs. localization length ξ) and a concern with spatial correlations; the actual machinery differs. Paper A is a rigorous geometric-connectivity result proving the absence of infinite clusters at a critical point via probabilistic tools (ergodicity, positive association, decoupling), whereas paper B is a numerical study of a dynamical localization crossover in the Lyapunov spectrum of nonlinear unitary maps, so no role-for-role mapping of a shared governing process holds."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a coarse-graining (subgrid closure) scheme that represents the aggregate effect of unresolved fine-scale degrees of freedom on the resolved coarse-scale dynamics as an added flux, decomposed into a conservation-law-preserving flux term and an entropy-dissipating diffusive term constrained by an entropy/monotonicity law",
+  "brief_reason": "The abstract learns subgrid fluxes that correct a coarse simulation of a full-scale system, splitting the correction into a conservative flux-potential component and a dissipative eddy-viscosity component consistent with entropy variables, i.e. a structure-preserving coarse-graining closure."
+}

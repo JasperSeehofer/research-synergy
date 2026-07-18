@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "bias-variance-optimal selection of a locally varying smoothing scale in kernel-weighted local-likelihood estimation, obtained by minimizing an asymptotic mean-integrated-squared-error that balances squared bias (proportional to local curvature times bandwidth-squared) against variance (proportional to the inverse local effective sample size), yielding an optimal scale that follows a power law in the local density and total sample size",
+  "brief_reason": "The abstract derives a location-specific AMISE-optimal bandwidth b*(x) proportional to [(1-rho^2)^2/(f beta^2)]^(1/6) n^(-1/6) by specializing local-likelihood asymptotics, with bias proportional to b^2 times a curvature term beta and a variance floor sd ~ (1-rho^2)/sqrt(eff_n), which is precisely a curvature-vs-effective-sample-size bias-variance tradeoff for choosing a local smoothing scale."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "threshold-conditioned anomaly analysis of a spatiotemporal density field: measuring deviations of an observed distribution from a counterfactual baseline expectation, keyed to an external forcing variable crossing a critical threshold, and quantifying the resulting redistribution of a (roughly conserved) aggregate across categorical bins",
+  "brief_reason": "The abstract measures fine-grained presence counts as deviations from an expected/regular baseline ('below-expected', 'relative to cooler days') conditioned on sustained temperatures crossing a >=25 C threshold, and tracks how the aggregate presence reallocates from public-service to leisure/culture amenity categories."
+}

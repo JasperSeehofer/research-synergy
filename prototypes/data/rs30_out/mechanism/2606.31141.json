@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "constrained maximum-entropy variational principle — maximizing an entropy functional subject to a full set of conserved-quantity constraints (in both fixed-constraint 'microcanonical' and Lagrange-multiplier 'canonical' formulations), whose multiple stationary points yield distinct, possibly symmetry-broken equilibrium states",
+  "brief_reason": "The abstract frames the method as a mixing-entropy maximization problem that takes into account all Casimir invariants and is solved in canonical and microcanonical forms, yielding multiple equilibria including symmetry-broken solutions."
+}

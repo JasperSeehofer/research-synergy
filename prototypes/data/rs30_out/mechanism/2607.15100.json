@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "approximating an abstract (relation-defined) operator system by high-dimensional random matrices whose noncommutative-polynomial operator norms converge, with the prescribed algebraic relations emerging from normalized sums of many independent random building blocks up to an error that concentrates to zero in probability (a strong-convergence / law-of-large-numbers approximation of an infinite object by finite random matrices)",
+  "brief_reason": "The abstract builds finite-dimensional random matrix models whose normalized sums of independent semicircular building blocks over a random (Erdos-Renyi) graph satisfy the target q-relations 'up to an operator norm error converging to zero in probability,' yielding uniform strong convergence of bounded-degree polynomials."
+}

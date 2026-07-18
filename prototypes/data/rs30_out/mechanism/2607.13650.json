@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "characterization of the feasible-throughput (capacity) region of a single mutually-exclusive server contended by two opposing flows under alternative service disciplines, yielding a trade-off stability boundary that separates a bounded-queue regime from an oversaturated one, plus light-load expected-delay analysis",
+  "brief_reason": "The abstract defines 'system capacity' as the pair of opposing departure flows (d1,d2) at oversaturation with capacity in one direction decreasing as the other rises (a trade-off boundary), separates arrival pairs below it (no queues) from those above (queues form), and compares FIFO vs. directional-priority service disciplines on delay and capacity."
+}

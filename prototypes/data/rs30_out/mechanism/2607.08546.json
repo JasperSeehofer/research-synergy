@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a stochastic contagion/spreading process on a modular (block-structured) network whose propagation is governed by two coupling strengths — a strong intra-block connection density and a weak inter-block density — so that spread is fast within a module and rate-limited across modules",
+  "brief_reason": "The abstract models the spread of a rumour on a network built from communities characterised by two parameters, within-group and between-group connectivity, and studies how this block topology controls the spreading process."
+}

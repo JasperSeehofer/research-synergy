@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a majorization-based relaxation (Schur–Horn majorization) that bounds an optimization over the continuous group of orthonormal rotations by a single deterministic scalar inequality, reducing a hard optimize-over-all-bases problem to a fixed threshold comparison whose residual slack is a bounded correlation-gap term",
+  "brief_reason": "The abstract states the proof relaxes arbitrary rotations to a deterministic threshold bound via Schur–Horn majorization and identifies the remaining loss with the correlation gap of a rank-d uniform matroid, i.e. an extremal majorization argument that converts an optimization over all orthonormal bases into a deterministic comparison."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "collective-coordinate variational reduction of an extended self-bound nonlinear field to a few macroscopic shape parameters (e.g. width/amplitude), producing an effective energy landscape whose curvature at the equilibrium minimum defines a static stiffness that also fixes the frequency of small oscillations about that minimum",
+  "brief_reason": "The paper derives an elastic modulus B from a super-Gaussian variational ansatz and establishes a quantitative relation between B and the breathing-mode eigenfrequency, i.e. it collapses the system to collective coordinates and equates the curvature of the effective energy at the self-bound minimum to both a static stiffness and the small-oscillation frequency."
+}

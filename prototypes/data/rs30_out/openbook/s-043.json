@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A is a linear electromagnetic propagation model (in-waveguide attenuation plus evanescent coupled-mode theory between a dielectric waveguide and pinching elements, with molecular absorption) used to benchmark information-theoretic spectral efficiency, whereas Paper B is nonlinear wave turbulence: random gravitational-wave ensembles undergoing four-wave scattering that cascades energy across the spectrum. The only overlap is the keyword 'wave' and the false friend 'spectral' (spectral efficiency in bits/s/Hz versus an energy spectrum over wavelengths); there is no role-for-role match between linear two-mode coupling and a nonlinear four-wave turbulent cascade, so the machinery differs."
+}

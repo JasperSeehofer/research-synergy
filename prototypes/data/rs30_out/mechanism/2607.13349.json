@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "spectral (eigenfunction) decomposition of a self-adjoint linear operator into a complete orthonormal eigenbasis under a weighted inner product, giving an exact series representation of an evolution problem, with a WKB/Liouville-Green short-wavelength asymptotic quantization of the high-order eigenvalues and eigenmodes",
+  "brief_reason": "The abstract builds an exact solution from a discrete real spectrum and complete orthonormal eigenfunctions in a weighted Hilbert space and then applies the Liouville-Green (WKB) transformation to derive high-frequency asymptotic quantization formulas for the eigenvalues and eigenfunctions."
+}

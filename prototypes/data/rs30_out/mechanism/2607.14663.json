@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an absorbing-state (contact-process / directed-percolation-type) non-equilibrium phase transition — a competition between a spreading/proliferation process and an extinction/recovery process producing a critical threshold — whose universality class is continuously tuned by a discretization/interpolation parameter, with interference between paths shifting it from one class to another",
+  "brief_reason": "The abstract describes competition between a coherent infection (spreading) process and a dissipative recovery (extinction) process that undergoes a phase transition, whose universality class is continuously interpolated by the degree of discretization (Trotterization) via destructive interference between contributing paths."
+}

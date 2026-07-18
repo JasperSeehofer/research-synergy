@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "minimax (worst-case) optimization of an action over an ambiguity/credal set of admissible probability distributions, collapsing to expected-value optimization under a single posterior when the set of distributions reduces to a point",
+  "brief_reason": "The abstract's unifying thread is that a risk-neutral agent optimizes expected loss under the posterior while a risk-averse or environment-uncertain agent applies a worst-case decision rule over a prediction/credal (ambiguity) set via distributionally robust optimization, with a certificate bounding the achieved utility."
+}

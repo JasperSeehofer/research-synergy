@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a square-root scaling law forced by a fixed relative-entropy (KL-divergence) distinguishability budget between a null and an alternative distribution: because the cumulative divergence over n independent uses grows quadratically in per-use signal amplitude, holding it below a constant budget caps the per-use amplitude at order 1/sqrt(n), so the maximal admissible aggregate quantity grows as sqrt(n) with a constant proportional to sqrt(budget)",
+  "brief_reason": "The abstract imposes a relative-entropy constraint with budget delta on the residual and derives a maximal reliably transmissible quantity of R*sqrt(n) with R proportional to sqrt(delta), which is exactly a KL-budget-limited square-root scaling law plus a matching converse establishing its optimality."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "existence of self-consistent fixed-point configurations of a local neighborhood-majority/minority update rule on a graph, with competing aligning and anti-aligning couplings plus pinned nodes producing frustration that can preclude any stable configuration",
+  "brief_reason": "The abstract studies pure-strategy Nash equilibria of nodes that each set their state to the majority (conformists) or minority (rebels) among neighbors while some are fixed (stubborn), and finds equilibria exist when aligning interactions dominate but fail when conformist-rebel (frustrated) edges proliferate."
+}

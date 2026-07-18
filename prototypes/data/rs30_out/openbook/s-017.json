@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "small gray-matter regions of the brain as network nodes", "b_element": "employees as nodes of the Tacit Knowledge Transfer Graph"},
+    {"a_element": "structural connectivity strength between brain regions", "b_element": "edge weights encoding knowledge-transfer links between employees"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A is an empirical/statistical analysis of neuroimaging data that measures which brain regions show increased or decreased static structural connectivity in dementia, with no governing dynamical law; Paper B is a heat-diffusion dynamical model on a graph used to simulate knowledge spread and optimize scheduling. Their only overlap is the generic 'represent the system as a graph' framing — Paper A never runs a diffusion process — so the transferable machinery (the heat-diffusion equation driving dynamics) is present in B but absent in A."
+}

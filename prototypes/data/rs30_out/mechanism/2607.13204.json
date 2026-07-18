@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reconstruction of an unknown high-dimensional signal from indirect, incomplete linear measurements by inverting a known forward operator — i.e., solving a (regularized) linear inverse problem via iterative numerical optimization",
+  "brief_reason": "The abstract states the systems 'do not directly acquire images' but measure physical signals that encode the target, and reconstruction 'recovers the underlying image by solving an inverse problem' through analytical, iterative-optimization, and statistical model-based methods built on a generalized forward-operator framework."
+}

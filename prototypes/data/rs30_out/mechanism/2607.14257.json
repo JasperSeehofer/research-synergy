@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "singular perturbation / multiple-scale asymptotic limit in which coupled small parameters tend to zero at a fixed ratio, yielding uniform a priori bounds and convergence of full solutions (from well-prepared initial data) to those of a reduced limit system",
+  "brief_reason": "The abstract establishes uniform boundedness as two small parameters (Froude/Rossby numbers) tend to zero with fixed ratio and proves convergence of well-prepared solutions to limit equations, including a three-scale limit where one parameter vanishes faster — the hallmark of a multi-scale singular-limit reduction."
+}

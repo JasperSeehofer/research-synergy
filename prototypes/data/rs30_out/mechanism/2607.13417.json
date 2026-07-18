@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "maximum-likelihood parameter estimation against a parameterized physics-based forward (generative) model, with the Cramér–Rao / Fisher-information bound setting the fundamental achievable precision on the inferred parameters",
+  "brief_reason": "The abstract's method rests on deriving maximum-likelihood estimators for the unknown parameters of a parameterized forward model and quantifying their fundamental limits via the Cramér–Rao bound, which the ML estimators are shown to approach at high SNR."
+}

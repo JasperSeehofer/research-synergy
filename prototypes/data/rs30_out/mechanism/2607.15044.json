@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a topological (homological) stabilizer code: information encoded redundantly in the global topology of a planar lattice and protected by local parity-check constraints on the lattice cells, with logical operations performed by merging and splitting lattice patches along shared boundaries",
+  "brief_reason": "The method rests on the surface code — a planar-lattice topological error-correcting code with local nearest-neighbor checks — and specifically on 'lattice surgery,' the merge/split of code patches, here reworked on a reduced-degree trivalent lattice."
+}

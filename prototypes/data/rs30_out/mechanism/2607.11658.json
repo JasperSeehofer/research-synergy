@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "linear-programming duality in which a combinatorial optimum is decentralized by a single supporting dual price vector, existing precisely when the optimal-value set function is additive (modular, with all subset-interaction terms vanishing), and probed by a canonical marginal-contribution element",
+  "brief_reason": "The abstract characterizes the target property as holding if and only if the aggregate value function is additive, with one uniquely determined price vector supporting the optimum and every extension, tested via a canonical entrant valued by marginal welfare loss and tied to the linear-programming (dual-integrality) characterization of Bikhchandani and Mamer."
+}

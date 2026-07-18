@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "confound-controlled partial correlation: measuring the residual linear association between two ordered signals after regressing out a shared nuisance covariate, so that an apparent correlation driven only by the confound collapses to zero",
+  "brief_reason": "The decisive step is that an apparent r=0.47 association 'collapses to a temporal-shape artifact under a proper position control,' i.e. the real test partials out the temporal-position confound before assessing dependence, with the residual null further bounded by an equivalence test and Bayes factor."
+}

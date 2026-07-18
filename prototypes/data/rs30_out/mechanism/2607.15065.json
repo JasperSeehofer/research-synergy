@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "learning the deterministic drift/velocity field of a continuous-time generative transport (a conditioned flow/ODE mapping an initial state to a target distribution), amortized so that sampling collapses from iterative integration into a single forward evaluation conditioned on external inputs",
+  "brief_reason": "The abstract replaces multistep iterative denoising with an input-conditioned drift learned during training that transports the current observation to future outputs in a single forward pass, i.e. a distilled continuous-time transport whose flow map is evaluated once rather than integrated stepwise."
+}

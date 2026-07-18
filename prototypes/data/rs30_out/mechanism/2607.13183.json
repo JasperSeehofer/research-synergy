@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "expected meeting and coalescence times of independent random walkers diffusing on a network, exploited via the duality between coalescing random walks and consensus time of a voter-type interacting particle system, with bounds obtained through comparison inequalities across sub/super/critical connectivity regimes",
+  "brief_reason": "The abstract bounds the expected meeting time of two independent continuous-time random walks on the graph and then deduces coalescence and voter-model consensus times from these, using comparison inequalities — the classic meeting/coalescing-walk duality to consensus dynamics."
+}

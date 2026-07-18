@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Minimax (worst-case) equalization placement optimization: a radiating element's position along a lossy one-dimensional medium is chosen so that a performance metric is equalized at the two extremes of an operating range, yielding a closed-form optimum and a critical threshold at which the optimal configuration discontinuously inverts.",
+  "brief_reason": "The abstract's central closed-form results are a cluster-center placement satisfying a band-edge SINR equalization condition, an associated placement-inversion threshold, and an insertion-loss payoff threshold governing when to segment/switch the medium, i.e. a minimax equalization of end-of-band performance with a critical switchover point."
+}

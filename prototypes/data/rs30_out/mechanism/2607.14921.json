@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "injection of controlled stochastic (randomly-scaled) perturbations into the observable values of a queried function so as to corrupt an adversary's finite-difference / zeroth-order gradient estimate of that function, while preserving an order invariant (the arg-max / ranking) of the underlying signal",
+  "brief_reason": "The abstract's defense outputs falsified scores from randomly scaled logits to confuse a query-based attacker yet maintains model accuracy, i.e. it adds randomized noise that breaks the attacker's score-based (finite-difference) gradient estimation while leaving the top-ranked decision unchanged."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A recurrent accumulate-to-threshold-then-discharge cycle (reservoir fills by a slow input flux until a critical point triggers a rapid release), whose qualitative regimes are set by the ratio of two competing relaxation timescales and which relaxes into a driven quasi-stationary steady state where a sustained source balances a loss channel, yielding a temperature/energy scale set by the input rather than the ambient bath",
+  "brief_reason": "The abstract describes a repeated cycle of capture, buildup, and evaporative release with two regimes fixed by the competition between the thermalization time and the collapse-cycle time, converging to a quasi-stationary state whose temperature far exceeds the surrounding bath — a source-vs-loss balance driving a periodic fill-and-release process."
+}

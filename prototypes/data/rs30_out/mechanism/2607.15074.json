@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an involutive fiberwise dualization (Fourier-Mukai / SYZ-type transform) over a torus fibration that maps objects on a space to objects on its fiberwise-dual space, interchanging the two dual spaces and swapping two complementary classes of structures (each realized as a moduli space of such objects under varying stability parameters)",
+  "brief_reason": "The abstract builds X^! from X via a 'SYZ construction' as a moduli of branes with varying stability conditions and realizes the dual branes as the 'SYZ transformation' of the originals, so the whole method is a fiberwise dual-transform that swaps two dual spaces and interchanges the two brane classes."
+}

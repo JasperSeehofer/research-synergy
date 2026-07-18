@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an information-theoretic sample-complexity law in which identifying one hidden state out of N requires accumulating a fixed amount of mutual information between that hidden variable and the observed sequence, so the number of observations needed scales as log(N) divided by the per-symbol information rate, pinned by matching achievability (a surprisal/likelihood-thresholding decoder) and a converse (Fano-type) bound",
+  "brief_reason": "The abstract builds everything on the per-token mutual-information profile nu(t)=I(S;X_t|X_{<t}) whose total mass sets attribution/extraction cost, proving a two-sided Theta(log N / h) and Theta(l / h) rate with a thresholding decoder achieving it and a matching converse."
+}

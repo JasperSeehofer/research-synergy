@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Poisson generalized linear regression of a non-negative count response on multiple explanatory covariates via a log link, combined with rarefaction/subsampling to correct the counts for uneven sampling effort before inferring which covariates most strongly drive the count",
+  "brief_reason": "The abstract states drivers of species richness (a count) are examined with Poisson Generalized Linear Models on many environmental covariates, using effort-corrected rarefied richness and spatial thinning to control sampling bias."
+}

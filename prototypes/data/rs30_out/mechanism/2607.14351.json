@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reduction of a system's effective dynamics by marginalizing (integrating out / coarse-graining) unobserved environmental degrees of freedom, yielding non-conservative reduced evolution with dissipation, noise, decoherence, and memory (non-Markovian) effects, formulated on a doubled forward/backward (Schwinger-Keldysh closed-time-path) generating functional",
+  "brief_reason": "The abstract centers on observing only a subset of degrees of freedom so its reduced dynamics exhibits dissipation, noise, decoherence, and memory while the unobserved environment is parametrized rather than solved, using the Schwinger-Keldysh path-integral as the tool."
+}

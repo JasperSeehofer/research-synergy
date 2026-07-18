@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "recovery of a latent state-dependent reweighting function (a Radon-Nikodym density ratio / change of measure between two probability distributions) by inverting a spanning family of observed expectation constraints, with a low-dimensional dynamical parametrization imposed to stabilize the inversion against noise",
+  "brief_reason": "The abstract recovers the stochastic discount factor — the ratio linking physical and risk-neutral distributions — purely from the cross-section of option prices, which are expectations of state-contingent payoffs, and regularizes this inversion via a volatility-scaled dynamical structure."
+}

@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "modular-Laplacian cellular-automaton growth on a 2D lattice", "b_element": "diffusion-limited (Laplacian) aggregation growth in 2D"},
+    {"a_element": "emergent self-similar carpet-like morphology", "b_element": "self-similar fractal cluster characterized by a fractal dimension"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The overlap is only the shared problem-domain of 2D fractal growth and the word 'Laplacian': paper A is a deterministic modular-arithmetic cellular automaton whose morphology is set by mask geometry and steered by discretely timed ternary interventions found via Monte Carlo optimization, whereas paper B is a stochastic Hastings-Levitov conformal-map aggregation analyzed through the multifractal spectrum of the harmonic measure and an exact third-moment-to-fractal-dimension amplitude relation. The governing processes and analytical machinery differ, and no role-for-role correspondence (e.g. no analog of harmonic measure/conformal maps in A, none of modular interventions in B) coherently holds."
+}

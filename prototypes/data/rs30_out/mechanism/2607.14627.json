@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Landau-Zener avoided-crossing dynamics: a slowly swept external perturbation drives resonant transitions between discrete bound levels of a system as their energies cross, with the transition/depletion probability set by the inter-level coupling matrix element and the sweep-rate adiabaticity parameter",
+  "brief_reason": "The abstract describes a bound cloud whose discrete level structure is swept through resonance by a time-varying (tidal) perturbation, with transition matrix elements and Landau-Zener adiabaticity controlling how much population is transferred/depleted at the crossing."
+}

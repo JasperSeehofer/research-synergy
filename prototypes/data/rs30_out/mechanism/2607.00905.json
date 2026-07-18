@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an iterated nonlinear recurrence map (discrete-time dynamical system) whose stable fixed point loses stability through period-doubling bifurcations into period-2 and higher-period or complex dynamics as a control parameter crosses a threshold",
+  "brief_reason": "The abstract states the model yields a recurrence map for successive states in which a stable equal-sized fixed point is destabilized past a parameter threshold, producing period-2-or-more and more complex dynamics — the signature of a period-doubling route in an iterated map."
+}

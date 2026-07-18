@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "sample-path (trajectory-level) large-deviations principle: the probability that the empirical trajectory of a sum of independent random processes deviates from its typical path decays exponentially at a rate given by a variational rate functional, whose minimizer identifies the single most-likely exponentially-tilted path that realizes a rare event",
+  "brief_reason": "The abstract proves a sample-path large deviations principle on D([0,T]) for the empirical mean of independent counting processes and, transferring it to the workload process, explicitly identifies the exponentially tilted path associated with a rare overflow event, which is the variational optimal-path machinery of large-deviations theory."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a pinned diffusion process (diffusion bridge): a stochastic differential equation with a mean-reverting square-root (Cox-Ingersoll-Ross-type, non-Lipschitz) diffusion coefficient conditioned to begin and end at prescribed boundary states, with the entry and exit times themselves randomized via a stochastic time-change",
+  "brief_reason": "The abstract states the model is a Cox-Ingersoll-Ross diffusion bridge with a non-Lipschitz diffusion coefficient and random initial and terminal times arising from a time-change, which is the machinery of an endpoint-conditioned SDE with randomized pinning times."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "relaxation of an ensemble of agents sharing a conserved quantity to a Rayleigh-Jeans thermal-equilibrium occupation distribution, including macroscopic condensation into the lowest-energy state, which fixes a stationary heavy-tailed (Lorenz/Pareto-type) distribution of that quantity",
+  "brief_reason": "The abstract explains the stable, highly unequal Lorenz and Pareto distributions by positing thermalization and Rayleigh-Jeans condensation of agents onto energy states, deriving the inequality from condensation at low energy."
+}

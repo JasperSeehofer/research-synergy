@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "covering of a discrete metric space by fixed-radius balls (a radius-R covering code) whose codewords are generated as the overlapping fixed-length windows of a single cyclic/periodic sequence, so that a short generator sliding-window-tiles the whole space to within a bounded distance",
+  "brief_reason": "The abstract defines a cyclic sequence whose consecutive n-tuples form a code of covering radius R and seeks short such sequences approaching optimality, i.e. a sliding-window generator that produces a minimal covering of the space by radius-R balls."
+}

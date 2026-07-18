@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a crossover in the scaling behavior of an iterated map's Lyapunov (perturbation-growth-rate) spectrum between two regimes (long-range vs. short-range), tuned by a characteristic correlation length, where correlations in the underlying medium shift the crossover location",
+  "brief_reason": "The abstract studies the Lyapunov spectrum scaling of nonlinear unitary maps and locates the crossover from long-range to short-range scaling as the localization length is varied, finding that the medium's correlation structure (quasiperiodic vs. uncorrelated) strongly displaces where that crossover occurs."
+}

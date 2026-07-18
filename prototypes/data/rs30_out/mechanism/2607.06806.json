@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a non-equilibrium stock-and-flow (system-dynamics) relaxation between two attractors, in which a driven state variable is pulled from a high incumbent equilibrium toward a lower equilibrium set by a newly available low-cost production channel, but reaches it only after the supplying stock has fully migrated from the old channel to the new one via gradual capacity substitution",
+  "brief_reason": "The abstract builds a 'non-steady system dynamics model' in which the price eventually drops toward the much lower cost of the new source 'but only after the entire supply has shifted' off-world, i.e. a transient relaxation to a new equilibrium gated by complete stock migration."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a boundary-extension obstruction argument by compactness and separation: build a compact separating set in an adapted boundary chart that every limit trajectory must terminate on, then derive a contradiction from an intrinsic distance diverging to infinity while its image in the candidate continuous extension stays uniformly bounded, ruling out any continuous extension across the boundary",
+  "brief_reason": "The abstract's method rests on constructing a 'compact chronological separator' and showing 'radial-slice distances that diverge intrinsically while remaining uniformly controlled in the extension chart,' forcing every boundary-approaching finite maximizer to the singular end and thereby precluding continuous extension."
+}

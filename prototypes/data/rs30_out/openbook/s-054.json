@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "the maximum of the correlated Gaussian vector max_i X_i (an extreme order statistic of a sample)", "b_element": "the k-th highest/lowest order statistic of the n draws (an extreme/rank order statistic of a sample)"},
+    {"a_element": "structural condition enabling the comparison: log-concavity used in the Gaussian product inequality (plus the spectral condition R - 11^T/m >= 0)", "b_element": "structural condition enabling the comparison: log-supermodularity of the cumulative (reverse) hazard -log F"},
+    {"a_element": "the ordering being established: stochastic domination max_i X_i <=_st max_i Z_i (a distributional inequality on a functional)", "b_element": "the ordering being established: Blackwell/informativeness ranking of one order statistic over another (a sufficiency/garbling ordering of experiments)"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Both compare extreme/order statistics of a sample under a log-concavity/log-supermodularity structural condition, but the governing machinery differs decisively: paper A proves a stochastic-domination distributional inequality on the max of a correlated Gaussian vector via a log-concave Gaussian product inequality plus adaptive tilting, whereas paper B establishes a Blackwell (informativeness/sufficiency) ordering of order statistics for inference about a parameter theta via log-supermodularity of the hazard. Stochastic dominance of a functional and Blackwell comparison of experiments are different orderings proven by different tools, so the overlap is thematic (order statistics + convexity conditions), not a shared driving process."
+}

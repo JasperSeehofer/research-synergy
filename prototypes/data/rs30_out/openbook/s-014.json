@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "cause-specific hazard as the intensity of an event-time counting process", "b_element": "birth/death/mutation event rates governing the individual-based Markov process"},
+    {"a_element": "continuous-time stochastic event process underlying the data", "b_element": "continuous-time Markov jump process of the population model"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A's machinery is censoring-invariant nonparametric estimation of a survival-weighted rate summary (ACSH) under competing/semi-competing risks, centered on removing dependence on the censoring-time distribution; Paper B's machinery is deriving scaling limits (in time, population size, and mutation rate/step) of stochastic individual-based population models for adaptive dynamics. Beyond the generic fact that both involve continuous-time event rates/intensities, there is no role-for-role correspondence: A has no scaling limits or mutations and B has no censoring, competing risks, or estimation of a hazard summary, so the transferable machinery differs."
+}

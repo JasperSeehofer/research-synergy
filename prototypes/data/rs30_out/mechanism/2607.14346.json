@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "inverse-probability-of-observation reweighting combined with efficient-influence-function (semiparametric doubly-robust) estimation, which corrects for a partially-observed/selection mechanism and attains the minimum-variance asymptotic efficiency bound",
+  "brief_reason": "The abstract extends efficient ATE-style estimators to partially-observed units under an assumed missingness (selection) model and proves via asymptotic efficiency analysis that reweighting the partially-observed data yields a valid, minimum-variance estimator, which is exactly influence-function-based inverse-probability-weighted efficient estimation."
+}

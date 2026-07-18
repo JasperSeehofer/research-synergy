@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "surrogate-accelerated Bayesian parameter inference: an interpolating emulator is trained on a suite of expensive forward-model simulations spanning a parameter grid, and Markov-chain Monte-Carlo sampling of the resulting posterior over that parameter space yields bounds by confronting the surrogate predictions with observed data",
+  "brief_reason": "The abstract runs a suite of forward simulations spanning interaction strengths, trains an emulator on their results, and then performs a Monte Carlo Markov Chain analysis to derive a 95% C.L. upper limit, i.e. emulator-accelerated MCMC posterior inference over a parameter space."
+}

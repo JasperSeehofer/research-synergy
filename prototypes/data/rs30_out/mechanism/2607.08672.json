@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "likelihood-based statistical model selection among competing generative stochastic-process hypotheses fitted to a single observed trajectory, with discriminability predicted by large-system (thermodynamic-limit) asymptotics that sharpen near a critical threshold",
+  "brief_reason": "The abstract frames the task as inferring which of six competing spreading mechanisms generated observed dynamics via model selection, and shows that thermodynamic-limit approximations predict when the mechanisms become distinguishable, with detectability peaking near phase transitions."
+}

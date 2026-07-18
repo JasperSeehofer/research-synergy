@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "geometry-regularized optimal transport: solving for a cost-minimizing coupling that matches two distributions of features while a regularizer built from the Laplace-Beltrami spectral eigenbasis of the underlying manifold penalizes couplings that violate the domain's intrinsic geometry",
+  "brief_reason": "The abstract describes aligning functional data across individuals (a transport/matching between two feature sets) with 'SpectralOT' embedding the domain's geometry into Laplace-Beltrami eigenmodes to regularize the alignment, i.e. an optimal-transport coupling regularized by a spectral-geometric prior."
+}

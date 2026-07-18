@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "variational Rayleigh-quotient minimization with successive deflation to count the dimension of the null space (kernel) of a Laplacian operator — extracting the number of zero eigenvalues (a topological/spectral invariant) by iteratively finding mutually orthogonal minimizers rather than by direct diagonalization",
+  "brief_reason": "The abstract recasts null-space counting of combinatorial Laplacians as a continuous Rayleigh-quotient minimization with variational deflation to recover Betti numbers (kernel dimension) scale by scale, which is exactly a deflation-based variational eigen/null-space extraction of a spectral invariant."
+}

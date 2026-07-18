@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an irreversible (monotone) linear-threshold activation cascade on a weighted network, with a necessary-and-sufficient stability criterion separating a contained cascade from a system-wide one, plus a mean-field homophily-driven bifurcation where above-critical within-group coupling destabilizes the quiescent state",
+  "brief_reason": "The abstract builds a threshold cascade model with positive activation thresholds, irreversible activation, and peer influence along a weighted network, deriving an exact condition for resistance to shocks (exposure below the weakest net threshold) and a sharp mean-field homophily threshold at which the harm-free state loses stability."
+}

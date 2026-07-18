@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A builds a post-quantum anonymous certificate scheme from multivariate-polynomial cryptography (hardness of solving multivariate systems over finite fields), while Paper B analyzes the free orthomodular lattice on two generators to derive quantum logic as an information-losing quotient onto a Boolean algebra. Their only overlap is the surface keyword 'quantum' used in two unrelated senses (quantum-resistant cryptography vs. quantum-mechanical logic); there is no shared governing process, so no role-for-role mapping holds."
+}

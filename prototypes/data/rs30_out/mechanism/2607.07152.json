@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "transport of a conserved density along network links via a first-order hyperbolic conservation law (kinematic-wave / cumulative-count propagation), coupled through a moving internal boundary that imposes a traveling capacity constraint linking two co-located flows, with junctions handled as flux-transfer boundary conditions that can back-propagate saturation (spillback)",
+  "brief_reason": "The abstract builds its link model on a link transmission (kinematic-wave) formulation whose inter-flow coupling is the moving-bottleneck theory (a traveling capacity constraint), with node models enforcing flow-transfer conditions and reproducing queue spillback — i.e. conservation-law transport plus a moving internal constraint and junction boundary conditions."
+}

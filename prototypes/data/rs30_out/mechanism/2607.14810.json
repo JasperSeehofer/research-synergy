@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "min-max (mountain-pass) variational search for a saddle-type critical point of an energy functional, paired with a concentration-compactness argument that restores the compactness lost at a scale-critical exponent threshold",
+  "brief_reason": "The abstract obtains a nontrivial solution by recasting the problem variationally and applying the mountain pass theorem together with a concentration-compactness argument to handle the critical (Folland-Stein) growth exponent, after a change of variables reduces it to that variational setting."
+}

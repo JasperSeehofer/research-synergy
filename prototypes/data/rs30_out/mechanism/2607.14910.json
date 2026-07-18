@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a low-dimensional parametric family of solutions to a governing field equation that continuously deforms (interpolates) between qualitatively distinct regimes — a singularity-free regular state, an integrable-singularity state, and a singular reference solution recovered as a limiting case — while preserving an invariant boundary/horizon structure across the family",
+  "brief_reason": "The abstract describes a class of geometries fixed by just two parameters that interpolates between regular configurations, integrable-singularity configurations, and the Kerr solution as a limiting case while keeping the same event horizon, i.e. a two-parameter deformation/interpolation family that regularizes a singular reference solution under structural constraints."
+}

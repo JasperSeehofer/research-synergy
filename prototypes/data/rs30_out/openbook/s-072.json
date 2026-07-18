@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A's machinery is geometric-elastic: static curvature converts flexural motion into in-plane shear that couples to a fixed Hall-viscosity tensor, producing a torque proportional to mean-square curvature. Paper B's machinery is statistical generalisation in finetuned language models, where narrow training data induces broad out-of-distribution ideological shifts. There is no shared governing equation, transition, or transferable process — at most a superficial 'small input produces broad effect' theme, which is not shared mechanism, so no coherent role-for-role mapping holds."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Counterfactual outcome-based precision audit of a binary screening/rejection rule — estimating its true-positive-to-false-positive (benefit-to-harm) ratio by tracking the realized forward outcomes of the items the rule filtered out and binning each into ordered payoff/outcome tiers",
+  "brief_reason": "The abstract collects post-rejection forward-market samples for filtered-out events, classifies each under a five-tier outcome rule, and computes a save-to-miss ratio per filter, additionally using a matched-cohort base-rate comparison (48.9% vs 57.6% 'gone') to test whether one tier actually stratifies risk."
+}

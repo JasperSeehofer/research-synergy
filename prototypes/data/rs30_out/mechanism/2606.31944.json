@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "free-probability derivation of the limiting eigenvalue spectrum of a large random matrix via a closed self-consistent functional equation for its moment/Stieltjes transform",
+  "brief_reason": "The abstract uses a free-probability approach to derive a closed functional equation for the moment generating function of the limiting spectrum of a random non-normal Gaussian matrix, extracting tail-eigenvalue behavior from that self-consistent transform equation."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a renewal-reset (stochastic restart) construction in which a jump/random-walk process is intermittently returned to a fixed state at random renewal times, expressing the reset process's transition density as a renewal integral (mixture/convolution) over the un-reset propagator, followed by tail/asymptotic analysis of that integral",
+  "brief_reason": "The abstract derives an explicit representation for the distribution of a Lévy (jump) process subject to total stochastic resetting and uses it to extract asymptotic estimates of the transition densities, which is the renewal-restart mechanism of writing a reset process's density from the un-reset propagator and analysing its asymptotics."
+}

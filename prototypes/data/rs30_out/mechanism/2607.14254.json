@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a tight empirical power-law scaling relation between two directly-measured observables, calibrated (anchored) on a reference subsample with independently known values, then used as a proxy/standard-ruler estimator to infer an otherwise-unmeasurable quantity across the whole sample and constrain the parameters of a global model",
+  "brief_reason": "The method rests on the L(Hβ)-σ relation calibrated on local anchor systems with primary distance measurements and extended across the full sample as an independent distance estimator from which model parameters are then inferred."
+}

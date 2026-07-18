@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a weighted partition-function / generating-function over the configurations of a combinatorial matching model (equivalently the order filters of a partially ordered set), with each configuration carrying a multiplicative activity parameter, whose total sum defines a one-parameter deformation of a quantity",
+  "brief_reason": "The abstract builds a real-valued function q -> [[x]]_q by assigning an activity parameter q to configurations of an (inhomogeneous) dimer/perfect-matching model, shown equivalent to enumerating filters in a poset, and summing their weights, which is exactly a partition-function-style weighted enumeration producing a q-deformation."
+}

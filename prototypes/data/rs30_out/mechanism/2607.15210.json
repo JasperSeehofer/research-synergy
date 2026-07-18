@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "probabilistic existence proof by random construction: drawing structured, correlated random projections/subspaces from an invariant measure and using concentration estimates to show that, with positive probability, an extremal functional of a composite (tensor-product) system falls strictly below the sum of its parts — a randomized counterexample to an additivity/subadditivity inequality",
+  "brief_reason": "The abstract proves that additivity fails by combining two correlated random-projection constructions (a product-conjugate witness and a transpose-complement rank-defect witness), i.e. it establishes the existence of a counterexample to an additivity inequality via randomized constructions rather than an explicit one."
+}

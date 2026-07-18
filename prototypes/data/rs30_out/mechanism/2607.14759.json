@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "locating a system's operating set-points by extremizing the variance of its output response under randomly dithered control-parameter perturbations, where the response-variance-versus-parameter curve has a known sinusoidal (|sin|/|cos|) form whose minima mark the target points",
+  "brief_reason": "The abstract identifies calibration points from minima of the measured output-power variance under controlled random phase perturbations, with the variance following a characteristic |sin(theta)| (and complementary |cos(phi)|) dependence that pins the operating points."
+}

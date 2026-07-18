@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Symplectic (canonical-structure-preserving) linear propagation of the second-moment/covariance statistics of small Gaussian fluctuations about a nonlinear mean-field trajectory, followed by normal-mode diagonalization of the covariance matrix (symplectic/Williamson eigenvalues) to yield entropy and effective-dimensionality measures",
+  "brief_reason": "The abstract evolves the classical mean field together with commutator-preserving Bogoliubov matrices U and V to build covariance matrices whose symplectic (Williamson) eigenvalues give von Neumann entropy, purity, and a few-dominant-mode structure, which is exactly linearized Gaussian-fluctuation transport about a nonlinear background under a symplectic map."
+}

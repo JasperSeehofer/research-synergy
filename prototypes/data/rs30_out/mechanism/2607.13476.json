@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a matching information-theoretic query/sample-complexity argument — a distinguishability (hypothesis-testing) lower bound holding even over adaptive memoryless strategies, paired with a constructive achievability protocol meeting it — that yields a provable complexity separation between agents restricted to single-shot measurement-and-classical-memory and agents that can coherently store and jointly process across repeated oracle interactions",
+  "brief_reason": "The abstract pins the optimal query complexity to within a constant factor by proving an Ω lower bound against all incoherent (even adaptive, ancilla-assisted) protocols and exhibiting a matching O upper-bound protocol, thereby establishing a rigorous separation between memoryless and joint-memory learners."
+}

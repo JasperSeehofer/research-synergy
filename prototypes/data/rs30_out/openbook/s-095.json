@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "master-equation description of a system coupled to its environment (GKLS)", "b_element": "stochastic dynamics of a finite population subject to demographic noise"},
+    {"a_element": "relaxation to a non-canonical steady state (thermalisation)", "b_element": "settling into a long-lasting polymorphic state"},
+    {"a_element": "system-environment coupling constants", "b_element": "demographic noise strength in the finite population"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is generic — both describe a stochastic system relaxing to a nontrivial long-time state — but the governing machinery differs: paper A is a quantum dissipative GKLS master equation whose specific content is a detailed-balance analogue and coupling constants driving thermalisation, whereas paper B is demographic-noise-driven evolutionary game dynamics analysed by timescale separation to explain noise-induced polymorphism, and A's central elements (coupling strengths, detailed balance, experimental parameter extraction) have no role-for-role counterpart in B's noise-versus-selection mechanism."
+}

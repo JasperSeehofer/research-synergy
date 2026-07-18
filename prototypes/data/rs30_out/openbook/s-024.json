@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A's machinery is homological BV/BFV quantization of gauge theories on manifolds with boundary, encoding the failure of the quantum master equation as curvature of an L-infinity algebra; paper B's machinery is algebraic-geometric computation of orbifold (Roan) Hodge numbers of Fermat-type Calabi-Yau threefolds, counting stringy Euler numbers via the Vafa formula and relating Borcea-Voisin and BHK mirror constructions. These are different mechanisms (renormalized homological perturbation and master equations vs. combinatorial orbifold cohomology counting), with no role-for-role correspondence beyond both being cohomology-flavored mathematical physics."
+}

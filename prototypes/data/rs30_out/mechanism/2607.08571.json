@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reconstruction of an unknown vector field from data by a single globally regularised least-squares fit onto a dictionary of locally-adapted radial-basis (kernel) functions, whose kernel shapes are set per region by clustering the local geometry of the data",
+  "brief_reason": "The abstract's method clusters to read local geometry, shapes a radial-basis library whose kernels adapt to each region, and fits the field onto that library by one global regularised least-squares solve to obtain an explicit differentiable field."
+}

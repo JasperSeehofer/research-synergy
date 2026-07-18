@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a weighted fractional-covering (LP-duality) bound that certifies an extremal optimum by decomposing the structure into overlapping translated local pieces and collapsing an infinite family of covering constraints into a single finite rational/integer linear feasibility system with checkable certificates",
+  "brief_reason": "The abstract bounds the maximum-independent-set number by introducing weighted local covers of the graph by translated induced subgraphs whose covering conditions reduce, for infinitely many parameters, to a finite rational linear system supported by independently checkable certificates."
+}

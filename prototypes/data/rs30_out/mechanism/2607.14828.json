@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "mesh-free Lagrangian particle discretization of continuum field equations, in which field values and their spatial derivatives at any location are reconstructed by kernel-weighted (smoothing-convolution) interpolation over co-moving sample points",
+  "brief_reason": "The abstract centers on the Smoothed Particle Hydrodynamics method as a numerical scheme for evolving ideal-gas/continuum dynamics via meshless kernel-based derivatives applied to moving particles, which is the transferable machinery independent of the compact-object subject matter."
+}

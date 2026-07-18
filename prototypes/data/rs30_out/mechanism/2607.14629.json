@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a constructive augmentation of a constraint-satisfaction / graph-coloring problem in which adding derived elements introduces new adjacency (compatibility) constraints that destroy the existence of a consistent global assignment, with a sharp critical threshold in the size of the generating set separating a satisfiable (colorable) regime from an unsatisfiable (uncolorable) one",
+  "brief_reason": "The abstract describes vectors mapped to compatibility contexts whose extension adds new contexts that turn a colorable configuration into an uncolorable one, with an exact size threshold (five-vector parent sets stay colorable, six-vector sets force a contradiction)."
+}

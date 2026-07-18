@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "identification of an invariant subspace as the simultaneous fixed-point (common +1 eigenspace) of a commuting abelian group of constraint operators, together with a change of generating set of that constraint group to remove redundant generators",
+  "brief_reason": "The abstract states that both settings use constraints to single out a specific subspace of the full space and then constructs an alternative generating set (binary Gauss stabilizers) for that same invariant subspace, using it to eliminate redundancies — i.e. selecting a subspace via a commuting constraint group and re-choosing its generators."
+}

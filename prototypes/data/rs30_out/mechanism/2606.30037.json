@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "representing a conditional predictive distribution as a finite weighted mixture of Gaussian components (a mixture-density model) fitted by optimizing a proper scoring rule, so that heavy tails and multimodality are captured beyond what a single unimodal density allows",
+  "brief_reason": "The abstract's central comparison is between a point head, a single-Gaussian density head, and a K=4 Gaussian-mixture density head, with the mixture found to capture tail risk (via CRPS/pinball proper scoring) beyond a unimodal Gaussian, especially in high-volatility regimes."
+}

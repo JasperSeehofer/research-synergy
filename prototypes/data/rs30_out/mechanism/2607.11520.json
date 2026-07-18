@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "multi-parameter scaling limits (separation of scales) of a measure-valued Markov jump process of birth, death, and mutation on discrete individuals, reducing a stochastic microscopic particle process to effective deterministic macroscopic dynamics as population size, time, mutation rate, and mutation step size are jointly rescaled",
+  "brief_reason": "The abstract centers on a stochastic individual-based Markov-process model whose 'emerging scaling limits' — driven by scaling parameters of time, population size, mutation rate, and mutation step size — produce the effective large-scale phenomena, which is exactly a separation-of-scales scaling-limit reduction of an interacting particle jump process."
+}

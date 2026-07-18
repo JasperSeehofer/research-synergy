@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "two-point angular correlation and spherical-harmonic (multipole) power-spectrum analysis of a point pattern on a sphere, testing it against the null of a uniform isotropic distribution to detect directional anisotropy",
+  "brief_reason": "The abstract tests isotropy of points (FRBs) on the sky using the two-point angular correlation function and a sigma-map angular power spectrum whose low-multipole components are checked for statistically significant directional deviation from the isotropic expectation."
+}

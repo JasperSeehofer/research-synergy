@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "first-passage / persistence analysis of an ensemble of stochastic (random-walk) processes coupled through a shared, self-generated history-dependent (non-Markovian) memory field, made exactly solvable by a collective-field representation that yields persistence/decay exponents and ordering (splitting) probabilities",
+  "brief_reason": "The abstract derives exact persistence exponents and splitting probabilities for N random walkers interacting via a shared saturating trail field, obtaining them from an exact representation of the collective memory field."
+}

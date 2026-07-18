@@ -1,0 +1,10 @@
+{
+  "mapping": [
+    {"a_element": "discrete point set of ~92M halo positions sampling the cosmic density field", "b_element": "discrete set of local measurements/projections recorded along the observer's worldline"},
+    {"a_element": "Delaunay tessellation assembling the sampled points into a simplicial complex", "b_element": "simplicial complex assembled out of the recorded measurements"},
+    {"a_element": "topology extracted by DisPerSE from the complex (filament network, density maxima/minima, halo connectivity)", "b_element": "topological information about spacetime read off from the complex"},
+    {"a_element": "preserving correct global topology despite block-decomposition and boundary artifacts", "b_element": "capturing topology even when the spacetime geometry is fluctuating"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both recover the topology of an underlying space from a discrete set of local samples by assembling those samples into a simplicial complex and reading off its topological invariants: DisPerSE's Delaunay tessellation of halo positions plays the same role as the observer's worldline-measurement complex, and both target a topology robust to perturbation (tiling boundaries vs. spacetime fluctuations). The concrete build rules differ (empty-circumsphere geometry vs. von Neumann-algebra projections), but the transferable machinery -- simplicial-complex reconstruction of a space's topology from local data -- is shared."
+}

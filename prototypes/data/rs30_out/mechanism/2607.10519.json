@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an axiomatically-characterized time-consistency (dynamic-programming / Bellman) constraint that forces an ex-ante worst-case (minimax) optimal plan to coincide with its interim-optimal continuations after each information update, eliminating the incentive to deviate once new observations arrive",
+  "brief_reason": "The abstract poses the tension that ex-ante-optimal rules (e.g. minimax regret) may prescribe deviations after the data realization and resolves it by axiomatizing optimality criteria whose sequential prescriptions stay consistent across information updates, which is exactly a dynamic/time-consistency constraint on a worst-case optimization."
+}

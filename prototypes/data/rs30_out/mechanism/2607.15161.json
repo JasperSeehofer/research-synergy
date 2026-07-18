@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "baseline-subtracted residual as the transfer signal: isolating the effect of an intervention by taking the difference between a post-intervention state and its pre-intervention reference, and using that difference (rather than the absolute post-intervention state) as the quantity to be matched/transferred",
+  "brief_reason": "The method defines its supervisory 'delta signal' as the difference between the tuned teacher model and its untuned base model, thereby subtracting a reference to isolate and transfer only the change induced by the intervention."
+}

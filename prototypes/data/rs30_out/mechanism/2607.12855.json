@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Design-based inverse-probability-weighting (Horvitz-Thompson / Hajek) estimation of population averages under a known randomized assignment, where each unit's response is governed by the configuration of randomized binary states within a bounded-radius neighborhood on a network (a local 'exposure mapping'), and observed outcomes are reweighted by the known probability of each realized local exposure to recover unbiased averages",
+  "brief_reason": "The abstract builds Horvitz-Thompson and Hajek estimators of effects tied to the treatment configuration within an h-distance neighborhood, using two known Bernoulli assignment probabilities, and quantifies the bias incurred when the assumed exposure region is wrong -- the hallmark of inverse-probability-weighted design-based estimation over a local exposure mapping."
+}

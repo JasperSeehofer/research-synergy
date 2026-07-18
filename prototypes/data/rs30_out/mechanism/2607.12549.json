@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "constrained maximization of an information-theoretic (mutual-information) functional over an input probability distribution subject to second- and fourth-moment constraints, whose optimizer is a discrete, finitely-supported measure concentrated on a few radial shells (concentric rings)",
+  "brief_reason": "The abstract reduces the design to the capacity of a Gaussian channel under power (second-moment) and kurtosis (fourth-moment) constraints and finds the capacity-achieving input has discrete amplitude support with a concentric multi-ring geometry, i.e. optimizing a distribution under moment constraints yields a finitely-supported optimal measure."
+}

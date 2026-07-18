@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "representing a set of feasible outcomes as the linear projection of a polytope whose essential facets are flow-conservation constraints on a network, so that optimizing any linear objective reduces to a polynomial-size network-flow linear program and every feasible point decomposes as a convex combination of the polytope's extreme points (vertices)",
+  "brief_reason": "The abstract states the achievable welfare region coincides with a projection of a polytope defined by polynomially many linear constraints corresponding to flow conservation in a 'discounted' flow network, giving a polynomial-time optimizer for linear objectives and a decomposition of any market into a convex combination of 'extremal' points."
+}

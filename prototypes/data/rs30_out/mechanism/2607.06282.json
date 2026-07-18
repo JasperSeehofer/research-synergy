@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "axiomatic uniqueness characterization: pinning down a single object as the one and only element satisfying a minimal list of consistency/invariance axioms (elimination of dominated alternatives, indifference/interchangeability of equivalent alternatives, and a sure-thing/independence-under-uncertainty condition)",
+  "brief_reason": "The abstract derives its target object as 'the unique solution concept' that satisfies a small set of stated properties (never recommends a dominated action, treats payoff-equivalent actions interchangeably, respects the sure-thing principle), which is exactly a representation-style axiomatic uniqueness theorem."
+}

@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "covariance matrix Σ of the subset-indicator vector and its Moore-Penrose pseudoinverse Σ^†, treated as a Laplacian-type operator", "b_element": "weighted (hyper)graph Laplacian built from the fermion-to-qubit encoding"},
+    {"a_element": "effective resistance (e_i-e_j)^T Σ^† (e_i-e_j) — a Laplacian spectral quantity", "b_element": "algebraic connectivity (Fiedler-type Laplacian eigenvalue) of the kinetic vs. interaction hypergraphs"},
+    {"a_element": "constant-stretch correlated sampling — a coupling between probability measures on the hypersimplex", "b_element": "optimal transport of probability measures in XBK coupling space"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlaps are generic shared toolkits — Laplacian spectral quantities (effective resistance vs. algebraic connectivity) and couplings between measures (correlated sampling vs. optimal transport) — not a common governing process: paper A proves a probabilistic covariance inequality (e_i-e_j)^T Σ^† (e_i-e_j) ≤ 1/v_i+1/v_j to guarantee correlated sampling from an external-field measure, whereas paper B constructs a hypergraph-geometry framework to characterize the physical/structural evolution of fermion-to-qubit encodings, so no role-for-role mapping drives both."
+}

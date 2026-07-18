@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Axiomatic aggregation of a profile of individual threshold (pass/fail against a fixed family of sufficiency levels) classifications into a single complete preorder (ranking), uniquely pinned down by a set of consistency axioms and implementable by a strategy-proof majority/median voting protocol.",
+  "brief_reason": "The abstract builds grading rules from a finite family of threshold ('sufficientarian') judgements on individuals, characterizes the total preorders they induce, and shows a class of unanimity-respecting, strategy-proof protocols (simple majority for odd agent counts) selects one specific rule — i.e., an axiomatically characterized, strategy-proof aggregation of threshold classifications into a ranking."
+}

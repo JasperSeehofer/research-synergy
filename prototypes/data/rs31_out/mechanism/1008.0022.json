@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "linear-stability / spectral criticality of a propagation process on a network, in which the leading (Perron) eigenvalue of the weighted adjacency matrix crossing unity marks the critical threshold that maximizes the system's responsive (dynamic) range",
+  "brief_reason": "The abstract states that the largest eigenvalue of the weighted adjacency matrix governs the dynamic range and that a largest eigenvalue equal to one corresponds to the critical regime with maximum dynamic range, i.e. the spectral radius of the coupling operator sets the critical point."
+}

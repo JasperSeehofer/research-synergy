@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "second-order degenerate perturbation theory that reduces a pair of coupled subsystems to an effective inverse-power (1/R^6) pairwise interaction and diagonalizes it over a manifold of degenerate internal modes, with the collective outcome governed by the extremal (minimum-magnitude) eigenvalue of the coupling matrix rather than its mean",
+  "brief_reason": "The abstract computes van der Waals potentials as second-order dipole-dipole couplings in the limit where one energy scale (fine structure) dominates, resolves them across all degenerate Zeeman/angular-momentum channels, and stresses that the effective performance is set by the weakest coupling among the degenerate states, not the average."
+}

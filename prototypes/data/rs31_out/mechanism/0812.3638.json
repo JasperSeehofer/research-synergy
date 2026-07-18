@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a spectral-density order-parameter relation: an order parameter for spontaneous symmetry breaking is proportional to the density of eigenvalues of a linear self-adjoint operator at the zero-eigenvalue edge of its spectrum, obtained by counting eigenmodes within a small low-energy spectral window",
+  "brief_reason": "The abstract invokes the Banks--Casher relation linking spontaneous symmetry breaking to a non-zero density of low-lying Dirac-operator modes and computes the order parameter (the condensate) simply by counting modes in a given energy interval."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an exact duality (canonical exchange of a conjugate variable pair) that maps a driven nonlinear oscillator's equation of motion onto a formally identical equation for its conjugate variable, so a periodic external drive produces the same mode-locking/synchronization plateaus in the dual observable",
+  "brief_reason": "The abstract establishes that the quasi-charge dynamics is exactly dual to the standard phase dynamics via conjugate variables (with an inductance term essential to make the duality exact), predicting the dual analogue of drive-induced locking steps."
+}

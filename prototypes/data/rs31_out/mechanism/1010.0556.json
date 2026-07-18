@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "convex relaxation of a combinatorial subset-selection problem: replacing a non-convex sparsity/cardinality constraint with a convex penalty (a norm generalizing the l1 norm) added to a quadratic loss, where the penalty encodes structural prior knowledge, then solving the resulting convex regularized minimization",
+  "brief_reason": "The abstract 'relaxes' the combinatorial problem of selecting nonzero components by regularizing the squared error with a family of convex penalty functions that subsume the l1 norm and encode structural prior knowledge, solved via a convergent optimization algorithm."
+}

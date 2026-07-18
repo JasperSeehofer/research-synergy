@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "large-deviations error exponents for binary hypothesis testing — the exponential decay rate of the discrimination error probability between two candidate distributions, characterized by Chernoff/Hoeffding-type divergence bounds, extended from independent to weakly-correlated sequences via a factorization (subadditivity) property",
+  "brief_reason": "The abstract centers on quantum Chernoff and Hoeffding bounds for the error exponents of a binary hypothesis-testing problem, generalizing them from product (independent) states to correlated states that obey a factorization property."
+}

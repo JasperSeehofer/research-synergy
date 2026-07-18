@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a dynamical attractor solution of a nonlinear evolution flow that pulls generic initial conditions onto a single universal trajectory, so that fluctuations about that trajectory are amplified into a scale-invariant (power-law) spectrum from one degree of freedom alone",
+  "brief_reason": "The abstract states that a single scalar field produces nearly scale-invariant fluctuations through an 'adiabatic mechanism' in which the background evolution is a dynamical attractor, i.e. the machinery is an attracting trajectory of a nonlinear flow whose perturbations acquire a scale-free spectrum."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a one-parameter deformation of the canonical raising/lowering (ladder) operator commutation relation — conjugate operators B, B† obeying the deformed relation BB† − q·B†B = 1 realized as differential operators — whose factorized number operator B†B fixes the spectrum and generates its lowering-operator-eigenstate (coherent-state) families, with an intertwining (factorization) relation producing spectrum-preserving partner operators",
+  "brief_reason": "The whole method is built on operators satisfying the q-mutation relation BB†−qB†B=1 given a differential representation, from which the number-operator Hamiltonian h₁=B†B, its non-linear/Gazeau-Klauder coherent states, and (via intertwining operators) almost-isospectral partner Hamiltonians all follow."
+}

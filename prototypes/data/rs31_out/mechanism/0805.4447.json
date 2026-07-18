@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Linear (normal-mode) stability analysis of stationary solutions of two linearly-coupled nonlinear field equations: linearize about a stationary state and evaluate the growth rates of small perturbation modes to classify each mode as dynamically stable or unstable, with the growing mode identified as a transverse modulational (snake-type) instability of a phase-difference domain wall between the two coupled fields.",
+  "brief_reason": "The abstract determines that the uniform stationary ground state is stable for any coupling strength while an excited state with a π phase difference is unstable and interpretable as a snake instability, which is exactly a normal-mode growth-rate stability analysis of stationary states of two tunnel-coupled nonlinear fields."
+}

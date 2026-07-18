@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an algebraic/categorical axiomatization in which universally-characterized product-like operations imposed on a compositional two-dimensional algebraic structure force a symmetric monoidal (associative, commutative tensor) structure to emerge",
+  "brief_reason": "The abstract axiomatizes 'cartesian' (product-like, universally defined) structure on general bicategories and proves this structure automatically yields a symmetric monoidal structure, i.e. product-type universal operations generating a commutative tensor composition."
+}

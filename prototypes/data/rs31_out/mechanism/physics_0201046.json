@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "asymptotic characterization of the finite-sample systematic bias of an estimator of a nonlinear (exponential-type) average, expanded in powers of 1/N via corrections to the central limit theorem, with heavy-tailed stable (Lévy) distributions governing the estimator's convergence",
+  "brief_reason": "The abstract analyzes the inherent inaccuracy of estimating a non-linear average from N data values, giving its exact 1/N asymptotic behavior and a universal law derived from corrections to the central and other limit theorems in which stable (Lévy) probability distributions play the key role."
+}

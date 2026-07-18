@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "construction of the ring of polynomial invariants of a group action — a finite generating set of primary invariants together with their non-linear algebraic relations (syzygies), enumerated by the Hilbert series (a graded generating function counting independent invariants at each degree)",
+  "brief_reason": "The abstract studies a 'ring of invariants' with 'non-linear relations among the basic invariants' and computes the 'Hilbert series,' which is precisely classical invariant theory: generators, syzygies, and a graded counting function for a group action."
+}

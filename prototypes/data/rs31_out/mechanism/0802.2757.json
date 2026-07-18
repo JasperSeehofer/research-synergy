@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "real-space renormalization-group (recursive coarse-graining) on a self-similar hierarchical structure, whose singular fixed point yields an anomalous power-law scaling exponent for a random-walk / diffusion process",
+  "brief_reason": "The abstract derives the anomalous mean-square-displacement exponent d_w of random walks on hierarchical (Hanoi) networks directly from a singular renormalization-group fixed point with a boundary layer, making recursive coarse-graining of the walk on a self-similar medium the central machinery."
+}

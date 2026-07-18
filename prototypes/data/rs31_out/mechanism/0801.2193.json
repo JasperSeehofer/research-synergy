@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "annealed global minimization of a rugged cost/energy landscape by adiabatically reducing a controllable fluctuation (noise) term to zero, letting the system tunnel out of local minima and settle into the ground state",
+  "brief_reason": "The abstract describes optimizing complex cost/energy functions by introducing fluctuations that are then slowly reduced to zero (annealing) to reach the minimum of a spin-glass-like landscape, which is the general fluctuation-annealing optimization mechanism independent of its quantum realization."
+}

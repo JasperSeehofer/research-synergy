@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "relaxation of a system toward a stationary/equilibrium distribution that is dynamically frozen out for those modes whose intrinsic relaxation rate is slow relative to a time-dependent driving (expansion) rate — a timescale-competition / freeze-out threshold governed by an inequality between the two rates",
+  "brief_reason": "The abstract states that relaxation to equilibrium is suppressed, causing a 'freezing' of nonequilibrium, precisely for modes whose time evolution satisfies a certain inequality (their physical wavelength exceeding the Hubble radius), i.e. modes too slow to keep up with the expansion-driven change."
+}

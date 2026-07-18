@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "strong-disorder real-space renormalization (recursive decimation of the locally largest coupling/energy scale in a strongly heterogeneous system), flowing to an infinite-disorder fixed point with universal critical exponents and activated (exponential) dynamical scaling",
+  "brief_reason": "The abstract's method is the strong disorder renormalization group applied to a random-coupling system, iteratively coarse-graining it toward an infinite-disorder fixed point characterized by universal exponents and dynamical scaling in the Griffiths phases."
+}

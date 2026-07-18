@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Constrained energy minimization of a nonlinear field over configurations of fixed topological (winding) charge — i.e. topological solitons — in which adding a mass/penalty term to the energy functional destabilizes the extended, hollow minimizer and drives a morphological transition to a compact, clustered ground state as the conserved charge grows.",
+  "brief_reason": "The abstract finds minimal-energy multi-soliton configurations at fixed baryon (topological) number by numerically minimizing the field theory's energy, then shows that switching on a pion-mass term makes the shell-like minimizers unstable and collapses them into flat, clustered lower-charge structures."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "driven collective-coordinate dynamics of a topological soliton/interface, whose internal angular degree of freedom obeys a driven-damped-pendulum (Adler-type) equation with a critical-drive depinning threshold that separates a pinned/locked state from propagation, and where an added field-like forcing term shifts or removes that threshold and can drive a discrete (~π) rotation of the internal angle",
+  "brief_reason": "The abstract treats the wall as a configuration with an internal plane angle driven by a current plus an effective field-like term that removes the threshold current (depinning) in one geometry and induces a step motion equal to a ~π rotation of the wall plane in another, which is the signature of pinned-vs-slipping internal-angle dynamics of a driven soliton."
+}

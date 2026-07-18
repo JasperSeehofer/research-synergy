@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a no-go / impossibility proof by algebraic contradiction: predetermined deterministic values assigned to local variables are shown to be over-constrained by a set of correlation requirements, so that no globally consistent joint assignment exists (a parity/sign inconsistency among the forced values)",
+  "brief_reason": "The abstract argues that even when definite outcomes can be predicted with certainty (fixed 'elements of reality'), a slightly richer configuration forces value-assignments that cannot jointly satisfy the required correlations, ruling out any deterministic local assignment by contradiction rather than by a statistical inequality."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "graded generating-function enumeration of the invariants of a group action (a Hilbert series computed by group-averaging via the Molien-Weyl integral, with character expansions encoding the symmetry), used to reconstruct and probe the algebraic variety whose coordinate ring is that ring of invariants",
+  "brief_reason": "The abstract counts gauge-invariant operators using Hilbert-series generating functions from the plethystic programme and the Molien-Weyl formula, with character expansions encoding the global symmetries, and then studies the resulting invariant variety (its irreducible components, degree, and syzygies) by computational algebraic geometry."
+}

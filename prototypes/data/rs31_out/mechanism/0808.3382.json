@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an anomaly/topology-induced linear-response transport law in which an imbalance between two nearly-conserved populations (a chemical potential conjugate to a topologically non-conserved charge) drives a steady directed flux parallel to an applied external field, with the response coefficient fixed by a topological invariant rather than by scattering or gradients",
+  "brief_reason": "The abstract introduces a chiral chemical potential representing an imbalance produced by topological-charge-changing transitions (the axial anomaly) and computes the current it generates along the external magnetic field, i.e. a topologically-fixed proportionality between a population imbalance and a flux parallel to the driving field."
+}

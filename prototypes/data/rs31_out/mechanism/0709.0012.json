@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "topologically protected quantized circulation: a conserved flow whose winding number is pinned to integer multiples and made metastable (decay-free) by a multiply-connected domain, where removing the hole to make the domain simply-connected destroys the protection and forces a higher-charge state to fragment into unit-charge singularities",
+  "brief_reason": "The abstract reports flow that persists without decay and carries integer units of quantized angular momentum only when the trap is multiply-connected, and a two-unit state splitting into two singly-charged vortices once the geometry is made simply-connected, which is exactly topology-stabilized integer-winding circulation."
+}

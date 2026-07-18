@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "analytic continuation / Wick rotation of a real driving parameter onto the imaginary axis, discretized into countable periodic (Matsubara) modes, which recasts a hard real-time driven steady-state problem as an equilibrium-like static problem amenable to stochastic (Monte Carlo) sampling, with results continued back to the physical real value",
+  "brief_reason": "The abstract introduces a 'Matsubara voltage' to carry the finite chemical-potential (driving) shift inside an imaginary-time formulation, i.e. it Wick-rotates the nonequilibrium driving into an imaginary parameter with discrete Matsubara modes so the steady state can be evaluated like an equilibrium quantum Monte Carlo calculation."
+}

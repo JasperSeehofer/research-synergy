@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a non-Markovian stochastic dynamics with a long-range power-law memory kernel (fractional Gaussian driving), reduced via a time-convolutionless master equation to yield anomalous barrier-crossing / first-passage with a power-law escape rate whose exponent scales with the barrier-to-noise-strength ratio",
+  "brief_reason": "The abstract solves subdiffusive escape from a potential well driven by fractional Gaussian noise using a generalized (memory-kernel) Langevin dynamics recast as a non-Markovian time-convolutionless master equation, obtaining an asymptotic power-law escape whose exponent depends on the barrier-height-to-temperature ratio."
+}

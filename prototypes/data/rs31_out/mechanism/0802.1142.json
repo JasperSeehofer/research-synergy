@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "representing an evolving distribution by an overcomplete coherent-state phase-space parametrization whose macroscopic limit is a deterministic Liouville (continuity-equation) flow, sampled by an ensemble of Monte Carlo trajectories so that higher-moment fluctuations are captured beyond a single mean-field trajectory",
+  "brief_reason": "The abstract builds a number-conserving phase-space description on generalized coherent states that yields a Liouvillian flow in the macroscopic limit, simulates it with Monte Carlo, and thereby recovers higher-moment quantities (depletion, instabilities) that a single mean trajectory misses."
+}

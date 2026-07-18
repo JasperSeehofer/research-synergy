@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "constrained maximum-likelihood estimation of unobserved (latent) degrees of freedom, recovered by maximizing a likelihood function over the feasible region carved out by hard consistency/conservation constraints",
+  "brief_reason": "The method infers the unmeasured neutrino momenta by minimizing a likelihood function defined over the kinematically allowed phase-space region subject to the requirement that the configuration be consistent with the decay kinematics, i.e. likelihood optimization of hidden variables within a constraint-defined feasible set."
+}

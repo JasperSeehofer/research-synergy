@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "doubly-robust estimation: combining an outcome-prediction model with an inverse-probability (propensity) weighting model into a single estimator that stays consistent as long as at least one of the two nuisance models is correctly specified",
+  "brief_reason": "The abstract defines the method as applying both an outcome model and a missingness-probability model simultaneously to yield a consistent parameter estimate if either of the two models is correctly specified, which is exactly the two-nuisance-model 'either-one-suffices' consistency machinery."
+}

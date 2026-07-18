@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "steepest-descent (gradient) flow of a convex free-energy/entropy functional on a metric space of probability measures (Wasserstein space), with stability derived from continuity of the flow with respect to convergence of the functional's minimizers",
+  "brief_reason": "The abstract explicitly interprets the governing (Fokker-Planck) equation as the steepest descent flow of the relative Entropy functional in the space of probability measures endowed with the Wasserstein distance, and obtains stability by showing convergence of invariant measures (the functional's minimizers) forces convergence of the dynamics."
+}

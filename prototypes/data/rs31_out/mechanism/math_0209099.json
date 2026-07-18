@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a variational principle in which the structures of interest are singled out as critical points (stationary configurations) of a functional defined on a constrained class of objects, with the local space of solutions parametrized as an open set (a moduli space) inside an underlying linear invariant space",
+  "brief_reason": "The abstract characterizes the six-dimensional structures as critical points of a natural variational problem on closed forms and identifies their local moduli space as an open set in the odd or even cohomology, i.e. an extremization-plus-invariant-parametrization construction."
+}

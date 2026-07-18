@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "critical phase-transition / threshold structure on a network substrate, in which tuning a control parameter drives a system across a critical point (e.g. emergence of a giant connected component via percolation) that separates a subcritical/disordered phase from a supercritical/ordered one, with universality-class scaling and strong finite-size effects near the threshold",
+  "brief_reason": "The abstract centers on critical phenomena, phase transitions, percolation, epidemic thresholds, and the birth of the giant connected component on networks, i.e. control-parameter-tuned transitions across a critical point with universality and finite-size scaling."
+}

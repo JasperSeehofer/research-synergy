@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "orthogonal (Helmholtz-type) decomposition of a flow/current field into an irrotational center-of-mass component and a solenoidal internal-circulation component, whose full velocity substituted into a quadratic kinetic-energy functional generates an emergent effective potential — a hydrodynamic (Madelung-type) reformulation of a wave field as a fluid carrying a self-generated potential",
+  "brief_reason": "The abstract splits the local velocity into a part parallel to the momentum (center-of-mass motion) and an orthogonal internal part, then inserts the complete velocity into the kinetic-energy term of the Lagrangian to derive the emergent 'quantum potential', which is precisely an orthogonal velocity-field decomposition feeding a quadratic energy functional to produce an effective potential."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "deterministic time-evolution of a spatially homogeneous system governed by a first-order ordinary differential equation linking a global expansion/growth rate to the system's energy/matter content",
+  "brief_reason": "The abstract is a purely pedagogical overview of 'cosmology' with no method stated, so the most specific defensible machinery is the field's canonical Friedmann-type evolution equation for a homogeneous background, but the text itself supports only this coarse description."
+}

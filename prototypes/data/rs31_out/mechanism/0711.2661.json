@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "self-sustained limit-cycle oscillation driven by negative effective (linear) damping — a Hopf-type instability in which feedback pumps energy into an oscillator faster than it dissipates, so the amplitude grows and then saturates onto a stable limit-cycle attractor (with possible coexistence/competition of multiple oscillatory modes)",
+  "brief_reason": "The abstract reports 'negative light-induced damping' driving the system into 'a regime of self-induced oscillations' with an 'attractor diagram' and simultaneous excitation of two modes, which is exactly a negative-damping self-oscillator settling onto a nonlinear limit-cycle attractor."
+}

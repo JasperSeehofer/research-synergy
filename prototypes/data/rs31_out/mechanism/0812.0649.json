@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "statistical error reduction of a large measurement catalog by cross-calibrating raw observations against an external reference standard and coadding repeated overlapping measurements, so that random (rms) error falls and the detection threshold is pushed below the single-measurement noise floor",
+  "brief_reason": "This is a data-release descriptor rather than a paper built on one governing equation, so the most specific defensible machinery is its calibration/aggregation pipeline: recalibrating astrometry against a reference catalog (UCAC-2) to cut rms errors and coadding repeat photometry to reach ~2 magnitudes fainter."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "computing a multivariate weighted generating function (graded partition function) of a discrete combinatorial ensemble by expressing it as a vacuum-to-vacuum expectation value of a product of non-commuting vertex/transfer operators, which factorizes the count into a sequence of single-slice operator applications and yields a closed product formula",
+  "brief_reason": "The abstract derives multivariate generating functions that q-enumerate box-coloured plane partitions using the Okounkov-Reshetikhin-Vafa vertex-operator method, i.e. a transfer-operator slicing of the ensemble that produces a graded weighted count."
+}

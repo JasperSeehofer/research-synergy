@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "mean-field / propagation-of-chaos limit: reduction of a high-dimensional linear many-body evolution to a self-consistent nonlinear single-unit (mean-field) equation as the number of interacting components N grows large, with quantitative bounds on the rate at which the exact system's one-body marginal converges to the mean-field solution",
+  "brief_reason": "The abstract derives an effective nonlinear one-body (Hartree) dynamics as the large-N limit of the microscopic N-body (Schroedinger) evolution and proves rate-of-convergence bounds on the difference between the one-particle marginal density and the mean-field solution."
+}

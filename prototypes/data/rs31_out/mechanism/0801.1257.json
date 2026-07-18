@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "exact diagonalization of a bilinear (quadratic) generator of linear dissipative dynamics via a normal-mode/Bogoliubov canonical transformation, reducing the full evolution operator to the eigen-spectrum of a single finite matrix whose eigenvalues give the asymptotic decay/relaxation rates and whose null structure fixes the stationary state",
+  "brief_reason": "The abstract solves the (Lindblad) generator of an n-variable open system whose generator is quadratic in the variables by diagonalizing a single 4n x 4n matrix, and reads off both the non-equilibrium steady state and the asymptotic relaxation rates from that matrix's spectrum."
+}

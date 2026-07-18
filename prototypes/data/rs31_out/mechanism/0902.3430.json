@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "bounding the shift in an expected cost between two probability distributions by a supremum-over-a-function-class discrepancy (an integral-probability-metric-style divergence defined as the worst-case difference in expected loss over the admissible function class), with finite-sample estimation of that discrepancy controlled by complexity-based concentration bounds and the discrepancy then minimized as an objective",
+  "brief_reason": "The abstract defines a 'discrepancy distance' between two distributions tailored to arbitrary loss functions, uses Rademacher-complexity bounds to estimate it from finite samples and to derive transfer/generalization bounds, and then gives algorithms that minimize this empirical discrepancy."
+}

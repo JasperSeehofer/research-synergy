@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "embedding discrete objects as vectors in a co-occurrence/frequency count matrix (rows and columns indexing two kinds of entities), where relatedness between objects is read off as geometric proximity of their vectors",
+  "brief_reason": "The abstract organizes the entire method around 'the structure of the matrix' — term-document, word-context, and pair-pattern matrices whose rows/columns are populated by co-occurrence frequencies and whose vectors encode similarity, which is the bare co-occurrence-matrix vector-embedding machinery independent of the linguistic subject matter."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "path-integral (sum-over-paths / functional integration) representation of the solution operator of a linear second-order differential operator, built from elementary propagator kernels that also encode Dirichlet/Neumann boundary constraints",
+  "brief_reason": "The abstract constructs a path integral that solves a general class of linear second-order PDEs by assembling elementary Dirichlet/Neumann kernels, extending the sum-over-paths solution of the diffusion/Schrödinger propagator to bounded domains."
+}

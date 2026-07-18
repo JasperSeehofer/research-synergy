@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "realization of a symmetry group together with its nested lattice of subgroups as linear transformations on a module of spinor-like objects built from 3x3 Hermitian matrices over a non-associative division algebra (a Jordan-algebra / matrix-over-a-division-algebra construction of a group and its subgroup chain)",
+  "brief_reason": "The abstract builds the exceptional group E6 and its subgroups G2, F4, and SO(9,1) explicitly out of 3x3 octonionic matrices acting on the squares of 3-component \"Cayley spinors,\" which is precisely a matrix-over-a-(non-associative)-division-algebra construction encoding a group and its subgroup structure."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an edge/extreme-value scaling limit of a correlated point process exhibiting a universality-class crossover, where tuning a control parameter across a critical scale (here ~n^{-1/3}) interpolates the limiting law of the extremum between an uncorrelated regime (Poisson points / Gumbel maximum) and a strongly-correlated regime (Airy process / Tracy-Widom maximum)",
+  "brief_reason": "The abstract proves scaling-limit theorems for the eigenvalue point process at the spectrum's rightmost edge and identifies a critical parameter scale (axis ratio of order n^{-1/3}) at which the extreme-value statistics transition between Poisson/Gumbel and Airy/Tracy-Widom, i.e. a threshold-tuned crossover between two universality classes for the maximum."
+}

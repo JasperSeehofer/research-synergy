@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "deformation of an associative algebra's product and coproduct by conjugation with an invertible twist element (a 2-cocycle), where the deformed generators are represented as formal power series in an underlying canonical operator algebra and distinct but equivalent representations (orderings) are related by a group of similarity transformations",
+  "brief_reason": "The abstract builds realizations of noncommutative coordinates as formal power series in the Weyl algebra, all related by similarity transformations, and obtains the star-product from a coproduct via an explicitly derived Drinfel'd twist operator — i.e. a twist/2-cocycle deformation of an algebra realized inside a canonical operator algebra."
+}

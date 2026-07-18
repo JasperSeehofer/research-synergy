@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Bayesian inference of a parameterized model's parameters from noisy observations via Markov Chain Monte Carlo sampling of the posterior, propagating measurement and systematic uncertainties into posterior credible ranges on the parameters",
+  "brief_reason": "The abstract fits a parameterized equation of state to a heterogeneous observed dataset using a Markov Chain Monte Carlo algorithm within a Bayesian framework to infer model parameters and their constrained ranges while accounting for systematic uncertainties."
+}

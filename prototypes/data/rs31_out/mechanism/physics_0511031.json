@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "scaling-collapse reduction of a two-variable response onto a single dimensionless scaling variable, in which two independent control parameters are combined through one parameter-dependent characteristic energy scale so that a family of curves collapses onto a single master curve",
+  "brief_reason": "The abstract posits that the joint influence of two control variables (temperature and density) on relaxation is captured by a single effective interaction energy Einf(rho), i.e. the responses collapse onto one scaling variable set by that density-dependent energy scale."
+}

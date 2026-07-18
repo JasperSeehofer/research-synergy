@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a multiscale renormalization-group flow (iterative coarse-graining across a hierarchy of energy/length scales) that resums a perturbation expansion into a provably convergent series and shows the perturbation only renormalizes a few effective parameters while leaving the low-energy fixed-point behavior unchanged",
+  "brief_reason": "The abstract builds convergent series for the free energy and correlation functions via constructive fermionic renormalization-group methods, finding the interaction merely rescales the effective velocity and wave-function normalization without altering the model's asymptotic infrared properties."
+}

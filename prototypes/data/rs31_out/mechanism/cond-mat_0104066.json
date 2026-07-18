@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a q-generalized (Tsallis nonextensive) heavy-tailed rank-frequency distribution — a single q-exponential/power-law-with-crossover form that interpolates across distinct scaling regimes and generalizes a pure power law",
+  "brief_reason": "The abstract notes the plain power-law (Zipf-Mandelbrot) fits only a restricted range and that all observed regimes, including the large-corpus deviations, are unified within Tsallis' recently introduced mathematical framework, i.e. a q-generalized statistical distribution."
+}

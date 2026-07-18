@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "first-order (linear-response) perturbative expansion of the stationary distribution of a Markov process, in which the unperturbed reference steady state is reweighted by a trajectory-accumulated flux functional, with the correction fixed by controlling the non-commuting order of the long-time and weak-driving limits",
+  "brief_reason": "The abstract derives nonequilibrium stationary distributions for jump and diffusion Markov processes as the reference (Boltzmann) distribution corrected to first order in the driving by the finite transient component of the entropy flux, explicitly clarifying the order in which the stationary and close-to-equilibrium limits are taken."
+}

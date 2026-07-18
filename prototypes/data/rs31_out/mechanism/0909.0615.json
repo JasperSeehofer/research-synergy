@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a combinatorial path-model expansion that rewrites the iterates of an algebraic recursion relation as a generating function summing over weighted paths, so that each iterate emerges as a manifestly positive Laurent polynomial in the initial data",
+  "brief_reason": "The abstract proves that solutions of rank-two recursion relations are positive Laurent polynomials in the initial cluster variables by using a (non-commutative) path model, i.e. a combinatorial sum-over-paths representation whose nonnegative terms make the positivity and Laurent structure manifest."
+}

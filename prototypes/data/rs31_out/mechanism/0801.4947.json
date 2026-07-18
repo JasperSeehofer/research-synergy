@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a signed graded generating-function invariant (an alternating trace that keeps only non-cancelling 'protected' contributions) whose equality between two ostensibly different constructions is proved by a transformation identity for elliptic hypergeometric / q-series integrals",
+  "brief_reason": "The abstract builds an index as a character/generating sum counting protected states and then invokes recently proved theorems on q-series elliptic hypergeometric integral transformation identities to show the index is identical for constructions related by a duality."
+}

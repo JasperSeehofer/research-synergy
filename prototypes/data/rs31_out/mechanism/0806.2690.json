@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "divide-and-conquer coarse-graining: partition an intractable infinite/extended system into small, finite, exactly-solvable subunits, then reconstruct the full-system response by coupling those subunits (perturbatively or via a self-consistent embedding), with the coupling fixed by making a functional stationary with respect to the reference subunit's parameters",
+  "brief_reason": "The abstract's cluster methods (CPT, VCA, CDMFT) all solve a small finite cluster exactly (by exact diagonalization) and then rebuild the extended-system behavior by coupling clusters, with the variational cluster approximation fixing that coupling via the stationary point of Potthoff's self-energy functional over the reference cluster's parameters."
+}

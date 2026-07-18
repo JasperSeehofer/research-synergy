@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a systematic construction of the most general nonlinear derivative-coupling terms in a variational functional such that the resulting Euler-Lagrange equations stay second-order in derivatives (higher-derivative contributions cancel), preserved when the functional is deformed by promoting the flat background metric to a curved one",
+  "brief_reason": "The abstract's whole method is extending flat-space scalar models with purely second-order equations to curved backgrounds while keeping the field equations and stress tensors second-order in both field and metric, i.e. enforcing cancellation of higher-derivative terms under a background deformation."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "iterative renormalization-group coarse-graining of a single interacting degree of freedom coupled to a continuum reservoir: the reservoir's spectrum is logarithmically discretized and diagonalized shell-by-shell, integrating out high-energy scales to resolve the low-energy spectrum and emergent in-gap bound states",
+  "brief_reason": "The abstract solves a single locally correlated site embedded in a structured continuum bath by numerical renormalisation group, iteratively separating energy scales to extract the low-energy spectral response and the position/weight of the emergent bound states."
+}

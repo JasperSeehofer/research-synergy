@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a self-exciting branching (epidemic/Hawkes-type) cascade with a heavy-tailed power-law memory kernel of waiting times, characterized by the power-law impulse-response/relaxation function that follows a perturbation",
+  "brief_reason": "The abstract models bursts as an epidemic cascade in which actions become causes of future actions with a power-law distribution of waiting times, yielding a ubiquitous power-law relaxation of the response function (framed as an extension of the fluctuation-dissipation theorem)."
+}

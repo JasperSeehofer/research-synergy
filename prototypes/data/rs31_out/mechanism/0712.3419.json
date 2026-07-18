@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "random-walk (diffusive) accumulation of a fluctuating phase/displacement variable over time, producing a flat (white) power spectral density whose absolute amplitude is fixed by a single characteristic timescale",
+  "brief_reason": "The abstract states the signal is an accumulation of phase offset with time that mimics a random walk of the optical elements, yielding a flat power spectral density set by the Planck time."
+}

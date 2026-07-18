@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a closed-form small-time asymptotic series expansion of the transition probability density (Green's function) of a Markov diffusion / stochastic differential equation, with explicitly computable coefficients, used to approximate the exact likelihood of discretely sampled trajectories",
+  "brief_reason": "The abstract builds closed-form expansions of the log-likelihood of a multivariate diffusion sampled at discrete intervals, with coefficients derived explicitly from the diffusion's structure and shown to converge to the true likelihood, which is the standard short-interval series expansion of a diffusion's transition density."
+}

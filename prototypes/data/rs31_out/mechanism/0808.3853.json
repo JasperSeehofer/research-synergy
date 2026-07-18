@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a diffusion (Fickian) transport process whose frequency-dependent linear response yields a power-law (1/f) power spectrum, derived by coarse-graining microscopic field equations into an effective-medium description with frequency-dependent transport coefficients",
+  "brief_reason": "The abstract starts from Maxwell's equations, builds a macroscopic effective-medium formalism, and attributes both the observed frequency-dependent conductivity/permittivity and the 1/f power-spectral scaling to ionic diffusion dominating over direct electric-field effects."
+}

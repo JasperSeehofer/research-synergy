@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Monte Carlo estimation of an intractable normalizing-constant (partition-function) integral, and of the ratio of two such integrals, via importance-sampling reweighting of draws from a tractable proposal distribution",
+  "brief_reason": "The abstract's target is approximating the Bayes factor — a ratio of marginal-likelihood (evidence) integrals — via importance sampling, harmonic-mean sampling, and nested sampling, all of which are Monte Carlo reweighting schemes for estimating an intractable normalizing constant."
+}

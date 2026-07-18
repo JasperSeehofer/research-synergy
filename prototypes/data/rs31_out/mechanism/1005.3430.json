@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "auxiliary-variable data augmentation via scale mixtures of normals — representing an intractable non-Gaussian density as a continuous mixture of Gaussians with a latent random variance, so that introducing those latent scale variables makes all conditional distributions Gaussian and enables an iterative Markov-chain Monte Carlo (Gibbs-type) sampler",
+  "brief_reason": "The abstract builds its MCMC schemes by writing both the likelihood and the regularization penalty as scale mixtures of normals, using the mixing (scale) variables as auxiliary latents that turn sampling into repeated draws from conditionally normal distributions."
+}

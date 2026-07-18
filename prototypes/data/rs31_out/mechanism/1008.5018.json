@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "global-in-time nonlinear stability of an equilibrium under small perturbations of a hyperbolic (wave-type) evolution system, secured by a null / non-resonance condition on the quadratic self-interaction that makes perturbations disperse and decay at the linear rate, so no resonant accumulation drives finite-time blow-up",
+  "brief_reason": "The abstract obtains small-data global solutions whose decay matches the linear system exactly because the nonlinearities satisfy a version of the null condition, which is the classic non-resonance mechanism guaranteeing small-perturbation global existence and stability for quasilinear hyperbolic equations."
+}

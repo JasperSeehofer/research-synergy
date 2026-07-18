@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Self-consistent linear-response (random-phase / mean-field) computation of collective normal modes as poles of a screened response function, whose damping is set by the imaginary part where the collective oscillation overlaps a continuum of single-particle excitations, plus a relaxation-time term for coupling to external scatterers/bath modes",
+  "brief_reason": "The abstract computes plasmon (collective-oscillation) losses within a random-phase approximation and number-conserving relaxation-time approximation, with decay arising from overlap with the interband electron-hole (single-particle) continuum and from impurity/phonon relaxation, which is exactly the response-function-pole picture of damped collective modes."
+}

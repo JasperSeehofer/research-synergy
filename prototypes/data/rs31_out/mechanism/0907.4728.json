@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "resampling-based out-of-sample risk estimation: repeatedly partition the data into fit and held-out subsets, average the held-out prediction error to estimate an estimator's generalization risk, and select the candidate that minimizes this estimate",
+  "brief_reason": "The abstract centers on cross-validation used to estimate the risk of an estimator and to perform model selection, which is exactly the machinery of estimating generalization error by holding out data partitions and choosing the model with lowest held-out error."
+}

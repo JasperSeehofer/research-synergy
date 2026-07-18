@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "variational (calculus-of-variations) derivation of the optimal incremental update rule that extremizes an asymptotic performance functional for tracking a time-varying target, closed by plug-in estimators of the system's unobservable macroscopic state variables",
+  "brief_reason": "The abstract determines the best achievable generalization exactly through a variational method that yields an optimal online update law depending on unavailable quantities such as the student's present performance, which are then replaced by constructed estimators to obtain an effective adaptive tracking algorithm."
+}

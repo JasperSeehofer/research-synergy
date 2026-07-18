@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "critical-point scaling in which a diverging correlation length controls the higher-order cumulants of a fluctuating quantity, so that successive non-Gaussian moments grow as increasing powers of that correlation length",
+  "brief_reason": "The abstract ties the cubic and quartic cumulants of the observable to powers of the correlation length xi (~xi^4.5 and ~xi^7), which is the universal critical-fluctuation scaling of moments with a diverging correlation length."
+}

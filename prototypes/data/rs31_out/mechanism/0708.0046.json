@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "L1-norm (absolute-value) penalized least-squares optimization, in which adding a sum-of-absolute-values regularizer to a quadratic objective both stabilizes an ill-conditioned inverse problem and drives the solution toward sparsity",
+  "brief_reason": "The abstract reformulates the task as a constrained least-squares regression and adds a penalty proportional to the sum of the absolute values of the weights that regularizes/stabilizes the optimization and yields sparse solutions, which is exactly L1/lasso-style penalized least squares."
+}

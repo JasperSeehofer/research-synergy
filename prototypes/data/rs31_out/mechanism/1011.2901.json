@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "random-field-theory thresholding of a smooth continuous stochastic field, using the expected topology of its excursion (level) sets to set a threshold that controls the family-wise false-positive rate across a continuum of spatially correlated samples, correcting for multiplicity via the field's correlation structure rather than treating points as independent",
+  "brief_reason": "The abstract centers on random field theory treating data as realizations of a continuous, smooth process and furnishing multiplicity-adjusted p-values through topological inference over the field that is invariant to the geometry of the sampling manifold."
+}

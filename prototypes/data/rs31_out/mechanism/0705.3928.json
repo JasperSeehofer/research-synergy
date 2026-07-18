@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Exact solvability via a free-fermion (linearizing) representation at special commensurate parameter values, mapping an interacting/dissipative system onto a non-interacting one and thereby establishing an exact equivalence (duality) between two distinct models",
+  "brief_reason": "The abstract constructs exact boundary states at the 'magic points' using a fermion representation and uses this to show the dissipative Hofstadter model is exactly equivalent to the critical boundary sine-Gordon model."
+}

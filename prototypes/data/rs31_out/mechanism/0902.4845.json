@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an order-disorder phase transition in a disordered (random-coupling) statistical-mechanical spin model, whose critical point marks a sharp threshold separating a recoverable/ordered regime from an unrecoverable/disordered one, located numerically by Monte Carlo sampling of the phase diagram",
+  "brief_reason": "The abstract maps the error-correction process onto a random 3-body Ising model and locates the error threshold p_c as the model's phase-diagram critical point via Monte Carlo simulation."
+}

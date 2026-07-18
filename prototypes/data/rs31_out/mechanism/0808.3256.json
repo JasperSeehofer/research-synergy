@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "anomalous (super-diffusive) transport in which a linear-response transport coefficient fails to converge to a finite value and instead diverges with system size as a power law L^alpha governed by a universal scaling exponent, tied to an underlying conservation law (broken-dimension universality class)",
+  "brief_reason": "The abstract reports that for momentum-conserving systems in one and two dimensions the thermal conductivity kappa diverges with system size as kappa ~ L^alpha, with strong numerical evidence for a universal exponent alpha = 1/3, which is a size-dependent transport-coefficient / universality-class scaling structure independent of the heat-conduction subject matter."
+}

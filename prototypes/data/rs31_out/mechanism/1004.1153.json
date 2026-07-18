@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "exploiting a symmetry of a family of quantities to generate a complete system of linear relations that constrains a large basis of unknowns so tightly it collapses onto a few generating elements, from which every member is then expressed exactly",
+  "brief_reason": "The abstract states that a 'glue-and-cut' symmetry yields non-trivial relations among the master integrals that constrain them enough that all can be analytically expressed in terms of only a few trivial watermelon-like ones."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "exploiting conformal (scale) invariance at a critical point, where observables are computed as correlation functions of primary operators whose functional form is fixed by the conformal symmetry algebra and by operator identities/fusion relations",
+  "brief_reason": "The abstract derives exact crossing formulas at the critical (percolation) point using conformal field theory, obtaining them from primary-operator correlators and operator identities that reflect the symmetry of the c=0 theory."
+}

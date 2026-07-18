@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "critical slowing down: divergence of equilibrium relaxation timescales as a control parameter approaches a threshold, marking a mode-coupling-type dynamical-arrest (ergodicity-breaking) transition, with a family of distinct threshold values reachable depending on preparation history",
+  "brief_reason": "The abstract locates an avoided mode-coupling singularity near phi_MCT and a divergence of equilibrium relaxation times at phi_0 (an 'ideal glass transition'), plus a continuum of history-dependent divergence/jamming densities, all of which are instances of relaxation-time divergence at a dynamical-arrest threshold."
+}

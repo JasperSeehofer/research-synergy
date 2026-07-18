@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "renormalization-group derivation of universal finite-size scaling functions near a continuous critical point, in which observables collapse onto a single universality-class-determined function of the ratio between system size and the diverging correlation length",
+  "brief_reason": "The abstract states they 'use a renormalization group approach to obtain finite-size scaling functions' to characterize the scaling behavior of a second-order phase transition, which is exactly the RG-based finite-size scaling machinery for extracting universal critical behavior from finite systems."
+}

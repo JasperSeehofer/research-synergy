@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "iterative phase-estimation: extracting an eigenvalue of a linear operator from the phase accumulated under its associated unitary evolution, read out bit-by-bit through repeated controlled-evolution steps and interference measurements",
+  "brief_reason": "The abstract centers on performing the iterative phase estimation algorithm to obtain the energy eigenvalues of a Hermitian operator (the Hamiltonian/Schrodinger operator), which is precisely eigenvalue extraction via the accumulated phase of a unitary evolution."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a line-of-sight (visibility) adjacency rule that maps an ordered sequence of scalar values onto a graph by connecting any two elements whose straight connecting segment is not blocked by the values of the intermediate elements, turning sequential/structural properties into graph-topological ones",
+  "brief_reason": "The abstract defines a 'visibility algorithm' that converts a time series into a graph whose structure inherits the series' properties (periodic->regular, random->random, fractal->scale-free), i.e. a geometric visibility criterion translating an ordered sequence into network adjacency."
+}

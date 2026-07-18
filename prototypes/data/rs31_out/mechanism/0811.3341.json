@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A determinantal point process: an ensemble of randomly placed, mutually repelling points whose k-point correlation functions are all given by k-by-k determinants (minors) of a single reproducing/projection kernel, whose large-parameter asymptotics drive the point density to an energy-minimizing equilibrium measure while local statistics converge to a universal scaling limit and global fluctuations become a Gaussian (log-correlated) field.",
+  "brief_reason": "The abstract defines the objects as determinantal point processes with correlation functions built from a reproducing (Bergman) kernel, and derives an equilibrium limiting density, a universal bulk scaling limit of the correlation functions, and asymptotically Gaussian-free-field fluctuations."
+}

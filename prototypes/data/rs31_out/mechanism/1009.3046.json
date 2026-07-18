@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a discontinuous Galerkin finite-element discretization of a transport/advection PDE: the domain is partitioned into mesh cells, the unknown field is projected onto element-local piecewise-polynomial basis functions that are allowed to jump at cell interfaces, and neighbouring cells are coupled weakly through numerical fluxes across those interfaces, with the scheme constructed to conserve a global integral invariant and preserve positivity of the transported quantity",
+  "brief_reason": "The abstract proposes a discontinuous Galerkin scheme using piecewise (constant) basis functions that is mass conservative, preserves positivity of the distribution function, and weakly enforces continuity across mesh interfaces — i.e. an element-local polynomial Galerkin projection coupled by interface fluxes for integrating an advection-type PDE."
+}

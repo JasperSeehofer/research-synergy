@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Resonant coherent (Rabi) rotation of a two-level quantum system on the Bloch sphere by a driving pulse, where the amplitude of the created coherent superposition is a periodic function of the pulse area and is maximized at odd multiples of pi (pi-pulse), after which the two-state coherence undergoes free Larmor-type precession about a transverse field",
+  "brief_reason": "The abstract creates a coherent superposition of two states by resonant pulsed driving whose efficiency peaks for (2n+1)pi-pulses and then probes the precession of that coherence about a transverse field, which is exactly pulse-area-dependent two-level Rabi control followed by free precession."
+}

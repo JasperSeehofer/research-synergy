@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "distributed gradient-descent optimization of a shared aggregate utility function, decomposed so each agent updates its state along the local partial gradient using only neighborhood information, driving the coupled multi-agent system asynchronously to a local optimum of the global objective",
+  "brief_reason": "The abstract states the method is gradient descent algorithms on a class of utility functions encoding optimal coverage, executed in an adaptive, distributed, asynchronous closed loop across many agents."
+}

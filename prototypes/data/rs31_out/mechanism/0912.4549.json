@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "closed-form evaluation of a structured determinant by factoring it into a product of Cauchy-type matrices and applying the elementary rational product formula for the Cauchy determinant",
+  "brief_reason": "The abstract states the target determinant D_PQ is expressed as the determinant of a product of two Cauchy-like matrices, after which the exact elementary Cauchy-determinant formula gives the result in closed form."
+}

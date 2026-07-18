@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "dimensional-reduction crossover analysis via asymptotic scaling limits of a many-body eigenvalue operator: the space of dimensionless control-parameter ratios is partitioned into regimes in which the high-dimensional operator's ground-state energy provably converges to that of an effective lower-dimensional (in the limit, exactly solvable) model",
+  "brief_reason": "The abstract explicates five parameter regions built from four dimensionless quantities (density, transverse and longitudinal sizes, scattering length) in which a trapped three-dimensional system reduces to one-dimensional (Lieb-Liniger) versus three-dimensional behavior, established by a rigorous asymptotic analysis of the many-body Schroedinger equation."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a relative-entropy / relative-energy comparison functional that measures the discrepancy between a generalized probability-measure-valued solution and a smooth reference solution and, via a Gronwall-type stability estimate, forces the two to coincide as long as the smooth solution exists (weak-strong uniqueness within an enlarged solution class)",
+  "brief_reason": "The abstract's whole result is that measure-valued (probabilistic/generalized) solutions must agree with a classical solution whenever the latter exists, which is precisely the relative-entropy comparison mechanism certifying uniqueness of a broad solution class against a smooth reference."
+}

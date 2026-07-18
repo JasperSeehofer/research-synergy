@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Stein's method of exchangeable pairs: a characterizing-operator comparison technique that bounds the distance between the distribution of a sum of dependent quantities and a target limit law (Gaussian or a non-Gaussian exp(-|x|^{2k})-type law) by constructing a small exchangeable perturbation of the sum, yielding explicit convergence rates",
+  "brief_reason": "The abstract states it develops Stein's method for exchangeable pairs to obtain rates of convergence (optimal Berry-Esseen bounds) for partial sums of dependent variables converging to Gaussian and non-Gaussian limit densities proportional to exp(-mu|x|^{2k}/(2k)!)."
+}

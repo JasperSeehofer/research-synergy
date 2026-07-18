@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Markov-chain Monte Carlo sampling from a doubly-intractable posterior — a target distribution whose parameter-dependent normalizing constant (partition function) cannot be evaluated — using an auxiliary-variable/exchange construction that cancels the intractable constant instead of computing it, accelerated by a population (parallel interacting-chain / tempering) scheme",
+  "brief_reason": "The abstract's central difficulty is a normalising constant that depends on model parameters and is unavailable, which is resolved by an MCMC algorithm that circumvents calculating that constant, with population MCMC added to speed convergence and mixing."
+}

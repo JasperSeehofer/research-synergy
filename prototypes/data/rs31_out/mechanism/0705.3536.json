@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "empirical test for reduction of a continuous symmetry group to a subgroup by checking whether observables stay constant along the group's orbits — comparing configurations that share the same group-invariant but differ by the group action, where residual dependence reveals which subgroup actually survives, estimated via Monte-Carlo (importance) sampling of a statistical ensemble on a discretized lattice",
+  "brief_reason": "The method measures Wilson loops of equal area but different shapes (configurations sharing the area-preserving-diffeomorphism invariant but related by the group action) via lattice simulation, and reads the surviving SL(2,R) subgroup off the residual shape-dependence."
+}

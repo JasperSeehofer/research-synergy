@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Zeta-function regularization: meromorphic (analytic) continuation of a one-complex-parameter family Tr(A P^{-s}) over the whole plane and extraction of invariant linear functionals (residue/trace) from the residues and higher-order-pole Laurent coefficients, organized by a filtered/graded algebra structure",
+  "brief_reason": "The abstract builds its residue and trace functionals from the meromorphic continuation of the generalized zeta-function Tr(AP^{-s}) with possibly higher-order poles, reading off 'higher' residues and the Kontsevich-Vishik trace from the pole structure across the algebra's order/log bigrading."
+}

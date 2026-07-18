@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Elimination of a spurious, destabilizing higher-derivative degree of freedom by fine-tuning the coefficients of a perturbative nonlinear (polynomial) interaction expansion order by order to enforce a degeneracy/constraint condition, so that the equations of motion remain second-order and no unstable extra mode propagates.",
+  "brief_reason": "The abstract states that ghost-like pathologies in the helicity-0 self-interactions and helicity-0/-2 mixing disappear only for special choices of the polynomial interaction coefficients (argued to hold to all orders) and that a change of variables absorbs the mixing to generate the second-order Galileon interactions, i.e. tuned expansion coefficients cancel an unstable propagating mode."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "sequential exploration-exploitation allocation under uncertainty with a linear-in-parameters payoff structure (a stochastic linear bandit), achieving cumulative-regret growth of order (dimension)*sqrt(horizon) via alternating explore/exploit phases, matched by an information-theoretic minimax lower bound",
+  "brief_reason": "The abstract poses repeatedly choosing among options whose expected payoff is an unknown linear function of an r-dimensional vector, minimizing cumulative regret with a phase-based explore-then-exploit policy and proving matching Theta(r*sqrt(T)) lower and upper bounds, which is the generic regret-minimizing sequential-allocation machinery."
+}

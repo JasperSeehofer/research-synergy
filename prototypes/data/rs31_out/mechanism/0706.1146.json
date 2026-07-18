@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "deriving governing field equations by extremizing a generalized action functional via a variational principle, using two alternative variation schemes (varying a single field vs. varying two fields independently, i.e. metric vs. Palatini), so that enriching the functional's form reproduces observed anomalies without positing extra unseen components",
+  "brief_reason": "The abstract's only concrete machinery is the 'metric and Palatini formalism' — two variational schemes for obtaining equations of motion from an action — used to 'extend' the governing functional as an alternative to introducing extra ('dark') components, though the review-style abstract is thin and supports little beyond this action-extremization structure."
+}

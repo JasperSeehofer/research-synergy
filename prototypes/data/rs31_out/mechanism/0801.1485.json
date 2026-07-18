@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "destructive interference between two coupled damped resonators (a strongly-radiating lossy mode and a weakly-coupled low-loss mode) that opens a narrow transparency window with steep normal dispersion and large group delay at a local minimum of loss",
+  "brief_reason": "The abstract reports strong dispersion at a local minimum of losses and considerable pulse delay described as an analog of electromagnetically induced transparency, which is the signature of two interfering coupled resonances producing a slow-light transparency window."
+}

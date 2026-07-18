@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "self-consistent variational minimization of an energy functional written in terms of a single aggregate field, reducing an intractable many-body interacting system to an effective one-body problem solved iteratively to self-consistency, with the state expanded in a truncated spectral (plane-wave) basis",
+  "brief_reason": "The abstract states the codes are 'based on density-functional theory, plane waves, and pseudopotentials,' i.e. the many-electron problem is recast as minimization of a density functional yielding self-consistent effective single-particle equations solved in a plane-wave basis."
+}

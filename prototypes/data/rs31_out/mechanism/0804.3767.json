@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a damped two-mode coupled system whose behavior is set by a single dimensionless ratio of coherent coupling frequency to dissipation rate, crossing over from overdamped irreversible exponential decay when the ratio is small to underdamped reversible oscillation (coherent energy exchange between the two modes) when it is large",
+  "brief_reason": "The abstract fixes the dynamics by the product Omega*R/c: for Omega*R/c<1 the state decays exponentially, while for Omega*R/c>>1 the coupled atom-radiation pair instead oscillates back and forth between two states at frequency Omega, i.e. an overdamped-to-underdamped crossover of a damped coupled two-mode system governed by the coupling-to-loss ratio."
+}

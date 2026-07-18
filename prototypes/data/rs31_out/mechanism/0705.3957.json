@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "organization of high-dimensional nonlinear dynamics by a skeleton of unstable invariant sets (equilibria and their stable/unstable invariant manifolds) linked by symmetry-induced heteroclinic connections, which partition state space and guide transient trajectories",
+  "brief_reason": "The abstract builds a state-space representation whose unstable invariant solutions and the global continuations of their unstable manifolds tessellate the explored region via a web of heteroclinic connections, i.e. a phase-space skeleton steering the transient dynamics."
+}

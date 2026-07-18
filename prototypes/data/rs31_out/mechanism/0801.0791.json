@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "constrained variational optimization over a hard-constraint-satisfying configuration manifold: an equal-weight superposition built from exactly the set of states that saturate a hard constraint, restricting the search space so the objective can be evaluated exactly and minimized within it",
+  "brief_reason": "The abstract builds a trial state as a linear superposition of 'only and all' configurations that minimise the repulsion (a hard constraint), whose properties are evaluated exactly and whose energy is variationally minimised over that restricted manifold."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an effective second-order (two-quantum) bilinear coupling between a two-state system and a single quantized harmonic-oscillator mode, obtained by adiabatically eliminating a far-off-resonant intermediate state, driving reversible periodic exchange of population and correlation between the two subsystems",
+  "brief_reason": "The abstract reduces a three-level object to two levels coupled to one field mode through a far-detuned two-photon (Raman) process and then studies the resulting coherent dynamics — quadrature squeezing, splitting into two coherent components, and periodic entanglement/disentanglement — all of which flow from that effective two-state-to-single-oscillator coupling."
+}

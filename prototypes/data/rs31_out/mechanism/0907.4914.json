@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an exact exponential-average (fluctuation-theorem) identity over an ensemble of stochastic trajectories, augmented by a mutual-information term so that information gained by measurement modifies the balance between a fluctuating dissipated quantity and an extractable potential",
+  "brief_reason": "The abstract generalizes an exponential-average work identity by adding terms that quantify the mutual information obtained by measurement and the efficacy of feedback, yielding a modified fluctuation-dissipation relation in which measured information can be converted into extractable work."
+}

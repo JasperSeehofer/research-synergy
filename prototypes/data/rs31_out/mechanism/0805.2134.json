@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a self-consistent local-field correction that relates the field acting on an individual embedded element to the spatially-averaged (macroscopic) mean field via a polarization-dependent correction factor of the Clausius-Mossotti / Lorentz-Lorenz form",
+  "brief_reason": "The abstract turns entirely on the Lorentz local-field condition yielding an (n^2+2)/3 correction to the resonance shift, i.e. a mean-field-to-local-field self-consistency factor set by the medium's polarization (refractive index)."
+}

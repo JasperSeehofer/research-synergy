@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a Langevin-type open-system reduction in which a slow collective variable, after integrating out a thermal bath of fast degrees of freedom, obeys an effective equation of motion with a friction/dissipation term plus correlated stochastic noise, the two tied together by a fluctuation-dissipation relation",
+  "brief_reason": "The abstract centers on real-time finite-temperature calculations that derive dissipation coefficients and stochastic fluctuations from the underlying interactions, i.e. a slow field coupled to a thermal environment yielding linked friction-and-noise dynamics."
+}

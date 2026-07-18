@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A group-invariant polynomial (hyperdeterminant) of a symmetry group acting multilinearly on a multi-index tensor, used as the classifying scalar that two structurally identical systems share",
+  "brief_reason": "The abstract states that both quantities of interest are computed by the same [SL(2)]^3-invariant hyperdeterminant (and its E7/E6 generalizations), i.e. a single polynomial invariant of a symmetry group acting on a tensor is the common measure indexing both systems."
+}

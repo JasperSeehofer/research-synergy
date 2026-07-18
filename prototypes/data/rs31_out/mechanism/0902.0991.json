@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a symmetry-constrained perturbative local expansion (effective-field-theory-style derivative expansion): one unknown field is written as a truncated Taylor series in the local value and spatial derivatives of another field, with symmetry arguments and term equivalences collapsing the allowed terms to a minimal set of independent free coefficients",
+  "brief_reason": "The abstract writes the galaxy density as a Taylor series in the local mass density plus derivative terms (nabla_i nabla_j phi, nabla_i v_j, higher-derivative R^2 nabla^2 delta), then uses symmetry considerations and equivalences to show only two additional free parameters survive to a given order."
+}

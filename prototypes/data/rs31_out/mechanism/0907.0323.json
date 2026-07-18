@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "inequivalence between constrained and Legendre-dual (unconstrained) optima of a non-concave objective function: when the objective (entropy) as a function of a conserved quantity is non-concave, maximizing it under a hard constraint yields different optimal states than optimizing its Legendre-Fenchel transform, producing negative local curvature and jumps in the constrained optimum",
+  "brief_reason": "The abstract centers on ensemble inequivalence arising because the space of macroscopic parameters is non-convex, so the microcanonical (constrained) description differs from the canonical (Legendre-dual) one and yields negative specific heat and temperature jumps at first-order transitions."
+}

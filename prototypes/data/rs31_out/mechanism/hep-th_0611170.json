@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "symmetry-invariance constraint identities (Ward / Schwinger-Dyson type): exploiting the invariance of an integration measure under a continuous group action to derive exact differential/recurrence relations among the moments (derivatives of a generating function) of that measure",
+  "brief_reason": "The abstract derives Ward identities for the generating functions of invariant integrals of monomials, i.e., relations among moments that follow from the group-invariance of the integration measure."
+}

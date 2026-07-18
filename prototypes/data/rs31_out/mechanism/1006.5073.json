@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "locating the exact critical threshold of a phase transition via the fixed point of a self-duality transformation, together with a sharp-threshold argument giving exponential decay of correlations on one side of the threshold",
+  "brief_reason": "The abstract proves the critical point coincides with the self-dual point p_sd(q)=sqrt(q)/(1+sqrt(q)) and establishes a sharp transition with exponential decay of correlations in the sub-critical phase, i.e. a duality-fixed-point identification of a critical value plus a sharpness argument."
+}

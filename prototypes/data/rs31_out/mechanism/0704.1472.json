@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a renormalization-group crossover driven by a dangerously irrelevant perturbation, in which a symmetry-breaking term is negligible below a crossover length that diverges as a power of the correlation length, producing an emergent enlarged (continuous) symmetry at short scales and captured by a universal two-argument scaling function with a nontrivial crossover exponent",
+  "brief_reason": "The abstract states the Z_q anisotropy is a dangerously irrelevant perturbation that becomes relevant only above a length Lambda ~ xi^a_q, below which the order parameter regains U(1) symmetry, and derives the full scaling function plus the crossover exponent a_q that governs this emergence."
+}

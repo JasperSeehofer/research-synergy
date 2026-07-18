@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "derivation of power-law scaling exponents for a transport coefficient by balancing a global dissipation/flux budget partitioned between a thin boundary-layer region and the bulk interior of the medium",
+  "brief_reason": "The abstract obtains how the transport number scales with dimensionless control parameters by summing the energy-dissipation rates contributed separately by the bulk and the boundary layers, which is a boundary-layer/bulk dissipation-budget balance yielding power laws."
+}

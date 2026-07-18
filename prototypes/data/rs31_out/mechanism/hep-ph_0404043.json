@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "variance-reduced numerical estimation of a high-dimensional integral (expectation over a domain) by adaptively placing evaluation points — importance sampling that concentrates draws where the integrand's density/variance is largest, combined with recursive stratification/subdivision of the domain — to drive down the estimator's error",
+  "brief_reason": "The abstract packages four general-purpose multidimensional integration routines (Vegas, Suave, Divonne, Cuhre) whose shared machinery is adaptive importance/stratified sampling and recursive region subdivision for evaluating integrals over many-dimensional domains."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a stochastic (Langevin) equation of motion with a state-dependent dissipation/friction coefficient driven by thermal noise, whose fluctuation power spectrum is computed and shown to be amplified when the friction grows with the noise-source strength",
+  "brief_reason": "The abstract derives the power spectrum of thermally-driven fluctuations of a field whose equation of motion has a friction coefficient depending on temperature, finding a large amplitude increase when that friction increases with temperature — a noise-driven damped dynamical system with state-dependent dissipation."
+}

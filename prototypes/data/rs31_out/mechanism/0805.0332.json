@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Schmidt (singular-value) decomposition of a bipartitioned composite state, recast as a rank-ordered spectrum of levels whose gap-separated low-lying part serves as a robust invariant/fingerprint for classification",
+  "brief_reason": "The abstract defines the 'entanglement spectrum' as a presentation of the Schmidt decomposition treated like energy levels, and proposes that its low-lying levels, split off by an 'entanglement gap', act as a fingerprint identifying the state's class."
+}

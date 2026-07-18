@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "extraction of the interference (cross) term in the squared modulus of a sum of two coherently added perturbative amplitudes, evaluated as a regularized higher-order loop correction reduced to a finite basis of canonical 'master' integrals",
+  "brief_reason": "The abstract computes the interference between two processes at one-loop order, evaluating the loop amplitudes analytically via dimensional regularisation and reducing them to master integrals, so the machinery is the coherent cross-term of a perturbative expansion computed through regularized loop-integral reduction."
+}

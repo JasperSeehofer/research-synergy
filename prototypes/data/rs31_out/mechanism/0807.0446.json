@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a lattice phase transition driven by the three-way competition between a hopping/kinetic coupling, an on-site nonlinear self-interaction, and a quenched random (disorder) potential, separating a globally coherent extended phase from a localized/insulating phase, with the random potential degrading the coherent order parameter",
+  "brief_reason": "The abstract tunes two independent knobs — disorder strength and the ratio of tunneling to interaction energy — on a lattice model and observes disorder suppressing the coherent (condensate) fraction across the coherent-vs-insulating phases, i.e. a disorder-plus-interaction-controlled delocalization/localization transition."
+}

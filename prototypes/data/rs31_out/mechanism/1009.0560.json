@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "quantifying dynamical complexity by the Shannon entropy of the harmonic (Fourier-mode) spectrum of a phase-space distribution, where the number of active spectral modes proliferates exponentially in time and the entropy's growth rate and long-term fluctuation magnitude act as an order parameter separating regular from chaotic/critical regimes",
+  "brief_reason": "The abstract builds a complexity measure from the entropy of the Wigner function's harmonics whose count grows exponentially with time, using the entropy growth rate to detect phase transitions and the size of long-term fluctuations to distinguish integrable from chaotic dynamics."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reduction of a global sum over all configurations of a networked (edge-contracted) structure to a Gaussian integral over anticommuting (Grassmann) variables, so the contraction is evaluated as a Pfaffian/determinant, with a topology (genus)-dependent correction factor of the form 2^{2g}",
+  "brief_reason": "The abstract states the tensor-network contraction is carried out via anticommuting (Grassmann) variables and Gaussian integrals, with cost scaling as 2^{2g} in the graph's genus, which is exactly Grassmann-Gaussian integration reducing a network sum to a Pfaffian/determinant plus a topological correction."
+}

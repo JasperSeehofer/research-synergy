@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Projection of a localized source's field onto the normal (eigen)modes of a guiding structure to compute the fraction of the source's total emission captured by a single dominant eigenmode, with the source's emission/decay rate obtained self-consistently from the back-reaction of its own field",
+  "brief_reason": "The abstract's explicit 'one dominating mode assumption', its exact calculation of the 'fraction of the energy coupled to the plasmonic mode' (the beta factor), and its self-consistent solve for the total decay rate identify the machinery as a dominant-normal-mode overlap/projection driven by a source's self-consistent back-reacted field (here numerically realized by a finite-element discretization of the governing field equation)."
+}

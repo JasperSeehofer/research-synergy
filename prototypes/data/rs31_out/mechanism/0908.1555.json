@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a threshold-triggered nonlinear positive-feedback loop, where a hard constraint boundary forces agents to take an action that pushes the state variable further in the direction that breached the boundary, and because many coupled agents cross the threshold simultaneously the feedback self-amplifies into synchronized cascades that produce heavy-tailed (power-law) fluctuations with temporal clustering",
+  "brief_reason": "The abstract describes a leverage limit that forces funds to sell into a falling market exactly when the price is already dropping, so that many funds hit the limit at once and the resulting nonlinear feedback amplifies large downward moves into power-law, clustered disturbances."
+}

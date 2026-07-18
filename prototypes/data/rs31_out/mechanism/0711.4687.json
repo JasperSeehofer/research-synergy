@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "superstatistics: a compound/parameter-mixed stochastic process in which a fast memoryless (Poisson/exponential) process has its rate parameter itself drawn from a slow distribution (here inverse-chi-square), so the observed statistics are the marginal superposition of exponentials, generically producing broad, heavy-tailed distributions",
+  "brief_reason": "The abstract models the process as underlying Poisson processes whose parameters are inverse-chi-square distributed, i.e. a rate-mixed (superstatistical) superposition of exponential processes."
+}

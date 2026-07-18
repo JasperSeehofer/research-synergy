@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "renormalization-group derivation of finite-size scaling at the upper critical dimension, where mean-field power laws acquire multiplicative logarithmic corrections whose structure distinguishes odd from even observables",
+  "brief_reason": "The abstract derives finite-size scaling of partition-function zeros and thermodynamic functions from renormalization-group methods, finding mean-field leading behaviour dressed by multiplicative logarithmic corrections that differ between odd and even quantities."
+}

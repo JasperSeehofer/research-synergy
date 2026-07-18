@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "asymptotic spectral (eigenvalue-density) theory of large random matrices — the limiting eigenvalue distribution of high-dimensional sample covariance matrices (Marcenko-Pastur law and its generalisations, largest-eigenvalue statistics, free convolution) used to separate a null noise spectrum from signal eigenvalues",
+  "brief_reason": "The abstract centres on the Marcenko-Pastur spectrum, random SVD, free matrices, and largest-eigenvalue statistics, i.e. the limiting eigenvalue-density theory of large random matrices used to distinguish noise from structure in estimated covariance matrices."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a distance-dependent interaction kernel ('gravity law') in which the probability of a pairwise link between two spatially embedded nodes decays as a power of their separation, yielding a spatial network with heavy-tailed (power-law) connectivity",
+  "brief_reason": "The abstract states that the probability two nodes are connected follows a gravity model decreasing as d^{-2} with a power-law degree distribution k^{-5}, i.e. link formation governed by a power-law distance-decay kernel over spatially located nodes."
+}

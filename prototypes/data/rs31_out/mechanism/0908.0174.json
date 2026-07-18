@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Single-element-resolved projective readout of a dense discrete array: diffraction-limited high-resolution imaging that resolves and measures the individual state of every node of a closely-spaced lattice with near-unity fidelity, replacing bulk/aggregate observation of the ensemble with per-constituent measurement.",
+  "brief_reason": "The abstract's central achievement is detecting single atoms with near-unity fidelity on individual sites of a lattice via a high-resolution optical imaging system (the lattice itself synthesized by projecting a holographic Fourier mask), i.e. reading out the complete state of each individual element of a many-body array rather than only the bulk properties of the ensemble."
+}

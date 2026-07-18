@@ -1,0 +1,41 @@
+{
+ "experiment": "EXP-RS-31",
+ "T": 2010,
+ "verdict": "PASS",
+ "degree_median": 98.0,
+ "overall": {
+  "stratum": "overall",
+  "n_pairs": 166826,
+  "n_pos": 82,
+  "n_neg": 166744,
+  "auc_reduction": 0.714,
+  "auc_pa_null": 0.5037,
+  "dAUC": 0.2104,
+  "mannwhitney_p": 0.0
+ },
+ "poor_poor": {
+  "stratum": "poor_poor",
+  "n_pairs": 41334,
+  "n_pos": 25,
+  "n_neg": 41309,
+  "auc_reduction": 0.754,
+  "auc_pa_null": 0.4948,
+  "dAUC": 0.2592,
+  "mannwhitney_p": 1e-05
+ },
+ "rich_rich": {
+  "stratum": "rich_rich",
+  "n_pairs": 41633,
+  "n_pos": 26,
+  "n_neg": 41607,
+  "auc_reduction": 0.7512,
+  "auc_pa_null": 0.5716,
+  "dAUC": 0.1796,
+  "mannwhitney_p": 0.0
+ },
+ "poor_poor_dAUC_boot95CI": [
+  0.084,
+  0.4177
+ ],
+ "n_pool_scored": 634
+}

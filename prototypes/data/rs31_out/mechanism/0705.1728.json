@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "suppression of a damped linear harmonic oscillator's steady-state fluctuations (effective temperature) by coupling it to an engineered dissipative channel that adds damping — via velocity feedback or via an auxiliary detuned lossy mode — with the ultimate fluctuation floor fixed by a fluctuation-dissipation balance between the added damping rate and the back-action noise it injects",
+  "brief_reason": "The abstract folds back-action cooling (coupling to a detuned, lossy cavity mode) and cold-damping feedback into one framework and derives their ultimate limits across bandwidth-vs-frequency regimes, i.e. minimizing a linear oscillator's residual fluctuations through engineered added damping traded off against injected noise."
+}

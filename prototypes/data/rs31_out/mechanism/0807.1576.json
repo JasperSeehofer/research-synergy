@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a percolation (connectivity) phase transition on a lattice/network, in which sites are independently occupied with probability p and a system-spanning connected cluster emerges above a sharp critical occupation probability p_c",
+  "brief_reason": "The abstract's whole aim is to pin down the site percolation threshold p_c of the two-dimensional square lattice by Monte Carlo sampling, i.e. the critical occupation probability separating a non-spanning regime from one with a system-spanning connected cluster."
+}

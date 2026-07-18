@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "hierarchy of approximations to a separable pairing (fermion-pair condensation) Hamiltonian: a symmetry-breaking mean-field variational product-state ansatz, its refinement by projection onto a fixed conserved quantum number, and the exact Bethe-ansatz (Richardson-Gaudin) solution of the integrable model used as the benchmark",
+  "brief_reason": "The abstract benchmarks a BCS mean-field treatment and its number-projected version against the exact Richardson-ansatz solution of the same pairing problem, quantifying the correlation energy each approximation misses and the collective fraction of pairs."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "local conformal (Weyl) gauge symmetry of a massless governing field equation, exploited so that geometrically deformed configurations are equivalent under a position-dependent metric rescaling to a flat reference configuration, leaving a chosen observable invariant",
+  "brief_reason": "The abstract states the massless Dirac theory enjoys local Weyl symmetry and uses it to derive geometric constraints (curved sheet shapes) whose density of states matches the planar case when measured in the system's own reference frame, i.e. curved configurations related to a flat one by a conformal rescaling that preserves the observable."
+}

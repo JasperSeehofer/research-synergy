@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "inter-arrival / first-passage time statistics of an ensemble of independent random walkers diffusing on a directed network, with the arrival-time distribution deviating from Poisson depending on the graph's degree structure",
+  "brief_reason": "The abstract maps message propagation to multiple random walkers on directed networks and evaluates the inter-arrival time distribution of successive walkers reaching a target node, finding non-Poissonian, topology-dependent (Poissonian vs. scale-free) arrival statistics."
+}

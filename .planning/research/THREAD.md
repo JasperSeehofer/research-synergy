@@ -56,12 +56,44 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 | A raw∪reduction→LLM-rerank cascade is a scalable retriever that beats raw-alone on a mixed cross-field corpus | **VERIFIED (Phase 44 EXP-RS-25, 2026-07-18)** — cascade (Claude re-rank of the ~25-candidate union) recall@10 = **0.775** vs raw-alone 0.662 (+11 pts, ≈ union ceiling 0.80), MRR 0.74. Orbiter W-SYN: Mistral re-rank DEGRADES to 0.637 (< raw-alone) → the re-rank/precision stage must be Claude. O(N) retrieval + O(#queries) small LLM re-ranks = scalable vs the O(N²) all-pairs LLM baseline. | `.planning/phases/44-cascade/44-VERIFICATION.md`, `prototypes/data/rs25_results.json` |
 | The RS-26/27 discovery yield (~12.5% end-to-end genuine bridges) is real reduction-retrieval signal, not LLM confabulation on any surface-disjoint cross-field pair | **VERIFIED — PASS (Phase 47 EXP-RS-28, 2026-07-18)** — the byte-identical card+adjudicator pipeline on 80 RANDOM cross-archive ∧ lexical<0.06 pairs (reduction did NOT flag) confirms **0/80** (card) → **0/80** genuine (end-to-end) vs treatment 6/40 → 5/40 → **10× enrichment, Fisher one-sided p=0.0035**. Reconstructed adjudicator reproduces 5/6 on treatment (harness-valid). The open-book card stage alone rejected all 80 → it is a strong well-calibrated first gate, not a rubber stamp → scaling justified. | `.planning/phases/47-calibration-control/47-{PREREG,VERIFICATION}.md`, `prototypes/data/rs28_verdict.json` |
 | The genuine cross-field bridges surfaced by the finder (RS-26/27) are NOVEL discoveries | **REFUTED (Phase 48 EXP-RS-29, 2026-07-18)** — adversarial web prior-art hunt + skeptical classifier over the 7 genuine non-textbook bridges: **0 novel-looking / 3 specialist-known / 4 explicitly-published cross-field** (B6=Baake-Baake-Wagner PRL 78,559 1997; B2=Fulling-Kaplan-Wilson; B7=Deift RH program; E0=Hofbauer-Sigmund). The bridges are REAL (7/7) but the "surprising" model-knowledge label ≠ unpublished (7/7 not novel). At n=140 the strongest reduction matches ARE the canonical equivalences. **The finder is a validated cross-field analogy-REDISCOVERY engine, not a novelty engine** → forward needs scale + weak-match tail + a literature novelty-gate. | `.planning/phases/48-web-novelty/48-VERIFICATION.md`, `prototypes/data/rs29_novelty.json` |
-| The finder surfaces novel bridges at SCALE + by hunting the weak-match TAIL (RS-29's remaining escape hatch) | **REFUTED — terminal KILL (Phase 49 EXP-RS-30, 2026-07-18)** — 684 papers (~5×), two strata + two-hunter novelty-gate: adjudicated-genuine **top 5, tail 0**; novelty **3 known-crossfield / 2 specialist / 0 novel**. The TAIL (ranks 4-12) yielded 0 genuine bridges (1/40 card-confirmed, 0 adjudicated) → weak matches are spurious, not hidden-novel. Positive control passed (top 8.3%, matches RS-26/27). Converging with RS-29 (0/7 at n=140): **novelty is NOT reachable by scale or tail-hunting; the finder is terminally a validated cross-field REDISCOVERY engine.** | `.planning/phases/49-scaled-novelty-test/49-{PREREG,VERIFICATION}.md`, `prototypes/data/rs30_verdict.json` |
+| The finder surfaces novel bridges at SCALE + by hunting the weak-match TAIL (RS-29's remaining escape hatch) | **REFUTED — KILL (Phase 49 EXP-RS-30, 2026-07-18)** — 684 papers (~5×), two strata + two-hunter novelty-gate: adjudicated-genuine **top 5, tail 0**; novelty **3 known-crossfield / 2 specialist / 0 novel**. The TAIL (ranks 4-12) yielded 0 genuine bridges (1/40 card-confirmed, 0 adjudicated) → weak matches are spurious, not hidden-novel. Positive control passed (top 8.3%). **REFRAMED by RS-31: this KILL was SELECTION-OBJECTIVE-bound (argmax=canonical), NOT representation-bound — the reduction DOES carry degree-independent future-bridge signal on the obscure stratum.** | `.planning/phases/49-scaled-novelty-test/49-{PREREG,VERIFICATION}.md`, `prototypes/data/rs30_verdict.json` |
+| The field-neutral reduction cosine predicts FUTURE cross-field bridging beyond node degree (a prospective novelty signal), incl. among obscure papers | **VERIFIED — PASS (Phase 50 EXP-RS-31/E1, 2026-07-18)** — temporal holdout T=2010 on the mined benchmark (165 future-bridge positives): reduction AUC **0.714** overall / **0.754 Poor-Poor** / 0.751 Rich-Rich vs preferential-attachment degree-null **~0.50 (chance)**; Poor-Poor ΔAUC +0.259, p=1e-5, bootstrap CI [0.084,0.418]. Circularity-audited clean (assertion-based mining, blind reduction). **The rediscovery ceiling is a selection-objective artifact, not a representation limit → novelty path reopened, E2/E3/E4 falsifiable.** Caveat: PASS = signal exists (degree-independent, obscure), NOT usable novel-bridge precision yet. | `.planning/phases/50-temporal-novelty/50-{PREREG,VERIFICATION}.md`, `prototypes/data/rs31_verdict.json` |
 
 ## Active experiment
 
-**NONE active — EXP-RS-30 SCALED NOVELTY TEST → KILL (pre-registered, terminal, 2026-07-18). The finder
-is a validated cross-field REDISCOVERY engine, not a novelty engine — CONFIRMED at scale.** At ~5× scale
+**NONE active — EXP-RS-31 (E1) TEMPORAL-HOLDOUT NOVELTY BENCHMARK → PASS (pre-registered, 2026-07-18).
+The rediscovery ceiling is a SELECTION-OBJECTIVE ARTIFACT, not a representation limit — the novelty path
+is REOPENED.** The field-neutral reduction cosine predicts FUTURE cross-field bridging beyond node degree,
+including on the obscure Poor-Poor stratum (AUC 0.754 vs degree-null 0.495, ΔAUC +0.259, p=1e-5, bootstrap
+95%CI [0.084,0.418]); degree predicts at CHANCE (0.50). Circularity audit CLEAN (mined pairs selected by a
+third paper's explicit analogy assertion, never by embedding/similarity). Reconciles with RS-29/30: those
+measured retrieve-then-CONFIRM which ranks by argmax=canonical=rediscovery; E1 shows the predictive signal
+EXTENDS into the obscure stratum → the SELECTION objective was the limiter, not the reduction. **Forward =
+E2 (candidate-inference/residue reranking) + E3 (method/object asymmetric retrieval), graded on THIS
+benchmark; E4 (generation) if they show signal. Write-up+product-pivot is now the fallback, not the base
+case.** `.planning/phases/50-temporal-novelty/50-{PREREG,VERIFICATION}.md`; `prototypes/rs31_temporal.py`,
+`data/rs31_verdict.json`. Honest caveat: PASS = the signal is THERE (AUC 0.75, degree-independent, obscure),
+NOT that we can surface novel bridges today (low head-precision; needs the objective-flip to harvest).
+
+### (just-concluded, PASS 2026-07-18) EXP-RS-31 (E1) → Phase 50 — Temporal-Holdout Novelty Benchmark
+
+**The instrument the thread lacked — and it came back positive.** From the RS-DIRECTIONS workflow (E1,
+rank 1, unanimous panel pick): the binding constraint was VERIFICATION (we couldn't MEASURE novelty, only
+web-guess). Built a temporal-holdout on the 420-pair mined benchmark (each pair has a dated bridge_paper =
+built-in timestamp). T=2010: 634 pre-T pool papers, 165 future-bridge positives (both sides pre-2010, bridge
+asserted after). Reduce all (332 new + 302 reused → 634/634), embed bge, fetch degree (S2 citationCount
+634/634). Test: does reduction cosine predict which pre-T pairs get bridged after T, beyond a preferential-
+attachment degree null, per degree stratum? **VERDICT PASS:** overall AUC(reduction) 0.714 vs pa-null 0.504;
+**Poor-Poor 0.754 vs 0.495 (ΔAUC +0.259, p=1e-5, CI [0.084,0.418])**; Rich-Rich 0.751 vs 0.572. Degree
+predicts at chance; reduction predicts even among obscure papers. No circularity (assertion-based mining),
+no temporal leakage (blind reduction). **Meaning: the substrate DOES carry a degree-independent prospective
+novelty signal; the rediscovery ceiling was the argmax SELECTION objective. E2/E3/E4 now falsifiable.**
+`.planning/phases/50-temporal-novelty/50-{PREREG,VERIFICATION}.md`; `data/rs31_verdict.json`.
+
+### (concluded, KILL 2026-07-18) EXP-RS-30 SCALED NOVELTY TEST — CONTEXT: reframed by RS-31
+
+**Was read as terminal ("REDISCOVERY engine, not novelty engine — CONFIRMED at scale") but RS-31 shows the
+KILL was SELECTION-OBJECTIVE-bound, not representation-bound.** At ~5× scale
 (684 papers) WITH explicit weak-match-tail hunting, 0 novel bridges: 5 genuine (all TOP stratum) = 3
 known-crossfield / 2 specialist / 0 novel; **the TAIL (ranks 4-12, where RS-29 predicted novelty) yielded
 0 genuine bridges** (1/40 card-confirmed, 0 adjudicated) → the weak matches are spurious, not hidden-novel.

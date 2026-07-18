@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Kantorovich linear-relaxation of an optimal-coupling (optimal transport) problem, with structural conditions on the cost and inputs guaranteeing that the relaxed convex optimum concentrates on a unique deterministic (Monge) map rather than a diffuse coupling",
+  "brief_reason": "The abstract studies when the solution of the relaxed Kantorovich version of a multi-marginal transport problem induces a (deterministic) Monge solution and when both solutions are unique, which is the classic relaxation-plus-uniqueness/concentration machinery of optimal coupling."
+}

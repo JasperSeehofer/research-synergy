@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "measuring the failure of a would-be multiplicative map (group homomorphism) to be exactly multiplicative as a 2-cocycle that defines a central extension of the underlying group, with the defect captured by an invariant quadratic form on that extension",
+  "brief_reason": "The abstract computes the multiplicative anomaly det(AB)/(detA detB)=F(A,B) — the deviation of a determinant from being multiplicative — and relates it directly to a central extension of the group of elliptic symbols together with an invariant quadratic form on that extension (the divergent quantities being made finite by a zeta/analytic regularization)."
+}

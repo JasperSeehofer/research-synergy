@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "iterative decimation / coarse-graining that recursively removes fixed (frozen, stable-valued) degrees of freedom to reduce a coupled dynamical system to its active 'dynamical core', with the spread of the frozen state through the coupling network behaving as a percolation process",
+  "brief_reason": "The abstract describes a decimation algorithm that strips away the linearly-growing stable core to leave the dynamical core, explicitly interpreting this reduction as 'percolation of the stability signal in the network'."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a one-parameter deformation of the maximum-entropy principle in which a generalized (deformed) entropy functional is extremized to yield a power-law-tailed stationary distribution that replaces the standard exponential/Gibbs form and characterizes a non-equilibrium steady (meta-equilibrium) state",
+  "brief_reason": "The abstract builds its distribution on Kaniadakis (kappa-deformed) entropy, deriving a kappa-distribution function tied to a deformation parameter that reduces to the ordinary case at kappa=0 and describes a meta-equilibrium steady state, which is exactly a deformed-entropy maximization producing a power-law generalization of the exponential distribution."
+}

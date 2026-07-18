@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Gaussian-process (kriging) surrogate modeling: placing a Gaussian-random-field prior specified by a mean and a covariance/kernel function over an unknown expensive-to-evaluate function and conditioning it on a finite set of sampled evaluations to obtain a cheap probabilistic interpolant/emulator",
+  "brief_reason": "The abstract replaces an expensive black-box map by a metamodel/response surface built as a Gaussian process characterized by its mean and covariance functions, with an estimation procedure to fit it from samples, which is exactly Gaussian-process regression/kriging emulation of an unknown function."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reformulating a non-smooth convex min-max (saddle-point) problem via convex/Lagrangian duality and solving it with an accelerated first-order excessive-gap smoothing scheme that trades the primal-dual gap down at an O(1/sqrt(epsilon)) rate",
+  "brief_reason": "The abstract states the algorithms 'borrow heavily from convex duality and recently developed techniques in non-smooth optimization' and 'specialize the excessive gap framework of Nesterov' to reach an O(.../sqrt(epsilon)) accuracy, i.e. an accelerated dual-smoothing saddle-point solver rather than a geometric construction."
+}

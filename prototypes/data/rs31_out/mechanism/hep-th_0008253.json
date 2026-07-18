@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a bulk/boundary (holographic) correspondence in which states/operators of a lower-dimensional boundary theory are mapped to localized singular point-sources in a higher-dimensional variational field system, verified by matching a boundary two-point correlation function to the saddle-point (on-shell, semiclassical) value of the bulk action evaluated on the corresponding classical configuration",
+  "brief_reason": "The abstract sets up a bulk/boundary relation where 'heavy' boundary operators create conical (point-particle) singularities in the bulk and confirms it by comparing the semiclassical boundary two-point function with the regularized bulk action evaluated on the corresponding classical metric."
+}

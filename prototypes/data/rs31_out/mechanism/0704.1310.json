@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "expressing an invariant of a structured object as a specialization of a universal two-variable graph polynomial built from a spanning-subgraph/state-sum (Tutte-type) expansion, extended to objects living on a higher-genus surface via a genus-tracking generalization (Bollobas-Riordan) of that polynomial",
+  "brief_reason": "The abstract equates one invariant (a Jones-type polynomial) with the Tutte polynomial of an associated graph and generalizes this to surface-embedded graphs using the Bollobas-Riordan extension of the Tutte polynomial, i.e. recovering an invariant as an evaluation of a universal state-sum graph polynomial."
+}

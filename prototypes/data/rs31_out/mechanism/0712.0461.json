@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "iterative real-space renormalization / coarse-graining that contracts a two-dimensional interaction network by recursively growing corner transfer operators and truncating each step to the dominant low-rank eigen-subspace, yielding the partition function and critical exponents",
+  "brief_reason": "The method rests on the corner transfer matrix renormalization group, which recursively builds and truncates corner transfer matrices to coarse-grain the 2D lattice and extract transition temperatures and scaling exponents."
+}

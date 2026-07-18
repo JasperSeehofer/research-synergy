@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "dispersive parametric coupling between two resonators, in which the instantaneous displacement of one oscillator modulates the resonant frequency of a second high-quality-factor resonator, transducing position into a phase/frequency shift read out interferometrically and bounded by a measurement-imprecision-versus-backaction trade-off",
+  "brief_reason": "The abstract couples a mechanical beam's position capacitively to the resonant frequency of a microwave cavity to read out its displacement, and frames the result in terms of measurement imprecision and backaction near the standard quantum limit."
+}

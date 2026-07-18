@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "transient relaxation of a linear dispersive wave field toward a stationary state following a sudden (quench-like) change in initial or boundary conditions, governed by the system's time-dependent propagator (the temporal analog of Fresnel-diffraction response to a sharp cutoff)",
+  "brief_reason": "The abstract defines quantum transients as temporary features of matter waves before reaching a stationary regime that arise from an unstable initial state or a sudden change in interaction/boundary conditions, with phenomena like diffraction in time and forerunners being the hallmark propagator response of a dispersive field to an abrupt switch."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "singular-limit reduction of a coupled system of governing equations by order-of-magnitude (dominant-balance) scaling of a small dimensionless parameter, yielding two distinct degenerate regimes depending on which terms dominate",
+  "brief_reason": "The abstract derives distinct limiting forms of a constraint equation (Coulomb vs. Lorenz gauge) as the 'magnetic limit' and 'electric limit' using orders of magnitude based on physical motivations, i.e. a small-parameter dominant-balance limit that splits one system into two reduced regimes."
+}

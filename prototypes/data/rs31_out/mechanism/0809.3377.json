@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "record statistics of a sequence of i.i.d. random variables, in which each new element attaches to the current running record (maximum), generating a self-similar partition of the sequence into record-bounded blocks with universal extreme-value constants governing the block/leader statistics",
+  "brief_reason": "The abstract builds structure by having each incoming node connect to the preexisting node holding the record quality value, so the whole method rests on the statistics of records and inter-record intervals in a random sequence, yielding the Golomb-Dickman constant and links to cycles of random permutations and randomly broken intervals."
+}

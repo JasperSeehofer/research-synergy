@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "functional renormalization-group flow — scale-by-scale coarse-graining of an effective action that integrates out fluctuations from a microscopic scale down to a measurement scale, yielding scale-dependent critical exponents and crossovers between distinct fixed-point/universality regimes",
+  "brief_reason": "The abstract centers on 'functional renormalization' producing a unified scale-dependent description whose critical exponents and dilute-to-dense crossover (including a change of effective action) depend on the characteristic momentum k_ph and the coarse-graining scale, which is the defining behavior of a renormalization-group flow between fixed points."
+}

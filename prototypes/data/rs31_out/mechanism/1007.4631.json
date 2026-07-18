@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a metric-operator similarity transformation that maps a non-self-adjoint operator to a self-adjoint one with respect to a redefined (positive-definite) inner product, proving that a whole family of superficially distinct, representation-dependent operators share one real, invariant eigenvalue spectrum",
+  "brief_reason": "The abstract states that applying pseudo-Hermitian rules to several non-unique (differently derived) Hamiltonians yields the same Hermitian Hamiltonian with an identical eigenvalue spectrum, which is exactly a metric-induced similarity transformation establishing spectral equivalence across representations."
+}

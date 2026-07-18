@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Construction of an overcomplete family of states labeled by points of a classical phase space that saturate a minimum-uncertainty bound and integrate (against a uniform measure) to a resolution of the identity, yielding a correspondence map between a classical symplectic space and an operator algebra whose parameter-driven evolution tracks the classical trajectory",
+  "brief_reason": "The abstract builds 'coherent' states whose parameters are classical phase-space points, minimize a special uncertainty relation, resolve the identity with a uniform measure, establish a classical-to-quantum correspondence, and evolve along the classical phase-space trajectory."
+}

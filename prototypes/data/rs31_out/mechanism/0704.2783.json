@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "renormalized (resummed) perturbation theory for a weakly nonlinear field, in which nonlinear coupling between Fourier modes damps and phase-shifts the oscillatory features of the field's power/spectrum relative to the linearized prediction",
+  "brief_reason": "The abstract builds its method on renormalized perturbation theory that resums the perturbative series to capture mode-coupling, which damps the acoustic oscillations and injects out-of-phase oscillations that shift the spectral nodes away from the linear-theory result."
+}

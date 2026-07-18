@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "computing a pairwise interaction potential between two boundary sources as the extremized (minimal-action / geodesic-like) configuration of a one-dimensional object anchored at those sources and extended through an auxiliary higher-dimensional curved geometry, with that extremal configuration analytically continued into the complex plane to yield a complex-valued (real plus absorptive-imaginary) result",
+  "brief_reason": "The abstract obtains the quark-antiquark potential from string configurations in a dual higher-dimensional geometry (AdS/CFT), i.e. an extremal-surface boundary-to-bulk mapping, and recovers a smooth non-zero potential with a non-zero imaginary part by analytically continuing those configurations into the complex plane."
+}

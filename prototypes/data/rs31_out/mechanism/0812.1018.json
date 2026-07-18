@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a one-parameter (q-deformed) generalization of an entropy functional — the Tsallis nonextensive q-entropy — used as a tunable nonlinear transform of a distribution, with the deformation parameter q fitted to the data",
+  "brief_reason": "The abstract takes the entropy-based Theil index and, via Tsallis q-entropy, deforms it into a q-parametrized index Th_q that nonlinearly maps time series onto themselves, with q set to 1.8125 to match the data distribution."
+}

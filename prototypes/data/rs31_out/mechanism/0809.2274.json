@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "randomized low-rank approximation by projecting a matrix onto a random low-dimensional subspace (random sketching) to capture its dominant singular subspace with near-optimal accuracy",
+  "brief_reason": "The abstract seeks an efficient low-rank approximation of an arbitrary-size matrix whose accuracy comes provably close to the best possible rank-deficient approximation in the spectral norm, which is the signature of randomized projection/sketching methods for extracting a matrix's leading singular structure."
+}

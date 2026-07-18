@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "mode-by-mode evolution of a fluctuation field's Fourier amplitudes as parametric (time-varying-frequency) oscillators propagated across a transition between two background regimes, with initial amplitudes fixed by the pre-transition ground state, producing a wavelength-dependent (long-wavelength-suppressing) filter on the fluctuation power spectrum",
+  "brief_reason": "The abstract works out the dynamics of inflaton fluctuations across a phase transition between two epochs with a chosen initial vacuum state, finding that the transition suppresses long-wavelength quantum fluctuations and thereby reshapes the large-scale power spectrum — i.e. scale-dependent evolution of oscillator modes through a change in the background."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "complex-analytic classification of the singularity structure (isolated poles versus branch-point/branch-cut singularities) of a two-point response/correlation function in the complex plane of its transform variable, together with a qualitative change in that singularity type as a control parameter is tuned",
+  "brief_reason": "The abstract studies the momentum-plane analyticity of a two-point function, extracts a principle for where its singularities sit, and observes a qualitative shift from branch points to simple poles as the coupling moves from weak to strong."
+}

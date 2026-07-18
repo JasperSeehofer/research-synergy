@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a parameter-tuned non-Hermitian (open-system) eigenvalue problem passing through an exceptional point — a branch-point degeneracy at which two eigenvalues and their eigenvectors coalesce, giving a square-root/Riemann-sheet topology and a threshold-controlled switch between eigenvalue crossing and avoided crossing",
+  "brief_reason": "The abstract describes an exceptional point marking the transition between diabatic crossing and avoided crossing of two quasi-eigenmodes as a deformation parameter crosses a threshold, producing a singular branch-point topology on the eigenfrequency surfaces."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Low-rank sequential factorization of an exponentially large high-dimensional array into a chain of small matrices (a tensor-train / matrix-product decomposition), compressed by singular-value truncation at each bipartition (keeping only the largest-weight modes) and refined by iterative site-by-site local optimization sweeps.",
+  "brief_reason": "The abstract centers the method on 'matrix product states' as the class of objects DMRG operates on and on the family of sweeping algorithms that build and improve them, i.e. representing a huge state as a product of low-rank matrices and iteratively optimizing/truncating it."
+}

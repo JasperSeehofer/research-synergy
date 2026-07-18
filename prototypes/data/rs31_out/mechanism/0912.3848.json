@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "multiscale spectral filtering via functional calculus of a linear operator's eigendecomposition: diagonalize a Laplacian-type operator on an arbitrary discrete domain, then apply a scale-parameterized kernel function of its spectrum g(t*L) and localize it to build an invertible, multiresolution transform (the spectral-domain analogue of Fourier/wavelet analysis)",
+  "brief_reason": "The abstract defines scaling through the spectral decomposition of the discrete graph Laplacian and forms the wavelets by applying the operator-valued kernel g(t*L) to a localized indicator function, which is exactly building a multiscale transform from a function of an operator's spectrum."
+}

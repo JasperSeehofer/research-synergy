@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "direct pointwise recovery of an unknown distribution as its overlap (inner-product) integral against a tunable/displaceable reference distribution, so a single direct measurement yields the function value without solving an inverse (tomographic) reconstruction problem",
+  "brief_reason": "The abstract measures the overlap of two Wigner (quasiprobability) functions via photon counting and thereby obtains the phase-space distribution directly, avoiding tomographic reconstruction algorithms — i.e., sampling a function through its inner product with a reference."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reduction of a dynamical system possessing a maximal set of independent conserved quantities in mutual involution to action-angle coordinates, in which the invariant level sets foliate the state space into tori and the flow decouples into constant 'action' invariants plus linearly-advancing 'angle' phases",
+  "brief_reason": "The abstract proves an action-angle theorem for integrable systems (a full set of commuting invariants), whose topological content is a foliation by invariant tori on which the motion linearizes into conserved actions and evolving angles."
+}

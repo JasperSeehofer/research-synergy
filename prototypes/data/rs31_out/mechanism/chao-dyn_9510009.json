@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A nonlinear multiplicative cascade of a conserved quantity down a discrete self-similar hierarchy of coupled modes, whose anomalous scaling is organized by singular solutions — self-similar fronts propagating across scales that build up intermittency, and finite-complex-time singularities that stall the cascade — with a critical control-parameter threshold separating regular from chaotic dynamics.",
+  "brief_reason": "The abstract frames the method around two generic singular fluctuations of the scale-cascade dynamics (self-similar solutions building intermittency and complex-time singularities inhibiting the cascade and promoting chaos) and a critical proportion of interactions marking the boundary between chaotic and regular dynamics."
+}

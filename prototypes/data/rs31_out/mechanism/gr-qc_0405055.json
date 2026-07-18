@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a solution-generating duality: an involutive change-of-variables transformation that maps each solution of a dynamical system to another solution by interchanging and/or inverting a pair of conjugate state quantities, generating a discrete symmetry orbit (dual/triple) on the solution space",
+  "brief_reason": "The abstract constructs explicit maps between accelerating, decelerating and phantom cosmologies by expressing the scale factor and Hubble parameter as functions of the field and then interchanging or inverting these two quantities, i.e. a variable-swap/inversion transformation that carries one solution into another."
+}

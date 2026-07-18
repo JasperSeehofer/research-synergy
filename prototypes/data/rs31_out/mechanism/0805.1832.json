@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Zeno-type suppression of a diffusion process by frequent stochastic dephasing — increasing the rate of random measurement-like perturbations paradoxically slows the diffusive spreading of a collective phase variable, with a size-dependent amplification factor (here of order N/log N) enhancing the suppression",
+  "brief_reason": "The abstract states that noise-induced dephasing slows collisional phase-diffusion in the quantum Zeno limit and that the degree of suppression grows by a bosonic factor of order N/log N with particle number, i.e. frequent stochastic perturbation freezing a diffusive process with a scale-dependent enhancement."
+}

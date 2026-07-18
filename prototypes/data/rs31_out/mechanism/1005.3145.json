@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "record statistics of a sequence of independent random variables under a slowly drifting distribution mean, with the first-order shift in record-occurrence rate given by a linear-response relation proportional to the drift-velocity-to-noise (standard-deviation) ratio",
+  "brief_reason": "The abstract analyzes records drawn from independent random variables with a drifting mean and derives that the leading-order change in the record rate is proportional to the ratio of the drift velocity to the underlying standard deviation."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a recursive simplicial (perfect) elimination ordering that decomposes a structure by iteratively peeling off a locally complete element/block whose attachment to the rest is a minimal separator, yielding a linear-time hierarchical decomposition along separators",
+  "brief_reason": "The abstract constructs, in linear time, an elimination scheme that repeatedly detaches a pending maximal clique via an inclusion-extremal minimal separator, which is the domain-neutral machinery of ordered peeling of complete substructures along minimal separators."
+}

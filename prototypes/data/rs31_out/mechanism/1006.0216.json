@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Dissipation-driven clustering instability in a driven-dissipative many-body system: continuous energy injection balanced against per-interaction energy loss sustains a nonequilibrium steady state whose spatial correlations develop scale-free (power-law / fractal) structure across multiple length scales, tuned monotonically by a single dissipation control parameter and vanishing in the conservative limit",
+  "brief_reason": "The abstract reports a shaken, dissipative gas held in a non-condensed steady state whose pair distribution functions show power-law tails (fractal, multi-scale clustering) that increase monotonically with the dissipation coefficient and disappear when collisions become conservative."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "multiplicative (bilinear) factorization of a time-varying signal into two latent factors — a slowly-varying/invariant factor and a fast-varying sparse factor — learned by reconstructing the signal as the product of the factors under a slowness constraint on one and a sparsity constraint on the other",
+  "brief_reason": "The abstract combines the outputs of two cell groups multiplicatively, one held constant across consecutive frames and one allowed to vary but forced sparse, with an encoder-decoder that reconstructs the input from this factored representation."
+}

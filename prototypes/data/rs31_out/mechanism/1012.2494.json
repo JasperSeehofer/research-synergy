@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "conservative, positivity-preserving semi-Lagrangian transport via the method of characteristics: a conserved density obeying a transport (continuity/Liouville) equation is advanced by tracing its characteristic curves and re-projecting the result onto a fixed high-order polynomial basis on a mesh, with the multidimensional flow factored into a sequence of lower-dimensional exact shifts by operator (Strang) splitting",
+  "brief_reason": "The abstract describes evolving a grid-represented probability density via Lagrangian dynamics along characteristics and projecting it back onto a fixed Eulerian mesh with operator splitting in time, engineered so that mass is exactly conserved and positivity is maintained at high order."
+}

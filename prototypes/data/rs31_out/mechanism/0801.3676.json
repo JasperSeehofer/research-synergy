@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Linearized perturbation analysis about a symmetry-broken background: the state of an evolving system is split into a homogeneous background trajectory plus small symmetry-breaking (anisotropic) deviations parametrized by a few order parameters, whose coupled linear evolution equations are derived and whose parameters are then bounded against observed signatures.",
+  "brief_reason": "The abstract quantifies deviation from isotropy with two skewness order parameters on a Bianchi I background, uses the covariant approach to derive the general linear evolution equations for perturbations in that anisotropic background, and constrains those parameters against supernova and CMB-quadrupole data."
+}

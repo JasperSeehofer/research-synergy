@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "iterative variational state-compression by density-matrix truncation: a high-dimensional many-body state space is coarse-grained by retaining only the dominant eigenvectors of a reduced (partial-trace) density matrix, keeping the most-weighted subspace",
+  "brief_reason": "The method rests on a particle-hole DMRG (density-matrix renormalization group) computation whose accuracy is validated against the exact Richardson solution, i.e. a renormalization/coarse-graining scheme that truncates the state space via the reduced density matrix's leading eigenvectors."
+}

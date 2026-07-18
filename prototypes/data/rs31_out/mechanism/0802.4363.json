@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "consistent estimation of the entropy rate of a stationary ergodic process from a single long sample path, exploiting the asymptotic equivalence between optimal lossless-compression codelength (e.g. Lempel-Ziv match-length growth, context-tree weighting) and the source's per-symbol entropy",
+  "brief_reason": "The abstract's estimators (LZ-family compression algorithms, context-tree weighting, plug-in) all recover a process's entropy rate from observed sequences, and the consistency proofs for stationary ergodic processes rest on the compression-codelength-equals-entropy-rate duality."
+}

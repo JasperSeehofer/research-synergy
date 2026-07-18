@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "extracting a per-step degradation rate by composing randomly-drawn operations into sequences of increasing length and fitting the exponential decay of a survival/overlap signal versus sequence length, with the fitted offset absorbing fixed endpoint (preparation/measurement) errors so only the per-operation rate is estimated",
+  "brief_reason": "The abstract estimates a computationally relevant per-gate error from long sequences of randomly chosen gates in a way that does not rely on accurate state preparation and measurement, which is exactly isolating a per-step decay rate from endpoint offsets via random-sequence composition."
+}

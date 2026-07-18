@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "maximum-entropy inference constrained to reproduce measured pairwise correlations, yielding a Boltzmann/Ising-type distribution over configurations governed by a Hamiltonian with pairwise couplings (the inverse problem of fitting pairwise interaction parameters to observed second-order statistics)",
+  "brief_reason": "The abstract builds the joint state distribution by forcing a pairwise-correlation-constrained Hamiltonian and equivalently a maximum-entropy model matching observed pair correlations, showing these are the same pairwise-coupling machinery."
+}

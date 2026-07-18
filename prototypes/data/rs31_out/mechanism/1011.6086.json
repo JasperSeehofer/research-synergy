@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a consistent sampling-based (Monte-Carlo) estimator of an otherwise-intractable normalizing constant / likelihood, turning an unnormalized probabilistic model's incomputable partition function into a tractable quantitative score for model comparison",
+  "brief_reason": "The abstract's whole contribution is a consistent, computationally tractable estimator for a model likelihood that was previously intractable, used to quantitatively evaluate and compare competing generative models."
+}

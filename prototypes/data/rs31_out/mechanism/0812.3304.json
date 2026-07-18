@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a driven-dissipative nonequilibrium steady-state cascade of a conserved quantity injected at the root of a hierarchical (tree) network and transported down to be dissipated at the leaves, exhibiting a sharp transition in a limiting (low-dissipation) regime between a state where the through-flux vanishes (quasi-equilibrium) and one where a finite steady flux persists",
+  "brief_reason": "The abstract describes energy injected at the top of a tree, transferred through it and dissipated in its deepest branches, with a parameter-tuned transition in the low-dissipation limit between a quasi-equilibrated regime and a far-from-equilibrium one whose dissipated flux stays finite."
+}

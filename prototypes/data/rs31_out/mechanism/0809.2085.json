@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "convex relaxation of a latent partition (clustering) constraint into a spectral matrix-norm regularizer that couples a collection of vectors so they are penalized for deviating from unknown shared group centroids",
+  "brief_reason": "The abstract turns the combinatorial assumption that the vectors fall into unknown groups with similar members into a new spectral norm penalty, yielding a convex optimization surrogate for the otherwise non-convex clustering."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a closed-form combinatorial expansion of iterated derivatives as a recursively generated polynomial sequence, with coefficients given by set-partition counts (Stirling numbers of the second kind)",
+  "brief_reason": "The abstract obtains the derivative (iterated-differentiation) polynomials of a base function in explicit form with coefficients expressed via Stirling numbers of the second kind, i.e. repeated differentiation is encoded by a combinatorial set-partition identity."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a mean-field (annealed) reduction of two coupled identical copies of a system to a single order-parameter map, whose fully-synchronized fixed point loses stability via a transcritical bifurcation (exchange of stability) as a coupling parameter crosses a critical threshold",
+  "brief_reason": "The abstract states that synchronization of two coupled identical Kauffman networks appears through a transcritical bifurcation, captured by an annealed (mean-field) model that approximately describes the whole coupled dynamics — i.e., a coupling-driven stability exchange of the synchronized state in a reduced order-parameter description."
+}

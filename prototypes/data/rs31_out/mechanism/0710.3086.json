@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "frequency-division multiplexing: partitioning a single broadband resource into orthogonal Fourier-frequency modes to synthesize N independent parallel channels, each formed by pairwise interference of two sideband modes",
+  "brief_reason": "The abstract realizes N channels by accessing 2N modes at different Fourier frequencies of one broadband field and combining pairs of them by interference, which is decomposition of a single broadband carrier into independent orthogonal frequency-bin channels."
+}

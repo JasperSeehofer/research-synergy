@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "random/typical reversible (unitary) mixing that acts as a near-capacity-achieving error-correcting code for an erasure channel, so that encoded information becomes recoverable from an observed subsystem once that subsystem's size crosses a sharp threshold fraction of the whole (a decoupling/typicality/random-coding argument)",
+  "brief_reason": "The abstract states that typical local mixing circuits are efficient encoders for error-correcting codes nearly achieving the capacity of the erasure channel, with deposited information staying hidden until half the degrees of freedom are exposed and then emerging rapidly, which is exactly a random-coding decoupling argument with a threshold at half the system."
+}

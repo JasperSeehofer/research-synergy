@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Anderson localization: coherent multiple scattering of a wave off a static random (disordered) potential in which repeated small-amplitude reflections interfere to produce an exponentially localized stationary mode, with a mobility-edge threshold (set by the disorder's spatial-frequency cutoff relative to the wave's wavelength) separating exponential localization from extended/algebraically-decaying propagation",
+  "brief_reason": "The abstract attributes the stopping of expansion and the exponentially localized stationary wave function to many quantum reflections of small amplitude in a weak random (speckle) potential, and reports a mobility edge tied to the potential's high-spatial-frequency cutoff above which decay becomes algebraic rather than exponential."
+}

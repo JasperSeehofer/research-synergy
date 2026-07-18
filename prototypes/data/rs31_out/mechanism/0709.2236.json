@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an exact exponential-average fluctuation identity for a path-dependent random functional under arbitrary time-dependent driving, derived from a time-reversal symmetry (Radon-Nikodym-type ratio) between forward and reverse path-ensemble measures, which forces the exponential average to equal a fixed constant independent of the driving protocol",
+  "brief_reason": "The abstract proves the Jarzynski relation (an invariant exponential average of a work-like path functional) and the Crooks relation and entropy-production fluctuation theorem for general memory-bearing stochastic processes, requiring only a stationary state, which is exactly the forward-versus-time-reversed path-ensemble symmetry underlying integral fluctuation theorems."
+}

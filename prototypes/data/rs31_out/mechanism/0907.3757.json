@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a shared-bus binary address-decoding / demultiplexing scheme in which a logarithmically small set of shared address lines selects and independently programs one of an exponentially larger set of targets (n address lines addressing ~2^n elements), letting the number of controllable outputs scale far faster than the number of control lines",
+  "brief_reason": "The abstract reports driving 64 independently programmable flux biases from only six digital address lines plus a handful of shared power/analog lines, i.e. 2^6 = 64 targets selected by 6 binary lines, which is exactly a binary address-decode/demultiplex addressing architecture."
+}

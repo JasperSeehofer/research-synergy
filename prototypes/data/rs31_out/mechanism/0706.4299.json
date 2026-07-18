@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reformulating a shortest-path (geodesic) problem on a hard quotient space by constructing an isometry onto a canonical curved homogeneous manifold, then handling the symmetry-group quotient via a Riemannian submersion (restricting to horizontal directions), so that geodesics and sectional curvature pull back in closed form",
+  "brief_reason": "The abstract builds an isometry from the space of curves onto classical manifolds (sphere, complex projective, Stiefel, Grassmann) and mods out reparametrization/rotation using horizontal vectors, using these isometries to explicitly obtain geodesics and sectional curvature."
+}

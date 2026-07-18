@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "threshold-based fault-tolerant error correction via redundant (concatenated) encoding, in which noisy components are made arbitrarily reliable by encoding information redundantly and iteratively correcting errors, provided the per-component error/noise level lies below a critical threshold",
+  "brief_reason": "The abstract's key move is that a fault-tolerant error-correction scheme with leveled encoding lets otherwise-fragile, low-quality resources (small coherent amplitudes, photon loss) still yield reliable universal computation, i.e. redundant encoding suppresses errors once noise is below the fault-tolerance threshold."
+}

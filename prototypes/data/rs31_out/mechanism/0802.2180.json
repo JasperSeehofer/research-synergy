@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "the replica method for computing the free energy and thermodynamics of a disordered system with exponentially many metastable states — introducing n coupled copies of the system, averaging over the quenched randomness, and analytically continuing to n->0 — made exact in an infinite-dimensional (mean-field) limit",
+  "brief_reason": "The abstract states the theory of amorphous/glassy packings is 'based on the replica method,' yielding predictions on structure and thermodynamics, with an exact solution reached in the large-dimension mean-field limit."
+}

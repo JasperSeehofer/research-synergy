@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "image-singularity (method-of-images) coupling of an oriented point-dipole source to a planar boundary in a linear (creeping/Stokes) flow field, producing a boundary-induced attractive drift plus an alignment torque whose balance sets a steady-state spatial distribution",
+  "brief_reason": "The abstract explains the accumulation and re-orientation at walls as hydrodynamic interactions of the self-propelled cells with solid surfaces, and derives a steady-state boundary distribution from that boundary-coupled far-field dipole flow."
+}

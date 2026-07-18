@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an interactive delegation protocol in which a resource-limited party outsources a computation to an untrusted powerful executor while keeping it private, by masking each input with independent secret randomness (one-time-pad-style blinding) and then adaptively issuing step-by-step instructions conditioned on the executor's previously reported outcomes, so the executor performs the computation without learning it (optionally with a challenge-based check to detect a cheating executor)",
+  "brief_reason": "The abstract's method rests on the client preparing single states randomly chosen from a finite set (blinding) and then driving the server with single-step instructions that depend on previous measurement outcomes, keeping inputs, outputs, and computation perfectly private while the server does the heavy lifting."
+}

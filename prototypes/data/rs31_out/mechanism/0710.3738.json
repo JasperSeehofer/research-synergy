@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "state-conditional coherent Rabi rotation of a resonantly driven two-level system, embedded in a prepare-drive-measure cycle in which the driven coherent oscillation between the two levels is gated on the value of an auxiliary internal state variable",
+  "brief_reason": "The abstract describes optical control as a coherent Rabi rotation between two states (hole and charged exciton) that is conditional on an initial state, bracketed by a preparation step and a read-out step, i.e. a resonantly driven two-level system undergoing state-conditional coherent oscillation."
+}

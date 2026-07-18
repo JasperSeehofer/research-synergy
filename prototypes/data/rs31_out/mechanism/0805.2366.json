@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "systematic tiling-and-revisit sampling of a fixed domain in which many independent noisy measurements of each cell are coadded to drive noise down as ~1/sqrt(N) (raising effective sensitivity), while the repeated-visit time series of each cell enables change/transient detection",
+  "brief_reason": "This is primarily an instrument/survey-design paper, but the one transferable piece of machinery is its cadence: uniformly re-measuring an 18,000-cell domain ~800 times to build a deeper coadded map (statistical averaging of repeated noisy samples) and to sample the time domain for changes."
+}

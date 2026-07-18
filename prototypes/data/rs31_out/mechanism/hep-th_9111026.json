@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "conformal-invariance constraint on a system tuned to a critical threshold: boundary observables are invariant under the full group of domain-preserving conformal maps (not merely rescalings), so a quantity in an arbitrary geometry is fixed by mapping it to a reference shape",
+  "brief_reason": "The abstract computes crossing probabilities at the percolation threshold and shows them invariant not only under changes of scale but under all conformal mappings of the region, a larger-than-scale invariance used to derive predictions for specific geometries."
+}

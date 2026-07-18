@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a Pearson-type correlation coefficient measuring the tendency of directly coupled units to share similar values of a local connectivity attribute across each link (nearest-neighbor / edge-endpoint attribute correlation), whose sign distinguishes 'like-couples-with-like' from 'like-couples-with-unlike' organization",
+  "brief_reason": "The abstract's central construct is a defined measure of whether highly connected nodes attach to other highly connected nodes, i.e. a correlation between the degrees at the two ends of an edge, which it then shows controls how easily the system percolates and how robust it is to unit removal."
+}

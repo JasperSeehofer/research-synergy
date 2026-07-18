@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Exact few-body scattering of a small number of propagating excitations on a one-dimensional line off a single localized saturable (two-level) scatterer that mediates an effective interaction between the excitations, with the transport (transmission) coefficient determined by the medium's energy-momentum dispersion relation (linear vs. tight-binding cosine band)",
+  "brief_reason": "The abstract derives exactly the single- and two-quantum transmission through a 1D waveguide coupled to a saturable two-level system for linear and sinusoidal dispersions, which is a two-body scattering problem in which the localized scatterer correlates otherwise-free quanta and the band dispersion controls the transport."
+}

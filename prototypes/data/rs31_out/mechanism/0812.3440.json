@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A symmetry-rigidity classification: imposing compatibility of a function with a family of correspondence/averaging (Hecke) operators forces strong invariance under a discrete group of fractional-linear (Möbius) transformations, which rigidly pins the admissible functions down to uniformizers of a genus-zero quotient",
+  "brief_reason": "The abstract defines 'Hecke-monicity' (a compatibility condition with Hecke operators) and shows it implies strong invariance under linear fractional transformations, forcing the functions to be holomorphic genus-zero functions invariant under a congruence group."
+}

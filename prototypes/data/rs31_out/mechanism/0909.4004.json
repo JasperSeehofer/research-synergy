@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "recognizing a family of local, self-inverse operations as generators of a finite permutation group (here S_3), so that arbitrary composition sequences collapse to a canonical normal form dictated by the group's relations",
+  "brief_reason": "The abstract shows that pivot and loop-complementation, restricted to single elements, together satisfy the relations of the symmetric group S_3, which yields a normal form for arbitrary sequences of these operations."
+}

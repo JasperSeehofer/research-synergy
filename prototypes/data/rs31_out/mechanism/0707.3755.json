@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "evaluation of the determinant of a linear differential operator (a product over its spectrum) by recasting the spectral sum/product as a contour integral in the complex plane, exploiting the analytic structure and zeros of an associated function via residue/argument-principle calculus",
+  "brief_reason": "The abstract computes a pre-exponential factor that is a functional determinant of fluctuations about a solution using contour integrals in the complex plane, relying only on ordinary differential equations and complex-variable (residue) techniques."
+}

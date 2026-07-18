@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "insertion of a discrete fixed-offset element that adds a constant half-period (π) bias to a cyclic phase-difference variable which acts as the generalized potential driving flow around loops, via a local element whose flow-vs-phase response is inverted",
+  "brief_reason": "The abstract states the superconducting phase difference plays the role of the potential difference that drives current, and a special weak link with an inverted current-phase relation shifts that phase by a fixed π, i.e. a constant offset injected into a cyclic phase variable governing circulation."
+}

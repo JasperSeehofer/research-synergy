@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a group-equivariant intertwining map that conjugates the action of a Lie group into a fractional-linear (Möbius) transformation group over a non-commutative division algebra (quaternions)",
+  "brief_reason": "The abstract states that a quaternionic conformal map intertwines between a local unitary subgroup of Sp(2) and the quaternionic Möbius transformation, i.e. it establishes an equivariant correspondence linearizing one group action as fractional-linear (Möbius) transformations over the quaternions."
+}

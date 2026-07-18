@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a growing-correlation-length mechanism coupled to activated dynamics: partitioning a system into locally favoured motifs (via a Voronoi/tessellation classification) yields long-lived domains whose spatial extent grows as a control parameter is lowered, and the rate of this domain growth sets how strongly relaxation timescales diverge faster-than-exponentially (super-Arrhenius)",
+  "brief_reason": "The abstract ties clusters of locally preferred structures forming slow, long-lived domains whose spatial extension increases with decreasing temperature to a more pronounced super-Arrhenius growth of relaxation, i.e. a growing static length scale driving faster-than-Arrhenius slowing."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a piecewise-deterministic flow punctuated by a countable set of isolated unstable branch points where infinitesimal perturbations (noise) are amplified into a random selection among discrete outgoing branches, yielding an effectively stochastic symbolic process analyzed statistically",
+  "brief_reason": "The abstract describes dynamics that is well-behaved away from a countable set of sensitive decision points but where near those points noise causes the outgoing trajectory to be chosen randomly, then studied by a statistical method — i.e., noise-amplified random branch selection at isolated unstable points."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "frustration-free 'parent-operator' construction: writing a global operator as a sum of local positive-semidefinite projectors so its exact zero-energy null space is a prescribed low-dimensional subspace, with that null space's dimension and uniqueness certified by proving linear independence of a combinatorial family of local building-block configurations",
+  "brief_reason": "The abstract builds local Hamiltonians whose ground states are exactly the states annihilated by every local term (generalized Klein / RVB projectors) and proves uniqueness/degeneracy of that ground-state space via the linear independence of the nearest-neighbor valence-bond configurations."
+}

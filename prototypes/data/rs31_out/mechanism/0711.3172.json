@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "embeddability test for a single observed one-step transition operator: deciding, via computable necessary-and-sufficient criteria, whether that operator can be written as the exponential of a valid memoryless (Markovian) generator — i.e. whether it lies on a continuous-time semigroup flow / master-equation solution set — together with a distance-to-that-set measure quantifying deviation",
+  "brief_reason": "The abstract asks whether a single snapshot of an evolution (a channel) is consistent with a time-(in)dependent Markovian master equation, giving computable necessary and sufficient criteria, a measure of 'Markovianity', and characterizing the geometry of the set of such solutions — which is exactly the embedding problem for a transition map into a continuous-time semigroup."
+}

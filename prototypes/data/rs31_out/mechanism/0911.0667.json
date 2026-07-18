@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reformulation of a governing dynamical law as an autonomous dynamical system on a bounded phase space, whose asymptotic behavior is classified by fixed points and their stability, with the approach to a singular limit governed by an infinite heteroclinic sequence of transitions between saddle equilibria (persistent oscillation) versus convergence to an attracting state",
+  "brief_reason": "The abstract describes 'completely describing the dynamics' via qualitative asymptotics — an open set of forever-expanding orbits versus recollapse and generic oscillatory behavior toward the initial singularity — which is the signature of a phase-space dynamical-systems analysis where basins of fixed points and chains of saddle-to-saddle heteroclinic bounces determine the long-time and singular-limit outcome."
+}

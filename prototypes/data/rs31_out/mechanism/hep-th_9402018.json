@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "classification of algebraic structures by a structure-preserving morphism of their combinatorial multiplication (fusion) invariant onto a fixed reference family, combined with grading-based quotient/covering constructions (products, subgradings, orbit-quotients) that generate the family, where graph-incidence constraints on the morphism force rigidity/isomorphism",
+  "brief_reason": "The abstract builds new objects from given ones via grading-based product/subgrading/orbit constructions and classifies them by a fusion-ring morphism onto a reference series (type-A quantum groups at roots of unity), with 'local isomorphie' and incidence-graph constraints on that morphism forcing an isomorphism and yielding a classification."
+}

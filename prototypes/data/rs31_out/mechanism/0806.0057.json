@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "universal record (running-maximum / extreme-value) statistics of a cumulative-sum stochastic process, whose asymptotic record-count distribution is independent of the increment distribution provided the increments are continuous and symmetric",
+  "brief_reason": "The abstract studies the number and durations of records in time series built by summing symmetric continuous jumps and shows the record statistics are universal (independent of the jump distribution), with square-root-in-N mean and non-self-averaging spread characteristic of extreme-value statistics of partial sums."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "first-passage / survival-probability analysis of a diffusion (heat) equation subject to an absorbing (Dirichlet = 0) condition on a moving, time-dependent boundary, yielding the joint density of surviving-and-not-yet-absorbed states",
+  "brief_reason": "The abstract solves for the joint probability that a diffusing (Brownian, constant-D) walker has survived up to time t without hitting an absorbing surface whose location grows linearly in time, i.e. a diffusion equation with an absorbing boundary condition imposed on a moving boundary."
+}

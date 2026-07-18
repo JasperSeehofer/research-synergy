@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A boundary-interface scaling law for a bipartite correlation/dependence functional of a Gaussian (quadratic) system, in which the scalar measure of statistical coupling between two complementary subregions is asymptotically proportional to the size of their separating interface, together with a systematic short-distance (heat-kernel-type) asymptotic expansion of that quantity in the local geometric invariants of the interface",
+  "brief_reason": "The abstract proves the correlation measure between two regions is proportional to the volume of the separating hypersurface and derives a complete asymptotic expansion for it, which is exactly a boundary-measure scaling law plus a heat-kernel-type geometric expansion of a quadratic field's covariance functional."
+}

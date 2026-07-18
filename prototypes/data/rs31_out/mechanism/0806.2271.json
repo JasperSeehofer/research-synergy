@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "threshold onset below a critical control parameter of a linear drive-to-response coupling (an order-parameter-like transition that switches on a proportional coupling between a source field and a probe, growing as the control parameter moves past the critical point) accompanied by broken reflection/parity symmetry so the coupling is direction-dependent (chiral)",
+  "brief_reason": "The abstract reports that below a critical temperature a probe signal proportional to the applied drive velocity switches on and grows as temperature drops, while the effect is dominant for one rotation direction over its reverse, i.e. a critical-threshold emergence of a linear, parity-violating drive-response coupling."
+}

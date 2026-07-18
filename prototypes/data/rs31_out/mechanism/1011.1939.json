@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an asynchronous, purely local pairwise-exchange dynamical system on a discrete configuration space (partitions of a graph's vertices) that monotonically improves a global objective and provably converges in finite time to a pairwise-optimal (locally optimal) equilibrium partition",
+  "brief_reason": "The abstract defines a dynamical system on the space of partitions driven only by sporadic pairwise 'gossip' updates that reassign ownership, and proves this local pairwise rule converges in finite time to a pairwise-optimal partition equilibrium."
+}

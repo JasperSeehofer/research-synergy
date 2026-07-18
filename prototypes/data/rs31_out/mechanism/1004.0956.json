@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "decomposition of the coefficient sequence of a graded invariant (generating/modular) function into non-negative integer combinations of the dimensions of the irreducible representations of a finite symmetry group, exposing a hidden group action / graded-module structure",
+  "brief_reason": "The abstract states that the (graded) elliptic-genus expansion of the object decomposes naturally in terms of dimensions of irreducible representations of the finite group M_24, which is exactly the machinery of expanding a graded invariant's coefficients as sums of irrep dimensions of a symmetry group."
+}

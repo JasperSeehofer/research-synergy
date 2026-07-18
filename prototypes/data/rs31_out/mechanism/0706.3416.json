@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an extremal/variational entropy principle: the conjecture that a noisy transmission map's output disorder (output entropy) is minimized by a specific class of minimum-uncertainty extremal inputs, which saturates an information-theoretic bound and thereby collapses an achievable inner bound onto the exact optimum of a one-source-to-many-receivers rate region",
+  "brief_reason": "The abstract's whole argument hinges on a proposed minimum-output-entropy conjecture — that the minimum output entropy of a noisy (thermal-noise) channel occurs for a distinguished extremal (coherent-state) input — which, if true, makes the broadcast capacity region equal the inner bound achieved by that encoding."
+}

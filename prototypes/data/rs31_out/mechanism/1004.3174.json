@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "dead-reckoning / path integration: propagating a state estimate by cumulatively integrating cheap incremental relative-change measurements, whose integration drift is periodically reset by sparse, expensive absolute reference fixes (a predictor–corrector scheme trading frequent relative updates against infrequent absolute anchoring)",
+  "brief_reason": "The method mainly integrates low-cost accelerometer/compass (relative motion/heading) readings to track position and only invokes the expensive GPS infrequently 'for synchronization', i.e. to correct the drift accumulated by integrating relative measurements."
+}

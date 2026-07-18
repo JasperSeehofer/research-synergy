@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "recovery of an unknown coordinate warping (diffeomorphism) that maps an inhomogeneous field back onto a homogeneous/isotropic reference, identified and estimated from the spatially-varying local second-order (covariance) structure of a single densely-sampled realization",
+  "brief_reason": "The abstract frames nonstationary fields as isotropic (homogeneous) fields composed with an unknown spatial deformation, and estimates that deformation map from dense observations of one realization, i.e. inverting a warping to restore stationarity via local covariance information."
+}

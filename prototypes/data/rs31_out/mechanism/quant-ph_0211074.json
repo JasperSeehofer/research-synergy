@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "universal scaling at a continuous critical point governed by scale/conformal invariance: the entropy of a subsystem grows logarithmically with the subsystem's size with a prefactor fixed by the universality class (a central charge), and this coefficient decreases monotonically along the coarse-graining (renormalization-group) flow",
+  "brief_reason": "The abstract reports that the entropy of the ground state traced down to L units scales logarithmically with L with a coefficient equal to the central charge of the conformal theory encoding the transition's universal properties, plus a monotonicity law for that quantity along the renormalization-group flow."
+}

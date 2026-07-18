@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "maximum-entropy reconstruction of a positive spectral density from noisy integral-transform (correlator) data — i.e. regularized Bayesian inversion of an ill-posed inverse problem by selecting the least-biased distribution consistent with the measured constraints",
+  "brief_reason": "The abstract states the spectral functions (peak positions, widths, and continua) are extracted from measured plane correlation functions using the maximum entropy method, which is exactly maximum-entropy inference used to invert an ill-posed spectral-reconstruction problem."
+}

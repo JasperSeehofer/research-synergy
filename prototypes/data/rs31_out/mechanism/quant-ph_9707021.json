@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "encoding operations as elements of the braid group — transformations of a state are realized by moving identical exchangeable objects around one another, so the result depends only on the topology (homotopy class / winding) of their trajectories and is invariant under any local deformation of the paths",
+  "brief_reason": "The abstract states that transformations are performed by moving excitations around each other and that the computation is fault-tolerant by its physical nature, meaning the outcome is fixed by the topological braiding of worldlines rather than their precise geometry."
+}

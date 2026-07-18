@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a sharp lower bound (positivity/Garding-type inequality) on the weight-averaged value of a locally sign-indefinite density whose global integral is constrained nonnegative — the averaging weight function controls how negative any local smeared average can become",
+  "brief_reason": "The abstract derives 'quantum inequalities' bounding spatially and temporally averaged densities from below (tied to Garding inequalities) for a quantity that is globally nonnegative yet can take arbitrarily negative local expectation values, with explicit numerical bounds depending on the averaging weight function."
+}

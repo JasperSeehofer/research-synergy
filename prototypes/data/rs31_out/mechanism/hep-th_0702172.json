@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "symmetry-dictated variational construction: the configuration space is taken as a homogeneous space (orbit) of a symmetry group and the interaction term of the Lagrangian/action functional is built from the invariants of an enlarged symmetry group, so that the dynamics follows from group invariance alone",
+  "brief_reason": "The abstract builds the model from a variational formalism whose state space is 'necessarily a homogeneous space of the kinematical group' and derives the interaction Lagrangian by requiring it to be 'invariant under this enlarged spacetime group', i.e. the machinery is constructing a governing functional from the invariants of a symmetry group acting on a homogeneous configuration space."
+}

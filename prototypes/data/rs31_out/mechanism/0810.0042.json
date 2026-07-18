@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "minimization of an effective free-energy / order-parameter potential to map a phase diagram over a two-parameter control plane, in which the number and location of critical endpoints (where a first-order transition line terminates in a continuous one) change as an external tuning parameter is varied",
+  "brief_reason": "The abstract derives a phase diagram in the temperature-chemical-potential plane from an effective model of an order parameter and finds that zero, one, or two critical points appear depending on the value of a control parameter (the vacuum pion mass), which is exactly a Landau-type effective-potential landscape whose critical-endpoint structure is retuned by an external parameter."
+}

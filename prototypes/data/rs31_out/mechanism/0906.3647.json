@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "estimation of topological entropy (exponential growth rate of material line length / dynamical complexity) from the braiding of a set of point trajectories, via the braid-group / mapping-class action of tangled world-lines in a 2D domain",
+  "brief_reason": "The abstract proposes using braid theory and the topology of surface mappings to approximate the topological entropy of a flow as a measure of how the trajectories entangle, converging to zero when they are not complexly entangled."
+}

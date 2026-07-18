@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a lossless boundary-encoding / dimensional-reduction principle in which the complete state of an N-dimensional bulk region is fully reconstructable from data living on its (N-1)-dimensional boundary, with the information capacity bounded by the boundary's area (a fixed number of degrees of freedom per unit area) rather than by the enclosed volume",
+  "brief_reason": "The abstract states that a three-dimensional world can be reconstructed as an image of data stored on a two-dimensional projection using only one discrete degree of freedom per Planck area, yet rich enough to describe all three-dimensional phenomena, which is an area-bounded bulk-to-boundary encoding."
+}

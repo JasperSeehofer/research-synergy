@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "discretizing a set by intersecting many redundant many-to-one (folded / modulo-like, discontinuous) partitions so that the number of distinguishable cells grows exponentially in the redundancy, with the achievable resolution bounded by the metric (Kolmogorov / covering-number) entropy of the set",
+  "brief_reason": "The abstract replaces contiguous quantization cells with discontinuous (folded) regions so that error decays exponentially rather than quadratically in the oversampling (redundancy) rate, and it bounds the achievable performance by the Kolmogorov entropy of the signal set."
+}

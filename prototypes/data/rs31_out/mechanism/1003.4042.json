@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "iterative projection of a symmetric linear operator onto a growing sequence of nested Krylov subspaces via a short three-term (Lanczos) recurrence, reducing the operator to a tridiagonal form that is incrementally factorized by orthogonal rotations to select the minimum-norm least-squares solution",
+  "brief_reason": "The abstract builds solutions in Krylov subspaces using QR/QLP factors of the tridiagonal matrix from the Lanczos process and chooses the minimum-length (pseudoinverse) least-squares solution for singular/indefinite systems, which is exactly Krylov-subspace projection plus incremental rotation-based factorization."
+}

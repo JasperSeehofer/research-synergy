@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "tail-conditional expectation: the conditional mean of a random variable over the fraction of outcomes lying beyond a chosen quantile threshold, used as a subadditive (coherent) aggregation functional that satisfies convexity/monotonicity axioms",
+  "brief_reason": "The abstract defines the statistic as the average of the 100p% worst outcomes beyond a fixed confidence-level quantile and emphasizes its coherence (subadditivity) properties, which is exactly a tail-conditional expectation acting as a coherent aggregation functional over a distribution's extreme tail."
+}

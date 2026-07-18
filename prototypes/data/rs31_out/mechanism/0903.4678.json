@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "biased competitive-aggregation (Achlioptas-type) growth of connected components on a network, where a selection rule that preferentially links elements based on current cluster sizes drives a discontinuous, first-order percolation transition — an explosive jump in the largest component's size — placing it in a distinct universality class from ordinary random aggregation",
+  "brief_reason": "The abstract describes occupying bonds via a cooperative process whose choice depends on the masses of the clusters being connected, yielding a sharp first-order jump in the largest cluster's mass and a new critical universality class."
+}

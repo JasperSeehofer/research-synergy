@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an order-disorder phase transition governed by a bond-orientational (hexatic-type, six-fold angular) order parameter that orders independently of positional order, with the free-energy difference between the phases reconstructed by integrating the system's equation-of-state response to a conjugate control field",
+  "brief_reason": "The abstract distinguishes two phases by long-range bond orientational order (a six-fold azimuthal modulation of the diffraction peak) that is lost while positional order stays fluid-like, and it obtains free-energy changes across the transition by tuning a conjugate field (osmotic stress) over a density range."
+}

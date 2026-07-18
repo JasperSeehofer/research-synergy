@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A spectral-duality correspondence in which the joint eigenvalues of a maximal set of mutually commuting operators (a quantum integrable system) are encoded/parametrized by differential operators defined on a dual copy of the underlying symmetry structure, via an involutive (Langlands-type) dual transform swapping an algebra for its dual",
+  "brief_reason": "The abstract predicts that the common eigenvalues of the mutually commuting quantum Hamiltonians are encoded by affine opers (expressible as Schroedinger-type differential operators with spectral parameter) associated to the Langlands-dual affine algebra."
+}

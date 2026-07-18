@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "estimation of a control parameter via the Fisher-information / Cramer-Rao precision bound, sharpened by the divergent sensitivity (susceptibility) of a system's state to that parameter as it approaches a continuous-phase-transition critical threshold",
+  "brief_reason": "The abstract derives the ultimate precision limits for estimating a coupling parameter and shows the achievable precision improves (by order 1/L) precisely at the critical point of a phase transition, i.e. it exploits the diverging parameter-sensitivity at criticality to tighten the estimation bound."
+}

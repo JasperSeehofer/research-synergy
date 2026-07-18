@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "geometric-phase (holonomy) transport: net directed displacement produced by a closed, non-reciprocal cycle in a low-dimensional shape/control space under overdamped, inertia-free linear coupling, where the drift per cycle is a loop integral over the control parameters (enclosed-area rule)",
+  "brief_reason": "The abstract computes swimming velocity, force-velocity response, and efficiency for cyclic deformations of a two-arm (two-parameter) body in the inertialess low-Reynolds regime, so the net motion arises purely from the geometry of the closed stroke cycle in shape space rather than from any accumulated momentum."
+}

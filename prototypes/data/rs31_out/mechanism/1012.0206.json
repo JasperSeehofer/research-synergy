@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a recursive percolation/cascade process on two or more mutually-dependent networks, in which removing a fraction of nodes triggers back-and-forth failure propagation between the coupled layers that amplifies loss of connectivity and collapses the system once a critical removed-fraction threshold is crossed",
+  "brief_reason": "The abstract describes coupled network-like systems where failures in one network propagate to the others and where this coupling increases vulnerability to random failure, which is a mutual-dependency cascade/percolation process across interconnected media."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "coupling of discrete bound states of one channel to a continuum of open/virtual scattering channels, so that the poles of the resulting coupled-channel amplitude are dynamically shifted away from the bare bound-state energies (a Feshbach-type coupled-channel resonance / eigenvalue-embedded-in-continuum mechanism)",
+  "brief_reason": "The abstract takes bare bound states of a confining potential and, by coupling them to real and virtual decay (scattering) channels, obtains shifted poles and the associated cross sections and phase shifts, which is exactly the machinery of discrete states embedded in and renormalized by a scattering continuum."
+}

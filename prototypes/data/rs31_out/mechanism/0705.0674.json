@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Re-expressing a high-order group-invariant recoupling amplitude in an overcomplete basis of coherent (minimum-uncertainty) states, so that in a large-parameter limit a stationary-phase / saddle-point contribution from the semiclassical states dominates the sum",
+  "brief_reason": "The abstract takes the 15j recoupling symbol into a coherent-state basis whose labels have a direct geometric meaning and shows that the semiclassical (minimum-uncertainty) states dominate the evaluation of the correlations, which is exactly a coherent-state saddle-point/stationary-phase reduction of an invariant amplitude."
+}

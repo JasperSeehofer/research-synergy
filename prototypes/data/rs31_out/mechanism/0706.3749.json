@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "time reversal of a stochastic (Markov) transition operator, constructing a dual reversed operator such that the ratio of a forward trajectory's probability to that of its conjugate reversed trajectory is fixed by an exchanged conserved quantity — a detailed-balance / fluctuation-theorem construction",
+  "brief_reason": "The abstract builds a time reversal of a linear stochastic map that is 'closely analogous to the time reversal of a classical Markov transition matrix' and relates the probability of a trajectory to that of its time-reversed conjugate via the heat exchanged with the environment, which is exactly a detailed-balance/fluctuation-relation structure on a Markov transition operator."
+}

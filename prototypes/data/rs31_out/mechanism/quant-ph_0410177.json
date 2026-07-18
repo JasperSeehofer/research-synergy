@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Interferometric (heterodyne) phase read-out of a wave coherently diffracted by a periodic array — beating the scattered wave against a coherent reference so the recovered interference phase encodes the array's spatial period and its collective (center-of-mass) displacement",
+  "brief_reason": "The method heterodynes the Bragg-scattered wave with a reference beam to extract the phase shifts imparted by coherent scattering off the periodic atomic grating and thereby detect the grating's global translatory motion."
+}

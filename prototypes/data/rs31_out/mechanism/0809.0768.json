@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "fast periodic parametric driving whose time-averaged (effective/renormalized) dynamics produces qualitatively new stable states and modified effective parameters absent in the static system, tuned by the drive amplitude (Kapitza-type dynamical stabilization / high-frequency averaging of a periodically driven system)",
+  "brief_reason": "The abstract's inverted-pendulum-via-oscillating-pivot example, the drive-modified g-factor, and the amplitude-controlled crossover between distinct many-body states all rest on a rapidly modulated parameter whose averaged effect renormalizes the system and creates new stable configurations not present without the drive."
+}

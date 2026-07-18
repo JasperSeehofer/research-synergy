@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an iterative reduction that recasts a closed-loop problem with a self-induced (decision-dependent) input distribution as a sequence of online-learning games, where a no-regret guarantee against the losses under the successively induced distributions forces convergence to a stationary policy whose performance under its own induced distribution is bounded",
+  "brief_reason": "The abstract frames a setting where future observations depend on the learner's own past predictions (violating i.i.d.) and reduces it to a no-regret online learning algorithm whose regret bound guarantees good performance under the distribution the learned stationary policy itself induces."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "double-diffusive (salt-finger) instability, in which two scalar fields diffusing at different rates and with opposing effects on buoyancy drive finger-like convective transport, with an onset set by linear stability analysis and a resulting effective turbulent-diffusion transport coefficient",
+  "brief_reason": "The abstract studies thermohaline (salt-fingering) convection driven by a slowly-diffusing composition gradient against a faster-diffusing thermal gradient, characterizing the finger aspect ratio and a thermohaline diffusion coefficient from linear stability analysis to model the resulting transport."
+}

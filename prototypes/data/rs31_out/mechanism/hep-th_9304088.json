@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A branching-instability (proliferation) transition in a grand-canonical ensemble of random extended geometric objects, where the number of configurations at fixed size scales as a power law times an exponential in that size (an entropy-vs-cost competition), with a size-independent exponential rate and a subleading power exponent controlled linearly by a topological index",
+  "brief_reason": "The abstract reports that the count of surfaces of area A and genus g scales as N_g(A) ~ A^{-x(g)} e^{-mu A} with mu independent of g and x(g) roughly linear in g, and attributes this to a branching instability of the surface ensemble analogous to non-critical string theories."
+}

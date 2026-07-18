@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "preservation of unitary (information-conserving, invertible/reversible) time evolution of a dynamical system, restored by eliminating singular points where the evolution operator loses invertibility",
+  "brief_reason": "This is largely a taxonomy-style review, but its one substantive argument is that restoring unitary evolution rests on the elimination of singularities, i.e. the machinery is enforcing an invertible information-preserving evolution map by removing the singular points that would otherwise break its reversibility."
+}

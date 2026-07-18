@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a large-parameter (1/N) perturbative expansion in which contributions are organized by the topological genus of the graph they can be drawn on in a double-line representation, so that at leading order an infinite class of planar diagrams must be resummed self-consistently rather than truncated",
+  "brief_reason": "The abstract states that in the large N limit quantum corrections are classified by the genus of the 2d surface on which Feynman diagrams can be drawn without crossing in a double-line representation, with all planar diagrams contributing at leading order and infinitely many corrections surviving."
+}

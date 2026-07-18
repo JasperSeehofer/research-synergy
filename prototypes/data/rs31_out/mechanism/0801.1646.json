@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "renormalization-group flow analysis that classifies symmetry-breaking perturbations as relevant or irrelevant at a critical fixed point (via an epsilon expansion), thereby fixing which restored symmetry governs the universality class on large scales",
+  "brief_reason": "The abstract argues a type-(iii) perturbation is irrelevant while type-(ii) symmetry is restored near the critical point, using a double epsilon expansion to obtain the RG flow picture that determines the fixed point's universality class."
+}

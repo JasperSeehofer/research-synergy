@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "the large-deviation principle: the probability of a rare aggregate fluctuation decays exponentially in a scale parameter, P ~ exp(-N I(x)), with a convex rate function I obtained as the Legendre-Fenchel transform of a scaled cumulant/generating function, whose minimizer selects the typical state and whose non-convex regions signal transitions",
+  "brief_reason": "The abstract centers on exponential-order estimates of the probability of large fluctuations governed by a rate function tied to variational principles and Legendre transforms (including their breaking for nonconcave entropies), which is precisely the large-deviation rate-function/Legendre-transform machinery."
+}

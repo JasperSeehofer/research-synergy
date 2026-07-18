@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Coarse-graining of a high-dimensional system to a low-dimensional effective potential on a curved parameter (moduli) space, whose equilibria are the stationary (critical) points of that potential, together with a proof that these reduced stationarity conditions coincide with a spatially-integrated (averaged) form of the full fine-scale governing equations",
+  "brief_reason": "The abstract reduces a higher-dimensional theory to an effective low-dimensional action, equips its parameter space with a special-Kaehler metric, characterizes vacua as conditions on that effective action, and proves those conditions are equivalent to an integrated version of the underlying full-scale equations."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "nonlinear two-path interferometric parameter estimation, in which a nonlinear self-coupling among N interacting elements makes the accumulated relative phase depend super-linearly on N, so the estimation uncertainty of the coupling strength scales faster than 1/N",
+  "brief_reason": "The abstract maps the evolving two-mode system onto a Ramsey interferometer containing a nonlinear medium and shows the interatomic scattering-strength uncertainty scales as 1/N^{7/5}, beating the 1/N (Heisenberg) bound achievable with a linear interferometer."
+}

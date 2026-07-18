@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "covariance-aware combination of multiple correlated estimators drawn from a common data source: using the full cross-covariance matrix of the estimates (generalized-least-squares / correlated error propagation) to build a minimum-variance combined estimator and correctly quantify its uncertainty, instead of assuming the estimates are independent",
+  "brief_reason": "The abstract states that several estimates of the same quantity, because they originate from the same time series, carry pronounced cross-correlations that, if ignored, underestimate statistical fluctuations, and it proposes an extension that folds these correlation effects into improved, lower-variance estimators."
+}

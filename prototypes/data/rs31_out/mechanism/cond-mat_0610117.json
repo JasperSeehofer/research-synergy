@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "rigorous reduction of a high-dimensional interacting many-body energy-minimization problem, in a large-N dilute scaling limit, to an effective nonlinear single-mode (mean-field) energy functional whose minimizer is macroscopically occupied by one collective mode",
+  "brief_reason": "The abstract's central objects — the ground-state energy, the Gross-Pitaevskii (nonlinear one-body) equation, and Bose-Einstein condensation — together describe minimizing a many-body energy that collapses in a scaling limit to a nonlinear mean-field functional with macroscopic occupation of a single mode."
+}

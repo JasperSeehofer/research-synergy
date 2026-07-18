@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reduction of a many-point correlated ensemble to a determinantal point process, in which all n-point correlation functions of mutually repelling random points collapse exactly to determinants of a single two-point correlation kernel, with universal scaling limits as the number of points grows large",
+  "brief_reason": "The abstract states that the eigenvalue correlations are exactly reduced to two-point kernels and analyzed in the large-matrix-size strongly and weakly deformed limits, which is precisely the determinantal-kernel reduction of an interacting-point ensemble and its asymptotic scaling limits."
+}

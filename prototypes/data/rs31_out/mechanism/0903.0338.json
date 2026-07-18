@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "optimal detection and parameter estimation of a weak signal of known (templated) waveform buried in stochastic background noise, via matched filtering against a bank of candidate signal shapes",
+  "brief_reason": "This is a broad review, but the one concrete method it names is the data-analysis machinery 'used to extract their signals from detector noise', i.e. correlating noisy data against expected waveform templates to pull out a faint deterministic signal."
+}

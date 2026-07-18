@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "split-operator (Trotter/Suzuki) factorization of the exponential time-evolution operator of a sum of non-commuting generators, applied alternately in short timesteps to propagate a state on a discretized grid",
+  "brief_reason": "The abstract states the algorithm uses the split-operator approach to propagate the entire wavefunction on a grid with appropriately short timesteps, i.e. it factorizes the evolution into separately-handled interaction terms advanced step by step."
+}

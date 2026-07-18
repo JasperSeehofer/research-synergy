@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reducing a linear-operator eigenvalue problem to finite matrix diagonalization by expanding the operator in a known complete orthonormal basis (a Galerkin/Rayleigh-Ritz spectral projection onto a truncated basis)",
+  "brief_reason": "The abstract reframes solving the differential eigenvalue equation for bound states as a matrix diagonalization problem in the basis of square-well eigenfunctions, which is exactly projecting a linear operator onto a known complete basis and diagonalizing the resulting matrix."
+}

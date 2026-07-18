@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "hierarchical, self-similar modular decomposition of a network, in which small densely-connected clusters nest recursively into progressively larger, less cohesive clusters, diagnosed by power-law (scale-free) scaling of module count and clustering with node degree",
+  "brief_reason": "The abstract identifies many small highly-connected topological modules that combine hierarchically into larger, less cohesive units whose number and degree of clustering follow a power law, i.e. a recursive scale-free modular network architecture."
+}

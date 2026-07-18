@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "superposition of many independent relaxation processes with a broad (power-law) distribution of relaxation times, producing a scale-invariant power-law power spectrum",
+  "brief_reason": "The abstract frames 1/f^alpha noise as a superposition of many relaxation processes spanning a wide range of time scales, which is precisely the machinery that turns a broad distribution of decay rates into a power-law (scale-free) spectrum."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Fixing the scaling form of correlations at a critical point by conformal/scale invariance with a non-diagonalizable (Jordan-block) scaling generator, so that an observable pairs with a 'logarithmic partner' of a primary operator and correlations acquire logarithmic corrections to pure power-law scaling (a logarithmic conformal field theory of fixed central charge)",
+  "brief_reason": "The abstract derives exact scaling forms and 1- and 2-point correlations by matching them to a logarithmic conformal theory of central charge c=-2 in which observables are assigned to a primary field and its logarithmic partner of scaling dimension 2."
+}

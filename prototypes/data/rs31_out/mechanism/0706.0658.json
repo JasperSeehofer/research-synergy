@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "density-functional variational principle: the total energy of an interacting many-body system is expressed as a functional of a single coarse-grained local density field, with the functional's form fixed by microscopic reference calculations plus a few phenomenological parameters, and the ground state obtained by minimizing that functional",
+  "brief_reason": "The abstract builds an energy density functional directly from microscopic many-body results at various densities plus a phenomenological finite-range surface term, and with only four to five fitted parameters reproduces ground-state binding energies and radii — the hallmark of expressing energy as a functional of a local density and minimizing it."
+}

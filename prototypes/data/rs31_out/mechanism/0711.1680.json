@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Encoding a linear operator (e.g. a transition/adjacency matrix) into a Fock-space creation-annihilation representation over a nilpotent, square-to-zero generator algebra, so that the operator's spectral/asymptotic properties are read off from algebraic trace identities and an operator-adjoint 'integration-by-parts' relation instead of from iterating (taking powers of) the operator",
+  "brief_reason": "The abstract constructs Fock spaces over zeons and develops trace identities plus a noncommutative integration-by-parts formula, then uses them to obtain an ergodicity criterion 'without involving powers of the transition matrix', i.e. it replaces operator iteration with algebraic identities in a nilpotent-generator Fock representation."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Mediating an effective pairwise coupling between two chosen sites of a large coupled-oscillator lattice by driving through its dense spectrum of collective normal modes with a temporally shaped forcing designed so each spectator mode's driven phase-space trajectory closes on itself, decoupling the drive from the mode continuum and leaving only the desired mode-mediated interaction.",
+  "brief_reason": "The abstract realizes high-fidelity gates 'based on coupling to a near-continuum of transverse motional modes with simple shaped laser pulses,' i.e. using the lattice's collective normal-mode spectrum as an interaction bus and shaping the time-dependent drive to disentangle from that continuum, enabled by an anharmonic confining potential tuned to give uniform lattice spacing."
+}

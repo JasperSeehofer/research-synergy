@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "self-consistent mean-field variational minimization over a BCS-type paired-state ansatz coupled to a coherent (condensate) field, yielding a symmetry-broken ground state and a finite-temperature critical threshold whose order parameter scales with the number of constituents",
+  "brief_reason": "The abstract solves the system by a selfconsistent procedure with a trial function combining a coherent photon field and a BCS pairing function, minimizing the ground-state energy and extracting a critical temperature — the hallmark of self-consistent mean-field pairing theory."
+}

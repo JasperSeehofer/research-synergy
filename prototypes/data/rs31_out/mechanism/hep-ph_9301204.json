@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an order-by-order perturbative (asymptotic power-series) expansion of an observable in a small coupling parameter, with successive correction terms computed explicitly and an unphysical renormalization/factorization scale whose spurious dependence cancels between orders",
+  "brief_reason": "The whole method is computing 'perturbative QCD corrections' to a cross section term by term and probing its 'dependence on the renormalization and factorization scales,' i.e. truncating and controlling an asymptotic series in a small coupling."
+}

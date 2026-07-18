@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a boundary-driven nonequilibrium steady-state transport process exhibiting negative differential response, in which the steady-state flux is a non-monotonic function of the applied drive and decreases above a threshold because strong driving self-organizes localized blocking structures at the boundaries that trap the carriers",
+  "brief_reason": "The abstract states that driving the chain further from equilibrium builds up oppositely polarized domains at its edges that localize the carriers and suppress transport, so increasing the drive decreases the current — a negative differential conductivity arising from drive-induced boundary localization."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "reconstruction of the free-energy profile of a two-state transition along a collective fluctuation coordinate (Marcus-type activated barrier crossing between two intersecting parabolic free-energy surfaces), built directly from the equilibrium fluctuation statistics of a coupled many-body bath rather than from its mean field",
+  "brief_reason": "The method's payoff is computing Marcus free-energy profiles for charge transfer between two states directly from the simulated environmental fluctuations and showing these depart from mean/continuum descriptions because the fluctuations about the mean are large."
+}

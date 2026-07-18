@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a scaling-law derivation obtained by mapping a persistent, directionally-correlated driven random walk onto the equilibrium conformational statistics of a bending-stiff fluctuating line, using the persistence-length structure to extract power-law dependences on the system's control parameters",
+  "brief_reason": "The abstract states the results rest on employing an analogy with semi-flexible polymers to derive scaling laws for the confinement-induced boundary excess as a function of wall distance, rod length, and propulsive force, which the simulations then confirm."
+}

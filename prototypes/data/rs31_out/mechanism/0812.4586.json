@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "persistence and breakup of invariant curves (KAM-type transport barriers) in an area-preserving nontwist map, indexed by rotation/winding numbers whose rational-vs-noble-irrational continued-fraction hierarchy and resonance (separatrix) reconnection govern when the barrier survives or is destroyed",
+  "brief_reason": "The abstract builds a central invariant curve in a nontwist map and tracks its destruction through winding-number resonances, continued-fraction hierarchies, and reconnection of separatrices, which is the generic machinery of invariant-curve barriers to transport in area-preserving maps."
+}

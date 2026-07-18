@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "using an invariance/symmetry group (scale-conformal symmetry) together with a bulk-to-boundary duality to fully fix how a subregion quantity depends on the geometry of the interface bounding it, with the result decomposing into a topology-only invariant term and a separate term set by the interface's local curvature",
+  "brief_reason": "The abstract fixes the dependence of the entropy on the separating surface by imposing conformal invariance and a holographic (bulk-boundary) correspondence, and shows the result splits into a piece determined purely by the surface's topology and a piece governed by its extrinsic (curvature) geometry."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a metric-free, reparameterization-invariant dynamical system defined on the projective space of rays (half-lines through the origin of a vector space), with the conjugate momentum encoded as a bivector spanning a 2-plane in the exterior algebra rather than as a tangent vector, so that scale/homogeneity is quotiented out and trajectories are unparameterized curves",
+  "brief_reason": "The abstract builds a law of dynamics whose state is a ray in S(V) and whose impulsion is a bivector supported on a 2-plane containing that ray, yielding unparameterized projective trajectories with no metric in the axioms."
+}

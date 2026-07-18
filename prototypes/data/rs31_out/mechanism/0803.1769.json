@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "discriminating endogenously self-generated events from exogenously forced ones in a fluctuating system by cross-correlating the event series against a candidate external-driver series and comparing the conditional relaxation (response-function) shape of the fluctuations following each event type",
+  "brief_reason": "The method cross-correlates a fluctuation series with an external forcing feed and finds that the two event classes trigger oppositely-signed and differently-shaped post-event relaxation of the fluctuation amplitude, which is exactly the endogenous-vs-exogenous shock discrimination via conditional response functions (with the residual large events attributed to a near-critical vanishing-buffer instability)."
+}

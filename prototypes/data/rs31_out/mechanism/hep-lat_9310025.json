@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "finite-size scaling of fluctuating observables near a continuous (second-order) critical point to extract critical exponents, testing universality — the claim that the exponents are invariant to microscopic details of the underlying medium and depend only on symmetry and dimensionality",
+  "brief_reason": "The abstract applies finite-size scaling analyses near criticality to show the critical exponents of a disordered random lattice coincide with those of the regular lattice, i.e. that the same universality class governs both regardless of microscopic structure."
+}

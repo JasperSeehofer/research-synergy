@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "representing structured objects as concrete sheaves on a concrete site, so that a category lacking closure gets embedded into a locally-cartesian-closed / topos-like completion possessing all limits, all colimits, exponential (function-space) objects, and a subobject classifier",
+  "brief_reason": "The abstract recasts several formalisms as 'concrete sheaves on a concrete site' and derives from that single construction that their categories are locally cartesian closed with all limits, all colimits, and a weak subobject classifier — the transferable machinery is the sheaf-on-a-site closure of a non-closed category."
+}

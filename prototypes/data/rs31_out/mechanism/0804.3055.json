@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an exponential-work (annealed-importance-sampling / Jarzynski-type) estimator of a ratio of normalizing constants from driven nonequilibrium trajectories, variance-reduced by introducing an auxiliary deterministic transport/flow map that couples the state to the driving parameter so trajectories are escorted along a near-equilibrium (low-dissipation) path",
+  "brief_reason": "The abstract estimates an equilibrium free-energy difference (a log-ratio of partition functions) from fast-switching driven trajectories and improves convergence by adding an artificial flow field that couples coordinates to the external driving parameter, yielding a modified identity whose trajectories carry reduced dissipation and hence lower estimator variance."
+}

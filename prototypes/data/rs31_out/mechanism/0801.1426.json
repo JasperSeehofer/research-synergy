@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a minimum-variance, maximum-likelihood reweighting estimator that pools samples drawn from several differently-normalized probability distributions and solves a coupled set of self-consistent estimating equations for the ratios of their normalization constants (and derived expectations), together with an asymptotic uncertainty estimate",
+  "brief_reason": "The abstract describes an estimator that optimally combines samples from multiple equilibrium states to recover free-energy (normalization-constant) differences and expectations with the lowest asymptotic variance and provided error bars, i.e. an optimal multi-distribution reweighting/estimating-equation scheme."
+}

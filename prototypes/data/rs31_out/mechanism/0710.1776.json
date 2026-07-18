@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a combinatorial state-sum / generating-function construction in which a global quantity is assembled by gluing local 'vertex' weights along the edges of a graph and summing over integer-partition (Young-diagram) labels on those edges, deformed by an extra grading parameter — i.e. a transfer-matrix / tensor-network contraction over partition-labeled states",
+  "brief_reason": "The abstract computes amplitudes via a 'diagrammatic method' (the refined vertex) that builds them piece-by-piece from a local vertex glued over a graph, and then verifies the resulting generating function equals an independently-defined partition function, which is exactly a local-weight-gluing state sum over combinatorial (partition) labelings."
+}

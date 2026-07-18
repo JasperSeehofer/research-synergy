@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "whitening (decorrelating) transform of a signal's noise covariance to the identity, followed by eigen-decomposition of the resulting covariance (a Karhunen-Loeve / principal-component transform) to yield a basis of mutually uncorrelated modes and thence a minimum-variance estimator",
+  "brief_reason": "The abstract prewhitens the spectrum so the noise covariance becomes proportional to the unit matrix, then takes eigenfunctions of that covariance to obtain almost uncorrelated modes and a near minimum-variance estimator, which is exactly a whitening-plus-eigenbasis (Karhunen-Loeve) decorrelation of a covariance matrix."
+}

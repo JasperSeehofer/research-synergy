@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a systematic 1/N asymptotic expansion in the inverse number of components of a many-component system, evaluated by a self-consistent saddle-point that dynamically generates an effective mass/gap scale acting as a controlled infrared regulator, with observables computed order-by-order and a well-defined infinite-size (thermodynamic) limit",
+  "brief_reason": "The abstract builds everything on a 'large N expansion' computed 'to next to leading order,' with a 'dynamically generated gap' serving as a 'coupling-dependent infrared regulator' whose divergences cancel in the infinite-lattice (thermodynamic) limit."
+}

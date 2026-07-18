@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a formal deformation of ordinary pointwise multiplication into a noncommutative associative product defined by a power series in a small deformation parameter (a Moyal-type star product), with the governing equations solved perturbatively order-by-order in that parameter to extract leading (first-order) corrections to observables",
+  "brief_reason": "The abstract builds a perturbative solution using the Groenewald-Moyal star product and reports shifts that are first order in the noncommutativity parameter, i.e. a star-product deformation of multiplication treated as a perturbation series in the deformation parameter."
+}

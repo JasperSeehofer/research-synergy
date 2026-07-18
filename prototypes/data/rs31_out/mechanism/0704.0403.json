@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "regularization of a stochastic emission point process by confining it to a single discrete two-level quantum system that can hold at most one excitation at a time, converting a Poissonian (random) event-count distribution into a sub-Poissonian, dead-time-limited (anti-bunched) renewal stream of single events, with cascaded relaxation down a ladder of levels yielding correlated event pairs",
+  "brief_reason": "The abstract contrasts the broad statistical photon-number distribution of lasers/LEDs with a source that emits individual photons or pairs in a regulated stream by using the emission of a single quantum dot, i.e. a single discrete emitter whose one-excitation-at-a-time constraint reshapes the emission counting statistics."
+}

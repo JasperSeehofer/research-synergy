@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "many-body particle dynamics driven by a long-range mean field derived from a Poisson-type elliptic field equation whose source is modified by a density-dependent (nonlinear) term, producing an enhanced effective interaction that amplifies clustering instability",
+  "brief_reason": "The method simulates many interacting bodies whose force comes from a density-dependent modification to the Poisson equation, adding an extra long-range scalar force that enhances nonlinear clustering."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a dynamical compartmental contagion model defined on a heterogeneous network whose node-degree distribution follows a power law, in which the strongly right-skewed connectivity removes the usual critical threshold so that a spreading state persists for arbitrarily small transmission rate, replacing the standard threshold/critical-behavior picture of propagation on homogeneous substrates.",
+  "object_atom": "computer viruses propagating across the Internet's scale-free topology, characterized empirically by the average lifetime and prevalence of real viral strains.",
+  "brief_reason": "The threshold-free contagion dynamics on power-law-degree networks is the transferable machinery, while the empirical computer-virus infections on the Internet are the domain-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "an exact treatment of an irreversible stochastic contagion process on an arbitrary network, in which each unit passes through susceptible, active, and permanently-inactive states, obtained by mapping the spreading dynamics onto a bond-percolation / branching-process problem and solving it with generating-function methods; the machinery extends to non-uniform and correlated transmission durations and pairwise transmission probabilities, and to structured (multi-type) populations with type-dependent coupling.",
+  "object_atom": "the spread of epidemic disease modelled by standard susceptible/infective/removed (SIR) dynamics among individuals connected by social contact networks, including a sexually transmitted disease in a population split into men and women.",
+  "brief_reason": "the percolation/branching-process generating-function solution of an irreversible three-state spreading process on networks is the transferable method, while the SIR disease on human contact networks is the domain-specific object."
+}

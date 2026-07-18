@@ -1,0 +1,5 @@
+{
+  "method_atom": "a comparative framework for modelling directed interaction networks under three schemes: static models that place links between nodes according to simple assignment rules, dynamical models in which coupled units follow interacting population/state dynamics and whose collective stability is analyzed, and growth/assembly models that build a network from a few initial nodes by iteratively introducing new nodes either at random or by descent-with-modification from existing ones, asking whether the resulting large networks are stable.",
+  "object_atom": "food webs — networks of biological species connected by trophic (predator-prey feeding) links in an ecosystem, including empirical food-web data.",
+  "brief_reason": "the network-construction and stability-of-growing-networks machinery (static-rule, dynamical, and assembly/evolutionary node-addition) is transferable, while the trophic links among biological species in an ecosystem is the ecology-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a generating-function theory of random networks built from an arbitrary prescribed distribution of per-node connectivity, extended to directed and two-mode (bipartite) as well as one-mode structures, that yields closed-form expressions for the critical threshold at which a single giant connected cluster first emerges, the mean finite-cluster size, the size of the giant cluster, the expected number of nodes at a given remove from a randomly chosen node, and the typical pairwise separation across the ensemble",
+  "object_atom": "real-world empirical networks — the world-wide web, collaboration graphs of scientists, and boards-of-directors graphs of Fortune 1000 companies — whose observed connectivity distributions depart from the Poisson form",
+  "brief_reason": "the generating-function machinery for arbitrary-degree random graphs and its percolation/component/distance results is the transferable method, while the specific web, scientific-collaboration, and corporate-director networks it is fitted to are the domain-specific object."
+}

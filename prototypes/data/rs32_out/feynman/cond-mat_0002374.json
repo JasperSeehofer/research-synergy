@@ -1,0 +1,5 @@
+{
+  "method_atom": "a conserved-quantity many-body model whose stochastic evolution combines pairwise transfer between units with multiplicative random growth, constrained by invariance under arbitrary rescaling of the conserved variable; in the mean-field limit it yields a stationary distribution with heavy (power-law) tails, and via a mapping to a random directed-polymer problem it exhibits a condensation transition in which the conserved quantity concentrates onto a vanishing fraction of units versus a broadly spread regime, tunable by the range/amplitude of transfer and by a dissipative redistribution term",
+  "object_atom": "the distribution of wealth across individuals in an economy, evolving through pairwise monetary exchange, random speculative trading, and taxation, with the model invariant under a change of monetary units",
+  "brief_reason": "the transferable part is the scale-invariant exchange-plus-multiplicative-noise dynamics of a conserved quantity that produces power-law tails and a condensation transition, while the domain-specific object is individuals' wealth under trade, speculation, and taxes."
+}

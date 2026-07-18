@@ -1,0 +1,5 @@
+{
+  "method_atom": "a model of many interacting units governed by the simplest pairwise coupling rule, in which local interactions drive the units to aggregate into clusters whose resulting size distribution self-organizes into a scale-free power-law (rank-size) statistic",
+  "object_atom": "human individuals aggregating into cities, whose population sizes obey Zipf's law of city-size distribution",
+  "brief_reason": "the pairwise-interaction mechanism that generates a power-law cluster-size distribution is the transferable method, while people clustering into cities is the domain-specific object."
+}

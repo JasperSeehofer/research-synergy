@@ -1,0 +1,5 @@
+{
+  "method_atom": "a mean-field treatment of a stochastic contagion process running on a heterogeneous complex network, in which units occupy a few discrete states and switch between them at rates set by pairwise contacts, with the resulting dynamical equations solved by numerical integration and Monte Carlo simulation; the collective spreading behaviour depends strongly on the network's connectivity/degree distribution (e.g. homogeneous vs strongly heterogeneous, scale-free topologies), and time profiles of aggregate quantities distinguish variant transition-rule schemes",
+  "object_atom": "a rumor propagating among individuals modeled as nodes of a complex social/communication network, with target applications in replicated database maintenance, peer-to-peer communication networks, and social spreading phenomena",
+  "brief_reason": "the transferable part is the mean-field/Monte-Carlo machinery for a topology-dependent stochastic state-switching process on a heterogeneous network; the domain-specific part is the rumor and its social/communication substrate."
+}

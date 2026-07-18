@@ -50,3 +50,6 @@ prototypes/data/rs30_in/
 
 # RS-31 temporal-novelty inputs (regenerable via rs31_temporal.py)
 prototypes/data/rs31_in/
+
+# RS-32 method/object inputs (regenerable via rs32_asymmetric.py)
+prototypes/data/rs32_in/

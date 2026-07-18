@@ -1,0 +1,41 @@
+{
+ "experiment": "EXP-RS-32",
+ "stage": "feynman-gate",
+ "verdict": "GATE-PASS",
+ "separability": "5/5 (need >=3)",
+ "sep_ok": true,
+ "within_paper_method_object_cos_mean": 0.714,
+ "nondegen_ok": true,
+ "pairs": [
+  {
+   "pair": "pair01-ising-opinion",
+   "method_sim": 0.778,
+   "object_sim": 0.48,
+   "method_gt_object": true
+  },
+  {
+   "pair": "pair03-sir-rumour",
+   "method_sim": 0.862,
+   "object_sim": 0.723,
+   "method_gt_object": true
+  },
+  {
+   "pair": "pair04-percolation-epidemics",
+   "method_sim": 0.775,
+   "object_sim": 0.602,
+   "method_gt_object": true
+  },
+  {
+   "pair": "pair05-lotka-volterra-markets",
+   "method_sim": 0.696,
+   "object_sim": 0.549,
+   "method_gt_object": true
+  },
+  {
+   "pair": "pair06-turing-spatial-economy",
+   "method_sim": 0.67,
+   "object_sim": 0.606,
+   "method_gt_object": true
+  }
+ ]
+}

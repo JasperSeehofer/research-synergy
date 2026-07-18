@@ -1,0 +1,5 @@
+{
+  "method_atom": "a two-component reaction-diffusion-type dynamics with a self-amplifying (activator) and a suppressing (inhibitor) field coupled by differential transport across the links of an arbitrary graph, in which a homogeneous steady state becomes linearly unstable (a diffusion-driven symmetry-breaking instability) and, on heterogeneous random topologies, drives nodes to bifurcate into high- and low-activity groups selected by their connectivity, yielding multistability, hysteresis, and stationary states describable by a mean-field approximation rather than ordered periodic structure",
+  "object_atom": "activator-inhibitor systems organized on large random networks, such as cellular networks in morphogenesis and ecological metapopulations with dispersal connections between habitats",
+  "brief_reason": "the diffusion-driven instability of coupled amplifying/suppressing fields on a graph and the degree-selected node differentiation it produces is the transferable machinery, while the biological/chemical activator-inhibitor substances living on morphogenetic or ecological network nodes are the domain-specific object."
+}

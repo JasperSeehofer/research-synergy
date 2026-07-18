@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A's machinery is rigorous functional-analytic finite-rank (low-rank) perturbation corrections that enforce exact vanishing conditions in singularly weighted energy estimates for a computer-assisted PDE-singularity proof; Paper B's machinery is numerical simulation of coupled nonlinear ODEs (generalized Lotka-Volterra plus an SIR overlay) to observe emergent oscillations, extinction, and community persistence. The only overlap is the generic notion of differential equations and 'stability/perturbation,' with no role-for-role correspondence between finite-rank operator corrections and ecological population dynamics, so they do not share an underlying method."
+}

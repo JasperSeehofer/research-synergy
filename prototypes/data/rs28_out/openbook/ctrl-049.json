@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "the observed LISA data stream as a superposition of noise + several astrophysical foregrounds + the cosmic-string signal", "b_element": "the multivariate time series whose coordinates carry a detected change"},
+    {"a_element": "attributing/disentangling the observed spectrum into its component sources (which contribute the signal vs. foregrounds)", "b_element": "attributing a detected change-point to which block(s) of coordinates are responsible"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Both are broadly 'statistical inference that attributes an observation to underlying components', but the transferable machinery differs decisively: paper A performs amortized simulation-based (likelihood-free) Bayesian joint inference to reconstruct a parameter (string tension Gμ) with a quantified error, whereas paper B performs post-hoc frequentist two-sample nonparametric hypothesis testing with Type I error control to decide which coordinate block changed. There is no role-for-role correspondence between an SBI posterior-estimation pipeline and a change-point attribution test, so the overlap is only the generic notion of component attribution."
+}

@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A is an experimental condensed-matter study identifying a physical decoherence channel (Coulomb blockade and microwave-driven charge tunnelling in metallic grains) in superconducting quantum circuits via scanning gate microscopy, whereas paper B is a stochastic-PDE regularization-by-noise proof that transport noise yields global-in-time smooth solutions of the 3D Navier-Stokes equations. The only overlap is the word 'noise', but its role is opposite in each — a harmful physical fluctuation to be suppressed in A versus a beneficial stochastic term that enforces regularity in B — so no role-for-role mapping of the underlying machinery exists."
+}

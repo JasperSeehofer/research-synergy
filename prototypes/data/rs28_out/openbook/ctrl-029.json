@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A designs quantum circuits with ancilla qubits and controlled unitary operations that algebraically map entanglement measures (concurrence, 3-tangle) onto output measurement probabilities; Paper B analyzes a reaction-diffusion PDE system (spatial Muller's ratchet) for Fisher-KPP traveling waves and tracer dynamics of mutation surfing. There is no shared governing process — static linear-algebraic probability encoding versus nonlinear spatiotemporal wave propagation — so no role-for-role mapping holds."
+}

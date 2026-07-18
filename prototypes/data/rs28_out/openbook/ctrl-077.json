@@ -1,0 +1,7 @@
+{
+  "mapping": [
+    {"a_element": "distribution of party vote fractions across parties", "b_element": "spatial distribution of store locations/survival across Tokyo"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A's machinery is equilibrium statistical mechanics: coupled nonlinear oscillators reaching Rayleigh-Jeans thermalization and constraint-driven condensation under conservation of energy and norm, yielding Lorenz/Pareto curves. Paper B's machinery is a Bayesian spatial hierarchical model coupling a log-Gaussian Cox point process with a probit survival regression through a shared Gaussian-process field, fit by NNGP and Metropolis-within-Gibbs. Beyond both describing a spatial/statistical distribution, there is no role-for-role correspondence — no shared governing equation, threshold, or estimation principle — so the underlying methods differ."
+}

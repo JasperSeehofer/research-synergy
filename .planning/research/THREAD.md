@@ -54,12 +54,38 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 | The "0.60 brute-force-LLM bar" that RS-16→21 all failed is a fixed property of the cross-field-analogy task | **FALSIFIED — the bar is MODEL-RELATIVE** (Phase 41 EXP-RS-22 F1, 2026-07-17) — pinned Opus 4.8 scores recall@10 = **1.00** on the 5 Feynman anchors (all side_b rank 1, incl. pair01/pair06 the C-20 baseline ranked #12/#15), vs the EXP-RS-10/16 incumbent's 0.60. The 0.60 was one (weaker/earlier) Claude's ranking; the task is near-trivial for a current model. Every RS-16→21 comparison-to-baseline should be read as model-relative. | `41-VERIFICATION.md` §3 F1, `prototypes/data/rs22_score_anchors_claude.json` |
 | A field-neutral LLM mechanism-reduction, embedded, is a UNIVERSAL retriever that beats raw-text/embedding | **REFUTED as universal; CONFIRMED as a deep-analogy SPECIALIST** (Phase 42 EXP-RS-23, 2026-07-18) — Feynman curated deep analogies: reduction 0.60 > lexical 0.40 > raw-bge 0.20 (first compressed substrate to beat the null); broad topical mine: reduction 0.53 < raw-bge 0.66. Rescues the deep cross-vocabulary tail surface methods miss (9/27 raw-failed pairs → top-10) but over-abstracts topical pairs; reduction-win ⟂ raw-win. First substrate to recover analogies BOTH lexical AND dense-embedding miss. **CONFIRMED at n=12 (EXP-RS-24 N=160): validated-deep reduction 0.75 vs raw 0.00.** | `.planning/phases/42-mechanism-reduction/42-VERIFICATION.md`, `.planning/phases/43-validated-deep-subset/43-VERIFICATION.md`, `prototypes/data/rs23_results{,_mined}.json` |
 | A raw∪reduction→LLM-rerank cascade is a scalable retriever that beats raw-alone on a mixed cross-field corpus | **VERIFIED (Phase 44 EXP-RS-25, 2026-07-18)** — cascade (Claude re-rank of the ~25-candidate union) recall@10 = **0.775** vs raw-alone 0.662 (+11 pts, ≈ union ceiling 0.80), MRR 0.74. Orbiter W-SYN: Mistral re-rank DEGRADES to 0.637 (< raw-alone) → the re-rank/precision stage must be Claude. O(N) retrieval + O(#queries) small LLM re-ranks = scalable vs the O(N²) all-pairs LLM baseline. | `.planning/phases/44-cascade/44-VERIFICATION.md`, `prototypes/data/rs25_results.json` |
+| The RS-26/27 discovery yield (~12.5% end-to-end genuine bridges) is real reduction-retrieval signal, not LLM confabulation on any surface-disjoint cross-field pair | **VERIFIED — PASS (Phase 47 EXP-RS-28, 2026-07-18)** — the byte-identical card+adjudicator pipeline on 80 RANDOM cross-archive ∧ lexical<0.06 pairs (reduction did NOT flag) confirms **0/80** (card) → **0/80** genuine (end-to-end) vs treatment 6/40 → 5/40 → **10× enrichment, Fisher one-sided p=0.0035**. Reconstructed adjudicator reproduces 5/6 on treatment (harness-valid). The open-book card stage alone rejected all 80 → it is a strong well-calibrated first gate, not a rubber stamp → scaling justified. | `.planning/phases/47-calibration-control/47-{PREREG,VERIFICATION}.md`, `prototypes/data/rs28_verdict.json` |
 
 ## Active experiment
 
-**NONE active — EXP-RS-27 EXTERNAL discovery WORKS (2026-07-18). The finder generalizes to fresh papers.**
-Next = web/literature-novelty verification of the surprising bridges + a domain-expert pass + scale to
-thousands (with the cascade re-rank). Awaiting human go.
+**NONE active — EXP-RS-28 CALIBRATION CONTROL passed (2026-07-18). The discovery yield is REAL, not
+confabulation.** The discovery pipeline is now calibrated: the identical card+adjudicator stack confirms
+**0/80** random surface-disjoint cross-field pairs vs **5/40** genuine for reduction-selected pairs
+(10× enrichment, Fisher p=0.0035). Scaling is justified. Remaining honest gaps: web/literature-novelty
+verification of the surprising bridges (E5 LGCP, B6 quasispecies↔annealing, B7 orthog-poly↔NLS) + a
+domain-expert pass. Next candidate = web-novelty check, then scale to thousands with the cascade re-rank.
+Awaiting human go.
+
+### (just-concluded, PASS 2026-07-18) EXP-RS-28 → Phase 47 — Calibration Control
+
+**The integrity check the discovery run lacked: is the ~12.5% yield real reduction signal or LLM
+confabulation on any surface-disjoint cross-field pair?** Ran the BYTE-IDENTICAL RS-27 pipeline (frozen
+open-book card → skeptical anchored adjudicator) on **80 RANDOM** cross-archive ∧ lexical<0.06 pairs the
+reduction did NOT flag (drawn from 8,467 eligible in the RS-27 corpus, seed 27; only pair-selection
+differs from treatment). Pre-registered blind (prereg `1f99d579…`, adjudicator `d124142e…`, harness
+`56e31fbe…`). **VERDICT: PASS (decisive).**
+- **Card stage: 0/80 control vs 6/40 treatment** (12×); **end-to-end genuine: 0/80 vs 5/40** (10×);
+  **Fisher one-sided p = 0.0035**. Stronger than the pre-registered prediction (≤2/80).
+- **Harness-validity gate PASSED:** the reconstructed adjudicator (RS-27's was never file-frozen)
+  reproduces **5/6** on treatment's confirmed set — identical to the original (same E1=generic-MaxEnt
+  rejection) → faithful reconstruction.
+- **Key finding: the open-book card stage ALONE is a strong, well-calibrated gate** — it rejected all
+  80 random pairs; the adjudicator never saw a control pair. The cheap first filter carries most of the
+  precision; the card writer is not a rubber stamp. **Discovery yield calibrated → scaling justified.**
+- Honest limits: adjudicator's own FP rate on controls not directly measurable (0 reached it); anchoring
+  kept identical on purpose (calibrates the actual pipeline); N=80, one corpus; de-anchored/cross-model
+  adjudicator arm remains a worthwhile (non-blocking) hardening. `.planning/phases/47-calibration-control/
+  47-{PREREG,VERIFICATION}.md`; `prototypes/rs28_control.py`, `data/rs28_verdict.json`.
 
 ### (just-concluded, WORKS 2026-07-18) EXP-RS-27 → Phase 46 — External-Corpus Discovery
 

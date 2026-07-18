@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A's machinery is a boundary-value eigenmode problem: solving the Klein-Gordon equation with a position-dependent effective mass to get a Landau-like normal-mode spectrum and then extracting a renormalized vacuum energy via zeta-function regularization of a divergent mode sum. Paper B's machinery is financial pricing-kernel recovery: estimating a stochastic discount factor from S&P 500 option prices under stochastic-volatility dynamics with a constant market price of risk to forecast the equity premium. No role-for-role correspondence holds — there is no shared governing equation, threshold, or estimation principle; a superficial resemblance of a 'varying parameter' (effective mass vs. time-varying volatility) does not constitute shared transferable machinery."
+}

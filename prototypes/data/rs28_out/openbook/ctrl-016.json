@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A is a deterministic advection-diffusion PDE for bio-heat transport, where blood flow adds a directional enthalpy-advection term and a biological Peclet number quantifies advection relative to thermal diffusion. Paper B is a statistical variance-reduction scheme for A/B testing that reframes randomized assignment as a meta-policy and uses off-policy (counterfactual) estimation so estimator variance scales with policy divergence. There is no coherent role-for-role correspondence between a transport-equation heat flux and an unbiased treatment-effect estimator, so the machinery differs despite both invoking dimensionless ratios."
+}

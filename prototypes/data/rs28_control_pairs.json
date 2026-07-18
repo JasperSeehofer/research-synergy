@@ -1,0 +1,814 @@
+{
+ "meta": {
+  "n_pool": 8467,
+  "n_ctrl": 80,
+  "seed": 27,
+  "lex_max": 0.06,
+  "n_excluded_candidate_pairs": 228,
+  "ctrl_lex_min": 0.0,
+  "ctrl_lex_median": 0.0136,
+  "ctrl_lex_max": 0.0539
+ },
+ "pairs": [
+  {
+   "key": "ctrl-000",
+   "a_id": "2607.14953",
+   "b_id": "2607.13650",
+   "a_cat": "cond-mat.soft",
+   "b_cat": "physics.soc-ph",
+   "a_title": "Stochastic process model of rough surface contact",
+   "b_title": "Calming traffic in unsignalized bidirectional streets by introducing one-lane bottlenecks",
+   "lexical_cos": 0.0208
+  },
+  {
+   "key": "ctrl-001",
+   "a_id": "2607.14910",
+   "b_id": "2607.14699",
+   "a_cat": "gr-qc",
+   "b_cat": "stat.ME",
+   "a_title": "Kerr black holes without primary hairs",
+   "b_title": "Exact Computation of Non-Gaussian Mismatch Penalties in Wiener-Hermite Cross-Correlation Identification",
+   "lexical_cos": 0.0199
+  },
+  {
+   "key": "ctrl-002",
+   "a_id": "2607.06690",
+   "b_id": "2607.15020",
+   "a_cat": "stat.ME",
+   "b_cat": "astro-ph.CO",
+   "a_title": "tsbootstrap: Distribution-Free Uncertainty Quantification and Conformal Prediction for Time Series",
+   "b_title": "High resolution Lyman-α forest constraints on dark matter-neutrino scattering",
+   "lexical_cos": 0.0111
+  },
+  {
+   "key": "ctrl-003",
+   "a_id": "2607.15236",
+   "b_id": "2607.15208",
+   "a_cat": "hep-th",
+   "b_cat": "stat.CO",
+   "a_title": "Analytical and Numerical Study of Quartic Nonlinear Electrodynamics in Holographic Fermion Systems",
+   "b_title": "Delocalization of bias in unadjusted Hamiltonian Monte Carlo and underdamped Langevin",
+   "lexical_cos": 0.0026
+  },
+  {
+   "key": "ctrl-004",
+   "a_id": "2607.12995",
+   "b_id": "2607.14771",
+   "a_cat": "cs.CG",
+   "b_cat": "stat.ME",
+   "a_title": "One Shot, Twenty-One Balls: Existence and Rarity of a Total Clearance in a Single Stroke of Snooker",
+   "b_title": "Mixed-Frequency Time Series Forecasting via Depth-Separable Neural Networks",
+   "lexical_cos": 0.014
+  },
+  {
+   "key": "ctrl-005",
+   "a_id": "2607.14981",
+   "b_id": "2607.15059",
+   "a_cat": "math.SP",
+   "b_cat": "cs.DL",
+   "a_title": "The divisor of the twisted Selberg zeta function",
+   "b_title": "Female participation in science in the past 125 years: An analysis of the Matilda effect over time",
+   "lexical_cos": 0.0
+  },
+  {
+   "key": "ctrl-006",
+   "a_id": "2607.14594",
+   "b_id": "2607.13231",
+   "a_cat": "cond-mat.soft",
+   "b_cat": "physics.soc-ph",
+   "a_title": "Numerical and experimental framework for bending elasticity of highly flexible slender structures",
+   "b_title": "Conflict, mobility and fragmentation in the African interurban network",
+   "lexical_cos": 0.0143
+  },
+  {
+   "key": "ctrl-007",
+   "a_id": "2607.15121",
+   "b_id": "2607.14174",
+   "a_cat": "quant-ph",
+   "b_cat": "cs.LG",
+   "a_title": "Quantum Lock-In Detection via Successive Adiabatic Evolution",
+   "b_title": "How Much of a 10-K Matters? Aggregation-Dependent Value of Full-Text versus Risk-Factor Sentiment",
+   "lexical_cos": 0.0361
+  },
+  {
+   "key": "ctrl-008",
+   "a_id": "2607.15158",
+   "b_id": "2607.14724",
+   "a_cat": "cond-mat.str-el",
+   "b_cat": "stat.ME",
+   "a_title": "Fast two-dimensional tensor-network contraction via subspace iteration",
+   "b_title": "Testing equivalence to binary generalized linear models with application to logistic regression",
+   "lexical_cos": 0.0156
+  },
+  {
+   "key": "ctrl-009",
+   "a_id": "2607.15261",
+   "b_id": "2607.14790",
+   "a_cat": "hep-th",
+   "b_cat": "astro-ph.CO",
+   "a_title": "Relativistic time-commutative dynamics with $κ$-plane noncommutativity",
+   "b_title": "Probing Graviton Mass with MeerKAT PTA and SKA--PTA Forecasts",
+   "lexical_cos": 0.0216
+  },
+  {
+   "key": "ctrl-010",
+   "a_id": "2607.15275",
+   "b_id": "2607.15018",
+   "a_cat": "cs.RO",
+   "b_cat": "stat.ML",
+   "a_title": "RoboTTT: Context Scaling for Robot Policies",
+   "b_title": "cGAP: Generalized Association Plots with HOMALS-Guided Heatmaps for Visualization of High-Dimensional Categorical Data",
+   "lexical_cos": 0.0146
+  },
+  {
+   "key": "ctrl-011",
+   "a_id": "2607.15252",
+   "b_id": "2607.15140",
+   "a_cat": "quant-ph",
+   "b_cat": "math.PR",
+   "a_title": "Coulomb blockade in microscopic material defects as a source of decoherence and noise in solid-state quantum circuits",
+   "b_title": "Absence of blow-up in the 3D Navier-Stokes equations with transport noise",
+   "lexical_cos": 0.0099
+  },
+  {
+   "key": "ctrl-012",
+   "a_id": "2607.15007",
+   "b_id": "2607.15184",
+   "a_cat": "hep-th",
+   "b_cat": "quant-ph",
+   "a_title": "Observers, local measurements, and topology",
+   "b_title": "Backpropagating Pauli Propagation",
+   "lexical_cos": 0.0101
+  },
+  {
+   "key": "ctrl-013",
+   "a_id": "2607.15020",
+   "b_id": "2607.14910",
+   "a_cat": "astro-ph.CO",
+   "b_cat": "gr-qc",
+   "a_title": "High resolution Lyman-α forest constraints on dark matter-neutrino scattering",
+   "b_title": "Kerr black holes without primary hairs",
+   "lexical_cos": 0.0054
+  },
+  {
+   "key": "ctrl-014",
+   "a_id": "2607.14663",
+   "b_id": "2607.15007",
+   "a_cat": "quant-ph",
+   "b_cat": "hep-th",
+   "a_title": "Tuning the universality class of a quantum process by Trotterization",
+   "b_title": "Observers, local measurements, and topology",
+   "lexical_cos": 0.0148
+  },
+  {
+   "key": "ctrl-015",
+   "a_id": "2607.14910",
+   "b_id": "2607.14892",
+   "a_cat": "gr-qc",
+   "b_cat": "math.AP",
+   "a_title": "Kerr black holes without primary hairs",
+   "b_title": "Sharp decay thresholds in weighted $L^\\infty$ for wave kinetic equations with power-law dispersion",
+   "lexical_cos": 0.014
+  },
+  {
+   "key": "ctrl-016",
+   "a_id": "2607.14017",
+   "b_id": "2607.14604",
+   "a_cat": "physics.soc-ph",
+   "b_cat": "cs.LG",
+   "a_title": "The Wulff bio-heat transfer model revisited: directional blood enthalpy transport, the biological Peclet number, and implications for laser-induced thermal therapy",
+   "b_title": "Accelerating A/B-Tests with Counterfactual Estimation: Reducing Variance through Policy Overlap",
+   "lexical_cos": 0.0152
+  },
+  {
+   "key": "ctrl-017",
+   "a_id": "2607.15208",
+   "b_id": "2607.14223",
+   "a_cat": "stat.CO",
+   "b_cat": "quant-ph",
+   "a_title": "Delocalization of bias in unadjusted Hamiltonian Monte Carlo and underdamped Langevin",
+   "b_title": "Quantum many-body mixed phase space revealed by hybrid feedback control",
+   "lexical_cos": 0.0386
+  },
+  {
+   "key": "ctrl-018",
+   "a_id": "2607.15145",
+   "b_id": "2607.15104",
+   "a_cat": "math.AP",
+   "b_cat": "q-bio.PE",
+   "a_title": "Semiclassical estimates near threshold energies and resonance counting on Schwarzschild black holes",
+   "b_title": "A model with exposure in the epidemiological sense. Part 1 -- Base model",
+   "lexical_cos": 0.0053
+  },
+  {
+   "key": "ctrl-019",
+   "a_id": "2607.15140",
+   "b_id": "2607.13438",
+   "a_cat": "math.PR",
+   "b_cat": "physics.soc-ph",
+   "a_title": "Absence of blow-up in the 3D Navier-Stokes equations with transport noise",
+   "b_title": "Impacts of social and impact heterogeneity on social-climate outcomes",
+   "lexical_cos": 0.0
+  },
+  {
+   "key": "ctrl-020",
+   "a_id": "2607.15273",
+   "b_id": "2607.14762",
+   "a_cat": "cs.CV",
+   "b_cat": "nlin.CD",
+   "a_title": "MeanFlowNFT: Bringing Forward-Process RL to Average-Velocity Generators",
+   "b_title": "Bayesian Basin Tracking: Efficient Global Continuation of Multistable Dynamical Systems",
+   "lexical_cos": 0.0288
+  },
+  {
+   "key": "ctrl-021",
+   "a_id": "2607.06690",
+   "b_id": "2607.14904",
+   "a_cat": "stat.ME",
+   "b_cat": "astro-ph.CO",
+   "a_title": "tsbootstrap: Distribution-Free Uncertainty Quantification and Conformal Prediction for Time Series",
+   "b_title": "The VST ATLAS Survey -- IV: Galaxy, LRG and QSO bias and HODs via ACT CMB Lensing",
+   "lexical_cos": 0.0195
+  },
+  {
+   "key": "ctrl-022",
+   "a_id": "2607.15158",
+   "b_id": "2607.15145",
+   "a_cat": "cond-mat.str-el",
+   "b_cat": "math.AP",
+   "a_title": "Fast two-dimensional tensor-network contraction via subspace iteration",
+   "b_title": "Semiclassical estimates near threshold energies and resonance counting on Schwarzschild black holes",
+   "lexical_cos": 0.0058
+  },
+  {
+   "key": "ctrl-023",
+   "a_id": "2607.14594",
+   "b_id": "2607.14860",
+   "a_cat": "cond-mat.soft",
+   "b_cat": "stat.ME",
+   "a_title": "Numerical and experimental framework for bending elasticity of highly flexible slender structures",
+   "b_title": "Assing Preferential Sampling in Retail Survival Data: A Bayesian Joint LGCP and Spatial Probit Model for Mini-Supermarket Closure in Tokyo",
+   "lexical_cos": 0.015
+  },
+  {
+   "key": "ctrl-024",
+   "a_id": "2607.14981",
+   "b_id": "2607.14223",
+   "a_cat": "math.SP",
+   "b_cat": "quant-ph",
+   "a_title": "The divisor of the twisted Selberg zeta function",
+   "b_title": "Quantum many-body mixed phase space revealed by hybrid feedback control",
+   "lexical_cos": 0.0104
+  },
+  {
+   "key": "ctrl-025",
+   "a_id": "2607.15196",
+   "b_id": "2607.13693",
+   "a_cat": "stat.ML",
+   "b_cat": "cs.MA",
+   "a_title": "Subjective Risk Decomposition: A New View for Uncertainty Quantification",
+   "b_title": "Social Simulations: from Agent-Based Modeling to Digital Twins",
+   "lexical_cos": 0.0
+  },
+  {
+   "key": "ctrl-026",
+   "a_id": "2607.15261",
+   "b_id": "2607.13636",
+   "a_cat": "hep-th",
+   "b_cat": "physics.soc-ph",
+   "a_title": "Relativistic time-commutative dynamics with $κ$-plane noncommutativity",
+   "b_title": "Measuring What the Crawler Sees: Discovery Curves, Core Persistence, and Shell Dynamics in Longitudinal Web Crawls",
+   "lexical_cos": 0.0282
+  },
+  {
+   "key": "ctrl-027",
+   "a_id": "2607.15074",
+   "b_id": "2607.15158",
+   "a_cat": "hep-th",
+   "b_cat": "cond-mat.str-el",
+   "a_title": "Mirror symmetry in 3d in 3d mirror symmetry",
+   "b_title": "Fast two-dimensional tensor-network contraction via subspace iteration",
+   "lexical_cos": 0.0068
+  },
+  {
+   "key": "ctrl-028",
+   "a_id": "2607.15242",
+   "b_id": "2607.14785",
+   "a_cat": "cs.LG",
+   "b_cat": "astro-ph.GA",
+   "a_title": "Mutable Low-Rank Sketches for Retrain-Free Recommendation",
+   "b_title": "Enabling Cosmic Web Analysis at Gigaparsec Scales: A Multi Block Approach for DisPerSE",
+   "lexical_cos": 0.0301
+  },
+  {
+   "key": "ctrl-029",
+   "a_id": "2607.15201",
+   "b_id": "2607.12864",
+   "a_cat": "quant-ph",
+   "b_cat": "math.AP",
+   "a_title": "Entanglement Detection for Two-Qubit and Three-Qubit Pure States via Unitary Transformations and Ancilla State Measurements",
+   "b_title": "Can deleterious mutations surf deterministic population waves?",
+   "lexical_cos": 0.0084
+  },
+  {
+   "key": "ctrl-030",
+   "a_id": "2607.09906",
+   "b_id": "2607.14867",
+   "a_cat": "quant-ph",
+   "b_cat": "hep-ph",
+   "a_title": "Depth-Efficient Quantum Topological Data Analysis for Regime-Specific Detection of Financial Stress",
+   "b_title": "Thermal Masses and Bubble-Wall Friction in Cosmological Phase Transitions",
+   "lexical_cos": 0.0045
+  },
+  {
+   "key": "ctrl-031",
+   "a_id": "2607.14223",
+   "b_id": "2607.14017",
+   "a_cat": "quant-ph",
+   "b_cat": "physics.soc-ph",
+   "a_title": "Quantum many-body mixed phase space revealed by hybrid feedback control",
+   "b_title": "The Wulff bio-heat transfer model revisited: directional blood enthalpy transport, the biological Peclet number, and implications for laser-induced thermal therapy",
+   "lexical_cos": 0.0169
+  },
+  {
+   "key": "ctrl-032",
+   "a_id": "2607.15160",
+   "b_id": "2607.14738",
+   "a_cat": "quant-ph",
+   "b_cat": "eess.SP",
+   "a_title": "Parameter-Shift Rules for Gradients in Boson Sampling Experiments",
+   "b_title": "Quantifying the complexity of trajectory ensembles with clustering-weighted multivariate multiscale sample entropy",
+   "lexical_cos": 0.0204
+  },
+  {
+   "key": "ctrl-033",
+   "a_id": "2607.09906",
+   "b_id": "2607.06355",
+   "a_cat": "quant-ph",
+   "b_cat": "q-fin.PR",
+   "a_title": "Depth-Efficient Quantum Topological Data Analysis for Regime-Specific Detection of Financial Stress",
+   "b_title": "Entropic Dynamics of Jump-Diffusion Option Pricing",
+   "lexical_cos": 0.0327
+  },
+  {
+   "key": "ctrl-034",
+   "a_id": "2607.15145",
+   "b_id": "2607.06220",
+   "a_cat": "math.AP",
+   "b_cat": "physics.soc-ph",
+   "a_title": "Semiclassical estimates near threshold energies and resonance counting on Schwarzschild black holes",
+   "b_title": "Stable Sentiment and Persistent Dynamics in U.S. Economic News over 45 Years",
+   "lexical_cos": 0.0102
+  },
+  {
+   "key": "ctrl-035",
+   "a_id": "2607.15145",
+   "b_id": "2607.14632",
+   "a_cat": "math.AP",
+   "b_cat": "physics.soc-ph",
+   "a_title": "Semiclassical estimates near threshold energies and resonance counting on Schwarzschild black holes",
+   "b_title": "Criticality and reduced dynamical resilience in PM2.5 pollution systems",
+   "lexical_cos": 0.0122
+  },
+  {
+   "key": "ctrl-036",
+   "a_id": "2607.15070",
+   "b_id": "2607.08500",
+   "a_cat": "hep-th",
+   "b_cat": "q-fin.MF",
+   "a_title": "Casimir effect for a massive scalar field confined between parallel plates with a spatially varying effective mass",
+   "b_title": "Estimating the Stochastic Discount Factor from Option Prices and Predicting the Equity Premium",
+   "lexical_cos": 0.0079
+  },
+  {
+   "key": "ctrl-037",
+   "a_id": "2607.13629",
+   "b_id": "2607.14699",
+   "a_cat": "astro-ph.EP",
+   "b_cat": "stat.ME",
+   "a_title": "Advanced Techniques in Stability Analysis of Trans-Neptunian Objects",
+   "b_title": "Exact Computation of Non-Gaussian Mismatch Penalties in Wiener-Hermite Cross-Correlation Identification",
+   "lexical_cos": 0.0137
+  },
+  {
+   "key": "ctrl-038",
+   "a_id": "2607.15083",
+   "b_id": "2607.12093",
+   "a_cat": "hep-th",
+   "b_cat": "cond-mat.stat-mech",
+   "a_title": "Defects extremal surfaces and interface CFTs",
+   "b_title": "Harvesting Reshapes Dynamical Populations",
+   "lexical_cos": 0.0096
+  },
+  {
+   "key": "ctrl-039",
+   "a_id": "2607.15074",
+   "b_id": "2607.15200",
+   "a_cat": "hep-th",
+   "b_cat": "cs.CL",
+   "a_title": "Mirror symmetry in 3d in 3d mirror symmetry",
+   "b_title": "Mask-Aware Policy Gradients for Diffusion Language Models",
+   "lexical_cos": 0.0063
+  },
+  {
+   "key": "ctrl-040",
+   "a_id": "2607.15074",
+   "b_id": "2607.14786",
+   "a_cat": "hep-th",
+   "b_cat": "physics.data-an",
+   "a_title": "Mirror symmetry in 3d in 3d mirror symmetry",
+   "b_title": "Inferring Non-Normal Amplification Geometry from Multivariate Time Series",
+   "lexical_cos": 0.0026
+  },
+  {
+   "key": "ctrl-041",
+   "a_id": "2607.05291",
+   "b_id": "2607.14017",
+   "a_cat": "q-fin.ST",
+   "b_cat": "physics.soc-ph",
+   "a_title": "Forecasting Realized Volatility with Time Series Foundation Models: A Comparison with Econometric Benchmarks",
+   "b_title": "The Wulff bio-heat transfer model revisited: directional blood enthalpy transport, the biological Peclet number, and implications for laser-induced thermal therapy",
+   "lexical_cos": 0.03
+  },
+  {
+   "key": "ctrl-042",
+   "a_id": "2607.14594",
+   "b_id": "2607.15074",
+   "a_cat": "cond-mat.soft",
+   "b_cat": "hep-th",
+   "a_title": "Numerical and experimental framework for bending elasticity of highly flexible slender structures",
+   "b_title": "Mirror symmetry in 3d in 3d mirror symmetry",
+   "lexical_cos": 0.0028
+  },
+  {
+   "key": "ctrl-043",
+   "a_id": "2607.14843",
+   "b_id": "2607.15000",
+   "a_cat": "astro-ph.CO",
+   "b_cat": "stat.AP",
+   "a_title": "Analytical covariances for catalogue-based pseudo-$C_\\ell$s",
+   "b_title": "Flood risk estimation via geometric extremal graphical models",
+   "lexical_cos": 0.0235
+  },
+  {
+   "key": "ctrl-044",
+   "a_id": "2607.14762",
+   "b_id": "2607.14790",
+   "a_cat": "nlin.CD",
+   "b_cat": "astro-ph.CO",
+   "a_title": "Bayesian Basin Tracking: Efficient Global Continuation of Multistable Dynamical Systems",
+   "b_title": "Probing Graviton Mass with MeerKAT PTA and SKA--PTA Forecasts",
+   "lexical_cos": 0.0268
+  },
+  {
+   "key": "ctrl-045",
+   "a_id": "2607.15181",
+   "b_id": "2607.15219",
+   "a_cat": "math.FA",
+   "b_cat": "astro-ph.CO",
+   "a_title": "Sharp asymptotics for higher-order Hardy constants on lattices",
+   "b_title": "Cosmic string gravitational wave backgrounds at LISA: II. Reconstruction of conventional signals over astrophysical foregrounds",
+   "lexical_cos": 0.0069
+  },
+  {
+   "key": "ctrl-046",
+   "a_id": "2607.15256",
+   "b_id": "2607.06690",
+   "a_cat": "math.AP",
+   "b_cat": "stat.ME",
+   "a_title": "Analytic finite-rank corrections for singularly weighted estimates in a computer-assisted proof of 3D Euler singularity",
+   "b_title": "tsbootstrap: Distribution-Free Uncertainty Quantification and Conformal Prediction for Time Series",
+   "lexical_cos": 0.0111
+  },
+  {
+   "key": "ctrl-047",
+   "a_id": "2607.14594",
+   "b_id": "2607.14786",
+   "a_cat": "cond-mat.soft",
+   "b_cat": "physics.data-an",
+   "a_title": "Numerical and experimental framework for bending elasticity of highly flexible slender structures",
+   "b_title": "Inferring Non-Normal Amplification Geometry from Multivariate Time Series",
+   "lexical_cos": 0.0386
+  },
+  {
+   "key": "ctrl-048",
+   "a_id": "2607.15132",
+   "b_id": "2607.15074",
+   "a_cat": "quant-ph",
+   "b_cat": "hep-th",
+   "a_title": "Periodic orbits and quantum many-body scars in integrable spin chains",
+   "b_title": "Mirror symmetry in 3d in 3d mirror symmetry",
+   "lexical_cos": 0.0105
+  },
+  {
+   "key": "ctrl-049",
+   "a_id": "2607.15219",
+   "b_id": "2607.14814",
+   "a_cat": "astro-ph.CO",
+   "b_cat": "stat.ME",
+   "a_title": "Cosmic string gravitational wave backgrounds at LISA: II. Reconstruction of conventional signals over astrophysical foregrounds",
+   "b_title": "Post Hoc Inference for Component Attribution in Multivariate Change-Point Detection",
+   "lexical_cos": 0.0135
+  },
+  {
+   "key": "ctrl-050",
+   "a_id": "2607.05291",
+   "b_id": "2607.14854",
+   "a_cat": "q-fin.ST",
+   "b_cat": "astro-ph.CO",
+   "a_title": "Forecasting Realized Volatility with Time Series Foundation Models: A Comparison with Econometric Benchmarks",
+   "b_title": "CAMB v2: cosmological power spectra for high-precision surveys",
+   "lexical_cos": 0.0163
+  },
+  {
+   "key": "ctrl-051",
+   "a_id": "2607.14929",
+   "b_id": "2607.13693",
+   "a_cat": "cond-mat.mes-hall",
+   "b_cat": "cs.MA",
+   "a_title": "Tomographic flow regime vs even-odd effect for the magnetotransport in the Corbino geometry",
+   "b_title": "Social Simulations: from Agent-Based Modeling to Digital Twins",
+   "lexical_cos": 0.0
+  },
+  {
+   "key": "ctrl-052",
+   "a_id": "2607.15262",
+   "b_id": "2607.15140",
+   "a_cat": "quant-ph",
+   "b_cat": "math.PR",
+   "a_title": "Dynamic Entanglement Distribution for Multi-User and Multi-Protocol Quantum Networking",
+   "b_title": "Absence of blow-up in the 3D Navier-Stokes equations with transport noise",
+   "lexical_cos": 0.0
+  },
+  {
+   "key": "ctrl-053",
+   "a_id": "2607.14785",
+   "b_id": "2607.13693",
+   "a_cat": "astro-ph.GA",
+   "b_cat": "cs.MA",
+   "a_title": "Enabling Cosmic Web Analysis at Gigaparsec Scales: A Multi Block Approach for DisPerSE",
+   "b_title": "Social Simulations: from Agent-Based Modeling to Digital Twins",
+   "lexical_cos": 0.0184
+  },
+  {
+   "key": "ctrl-054",
+   "a_id": "2607.15074",
+   "b_id": "2607.12093",
+   "a_cat": "hep-th",
+   "b_cat": "cond-mat.stat-mech",
+   "a_title": "Mirror symmetry in 3d in 3d mirror symmetry",
+   "b_title": "Harvesting Reshapes Dynamical Populations",
+   "lexical_cos": 0.0114
+  },
+  {
+   "key": "ctrl-055",
+   "a_id": "2607.15007",
+   "b_id": "2607.14991",
+   "a_cat": "hep-th",
+   "b_cat": "math.AP",
+   "a_title": "Observers, local measurements, and topology",
+   "b_title": "Geometric Criteria for Morrey Admissibility via the Real Log-Canonical Threshold",
+   "lexical_cos": 0.0061
+  },
+  {
+   "key": "ctrl-056",
+   "a_id": "2607.15279",
+   "b_id": "2607.14910",
+   "a_cat": "hep-ph",
+   "b_cat": "gr-qc",
+   "a_title": "Particle production from bubble collisions",
+   "b_title": "Kerr black holes without primary hairs",
+   "lexical_cos": 0.0084
+  },
+  {
+   "key": "ctrl-057",
+   "a_id": "2607.15133",
+   "b_id": "2607.14771",
+   "a_cat": "math.AP",
+   "b_cat": "stat.ME",
+   "a_title": "Solid-solid phase transitions with space-dependent wells",
+   "b_title": "Mixed-Frequency Time Series Forecasting via Depth-Separable Neural Networks",
+   "lexical_cos": 0.0181
+  },
+  {
+   "key": "ctrl-058",
+   "a_id": "2607.15152",
+   "b_id": "2607.14785",
+   "a_cat": "math.AP",
+   "b_cat": "astro-ph.GA",
+   "a_title": "Ultradifferentiable regularity properties of a class of hypoelliptic operators",
+   "b_title": "Enabling Cosmic Web Analysis at Gigaparsec Scales: A Multi Block Approach for DisPerSE",
+   "lexical_cos": 0.0117
+  },
+  {
+   "key": "ctrl-059",
+   "a_id": "2607.14981",
+   "b_id": "2607.12995",
+   "a_cat": "math.SP",
+   "b_cat": "cs.CG",
+   "a_title": "The divisor of the twisted Selberg zeta function",
+   "b_title": "One Shot, Twenty-One Balls: Existence and Rarity of a Total Clearance in a Single Stroke of Snooker",
+   "lexical_cos": 0.0
+  },
+  {
+   "key": "ctrl-060",
+   "a_id": "2607.15196",
+   "b_id": "2607.13636",
+   "a_cat": "stat.ML",
+   "b_cat": "physics.soc-ph",
+   "a_title": "Subjective Risk Decomposition: A New View for Uncertainty Quantification",
+   "b_title": "Measuring What the Crawler Sees: Discovery Curves, Core Persistence, and Shell Dynamics in Longitudinal Web Crawls",
+   "lexical_cos": 0.0238
+  },
+  {
+   "key": "ctrl-061",
+   "a_id": "2607.15279",
+   "b_id": "2607.12248",
+   "a_cat": "hep-ph",
+   "b_cat": "q-fin.ST",
+   "a_title": "Particle production from bubble collisions",
+   "b_title": "When Directional Accuracy Lies: A Base-Rate-Honest Benchmark for LoRA-Adapted TimesFM on Equity Forecasting",
+   "lexical_cos": 0.0064
+  },
+  {
+   "key": "ctrl-062",
+   "a_id": "2607.12673",
+   "b_id": "2607.15015",
+   "a_cat": "q-bio.PE",
+   "b_cat": "stat.ME",
+   "a_title": "Contrasting statistical patterns in melodic and molecular evolution reveal distinctive constraints in a culturally evolving system",
+   "b_title": "Augmenting goodness-of-fit tests with sequentially calibrated secondary statistics",
+   "lexical_cos": 0.0191
+  },
+  {
+   "key": "ctrl-063",
+   "a_id": "2607.14891",
+   "b_id": "2607.13650",
+   "a_cat": "hep-th",
+   "b_cat": "physics.soc-ph",
+   "a_title": "Cosmological Collider Signals at Strong Mixing",
+   "b_title": "Calming traffic in unsignalized bidirectional streets by introducing one-lane bottlenecks",
+   "lexical_cos": 0.0129
+  },
+  {
+   "key": "ctrl-064",
+   "a_id": "2607.14531",
+   "b_id": "2607.14017",
+   "a_cat": "cs.SI",
+   "b_cat": "physics.soc-ph",
+   "a_title": "Overlapping Network Community Detection Using Sparse Backbones",
+   "b_title": "The Wulff bio-heat transfer model revisited: directional blood enthalpy transport, the biological Peclet number, and implications for laser-induced thermal therapy",
+   "lexical_cos": 0.0136
+  },
+  {
+   "key": "ctrl-065",
+   "a_id": "2607.14490",
+   "b_id": "2607.13650",
+   "a_cat": "nlin.CD",
+   "b_cat": "physics.soc-ph",
+   "a_title": "The Symbolic Partition of Chaotic Flows Based on Ordinal Patterns",
+   "b_title": "Calming traffic in unsignalized bidirectional streets by introducing one-lane bottlenecks",
+   "lexical_cos": 0.0492
+  },
+  {
+   "key": "ctrl-066",
+   "a_id": "2607.15028",
+   "b_id": "2607.14918",
+   "a_cat": "astro-ph.CO",
+   "b_cat": "math-ph",
+   "a_title": "Refining primordial black hole dark matter constraints with dust heating: the role of spin and halo profile dependence",
+   "b_title": "A C++ implementation of the G-Scheme stiff ODE solver with multi-resolution sparse hash-table kernel lookup",
+   "lexical_cos": 0.0097
+  },
+  {
+   "key": "ctrl-067",
+   "a_id": "2607.10297",
+   "b_id": "2607.12995",
+   "a_cat": "q-fin.ST",
+   "b_cat": "cs.CG",
+   "a_title": "Recovering Structural Organization in Noisy Correlation Networks Using Financial Systems as a Testbed",
+   "b_title": "One Shot, Twenty-One Balls: Existence and Rarity of a Total Clearance in a Single Stroke of Snooker",
+   "lexical_cos": 0.0326
+  },
+  {
+   "key": "ctrl-068",
+   "a_id": "2607.15256",
+   "b_id": "2607.14360",
+   "a_cat": "math.AP",
+   "b_cat": "q-bio.PE",
+   "a_title": "Analytic finite-rank corrections for singularly weighted estimates in a computer-assisted proof of 3D Euler singularity",
+   "b_title": "Infectious Disease Induces Emergent Oscillations, Extinction and Changes in Community Persistence in a Food Chain",
+   "lexical_cos": 0.0212
+  },
+  {
+   "key": "ctrl-069",
+   "a_id": "2607.12585",
+   "b_id": "2607.13636",
+   "a_cat": "cond-mat.stat-mech",
+   "b_cat": "physics.soc-ph",
+   "a_title": "From phase space to Krylov space, one shell at a time",
+   "b_title": "Measuring What the Crawler Sees: Discovery Curves, Core Persistence, and Shell Dynamics in Longitudinal Web Crawls",
+   "lexical_cos": 0.053
+  },
+  {
+   "key": "ctrl-070",
+   "a_id": "2607.14786",
+   "b_id": "2607.14223",
+   "a_cat": "physics.data-an",
+   "b_cat": "quant-ph",
+   "a_title": "Inferring Non-Normal Amplification Geometry from Multivariate Time Series",
+   "b_title": "Quantum many-body mixed phase space revealed by hybrid feedback control",
+   "lexical_cos": 0.0539
+  },
+  {
+   "key": "ctrl-071",
+   "a_id": "2607.15060",
+   "b_id": "2607.15177",
+   "a_cat": "cond-mat.stat-mech",
+   "b_cat": "math.AG",
+   "a_title": "Learning the Fermion sign structure in path-integral Monte Carlo",
+   "b_title": "On the geometry of Coulomb branches",
+   "lexical_cos": 0.0119
+  },
+  {
+   "key": "ctrl-072",
+   "a_id": "2607.15074",
+   "b_id": "2607.08500",
+   "a_cat": "hep-th",
+   "b_cat": "q-fin.MF",
+   "a_title": "Mirror symmetry in 3d in 3d mirror symmetry",
+   "b_title": "Estimating the Stochastic Discount Factor from Option Prices and Predicting the Equity Premium",
+   "lexical_cos": 0.0
+  },
+  {
+   "key": "ctrl-073",
+   "a_id": "2607.15121",
+   "b_id": "2607.14632",
+   "a_cat": "quant-ph",
+   "b_cat": "physics.soc-ph",
+   "a_title": "Quantum Lock-In Detection via Successive Adiabatic Evolution",
+   "b_title": "Criticality and reduced dynamical resilience in PM2.5 pollution systems",
+   "lexical_cos": 0.0441
+  },
+  {
+   "key": "ctrl-074",
+   "a_id": "2607.15133",
+   "b_id": "2607.15242",
+   "a_cat": "math.AP",
+   "b_cat": "cs.LG",
+   "a_title": "Solid-solid phase transitions with space-dependent wells",
+   "b_title": "Mutable Low-Rank Sketches for Retrain-Free Recommendation",
+   "lexical_cos": 0.0221
+  },
+  {
+   "key": "ctrl-075",
+   "a_id": "2607.15145",
+   "b_id": "2607.15275",
+   "a_cat": "math.AP",
+   "b_cat": "cs.RO",
+   "a_title": "Semiclassical estimates near threshold energies and resonance counting on Schwarzschild black holes",
+   "b_title": "RoboTTT: Context Scaling for Robot Policies",
+   "lexical_cos": 0.0238
+  },
+  {
+   "key": "ctrl-076",
+   "a_id": "2607.15236",
+   "b_id": "2607.14785",
+   "a_cat": "hep-th",
+   "b_cat": "astro-ph.GA",
+   "a_title": "Analytical and Numerical Study of Quartic Nonlinear Electrodynamics in Holographic Fermion Systems",
+   "b_title": "Enabling Cosmic Web Analysis at Gigaparsec Scales: A Multi Block Approach for DisPerSE",
+   "lexical_cos": 0.0213
+  },
+  {
+   "key": "ctrl-077",
+   "a_id": "2607.15119",
+   "b_id": "2607.14860",
+   "a_cat": "cond-mat.stat-mech",
+   "b_cat": "stat.ME",
+   "a_title": "Thermodynamic theory of voting and EU elections",
+   "b_title": "Assing Preferential Sampling in Retail Survival Data: A Bayesian Joint LGCP and Spatial Probit Model for Mini-Supermarket Closure in Tokyo",
+   "lexical_cos": 0.0101
+  },
+  {
+   "key": "ctrl-078",
+   "a_id": "2607.15252",
+   "b_id": "2607.14860",
+   "a_cat": "quant-ph",
+   "b_cat": "stat.ME",
+   "a_title": "Coulomb blockade in microscopic material defects as a source of decoherence and noise in solid-state quantum circuits",
+   "b_title": "Assing Preferential Sampling in Retail Survival Data: A Bayesian Joint LGCP and Spatial Probit Model for Mini-Supermarket Closure in Tokyo",
+   "lexical_cos": 0.0084
+  },
+  {
+   "key": "ctrl-079",
+   "a_id": "2607.12919",
+   "b_id": "2607.15177",
+   "a_cat": "q-bio.PE",
+   "b_cat": "math.AG",
+   "a_title": "On Tree-Network Distinguishability and Full Identifiability of Phylogenetic Networks",
+   "b_title": "On the geometry of Coulomb branches",
+   "lexical_cos": 0.0103
+  }
+ ]
+}

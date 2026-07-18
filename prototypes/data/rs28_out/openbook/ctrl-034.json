@@ -1,0 +1,7 @@
+{
+  "mapping": [
+    {"a_element": "quasinormal modes lying below the real axis (complex frequencies with a decay rate)", "b_element": "exponential decay of sentiment shocks / short-memory relaxation of the sentiment process"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A's machinery is semiclassical resonance-counting: a Weyl-law asymptotic ($C\\lambda^3$) for the number of quasinormal modes of the Regge-Wheeler operator, built from a pseudodifferential calculus near threshold energies plus complex scaling and resolvent estimates. Paper B's machinery is empirical time-series persistence analysis of a scalar sentiment index (residence times, bimodality, long- vs short-memory decay, an endogenous-memory model). Both incidentally involve exponential decay of perturbations, but that overlap is generic; A counts spectral resonances of a differential operator while B measures autocorrelation/persistence of a stochastic signal, so no role-for-role mapping of the governing processes holds."
+}

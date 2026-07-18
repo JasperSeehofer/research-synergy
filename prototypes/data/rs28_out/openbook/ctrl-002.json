@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "Monte Carlo resampling of observed data to approximate a statistic's sampling distribution (bootstrap)", "b_element": "Monte Carlo Markov Chain sampling of the parameter posterior"},
+    {"a_element": "nominal 95% interval / coverage target", "b_element": "95% C.L. upper limit on the interaction strength"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The overlap is only the generic label 'Monte Carlo uncertainty quantification producing a 95% statement.' The actual machinery differs: paper A resamples observed time-series data (block/residual/sieve/wild bootstrap) and applies adaptive conformal calibration to guarantee prediction-interval coverage under dependence, whereas paper B runs forward hydrodynamical simulations, trains an emulator surrogate, and uses MCMC posterior inference to place a parameter bound — a simulation-based Bayesian inference pipeline with no bootstrap/conformal-calibration role to map onto."
+}

@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A's machinery is phase-sensitive lock-in demodulation implemented by adiabatic control of a quantum probe (triangular-wave modulation to defeat spectral leakage and pull a weak coherent signal out of noise), whereas paper B's machinery is a multiplicative mean-reverting stochastic process (FMMR) exhibiting critical slowing down, with resilience diagnosed from rising autocorrelation, variance amplification and lengthening memory. There is no role-for-role correspondence: a deterministic demodulation/reference-multiplication scheme does not map onto detecting an approach to a dynamical critical point via early-warning statistics, so the only overlap is the generic theme of 'signals in noise'."
+}

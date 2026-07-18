@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A's machinery is symbolic dynamics of continuous chaotic systems, using Koopman operator analysis and ordinal-pattern-based Poincare sections plus return maps to partition state space; Paper B's machinery is traffic/queueing analysis of bottlenecks under FIFO vs directional-priority policies, deriving expected delay and capacity boundaries for oversaturated queues. Beyond both using the word 'flow' (chaotic flow vs traffic flow), there is no corresponding governing process, threshold, or estimation structure to map role-for-role, so they do not share an underlying method."
+}

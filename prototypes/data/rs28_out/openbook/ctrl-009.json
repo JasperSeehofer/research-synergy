@@ -1,0 +1,7 @@
+{
+  "mapping": [
+    {"a_element": "deformation of standard relativistic kinematics (deformed Poincaré/Galilei symmetry algebra)", "b_element": "modified dispersion relation for a massive graviton (departure from standard GR kinematics)"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is thematic — both involve departures from ordinary relativistic kinematics in a quantum-gravity context — but the driving machinery differs entirely: paper A constructs a first-quantized model by building irreducible representations of a deformed symmetry (Hopf) algebra on a noncommutative spacetime, whereas paper B is an observational data-analysis pipeline that runs Bayesian inference on PTA angular-correlation measurements to set an upper limit on the graviton mass. Algebraic representation-theoretic model-building versus statistical parameter estimation from data share no role-for-role process, so this is shared vocabulary, not shared machinery."
+}

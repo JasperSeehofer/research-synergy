@@ -1,0 +1,7 @@
+{
+  "mapping": [
+    {"a_element": "singular values of the environment/projector matrix truncated in the SVD step", "b_element": "quasinormal-mode eigenvalues (resolvent poles) being counted"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is that both touch a 'spectrum', but the machinery is entirely different: paper A is a numerical-linear-algebra acceleration (QR-based subspace iteration replacing a large truncated SVD by a small one to speed up CTMRG tensor-network contraction on GPUs), whereas paper B is rigorous semiclassical microlocal analysis (a new pseudodifferential calculus plus complex scaling giving uniform resolvent estimates that prove a Weyl law for black-hole resonances). Truncating singular values for data compression does not correspond role-for-role to analytically counting resonances via a Weyl asymptotic, so no coherent transferable mechanism maps between them."
+}

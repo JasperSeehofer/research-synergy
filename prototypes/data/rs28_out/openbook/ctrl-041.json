@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A is an empirical forecast-comparison study — it benchmarks pretrained time-series foundation models against autoregressive (HAR) econometric specifications using pairwise loss tests, Mincer-Zarnowitz recalibration, and Model Confidence Sets. Paper B derives a continuum advection-diffusion PDE (the Wulff bio-heat model) for tissue temperature, adding directional blood-enthalpy transport and a Peclet number balancing advection against thermal diffusion. The machinery is entirely different — statistical model selection over forecasts versus a physical governing heat-transport equation — so no role-for-role mapping holds."
+}

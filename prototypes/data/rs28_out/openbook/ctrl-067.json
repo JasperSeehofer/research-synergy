@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "Monte Carlo subsampling used to check robustness of the denoised portfolios", "b_element": "Monte Carlo experiments used to estimate the probability P(k) of pocketing k balls"},
+    {"a_element": "separating a structured/signal component from a random/noise component", "b_element": "distinguishing a positive-measure (open) set of clearing strokes from a measure-zero fluke"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The core machinery differs: paper A uses random-matrix-theory spectral decomposition with Marchenko-Pastur eigenvalue bounds to denoise a correlation matrix and recover network structure, whereas paper B uses billiard dynamics plus a Lebesgue-measure existence argument (measure-zero vs unobservably-small) in shot space. The only overlap is generic use of Monte Carlo sampling and a loose signal-vs-noise theme, with no role-for-role correspondence between eigenvalue thresholds and measure-theoretic shot sets, so they do not share transferable machinery."
+}

@@ -1,0 +1,7 @@
+{
+  "mapping": [
+    {"a_element": "Brazier instability: a critical bending load beyond which the cross-section collapses", "b_element": "percolation tipping point beyond which the giant connected component collapses"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is the generic notion of a critical transition; the actual machinery is different — paper A solves continuum elasticity with contact mechanics via a hybrid material point method to capture geometric-elastic buckling of slender structures, whereas paper B combines a Hawkes self-exciting point process for conflict intensity with cascade/percolation on a road graph, so no role-for-role mapping of governing equations or state variables holds."
+}

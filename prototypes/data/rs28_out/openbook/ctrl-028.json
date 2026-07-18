@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A's machinery is incremental low-rank matrix sketching for recommendation — a low-rank projection with a segment-tree (KP-tree) doing norm-proportional sampling and a monotone error-envelope guarantee — whereas paper B's machinery is computational-geometry topology: a Delaunay-tessellation filament finder (DisPerSE) scaled by spatial domain decomposition into overlapping blocks with a circumsphere validity criterion and boundary stitching. The only overlap is the generic goal of scaling to large/sparse data, achieved by entirely different mechanisms (linear-algebra compression vs. geometric divide-and-conquer of a tessellation), so no role-for-role mapping holds."
+}

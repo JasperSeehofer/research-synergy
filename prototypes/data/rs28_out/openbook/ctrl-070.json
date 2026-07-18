@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "projection of the estimated dynamics onto a dominant two-dimensional input-response subspace", "b_element": "projection of the dynamics onto a low-entanglement variational manifold"},
+    {"a_element": "local linear operator estimated from sliding windows of the time series", "b_element": "short-time quantum evolution operator applied each feedback iteration"},
+    {"a_element": "coexistence of asymptotic decay with transient/noise-driven amplification (non-normal stability geometry)", "b_element": "coexistence of regular and chaotic trajectories (mixed phase space)"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A's machinery is passive data-driven inference of a NON-NORMAL LINEAR operator whose non-orthogonal eigenvectors produce transient amplification despite asymptotic stability, summarized by the geometric ratio R=K/Kc; Paper B's machinery is an ACTIVE closed-loop quantum-classical FEEDBACK CONTROL that, via classical optimization onto a variational manifold, stabilizes regular trajectories inside a KAM-like mixed phase space of NONLINEAR variational dynamics. Beyond the generic shared step of projecting dynamics onto a reduced subspace/manifold, the governing processes (linear-operator non-normality analysis vs. feedback-stabilized order/chaos control) do not correspond role-for-role, so they do not share an underlying method."
+}

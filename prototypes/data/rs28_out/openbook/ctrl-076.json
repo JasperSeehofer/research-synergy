@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A is analytic/holographic physics: it solves a nonlinear gauge (F^4-corrected Maxwell) equation in an AdS_4 bulk, derives a first integral and constitutive relation, and computes fermionic retarded Green's/spectral functions. Paper B is a computational-geometry pipeline: a domain-decomposition ('frozen-core') scheme that tiles overlapping blocks, filters Delaunay tetrahedra by a circumsphere criterion, and stitches boundaries to build a gigaparsec cosmic-web filament catalogue. There is no role-for-role correspondence between a nonlinear-electrodynamics boundary-value problem and a parallel Delaunay-tessellation/topological-filament algorithm; the only overlap is generic wording ('global', 'critical'), not shared machinery."
+}

@@ -1,0 +1,406 @@
+{
+ "stage": "openbook",
+ "prompt_text": "# Cross-Field Analogue — OPEN-BOOK reasoning probe (RS-22)\n\n## Your role\n\nYou are a cross-field method-mapping analyst. You will be given **two** papers,\n**paper A** `{title_a, abstract_a}` and **paper B** `{title_b, abstract_b}`, drawn from\n**different fields**. Both abstracts are in front of you — this is **open book**. Your job\nis to reason explicitly about whether their **underlying methods / mechanisms /\nmathematics are the same**, and to write down the **element-by-element mapping** between\nthem (what in A plays the role of what in B).\n\nThis probe **separates \"can't recall\" from \"can't reason\"**: because both papers are\nsupplied, no recall is needed. If the two genuinely share machinery, a competent reasoner\nshould be able to state the mapping directly from the texts. Output **only** the JSON\nobject specified below.\n\nRead ONLY the two provided records. Do not fetch, search, or read anything else. Base\nevery judgment on the given texts plus general knowledge of how methods work — not on any\noutside facts about these specific papers.\n\n## What counts as sharing a method\n\nPapers A and B **share an underlying method** when the *same transferable machinery* — a\ndynamical law, a phase-transition, a branching/percolation process, an estimation\nprinciple, an optimization structure, a combinatorial construction, a governing equation —\ndrives both, even though the objects, vocabulary, and fields differ. Shared *vocabulary*\nor a superficially similar-sounding problem is **not** shared machinery.\n\n- Generic illustration (unrelated to any real input): \"diffusion of heat through a solid\"\n  ↔ \"spread of a rumor through a social network\". Mapping: temperature ↔ fraction who have\n  heard the rumor; thermal conductivity ↔ transmission rate; the heat/diffusion equation ↔\n  the same diffusion equation on the social graph. `shares_method = true`.\n\n## Your task\n\n1. **Read both abstracts** and name each paper's core mechanism in domain-neutral terms.\n2. **Attempt the mapping.** List correspondences: for each salient element of paper A's\n   mechanism, identify the element of paper B's mechanism that plays the *same role*\n   (variables, parameters, the driving equation/process, the transition or threshold, the\n   objects being acted on).\n3. **Decide** whether they truly share an underlying method (`shares_method`).\n4. **Justify** briefly, grounded in the two texts.\n\n## Judgment guidance\n\n- Set `shares_method = true` only if the *machinery* corresponds — the same governing\n  process/structure, such that a role-for-role mapping actually holds. If you cannot fill\n  in a coherent mapping, they probably do **not** share a method.\n- Set `shares_method = false` if the papers merely share keywords, tackle\n  superficially-similar problems by **different** mechanisms, or if the only overlap is\n  generic (\"both use optimization\", \"both are nonlinear\").\n- The `mapping` array should contain the correspondences you actually find. If\n  `shares_method` is `false`, include any **partial** correspondences you did identify (or\n  an empty array if there are none) — the mapping records your reasoning either way.\n- Do not force spurious pairings to make the mapping look complete. A short, honest\n  mapping is better than an inflated one.\n\n## Input\n\nYou receive a single JSON object with EXACTLY these keys:\n\n- `title_a`, `abstract_a` — paper A's title and abstract.\n- `title_b`, `abstract_b` — paper B's title and abstract.\n\nUse ONLY these fields.\n\n## Output (strict)\n\nOutput a **single JSON object and nothing else** — no markdown fences, no prose before or\nafter:\n\n```json\n{\n  \"mapping\": [\n    {\"a_element\": \"<an element of paper A's mechanism>\", \"b_element\": \"<the element of paper B that plays the same role>\"}\n  ],\n  \"shares_method\": true,\n  \"brief_justification\": \"<1-3 sentences naming the shared (or mismatched) machinery, grounded in both abstracts>\"\n}\n```\n\n- `mapping` — an array of `{a_element, b_element}` role-correspondence pairs; may be empty\n  if no correspondence holds.\n- `shares_method` — boolean.\n- `brief_justification` — 1–3 sentences; name the shared machinery (if `true`) or the\n  decisive mismatch (if `false`), citing what in the texts drove the call.\n- Emit valid JSON. No trailing commas. No commentary, no markdown fences around it.\n\n## Worked example (generic; for calibration only — do NOT reuse)\n\n*Made-up papers so you can see the format. Your real inputs will differ.*\n\nMade-up input:\n- `title_a`: \"A Master-Equation Model for Cascading Failures in Power Distribution Grids\"\n- `abstract_a` (paraphrased): overloads propagate to neighbors; above a critical load the\n  failed fraction jumps; below it failures die out — a branching process with a threshold.\n- `title_b`: \"Outbreak Size and the Epidemic Threshold in a Contact-Network SIR Model\"\n- `abstract_b` (paraphrased): infections spread to contacts; above a critical reproduction\n  number the outbreak reaches a finite fraction of the population, below it it fizzles.\n\nA good answer (illustrative):\n```json\n{\n  \"mapping\": [\n    {\"a_element\": \"an overloaded node triggering neighbors\", \"b_element\": \"an infected individual infecting contacts\"},\n    {\"a_element\": \"critical load threshold\", \"b_element\": \"critical reproduction number (R0 = 1)\"},\n    {\"a_element\": \"final failed fraction of the grid\", \"b_element\": \"final outbreak size in the population\"},\n    {\"a_element\": \"branching process on the grid network\", \"b_element\": \"branching process on the contact network\"}\n  ],\n  \"shares_method\": true,\n  \"brief_justification\": \"Both are supercritical/subcritical branching processes on a network with a sharp threshold separating a vanishing cascade from one that reaches a finite fraction; the grid's critical load plays exactly the role of the epidemic's reproduction number, so the machinery is the same.\"\n}\n```\n\n## Final reminders\n\n- Two papers, both supplied — open book; no recall needed.\n- Build the role-for-role mapping from the texts; do not invent pairings.\n- `shares_method` = shared MACHINERY, never mere shared keywords.\n- Output ONLY the JSON object — no fences, no extra text.\n",
+ "records": [
+  {
+   "key": "ctrl-000",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-000.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-000.json"
+  },
+  {
+   "key": "ctrl-001",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-001.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-001.json"
+  },
+  {
+   "key": "ctrl-002",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-002.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-002.json"
+  },
+  {
+   "key": "ctrl-003",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-003.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-003.json"
+  },
+  {
+   "key": "ctrl-004",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-004.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-004.json"
+  },
+  {
+   "key": "ctrl-005",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-005.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-005.json"
+  },
+  {
+   "key": "ctrl-006",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-006.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-006.json"
+  },
+  {
+   "key": "ctrl-007",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-007.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-007.json"
+  },
+  {
+   "key": "ctrl-008",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-008.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-008.json"
+  },
+  {
+   "key": "ctrl-009",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-009.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-009.json"
+  },
+  {
+   "key": "ctrl-010",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-010.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-010.json"
+  },
+  {
+   "key": "ctrl-011",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-011.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-011.json"
+  },
+  {
+   "key": "ctrl-012",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-012.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-012.json"
+  },
+  {
+   "key": "ctrl-013",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-013.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-013.json"
+  },
+  {
+   "key": "ctrl-014",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-014.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-014.json"
+  },
+  {
+   "key": "ctrl-015",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-015.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-015.json"
+  },
+  {
+   "key": "ctrl-016",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-016.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-016.json"
+  },
+  {
+   "key": "ctrl-017",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-017.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-017.json"
+  },
+  {
+   "key": "ctrl-018",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-018.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-018.json"
+  },
+  {
+   "key": "ctrl-019",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-019.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-019.json"
+  },
+  {
+   "key": "ctrl-020",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-020.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-020.json"
+  },
+  {
+   "key": "ctrl-021",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-021.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-021.json"
+  },
+  {
+   "key": "ctrl-022",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-022.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-022.json"
+  },
+  {
+   "key": "ctrl-023",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-023.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-023.json"
+  },
+  {
+   "key": "ctrl-024",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-024.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-024.json"
+  },
+  {
+   "key": "ctrl-025",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-025.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-025.json"
+  },
+  {
+   "key": "ctrl-026",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-026.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-026.json"
+  },
+  {
+   "key": "ctrl-027",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-027.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-027.json"
+  },
+  {
+   "key": "ctrl-028",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-028.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-028.json"
+  },
+  {
+   "key": "ctrl-029",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-029.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-029.json"
+  },
+  {
+   "key": "ctrl-030",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-030.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-030.json"
+  },
+  {
+   "key": "ctrl-031",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-031.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-031.json"
+  },
+  {
+   "key": "ctrl-032",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-032.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-032.json"
+  },
+  {
+   "key": "ctrl-033",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-033.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-033.json"
+  },
+  {
+   "key": "ctrl-034",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-034.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-034.json"
+  },
+  {
+   "key": "ctrl-035",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-035.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-035.json"
+  },
+  {
+   "key": "ctrl-036",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-036.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-036.json"
+  },
+  {
+   "key": "ctrl-037",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-037.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-037.json"
+  },
+  {
+   "key": "ctrl-038",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-038.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-038.json"
+  },
+  {
+   "key": "ctrl-039",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-039.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-039.json"
+  },
+  {
+   "key": "ctrl-040",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-040.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-040.json"
+  },
+  {
+   "key": "ctrl-041",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-041.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-041.json"
+  },
+  {
+   "key": "ctrl-042",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-042.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-042.json"
+  },
+  {
+   "key": "ctrl-043",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-043.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-043.json"
+  },
+  {
+   "key": "ctrl-044",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-044.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-044.json"
+  },
+  {
+   "key": "ctrl-045",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-045.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-045.json"
+  },
+  {
+   "key": "ctrl-046",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-046.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-046.json"
+  },
+  {
+   "key": "ctrl-047",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-047.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-047.json"
+  },
+  {
+   "key": "ctrl-048",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-048.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-048.json"
+  },
+  {
+   "key": "ctrl-049",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-049.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-049.json"
+  },
+  {
+   "key": "ctrl-050",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-050.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-050.json"
+  },
+  {
+   "key": "ctrl-051",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-051.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-051.json"
+  },
+  {
+   "key": "ctrl-052",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-052.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-052.json"
+  },
+  {
+   "key": "ctrl-053",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-053.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-053.json"
+  },
+  {
+   "key": "ctrl-054",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-054.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-054.json"
+  },
+  {
+   "key": "ctrl-055",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-055.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-055.json"
+  },
+  {
+   "key": "ctrl-056",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-056.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-056.json"
+  },
+  {
+   "key": "ctrl-057",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-057.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-057.json"
+  },
+  {
+   "key": "ctrl-058",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-058.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-058.json"
+  },
+  {
+   "key": "ctrl-059",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-059.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-059.json"
+  },
+  {
+   "key": "ctrl-060",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-060.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-060.json"
+  },
+  {
+   "key": "ctrl-061",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-061.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-061.json"
+  },
+  {
+   "key": "ctrl-062",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-062.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-062.json"
+  },
+  {
+   "key": "ctrl-063",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-063.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-063.json"
+  },
+  {
+   "key": "ctrl-064",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-064.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-064.json"
+  },
+  {
+   "key": "ctrl-065",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-065.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-065.json"
+  },
+  {
+   "key": "ctrl-066",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-066.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-066.json"
+  },
+  {
+   "key": "ctrl-067",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-067.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-067.json"
+  },
+  {
+   "key": "ctrl-068",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-068.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-068.json"
+  },
+  {
+   "key": "ctrl-069",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-069.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-069.json"
+  },
+  {
+   "key": "ctrl-070",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-070.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-070.json"
+  },
+  {
+   "key": "ctrl-071",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-071.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-071.json"
+  },
+  {
+   "key": "ctrl-072",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-072.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-072.json"
+  },
+  {
+   "key": "ctrl-073",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-073.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-073.json"
+  },
+  {
+   "key": "ctrl-074",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-074.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-074.json"
+  },
+  {
+   "key": "ctrl-075",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-075.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-075.json"
+  },
+  {
+   "key": "ctrl-076",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-076.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-076.json"
+  },
+  {
+   "key": "ctrl-077",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-077.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-077.json"
+  },
+  {
+   "key": "ctrl-078",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-078.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-078.json"
+  },
+  {
+   "key": "ctrl-079",
+   "input_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_in/openbook/ctrl-079.json",
+   "output_path": "/home/jasper/Repositories/research-synergy/prototypes/data/rs28_out/openbook/ctrl-079.json"
+  }
+ ]
+}

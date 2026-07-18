@@ -41,3 +41,6 @@ prototypes/data/rs26_in/
 
 # RS-27 external discovery inputs (regenerable)
 prototypes/data/rs27_in/
+
+# RS-28 calibration-control inputs (regenerable via rs28_control.py sample)
+prototypes/data/rs28_in/

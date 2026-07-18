@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A is continuum solid mechanics: a hybrid material point method (Lagrangian FEM + Eulerian finite difference) simulating three-point bending and the geometric Brazier buckling instability of slender elastic tubes. Paper B is data-driven dynamical-systems inference: estimating a local linear operator from sliding windows to detect non-normal (non-Hermitian) transient amplification geometry via eigenvector non-orthogonality. The governing machinery differs entirely (elastic large-deformation contact simulation vs. spectral/geometric operator inference from time series), and the superficial shared words 'geometry' and 'instability/threshold' refer to unrelated mechanisms, so no role-for-role mapping holds."
+}

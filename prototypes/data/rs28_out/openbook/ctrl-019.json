@@ -1,0 +1,7 @@
+{
+  "mapping": [
+    {"a_element": "critical threshold for blow-up / loss of smoothness in the 3D NSE flow", "b_element": "social-climate tipping point into an alternative high-temperature state"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A's machinery is stochastic-PDE regularization: a transport-noise perturbation of the 3D Navier-Stokes equations that prevents finite-time singularity (blow-up) and yields global smooth solutions with high probability. Paper B's machinery is a low-dimensional coupled social-climate dynamical model whose regional heterogeneity shifts a bifurcation/tipping point between mitigation states. The only overlap is the generic notion of a 'critical transition'; there is no role-for-role correspondence (no analogue of the transport noise, the fluid velocity field, or the regularity/smoothness question in the social-climate model), so they do not share transferable machinery."
+}

@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A is a complex-analytic factorization result: it writes the twisted Selberg zeta function as a Weierstrass product over Laplace resonances (with Barnes G- and gamma-function factors) to identify its zeros and poles with spectral/geometric data of a hyperbolic orbisurface. Paper B is a measure-theoretic/Monte-Carlo study of billiard dynamics, proving a total-clearance snooker stroke exists as a positive-Lebesgue-measure open set of shots and estimating pocketing probabilities P(k). There is no role-for-role correspondence between a meromorphic spectral-determinant factorization and a Lebesgue-measure/probability argument about billiard trajectories; the only faint overlap is generic 'analysis', so they do not share transferable machinery."
+}

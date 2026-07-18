@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "von Neumann algebra of observables available to the observer", "b_element": "Pauli operators/observables propagated through the quantum circuit"},
+    {"a_element": "projective measurements recorded on the worldline", "b_element": "expectation values evaluated during circuit simulation"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is generic quantum-operator vocabulary; the actual machinery differs entirely. Paper A builds a simplicial complex from algebra projections to reconstruct the topology of a fluctuating spacetime (an algebraic-topology construction), whereas Paper B is a reverse-mode automatic-differentiation (backpropagation) scheme over Pauli propagation to compute parameter gradients for optimizing quantum circuits. There is no role-for-role correspondence between simplicial/topological reconstruction and gradient-based circuit optimization."
+}

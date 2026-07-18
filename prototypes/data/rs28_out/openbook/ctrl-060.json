@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "total subjective risk split into epistemic + aleatoric components", "b_element": "URL population split into a persistent core fraction kappa + shell"},
+    {"a_element": "strictly proper loss inducing the decomposition", "b_element": "urn sampling model (survival alpha, coverage c) inducing the parameter estimates"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is the generic idea of 'decomposition into two parts', but the driving machinery differs entirely: paper A performs an exact, information-theoretic decomposition of a subjective risk built on a strictly proper loss (recovering epistemic/aleatoric uncertainty terms), whereas paper B fits a stochastic urn/sampling process to longitudinal crawl data, estimating survival and coverage rates and reconciling two empirical projections with a two-component mixture. No coherent role-for-role mapping holds — A has no sampling/survival process and B has no loss functional or uncertainty measure being decomposed."
+}

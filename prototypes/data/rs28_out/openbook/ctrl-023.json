@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A is deterministic computational solid mechanics — a hybrid material point method coupling Lagrangian FEM and Eulerian finite differences to simulate three-point bending, contact, and the Brazier instability of elastic tubes — while paper B is Bayesian spatial statistics, a joint log-Gaussian Cox process and spatial probit sharing a Gaussian-process latent field, fit by nearest-neighbor GP approximation and Metropolis-within-Gibbs. There is no role-for-role correspondence between an elasticity/contact PDE solver and a hierarchical point-process/regression estimator; the only overlap ('both are numerical frameworks') is generic, not shared machinery."
+}

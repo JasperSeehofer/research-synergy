@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "weak target signal submerged in background noise", "b_element": "sentiment signal to be recovered from filing text"},
+    {"a_element": "signal-to-noise ratio of the detection protocol", "b_element": "amount of independent training signal available at each aggregation level"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is the generic framing of extracting a target signal from noise; the actual machinery differs entirely. Paper A uses quantum adiabatic evolution to implement triangular-wave modulation and lock-in demodulation (a physical spectral-filtering technique that suppresses spectral leakage), whereas Paper B uses supervised lexicon-learning that regresses word scores against return/volatility labels across aggregation levels. There is no role-for-role correspondence between adiabatic modulation/demodulation and statistical sentiment regression, so no shared underlying method holds."
+}

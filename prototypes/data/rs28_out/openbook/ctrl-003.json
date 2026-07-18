@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A solves a deterministic gauge-field boundary-value problem in a fixed AdS geometry — deriving a first integral of the nonlinear electrostatic equation and holographic retarded Green's functions to show how a quartic F^4 correction shifts fermionic observables — whereas Paper B bounds the W2 bias of unadjusted stochastic samplers (HMC/underdamped Langevin) via a matrix-polynomial characterization of discrete-time integrator propagators. The only overlap is the incidental word 'propagator'/'Green's function', but A's is a holographic bulk-to-boundary correlator while B's is the linear step operator of a sampling algorithm, so no role-for-role mapping of the underlying machinery holds."
+}

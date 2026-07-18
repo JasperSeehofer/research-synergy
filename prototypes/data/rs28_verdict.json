@@ -1,0 +1,30 @@
+{
+ "experiment": "EXP-RS-28",
+ "verdict": "PASS",
+ "reproduction_check": {
+  "treatment_recheck_genuine": 5,
+  "of": 6,
+  "original_rs27_genuine": 5,
+  "repro_ok(>=4)": true
+ },
+ "control": {
+  "n_carded": 80,
+  "card_confirmed": 0,
+  "adjudicated_genuine": 0,
+  "card_confirm_rate": 0.0,
+  "e2e_genuine_rate": 0.0
+ },
+ "treatment": {
+  "n_carded": 40,
+  "card_confirmed": 6,
+  "genuine": 5,
+  "card_confirm_rate": 0.15,
+  "e2e_genuine_rate": 0.125
+ },
+ "enrichment": {
+  "card_stage": 12.0,
+  "end_to_end": 10.0
+ },
+ "fisher_one_sided_p_e2e": 0.00345,
+ "control_genuine_verdicts": []
+}

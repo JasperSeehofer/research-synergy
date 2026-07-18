@@ -47,3 +47,6 @@ prototypes/data/rs28_in/
 
 # RS-30 scaled-novelty inputs (regenerable via rs30_scale.py)
 prototypes/data/rs30_in/
+
+# RS-31 temporal-novelty inputs (regenerable via rs31_temporal.py)
+prototypes/data/rs31_in/

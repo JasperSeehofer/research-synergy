@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "order-by-order perturbative (power-series) expansion of the convolution kernel that generates a linear scale-evolution (renormalization-group) flow of a coupled set of densities, with the convergence and scale-stability of the truncated series assessed",
+  "brief_reason": "The abstract computes successive-order (NNLO/third-order) contributions to the kernels ('splitting functions') that drive the scale evolution of coupled densities and studies how rapidly this perturbative expansion converges and how stable it is under variation of the renormalization scale."
+}

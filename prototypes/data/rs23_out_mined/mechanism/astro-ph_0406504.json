@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "fixing the high-frequency cutoff of a divergent power-law fluctuation spectrum by imposing a global budget constraint — requiring the integral of the spectral density (the total integrated quantity) to not exceed a separately fixed macroscopic bound",
+  "brief_reason": "The abstract derives an upper cutoff frequency by assuming the total energy of the measured zero-point fluctuation spectrum (its integral) cannot exceed the fixed measured dark-energy value, i.e. a global integrated-budget constraint regularizes the spectrum and pins its cutoff."
+}

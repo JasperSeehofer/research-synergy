@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a constant-flux (Kolmogorov-type) stationary power-law spectrum of a nonlinear collision/coalescence integral equation with a homogeneous interaction kernel, obtained via the Zakharov conformal transformation and admissible only when a locality criterion on the kernel's scaling asymptotics holds, with the spectrum carrying a scale-independent flux of a conserved quantity across scales",
+  "brief_reason": "The abstract uses Zakharov transformations to derive stationary solutions of the Smoluchowski (aggregation) equation for an arbitrary homogeneous kernel that carry a constant flux of mass from small to large scales — a Kolmogorov constant-flux cascade — admissible only under a stated locality criterion on the kernel's asymptotics."
+}

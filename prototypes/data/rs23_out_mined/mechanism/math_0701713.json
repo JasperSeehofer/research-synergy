@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a structure-preserving encoding that maps each equational constraint to a permutation/wreath-product group, reducing a classification problem about one algebraic structure into questions about a group so that the target domain's tools can solve the source problem",
+  "brief_reason": "The abstract states that a wreath product is associated with any linear identity so that 'questions about linear groupoids can therefore be transferred to groups and attacked by group-theoretical computational tools,' which is exactly a problem-preserving reduction into a group representation."
+}

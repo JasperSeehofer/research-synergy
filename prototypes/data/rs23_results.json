@@ -1,0 +1,100 @@
+{
+ "experiment": "EXP-RS-23",
+ "corpus": "mvp_corpus.json (Feynman)",
+ "n_corpus": 36,
+ "n_pairs": 5,
+ "pair_ids": [
+  "pair01-ising-opinion",
+  "pair03-sir-rumour",
+  "pair04-percolation-epidemics",
+  "pair05-lotka-volterra-markets",
+  "pair06-turing-spatial-economy"
+ ],
+ "encoder": "bge-large-en-v1.5 symmetric",
+ "bge_revision": "d4aa6901d3a41ba39fb536a557fa166f842b0e09",
+ "reduction_prompt": "rs22_probe_mechanism.md",
+ "arms_forward_recall@10": {
+  "reduction_bge": 0.6,
+  "raw_bge": 0.2,
+  "reduction_bge_full": 0.4,
+  "lexical_null": 0.4
+ },
+ "arms_full": {
+  "reduction_bge": {
+   "ranks": {
+    "pair01-ising-opinion": 13,
+    "pair03-sir-rumour": 4,
+    "pair04-percolation-epidemics": 2,
+    "pair05-lotka-volterra-markets": 10,
+    "pair06-turing-spatial-economy": 21
+   },
+   "recall@1": 0.0,
+   "recall@5": 0.4,
+   "recall@10": 0.6,
+   "mrr": 0.19490842490842492
+  },
+  "raw_bge": {
+   "ranks": {
+    "pair01-ising-opinion": 17,
+    "pair03-sir-rumour": 3,
+    "pair04-percolation-epidemics": 20,
+    "pair05-lotka-volterra-markets": 28,
+    "pair06-turing-spatial-economy": 29
+   },
+   "recall@1": 0.0,
+   "recall@5": 0.2,
+   "recall@10": 0.2,
+   "mrr": 0.10247078141601466
+  },
+  "reduction_bge_full": {
+   "ranks": {
+    "pair01-ising-opinion": 21,
+    "pair03-sir-rumour": 4,
+    "pair04-percolation-epidemics": 3,
+    "pair05-lotka-volterra-markets": 19,
+    "pair06-turing-spatial-economy": 24
+   },
+   "recall@1": 0.0,
+   "recall@5": 0.4,
+   "recall@10": 0.4,
+   "mrr": 0.1450501253132832
+  },
+  "lexical_null": {
+   "ranks": {
+    "pair01-ising-opinion": 31,
+    "pair03-sir-rumour": 2,
+    "pair04-percolation-epidemics": 17,
+    "pair05-lotka-volterra-markets": 7,
+    "pair06-turing-spatial-economy": 25
+   },
+   "recall@1": 0.0,
+   "recall@5": 0.2,
+   "recall@10": 0.4,
+   "mrr": 0.15478774735700732
+  }
+ },
+ "floors": {
+  "lexical_null": 0.4,
+  "raw_bge_rs21": 0.2,
+  "llm_ceiling": "0.60 (old) / ~1.00 (Opus 4.8 anchors)"
+ },
+ "predictions": {
+  "P1_beats_lexical_null(>0.40)": true,
+  "P2_beats_raw_bge": true
+ },
+ "verdict": "ADVANCE — field-neutral reduction rescues cheap retrieval; build reduction->LLM cascade",
+ "per_pair_reduction_ranks": {
+  "pair01-ising-opinion": 13,
+  "pair03-sir-rumour": 4,
+  "pair04-percolation-epidemics": 2,
+  "pair05-lotka-volterra-markets": 10,
+  "pair06-turing-spatial-economy": 21
+ },
+ "per_pair_raw_ranks": {
+  "pair01-ising-opinion": 17,
+  "pair03-sir-rumour": 3,
+  "pair04-percolation-epidemics": 20,
+  "pair05-lotka-volterra-markets": 28,
+  "pair06-turing-spatial-economy": 29
+ }
+}

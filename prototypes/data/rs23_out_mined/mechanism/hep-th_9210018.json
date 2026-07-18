@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "domain-wise random symmetry breaking that seeds topologically stable defects at the junctions of independently-oriented domains, with the per-domain defect-formation probability fixed by the topology (homotopy) of the order-parameter space",
+  "brief_reason": "The abstract reports defects (strings/disclinations) forming via bubble/domain formation across a symmetry-breaking phase transition, with the measured formation probability of 0.33 matching the 1/pi value predicted purely from the order-parameter space's topology S^2/Z_2."
+}

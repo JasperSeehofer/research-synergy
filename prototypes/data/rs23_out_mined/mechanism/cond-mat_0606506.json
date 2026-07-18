@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "the fluctuation-dissipation relation as a stochastic differential (Langevin) equation, in which a variable's evolution combines a deterministic dissipative/damping (memory) term with a random forcing term whose correlation spectrum is constrained to equal that same dissipative response",
+  "brief_reason": "The abstract centers on quantum fluctuation-dissipation theorems and distinguishes a 'weak form' (the general identity tying fluctuations to dissipation) from a 'strong form' requiring a Langevin equation, i.e. a damping-plus-noise stochastic equation whose noise is locked to the dissipation."
+}

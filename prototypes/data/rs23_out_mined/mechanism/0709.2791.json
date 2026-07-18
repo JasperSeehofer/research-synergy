@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "recursive Bayesian / minimum-variance state estimation via an alternating predict-then-update recursion, with each estimate projected onto a feasible set defined by equality and inequality constraints (constrained optimization / projection onto a convex feasible region)",
+  "brief_reason": "The abstract defines the Kalman Filter (a recursive predict-update estimator) and its whole contribution is incorporating equality and inequality constraints into that recursion, i.e. constraining/projecting the state estimate onto a feasible set."
+}

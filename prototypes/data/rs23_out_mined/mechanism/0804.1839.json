@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a sharp sample-complexity threshold (recoverability phase transition) pinned down by matching converse (information-theoretic lower bound) and achievability (upper bound via a simple correlation-thresholding estimator), giving a critical scaling law of the number of noisy random observations against the object's intrinsic degrees of freedom that separates a reliable-detection regime from an unreliable one",
+  "brief_reason": "The abstract establishes a necessary condition m = Omega(k log(n-k)) holding for all algorithms and a matching sufficient condition achieved by a simple maximum-correlation estimator, so the two bounds coincide to define a sharp optimal-measurement threshold governed by the SNR and minimum-to-average ratio."
+}

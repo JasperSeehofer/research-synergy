@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a semiclassical saddle-point (stationary-action) evaluation that reduces a hard quantity to the extremal action of a single classical minimal-area configuration/surface subject to boundary conditions fixed by the external data, with a regularization scheme introduced to render the divergent extremal action finite",
+  "brief_reason": "The abstract states the computation 'boils down to finding a certain classical string configuration whose boundary conditions are determined by the gluon momenta' and then introduces a dimensional-regularization analogue to define finite quantities, i.e. a boundary-value extremal-action problem with a regularized divergence."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "steepest-descent / saddle-point asymptotic evaluation of a small-parameter (singular) limit by deforming the problem onto contours where a scalar complex phase function is stationary, with that phase fixed by a constrained variational (critical-point / energy-minimization) principle",
+  "brief_reason": "The abstract's whole method is a generalization of the Deift-Zhou steepest-descent method used to extract the semiclassical (small-parameter) limit via a scalar complex phase function that is characterized by the critical-point theory of a functional, i.e. a variational principle."
+}

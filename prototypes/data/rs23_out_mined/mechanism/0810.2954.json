@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A variational maximum principle for the steady state of a mutation-selection (replicator-type) dynamical system, obtained by mapping the nonlinear dynamics onto an analytically solvable field theory: the equilibrium mean growth rate is fixed by extremizing a functional over configurations (equivalently the dominant eigenvalue of the associated linear operator), and the system undergoes sharp phase transitions between distinct steady-state phases as parameters are varied.",
+  "brief_reason": "The abstract solves nonlinear generalizations of the model 'through an analytic field theoretic mapping' and gives 'exact analytical formulas for the equilibrium mean fitness ... in terms of a maximum principle' that hold for 'any permutation invariant replication rate function,' with 'selected phases' and phase diagrams signalling the associated phase transitions."
+}

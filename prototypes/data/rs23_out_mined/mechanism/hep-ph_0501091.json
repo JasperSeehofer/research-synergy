@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "Constraint-driven classification and selection: admissible configurations are restricted to those embeddable in a known discrete classification of symmetric/homogeneous (Lie-group-coset) geometric spaces, and imposing a minimality/extremality condition on the content then forces a specific member of that classified family.",
+  "brief_reason": "The abstract states the allowed couplings must fall within the classification of homogeneous quaternionic scalar manifolds and that minimal-coupling requirements then force particular field contents (SO(10), then E(6)), i.e. embedding into a classified symmetry-space family plus a minimality condition selects the structure."
+}

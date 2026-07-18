@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A similarity-renormalization-group (flow-equation) transformation: a continuous sequence of similarity transformations that perturbatively band-narrows a large operator/matrix, decoupling widely-separated scales, so that a small effective operator restricted to a low-dimensional subspace, when diagonalized, reproduces the original spectrum.",
+  "brief_reason": "The abstract solves a matrix model via a 'perturbative similarity renormalization group for hamiltonians' that yields an 'effective hamiltonian with a small width' projected onto a small basis and diagonalized to recover the bound-state energy, which is exactly a scale-decoupling band-narrowing similarity flow reducing an operator to a small effective one."
+}

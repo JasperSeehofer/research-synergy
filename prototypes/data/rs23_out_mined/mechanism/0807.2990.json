@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "propagation of a linear system of oscillatory modes with a time-dependent coefficient that contracts to zero at a degenerate 'bounce' point and re-expands, with excitation of the higher (non-zero) modes keeping the trajectory bounded and regular across the degeneracy",
+  "brief_reason": "The abstract describes a compact dimension contracting to a point and then re-expanding (a time-dependent parametric background passing through a singular degeneracy) and shows the excited-mode dynamics stays non-singular across it, i.e. a parametric-oscillator bounce regularized by higher-mode excitation."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A cavity/message-passing fixed-point iteration that self-consistently propagates distributions of local marginal 'fields' across a sparse, locally tree-like random constraint network to compute order parameters over a clustered space of many metastable states, whose marginals are then read off to drive an iterative decimation/assignment algorithm",
+  "brief_reason": "The abstract solves random K-SAT via the zero-temperature cavity method whose order parameter is a distribution of surveys of local magnetic fields over the system's many possible (metastable) states, and it turns those per-sample surveys directly into a solving algorithm."
+}

@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "a delayed negative-feedback loop producing self-sustained relaxation-type limit-cycle oscillations (periodic spike trains) whose spike pattern encodes the strength of a constant input, read out downstream by a fast-relaxing threshold element that turns the spikes into an ultrasensitive (high effective Hill-coefficient) all-or-none response via separation of timescales",
+  "brief_reason": "The abstract centers on a small core network 'designed to produce periodic spikes' that encode input conditions, and its key result -- effective Hill coefficients above 20 -- arises because operator sites with fast binding/dissociation read out those spikes on a much faster timescale, giving switch-like ultrasensitivity."
+}

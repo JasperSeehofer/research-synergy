@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "construction of a deformation-invariant intersection-theoretic count (a 'virtual fundamental cycle') on the space of solutions of a parametrized nonlinear equation: a generic perturbation regularizes a degenerate or wrong-dimensional solution set so the resulting count is independent of the perturbation, changing only by controlled discontinuous jumps ('wall-crossing') as parameters cross critical loci",
+  "brief_reason": "The abstract introduces a perturbation to a nonlinear equation, constructs a virtual cycle for the moduli space of its solutions, and analyzes the wall-crossing of that cycle under perturbation to obtain an extended invariant satisfying a fixed axiom set."
+}

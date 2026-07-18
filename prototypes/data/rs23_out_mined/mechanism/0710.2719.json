@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "A Courant-algebroid / generalized-geometry construction: an algebraic bracket with a symmetric pairing defined on the direct sum of a space's infinitesimal symmetries (derivations/vector fields) and their duals (one-forms), extended by a notion of connection, whose integrable maximal-isotropic substructures classify and interconvert otherwise-distinct compatible geometric structures, yielding an equivalence used as a construction device.",
+  "brief_reason": "The abstract's whole method rests on extending connections in Courant algebroids to characterize generalized Kaehler geometry and to establish an equivalence between brane configurations and such structures that is then used to construct new families, i.e. it operates entirely inside the generalized-geometry bracket framework on the tangent-plus-cotangent direct sum."
+}

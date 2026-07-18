@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "assigning a cohomological classifying invariant to a structure by building a groupoid/dynamical system from its space of translates and computing the cocycle cohomology of that groupoid",
+  "brief_reason": "The abstract builds dynamical systems and groupoids from the point patterns and defines the pattern's cohomology as the cocycle cohomology of the pattern groupoid, then computes it as an invariant of the tilings."
+}

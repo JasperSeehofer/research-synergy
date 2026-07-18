@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "first-passage / residence-time ('gap-time') distribution for escape across a dividing surface (separatrix) in state space, whose functional form fixes the escape rate and separates memoryless exponential (statistical) decay of the survival distribution from long-tailed power-law (nonstatistical) decay",
+  "brief_reason": "The abstract centers on the gap time distribution and associated reactant lifetime (survival) distribution measured across a phase-space dividing surface, identifying both algebraic power-law and exponential decay regimes and comparing the implied escape rate with the numerically observed decay rate."
+}

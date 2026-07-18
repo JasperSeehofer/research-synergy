@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "construction of a multiplicative invariant of combinatorial objects as a character (algebra homomorphism) on a combinatorial Hopf algebra that factors through a Grothendieck-style class ring of cut-and-paste (scissors-congruence, inclusion-exclusion) equivalence classes, so that gluing/decomposition of the objects maps to products and additive class relations of associated geometric pieces",
+  "brief_reason": "The abstract's whole procedure builds characters of the Connes-Kreimer Hopf algebra of graphs that factor through a Grothendieck ring of varieties (via classes of hypersurface complements), i.e. a Hopf-algebra homomorphism into an additive cut-and-paste class ring, with BPHZ renormalization as the associated Birkhoff-factorization step."
+}

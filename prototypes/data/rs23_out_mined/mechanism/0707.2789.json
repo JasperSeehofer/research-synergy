@@ -1,0 +1,4 @@
+{
+ "core_mechanism": "Relaxation of an abruptly perturbed system possessing an extensive set of conserved quantities to a constrained maximum-entropy (generalized Gibbs) steady state rather than a single-parameter thermal equilibrium, exhibiting transient collapse-and-revival oscillations at a frequency set by the perturbation strength",
+ "brief_reason": "The abstract reports that after a sudden change of the control parameter the system settles into a non-thermal steady state described by generalized Gibbs ensembles, with collapse-and-revival on a period inversely proportional to the interaction, which is exactly maximum-entropy relaxation under conserved constraints."
+}

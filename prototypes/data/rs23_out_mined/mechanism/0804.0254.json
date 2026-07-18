@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "tuning a control parameter of an external confining field to a special ('magic') cancellation point at which the field's differential coupling to two internal states vanishes, thereby decoupling the internal-state dynamics from the external (positional/motional) degree of freedom",
+  "brief_reason": "The abstract's central device is choosing the trap's wavelength and polarization so that two electronic states experience the same trapping potential, nulling the differential shift and letting internal-state coherent control proceed independently of the center-of-mass motion."
+}

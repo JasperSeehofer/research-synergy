@@ -1,0 +1,4 @@
+{
+  "core_mechanism": "an information-theoretic converse bound (Fano-inequality / mutual-information argument) that fixes a sharp threshold on how many noisy linear observations are needed to reliably identify which of exponentially many discrete configurations is present, with the threshold shifting between distinct scaling regimes as the problem dimensions jointly grow",
+  "brief_reason": "The abstract's central results are 'necessary conditions' (converse bounds) on the number of observations n required for exact/asymptotically reliable recovery of a discrete support set in a high-dimensional scaling limit, yielding sharp characterizations and three regimes — the hallmark of a Fano-type information-theoretic limit."
+}

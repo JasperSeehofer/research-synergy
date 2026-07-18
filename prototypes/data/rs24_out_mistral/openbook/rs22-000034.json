@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "path integral approach for calculating work distribution in a nonequilibrium steady state",
+   "b_element": "Ruelle's principle (SRB distribution) for describing nonequilibrium stationary states in many-particle systems"
+  },
+  {
+   "a_element": "dragged massive Brownian particle model (nonequilibrium system)",
+   "b_element": "strongly sheared fluid (nonequilibrium many-particle system)"
+  },
+  {
+   "a_element": "work distribution function in laboratory and comoving frames",
+   "b_element": "statistical predictions for nonequilibrium stationary states (e.g., in sheared fluids)"
+  },
+  {
+   "a_element": "asymptotic fluctuation theorem for work fluctuations",
+   "b_element": "SRB distribution as a general principle for nonequilibrium steady states"
+  },
+  {
+   "a_element": "time oscillatory behavior in work distribution for masses above a critical value",
+   "b_element": "specific predictions derived from SRB without explicit construction (e.g., agreement with computer experiments)"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers address nonequilibrium steady states, Paper A uses a path integral approach to derive work fluctuations in a specific model (Brownian particle), focusing on inertial effects and fluctuation theorems. Paper B applies Ruelle's principle (SRB distribution) to many-particle systems, emphasizing statistical mechanics predictions without explicit dynamical equations. The underlying machinery differs: path integrals vs. ergodic theory, and the role of inertial effects in A has no direct counterpart in B."
+}

@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "affine Lie algebra (SU(3)) and its modular invariant partition functions",
+   "b_element": "simple Lie algebras and their associated quantum invariants of 3-manifolds"
+  },
+  {
+   "a_element": "classification of modular invariant partition functions for SU(3)",
+   "b_element": "decomposition of quantum invariants into projective and non-projective parts"
+  },
+  {
+   "a_element": "modular invariance as a symmetry principle in conformal field theory",
+   "b_element": "symmetry principle used to decompose quantum invariants"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers involve simple Lie algebras and symmetry principles, Paper A focuses on classifying modular invariant partition functions in conformal field theory, whereas Paper B addresses the decomposition and integrality of quantum invariants of 3-manifolds. The core mechanisms—classification via modular invariance vs. decomposition and perturbative expansion of quantum invariants—are distinct."
+}

@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "exactly solvable spin model reduced to free fermions in a static Z2 gauge field",
+   "b_element": "weak Hopf algebra with group-like elements and antipode structure"
+  },
+  {
+   "a_element": "spectral Chern number ν governing topological phases and edge transport",
+   "b_element": "Tr(S^2) as a condition for semisimplicity in weak Hopf algebras"
+  },
+  {
+   "a_element": "Abelian and non-Abelian anyonic phases distinguished by ν",
+   "b_element": "semisimple and cosemisimple phases in weak Hopf algebras"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both abstracts involve algebraic structures and phase distinctions, Paper A's core mechanism is the topological classification of free-fermion systems via Chern numbers and anyonic excitations, whereas Paper B focuses on algebraic properties of weak Hopf algebras (e.g., antipode order, semisimplicity). The shared vocabulary of 'phases' and 'invariants' does not reflect the same underlying machinery."
+}

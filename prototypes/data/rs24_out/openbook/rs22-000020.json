@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "osp(5|2) superalgebra with its symmetry-breaking subalgebra chain", "b_element": "the Galois group acting on the covering of linear categories"},
+    {"a_element": "branching of the 64-dimensional irreducible representation into subalgebra multiplets", "b_element": "the spectral-sequence filtration decomposing the Hochschild-Mitchell (co)homology"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only overlap is generic — both invoke an algebraic symmetry structure and some notion of 'decomposition'. The actual machinery differs: paper A uses representation-theoretic branching rules of Lie superalgebras under a symmetry-breaking subalgebra chain to match multiplet degeneracies, whereas paper B uses a homological Cartan-Leray spectral sequence to compute Hochschild-Mitchell cohomology of a Galois covering. A branching rule is not a spectral sequence, so no role-for-role mapping of the driving process holds."
+}

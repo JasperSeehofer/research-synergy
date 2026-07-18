@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "central extensions of groups of smooth maps from a 2D surface to a Lie group G",
+   "b_element": "irreducible weight modules over higher rank Virasoro algebras"
+  },
+  {
+   "a_element": "kernel of the central extension (Jacobian of the curve)",
+   "b_element": "no direct correspondence in module classification"
+  },
+  {
+   "a_element": "coadjoint orbits labeled by moduli of holomorphic principal G-bundles",
+   "b_element": "classification of modules (intermediate series or finitely-dense)"
+  },
+  {
+   "a_element": "two-dimensional analogue of the Virasoro algebra associated with a complex curve",
+   "b_element": "higher rank Virasoro algebras"
+  },
+  {
+   "a_element": "invariants of the coadjoint action described via Hill's operator",
+   "b_element": "no direct correspondence in module classification"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers involve infinite-dimensional Lie algebras/groups (e.g., Virasoro-like structures), Paper A focuses on geometric and algebraic constructions of central extensions and their coadjoint orbits, whereas Paper B classifies representation-theoretic modules (weight modules) over higher-rank Virasoro algebras. The core mechanisms—geometric extension vs. module classification—are distinct, with no shared governing process or role-for-role mapping beyond superficial overlap in algebraic context."
+}

@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "non-Abelian anyons as quasiparticle excitations with non-Abelian braiding statistics",
+   "b_element": "non-Abelian anyons as fundamental entities in anyon models with braiding properties"
+  },
+  {
+   "a_element": "topological degeneracy of multi-quasiparticle states storing quantum information",
+   "b_element": "superpositions of total anyonic charge in a target region as measurable quantum states"
+  },
+  {
+   "a_element": "braiding quasiparticles to perform unitary gate operations for quantum computation",
+   "b_element": "monodromy of probe anyons in interferometry collapsing superpositions of anyonic charge"
+  },
+  {
+   "a_element": "fault-tolerance from non-local encoding of quasiparticle states",
+   "b_element": "distinguishability of anyonic charges via interferometric measurement outcomes"
+  },
+  {
+   "a_element": "ν=5/2 fractional quantum Hall state as a non-Abelian topological state",
+   "b_element": "ν=5/2 Moore-Read state as a specific anyon model for interferometry experiments"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers center on the same underlying machinery: non-Abelian anyons with braiding statistics as the core mechanism. Paper A uses braiding for fault-tolerant quantum computation, while Paper B uses interferometry to measure anyonic charge via monodromy, but both rely on the non-Abelian braiding properties and topological degeneracy of anyonic states described in the abstracts."
+}

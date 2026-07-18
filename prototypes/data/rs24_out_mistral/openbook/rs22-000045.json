@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "microscopic derivation of a master equation for a quantum system (Jaynes-Cummings model with cavity losses)",
+   "b_element": "reducible representations of CAR/CCR for field quantization (Dirac/Maxwell fields)"
+  },
+  {
+   "a_element": "dissipator terms varying with vacuum Rabi frequency",
+   "b_element": "field operators as operators (not operator-valued distributions)"
+  },
+  {
+   "a_element": "Rotating Wave Approximation (RWA) as a limiting case",
+   "b_element": "formalism leading to finite quantum field theory (as a limiting or special case)"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers address quantum systems and their mathematical descriptions, Paper A focuses on a microscopic derivation of a master equation for dissipation in a specific Hamiltonian system, whereas Paper B deals with reducible representations of canonical (anti)commutation relations to achieve well-defined field operators. The core mechanisms—dissipative dynamics via master equations vs. algebraic representations for field quantization—are fundamentally distinct."
+}

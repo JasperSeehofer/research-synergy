@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "single ion reaction events as a probe for branching ratios and decay probabilities",
+   "b_element": "single atoms in optical traps as a probe for quantum state control and precision metrology"
+  },
+  {
+   "a_element": "Mg+ ion in a specific excited state (3p 2P3/2) interacting with molecular hydrogen isotopes",
+   "b_element": "neutral atoms in specific electronic states experiencing state-insensitive trapping potentials"
+  },
+  {
+   "a_element": "branching ratio between MgD+ and MgH+ formation from HD reactions",
+   "b_element": "coherent control of electronic transitions independent of atomic motion"
+  },
+  {
+   "a_element": "quantitative information from few reaction events (small sample size)",
+   "b_element": "precision measurements from single-atom or few-atom systems"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers use single-particle systems (ions or atoms) to extract precise information, paper A focuses on chemical reaction dynamics and isotope effects via branching ratios and decay probabilities, whereas paper B centers on quantum state engineering and metrology using state-insensitive optical traps. The underlying mechanisms—chemical reaction kinetics vs. quantum optical control—are fundamentally distinct."
+}

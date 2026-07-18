@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "low-energy effective actions parameterizing interactions of particle-physics candidates with optical photons and external electromagnetic fields",
+   "b_element": "effective field theory methods for the dilute Bose gas, parameterizing interactions via the gas parameter √(na³)"
+  },
+  {
+   "a_element": "external electromagnetic fields as probes to extract microscopic properties of new physics",
+   "b_element": "scattering length and effective range as probes to extract microscopic properties of the interatomic potential"
+  },
+  {
+   "a_element": "perturbative characterization of optical signatures in quantum vacuum experiments",
+   "b_element": "perturbative expansion of properties (e.g., ground state energy density) in the gas parameter √(na³)"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers employ low-energy effective field theory frameworks and perturbative expansions, Paper A focuses on quantum vacuum experiments probing new physics via external fields, whereas Paper B addresses equilibrium properties of a Bose gas using field-theoretic techniques like Bogoliubov approximations and renormalization group methods. The core machinery—quantum field interactions in external fields vs. many-body quantum statistics—differs fundamentally."
+}

@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "Ising-like model on a square lattice with neighbor preferences (Schelling-Ising model)",
+   "b_element": "Spin-facilitated (Ising) kinetically constrained models (KCMs)"
+  },
+  {
+   "a_element": "Inhomogeneous or self-organized temperature T as a control parameter for dynamics",
+   "b_element": "Effective temperatures or dynamical heterogeneities in KCMs arising from kinetic constraints"
+  },
+  {
+   "a_element": "Segregation as a collective phenomenon emerging from local interactions",
+   "b_element": "Glassy dynamics and slow relaxation due to kinetic constraints in KCMs"
+  },
+  {
+   "a_element": "Feedback between segregation and temperature leading to self-organization",
+   "b_element": "Non-equilibrium stationary states or aging dynamics in KCMs under external driving"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers involve Ising-like models and temperature-like parameters, the Schelling-Ising model focuses on equilibrium-like segregation driven by neighbor preferences, whereas KCMs emphasize non-equilibrium glassy dynamics due to kinetic constraints. The core mechanisms—preference-driven segregation vs. constraint-driven slow dynamics—are fundamentally different, despite superficial similarities in lattice-based modeling."
+}

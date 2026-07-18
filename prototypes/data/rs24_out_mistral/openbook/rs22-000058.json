@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "superharmonic perturbation of a Gaussian measure via logarithmic potential U^μ(z)",
+   "b_element": "potential defining the eigenvalue distribution of random normal matrices"
+  },
+  {
+   "a_element": "equilibrium measure supported on subharmonic generalized quadrature domains",
+   "b_element": "asymptotic density of eigenvalues supported on the interior domain of a simple smooth curve"
+  },
+  {
+   "a_element": "orthogonal polynomials with respect to weighted measure w(z) = exp(-|z|^2 + U^μ(z))",
+   "b_element": "random normal matrix ensemble with spectrum constrained by the potential"
+  },
+  {
+   "a_element": "Schwarz function of the curve bounding the support of the equilibrium measure",
+   "b_element": "conformal mapping describing the boundary of the eigenvalue support"
+  },
+  {
+   "a_element": "2×2 matrix d-bar problem for orthogonal polynomials",
+   "b_element": "rigorous analysis of eigenvalue density via complex analytic methods"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers study equilibrium measures arising from perturbations of a Gaussian measure (or equivalent potential) in the complex plane, with the support of the measure determined by a smooth curve. The machinery involves logarithmic potentials, conformal mappings, and the asymptotic distribution of zeros/eigenvalues governed by the same underlying variational principle in potential theory."
+}

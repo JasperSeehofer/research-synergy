@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "Lie algebras of low dimension used for classification of invariant PDEs",
+   "b_element": "category-theoretic structure used to find simplest representatives of quotient objects (equations)"
+  },
+  {
+   "a_element": "symmetry algebras of nonlinear heat-conductivity equations",
+   "b_element": "symmetries of parabolic equations as morphisms in the category"
+  },
+  {
+   "a_element": "group classification of PDEs via Lie algebra properties",
+   "b_element": "classification of PDEs via morphisms and quotient objects in a category"
+  },
+  {
+   "a_element": "maximal symmetry algebras of invariant evolution equations",
+   "b_element": "simplest representatives of quotient objects in the category of parabolic equations"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers address classification problems for PDEs, Paper A uses the machinery of Lie algebras and symmetry groups to classify invariant equations, whereas Paper B employs category-theoretic morphisms and quotient objects. The underlying mathematical structures (Lie algebras vs. category theory) and mechanisms (symmetry analysis vs. categorical simplification) are fundamentally distinct."
+}

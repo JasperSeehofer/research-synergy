@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "pulse sequences designed to cancel successive orders of a time expansion for fidelity decay (dephasing suppression)",
+   "b_element": "geometric phase manipulation (Berry's phase) to control qubit coherence"
+  },
+  {
+   "a_element": "dephasing Hamiltonian operators causing decoherence",
+   "b_element": "geometry-dependent contributions to dephasing in the qubit"
+  },
+  {
+   "a_element": "qubit fidelity as a measure of coherence",
+   "b_element": "interference experiment measuring accumulated phase (coherence)"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "Paper A focuses on a universal pulse sequence method to suppress dephasing by canceling higher-order terms in a time expansion, while Paper B demonstrates geometric phase accumulation (Berry's phase) to manipulate qubit coherence. The underlying mechanisms—dynamical decoupling via pulse sequences versus geometric phase control—are fundamentally distinct, despite both addressing qubit dephasing."
+}

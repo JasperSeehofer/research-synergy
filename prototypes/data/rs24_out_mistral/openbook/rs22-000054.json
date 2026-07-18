@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "classical string winding around a compact dimension undergoing contraction and re-expansion in Milne space",
+   "b_element": "membrane worldvolume with compact spatial topology Σ_h coupled to critical Lifshitz matter and gravity"
+  },
+  {
+   "a_element": "non-singular propagation of excited string states through a spacetime singularity",
+   "b_element": "reproduction of bosonic string partition function via quantum critical membrane ground-state wavefunction"
+  },
+  {
+   "a_element": "compactified Milne space as the background geometry for string dynamics",
+   "b_element": "D=2 worldvolume gravity at a Lifshitz point (z=2) as the background for membrane dynamics"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "Paper A analyzes classical string dynamics in a time-dependent orbifold background, focusing on non-singular propagation through a geometric singularity. Paper B constructs a quantum theory of membranes at criticality to reproduce string partition functions, involving Lifshitz scalars and nonrelativistic gravity. While both involve strings/membranes in compactified settings, their core mechanisms—classical geometric propagation vs. quantum criticality and Bose-Einstein condensation—are fundamentally distinct."
+}

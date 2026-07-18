@@ -1,0 +1,11 @@
+{
+  "mapping": [
+    {"a_element": "the kappa-Minkowski / Lie-algebra non-commutative space-time whose coordinates obey a Lie-algebra commutation rule", "b_element": "the n-dimensional Lie algebra g specified by its structure constants"},
+    {"a_element": "the star product that realizes the non-commutative coordinate algebra as an operation on ordinary (commuting) functions", "b_element": "the representation of the generators X_i as formal power series with coefficients in the Weyl algebra A_n (operators on commuting coordinates)"},
+    {"a_element": "the kappa-Poincare coproduct that dictates how momenta combine (non-symmetrically) at interaction vertices", "b_element": "the Hopf-algebra / coderivation coproduct used in the third proof"},
+    {"a_element": "the deformation controlled by the non-commutativity (1/kappa) scale organizing the expansion", "b_element": "the formal variable t in which the generators X_i = X_i^0 t are expanded as a power series"},
+    {"a_element": "the non-symmetric, structure-dependent kernel the coproduct/star product imposes on momenta", "b_element": "the structure-constant combinatorial formula involving Bernoulli numbers and coth(x/2) (a BCH-type kernel)"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both rest on the same machinery: realizing an abstract Lie algebra as operators on ordinary commuting coordinates -- paper A's star product on kappa-Minkowski is the multiplicative face of paper B's Weyl-algebra realization of the Lie-algebra generators -- together with the dual Hopf-algebra coproduct (A's kappa-Poincare coproduct = B's coderivation/Hopf coproduct), the same structure-constant/BCH kernel (coth, Bernoulli numbers) encoding the non-commutativity in both."
+}

@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "spin-glass type problems characterized by competition and heterogeneities leading to long epochs of stasis and crises",
+   "b_element": "frustrated, disordered systems such as spin glasses in combinatorial optimization"
+  },
+  {
+   "a_element": "long epochs of stasis interrupted by crises due to hyper-sensitivity to small environmental changes",
+   "b_element": "ground state properties of frustrated systems determined by combinatorial optimization methods"
+  },
+  {
+   "a_element": "methodological contribution of physics to economics via simple models and agent-based simulations",
+   "b_element": "application of combinatorial optimization algorithms (e.g., network flows, minimum-cost-flow) to determine ground states in frustrated systems"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers invoke spin-glass systems as a core mechanistic metaphor: Paper A uses spin-glass dynamics (competition, heterogeneities, and phase transitions) to model economic crises, while Paper B explicitly studies spin glasses and other frustrated systems via combinatorial optimization to determine ground states. The shared machinery is the spin-glass framework itself, where disorder and frustration lead to complex, sensitive dynamics or states."
+}

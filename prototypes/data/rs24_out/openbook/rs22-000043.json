@@ -1,0 +1,7 @@
+{
+  "mapping": [
+    {"a_element": "the pendulum as an oscillatory element", "b_element": "the NF-kB core reaction network as an oscillatory element"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A's machinery is coupling-induced synchronization of two oscillators, where an instantaneous bidirectional coupling and small length detuning drive a transition to phase-locking; Paper B's machinery is a single biochemical limit-cycle that generates periodic spikes plus downstream ultrasensitive gene regulation (Hill coefficients >20). The only overlap is the generic word 'oscillations' — there is no coupling/synchronization in B and no threshold-based ultrasensitive readout in A, so no role-for-role mapping of the driving process holds."
+}

@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "semi-direct sum of Lie algebras with Levi factor S",
+   "b_element": "real low-dimensional Lie algebras (dimension ≤ 4)"
+  },
+  {
+   "a_element": "system of determining PDEs for invariants",
+   "b_element": "construction of realizations in vector fields"
+  },
+  {
+   "a_element": "solving a system of total differential equations to find invariants",
+   "b_element": "use of megaideals to classify realizations"
+  },
+  {
+   "a_element": "Casimir operators as invariants",
+   "b_element": "inequivalent realizations of Lie algebras"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers deal with Lie algebras, Paper A focuses on invariants (Casimir operators) via solving differential equations, whereas Paper B classifies realizations of Lie algebras using megaideals and vector fields. The core mechanisms—differential equation solving for invariants vs. structural classification via megaideals—are distinct, despite superficial overlap in Lie algebra terminology."
+}

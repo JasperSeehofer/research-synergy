@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "relaxational dynamics at criticality in disordered Ising models",
+   "b_element": "scaling corrections in φ^4 theory at criticality"
+  },
+  {
+   "a_element": "dynamic critical exponent z",
+   "b_element": "corrections to scaling exponent ω"
+  },
+  {
+   "a_element": "Monte Carlo simulations using Metropolis algorithm at the critical point",
+   "b_element": "Monte Carlo study using finite size scaling method at criticality"
+  },
+  {
+   "a_element": "disorder parameter in Ising models",
+   "b_element": "coupling λ in φ^4 theory"
+  },
+  {
+   "a_element": "universal dynamic critical behavior in equilibrium and off-equilibrium",
+   "b_element": "vanishing of leading order scaling corrections at a specific coupling"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers use Monte Carlo simulations to study critical phenomena, paper A focuses on relaxational dynamics and the dynamic critical exponent z in disordered Ising models, whereas paper B investigates static scaling corrections and the exponent ω in φ^4 theory. The underlying mechanisms (dynamic vs. static scaling corrections) and the exponents studied (z vs. ω) are fundamentally different."
+}

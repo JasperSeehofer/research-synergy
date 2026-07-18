@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "quasispecies model of molecular evolution with genetic recombination/horizontal gene transfer",
+   "b_element": "co-evolutionary quasispecies model of virus and immune response"
+  },
+  {
+   "a_element": "steady-state mean fitness and distribution of individuals in a population",
+   "b_element": "viral error catastrophes and adaptation regimes in co-evolving quasispecies"
+  },
+  {
+   "a_element": "maximum principle for equilibrium mean fitness",
+   "b_element": "constraints on B-cell mutation rates to minimize allowed viral mutation rates"
+  },
+  {
+   "a_element": "fitness landscape with positive/negative epistasis affecting selection",
+   "b_element": "viral mutation rate regimes leading to error or adaptation catastrophes"
+  },
+  {
+   "a_element": "analytic field theoretic mapping for solvability",
+   "b_element": "analytic study of co-evolutionary dynamics"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers use quasispecies theory, Paper A focuses on the solvability and phase transitions of recombination/horizontal gene transfer in a single population via a maximum principle and field-theoretic mapping, whereas Paper B studies co-evolutionary dynamics between two coupled quasispecies (virus and immune response) to identify mutation rate regimes causing error catastrophes. The core mechanisms—recombination-driven fitness optimization vs. co-evolutionary catastrophe minimization—are distinct."
+}

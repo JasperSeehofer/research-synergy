@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "metabolic network modules (core and periphery)",
+   "b_element": "scale-free network nodes (high-degree hubs and low-degree nodes)"
+  },
+  {
+   "a_element": "core modules (tightly linked, basic functions)",
+   "b_element": "high-degree hubs (critical for network connectivity)"
+  },
+  {
+   "a_element": "periphery modules (independent, specialized functions)",
+   "b_element": "low-degree nodes (less critical for global connectivity)"
+  },
+  {
+   "a_element": "evolutionary cohesion and rate differences between core and periphery",
+   "b_element": "differential impact of random failures vs. targeted attacks on hubs"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers analyze network topology and its functional implications, Paper A focuses on modularity and co-evolutionary dynamics in metabolic networks, whereas Paper B examines robustness and vulnerability in scale-free networks under error/attack scenarios. The underlying mechanisms (evolutionary modularity vs. error/attack tolerance) are distinct, despite superficial overlap in network terminology."
+}

@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "grand canonical thermodynamic potential minimized to determine phase behavior",
+   "b_element": "scaling functions derived from non-perturbative Renormalization Group flow"
+  },
+  {
+   "a_element": "Polyakov loop and chiral condensate as order parameters",
+   "b_element": "order parameter and longitudinal susceptibility as scaling functions"
+  },
+  {
+   "a_element": "temperature and quark chemical potential as control parameters",
+   "b_element": "external symmetry-breaking field and temperature as control parameters"
+  },
+  {
+   "a_element": "renormalization group arguments for N_f-dependence in Polyakov loop potential",
+   "b_element": "non-perturbative Renormalization Group approach for scaling functions"
+  },
+  {
+   "a_element": "phase transition (deconfinement and chiral) driven by minimization of thermodynamic potential",
+   "b_element": "critical behavior in O(4) universality class driven by scaling functions"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ renormalization group methods to study phase transitions and critical behavior in field-theoretical models. Paper A minimizes a thermodynamic potential to derive phase structure, while Paper B uses Renormalization Group flow to calculate scaling functions, but both rely on the same underlying machinery of order parameters, control parameters, and renormalization group techniques to analyze critical phenomena."
+}

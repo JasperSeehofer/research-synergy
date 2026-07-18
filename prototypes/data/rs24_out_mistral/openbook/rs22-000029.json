@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "quantum phase transition in a spin-1 Bose-Einstein condensate",
+   "b_element": "isotropic to nematic phase transition in a uniaxial nematic liquid crystal"
+  },
+  {
+   "a_element": "scaling properties of system magnetization",
+   "b_element": "probability of string (disclination line) formation per bubble"
+  },
+  {
+   "a_element": "analytical determination of scaling properties",
+   "b_element": "theoretical value of string formation probability (1/π)"
+  },
+  {
+   "a_element": "slow passage through a quantum critical point",
+   "b_element": "Kibble mechanism of domain (bubble) formation during phase transition"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers study phase transitions with universal scaling or defect formation properties. The quantum phase transition's magnetization scaling corresponds to the Kibble mechanism's defect probability, and both rely on symmetry-breaking and topological defect formation during the transition, governed by analogous underlying principles (scaling laws and topological constraints)."
+}

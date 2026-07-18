@@ -1,0 +1,12 @@
+{
+  "mapping": [
+    {"a_element": "the 2D Ising fixed point about which the RG flow is expanded", "b_element": "the asymptotically-free (continuum-limit) point of the O(2)/Sine-Gordon model"},
+    {"a_element": "quenched disorder acting as a marginally irrelevant perturbation", "b_element": "the marginal (asymptotically free) coupling / operator controlling the approach to the continuum limit"},
+    {"a_element": "renormalization-group equations for the marginal coupling, whose slow logarithmic running drives the corrections", "b_element": "the logarithmically running coupling near the asymptotically free point"},
+    {"a_element": "logarithmic corrections to the scaling of thermodynamic quantities", "b_element": "leading lattice artifacts that vanish only as inverse powers of the logarithm of the correlation length"},
+    {"a_element": "correlation length / system size in the finite-size scaling analysis", "b_element": "the correlation length whose logarithm sets the size of the artifacts"},
+    {"a_element": "universality of the logarithmic corrections due to disorder", "b_element": "universality of the leading lattice artifacts"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both are governed by the same RG machinery: a marginal operator in a two-dimensional renormalization-group flow whose logarithmic running yields universal corrections that decay only as inverse powers of a logarithm rather than as a power law. In A the marginally irrelevant disorder produces universal logarithmic corrections to the 2D Ising critical behavior; in B the marginal, asymptotically-free coupling produces universal lattice artifacts vanishing as inverse powers of the log of the correlation length -- the same marginal-operator-driven log corrections play the identical role in each."
+}

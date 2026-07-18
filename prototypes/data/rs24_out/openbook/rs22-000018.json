@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "the SU(2) group manifold / WZW conformal field theory the D-branes live on", "b_element": "the WZW model with chiral algebra g_k whose fusion ring is studied"},
+    {"a_element": "brane multiplicities and fluctuation spectrum", "b_element": "branching coefficients (representation-decomposition multiplicities)"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The overlap is shared setting and vocabulary (WZW models, SU(2)/Lie-algebra fusion rings, CFT), not shared machinery: paper A's results are driven by a Born-Infeld effective-action energy minimization with quantized U(1) flux stabilizing the branes, whereas paper B's are driven by affine-Lie-algebra representation theory (an untwisted affine extension yielding a Racah-Speiser-like branching algorithm and a Verlinde-like formula). No role-for-role correspondence of the governing processes holds."
+}

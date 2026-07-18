@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "Wick re-ordering via combinatorial formula (Rota-Stein)",
+   "b_element": "twisted products (Rota cliffordizations) induced by branching operators"
+  },
+  {
+   "a_element": "Cliffordization as a Hopf algebraic identity",
+   "b_element": "Rota cliffordizations in symmetric function context"
+  },
+  {
+   "a_element": "Hopf algebraic structure enabling Wick normal-ordering",
+   "b_element": "Hopf and bi-algebraic structures underlying symmetric functions"
+  },
+  {
+   "a_element": "closed algebraic expressions from Hopf methods",
+   "b_element": "explicit presentation of symmetric function operations via Hopf structures"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ the same underlying Hopf algebraic machinery—specifically Rota cliffordization (twisted products)—to achieve combinatorial reordering: Wick normal-ordering in quantum field theory (A) and symmetric function operations (B). The abstracts explicitly link the method to Hopf algebras and cite Rota's framework as the shared mathematical core."
+}

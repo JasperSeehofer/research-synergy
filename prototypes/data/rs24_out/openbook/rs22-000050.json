@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "number of distinct tags in the system (global/local vocabulary size)", "b_element": "average number of distinct sites visited (territory explored) by the N walkers"},
+    {"a_element": "the 'suitably defined notion of time' driving vocabulary growth", "b_element": "the walk time t"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Both merely track a count of distinct entities over a time-like variable, but the driving machinery differs: paper A observes sub-linear power-law (Heaps'-type) growth attributed to collaborative/cognitive innovation processes, whereas paper B's distinct-site count arises from N independent random walkers exploring a lattice/fractal, with asymptotics governed by an inverse-logarithmic series in N and by order statistics of exit/trapping times. There is no shared governing equation or role-for-role process, only the superficial 'number of distinct X' overlap and different functional forms (power law in t vs. series in ln^{-n}(N))."
+}

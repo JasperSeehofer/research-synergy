@@ -1,0 +1,30 @@
+{
+ "mapping": [
+  {
+   "a_element": "mean-field Hamiltonian derived from spin-glass theory",
+   "b_element": "thermodynamic description using wave turbulence theory with ultraviolet cut-off"
+  },
+  {
+   "a_element": "phase diagram in terms of pumping rate and degree of disorder",
+   "b_element": "phase transition in energy density (thermodynamic limit)"
+  },
+  {
+   "a_element": "paramagnetic phase (noisy continuous wave emission)",
+   "b_element": "non-condensed phase (high energy density, no large-scale coherence)"
+  },
+  {
+   "a_element": "ferromagnetic phase (standard passive mode-locking)",
+   "b_element": "condensate phase (large-scale coherent structure)"
+  },
+  {
+   "a_element": "spin-glass phase (frozen phases in exponentially many configurations)",
+   "b_element": "subcritical transition to condensation due to nonlinear interactions"
+  },
+  {
+   "a_element": "disorder affecting the mode-locking threshold",
+   "b_element": "nonlinear interactions modifying the condensation transition"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ a thermodynamic or statistical mechanics framework to describe phase transitions in nonlinear wave systems. Paper A uses spin-glass theory to derive a phase diagram for mode-locking, while Paper B uses wave turbulence theory to model condensation. The core machinery—phase transitions governed by a mean-field or thermodynamic description—is shared, with analogous phases and critical parameters."
+}

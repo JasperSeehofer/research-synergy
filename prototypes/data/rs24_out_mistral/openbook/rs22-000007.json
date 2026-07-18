@@ -1,0 +1,5 @@
+{
+ "mapping": [],
+ "shares_method": false,
+ "brief_justification": "Paper A studies a combinatorial-geometric object (higher spin alternating sign matrices) defined by integer constraints and enumerated via Ehrhart polynomials of a polytope, while Paper B uses parameterized telescoping (a symbolic summation technique) to prove algebraic independence of sums. The underlying mechanisms—polytope enumeration vs. symbolic recurrence failure—are unrelated."
+}

@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "cavity method at zero temperature for analyzing phase transitions in satisfiability",
+   "b_element": "message passing for inference in densely connected systems with fragmented solution spaces"
+  },
+  {
+   "a_element": "surveys of local magnetic fields as the fundamental order parameter",
+   "b_element": "condensed messages representing macroscopic averages of microscopic messages"
+  },
+  {
+   "a_element": "proliferation of metastable states causing slowdown in search algorithms",
+   "b_element": "fragmentation of the solution space complicating inference"
+  },
+  {
+   "a_element": "algorithm derived from cavity method surveys for 3-SAT",
+   "b_element": "practical algorithm derived from message passing for CDMA signal detection"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ a message-passing framework (cavity method in A, condensed message passing in B) to analyze systems with complex solution spaces, where macroscopic summaries of local interactions (local magnetic fields in A, macroscopic message averages in B) drive algorithmic improvements. The shared machinery is the use of statistical physics-inspired message passing to handle fragmented or metastable states in combinatorial or inference problems."
+}

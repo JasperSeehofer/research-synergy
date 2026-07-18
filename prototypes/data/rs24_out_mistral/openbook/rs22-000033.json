@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "probe D7-brane with nontrivial worldvolume gauge field in AdS-Schwarzschild background",
+   "b_element": "test D-dimensional brane interacting with a bulk black hole in asymptotically flat spacetime"
+  },
+  {
+   "a_element": "effective horizon on the D7-brane worldvolume",
+   "b_element": "induced horizon on the brane when it crosses the bulk black hole horizon"
+  },
+  {
+   "a_element": "conductivity tensor extracted from induced current due to external fields",
+   "b_element": "phase transition (merger) between brane-black-hole configurations"
+  },
+  {
+   "a_element": "drag force and kinetic mass of charge carriers in the plasma",
+   "b_element": "critical solution at the threshold of brane-black-hole formation"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers involve probe D-branes in black hole backgrounds and discuss horizons (effective or induced), Paper A focuses on computing a conductivity tensor via AdS/CFT and linear response to external fields, whereas Paper B studies merger transitions and critical phenomena in brane-black-hole systems. The core mechanisms—linear response theory vs. phase transitions and critical scaling—are distinct, despite superficial similarities in the gravitational dual setup."
+}

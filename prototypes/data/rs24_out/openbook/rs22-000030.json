@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "linear sigma model moduli spaces realized as Quot/hyperquot schemes", "b_element": "moduli space of solutions to the perturbed Witten equation"},
+    {"a_element": "transitions between (non-birational) Kahler phases across walls in the GLSM Kahler moduli", "b_element": "wall-crossing of the deformed virtual cycle under perturbation matched to Picard-Lefschetz"},
+    {"a_element": "GLSM's connection to enumerative geometry via its geometric (CY) phase", "b_element": "extended virtual cycle satisfying axioms similar to Gromov-Witten and r-spin theory"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A's machinery is a nonabelian gauged linear sigma model whose Kahler phases (GIT/quotient phase structure, homological projective duality) realize different geometries, whereas paper B's machinery is geometric analysis: constructing a virtual fundamental cycle from the moduli space of solutions to a nonlinear elliptic PDE (the Witten equation), with wall-crossing matched to Picard-Lefschetz. They share the same Landau-Ginzburg/CY mirror-symmetry ecosystem and vocabulary (moduli spaces, wall-crossing, Gromov-Witten), but the governing constructions differ, so no role-for-role mapping of the same machinery holds."
+}

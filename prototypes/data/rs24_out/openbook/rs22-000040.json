@@ -1,0 +1,9 @@
+{
+  "mapping": [
+    {"a_element": "low-energy effective action parameterizing new-particle/photon interactions", "b_element": "effective field theory formulation of the dilute Bose gas"},
+    {"a_element": "expansion in the weak coupling of light new degrees of freedom to photons/external fields", "b_element": "perturbative expansion in the small gas parameter sqrt(na^3)"},
+    {"a_element": "extraction of underlying microscopic properties from special-purpose setups", "b_element": "nonuniversal effects depending on the interatomic potential (e.g. effective range) beyond the scattering length"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The only real overlap is the generic effective-field-theory framing (write a low-energy effective action / systematic small-parameter expansion, with universal leading terms and nonuniversal microscopic corrections), which is a meta-methodology shared across most of physics, not a specific transferable mechanism. The actual governing machinery differs entirely: A concerns nonlinear-QED / new-particle photon couplings producing optical signatures in strong electromagnetic fields, whereas B is Bogoliubov-type many-body perturbation theory computing ground-state energy, condensate depletion, and the critical temperature of a weakly interacting condensate, with no shared governing equation, dynamical law, or role-for-role dynamical correspondence."
+}

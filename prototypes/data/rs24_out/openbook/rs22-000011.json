@@ -1,0 +1,10 @@
+{
+  "mapping": [
+    {"a_element": "optical lattice hosting the ultracold atoms", "b_element": "the discrete lattice of interacting classical degrees of freedom"},
+    {"a_element": "atoms localized at individual lattice sites in the Mott phase", "b_element": "spatially localized breather solution on the lattice"},
+    {"a_element": "critical lattice-potential depth (interaction-to-tunneling coupling ratio) that triggers the superfluid-Mott transition", "b_element": "critical spatial dimension d_c above which breather energy acquires a positive lower bound"},
+    {"a_element": "excitation gap of the Mott insulator", "b_element": "positive lower bound on breather energy"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Paper A is a quantum many-body ground-state phase transition governed by the competition between tunneling and on-site repulsion (a Bose-Hubbard coupling ratio driven across a critical value), whereas Paper B is a classical existence/bifurcation result about energy thresholds of nonlinear localized lattice solutions set by the spatial dimension d_c; despite shared vocabulary (lattice, localization, critical value, gap/threshold), the driving machinery differs (interaction-driven quantum phase transition vs. dimension-dependent energy bound on nonlinear breathers), so no coherent role-for-role mapping holds and the listed correspondences are only superficial."
+}

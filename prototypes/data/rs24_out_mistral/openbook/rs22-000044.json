@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "Legendre-invariant geometrothermodynamic formalism for black hole thermodynamics",
+   "b_element": "Ruppeiner geometry applied to black hole thermodynamics"
+  },
+  {
+   "a_element": "curvature of the space of equilibrium states indicating thermodynamic interaction and phase transitions",
+   "b_element": "non-flat Ruppeiner state space and diverging curvature at extremal limits"
+  },
+  {
+   "a_element": "Weinhold's and Ruppeiner's thermodynamic metrics for black holes",
+   "b_element": "Ruppeiner scalar and curvature as a measure of interactions"
+  },
+  {
+   "a_element": "Reissner-Nordström black hole exhibiting curved geometry and phase transitions",
+   "b_element": "Reissner-Nordström black hole with non-flat state space and diverging curvature"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ geometric frameworks (geometrothermodynamics and Ruppeiner geometry) to analyze black hole thermodynamics, where the curvature of the thermodynamic state space serves as an indicator of interactions and phase transitions. The abstracts explicitly link non-flat geometry to critical behavior, demonstrating shared underlying machinery."
+}

@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "sudden change (quench) of interaction parameter in the Falicov-Kimball model",
+   "b_element": "perturbative similarity renormalization group transformation of the Hamiltonian"
+  },
+  {
+   "a_element": "non-equilibrium dynamical mean-field theory used to solve the time evolution",
+   "b_element": "perturbative expansion and projection onto effective basis states to derive an effective Hamiltonian"
+  },
+  {
+   "a_element": "relaxation to a non-thermal steady state described by generalized Gibbs ensembles",
+   "b_element": "diagonalization of the small effective Hamiltonian matrix to obtain exact bound state energy"
+  },
+  {
+   "a_element": "collapse and revival behavior with period h/interaction in the steady state",
+   "b_element": "accuracy of order 10% in bound state energy from a truncated perturbative expansion"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers involve transformations of Hamiltonians and derive effective descriptions (generalized Gibbs ensembles vs. renormalized Hamiltonians), the core mechanisms differ: Paper A focuses on non-equilibrium dynamics and steady-state relaxation after a quench, governed by time evolution and mean-field theory, whereas Paper B employs a perturbative renormalization group approach to construct an effective Hamiltonian for bound states, with no shared dynamical or statistical process."
+}

@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "scattering problem for the sine-Gordon equation with discrete eigenvalues on the unit circle",
+   "b_element": "semiclassical limit of the focusing nonlinear Schrödinger equation with a finite-gap ansatz for the complex phase function"
+  },
+  {
+   "a_element": "Krein stability theory for symplectic matrices and definite Krein signature of eigenvalues",
+   "b_element": "variational principle and critical point theory for the complex phase function"
+  },
+  {
+   "a_element": "counting and locating discrete eigenvalues for a non-self-adjoint scattering problem",
+   "b_element": "explicit strong asymptotics for solutions via a scalar complex phase function"
+  },
+  {
+   "a_element": "isospectral flow of the sine-Gordon equation",
+   "b_element": "semiclassical soliton ensemble as a sequence of exact solutions"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers address spectral properties of integrable systems, Paper A focuses on eigenvalue location and counting for a non-self-adjoint scattering problem using Krein stability theory, whereas Paper B employs a steepest descent method for Riemann-Hilbert problems and a finite-gap ansatz to derive semiclassical asymptotics. The underlying machinery—symplectic spectral theory vs. variational and critical point methods—differs fundamentally."
+}

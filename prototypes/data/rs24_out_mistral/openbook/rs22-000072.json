@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "tight-binding Hamiltonian of the 2D honeycomb lattice (graphene)",
+   "b_element": "generalization of graphene's electronic structure to 4D fermion action"
+  },
+  {
+   "a_element": "continuum limit yielding 2+1-dimensional quantum electrodynamics (QED) Hamiltonian",
+   "b_element": "relativistic Dirac equation in 4D with exact chiral symmetry"
+  },
+  {
+   "a_element": "Dirac fermions in 2+1 dimensions",
+   "b_element": "chiral fermions in 4D"
+  },
+  {
+   "a_element": "symmetries of free Dirac fermions (spatial inversion, time reversal, charge conjugation, chirality)",
+   "b_element": "exact chiral symmetry in 4D fermion action"
+  },
+  {
+   "a_element": "Dirac mass term breaking symmetries",
+   "b_element": "requirement of two fermion species due to no-go theorems (implied symmetry constraints)"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers map lattice-based tight-binding models to continuum relativistic Dirac fermion theories, preserving key symmetries (e.g., chirality). Paper A derives 2+1D QED from graphene's honeycomb lattice, while Paper B generalizes this to 4D, showing the same underlying mechanism of fermionic field theory with symmetry constraints drives both."
+}

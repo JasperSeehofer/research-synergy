@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "family of QFTs parametrized by a moduli space M with a flat quantum connection",
+   "b_element": "Frobenius manifolds with a flat structure (e.g., flat metric or flat connection)"
+  },
+  {
+   "a_element": "tangent space at a point in M given by the space of observables",
+   "b_element": "tangent space to a Frobenius manifold given by cohomology or deformation space"
+  },
+  {
+   "a_element": "Batalin-Vilkovisky (BV) path integral approach for quantization",
+   "b_element": "differential Gerstenhaber-Batalin-Vilkovisky (dGBV) algebras in the Barannikov-Kontsevich construction"
+  },
+  {
+   "a_element": "d-algebra structure in d-dimensional QFTs",
+   "b_element": "algebraic structures (e.g., Gerstenhaber-Batalin-Vilkovisky algebras) underlying Frobenius manifolds"
+  },
+  {
+   "a_element": "quantization machine for d-algebras using (d+1)-manifold topology",
+   "b_element": "construction of Frobenius manifolds from Calabi-Yau manifolds or singularity theory"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers involve families of theories (QFTs or Frobenius manifolds) parametrized by moduli spaces with flat connections, where tangent spaces correspond to observables or cohomology. The Batalin-Vilkovisky formalism in A maps to the differential Gerstenhaber-Batalin-Vilkovisky algebras in B, and both leverage algebraic structures (d-algebras or dGBV algebras) to encode quantization or deformation theory."
+}

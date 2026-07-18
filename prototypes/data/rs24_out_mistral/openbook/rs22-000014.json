@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "three-wave interactions leading to kinetic equations for spectral densities",
+   "b_element": "Smoluchowski aggregation equation with a source term leading to stationary mass distributions"
+  },
+  {
+   "a_element": "energy and helicity spectra solutions of kinetic equations",
+   "b_element": "Kolmogorov-type mass distributions carrying a constant flux of mass"
+  },
+  {
+   "a_element": "Zakharov transformations used to analyze stationary solutions",
+   "b_element": "Zakharov transformations used to derive stationary solutions"
+  },
+  {
+   "a_element": "dependence of spectral constants on correlation between velocity and magnetic field",
+   "b_element": "Kolmogorov constant being the same for a family of kernels"
+  },
+  {
+   "a_element": "locality criterion for validity of spectra",
+   "b_element": "locality criterion for admissibility of Kolmogorov spectrum"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ the method of Zakharov transformations to derive stationary solutions of kinetic equations describing flux-driven systems (energy/helicity spectra in MHD and mass distributions in aggregation). The underlying machinery involves wave/interaction-driven cascades with locality criteria and constant flux solutions, indicating shared mathematical structure."
+}

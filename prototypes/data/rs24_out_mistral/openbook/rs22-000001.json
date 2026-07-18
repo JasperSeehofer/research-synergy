@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "prearranged correlated quantum systems (entangled states)",
+   "b_element": "bipartite Gaussian states with entanglement properties"
+  },
+  {
+   "a_element": "nonlocal measurements framework for quantum state transfer",
+   "b_element": "characterization of separability and partial transpose via covariance matrix"
+  },
+  {
+   "a_element": "quantum state of a system (discrete or continuous variables)",
+   "b_element": "Gaussian Wigner functions representing quantum states"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers involve entangled quantum states and their properties, Paper A focuses on the *mechanism of quantum teleportation* via nonlocal measurements and classical information transfer, whereas Paper B analyzes *entanglement criteria* (separability and partial transpose) for Gaussian states using covariance matrices. The core machinery differs: teleportation protocol vs. entanglement classification."
+}

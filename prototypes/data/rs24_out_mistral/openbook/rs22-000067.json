@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "Blume-Capel model under bond randomness exhibiting a second-order phase transition from a first-order regime in the pure system",
+   "b_element": "8-state Potts model on random lattices (Voronoi/Delaunay) retaining a first-order phase transition despite quenched randomness"
+  },
+  {
+   "a_element": "quenched bond randomness altering the order of the phase transition (first to second order)",
+   "b_element": "quenched coordination number randomness (random lattices) not altering the order of the phase transition (remains first order)"
+  },
+  {
+   "a_element": "critical exponents (ν, β/ν) characterizing the new universality class under bond randomness",
+   "b_element": "absence of critical exponents due to retained first-order transition under random lattices"
+  },
+  {
+   "a_element": "Wang-Landau algorithm for entropic sampling in dominant energy subspaces",
+   "b_element": "Monte Carlo simulations for studying phase transitions"
+  },
+  {
+   "a_element": "microsegregation and connectivity spin densities explaining transition temperature increase",
+   "b_element": "no analogous mechanism described for the Potts model on random lattices"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers study the effect of quenched randomness on phase transitions in two-dimensional lattice models, their core mechanisms diverge: Paper A demonstrates a change in the order of the transition (first to second order) with new critical exponents under bond randomness, whereas Paper B shows that quenched coordination number randomness does not alter the first-order nature of the transition. The underlying machinery (universality class alteration vs. retention of first-order behavior) is fundamentally different."
+}

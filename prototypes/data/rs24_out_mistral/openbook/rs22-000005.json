@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "quantum graphs (networks of bonds and vertices)",
+   "b_element": "Schroedinger operators on graphs"
+  },
+  {
+   "a_element": "spectral statistics of quantum graphs",
+   "b_element": "spectra of Schroedinger operators on graphs"
+  },
+  {
+   "a_element": "periodic orbits in classical phase space for graphs",
+   "b_element": "Kronig-Penney model correspondence with Jacobi matrices"
+  },
+  {
+   "a_element": "trace formula for quantum spectrum in terms of periodic orbits",
+   "b_element": "duality between Schroedinger operators and Jacobi matrices"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers study spectral properties of operators on graphs, Paper A focuses on the role of periodic orbits and chaotic dynamics in reproducing spectral statistics via a trace formula, whereas Paper B establishes a duality between Schroedinger operators and Jacobi matrices, extending a specific model correspondence. The underlying machinery—trace formulas vs. operator duality—differs fundamentally."
+}

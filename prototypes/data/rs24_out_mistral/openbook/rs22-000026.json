@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "generalized Kaehler structures derived from Courant algebroids and Poisson manifolds",
+   "b_element": "generalized complex structures describing topologically twisted sigma-models and D-branes"
+  },
+  {
+   "a_element": "Poisson varieties and their non-holomorphic isomorphisms",
+   "b_element": "noncommutative deformations of Calabi-Yau manifolds and interpolation between A-model and B-model"
+  },
+  {
+   "a_element": "configurations of branes on Poisson varieties",
+   "b_element": "topological D-branes on noncommutative manifolds"
+  },
+  {
+   "a_element": "positive Poisson line bundles on holomorphic Poisson manifolds",
+   "b_element": "B-field and noncommutativity parameters in the deformed sigma-model"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ generalized complex/geometric structures (generalized Kaehler and generalized complex structures) as the core mathematical machinery to unify and extend classical geometric frameworks (Poisson manifolds and Calabi-Yau sigma-models). The role of branes in both contexts is governed by these generalized structures, and the deformation parameters (Poisson line bundles/B-field) play analogous roles in bridging holomorphic and non-holomorphic or commutative and noncommutative regimes."
+}

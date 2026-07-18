@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "Kalman filter as a recursive optimization method minimizing quadratic error",
+   "b_element": "Kalman filter as a recursive estimation method minimizing average quadratic error"
+  },
+  {
+   "a_element": "state constraints (equality/inequality) as additional optimization conditions",
+   "b_element": "heavy-tailed (Lévy) noise distributions as a generalization of Gaussian noise"
+  },
+  {
+   "a_element": "nonlinear constraints requiring modified optimization approaches",
+   "b_element": "nonlinear matrix equation arising from heavy-tailed noise distributions"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers extend the Kalman filter, Paper A focuses on incorporating state constraints into the optimization framework, whereas Paper B generalizes the noise model to heavy-tailed distributions, replacing the covariance matrix with a tail-covariance matrix. The core machinery differs: one modifies the optimization problem with constraints, the other redefines the statistical assumptions and resulting equations."
+}

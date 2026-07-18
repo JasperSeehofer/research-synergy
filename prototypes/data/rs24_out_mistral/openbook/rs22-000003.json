@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "ADE root system associated to the finite subgroup G of SU(2)",
+   "b_element": "positive roots of the A_{n-1} gauge group"
+  },
+  {
+   "a_element": "quantum cohomology ring of the minimal resolution Y of C^2/G",
+   "b_element": "quantum geometry of the resolution of C^2/Z_n exhibiting roots"
+  },
+  {
+   "a_element": "Frobenius manifold structure on the affine root lattice",
+   "b_element": "moduli space of the local geometry with coincident discriminant locus branches"
+  },
+  {
+   "a_element": "Crepant Resolution Conjecture linking quantum cohomology to orbifold Gromov-Witten potential",
+   "b_element": "local mirror symmetry relating D-brane central charges to gauge group roots"
+  },
+  {
+   "a_element": "exceptional curves in the classical geometry of the resolution",
+   "b_element": "simple roots manifesting as exceptional curves"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers use the ADE root system as the core combinatorial/mathematical machinery: paper A constructs a Frobenius manifold on the root lattice via quantum cohomology, while paper B derives the full root system of a non-perturbative gauge group from the quantum geometry of a resolution, with local mirror symmetry playing the role of the Crepant Resolution Conjecture in mapping between geometries."
+}

@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "XY model spin configuration and its fluctuations",
+   "b_element": "Ising model spin configuration and its fluctuations"
+  },
+  {
+   "a_element": "heptagonal lattice with negative curvature",
+   "b_element": "Poissonian random lattices (Voronoi/Delaunay)"
+  },
+  {
+   "a_element": "Binder's cumulant for detecting phase transitions",
+   "b_element": "finite-size scaling and reweighting techniques for critical properties"
+  },
+  {
+   "a_element": "vortex density and correlation function in low-temperature approximation",
+   "b_element": "improved estimators for measurements in the disordered phase"
+  },
+  {
+   "a_element": "zero-temperature phase transition due to strong spinwave fluctuations",
+   "b_element": "finite-temperature phase transition with critical exponents matching regular lattices"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers study phase transitions on non-regular lattices using numerical methods (Monte Carlo simulations, finite-size scaling, and correlation functions), the underlying mechanisms differ: Paper A focuses on the XY model's topological defects (vortices) and spinwave fluctuations driving a zero-temperature transition, whereas Paper B examines the Ising model's universality class and critical exponents at a finite-temperature transition, with no shared dynamical or mathematical machinery."
+}

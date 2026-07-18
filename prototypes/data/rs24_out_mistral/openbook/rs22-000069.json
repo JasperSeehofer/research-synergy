@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "renormalization-group equations describing disorder as a marginally irrelevant perturbation at a fixed point",
+   "b_element": "universal lattice artifacts vanishing as inverse powers of the logarithm of the correlation length in the Sine-Gordon model"
+  },
+  {
+   "a_element": "logarithmic corrections to scaling due to quenched disorder in the 2D Ising model",
+   "b_element": "logarithmic corrections (inverse powers of log correlation length) to continuum-limit quantities in the XY model"
+  },
+  {
+   "a_element": "universality of logarithmic corrections arising from disorder",
+   "b_element": "universality of leading lattice artifacts in the O(2) model"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers study universal logarithmic corrections to scaling behavior near a critical point, driven by marginally irrelevant perturbations (disorder in the Ising model, lattice artifacts in the XY model). The renormalization-group framework and the logarithmic form of corrections are the shared underlying machinery."
+}

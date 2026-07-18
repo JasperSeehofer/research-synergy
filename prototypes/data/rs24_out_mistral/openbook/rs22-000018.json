@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "quantized worldvolume U(1) fluxes stabilizing D-branes on group manifolds",
+   "b_element": "affine extensions of Lie algebras inducing NIM-reps and branching rules"
+  },
+  {
+   "a_element": "Born-Infeld action governing D-brane dynamics and spectrum",
+   "b_element": "Verlinde-like formula for branching coefficients derived from affine extensions"
+  },
+  {
+   "a_element": "SU(2) group manifold as the background for D-branes",
+   "b_element": "semi-simple Lie algebras (e.g., g = SU(2)) and their affine extensions"
+  },
+  {
+   "a_element": "conformal field theory predictions for D-brane spectrum",
+   "b_element": "fusion rings of WZW models with chiral algebra g_k"
+  },
+  {
+   "a_element": "stabilization mechanism via flux quantization",
+   "b_element": "branching rules and NIM-reps induced by embeddings p in g"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers involve group manifolds (e.g., SU(2)) and connect to conformal field theory/WZW models, Paper A focuses on dynamical stabilization of D-branes via quantized fluxes in the Born-Infeld framework, whereas Paper B derives combinatorial branching rules for Lie algebras using affine extensions and NIM-reps. The underlying machinery—flux quantization in string theory vs. algebraic branching rules—is distinct, despite shared group-theoretic and CFT contexts."
+}

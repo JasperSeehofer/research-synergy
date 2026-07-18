@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "spatial variations of local pairing temperature due to mesoscopic disorder fluctuations",
+   "b_element": "periodic potentials translated by half a period in supersymmetric quantum mechanics"
+  },
+  {
+   "a_element": "probability distribution function of pairing temperatures and superconducting gaps",
+   "b_element": "identical band spectra of isospectral potentials"
+  },
+  {
+   "a_element": "superconducting islands and metallic regions with suppressed density of states",
+   "b_element": "zero modes supported by both isospectral potentials in periodic supersymmetry"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "Paper A studies mesoscopic disorder fluctuations leading to spatial variations in superconducting properties, while Paper B focuses on supersymmetric quantum mechanics with periodic potentials and isospectrality. The underlying mechanisms—disorder-driven fluctuations in a superconductor versus symmetry-driven spectral properties in quantum mechanics—are fundamentally distinct, despite superficial similarities in spectral or spatial variation descriptions."
+}

@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "optimal information transmission capacity of a transcriptional regulatory module",
+   "b_element": "maximal information capacity of an optical fiber channel"
+  },
+  {
+   "a_element": "matching relations between dynamic range of transcription factor concentrations, input/output relation, and noise levels",
+   "b_element": "relation between signal power, nonlinear propagation effects, and multiplicative noise in optical fiber"
+  },
+  {
+   "a_element": "theoretical maximum information transmission (parameter-free prediction)",
+   "b_element": "theoretical limit to information capacity due to nonlinearities"
+  },
+  {
+   "a_element": "noise in gene expression (binding and transcription)",
+   "b_element": "multiplicative noise in the nonlinear optical channel"
+  },
+  {
+   "a_element": "input/output relation of the regulatory module",
+   "b_element": "nonlinear channel model (mapped to a linear channel with multiplicative noise)"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers analyze the information capacity of a communication channel under constraints: transcriptional regulation in biology and optical fiber in engineering. They share the underlying machinery of determining the theoretical maximum information transmission by matching system parameters (dynamic range/noise in A, signal power/nonlinearities in B) and modeling the channel as a noisy input/output process, with nonlinearities or noise limiting capacity."
+}

@@ -1,0 +1,44 @@
+{
+ "experiment": "EXP-RS-24",
+ "n_pairs": 80,
+ "n_surface_hard": 27,
+ "audit": {
+  "n_overlap": 38,
+  "cohens_kappa": 0.8869047619047618,
+  "raw_agreement": 0.9473684210526315,
+  "mistral_over_prune(Claude_keep_Mistral_drop)": 1,
+  "mistral_under_prune": 1,
+  "n_mistral_validated": 34,
+  "n_claude_validated_overlap": 14
+ },
+ "validated_deep": {
+  "n": 5,
+  "ids": [
+   "rs22-000014",
+   "rs22-000029",
+   "rs22-000039",
+   "rs22-000061",
+   "rs22-000069"
+  ]
+ },
+ "validated_easy": {
+  "n": 29
+ },
+ "VALIDATED_DEEP": {
+  "n": 5,
+  "reduction_bge": 0.8,
+  "raw_bge": 0.0,
+  "lexical": 0.2
+ },
+ "VALIDATED_EASY": {
+  "n": 29,
+  "reduction_bge": 0.7931034482758621,
+  "raw_bge": 1.0,
+  "lexical": 0.896551724137931
+ },
+ "predictions": {
+  "P1_reduction>raw_on_deep": true,
+  "P2_raw>=reduction_on_easy": true
+ },
+ "verdict": "WEAK — reduction>raw on validated-deep but n=5<8; expand the sample before building"
+}

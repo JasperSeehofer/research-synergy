@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "growth of the number of distinct tags (global or local vocabulary size) over time",
+   "b_element": "average number of distinct sites visited <S_N(t)> by N random walkers up to time t"
+  },
+  {
+   "a_element": "power-law growth of vocabulary size with exponent smaller than one (sub-linear growth)",
+   "b_element": "series expansion in ln^{-n}(N) ln^m ln(N) for the territory explored by random walkers, indicating sub-linear or logarithmic corrections to scaling"
+  },
+  {
+   "a_element": "time as the independent variable driving the growth process",
+   "b_element": "time t as the independent variable in the random walk process"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both abstracts describe sub-linear growth processes (vocabulary size in tagging systems and territory explored by random walkers), the underlying mechanisms differ: Paper A attributes growth to cognitive and collaborative dynamics with power-law scaling, whereas Paper B derives its results from probabilistic random walk theory with logarithmic corrections. The mathematical structures (power-law vs. logarithmic series) and driving processes (human interaction vs. stochastic particle motion) are distinct."
+}

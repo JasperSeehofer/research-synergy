@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "interference dynamics in quantum scattering (collision of Gaussian wave packets)",
+   "b_element": "matter wave interference pattern from coherently split Bose-Einstein condensates"
+  },
+  {
+   "a_element": "caustics and vortices as singularities governing trajectory topologies in the complex plane",
+   "b_element": "spatial phase of the interference pattern as a signature of relative phase evolution"
+  },
+  {
+   "a_element": "complex quantum Hamilton-Jacobi formalism describing interference",
+   "b_element": "coherent phase evolution observed in the interferometer"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both abstracts involve quantum interference, paper A focuses on singularities (caustics and vortices) in the complex quantum Hamilton-Jacobi formalism as the governing mechanism, whereas paper B relies on coherent phase evolution in a double-well potential and spatial interference patterns. The underlying mathematical machinery (complex trajectory analysis vs. trapped-atom interferometry) differs fundamentally."
+}

@@ -1,0 +1,14 @@
+{
+ "mapping": [
+  {
+   "a_element": "symplectic cohomology as an invariant in symplectic topology",
+   "b_element": "gauged linear sigma model and its equivalence to Landau-Ginzburg theory"
+  },
+  {
+   "a_element": "algorithmic classification issues in symplectic/contact topology",
+   "b_element": "mirror symmetry equivalence between geometric and algebraic structures"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "Paper A focuses on symplectic cohomology and algorithmic classification in symplectic/contact topology, while Paper B centers on mirror symmetry via dualities in supersymmetric sigma models and Landau-Ginzburg theories. The underlying mechanisms—cohomological invariants vs. duality transformations in quantum field theory—are fundamentally distinct, despite both involving geometric structures."
+}

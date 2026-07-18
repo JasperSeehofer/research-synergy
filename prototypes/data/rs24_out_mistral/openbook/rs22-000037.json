@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "Josephson junction coupled to a single-mode resonant cavity",
+   "b_element": "multi-qubit system coupled to an optical cavity mode"
+  },
+  {
+   "a_element": "gate voltage tuned to resonant absorption of photons (single- or two-photon processes)",
+   "b_element": "critical coupling strength triggering a super-radiant phase transition"
+  },
+  {
+   "a_element": "simplified two-level Hamiltonian approximation near resonance",
+   "b_element": "collective behavior of qubits leading to a phase transition (e.g., Dicke model)"
+  },
+  {
+   "a_element": "collapse and revival phenomenon under initial conditions",
+   "b_element": "discontinuous (first-order) phase transition dynamics"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers involve a quantum system (junction/qubits) coupled to a cavity, Paper A focuses on resonant photon absorption and eigenstate entanglement in a *single-junction* system, whereas Paper B describes a *collective phase transition* in a *multi-qubit* system. The former is a quantum dynamical process (collapse/revival), while the latter is a thermodynamic phase transition, driven by distinct underlying mechanisms."
+}

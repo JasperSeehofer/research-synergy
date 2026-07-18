@@ -1,0 +1,5 @@
+{
+ "mapping": [],
+ "shares_method": false,
+ "brief_justification": "Paper A studies a quantum critical system with a localized defect inducing a spin droplet via coupling to the order parameter, governed by scaling and dissipative dynamics near criticality. Paper B develops a geometric decomposition of curvature tensors for arbitrary affine connections and projection tensors, with no shared dynamical, scaling, or critical phenomena machinery. The abstracts reveal fundamentally different mathematical structures (quantum field theory/scaling vs. differential geometry/tensor decompositions)."
+}

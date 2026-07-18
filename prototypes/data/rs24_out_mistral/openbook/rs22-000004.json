@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "Wigner transform for describing partially incoherent optical wave dynamics",
+   "b_element": "incoherence spectrum profile of the partially coherent wave field"
+  },
+  {
+   "a_element": "evolution equation for the Wigner transform derived from a nonlinear Schrödinger equation",
+   "b_element": "modulational instability analysis based on the nonlinear Kerr medium"
+  },
+  {
+   "a_element": "Landau-like damping effect stabilizing modulational instability due to random phase fluctuations",
+   "b_element": "incoherence suppressing or enhancing modulational instability depending on the spectrum profile"
+  },
+  {
+   "a_element": "modulational instability in nonlinear media",
+   "b_element": "modulational instability of partially coherent waves in a nonlinear Kerr medium"
+  },
+  {
+   "a_element": "geometrical optics approximation leading to stationary wave-fields",
+   "b_element": "range of modulationally unstable wave numbers varying with incoherence degree"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers analyze modulational instability in nonlinear media using statistical descriptions of incoherent light (Wigner transform in A, incoherence spectrum in B). They share the core mechanism of examining how incoherence affects instability, with A deriving a damping-like stabilization and B showing spectrum-dependent suppression or enhancement, both grounded in nonlinear wave dynamics."
+}

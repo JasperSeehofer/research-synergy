@@ -1,0 +1,34 @@
+{
+ "mapping": [
+  {
+   "a_element": "k-sparse vector in R^n",
+   "b_element": "sparse signal with sparsity k in ambient dimension p"
+  },
+  {
+   "a_element": "m random noisy measurements",
+   "b_element": "n noisy projections (observations)"
+  },
+  {
+   "a_element": "scaling of m = Omega(k log(n-k)) measurements for asymptotically-reliable detection",
+   "b_element": "scaling of n = Omega(k log(p-k)) observations for exact support recovery"
+  },
+  {
+   "a_element": "maximum correlation estimator",
+   "b_element": "optimal decoder"
+  },
+  {
+   "a_element": "necessary condition for perfect recovery at any SNR",
+   "b_element": "necessary conditions for exact support recovery using general dense measurement matrices"
+  },
+  {
+   "a_element": "minimum-to-average ratio of nonzero components and SNR",
+   "b_element": "parameters defining sharp thresholds for recovery (e.g., signal sparsity k, ambient dimension p, measurement sparsity γ)"
+  },
+  {
+   "a_element": "sufficient condition for a simple estimator",
+   "b_element": "sharp characterizations of when the optimal decoder can recover the signal"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers address the information-theoretic limits of sparse signal recovery from noisy measurements, focusing on the scaling of the number of measurements/observations (m or n) with sparsity (k) and ambient dimension (n or p). They derive necessary and sufficient conditions for asymptotically reliable recovery, with Paper A emphasizing a simple estimator and Paper B extending to general dense and sparsified measurement matrices, but the core machinery—scaling laws and sharp thresholds—is shared."
+}

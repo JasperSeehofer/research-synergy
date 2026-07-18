@@ -25,3 +25,7 @@ prototypes/data/rs23_in_mined/
 # RS-22 detached mine run log (ephemeral; provenance is in rs22_mining_snapshot.json)
 prototypes/rs22_mine_run.log
 prototypes/data/rs22_probe_cache/
+
+# RS-24 openbook inputs (regenerable via rs24_validate.py emit)
+prototypes/data/rs24_in/
+prototypes/rs24_mistral.log

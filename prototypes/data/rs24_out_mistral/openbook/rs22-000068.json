@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "zero-point fluctuations in Josephson junctions",
+   "b_element": "quantum fluctuations in dissipation-fluctuation relations"
+  },
+  {
+   "a_element": "cutoff frequency (nu_c) limiting zero-point fluctuations",
+   "b_element": "conditions or constraints on the validity of the fluctuation-dissipation theorem"
+  },
+  {
+   "a_element": "1/f noise arising from suppressed zero-point fluctuations",
+   "b_element": "fluctuation-dissipation relations linking noise and dissipation"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers address quantum fluctuations and their observable consequences, Paper A proposes a specific cutoff frequency for zero-point fluctuations to constrain dark energy, whereas Paper B critically examines the theoretical foundations of fluctuation-dissipation theorems and Langevin equations. The core mechanisms—empirical cutoff prediction vs. theoretical derivation of dissipation-fluctuation relations—do not align as the same underlying machinery."
+}

@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "bright-dark soliton solutions in N-coupled nonlinear Schrödinger equations (CNLS)",
+   "b_element": "dark and dark-bright solitons in Bose-Einstein condensates (BECs)"
+  },
+  {
+   "a_element": "Hirota's bilinearization method for obtaining soliton solutions",
+   "b_element": "observation of soliton dynamics in optically trapped BECs (experimental realization)"
+  },
+  {
+   "a_element": "collision dynamics of bright and dark solitons with amplitude-dependent phase shifts and intensity redistribution",
+   "b_element": "collision between dark and dark-bright solitons in BECs (particle-like interactions)"
+  },
+  {
+   "a_element": "elastic collision of dark solitons with amplitude-dependent phase-shift",
+   "b_element": "particle-like nature of soliton oscillations and interactions in BECs"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers study soliton interactions (bright-dark or dark-bright), Paper A focuses on *mathematical* derivation and analysis of soliton solutions using Hirota's bilinearization method in a theoretical N-coupled nonlinear Schrödinger framework, emphasizing phase shifts and intensity redistribution. Paper B, however, is an *experimental* study of soliton dynamics in Bose-Einstein condensates, emphasizing particle-like properties and lifetimes. The underlying mechanisms differ: one is a theoretical integrability-based method, the other is an empirical observation of soliton behavior in a quantum gas."
+}

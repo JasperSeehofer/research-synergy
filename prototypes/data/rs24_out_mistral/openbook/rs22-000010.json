@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "dispersionless limit of the Hirota equations for KP and Toda hierarchies",
+   "b_element": "dispersionless Kadomtsev-Petviashvili (dKP) equation"
+  },
+  {
+   "a_element": "tau-function of dispersionless KP hierarchy providing solutions to associativity (WDVV) equations",
+   "b_element": "solutions to the dKP equation embedded in Einstein-Weyl (EW) geometry"
+  },
+  {
+   "a_element": "associativity (WDVV) equations as a governing structure",
+   "b_element": "dKP equation as a governing structure within EW geometry"
+  },
+  {
+   "a_element": "infinite-dimensional solution space of the dispersionless hierarchy",
+   "b_element": "solutions to dKP equation parameterized by arbitrary functions (e.g., one function of one variable)"
+  },
+  {
+   "a_element": "Lax representation or integrability structure of the hierarchy",
+   "b_element": "Lax representation of the EW condition and its relation to hyper-Hermitian metrics"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers center on the dispersionless Kadomtsev-Petviashvili (dKP) equation as a core integrable structure: Paper A derives the associativity (WDVV) equations from the dispersionless limit of KP/Toda hierarchies, while Paper B embeds the dKP equation within Einstein-Weyl geometry and uses its integrability (e.g., Lax representation) to construct solutions. The shared machinery is the dKP equation and its role as a governing integrable system with infinite-dimensional solution spaces."
+}

@@ -1,0 +1,7 @@
+{
+  "mapping": [
+    {"a_element": "symplectic manifolds studied via symplectic cohomology", "b_element": "Kahler / Calabi-Yau manifolds targeted by the sigma model"}
+  ],
+  "shares_method": false,
+  "brief_justification": "The machinery differs entirely: paper A's mechanism is symplectic cohomology, a Floer-theoretic algebraic invariant used for classification in symplectic/contact topology, while paper B proves mirror symmetry through 2D supersymmetric quantum field theory -- a gauged linear sigma model / Landau-Ginzburg-Toda equivalence driven by R->1/R T-duality and vortex-generated superpotentials. Beyond both living in the broad orbit of symplectic/Kahler geometry and mirror symmetry (a shared topic, not shared machinery), no role-for-role correspondence between a Floer cohomology construction and a QFT duality argument can be filled in."
+}

@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "star product in non-commutative field theories (κ-Minkowski space-time)",
+   "b_element": "formal power series representation of Lie algebra generators in the Weyl algebra"
+  },
+  {
+   "a_element": "coproduct in κ-Poincaré algebra (non-symmetric treatment of momenta)",
+   "b_element": "coderivations and Hopf algebra structures in the third proof method"
+  },
+  {
+   "a_element": "structure constants and symmetry properties in interaction vertices",
+   "b_element": "structure constants and combinatorial formulas in tensor calculations"
+  },
+  {
+   "a_element": "planar and non-planar Feynman loop-diagrams in non-commutative field theories",
+   "b_element": "formal right-invariant vector fields in formal group scheme theory (geometric proof)"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers involve Lie-algebraic structures and formal algebraic constructions (e.g., coproducts, Hopf algebras, and combinatorial formulas), Paper A focuses on the physical symmetry properties of interaction vertices in non-commutative field theories, whereas Paper B derives a universal formula for representing Lie algebra generators as power series in the Weyl algebra. The core mechanisms differ: Paper A's star product and coproduct address field-theoretic symmetries, while Paper B's methods are purely algebraic and combinatorial, targeting generator representations."
+}

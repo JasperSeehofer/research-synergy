@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "conformally invariant scaling limit of 2D lattice models (e.g., percolation, Ising model)",
+   "b_element": "conformally invariant scaling limit of loop-erased random walk and uniform spanning tree"
+  },
+  {
+   "a_element": "Schramm-Loewner Evolution (SLE) as the governing conformally invariant process",
+   "b_element": "SLE(2) and SLE(8) as the scaling limits of loop-erased random walk and uniform spanning tree Peano curve, respectively"
+  },
+  {
+   "a_element": "conjectured conformal invariance of scaling exponents and dimensions in lattice models",
+   "b_element": "proven conformal invariance of the scaling limit of loop-erased random walk and uniform spanning tree"
+  },
+  {
+   "a_element": "lattice models with conformally invariant scaling limits",
+   "b_element": "loop-erased random walk and uniform spanning tree as specific lattice models with conformally invariant scaling limits"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers address the conformal invariance of scaling limits in 2D lattice models, with Schramm-Loewner Evolution (SLE) serving as the underlying mathematical machinery. Paper A discusses the conjecture and framework for proving conformal invariance, while Paper B provides rigorous proofs for specific models (loop-erased random walk and uniform spanning trees) using SLE as the conformally invariant process."
+}

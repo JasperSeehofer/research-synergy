@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "quantum phase transition driven by varying the relative strength of competing energy terms (lattice potential depth vs. interaction energy)",
+   "b_element": "existence of a critical lattice dimension d_c for the lower bound on breather energy"
+  },
+  {
+   "a_element": "critical value of lattice potential depth separating superfluid and Mott insulator phases",
+   "b_element": "critical lattice dimension d_c separating existence of a positive lower energy bound for breathers"
+  },
+  {
+   "a_element": "ground state phase characterized by long-range phase coherence (superfluid)",
+   "b_element": "band edge plane wave solutions (extended states)"
+  },
+  {
+   "a_element": "ground state phase characterized by localized atoms with no phase coherence (Mott insulator)",
+   "b_element": "discrete breathers (spatially localized, time-periodic solutions)"
+  },
+  {
+   "a_element": "gap in the excitation spectrum in the Mott insulator phase",
+   "b_element": "positive lower energy bound for breathers above critical dimension"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers describe a transition or threshold in a lattice system driven by a critical parameter (lattice potential depth in A, lattice dimension in B). The transition separates two distinct regimes: one with extended, coherent states (superfluid/plane waves) and another with localized states (Mott insulator/breathers). The underlying machinery involves a competition between energy terms leading to a critical point or threshold, with a qualitative change in the system's properties."
+}

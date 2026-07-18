@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "Z6-II orbifold compactification of the heterotic string",
+   "b_element": "Z_6 orbifold compactification of the E_8xE_8 heterotic string"
+  },
+  {
+   "a_element": "SO(10) and E6 local GUT structures",
+   "b_element": "SO(10) multiplets (16-plets) for quarks and leptons"
+  },
+  {
+   "a_element": "minimal supersymmetric standard model (MSSM) spectra with exact R parity",
+   "b_element": "supersymmetric Standard Model gauge group and matter content"
+  },
+  {
+   "a_element": "vector-like exotics decoupling along D flat directions",
+   "b_element": "absence of exotic states at low energies"
+  },
+  {
+   "a_element": "non-trivial Yukawa matrices for 3 families of quarks and leptons",
+   "b_element": "top quark Yukawa coupling arising from gauge interactions, with other Yukawa couplings suppressed"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ the same underlying mechanism of heterotic string compactification on a Z6 orbifold to derive the MSSM, utilizing local GUT structures (SO(10)) to generate Standard Model matter content and address exotic states. The core machinery—orbifold compactification, gauge group breaking, and matter field generation—is identical, with differences only in model-specific details."
+}

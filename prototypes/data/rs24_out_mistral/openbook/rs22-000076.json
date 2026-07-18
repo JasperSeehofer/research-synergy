@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "primordial density fluctuation field with a specific statistical distribution (Gaussian or chi^2_1)",
+   "b_element": "spatial dimensions of minimal surfaces as solutions to the Plateau problem"
+  },
+  {
+   "a_element": "cluster abundance and S-Z power spectra as observables derived from the density field",
+   "b_element": "classical solutions of d-brane configurations derived from minimal surfaces"
+  },
+  {
+   "a_element": "self-consistent calculations of redshift distributions and correlation functions to test model viability",
+   "b_element": "derivation of d-brane solutions from geometric constraints (vanishing extrinsic mean curvature)"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "Paper A relies on statistical field theory and cosmological perturbation calculations to predict cluster abundances and power spectra, while Paper B uses geometric and variational principles (minimal surfaces, Plateau problem) to derive classical solutions for d-branes. The underlying machinery—statistical field distributions vs. geometric minimal surfaces—differs fundamentally, despite both involving solutions derived from constraints."
+}

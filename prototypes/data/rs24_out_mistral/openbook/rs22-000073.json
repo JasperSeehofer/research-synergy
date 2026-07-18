@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "Gross-Pitaevskii equation with an attractive delta function potential",
+   "b_element": "nonlinear Schrödinger equation with a spatially adiabatic external potential"
+  },
+  {
+   "a_element": "incident soliton split into reflected and transmitted components",
+   "b_element": "colliding solitons preserving shape post-collision"
+  },
+  {
+   "a_element": "high velocity limit governing soliton splitting",
+   "b_element": "high initial relative speed of solitons governing dynamics"
+  },
+  {
+   "a_element": "explicit analytic formulas for reflected and transmitted portions",
+   "b_element": "dynamics of centers of mass approximately determined by external potential"
+  },
+  {
+   "a_element": "small dispersive error term",
+   "b_element": "error terms due to radiation damping and extended nature of solitons"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers study soliton dynamics under perturbations (delta potential vs. external potential and collision), paper A focuses on scattering and splitting due to a localized impurity with explicit transmission/reflection formulas, whereas paper B examines soliton-soliton collisions and their post-collision shape preservation, governed by adiabatic potential effects and radiation damping. The core mechanisms (scattering off a delta impurity vs. soliton-soliton interaction with external potential) differ fundamentally."
+}

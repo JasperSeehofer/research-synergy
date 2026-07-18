@@ -1,0 +1,5 @@
+{
+ "mapping": [],
+ "shares_method": false,
+ "brief_justification": "Paper A uses branching schemes of Lie superalgebras (specifically osp(5|2)) to model degeneracy in the genetic code, while Paper B constructs a Cartan-Leray spectral sequence for Hochschild-Mitchell (co)homology of Galois coverings of linear categories. The underlying machinery—symmetry breaking in representation theory versus spectral sequences in homological algebra—is entirely distinct, with no role-for-role correspondence between elements."
+}

@@ -1,0 +1,5 @@
+{
+  "mapping": [],
+  "shares_method": false,
+  "brief_justification": "Paper A's machinery is Ehrhart/lattice-point enumeration — counting integer points of the r-th dilate of a convex polytope whose vertices are alternating sign matrices, yielding an enumerating polynomial in r. Paper B's machinery is parameterized/creative telescoping in symbolic summation, where the non-existence of a telescoping recurrence proves algebraic independence and transcendence of sums. These are unrelated governing processes (polytope geometry vs. difference-algebra recurrence theory); the only overlap is generic vocabulary (\"sums,\" \"polynomials\"), so no role-for-role mapping holds."
+}

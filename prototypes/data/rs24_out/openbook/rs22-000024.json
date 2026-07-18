@@ -1,0 +1,8 @@
+{
+  "mapping": [
+    {"a_element": "Wilson loop observable of a knot on S^3 colored by a representation (a Chern-Simons/HOMFLY knot invariant)", "b_element": "a tangle/skein element in the HOMFLY (Homfly) skein theory of H_n and of the annulus"},
+    {"a_element": "all-orders-in-N (large-N) generating-function expansion of the knot observable", "b_element": "generating-function techniques describing symmetric functions / power sums of the Murphy operators"}
+  ],
+  "shares_method": false,
+  "brief_justification": "Both live in the HOMFLY / Chern-Simons world of knot invariants and both use generating functions, but the transferable machinery differs: paper A is driven by a large-N gauge/string duality and BPS state counting (worldsheet instantons, M2 branes ending on M5 branes on the resolved conifold), while paper B is driven by Hecke-algebra representation theory (Murphy operators, the centre of H_n, symmetric functions) realized via skein modules of the annulus. Shared subject matter and vocabulary, not a shared governing process, so no coherent role-for-role mapping of mechanisms holds."
+}

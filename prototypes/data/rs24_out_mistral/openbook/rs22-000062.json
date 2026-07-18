@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "cyclic, tumbling motion of individual polymer chains in a dense brush under shear",
+   "b_element": "tumbling motion of a single polymer molecule in shear flow"
+  },
+  {
+   "a_element": "non-Gaussian fluctuations of molecular orientations",
+   "b_element": "strong deviation of probability distribution functions (PDF) of polymer orientation angles from Gaussian"
+  },
+  {
+   "a_element": "Couette and Poiseuille flow as shear environments",
+   "b_element": "shear flow with thermal noise as the experimental environment"
+  },
+  {
+   "a_element": "control via shear rate (implicit in flow conditions)",
+   "b_element": "control parameter Weissenberg number (Wi)"
+  },
+  {
+   "a_element": "inversion of hydrodynamic flow direction near the brush-coated surface",
+   "b_element": "no direct counterpart (collective effect absent in single-molecule study)"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers study the tumbling dynamics of polymer chains under shear, with a focus on non-Gaussian orientation statistics and scaling with shear rate (or Wi). The core mechanism—a polymer chain undergoing cyclic reorientation in shear flow—is identical, though paper A extends this to collective effects in a brush, while paper B focuses on single-molecule statistics."
+}

@@ -1,0 +1,30 @@
+{
+ "mapping": [
+  {
+   "a_element": "five-dimensional N=2 Yang-Mills-Einstein supergravity theories (YMESGTs) with charged hypermultiplets",
+   "b_element": "D=5, N=2 supergravity interacting with vector, tensor, and hyper-multiplets"
+  },
+  {
+   "a_element": "couplings of charged hypermultiplets in lowest dimensional reps of gauge groups SU(5), SO(10), and E(6)",
+   "b_element": "gauging of a subgroup K of the isometries of the scalar manifold"
+  },
+  {
+   "a_element": "homogeneous quaternionic scalar manifolds for hypermultiplet couplings",
+   "b_element": "scalar manifold isometries in the general matter-coupled supergravity"
+  },
+  {
+   "a_element": "non-compact gaugings connecting supergravity and vector multiplets",
+   "b_element": "gauging of the R-symmetry group SU(2)_R and isometries of the scalar manifold"
+  },
+  {
+   "a_element": "constraints on field content (e.g., SO(10) or E(6) scenarios for bulk matter)",
+   "b_element": "general framework allowing arbitrary numbers of vector, tensor, and hyper-multiplets"
+  },
+  {
+   "a_element": "tensor couplings and their phenomenological challenges (e.g., required U(1) gauge factor)",
+   "b_element": "inclusion of tensor multiplets in the general supergravity lagrangean"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers address the same underlying mathematical and physical framework: five-dimensional N=2 supergravity coupled to matter multiplets (vector, tensor, and hypermultiplets). The core mechanism in both is the construction of consistent supergravity theories with specific gauge group embeddings, scalar manifold structures, and gaugings, differing primarily in the scope (specific GUT groups in A vs. general couplings in B) and focus (phenomenological constraints in A vs. formal generality in B). The machinery of supergravity couplings, scalar manifolds, and gaugings is shared."
+}

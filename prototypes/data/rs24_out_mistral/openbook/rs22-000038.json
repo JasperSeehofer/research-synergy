@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "classical string configuration in AdS space with boundary conditions determined by gluon momenta",
+   "b_element": "perturbative QCD splitting functions computed via Feynman diagrams and renormalization group evolution"
+  },
+  {
+   "a_element": "gauge/string duality (AdS/CFT) as the computational framework",
+   "b_element": "perturbative expansion in QCD with renormalization group methods"
+  },
+  {
+   "a_element": "infrared divergences regulated via dimensional regularization in gravity dual",
+   "b_element": "infrared/ultraviolet divergences handled via dimensional regularization in QCD"
+  },
+  {
+   "a_element": "functions of the coupling characterizing IR divergences at strong coupling",
+   "b_element": "splitting functions as functions of the coupling in perturbative QCD"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers address quantities dependent on coupling and involve dimensional regularization for divergences, their core mechanisms differ fundamentally: Paper A uses a non-perturbative holographic duality (AdS/CFT) to compute scattering amplitudes via classical string theory, whereas Paper B employs perturbative QCD with Feynman diagrams and renormalization group evolution to derive splitting functions. The underlying mathematical structures and physical principles are distinct."
+}

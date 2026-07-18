@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "critical points in accretion flow (saddle and centre-type points)",
+   "b_element": "quasinormal modes (QNMs) of the acoustic black hole"
+  },
+  {
+   "a_element": "dynamical systems analysis of critical points to classify stability",
+   "b_element": "numerical analysis of quasinormal frequencies to assess stability"
+  },
+  {
+   "a_element": "perturbation equation governing stability under radial perturbations",
+   "b_element": "imaginary part of quasinormal frequencies indicating stability against small perturbations"
+  },
+  {
+   "a_element": "pseudo-Schwarzschild potential driving accretion flow",
+   "b_element": "rotating draining bathtub metric as the acoustic black hole analogue"
+  },
+  {
+   "a_element": "upper bound on angular momentum for critical solutions",
+   "b_element": "rotation parameter B in the acoustic black hole metric"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers analyze the stability of stationary solutions in analogue black hole systems using perturbation theory: Paper A via dynamical systems analysis of critical points in accretion flows, and Paper B via quasinormal mode frequencies in acoustic black holes. The perturbation equations and stability criteria (absence of growing modes) play analogous roles, with the pseudo-potential and acoustic metric serving as the governing frameworks for their respective systems."
+}

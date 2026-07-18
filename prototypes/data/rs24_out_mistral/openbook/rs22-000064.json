@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "minimum excitation gap in the Quantum Adiabatic Algorithm (QAA)",
+   "b_element": "gap between the lowest states in quantum phase transitions (e.g., Random Energy Model)"
+  },
+  {
+   "a_element": "isolated avoided crossing point of Landau-Zener type (collision between two lowest energy levels)",
+   "b_element": "first-order quantum phase transition with exponentially small gap"
+  },
+  {
+   "a_element": "polynomial median complexity in QAA for Exact Cover (N <= 128)",
+   "b_element": "exponentially small gap in system size for Random First Order models"
+  },
+  {
+   "a_element": "Quantum Monte Carlo simulations to study the minimum gap",
+   "b_element": "two-time instanton method to calculate the gap"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers study the scaling of the minimum energy gap in quantum systems undergoing transitions, with a focus on avoided crossings (Landau-Zener type in A) or first-order quantum phase transitions (in B). The exponentially small gap in system size and the role of the transition as the computational bottleneck are shared mechanisms, despite differences in specific models (Exact Cover vs. Random Energy Model)."
+}

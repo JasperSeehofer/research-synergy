@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "decay regimes (algebraic/exponential) of reactant lifetime distribution in phase space",
+   "b_element": "chaotic vs. stable dynamical regimes in the solar system due to resonance overlap"
+  },
+  {
+   "a_element": "statistical estimates of isomerization rate (transition state theory)",
+   "b_element": "analytic theory estimating Lyapunov time and dynamical lifetime"
+  },
+  {
+   "a_element": "symmetry-related product channels in phase space",
+   "b_element": "mean motion resonance components among Jovian planets"
+  },
+  {
+   "a_element": "short timescale (t ≲ 0.5 ps) for symmetry attainment in trajectory ensemble",
+   "b_element": "timescale for chaos onset due to resonance overlap"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers analyze dynamical systems with distinct regimes (decay vs. chaos) and use statistical or analytic estimates, paper A focuses on phase space transition state theory and gap time distributions for chemical reactions, whereas paper B examines resonance overlap and Lyapunov exponents in celestial mechanics. The underlying machinery—chemical kinetics vs. orbital dynamics—differs fundamentally."
+}

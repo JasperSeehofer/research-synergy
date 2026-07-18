@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "Algebraic Birkhoff Decomposition in the Connes-Kreimer Hopf algebra",
+   "b_element": "BPHZ renormalization procedure in the Connes-Kreimer Hopf algebra of Feynman graphs"
+  },
+  {
+   "a_element": "differential algebra variation of Birkhoff decomposition",
+   "b_element": "algebro-geometric Feynman rules as characters of the Connes-Kreimer Hopf algebra"
+  },
+  {
+   "a_element": "renormalization process of multiple zeta values",
+   "b_element": "renormalization in the context of algebro-geometric Feynman rules"
+  },
+  {
+   "a_element": "Hopf algebra structure underlying renormalization",
+   "b_element": "Connes-Kreimer Hopf algebra of Feynman graphs"
+  },
+  {
+   "a_element": "decomposition applied to study multiple zeta values",
+   "b_element": "Feynman rules factoring through Grothendieck rings or polynomial rings"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers operate within the Connes-Kreimer Hopf algebra framework for renormalization, where the core machinery involves decompositions (Birkhoff or algebro-geometric) of characters in the Hopf algebra. The differential Birkhoff decomposition in A corresponds to the construction of algebro-geometric Feynman rules in B, both serving as methods to regularize or renormalize divergent quantities (multiple zeta values or Feynman integrals). The shared underlying mechanism is the use of algebraic structures (Hopf algebras) to systematically handle renormalization."
+}

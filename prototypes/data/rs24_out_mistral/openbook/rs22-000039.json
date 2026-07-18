@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "Maximum (relative) Entropy method for updating probabilities with constraints",
+   "b_element": "Jaynes' information theory formalism of statistical mechanics for constructing probability distributions"
+  },
+  {
+   "a_element": "Observed data and moment constraints as information inputs",
+   "b_element": "Microscopic phase space trajectories and non-equilibrium stationary state constraints as information inputs"
+  },
+  {
+   "a_element": "Posterior distribution derived from entropy maximization",
+   "b_element": "Probability distribution for microscopic trajectories derived from entropy maximization"
+  },
+  {
+   "a_element": "Canonical form of the posterior distribution for simultaneous updating",
+   "b_element": "Probability distribution framework for non-equilibrium stationary states"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ the Maximum Entropy principle (or Jaynes' information theory formalism) as the core machinery to derive probability distributions under constraints. Paper A uses it for updating probabilities with data and moments, while Paper B applies it to non-equilibrium stationary states, but the underlying method of entropy maximization to reconcile constraints is identical."
+}

@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "large N scaling function in a double scaling limit for Wilson loop operators",
+   "b_element": "double scaling limit in large-N properties of unitary-matrix models"
+  },
+  {
+   "a_element": "eigenvalue distribution of Wilson loop operator",
+   "b_element": "eigenvalue distribution in single-link integral (unitary-matrix models)"
+  },
+  {
+   "a_element": "universality class of phase transitions in large N QCD",
+   "b_element": "universality in large-N expansion of unitary-matrix models (e.g., YM_2, chiral models)"
+  },
+  {
+   "a_element": "transition under scaling at infinite N",
+   "b_element": "phase transitions or critical behavior in the large-N limit of matrix models"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers investigate phase transitions or critical behavior in large-N limits of matrix models, with a focus on double scaling limits and universality classes. Paper A's Wilson loop operator eigenvalue distribution and its scaling function correspond to Paper B's analysis of eigenvalue distributions and double scaling in unitary-matrix models, particularly in the context of YM_2 and chiral models."
+}

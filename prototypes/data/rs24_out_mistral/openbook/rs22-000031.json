@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "kappa-deformed logarithmic and exponential functions",
+   "b_element": "deformed logarithmic function used in generalized entropy definitions"
+  },
+  {
+   "a_element": "deduced logarithmic function associated with deformed exponentials",
+   "b_element": "generalized entropy functions derived from deformed logarithms"
+  },
+  {
+   "a_element": "generalized thermostatistics formulated using deformed exponentials and deduced logarithms",
+   "b_element": "generalized entropy and relative entropy definitions in nonextensive thermostatistics"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers rely on the same underlying machinery of deformed logarithmic and exponential functions to construct generalized thermostatistics or entropy measures. The kappa-deformation in A corresponds to the deformed logarithms in B, and both frameworks use these functions to define or analyze entropy-related properties."
+}

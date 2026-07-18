@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "transition operators (T operators) describing scattering properties of objects",
+   "b_element": "multiple scattering formulation describing interactions between bodies"
+  },
+  {
+   "a_element": "Casimir energy expressed in terms of scattering data",
+   "b_element": "Casimir energies derived from scattering interactions between bodies"
+  },
+  {
+   "a_element": "scatterers in 1d and 3d, including spherical bodies",
+   "b_element": "semitransparent spheres and cylinders as scattering bodies"
+  },
+  {
+   "a_element": "utilization of scattering data to compute Casimir force",
+   "b_element": "explicit calculation of Casimir energies using scattering expressions"
+  },
+  {
+   "a_element": "convergence properties of the scattering-based formula",
+   "b_element": "power series expansions and exact summation in weak coupling limit"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers employ a scattering-based framework to compute Casimir forces, where the core machinery is the use of scattering operators (T operators or multiple scattering formulations) to express Casimir energy in terms of interactions between objects. The role of scattering data and its manipulation to derive forces or energies is fundamentally the same in both approaches."
+}

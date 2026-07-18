@@ -1,0 +1,30 @@
+{
+ "mapping": [
+  {
+   "a_element": "Hopf algebra of rooted trees ${\\cal H}_R$ with a single primitive divergence",
+   "b_element": "Kreimer's Hopf algebra on the symmetric algebra of rooted trees"
+  },
+  {
+   "a_element": "coproduct iterations used to compute dimensions of subspaces",
+   "b_element": "coproduct defined on Kreimer's Hopf algebra"
+  },
+  {
+   "a_element": "bigrading by number of nodes $n$ and degree of primitivity $k$",
+   "b_element": "grading by count of non-root vertices"
+  },
+  {
+   "a_element": "universal Hochschild-closed one-cocycle $B_+$ (plugging divergences)",
+   "b_element": "growth operator (raising grading)"
+  },
+  {
+   "a_element": "Connes-Moscovici noncocommutative subalgebra ${\\cal H}_{\\rm CM}$",
+   "b_element": "Grossman-Larson Hopf algebra (noncommutative multiplication on rooted trees)"
+  },
+  {
+   "a_element": "natural growth beyond Connes-Moscovici case",
+   "b_element": "extension of growth operator to Kreimer's Hopf algebra"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers study Hopf algebras of rooted trees with a focus on combinatorial structures and operators (e.g., coproducts, growth/pruning operators, and gradings). The core machinery—Hopf algebraic constructions, grading by tree size, and operators that modify tree structure—maps directly, with $B_+$ in A playing the role of the growth operator in B, and the bigrading in A refining the grading in B."
+}

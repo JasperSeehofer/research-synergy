@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "bidirectional coupling between real and virtual pendulums",
+   "b_element": "feedback loops in the NF-kB core network driving oscillations"
+  },
+  {
+   "a_element": "synchronized state of coupled pendulums",
+   "b_element": "periodic spiking in nuclear NF-kB concentration"
+  },
+  {
+   "a_element": "critical condition (sufficiently close lengths) for synchronization",
+   "b_element": "network design enabling oscillatory behavior in NF-kB"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both abstracts describe coupled oscillatory systems with critical conditions for emergent behavior, paper A's mechanism is based on instantaneous bidirectional coupling leading to synchronization, whereas paper B's mechanism involves a biochemical network generating periodic spikes through feedback loops and binding kinetics. The underlying mathematics (coupled oscillators vs. biochemical rate equations) and driving processes differ fundamentally."
+}

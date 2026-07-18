@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "gauged linear sigma models (GLSMs) describing geometric structures (e.g., partial flag manifolds, Calabi-Yau complete intersections)",
+   "b_element": "nonlinear elliptic PDEs (Witten equation) describing moduli spaces of solutions in singularity/Landau-Ginzburg theory"
+  },
+  {
+   "a_element": "Kahler phases and their non-birational relationships (e.g., homological projective duality)",
+   "b_element": "wall-crossing phenomena in the deformation of virtual cycles under perturbation"
+  },
+  {
+   "a_element": "moduli spaces realized as Quot and hyperquot schemes in GLSMs",
+   "b_element": "virtual fundamental cycle and extended virtual cycle for the moduli space of solutions to the Witten equation"
+  },
+  {
+   "a_element": "physical realization of geometric structures via GLSMs",
+   "b_element": "construction of virtual cycles satisfying axioms analogous to Gromov-Witten theory"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers involve moduli spaces and phase-like phenomena (Kahler phases in A, wall-crossing in B), their underlying machinery differs fundamentally: A uses gauged linear sigma models to realize geometric structures, whereas B constructs virtual cycles for solutions to nonlinear elliptic PDEs. The shared terms (e.g., 'moduli spaces') refer to distinct mathematical objects and methods, and no role-for-role correspondence in the core mechanisms (e.g., GLSM dynamics vs. PDE analysis) is evident."
+}

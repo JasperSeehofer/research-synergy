@@ -1,0 +1,26 @@
+{
+ "mapping": [
+  {
+   "a_element": "phase transition in QCD at finite temperature and density",
+   "b_element": "second order QCD phase transition"
+  },
+  {
+   "a_element": "effective potential as a function of the average plaquette",
+   "b_element": "spectral function for the trace of the stress tensor"
+  },
+  {
+   "a_element": "critical point or first order phase transition line in high density regime",
+   "b_element": "narrow peak in the spectral function near a second order phase transition"
+  },
+  {
+   "a_element": "lattice QCD simulation data",
+   "b_element": "lattice Euclidean correlation function"
+  },
+  {
+   "a_element": "analysis of phase structure via effective potential",
+   "b_element": "determination of bulk viscosity via spectral function behavior"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers study QCD phase transitions and use lattice-based methods, Paper A focuses on identifying a critical point or first-order transition via an effective potential, whereas Paper B analyzes spectral functions and bulk viscosity near a second-order transition. The core mechanisms (effective potential vs. spectral function analysis) and the nature of the transitions (first-order vs. second-order) differ fundamentally."
+}

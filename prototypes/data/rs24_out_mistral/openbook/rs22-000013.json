@@ -1,0 +1,22 @@
+{
+ "mapping": [
+  {
+   "a_element": "non-commutative space and C*-algebra constructed from a tiling",
+   "b_element": "groupoids obtained from projection point patterns"
+  },
+  {
+   "a_element": "topology on the groupoid induced by translations of the tiling",
+   "b_element": "pattern groupoid derived from projection method tilings"
+  },
+  {
+   "a_element": "scaled ordered K_0-group furnishing gap labelling",
+   "b_element": "cohomology of the point pattern as cocycle cohomology of the pattern groupoid"
+  },
+  {
+   "a_element": "invariant measure on the hull of the tiling",
+   "b_element": "topological invariants for projection method patterns"
+  }
+ ],
+ "shares_method": true,
+ "brief_justification": "Both papers construct algebraic/topological structures (C*-algebras and groupoids) from tilings or point patterns to derive invariants (K-theory/gap labelling in A, cohomology in B). The machinery involves analyzing groupoids associated with tilings and using their properties to compute invariants, indicating a shared underlying method in non-commutative geometry and topological dynamics."
+}

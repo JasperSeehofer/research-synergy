@@ -1,0 +1,18 @@
+{
+ "mapping": [
+  {
+   "a_element": "MACE (a finite model builder that translates first-order statements to propositional clauses and uses a Davis-Putnam-Loveland-Logeman procedure to find models)",
+   "b_element": "Mace4 (a finite model builder used to produce distinguishing examples for groupoid identities)"
+  },
+  {
+   "a_element": "Otter (a theorem prover searching for proofs of first-order statements)",
+   "b_element": "Otter (an automated theorem prover used to produce proofs for equational bases, e.g., in Boolean algebras)"
+  },
+  {
+   "a_element": "search for finite models (countermodels) of first-order statements",
+   "b_element": "search for finite models (distinguishing examples) of groupoid identities"
+  }
+ ],
+ "shares_method": false,
+ "brief_justification": "While both papers mention the use of MACE/Mace4 and Otter as computational tools, their core mechanisms differ: Paper A focuses on the general method of finite model finding for first-order logic via propositional satisfiability, whereas Paper B uses finite model building as a tool to explore algebraic properties of groupoids and equational identities. The underlying machinery (propositional SAT solving vs. algebraic identity classification) is distinct."
+}

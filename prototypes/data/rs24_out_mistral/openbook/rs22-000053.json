@@ -1,0 +1,5 @@
+{
+ "mapping": [],
+ "shares_method": false,
+ "brief_justification": "Paper A constructs a map of ring T-spectra in equivariant stable homotopy theory, grounded in algebraic geometry and characteristic classes, while Paper B analyzes abelian gauged linear sigma models (GLSMs) and their Kahler phases through homological projective duality and physical realizations of stacks. The core mechanisms—spectra maps in topology versus derived equivalences in physics/geometry—are fundamentally distinct, with no shared dynamical, combinatorial, or optimization machinery."
+}

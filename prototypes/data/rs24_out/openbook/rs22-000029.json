@@ -1,0 +1,11 @@
+{
+  "mapping": [
+    {"a_element": "the slow ferromagnetic quantum phase transition of the spin-1 BEC", "b_element": "the isotropic-to-nematic phase transition of the uniaxial nematic liquid crystal"},
+    {"a_element": "the system magnetization (order parameter of the spin-1 condensate)", "b_element": "the nematic director / order-parameter space S^2/Z_2 of the liquid crystal"},
+    {"a_element": "independently-oriented magnetization domains formed as the transition is crossed", "b_element": "domain (bubble) formation during the transition, each bubble independently selecting its order parameter"},
+    {"a_element": "the resulting magnetization defect structure", "b_element": "the strings (disclination lines and loops) produced"},
+    {"a_element": "the analytically-derived scaling of the magnetization, verified numerically", "b_element": "the measured probability of string formation per bubble (0.33) matching the topological prediction 1/pi"}
+  ],
+  "shares_method": true,
+  "brief_justification": "Both realize the Kibble(-Zurek) mechanism: a system driven through a symmetry-breaking phase transition forms causally-independent domains that pick the order parameter independently, leaving topological defects/structure whose statistics follow from the transition dynamics and the order-parameter manifold. A studies the dynamics of a slow ferromagnetic quantum transition and the scaling of its magnetization, while B explicitly reports Kibble-mechanism domain (bubble) formation producing strings in the isotropic-nematic transition with defect probability 1/pi set by the S^2/Z_2 order-parameter space."
+}

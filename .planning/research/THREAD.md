@@ -55,16 +55,35 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 | A field-neutral LLM mechanism-reduction, embedded, is a UNIVERSAL retriever that beats raw-text/embedding | **REFUTED as universal; CONFIRMED as a deep-analogy SPECIALIST** (Phase 42 EXP-RS-23, 2026-07-18) — Feynman curated deep analogies: reduction 0.60 > lexical 0.40 > raw-bge 0.20 (first compressed substrate to beat the null); broad topical mine: reduction 0.53 < raw-bge 0.66. Rescues the deep cross-vocabulary tail surface methods miss (9/27 raw-failed pairs → top-10) but over-abstracts topical pairs; reduction-win ⟂ raw-win. First substrate to recover analogies BOTH lexical AND dense-embedding miss. **CONFIRMED at n=12 (EXP-RS-24 N=160): validated-deep reduction 0.75 vs raw 0.00.** | `.planning/phases/42-mechanism-reduction/42-VERIFICATION.md`, `.planning/phases/43-validated-deep-subset/43-VERIFICATION.md`, `prototypes/data/rs23_results{,_mined}.json` |
 | A raw∪reduction→LLM-rerank cascade is a scalable retriever that beats raw-alone on a mixed cross-field corpus | **VERIFIED (Phase 44 EXP-RS-25, 2026-07-18)** — cascade (Claude re-rank of the ~25-candidate union) recall@10 = **0.775** vs raw-alone 0.662 (+11 pts, ≈ union ceiling 0.80), MRR 0.74. Orbiter W-SYN: Mistral re-rank DEGRADES to 0.637 (< raw-alone) → the re-rank/precision stage must be Claude. O(N) retrieval + O(#queries) small LLM re-ranks = scalable vs the O(N²) all-pairs LLM baseline. | `.planning/phases/44-cascade/44-VERIFICATION.md`, `prototypes/data/rs25_results.json` |
 | The RS-26/27 discovery yield (~12.5% end-to-end genuine bridges) is real reduction-retrieval signal, not LLM confabulation on any surface-disjoint cross-field pair | **VERIFIED — PASS (Phase 47 EXP-RS-28, 2026-07-18)** — the byte-identical card+adjudicator pipeline on 80 RANDOM cross-archive ∧ lexical<0.06 pairs (reduction did NOT flag) confirms **0/80** (card) → **0/80** genuine (end-to-end) vs treatment 6/40 → 5/40 → **10× enrichment, Fisher one-sided p=0.0035**. Reconstructed adjudicator reproduces 5/6 on treatment (harness-valid). The open-book card stage alone rejected all 80 → it is a strong well-calibrated first gate, not a rubber stamp → scaling justified. | `.planning/phases/47-calibration-control/47-{PREREG,VERIFICATION}.md`, `prototypes/data/rs28_verdict.json` |
+| The genuine cross-field bridges surfaced by the finder (RS-26/27) are NOVEL discoveries | **REFUTED (Phase 48 EXP-RS-29, 2026-07-18)** — adversarial web prior-art hunt + skeptical classifier over the 7 genuine non-textbook bridges: **0 novel-looking / 3 specialist-known / 4 explicitly-published cross-field** (B6=Baake-Baake-Wagner PRL 78,559 1997; B2=Fulling-Kaplan-Wilson; B7=Deift RH program; E0=Hofbauer-Sigmund). The bridges are REAL (7/7) but the "surprising" model-knowledge label ≠ unpublished (7/7 not novel). At n=140 the strongest reduction matches ARE the canonical equivalences. **The finder is a validated cross-field analogy-REDISCOVERY engine, not a novelty engine** → forward needs scale + weak-match tail + a literature novelty-gate. | `.planning/phases/48-web-novelty/48-VERIFICATION.md`, `prototypes/data/rs29_novelty.json` |
 
 ## Active experiment
 
-**NONE active — EXP-RS-28 CALIBRATION CONTROL passed (2026-07-18). The discovery yield is REAL, not
-confabulation.** The discovery pipeline is now calibrated: the identical card+adjudicator stack confirms
-**0/80** random surface-disjoint cross-field pairs vs **5/40** genuine for reduction-selected pairs
-(10× enrichment, Fisher p=0.0035). Scaling is justified. Remaining honest gaps: web/literature-novelty
-verification of the surprising bridges (E5 LGCP, B6 quasispecies↔annealing, B7 orthog-poly↔NLS) + a
-domain-expert pass. Next candidate = web-novelty check, then scale to thousands with the cascade re-rank.
-Awaiting human go.
+**NONE active — EXP-RS-29 WEB-NOVELTY CHECK concluded (2026-07-18): the bridges are REAL but NONE is
+NOVEL.** Both integrity gaps now closed. RS-28: bridges are real (0/80 FP calibration). RS-29: of the 7
+genuine bridges, **0 novel-looking / 3 specialist-known / 4 explicitly-published cross-field** (incl.
+famous Baake-Baake-Wagner 1997 for B6, Hofbauer-Sigmund for E0). **The finder is a validated cross-field
+analogy-REDISCOVERY engine, not (yet) a novelty engine** — the "surprising" label tracked
+non-obvious-to-a-generalist, not unpublished. Reframed forward: scaling to thousands is more motivated
+(novelty needs scale + the weak-match tail) but must add a NOVELTY GATE (auto-demote known equivalences);
+honest current deliverable = "calibrated, validated rediscovery engine," NOT "novel discoveries." Awaiting
+human go/kill/pivot.
+
+### (just-concluded, 2026-07-18) EXP-RS-29 → Phase 48 — Web/Literature Novelty Check
+
+**The honest gap RS-28 left open: real ≠ novel.** Adversarial prior-art hunt (WebSearch, told to FIND
+prior art, ≥4-6 query framings → a "not found" is meaningful) + skeptical novelty classifier over the 7
+genuine non-textbook bridges (RS-26 B6/B2/B7 + RS-27 E5/E3/E2/E0); 14 agents, 0 errors. **Result: 0
+novel_looking, 3 specialist_known (E5 LGCP, E3 Fokker-Planck, E2 TDA — textbook-standard on BOTH sides,
+no explicit pairing found), 4 known_crossfield (B6=Baake-Baake-Wagner PRL 78,559 1997 mutation≡transverse-
+field; B2=Fulling-Kaplan-Wilson Casimir-on-quantum-graphs; B7=Deift-school RH/equilibrium program;
+E0=Hofbauer-Sigmund replicator≡Lotka-Volterra).** So the bridges are real (7/7, confirms RS-28 + domain
+read) but the novelty proxy was wrong (7/7 not novel). **Mechanism: at n=140 the strongest reduction
+matches ARE the canonical equivalences** (machinery famous enough to co-occur in two random papers);
+novelty, if reachable, needs scale + the weak-match tail + a literature novelty-gate. Absence-of-hit ≠
+proof-of-novelty, but the 4 known have positive fetched-source evidence → "not novel" is robust (errors
+would only add prior art). Honest deliverable now = a calibrated validated cross-field REDISCOVERY engine.
+`.planning/phases/48-web-novelty/48-VERIFICATION.md`; `prototypes/data/rs29_novelty.json`.
 
 ### (just-concluded, PASS 2026-07-18) EXP-RS-28 → Phase 47 — Calibration Control
 

@@ -1,0 +1,537 @@
+{
+ "experiment": "EXP-RS-29",
+ "bridges": [
+  {
+   "id": "E5",
+   "run": "RS-27",
+   "rating": "surprising",
+   "fieldA": "cosmology — galaxy/QSO clustering bias and HODs measured via ACT CMB lensing (astro-ph.CO)",
+   "fieldB": "spatial statistics — Bayesian retail-store (mini-supermarket) survival with preferential sampling, Tokyo (stat.ME)",
+   "hunt": {
+    "id": "2607.14904 (astro-ph.CO, CMB-lensing galaxy/QSO bias+HOD) <-> 2607.14860 (stat.ME, Bayesian retail-store survival with preferential sampling); shared mechanism = log-Gaussian Cox process with scalar coupling of a second co-located observable to a shared latent Gaussian field",
+    "queries_tried": [
+     "log-Gaussian Cox process cosmology galaxy clustering large-scale structure",
+     "log-Gaussian Cox process preferential sampling spatial statistics point pattern",
+     "galaxy bias log-normal density field equivalence log-Gaussian Cox process spatial point process",
+     "analogy between cosmological large-scale structure and spatial point process statistics",
+     "Coles Jones lognormal model galaxy distribution origin log-Gaussian Cox process spatial statistics",
+     "preferential sampling shared latent Gaussian field cross-correlation second observable galaxy bias analogy",
+     "log-Gaussian Cox process CMB lensing cross-correlation galaxy bias",
+     "\"preferential sampling\" cosmology galaxy bias shared latent field scalar loading correspondence",
+     "marked point process cosmology galaxy properties mark correlation preferential sampling statistics unification",
+     "\"Cox process\" biased tracer cosmology galaxy survey point process intensity latent field review",
+     "preferential sampling geostatistics analogy physics biased tracer astronomy correspondence review",
+     "galaxy bias equivalent to preferential sampling coefficient shared random effect point process outcome model",
+     "Martinez Saar statistics galaxy distribution spatial point processes log-Gaussian Cox preferential sampling book",
+     "\"preferential sampling\" astronomy OR cosmology OR galaxy survey selection function latent field import statistics method"
+    ],
+    "closest_hits": [
+     {
+      "title": "Log Gaussian Cox Processes (Møller, Syversveen & Waagepetersen 1998, foundational spatial-statistics paper)",
+      "url": "https://archive.math.arizona.edu/jwatkins/log_Gaussian_Cox_Processes.pdf",
+      "relevance": "The canonical paper that names/formalizes the LGCP in spatial statistics. Its lognormal-random-field construction is the same object as the cosmological lognormal density field, and the LGCP literature traces this idea to Coles & Jones's galaxy-distribution model. Documents the field-level lineage between the two fields, but makes no connection to preferential-sampling survival or retail applications (PDF binary; content confirmed via secondary sources below)."
+     },
+     {
+      "title": "Log-Gaussian Cox Process (EmergentMind topic overview)",
+      "url": "https://www.emergentmind.com/topics/log-gaussian-cox-process-lgcp",
+      "relevance": "States explicitly that 'the first applications of these processes are attributed to Coles and Jones, who used a log-normal random field as a model of galaxy distribution' — i.e. spatial statistics loosely cites cosmology as the origin of the mechanism. Supports 'partially_noted': the fields share the mechanism and cite each other at a general level, but no A<->B identity for this specific pair."
+     },
+     {
+      "title": "A lognormal model for the cosmological mass distribution (Coles & Jones 1991, MNRAS)",
+      "url": "https://academic.oup.com/mnras/article/248/1/1/1023068",
+      "relevance": "The cosmology-side origin of the shared mechanism: a latent Gaussian field exponentiated to a positive (lognormal) density field. Establishes that the LGCP core is independently STANDARD and textbook in cosmology. Does not mention spatial-statistics point-process applications, preferential sampling, or survival."
+     },
+     {
+      "title": "Geostatistical inference under preferential sampling (Diggle, Menezes & Su 2010, JRSS-C)",
+      "url": "https://ideas.repec.org/a/bla/jorssc/v59y2010i2p191-232.html",
+      "relevance": "Field-B foundational model: sampling locations follow an LGCP and the outcome shares the SAME latent Gaussian field, coupled through a scalar coefficient (log lambda = alpha + gamma*phi). This gamma is the structural analogue of galaxy bias b / the cross-correlation loading. Confirms the scalar-coupling-to-a-shared-latent-field structure is standard in spatial statistics; makes no reference to cosmology or biased tracers."
+     },
+     {
+      "title": "Point processes and preferential sampling (SPDE/INLA gitbook, ch. 4)",
+      "url": "https://becarioprecario.bitbucket.io/spde-gitbook/ch-lcox.html",
+      "relevance": "Textbook-style exposition showing the LGCP + shared-latent-field + scalar coupling that the retail-survival paper uses. Confirms mechanism is standard/textbook on the stats side. No cosmology bridge."
+     },
+     {
+      "title": "Revisiting Marked Galaxy Clustering from a Joint Point Process Perspective (arXiv 2604.00578, 2026)",
+      "url": "https://arxiv.org/abs/2604.00578",
+      "relevance": "Closest cosmology paper that formally treats galaxies+marks (HOD-type properties) as a joint marked point process — structurally the marked-LGCP setup. Cites general point-process theory (Ripley, Daley & Vere-Jones, Møller & Waagepetersen, Cronie & van Lieshout) but DELIBERATELY does NOT connect to LGCP, preferential sampling, Diggle, geostatistics, or retail/ecology. Even the nearest bridge paper stops short of the cross-field identity."
+     },
+     {
+      "title": "Probing galaxy bias ... KiDS Galaxies-tSZ-CMB lensing cross-correlations (arXiv 2102.07701)",
+      "url": "https://arxiv.org/pdf/2102.07701",
+      "relevance": "Representative of the mainstream cosmology technique on the A side: measuring galaxy bias from galaxy x CMB-lensing cross-correlation (a second co-located observable of the same latent field). Confirms the cross-correlation-to-recover-the-coupling method is STANDARD in cosmology. No spatial-statistics / preferential-sampling framing."
+     },
+     {
+      "title": "Spatial data fusion adjusting for preferential sampling using INLA and SPDE (JRSS-A 2025)",
+      "url": "https://academic.oup.com/jrsssa/article/188/1/140/7700306",
+      "relevance": "Modern stats extension: a spatially varying coefficient encoding 'dependence strength between the sampling-location process and the latent field' — a literal spatially-varying version of the galaxy-bias analogue. Reinforces that the scalar/loading coupling is standard on the stats side; still no cross-field mention of cosmology."
+     },
+     {
+      "title": "Statistics of the Galaxy Distribution (Martinez & Saar, CRC Press) — book",
+      "url": "https://www.routledge.com/Statistics-of-the-Galaxy-Distribution/Martinez-Saar/p/book/9780367396503",
+      "relevance": "The canonical monograph bridging spatial statistics and cosmology (galaxies as point processes, Cox processes, correlation functions). Establishes that the general cosmology<->spatial-point-process link is published and well-known — but it predates CMB-lensing bias measurement and the preferential-sampling survival literature and does not make this specific A<->B pairing."
+     }
+    ],
+    "cross_field_identity_status": "partially_noted",
+    "each_side_standard": "The core mechanism is independently STANDARD within each field, so a specialist on either side would recognize it as a familiar model of their own — and a spatial statistician would even know its galaxy-distribution origin. COSMOLOGY (Field A): the lognormal biased-tracer density field (Coles & Jones 1991) is textbook; galaxies/QSOs as a Cox process biased tracer with a linear bias b is standard; recovering b/HOD from a galaxy x CMB-lensing cross-correlation (a second co-located observable of the same latent matter field) is a routine mainstream technique; marks/HODs as a marked point process is established. SPATIAL STATISTICS (Field B): the LGCP (Møller, Syversveen & Waagepetersen 1998) is a canonical workhorse, and preferential sampling (Diggle, Menezes & Su 2010) — sampling-location intensity and a co-located outcome sharing one latent Gaussian field via a scalar coupling coefficient gamma — is a well-developed sub-literature. Crucially, the LGCP's own documented lineage runs through the cosmological lognormal field, so the mechanism is not just parallel but historically shared. What is NOT standard is crossing the specific application gap: cosmology frames its sampling via an a-priori-KNOWN selection-function mask, not the informative 'preferential sampling' (Diggle) framing, and the retail/geostatistics side never invokes bias/cross-correlation vocabulary.",
+    "notes": "Verdict: partially_noted (not explicitly_published, not fully novel). WHY NOT explicitly_published: after 14 query framings I found NO source that literally makes the specific A<->B identity between (A) CMB-lensing-measured galaxy/QSO clustering bias+HOD and (B) Bayesian retail-store survival under preferential sampling. Even the single closest bridge — a 2026 cosmology paper casting galaxies+marks as a joint point process (2604.00578) — explicitly stays inside cosmology and avoids LGCP/preferential-sampling/Diggle/geostatistics. WHY partially_noted rather than not_found: (1) the broader unification IS published — 'the galaxy distribution is a Cox/log-Gaussian process' is a well-known, textbook cross-field statement (Martinez & Saar; Møller et al.), and the LGCP of spatial statistics explicitly traces its origin to the cosmological lognormal galaxy field of Coles & Jones 1991; (2) the precise structural core the finder points to — a shared latent Gaussian field with a SCALAR coupling to a second co-located observable — exists and is named on both sides: galaxy bias b / cross-correlation loading in cosmology, and the preferential-sampling coefficient gamma (dependence strength between location-intensity and the latent field) in stats. So the connection is genuinely 'hinted/adjacent via a broader unification and mutual loose citation,' which is the partially_noted definition. NOVELTY ASSESSMENT for the finder: the mechanism-sharing is real and the mapping bias-b <-> preferential-sampling-gamma is a legitimate, non-obvious-across-fields correspondence, but it sits on top of an already-published general equivalence (galaxies == LGCP) and two independently standard toolkits; the genuinely un-published part is only the pairing of these two SPECIFIC problem instances (CMB-lensing bias estimation and Tokyo retail survival), which is a narrow instance of a known general bridge rather than a new mechanism. Recommend treating this bridge as 'known mechanism, novel instance pairing' — low surprise for a methods-aware specialist in either field."
+   },
+   "verdict": {
+    "id": "E5 (RS-27): 2607.14904 astro-ph.CO (CMB-lensing galaxy/QSO bias+HOD) <-> 2607.14860 stat.ME (Bayesian retail-store survival, preferential sampling); shared mechanism = log-Gaussian Cox process",
+    "novelty_class": "specialist_known",
+    "confidence": "high",
+    "cross_field_prior_art_found": true,
+    "decisive_evidence": "The LGCP mechanism is independently textbook-standard on each side: cosmology's lognormal biased-tracer density field (Coles & Jones 1991) with bias b recovered from galaxy x CMB-lensing cross-correlation, and spatial statistics' LGCP (Møller, Syversveen & Waagepetersen 1998) plus preferential sampling with scalar coupling gamma (Diggle, Menezes & Su 2010). Crucially the cross-field link is not merely parallel but historically documented: the LGCP literature explicitly traces its origin to Coles & Jones's galaxy-distribution model (EmergentMind overview; Martinez & Saar's monograph 'Statistics of the Galaxy Distribution' bridges galaxies-as-Cox-processes and spatial statistics). A methods-aware spatial statistician would recognize the galaxy-clustering model as a familiar LGCP of known cosmological pedigree, and a cosmologist would recognize the shared-latent-field-with-scalar-loading structure. After 14 query framings the hunter found NO source making the specific A<->B pairing (CMB-lensing bias estimation <-> Tokyo retail survival) nor the explicit bias-b <-> preferential-sampling-gamma mapping — so what is unpublished is a narrow novel instance of an already-published general equivalence, not a new mechanism. This is the textbook specialist_known profile: standard in each field, general cross-field identity already noted, specific instance pairing not.",
+    "caveat": "Absence of an exact-pairing hit is not proof of novelty — Martinez & Saar and similar monographs are books (not full-text searched), vocabulary diverges across fields (cosmology uses selection-function masks and 'bias', stats uses 'preferential sampling' and gamma), and paywalls limit coverage. Conversely the general 'galaxies == LGCP/Cox process' equivalence is genuinely published and documented, so the only truly unpublished element is the specific two-problem instance pairing plus the b<->gamma naming — low surprise for a specialist and a narrow instance of a known bridge rather than a new mechanism. Verdict rests entirely on the hunter's reported evidence, not independent re-search.",
+    "best_prior_art_url": "https://archive.math.arizona.edu/jwatkins/log_Gaussian_Cox_Processes.pdf"
+   }
+  },
+  {
+   "id": "E3",
+   "run": "RS-27",
+   "rating": "surprising",
+   "fieldA": "contact mechanics — stochastic-process / Persson theory of rough-surface contact (cond-mat.soft)",
+   "fieldB": "quantitative finance — jump-diffusion option pricing (q-fin.PR)",
+   "hunt": {
+    "id": "bridge-persson-contact-diffusion__blackscholes-option-pricing (arXiv 2607.14953 <-> 2607.06355)",
+    "queries_tried": [
+     "Persson contact mechanics diffusion equation magnification analogy Black-Scholes option pricing",
+     "Persson theory rough surface contact pressure distribution diffusion equation heat equation analogy",
+     "correspondence between contact mechanics and financial mathematics Fokker-Planck",
+     "Black-Scholes heat equation analogy in physics contact mechanics tribology",
+     "option pricing analogy rough surface contact mechanics Persson diffusion probability density",
+     "\"contact mechanics\" \"option pricing\" OR \"Black-Scholes\" analogy shared equation",
+     "econophysics review diffusion equation applications tribology surface roughness finance unifying",
+     "Persson theory magnification time-like Black-Scholes time to maturity absorbing boundary barrier option",
+     "\"magnification plays the role of time\" contact mechanics diffusion finance option",
+     "same diffusion equation appears Persson contact theory Black-Scholes finance renormalization multiscale",
+     "Persson contact theory borrowed from finance diffusion drift absorbing barrier zero pressure Black-Scholes",
+     "first-passage time absorbing barrier analogy contact mechanics rough surface option pricing quantitative finance interdisciplinary",
+     "Persson diffusion equation \"like the Black-Scholes\" OR \"as in finance\" OR \"as in option pricing\"",
+     "WebFetch arXiv 2607.14953 (contact paper) - checked for any finance/econophysics cross-reference",
+     "WebFetch arXiv 2607.06355 (option-pricing paper) - checked for any contact-mechanics/tribology cross-reference"
+    ],
+    "closest_hits": [
+     {
+      "title": "Stochastic process model of rough surface contact (arXiv 2607.14953) - the Field-A paper itself",
+      "url": "https://arxiv.org/abs/2607.14953",
+      "relevance": "Frames Persson theory as a diffusion/Fokker-Planck evolution of the pressure PDF with magnification as the time-like parameter, but contains NO reference to finance, option pricing, or any cross-field analogy (confirmed by WebFetch)."
+     },
+     {
+      "title": "Revisiting the diffusion equation derivation in Persson's theory of contact (arXiv 2509.02397)",
+      "url": "https://arxiv.org/pdf/2509.02397",
+      "relevance": "Dedicated treatment confirming the magnification-as-time parabolic diffusion equation is the standard, foundational result of Persson's theory; purely tribology, no finance link."
+     },
+     {
+      "title": "Persson's Theory of Purely Normal Elastic Rough Surface Contact: A Tutorial Based on Stochastic Process Theory (ScienceDirect S0020768324000416 / ResearchGate 398357634)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0020768324000416",
+      "relevance": "CLOSEST structural match: recasts Persson theory explicitly in Brownian-motion / drift-free / absorbing-barrier-at-zero-pressure language - the identical stochastic-process toolkit used in barrier-option finance - yet cites finance nowhere. Adjacency without the cross-field claim."
+     },
+     {
+      "title": "Systematic analysis of Persson's contact mechanics theory of randomly rough elastic surfaces (arXiv 1406.6151)",
+      "url": "https://arxiv.org/abs/1406.6151",
+      "relevance": "Canonical reference establishing the diffusion-equation form of Persson theory as standard within the field; no finance/option-pricing connection."
+     },
+     {
+      "title": "Black-Scholes Equation and Heat Equation (Georgia Southern honors thesis)",
+      "url": "https://digitalcommons.georgiasouthern.edu/honors-theses/548/",
+      "relevance": "Confirms the Field-B half (Black-Scholes reduces to the heat/diffusion equation via log-transform) is completely standard/textbook in finance; makes no contact-mechanics link."
+     },
+     {
+      "title": "Diffusion equation - Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Diffusion_equation",
+      "relevance": "Broadest 'unification' found: states the same diffusion equation governs heat, financial markets and quantum free particles - but its universality list does NOT include contact mechanics, so it never pairs these two specific fields."
+     },
+     {
+      "title": "An entropic-inference / Merton jump-diffusion option pricing paper (arXiv 2607.06355) - the Field-B paper itself",
+      "url": "https://arxiv.org/abs/2607.06355",
+      "relevance": "Derives Merton jump-diffusion / Black-Scholes via entropic inference; contains NO reference to contact mechanics, tribology, or surface roughness (confirmed by WebFetch)."
+     }
+    ],
+    "cross_field_identity_status": "not_found",
+    "each_side_standard": "BOTH sides are independently standard, textbook-level results within their own fields. Field A (contact mechanics): the parabolic diffusion / Fokker-Planck equation for the contact-pressure PDF with magnification (resolution) as the time-like variable, with a pressure-independent drift-free diffusion coefficient and an absorbing barrier at zero pressure, IS the foundational result of Persson's theory (2001) - reproduced and analyzed in arXiv 1406.6151, 2509.02397 and the stochastic-process tutorial. Field B (finance): that Black-Scholes reduces to the classical heat/diffusion equation under a log-price + change-of-variable transform is one of the most standard facts in quantitative finance, in every derivatives textbook. Consequently the mathematical equivalence is essentially trivial to any stochastic-process specialist - a contact-mechanics researcher and a quant would each independently recognize the other's PDE - even though no paper joins the two.",
+    "notes": "Adversarial verdict: NOT FOUND as a published cross-field connection. After 13 distinct WebSearch framings + WebFetching both source papers, I found no paper, review, textbook, or lecture note that literally states the Persson-contact-mechanics <-> option-pricing/Black-Scholes identity, nor one that makes it for this pair of fields. Neither source paper cites the other's domain (verified directly, not inferred). CAUTION FLAG: the WebSearch result-summarizer twice asserted the concepts were 'borrowed from financial mathematics' / the analogy was 'confirmed' - but this was the summarizing model hallucinating/inferring the link from co-occurring search snippets; no underlying source actually makes the claim (the fetched primary sources contradict it). What genuinely exists: (1) each half is textbook-standard within its field (see each_side_standard); (2) broad diffusion-universality statements (Wikipedia) pair the heat equation with finance and quantum mechanics but omit contact mechanics, so no single 'unifying' source pairs THESE two fields; (3) a strong structural parallel exists - Persson's absorbing-barrier-at-zero-pressure first-passage framing mirrors down-and-out/barrier-option first-passage pricing - and the Persson stochastic-process tutorial even adopts the exact Brownian-motion/drift/absorbing-barrier vocabulary of finance, but still never cites finance. So the identity is real and would be obvious to a specialist, yet it appears to be genuinely UNPUBLISHED as an explicit A<->B statement. I set status to not_found rather than partially_noted because no source pairs these two specific fields even loosely; the only 'unifications' are the generic 'the heat equation is everywhere' observation, which is too broad to count as noting this particular bridge."
+   },
+   "verdict": {
+    "id": "bridge-persson-contact-diffusion__blackscholes-option-pricing (arXiv 2607.14953 <-> 2607.06355)",
+    "novelty_class": "specialist_known",
+    "confidence": "high",
+    "cross_field_prior_art_found": false,
+    "decisive_evidence": "The hunter's own each_side_standard finding is decisive: BOTH halves are textbook-standard within their fields. Field A — the magnification-as-time parabolic diffusion/Fokker-Planck equation for the contact-pressure PDF is the FOUNDATIONAL result of Persson's theory (confirmed across arXiv 1406.6151, 2509.02397, and a dedicated stochastic-process tutorial). Field B — Black-Scholes reducing to the classical heat/diffusion equation via a log-price change of variable is one of the most standard facts in quantitative finance, in every derivatives textbook (Georgia Southern thesis; the Diffusion-equation Wikipedia article explicitly pairs the heat equation with finance). The hunter concludes the equivalence is 'essentially trivial to any stochastic-process specialist — a contact-mechanics researcher and a quant would each independently recognize the other's PDE.' The ScienceDirect Persson tutorial even adopts the exact Brownian-motion/drift/absorbing-barrier-at-zero-pressure vocabulary of barrier-option finance without citing finance. This is the textbook signature of specialist_known: no explicit A<->B paper exists (cross_field_identity_status = not_found), but the shared PDE is standard in each field and obvious to a stochastic-process specialist.",
+    "best_prior_art_url": "https://www.sciencedirect.com/science/article/pii/S0020768324000416",
+    "caveat": "Absence of an explicit cross-field hit is not proof of novelty — a paywalled paper, textbook, econophysics review, or lecture note using different wording could state the identity; the search covered 13 framings plus WebFetch of both source papers but cannot exhaust books/paywalls. Two independent reasons still keep this out of novel_looking: (1) both halves are textbook-standard, so the pairing is one a typical stochastic-process specialist would already recognize; (2) the only 'unification' sources found are the generic 'the heat equation is everywhere' observation (Wikipedia lists heat/finance/quantum but omits contact mechanics), too broad to count as noting THIS specific bridge. Also flag: the WebSearch result-summarizer twice hallucinated that the concepts were 'borrowed from financial mathematics'/the analogy was 'confirmed'; the hunter verified via primary-source WebFetch that no underlying paper makes that claim, so those apparent hits are spurious and correctly excluded."
+   }
+  },
+  {
+   "id": "E2",
+   "run": "RS-27",
+   "rating": "surprising",
+   "fieldA": "quantum gravity / hep-th — observers, local measurements and spacetime topology (hep-th)",
+   "fieldB": "quantum computing + finance — depth-efficient quantum topological data analysis for financial-stress detection (quant-ph)",
+   "hunt": {
+    "id": "quantumgravity-2607.15007__quantumfinance-2607.09906",
+    "queries_tried": [
+     "topological data analysis persistent homology both quantum gravity spacetime and financial markets",
+     "simplicial homology Betti numbers spacetime topology from discrete observations quantum gravity",
+     "quantum topological data analysis finance stress detection Betti numbers",
+     "analogy between spacetime topology and financial market topology persistent homology",
+     "topological data analysis review applications cosmology quantum gravity and finance Betti numbers unifying",
+     "persistent homology fluctuating underlying space physics finance same framework Vietoris-Rips point cloud",
+     "\"topological data analysis\" applications list \"quantum gravity\" \"finance\" OR \"financial markets\" review",
+     "topological data analysis \"from spacetime to markets\" OR \"black holes to markets\" persistent homology cross-disciplinary"
+    ],
+    "closest_hits": [
+     {
+      "title": "Exploring Quantum Spacetime with Topological Data Analysis (arXiv 2510.05693)",
+      "url": "https://arxiv.org/abs/2510.05693",
+      "relevance": "FIELD A anchor: uses persistent homology / Betti numbers of coarse-grained simplicial quantum geometry (causal/Euclidean dynamical triangulations) as observables to characterize the topology of a fluctuating quantum spacetime. Confirms the mechanism is STANDARD on the physics side. Fetched: mentions NO finance/markets/economics — does not make the cross-field connection."
+     },
+     {
+      "title": "Quantum Gravity and Effective Topology (arXiv 2510.05695)",
+      "url": "https://arxiv.org/abs/2510.05695",
+      "relevance": "FIELD A companion paper (same program): Betti numbers / effective topology of nonperturbative quantum geometry. Reinforces that Betti-number characterization of fluctuating spacetime is an established method. No finance connection."
+     },
+     {
+      "title": "Alpha, Betti and the Megaparsec Universe / persistent Betti numbers of the cosmic web (arXiv 1306.3640; MNRAS 465,4281)",
+      "url": "https://arxiv.org/abs/1306.3640",
+      "relevance": "FIELD A-adjacent (cosmology): persistent Betti numbers of a simplicial complex built from discrete point observations to characterize the topology of a (fluctuating) large-scale space. Shows the mechanism long predates and is standard in physics-of-space. Does not touch finance."
+     },
+     {
+      "title": "Depth-Efficient Quantum TDA for Regime-Specific Detection of Financial Stress (arXiv 2607.09906)",
+      "url": "https://arxiv.org/abs/2607.09906",
+      "relevance": "FIELD B target paper itself. Fetched: cites TDA only for finance/time-series/data-analysis (Takens embedding, Vietoris-Rips, Betti curves of S&P 500). Contains NO mention of quantum gravity, spacetime, cosmology, or fundamental physics — does not make the cross-field connection."
+     },
+     {
+      "title": "Financial-TDA crash/stress corpus: Gidea critical transitions; turbulence index (2203.05603); TDA detects bubbles (2304.06877); crypto risk (2604.13311); null-validated market signatures (2602.00383)",
+      "url": "https://arxiv.org/abs/2203.05603",
+      "relevance": "FIELD B body of work: persistent homology / Vietoris-Rips / Takens embedding on returns to detect market crashes and regime shifts. Confirms the mechanism is STANDARD on the finance side. None reference spacetime/quantum-gravity topology."
+     },
+     {
+      "title": "Topology as a Language for Emergent Organization in Complex Systems (arXiv 2603.25760)",
+      "url": "https://arxiv.org/abs/2603.25760",
+      "relevance": "Closest candidate for a UNIFYING review. Fetched: unifies TDA across complex/biological/network systems but explicitly does NOT bridge fundamental-physics spacetime topology with financial markets; no A<->B analogy. Nearest to a bridge yet still does not make it."
+     },
+     {
+      "title": "A Short Survey of Topological Data Analysis in Time Series and Systems Analysis (arXiv 1809.10745)",
+      "url": "https://arxiv.org/abs/1809.10745",
+      "relevance": "General TDA survey stating the domain-agnostic paradigm (extract topology of an underlying space from a discrete point cloud) and listing many application areas. This generic framing is the only sense in which both fields are 'unified' — it is the mechanism being general-purpose, not a specific spacetime<->finance identity."
+     }
+    ],
+    "cross_field_identity_status": "partially_noted",
+    "each_side_standard": "Yes on BOTH sides, independently. Field A: characterizing the topology of a fluctuating quantum/cosmic space via persistent homology and Betti numbers of a simplicial complex is an established method — quantum gravity (arXiv 2510.05693 / 2510.05695, dynamical-triangulation Betti-number observables) and cosmology (cosmic-web persistent Betti numbers, arXiv 1306.3640; MNRAS 465,4281). Field B: persistent homology + Takens delay embedding + Vietoris-Rips filtration to detect market crashes/stress/bubbles is a well-populated finance subfield (Gidea; arXiv 2203.05603, 2304.06877, 2604.13311, 2602.00383, and the target 2607.09906). Because the mechanism is simply the generic definition of TDA, a specialist in either field already recognizes it as the same standard, domain-agnostic tool — no cross-field paper is needed for them to see it.",
+    "notes": "No source makes the LITERAL A<->B identity. Neither target paper cites the other's field: the quantum-spacetime TDA paper (2510.05693) never mentions finance/markets, and the quantum-finance paper (2607.09906) never mentions gravity/spacetime/cosmology. The best unifying-review candidate (2603.25760) explicitly does not bridge fundamental-physics spacetime topology and finance. So the specific published bridge 'spacetime topology == financial-market topology via simplicial homology' is NOT found. I rate this 'partially_noted' rather than 'not_found' only because the 'shared mechanism' as phrased IS the generic textbook definition of Topological Data Analysis / persistent homology — a general-purpose method whose whole stated purpose ('characterize the topology of an underlying space from a discrete point cloud') is presented as domain-spanning in TDA surveys (e.g. 1809.10745). That broader, tool-level framing trivially subsumes both fields. IMPORTANT for the consumer: this substantially DEFLATES the finder's claim of a surprising hidden bridge. The connection is not a deep, non-obvious equivalence between two unrelated mechanisms; it is two independent instances of the SAME standard, off-the-shelf mathematical tool (Betti numbers of a Vietoris-Rips complex), each already routine in its own field. It is a 'shared generic method' co-occurrence, not a novel cross-field mechanistic identity. Multiple searches kept surfacing both domains precisely because TDA is a general tool with laundry-list application intros — not because anyone published the pairing as an insight."
+   },
+   "verdict": {
+    "id": "quantumgravity-2607.15007__quantumfinance-2607.09906",
+    "novelty_class": "specialist_known",
+    "confidence": "high",
+    "cross_field_prior_art_found": false,
+    "decisive_evidence": "The proposed \"shared mechanism\" (simplicial homology / Betti numbers of a Vietoris-Rips complex built from a discrete point cloud) is the generic textbook definition of Topological Data Analysis, and the hunter confirms it is independently STANDARD on both sides: quantum-gravity/cosmology (Betti-number observables of dynamical triangulations, arXiv 2510.05693/2510.05695; cosmic-web persistent Betti numbers, arXiv 1306.3640 / MNRAS 465,4281) and financial-stress detection (Gidea; arXiv 2203.05603, 2304.06877, and target 2607.09906). No source makes the literal A<->B identity (each target paper ignores the other's field; the nearest unifying review 2603.25760 explicitly does not bridge them), but because the connection is simply two independent applications of the same off-the-shelf, domain-agnostic tool, a specialist in either field recognizes the equivalence without needing a cross-field paper. It is a shared-generic-method co-occurrence, not a novel mechanistic identity.",
+    "caveat": "Absence of an explicit cross-field paper is not proof of novelty (paywalls/books/different wording), but here the deflation is affirmative rather than merely negative: the \"shared mechanism\" is literally the general-purpose definition of TDA, so the pairing is two routine instances of one standard tool that any TDA-literate specialist would immediately identify as the same method. The finder's \"surprising hidden bridge\" framing is not supported.",
+    "best_prior_art_url": "https://arxiv.org/abs/2603.25760"
+   }
+  },
+  {
+   "id": "E0",
+   "run": "RS-27",
+   "rating": "specialist",
+   "fieldA": "nonlinear / social dynamics — stochastic ultimatum game with spite-driven resource feedback (nlin.AO)",
+   "fieldB": "population biology — predator-dependent replicator / predator-prey dynamics (q-bio.PE)",
+   "hunt": {
+    "id": "2607.14914<->2607.13281",
+    "queries_tried": [
+     "replicator dynamics Lotka-Volterra equivalence predator-prey evolutionary game feedback",
+     "eco-evolutionary game dynamics environmental feedback replicator dynamics resource variable",
+     "ultimatum game spite resource feedback replicator dynamics predator-prey analogy",
+     "Hofbauer Sigmund replicator equation Lotka-Volterra equivalence textbook",
+     "\"ultimatum game\" \"predator-prey\" replicator dynamics fairness evolution mapping",
+     "game-environment feedback replicator dynamics review unifying ecology social dilemma predator-prey",
+     "\"ultimatum game\" resource feedback Lotka-Volterra eco-evolutionary correspondence",
+     "replicator dynamics with dynamical resource oscillations bridge population biology social behavior unified framework",
+     "bargaining game ultimatum evolutionary dynamics mapped to Lotka-Volterra predator-prey ecology prior work",
+     "fairness ultimatum bargaining game formally equivalent predator-prey ecological dynamics unifying eco-evolutionary",
+     "\"oscillating tragedy of the commons\" resource feedback replicator predator-prey Lotka-Volterra cyclic dynamics equivalence",
+     "\"predator-dependent replicator\" predator-prey two prey frequency dependence Lotka-Volterra equivalence 2607.13281"
+    ],
+    "closest_hits": [
+     {
+      "title": "Hofbauer & Sigmund — Evolutionary Games and Population Dynamics (Cambridge, 1998)",
+      "url": "https://www.cambridge.org/core/books/evolutionary-games-and-population-dynamics/A8D94EBE6A16837E7CB3CED24E1948F8",
+      "relevance": "Canonical textbook that unifies evolutionary game dynamics (social/behavioral) with population dynamics INCLUDING predator-prey Lotka-Volterra; explicitly establishes the replicator<->Lotka-Volterra equivalence (n-species LV = (n+1)-strategy replicator; predator-prey <-> Rock-Paper-Scissors). This is the broader unification covering the mechanism-level A<->B bridge for exactly this pair of fields — but at a generic level, not the specific ultimatum/predator-prey instantiation."
+     },
+     {
+      "title": "Lotka-Volterra equations for predator-prey systems (Ch. 2, Hofbauer & Sigmund)",
+      "url": "https://www.cambridge.org/core/books/abs/evolutionary-games-and-population-dynamics/lotkavolterra-equations-for-predatorprey-systems/981A039BA40A210B102C8572E8CF3B47",
+      "relevance": "Confirms the textbook treats predator-prey LV and replicator/game dynamics side-by-side as the same mathematics — the equivalence a specialist in either field already knows."
+     },
+     {
+      "title": "Weitz et al. — An oscillating tragedy of the commons in replicator dynamics with game-environment feedback (PNAS 2016)",
+      "url": "https://www.pnas.org/doi/10.1073/pnas.1604096113",
+      "relevance": "The exact game-environment feedback mechanism used by Paper A: replicator dynamics coupled to a dynamical resource/environment variable, producing predator-prey-like cyclic (deplete/replete) oscillations. Founds the subfield Paper A sits in, but bridges social dilemmas to generic 'environment', not specifically predator-prey."
+     },
+     {
+      "title": "Predator-dependent replicator dynamics or a predator-prey model with two prey types and frequency dependence (arXiv 2607.13281 — Paper B itself)",
+      "url": "https://arxiv.org/abs/2607.13281",
+      "relevance": "Paper B is itself an explicit IN-FIELD demonstration of the identity: 'can be seen as replicator dynamics with predator-dependent fitnesses... can also be seen as a Lotka-Volterra-type predator-prey model with frequency-dependent coefficients.' Shows the replicator<->LV equivalence is standard/canonical in q-bio.PE."
+     },
+     {
+      "title": "Higher-order equivalence of Lotka-Volterra and replicator dynamics (bioRxiv 2025)",
+      "url": "https://www.biorxiv.org/content/10.1101/2025.03.28.645916v1.full",
+      "relevance": "Recent formal extension of the replicator<->Lotka-Volterra equivalence to higher-order interactions; documents the equivalence as an active, established research bridge between ecology and evolutionary game theory."
+     },
+     {
+      "title": "Global stability of ecological and evolutionary dynamics via equivalence (PNAS 2025)",
+      "url": "https://www.pnas.org/doi/10.1073/pnas.2534915123",
+      "relevance": "Recent paper explicitly transferring results between ecological (Lotka-Volterra) and evolutionary-game (replicator) dynamics via their equivalence — a broader unification of the two fields at the mechanism level."
+     },
+     {
+      "title": "Reconciling ecology and evolutionary game theory ('When not to think cooperation') (PNAS)",
+      "url": "https://www.pnas.org/doi/10.1073/pnas.2413847122",
+      "relevance": "Titled bridge between ecology and evolutionary game theory (403 on fetch, not verified for the specific pair). Adjacent broader-unification candidate; not confirmed to name ultimatum or predator-prey specifically."
+     },
+     {
+      "title": "Emergent Dynamics of Fairness in the Spatial Coevolution of Proposer and Responder Species in the Ultimatum Game (PMC4308078)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4308078/",
+      "relevance": "On the SOCIAL side, frames ultimatum proposer/responder as coevolving 'species' sharing resources (predator-prey-like language) — an adjacent, loose framing, but does NOT make the formal predator-prey/Lotka-Volterra mapping."
+     },
+     {
+      "title": "Utility Functions and Lotka-Volterra Model: A Possible Connection in Predator-Prey Game (J. Game Theory 2014)",
+      "url": "http://article.sapub.org/10.5923.j.jgt.20140302.03.html",
+      "relevance": "Connects game-theoretic utility/behavioral side to Lotka-Volterra predator-prey dynamics — a fragmentary partial bridge between game theory and predator-prey ecology, not the ultimatum/resource-feedback pairing specifically."
+     }
+    ],
+    "cross_field_identity_status": "partially_noted",
+    "each_side_standard": "STANDARD IN BOTH FIELDS — this is not a hidden bridge. Field B (population biology, q-bio.PE): the replicator<->Lotka-Volterra/predator-prey equivalence is fully canonical/textbook (Hofbauer & Sigmund Ch. 2 & 7). Paper B (2607.13281) is literally built on it, stating its model 'can be seen as replicator dynamics ... can also be seen as a Lotka-Volterra-type predator-prey model.' Any q-bio.PE specialist knows this equivalence cold. Field A (nlin.AO / evolutionary social games): replicator dynamics is the foundational tool, and 'game-environment feedback' — replicator dynamics coupled to a dynamical resource variable (the exact mechanism in Paper A) — is a large, established subfield (Weitz et al. 2016 'oscillating tragedy of the commons' + many follow-ups). The replicator<->LV equivalence is textbook here too. Caveat: Paper A's own full text (verified via WebFetch of arXiv 2607.14914) stays in game-environment-feedback / stochastic-game language (citing Prisoner's-Dilemma feedback work) and does NOT itself invoke Lotka-Volterra, predator-prey, consumer-resource, or replicator equivalence — so the ecological framing is 'available to a specialist' rather than stated by the authors.",
+    "notes": "Adversarial verdict: the SPECIFIC A<->B pairing — a spite/resource-feedback stochastic ultimatum game <-> predator-dependent-replicator / predator-prey ecology — is NOT literally made in any single published source; multiple targeted searches confirm the ultimatum/bargaining game has not been formally mapped to predator-prey Lotka-Volterra dynamics, and the connections exist only 'in fragmentary form across different literatures.' HOWEVER, the connecting mechanism is textbook-canonical and independently standard in BOTH fields, and the GENERAL cross-field bridge (evolutionary/social game dynamics <-> predator-prey/Lotka-Volterra population ecology, via the Hofbauer-Sigmund replicator<->LV equivalence and the game-environment-feedback subfield) is explicitly published in canonical broader unifications (Hofbauer & Sigmund 1998 textbook; Weitz et al. PNAS 2016; 'higher-order equivalence' bioRxiv 2025; 'global stability via equivalence' PNAS 2025). Because a broader unification demonstrably covers the mechanism-level connection and the mechanism is standard on both sides, this is classified partially_noted rather than explicitly_published (no source makes the literal ultimatum<->predator-prey identity) or not_found (the general bridge is thoroughly, canonically published). Practical read for the finder: this is a LOW-NOVELTY 'bridge' — it is essentially the observation that two papers use the same well-known eco-evolutionary game / replicator-LV framework; any specialist in either field would immediately recognize the shared substrate. The only genuinely un-published element is the exact pairing of these two 2607-series papers, which is trivially recent (both July 2026) rather than a discovered hidden analogy."
+   },
+   "verdict": {
+    "id": "2607.14914<->2607.13281",
+    "novelty_class": "known_crossfield",
+    "confidence": "high",
+    "cross_field_prior_art_found": true,
+    "decisive_evidence": "The proposed shared mechanism IS an explicitly named, canonically published cross-field identity: the Hofbauer-Sigmund replicator<->Lotka-Volterra equivalence. Hofbauer & Sigmund (1998, Cambridge) unify evolutionary game dynamics (social/behavioral, Field A) with predator-prey Lotka-Volterra population dynamics (Field B) as the same mathematics (n-species LV = (n+1)-strategy replicator; predator-prey <-> RPS). This is reinforced by active explicit cross-field papers transferring results between the two fields via the equivalence (PNAS 2025 \"Global stability... via equivalence\"; bioRxiv 2025 \"Higher-order equivalence\"), and by the game-environment-feedback subfield (Weitz et al. PNAS 2016) that Paper A sits in. Paper B itself states its model \"can be seen as replicator dynamics... can also be seen as a Lotka-Volterra-type predator-prey model.\" The connecting mechanism is thus not a hidden bridge but a published, textbook cross-field unification.",
+    "best_prior_art_url": "https://www.cambridge.org/core/books/evolutionary-games-and-population-dynamics/A8D94EBE6A16837E7CB3CED24E1948F8",
+    "caveat": "No single source makes the LITERAL two-paper instantiation (spite/resource-feedback stochastic ultimatum game <-> predator-dependent-replicator predator-prey); the explicit published identity is at the general mechanism level (replicator<->LV / game dynamics <-> population ecology), not this specific pairing. Paper A's own text stays in game-environment-feedback language and never invokes Lotka-Volterra/replicator equivalence, so the ecological framing is a specialist synthesis of the two papers. The unpublished element is only the exact pairing, which is trivially recent (both July 2026) rather than a genuinely hidden analogy. Absence of the literal pairing is not proof of novelty, but the mechanism-level cross-field bridge is thoroughly and canonically published."
+   }
+  },
+  {
+   "id": "B6",
+   "run": "RS-26",
+   "rating": "surprising",
+   "fieldA": "population genetics — quasispecies theory for horizontal gene transfer & recombination (q-bio.PE)",
+   "fieldB": "quantum physics — simple glass models and their quantum annealing (quant-ph)",
+   "hunt": {
+    "id": "quasispecies-0810.2954__quantum-glass-annealing-0806.4144",
+    "queries_tried": [
+     "quasispecies error threshold quantum spin chain equivalence mutation transverse field",
+     "Ising quantum chain equivalent to model of biological evolution Baake quasispecies",
+     "quasispecies model quantum random energy model error threshold first-order transition",
+     "Eigen quasispecies error threshold maps to quantum phase transition transverse field Ising",
+     "quantum annealing quasispecies evolution error threshold analogy population genetics spin glass",
+     "quantum random energy model transverse field first order transition Jörg Krzakala Kurchan quantum annealing glass",
+     "\"Studying Viral Populations with Tools from Quantum Spin Chains\" quasispecies transverse field",
+     "\"error threshold\" random energy model quasispecies arXiv cond-mat transverse field quantum"
+    ],
+    "closest_hits": [
+     {
+      "title": "Baake, Baake & Wagner (1997), \"Ising Quantum Chain is Equivalent to a Model of Biological Evolution\", PRL 78, 559",
+      "url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.79.1782",
+      "relevance": "CANONICAL, DIRECT HIT. Explicitly proves the A<->B identity: the mutation-selection (quasispecies) sequence-space model IS an Ising quantum chain. Mutation = off-diagonal (transverse-field-type) spin-flip term, fitness = diagonal energy; error threshold treated via the spin-chain spectrum. (URL is the erratum entry for the 1997 paper.)"
+     },
+     {
+      "title": "Baake & Georgii / Baake, \"Ising Quantum Chain and Sequence Evolution\", J. Stat. Phys. (long version of the PRL)",
+      "url": "https://link.springer.com/article/10.1023/A:1023048711599",
+      "relevance": "Full worked-out version of the equivalence: mutation-selection molecular-evolution model recast as a quantum Ising chain, three fitness landscapes solved exactly, error threshold as the spin-chain phase transition. Literal A<->B statement."
+     },
+     {
+      "title": "Barton, Kardar, et al. (2021), \"Studying viral populations with tools from quantum spin chains\", J. Stat. Phys. 182:38 (arXiv:2003.10668)",
+      "url": "https://arxiv.org/abs/2003.10668",
+      "relevance": "DIRECT HIT for the exact framing. Abstract: Eigen's quasispecies population vector evolves like \"quantum spins in imaginary time\"; full text states \"a deep connection between the ground states of transverse-field spin systems and the late-time distributions of evolving viral populations - within simple models, both are obtained from the principal eigenvector of the same matrix.\" This is precisely 'extremal eigenstate + mutation = transverse field', applied to population genetics."
+     },
+     {
+      "title": "Tarazona (1992), \"Error thresholds for molecular quasispecies as phase transitions: From simple landscapes to spin-glass models\", Phys. Rev. A 45, 6038",
+      "url": "https://journals.aps.org/pra/abstract/10.1103/PhysRevA.45.6038",
+      "relevance": "DIRECT HIT for the random-energy/spin-glass side. Maps the quasispecies error threshold to phase transitions of spin-glass / random fitness landscapes (incl. Hopfield/random-energy landscapes). Establishes fitness <-> random energy and error threshold <-> spin-glass transition explicitly."
+     },
+     {
+      "title": "\"Error threshold transition in the random-energy model\", Phys. Rev. E 66, 062904 (2002)",
+      "url": "https://link.aps.org/doi/10.1103/PhysRevE.66.062904",
+      "relevance": "Directly identifies the quasispecies/evolution error threshold on a random landscape with a random-energy-model (REM) transition - the exact fitness<->random-energy identity in the proposed mechanism (classical/imaginary-time REM version)."
+     },
+     {
+      "title": "Saakian & Hu, \"Schwinger Boson Formulation and Solution of the Crow-Kimura and Eigen Models of Quasispecies Theory\" (arXiv:q-bio/0607012)",
+      "url": "https://arxiv.org/pdf/q-bio/0607012",
+      "relevance": "Treats the quasispecies (Crow-Kimura/Eigen) models as a mean-field quantum spin system; mutation term = spin-flip / transverse-field operator, permutation-invariant Hamiltonian, quasispecies = extremal eigenstate. Confirms the mean-field permutation-invariant spin Hamiltonian framing."
+     },
+     {
+      "title": "Saakian et al., \"Linear algebra of the permutation invariant Crow-Kimura model of prebiotic evolution\" (arXiv:1306.0111)",
+      "url": "https://arxiv.org/pdf/1306.0111",
+      "relevance": "Explicitly the PERMUTATION-INVARIANT / mean-field spin Hamiltonian for quasispecies (Hamming-class reduction), matching the 'mean-field / permutation-invariant spin Hamiltonian' clause of the proposed mechanism."
+     },
+     {
+      "title": "Joerg, Krzakala, Kurchan, Maggs, \"Simple Glass Models and their Quantum Annealing\" (arXiv:0806.4144) - the Field B paper",
+      "url": "https://arxiv.org/abs/0806.4144",
+      "relevance": "Field-B object itself: solves the QUANTUM random-energy model under a transverse field, showing a FIRST-ORDER quantum transition where the eigenstate collapses onto the unperturbed ground state (exp-small gap) - i.e. the transverse-field REM first-order transition. This is the same mathematical transition the quasispecies error threshold is mapped to on the biology side."
+     },
+     {
+      "title": "Baake & Wagner, \"Biological Evolution and Statistical Physics\" (review, arXiv:cond-mat/0101409)",
+      "url": "https://arxiv.org/abs/cond-mat/0101409",
+      "relevance": "Review aimed at physicists covering quasispecies models with statistical-mechanics methods; part of the established literature treating mutation-selection <-> spin-system equivalences as standard."
+     }
+    ],
+    "cross_field_identity_status": "explicitly_published",
+    "each_side_standard": "STANDARD ON BOTH SIDES. Physics/quantum side: the transverse-field mean-field spin Hamiltonian, the quantum random-energy model, and its first-order transition under a transverse field (the quantum-annealing obstruction) are canonical results (Goldschmidt 1990; Joerg-Krzakala-Kurchan-Maggs 2008 = the Field-B paper itself). Population-genetics side: the mapping of the Eigen/Crow-Kimura mutation-selection model onto a quantum spin chain - with the mutation operator AS the transverse (spin-flip) field, the fitness landscape as the diagonal energy (including random-energy/spin-glass landscapes), the quasispecies as the leading eigenvector/ground state, and the error threshold as the corresponding phase transition - is a well-established, textbook-level equivalence in the statistical-physics-of-evolution literature (Leuthaeusser 1987; Tarazona 1992; Baake-Baake-Wagner 1997; Saakian-Hu; Barton-Kardar 2021). A specialist bridging the two subfields would immediately recognize the equivalence; it is not novel.",
+    "notes": "This proposed 'bridge' is NOT a hidden or novel cross-field connection - it is one of the most thoroughly published equivalences in the statistical physics of evolution. Every component of the claimed mechanism is explicitly in the literature: (1) quasispecies/mutation-selection <-> quantum spin chain: Leuthaeusser (1987), Baake-Baake-Wagner PRL 78,559 (1997), long version in J. Stat. Phys.; (2) mutation operator = transverse field, quasispecies = extremal eigenstate (principal eigenvector/ground state): Saakian-Hu (q-bio/0607012), Barton-Kardar et al. (arXiv:2003.10668) - the latter states it almost verbatim for viral populations ('ground states of transverse-field spin systems ... late-time distributions of evolving viral populations ... principal eigenvector of the same matrix'); (3) fitness landscape = random-energy / spin-glass diagonal, error threshold = REM/spin-glass phase transition: Tarazona PRA 45,6038 (1992) and PRE 66,062904 (2002). The ONLY element I did not find as a single verbatim sentence is the exact phrase tying the quasispecies error threshold to 'quantum annealing' of the QREM in the specific vocabulary of arXiv:0806.4144 - but that is a zero-content gap: the object 0806.4144 studies (transverse-field REM first-order transition) is identical to the REM error-threshold transition already mapped to quasispecies, so the connection is a collapsed two-hop, both hops explicitly published. Verdict: the finder rediscovered a standard, decades-old equivalence, not a genuine hidden bridge. Recommend the finder blacklist the quasispecies<->quantum-spin-chain / error-threshold<->QREM correspondence as known prior art. WebFetch on the full-text PDFs (par.nsf.gov, arXiv PDFs) returned compressed/binary streams and APS journal pages 403'd; confirmations above rely on abstract pages plus corroborated search snippets, which were consistent and unambiguous across all query framings."
+   },
+   "verdict": {
+    "id": "quasispecies-0810.2954__quantum-glass-annealing-0806.4144",
+    "novelty_class": "known_crossfield",
+    "confidence": "high",
+    "cross_field_prior_art_found": true,
+    "best_prior_art_url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.79.1782",
+    "decisive_evidence": "The exact cross-field identity is explicitly published, not merely implied. Baake-Baake-Wagner (1997) PRL 78,559 \"Ising Quantum Chain is Equivalent to a Model of Biological Evolution\" proves quasispecies mutation-selection = quantum Ising chain with mutation as the off-diagonal (transverse-field) spin-flip term, fitness as diagonal energy, and error threshold as the spin-chain transition. Barton-Kardar et al. (2021, arXiv:2003.10668) restate it near-verbatim for viral populations (\"ground states of transverse-field spin systems … late-time distributions of evolving viral populations … principal eigenvector of the same matrix\" = extremal eigenstate + mutation-as-transverse-field). Tarazona (1992) PRA 45,6038 and PRE 66,062904 (2002) establish the fitness=random-energy / error-threshold=REM(spin-glass)-transition clause. Saakian-Hu (q-bio/0607012) and Saakian et al. (arXiv:1306.0111) supply the mean-field / permutation-invariant spin-Hamiltonian framing. Every clause of the proposed mechanism is thus a documented, decades-old equivalence in the statistical-physics-of-evolution literature.",
+    "caveat": "The one element not found as a single verbatim sentence is the specific \"quantum annealing of the QREM\" vocabulary of Field-B paper arXiv:0806.4144 applied to quasispecies; however this is a collapsed two-hop whose both hops (quasispecies error threshold = REM transition; QREM = transverse-field REM first-order transition, the object 0806.4144 studies) are each explicitly published, so it does not constitute novelty. Verification also rests on abstract pages plus consistent search snippets rather than full-text PDFs (APS pages 403'd, PDFs returned binary streams), but the cited titles are famous, unambiguous landmark results, so this does not weaken the known-prior-art verdict."
+   }
+  },
+  {
+   "id": "B2",
+   "run": "RS-26",
+   "rating": "specialist",
+   "fieldA": "quantum physics — Casimir forces via a T-operator approach (quant-ph)",
+   "fieldB": "nonlinear dynamics — periodic-orbit theory & spectral statistics for quantum graphs (nlin.CD)",
+   "hunt": {
+    "id": "0707.4017 (Kenneth-Klich, Casimir T-operator) <-> chao-dyn/9812005 (Kottos-Smilansky, quantum-graph periodic orbits)",
+    "queries_tried": [
+     "Casimir energy scattering T-operator quantum graphs periodic orbit theory secular determinant analogy",
+     "Casimir energy Tr ln(1 - scattering operator) multiple scattering periodic orbits trace formula quantum graph",
+     "scattering approach Casimir effect spectral determinant Kottos Smilansky quantum graph unifying",
+     "Wirzba Casimir effect scattering problem multiple scattering determinant periodic orbits n-disk semiclassical",
+     "Fulling Kaplan Wilson vacuum energy quantum graphs Casimir periodic orbit expansion trace formula",
+     "Casimir energy scattering matrix determinant analogy quantum chaos Gutzwiller periodic orbit multiple scattering unified",
+     "Wirzba 'Casimir effect as scattering problem' arXiv 2008 Journal of Physics A abstract"
+    ],
+    "closest_hits": [
+     {
+      "title": "Fulling, Kaplan, Wilson — Vacuum energy and repulsive Casimir forces in quantum star graphs (PRA 76, 012118 / arXiv quant-ph/0703248)",
+      "url": "https://arxiv.org/pdf/quant-ph/0703248",
+      "relevance": "DISPOSITIVE. Computes Casimir/vacuum energy DIRECTLY on quantum graphs using the Kottos-Smilansky secular determinant det(1-SD) and an exact trace formula / periodic-orbit expansion; explicitly cites Kottos-Smilansky. This is literally Field A (Casimir energy) computed with Field B's exact machinery — the A<->B identity in one paper."
+     },
+     {
+      "title": "Wirzba — The Casimir effect as scattering problem (J.Phys.A 41, 164003 / arXiv 0711.2395)",
+      "url": "https://arxiv.org/abs/0711.2395",
+      "relevance": "DISPOSITIVE. Writes Casimir energy as the energy-weighted integral of the log-determinant (Tr ln) of the multi-scattering matrix via a modified Krein trace formula, mapping it onto an analog quantum-chaos billiard (n-disk) problem — the same multi-scattering determinant whose periodic-orbit / semiclassical-zeta expansion Wirzba established. Bridges the Casimir scattering determinant to periodic-orbit theory / quantum chaos."
+     },
+     {
+      "title": "Wirzba — Quantum Mechanics and Semiclassics of Hyperbolic n-Disk Scattering Systems (arXiv chao-dyn/9712015)",
+      "url": "https://arxiv.org/pdf/chao-dyn/9712015",
+      "relevance": "Establishes that the multi-scattering (Tr ln) determinant det(1-M) equals the Gutzwiller-Voros semiclassical zeta function expanded over periodic orbits — i.e. 'multiple-scattering T-operator paths <-> periodic orbits' proven within quantum chaos. This is the exact mechanism the finder proposed, and Wirzba later reuses it for Casimir (0711.2395)."
+     },
+     {
+      "title": "Harrison & Kirsten — Zeta functions of quantum graphs (arXiv 0911.2509)",
+      "url": "https://arxiv.org/pdf/0911.2509",
+      "relevance": "Vacuum/Casimir energy on quantum graphs via the spectral zeta function built from the secular determinant — another paper squarely at the Casimir <-> quantum-graph-secular-determinant intersection."
+     },
+     {
+      "title": "Fulling et al. — Mathematical Aspects of Vacuum Energy on Quantum Graphs (J.Phys.A 40, 2007)",
+      "url": "https://www.researchgate.net/publication/1899517_Mathematical_Aspects_of_Vacuum_Energy_on_Quantum_Graphs",
+      "relevance": "Companion to quant-ph/0703248; proves convergence of the periodic-path (periodic-orbit) expansion for vacuum energy on graphs and reconciles trace-formula vs. method-of-images — explicitly the Casimir-via-periodic-orbits bridge."
+     },
+     {
+      "title": "Kenneth & Klich — Casimir forces in a T operator approach (arXiv 0707.4017)",
+      "url": "https://arxiv.org/abs/0707.4017",
+      "relevance": "The Field-A paper itself: Casimir energy as a Tr ln / det(1-M) of a T-operator multiple-scattering operator (following Kenneth-Klich PRL 97, 160401). Confirms Field A uses exactly the scattering-determinant machinery claimed."
+     },
+     {
+      "title": "Review — Quantum graph models of quantum chaos: introduction and recent applications (arXiv 2604.12690)",
+      "url": "https://arxiv.org/pdf/2604.12690",
+      "relevance": "NEAR-MISS / negative control. Presents the graph secular determinant det(1-T(k)S) and periodic-orbit trace formula (Field B core), but on inspection does NOT mention Casimir or vacuum energy — shows the connection is not made from the pure quantum-graph review side, only from the Casimir/vacuum-energy side (FKW, Wirzba)."
+     }
+    ],
+    "cross_field_identity_status": "explicitly_published",
+    "each_side_standard": "Both halves of the mechanism are independently STANDARD, so the equivalence is textbook-level to specialists. CASIMIR side: the scattering / T-operator determinant form E ~ Tr ln(1 - M) (M a multiple-scattering operator) is THE dominant modern formulation — Kenneth-Klich (PRL 97, 160401, 2006; the Field-A paper 0707.4017), Emig-Graham-Jaffe-Kardar (2007), Lambrecht-Maia Neto-Reynaud, reviewed in Rahi et al. PRD 80, 085021 (2009). QUANTUM-GRAPH / QUANTUM-CHAOS side: the secular determinant det(1 - S(k)D(k)) and the EXACT trace formula / periodic-orbit expansion (Kottos-Smilansky 1997 & the Field-B paper chao-dyn/9812005; Roth) are the foundational tools of the field, and the general statement 'spectral quantity = Tr ln(1 - scattering operator), expanded as a sum over periodic orbits / multiple-scattering paths' is the Balian-Bloch multiple-scattering expansion + Krein trace formula + Gutzwiller/Wirzba semiclassical-zeta machinery. Because a single common ancestor (Krein trace formula / Balian-Bloch multiple scattering) underlies both, a practitioner in either field would recognize the two determinants as the same object.",
+    "notes": "Verdict: the proposed cross-field bridge is NOT novel — it is explicitly published, from more than one direction, and even constitutes a small named subfield ('vacuum energy on quantum graphs'). (1) Fulling, Kaplan & Wilson (PRA 76, 012118, 2007; quant-ph/0703248, and the companion J.Phys.A 40, 2007) compute Casimir/vacuum energy directly on quantum graphs using the Kottos-Smilansky secular determinant det(1-SD) and its periodic-orbit expansion, citing Kottos-Smilansky — i.e. Field A carried out with Field B's exact machinery. Harrison-Kirsten (0911.2509) extend this via graph zeta functions. (2) Wirzba (J.Phys.A 41, 164003, 2008; 0711.2395) writes the Casimir energy as Tr ln of the multi-scattering matrix via a Krein trace formula and maps it onto an analog quantum-chaos billiard (n-disk) problem, whose multi-scattering determinant he had previously shown (chao-dyn/9712015) to equal the Gutzwiller-Voros periodic-orbit zeta function — precisely the 'multiple-scattering T-operator paths <-> periodic orbits' identity the finder proposed. Both are exactly the claimed A<->B mechanism. Confirmed by fetching the primary sources: quant-ph/0703248 cites Kottos-Smilansky and uses the secular determinant + periodic orbits; 0711.2395's abstract states the Casimir energy is the log-determinant of the multi-scattering matrix; 0707.4017 confirmed as Kenneth-Klich's Casimir T-operator paper (Tr ln / det(1-M)). The only near-miss is that a pure quantum-graph-chaos review (2604.12690) presents the identical secular-determinant/periodic-orbit machinery but does not itself mention Casimir — the connection is drawn from the Casimir/vacuum-energy side, not the graph-review side. Bottom line: mechanism is standard in each field AND the explicit cross-field identity is in the published literature (Fulling-Kaplan-Wilson; Wirzba). Lexical overlap between the two seed papers is low, but the conceptual connection is old and well-documented."
+   },
+   "verdict": {
+    "id": "0707.4017 (Kenneth-Klich, Casimir T-operator) <-> chao-dyn/9812005 (Kottos-Smilansky, quantum-graph periodic orbits)",
+    "novelty_class": "known_crossfield",
+    "confidence": "high",
+    "cross_field_prior_art_found": true,
+    "decisive_evidence": "Two independent published sources make exactly this A<->B identity. Fulling-Kaplan-Wilson (quant-ph/0703248, PRA 76 012118, 2007) compute Casimir/vacuum energy directly on quantum graphs using the Kottos-Smilansky secular determinant det(1-SD) and its periodic-orbit expansion, explicitly citing Kottos-Smilansky. Wirzba (0711.2395, J.Phys.A 41 164003, 2008) writes the Casimir energy as Tr ln of the multi-scattering matrix via a Krein trace formula and maps it onto a quantum-chaos n-disk billiard whose multi-scattering determinant he earlier (chao-dyn/9712015) showed equals the Gutzwiller-Voros periodic-orbit zeta function — precisely the \"T-operator multiple-scattering paths <-> periodic orbits\" mechanism proposed. Hunter fetched the primary sources to confirm. It even forms a named subfield (\"vacuum energy on quantum graphs\"), extended by Harrison-Kirsten (0911.2509).",
+    "caveat": "Evidence is strong and directly on-target (fetched primary sources, connection published from both directions), so little residual uncertainty. Minor note: the seed papers themselves (Kenneth-Klich 0707.4017, Kottos-Smilansky chao-dyn/9812005) do not cross-cite and have low lexical overlap — the bridging is done by intermediary papers (FKW, Wirzba), which is why an unsupervised finder flagged the raw pair as \"specialist\" rather than obviously-known.",
+    "best_prior_art_url": "https://arxiv.org/pdf/quant-ph/0703248"
+   }
+  },
+  {
+   "id": "B7",
+   "run": "RS-26",
+   "rating": "specialist",
+   "fieldA": "mathematical physics — equilibrium measures & orthogonal polynomials under superharmonic perturbations of a Gaussian measure (math-ph)",
+   "fieldB": "integrable systems — semiclassical soliton ensembles for the focusing NLS equation (nlin.SI)",
+   "hunt": {
+    "id": "0808.1770 (math-ph, superharmonic-perturbed Gaussian equilibrium measures / OPs) <-> nlin/0012034 (nlin.SI, semiclassical soliton ensembles for focusing NLS)",
+    "queries_tried": [
+     "Riemann-Hilbert steepest descent g-function equilibrium measure orthogonal polynomials semiclassical focusing NLS",
+     "connection between orthogonal polynomial asymptotics and semiclassical limit integrable systems Riemann-Hilbert",
+     "equilibrium measure external field variational problem orthogonal polynomials focusing nonlinear Schrodinger semiclassical soliton ensemble",
+     "Deift Riemann-Hilbert unified approach orthogonal polynomials integrable systems review g-function",
+     "McLaughlin Miller dbar steepest descent method orthogonal polynomials nonanalytic weights semiclassical NLS",
+     "Kamvissis McLaughlin Miller semiclassical soliton ensembles focusing NLS analogy orthogonal polynomials equilibrium measure external field",
+     "Its 'Riemann-Hilbert problem' Notices AMS orthogonal polynomials integrable systems nonlinear Schrodinger unified method",
+     "planar orthogonal polynomials normal matrix model dbar problem semiclassical soliton focusing NLS connection",
+     "'Lax-Levermore' variational problem equilibrium measure external field orthogonal polynomials random matrices semiclassical dispersive analogy",
+     "g-function mechanism applications review orthogonal polynomials semiclassical nonlinear Schrodinger same variational equilibrium problem lecture notes Miller",
+     "Riemann-Hilbert problems mathematical physics review g-function orthogonal polynomials semiclassical NLS equilibrium measure unified"
+    ],
+    "closest_hits": [
+     {
+      "title": "A. Its & L. Takhtajan, 'Normal matrix models, dbar-problem, and orthogonal polynomials on the complex plane' (arXiv:0708.3867, cross-listed nlin.SI)",
+      "url": "https://arxiv.org/abs/0708.3867",
+      "relevance": "Direct precursor to Field-A paper (0808.1770). Sets up the SAME 2x2 matrix d-bar problem for planar OPs and states explicitly it is 'expected to play the same role as the Riemann-Hilbert formalism in the theory of orthogonal polynomials on the line and for the related Hermitian model,' using the 'g-function undressing.' Cross-listed under integrable systems (nlin.SI) — i.e. the OP-side authors themselves frame the d-bar + g-function machinery as the integrable-systems RH machinery."
+     },
+     {
+      "title": "A. Its, 'The Riemann-Hilbert Problem and Integrable Systems' (Notices of the AMS 50(11), 2003)",
+      "url": "https://www.ams.org/notices/200311/fea-its.pdf",
+      "relevance": "Canonical expository article whose explicit thesis is that the matrix Riemann-Hilbert problem is the single unifying object linking orthogonal-polynomial / random-matrix asymptotics with integrable PDEs (KdV, NLS). (PDF returned 403 to the fetcher (bot block), but title, venue and thesis are confirmed across multiple indexes.)"
+     },
+     {
+      "title": "S. Kamvissis, K. McLaughlin, P. Miller, 'Semiclassical Soliton Ensembles for the Focusing NLS' (arXiv:nlin/0012034; Annals of Math. Studies 154, 2003)",
+      "url": "https://arxiv.org/abs/nlin/0012034",
+      "relevance": "Field-B paper. Uses the 2x2 matrix RH problem + Deift-Zhou steepest descent + scalar g-function fixed by a variational principle, stated by the authors to be 'the correct generalization of the variational principle exploited by Lax and Levermore' — i.e. the same logarithmic-potential/weighted-equilibrium (external-field) problem that governs OP asymptotics."
+     },
+     {
+      "title": "K. McLaughlin & P. Miller, 'The dbar steepest descent method for orthogonal polynomials on the real line with varying weights' (arXiv:0805.1980); companion 'unit circle' paper (arXiv:math/0406484)",
+      "url": "https://arxiv.org/abs/0805.1980",
+      "relevance": "Same two authors as the Field-B NLS work port their d-bar steepest-descent method (invented for the NLS problem) directly to OP asymptotics with equilibrium measure + g-function. Concrete demonstration that the identical d-bar/RH + g-function + equilibrium engine is used on both sides; the cross-field transfer is the explicit content of these papers."
+     },
+     {
+      "title": "P. Bleher & A. Its, 'Semiclassical asymptotics of orthogonal polynomials, Riemann-Hilbert problem, and universality in the matrix model' (arXiv:math-ph/9907025, Annals of Math. 1999)",
+      "url": "https://arxiv.org/abs/math-ph/9907025",
+      "relevance": "States that the proof of 'semiclassical asymptotics for orthogonal polynomials is based on the methods of the theory of integrable systems and on the analysis of the appropriate matrix Riemann-Hilbert problem' — i.e. the OP asymptotics ARE done with integrable-systems RH machinery; the word 'semiclassical' is used on the OP side itself."
+     },
+     {
+      "title": "P. Bleher & A. Its, 'Lectures on random matrix models. The Riemann-Hilbert approach' (arXiv:0801.1858)",
+      "url": "https://arxiv.org/abs/0801.1858",
+      "relevance": "Review that lays out the g-function / equilibrium-measure-with-external-field mechanism as the common tool; representative of the many reviews/textbooks presenting OP+random-matrix and integrable-PDE asymptotics as one method."
+     },
+     {
+      "title": "'Phase transitions and equilibrium measures in random matrix models' (arXiv:1302.3647)",
+      "url": "https://arxiv.org/abs/1302.3647",
+      "relevance": "Confirms the Lax-Levermore small-dispersion variational problem is the same 'electrostatic'/logarithmic-potential-with-external-field equilibrium problem used for orthogonal polynomials and random matrices — the exact bridge KMM invoke on the NLS side."
+     }
+    ],
+    "cross_field_identity_status": "explicitly_published",
+    "each_side_standard": "Standard on BOTH sides — this is the defining shared method of the 'Riemann-Hilbert school' (Deift and collaborators), not an exotic coincidence. Field A (equilibrium measures & orthogonal-polynomial asymptotics, incl. the planar/normal-matrix d-bar variant): the 2x2 matrix RH/d-bar problem (Fokas-Its-Kitaev), Deift-Zhou nonlinear steepest descent, the scalar g-function built from the equilibrium measure, and the weighted equilibrium/variational problem with external field (Saff-Totik potential theory; Deift-Kriecherbauer-McLaughlin-Venakides-Zhou) are THE textbook tools; the planar-OP d-bar version (Its-Takhtajan 0708.3867 -> Balogh-Harnad 0808.1770) is explicitly presented as the same-role analogue of the line-OP RH problem. Field B (semiclassical/zero-dispersion focusing NLS): the identical 2x2 matrix RH problem + steepest descent + g-function fixed by a variational/equilibrium principle is THE standard method (Kamvissis-McLaughlin-Miller; Tovbis-Venakides-Zhou), explicitly framed as the generalization of the Lax-Levermore weighted-equilibrium variational problem — the same object as in OP/random-matrix theory. A specialist in either field would immediately recognize the equivalence; the d-bar steepest-descent method itself was invented in the NLS context (McLaughlin-Miller) and then applied to OP asymptotics by the same authors.",
+    "notes": "Adversarial verdict: the cross-field connection is NOT novel — it is the explicitly published, canonical common core of Deift-school Riemann-Hilbert asymptotics. The mechanism the finder describes (2x2 matrix RH/d-bar problem in a semiclassical limit, scalar complex phase g-function fixed by a potential-theoretic variational/equilibrium principle) is, verbatim, the shared engine of (a) orthogonal-polynomial / random-matrix asymptotics and (b) the semiclassical/zero-dispersion limit of integrable PDEs (KdV via Lax-Levermore, NLS via Kamvissis-McLaughlin-Miller). This unification is the explicit thesis of Its's Notices-AMS survey 'The Riemann-Hilbert Problem and Integrable Systems' (2003), of Deift's Courant Lecture Notes 'Orthogonal Polynomials and Random Matrices: A Riemann-Hilbert Approach,' and of the Bleher-Its reviews. Concrete same-author/same-method bridges make it airtight: KMM's NLS g-function is stated by its authors to be the 'correct generalization of the Lax-Levermore variational principle' (= the OP/random-matrix weighted-equilibrium problem); and McLaughlin & Miller invented the d-bar steepest-descent method for the NLS problem and then applied the very same method to OP asymptotics (0805.1980, math/0406484). On the specific Field-A side, Its-Takhtajan (0708.3867), the direct precursor to Balogh-Harnad (0808.1770), themselves cross-list the planar d-bar-OP construction under nlin.SI (integrable systems) and use the 'g-function undressing.' Honesty caveat: I did NOT find a single paper that names these two EXACT papers/sub-problems together and writes 'Balogh-Harnad superharmonic-Gaussian planar-OP d-bar problem == KMM focusing-NLS RH problem'; and note a structural nuance the finder glosses over — Field A's d-bar is a genuinely 2D/planar d-bar (nonanalytic weight over an area, normal-matrix model), whereas Field B's d-bar arises from non-analytic continuation of jump matrices along 1D contours, so they are the same family/philosophy but not literally the identical operator. Nonetheless, per the rubric's 'same pair of fields' clause, the A<->B mechanism identity (OP/equilibrium-measure asymptotics <-> semiclassical focusing-NLS, via RH + g-function + equilibrium/variational principle) is unambiguously and repeatedly published, so status = explicitly_published. This is a textbook equivalence that any practitioner in the field already knows; it is not a hidden or surprising bridge."
+   },
+   "verdict": {
+    "id": "0808.1770 (math-ph, superharmonic-perturbed Gaussian equilibrium measures / OPs) <-> nlin/0012034 (nlin.SI, semiclassical soliton ensembles for focusing NLS)",
+    "novelty_class": "known_crossfield",
+    "confidence": "high",
+    "cross_field_prior_art_found": true,
+    "decisive_evidence": "The A<->B mechanism identity (RH/d-bar + scalar g-function fixed by a weighted-equilibrium/variational principle, linking OP & random-matrix asymptotics to the semiclassical focusing-NLS limit) is the explicit, repeatedly-published common core of Deift-school RH asymptotics. Its's Notices-AMS survey \"The Riemann-Hilbert Problem and Integrable Systems\" (2003) states this unification as its thesis; McLaughlin & Miller invented the d-bar steepest-descent method for focusing NLS and then applied the identical engine to OP asymptotics (0805.1980, math/0406484); KMM state their NLS g-function is the \"correct generalization of the Lax-Levermore variational principle\" (= the OP/random-matrix weighted-equilibrium problem); and Its-Takhtajan (0708.3867, the direct precursor to Field-A's 0808.1770) is itself cross-listed nlin.SI and frames its planar d-bar + g-function machinery as the same-role analogue of line-OP RH. cross_field_identity_status = explicitly_published.",
+    "caveat": "No single paper was found naming these two EXACT sub-problems together (i.e. \"Balogh-Harnad superharmonic-Gaussian planar-OP d-bar == KMM focusing-NLS RH problem\"); the published identity is at the field/mechanism level, not paper-to-paper. Structural nuance the finder glosses: Field A's d-bar is a genuine 2D/planar operator (nonanalytic area weight, normal-matrix model) whereas Field B's d-bar arises from non-analytic continuation of jump matrices along 1D contours — same family and philosophy, not literally the identical operator. Neither caveat downgrades the verdict, since the field-pair mechanism identity is a textbook equivalence any RH-school practitioner already knows.",
+    "best_prior_art_url": "https://arxiv.org/abs/0708.3867"
+   }
+  }
+ ]
+}

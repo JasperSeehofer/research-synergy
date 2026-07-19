@@ -62,15 +62,30 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 
 ## Active experiment
 
-**NONE active — EXP-RS-32 (E3) method/object flip CONCLUDED (2026-07-19): WEAK-underpowered on the
-pre-registered off-diagonal test, BUT method-atom ranking STRICTLY BEATS the whole-reduction cosine
-(overall AUC 0.813 vs 0.714; Poor-Poor 0.832 vs 0.754) → a better substrate, carry it into E2.** Feynman
-split-gate PASSED 5/5 (LLM cleanly splits method vs object — typed atomization is viable). The specific
-"symmetric buries object-distant transfers" mechanism is untestable here (only 3/82 positives are
-object-distant at τ=0.5 < N_min 10; NOT promoted to PASS — no goalpost-moving). Next = **E2
-(candidate-inference/residue reranking)** on the method-atom substrate, graded on E1; route E2's O(N)
-reduction to a cheaper model tier (Mistral/Haiku, validated vs E1 first) to stop draining the Claude
-rate-limit window. `.planning/phases/51-method-object/51-{PREREG,VERIFICATION}.md`; `data/rs32_verdict.json`.
+**SESSION PAUSED 2026-07-19 (human) — see `.planning/research/NEXT-SESSION.md` for the resume handoff.**
+Novelty path REOPENED (E1 PASS). Chapter status: reduction finder = validated cross-field REDISCOVERY
+engine (RS-26/27/28), but E1 (RS-31) shows the reduction predicts FUTURE bridges beyond degree incl.
+obscure (Poor-Poor AUC 0.754) → the rediscovery ceiling was a SELECTION-OBJECTIVE artifact, not a
+representation limit. E3 (RS-32): method-atom ranking beats whole-reduction (0.832 vs 0.754 PP; off-diag
+transfer test WEAK-underpowered, kept honest) → carry the method-atom substrate. **Tiering VALIDATED
+(ADOPT-MISTRAL, `rs33_tier_validate`): Mistral reductions preserve the E1 signal (Poor-Poor 0.732 ≥ 0.60,
+beats degree null) → route all O(N) reductions to Mistral (off the Claude window, EU-first); keep Opus for
+precision only (~85-90% less window burn).**
+
+**NEXT = E2 (candidate-inference / analogical-residue reranking)** on the method-atom substrate, graded on
+E1; O(N) reduction on the Mistral tier. Full run-recipe + frozen assets + gotchas in `NEXT-SESSION.md`;
+design in `RS-DIRECTIONS-20260718.md §E2`. Human decision at resume: E2 (recommended) / harden E1
+(rolling multi-T) / E4 generation (gated) / write up the reframe.
+
+### (concluded, WEAK+signal 2026-07-19) EXP-RS-32 (E3) → Phase 51 — Method/Object Asymmetric Retrieval
+
+**WEAK-underpowered on the pre-registered off-diagonal test, BUT method-atom ranking STRICTLY BEATS the
+whole-reduction cosine (overall AUC 0.813 vs 0.714; Poor-Poor 0.832 vs 0.754) → a better substrate, carry
+it into E2.** Feynman split-gate PASSED 5/5 (LLM cleanly splits method vs object — typed atomization is
+viable). The "symmetric buries object-distant transfers" mechanism is untestable here (only 3/82 positives
+are object-distant at τ=0.5 < N_min 10; NOT promoted to PASS — no goalpost-moving).
+`.planning/phases/51-method-object/51-{PREREG,VERIFICATION}.md`; `data/rs32_verdict.json`. **Tiering
+validated same day: `rs33_tier_validate` → ADOPT-MISTRAL (`data/rs33_verdict.json`).**
 
 ### (just-concluded, WEAK+signal 2026-07-19) EXP-RS-32 (E3) → Phase 51 — Method/Object Asymmetric Retrieval
 

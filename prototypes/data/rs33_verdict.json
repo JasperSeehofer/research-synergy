@@ -1,0 +1,23 @@
+{
+ "validation": "mistral-reduction-tier",
+ "verdict": "ADOPT-MISTRAL",
+ "pairwise_cos_corr_mistral_vs_opus": 0.5982,
+ "overall": {
+  "stratum": "overall",
+  "n": 166276,
+  "n_pos": 82,
+  "auc_mistral": 0.7401,
+  "auc_opus": 0.7136,
+  "auc_degree_null": 0.5034
+ },
+ "poor_poor": {
+  "stratum": "poor_poor",
+  "n": 41064,
+  "n_pos": 25,
+  "auc_mistral": 0.7324,
+  "auc_opus": 0.7532,
+  "auc_degree_null": 0.4955
+ },
+ "poor_poor_mistral_mwp": 3e-05,
+ "opus_reference_poor_poor_auc": 0.754
+}

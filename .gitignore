@@ -53,3 +53,8 @@ prototypes/data/rs31_in/
 
 # RS-32 method/object inputs (regenerable via rs32_asymmetric.py)
 prototypes/data/rs32_in/
+
+# Mistral tier-validation reductions (regenerable via rs33_tier_validate.py; off-window)
+prototypes/data/rs31_out_mistral/
+prototypes/rs33_reduce.log
+prototypes/data/rs33_reduce.done

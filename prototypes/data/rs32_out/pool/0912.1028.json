@@ -1,0 +1,5 @@
+{
+  "method_atom": "A relaxed, generalized solution concept in which the state of an evolving system at each point is a probability distribution over possible values (a parametrized-measure / statistical solution) rather than a single deterministic value, which admits global existence for arbitrary finite-energy initial data. Paired with it is a weak-strong uniqueness principle: a stability/relative-energy argument showing that whenever a regular (classical) deterministic solution to the same evolution law and initial data exists, every such generalized measure-valued solution must collapse onto it and coincide with it.",
+  "object_atom": "The incompressible Euler equations governing the flow of an ideal fluid, taken with L2 (finite-energy) initial data, and more generally hyperbolic systems of conservation laws.",
+  "brief_reason": "The transferable machinery is the measure-valued/relaxed solution concept plus the weak-strong uniqueness (relative-stability) argument reconciling it with classical solutions; what is domain-specific is the fluid-dynamical Euler equations and conservation-law systems they are applied to."
+}

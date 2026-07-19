@@ -1,0 +1,5 @@
+{
+  "method_atom": "A family of stochastic Monte Carlo integration techniques for approximating an intractable high-dimensional integral that acts as a normalizing constant, together with the ratio of two such constants. The machinery reweights samples drawn from a tractable proposal distribution (importance sampling), forms reciprocal-average estimators, and progressively integrates over nested level sets of an objective function to accumulate the total mass, all presented under a single unifying estimation framework.",
+  "object_atom": "The Bayes factor — the ratio of marginal likelihoods (model evidences) of competing probabilistic models given observed data — as used in Bayesian hypothesis testing and Bayesian model selection.",
+  "brief_reason": "The Monte Carlo normalizing-constant / ratio-of-integrals estimation machinery (importance, harmonic-mean, nested sampling) is transferable across fields, whereas the marginal-likelihood/Bayes-factor for model choice is the statistics-specific object it is applied to."
+}

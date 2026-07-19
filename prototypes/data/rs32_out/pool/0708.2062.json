@@ -1,0 +1,5 @@
+{
+  "method_atom": "A continuum hydrodynamic model that couples a local orientational order-parameter field to momentum transport, in which an internal energy-injecting stress drives a symmetry-breaking transition from a quiescent state to a spontaneously flowing state once a control parameter (the injection strength and its sign) crosses a threshold; under confinement this yields hysteresis, history-dependent steady states, spatially banded flow, and self-organized convection-roll patterns without any external forcing. Solved numerically by a hybrid scheme that combines a lattice-Boltzmann solver for momentum with a finite-difference solver for the order-parameter dynamics.",
+  "object_atom": "An active nematic liquid crystal made of extensile or contractile rod-like units, sandwiched between confining walls with various surface anchoring conditions, in quasi-1D and 2D geometries.",
+  "brief_reason": "The order-parameter/momentum coupling with an internal-stress-driven spontaneous-flow instability and the hybrid lattice-Boltzmann/finite-difference solver carry across fields, while the confined active nematic of aligning rods is the domain-specific object."
+}

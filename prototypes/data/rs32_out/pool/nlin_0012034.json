@@ -1,0 +1,5 @@
+{
+  "method_atom": "A generalization of the nonlinear steepest-descent asymptotic method for matrix Riemann-Hilbert problems, used to extract explicit, strong, locally uniform leading-order asymptotics for a singular small-parameter (semiclassical) limit of an integrable nonlinear evolution equation. The asymptotics are valid in regions of the independent-variable plane where a scalar complex phase function exists, and this phase function is characterized both by a finite-gap ansatz and, equivalently, by the critical-point/variational theory of an associated functional.",
+  "object_atom": "The focusing nonlinear Schroedinger equation with real analytic, even, bell-shaped initial data, studied in its semiclassical (zero-dispersion) limit via a sequence of exact solutions built from asymptotically small modifications of the initial data.",
+  "brief_reason": "The Riemann-Hilbert steepest-descent plus finite-gap/variational asymptotic machinery is transferable to any integrable system's singular limit, while the focusing nonlinear Schroedinger equation with bell-shaped data in its semiclassical limit is the domain-specific object."
+}

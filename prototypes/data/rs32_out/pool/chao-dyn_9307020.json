@@ -1,0 +1,5 @@
+{
+  "method_atom": "a low-dimensional deterministic dynamical system that behaves regularly almost everywhere except at a countable set of isolated branch points where small random perturbations select the outgoing continuation at random, rendering the evolution locally non-deterministic; paired with a statistical/probabilistic framework for characterizing the resulting ensemble of trajectories rather than any single deterministic orbit",
+  "object_atom": "a concrete example dynamical system exhibiting these sensitive decision points, with its randomly-selected transitions triggered by thermal noise as the perturbation source",
+  "brief_reason": "the branch-point/noise-selected-continuation dynamics plus its statistical analysis is the transferable machinery, while the specific exemplar system and thermal-noise perturbation are the domain-specific object; the paper largely fuses the two since the method is introduced only through and for this class of systems, so the object is thin."
+}

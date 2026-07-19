@@ -1,0 +1,5 @@
+{
+  "method_atom": "A construction of minimum-uncertainty 'coherent' states parametrized by points of a classical phase space, built through an algebraic factorization/supersymmetric decomposition of the governing operator. These states saturate a specialized uncertainty relation, form an overcomplete family that resolves the identity against a uniform measure, and thereby define a quantization map linking classical observables to operators; under time evolution each state remains localized along the corresponding classical phase-space trajectory, recovering the classical limit.",
+  "object_atom": "A quantum particle bound in a Pöschl-Teller potential well, i.e. the associated confining one-dimensional quantum-mechanical system and its classical phase space.",
+  "brief_reason": "The transferable machinery is the factorization/supersymmetry-based construction of phase-space-parametrized minimum-uncertainty states with an identity resolution and classical-trajectory localization; the domain-specific object is the particle in the Pöschl-Teller potential."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "A relation that ties the order parameter of a spontaneously broken continuous symmetry to the density of low-lying eigenmodes of the system's governing linear operator near the bottom edge of its spectrum, so that a non-zero accumulation (density of states) at the spectral edge signals the broken phase. The order parameter is estimated by counting the number of eigenmodes falling in a small energy interval; because such spectral-counting observables are renormalizable, they can be computed reliably even on a discretized approximation of the operator that breaks the symmetry at the discretization scale.",
+  "object_atom": "The spontaneous breaking of chiral symmetry in two-flavour QCD, probed via the low eigenmodes of the Dirac operator and the chiral condensate, computed with the Wilson formulation of lattice QCD.",
+  "brief_reason": "What carries across is the spectral-density-of-modes-at-the-edge to order-parameter relation and the mode-counting estimator on a discretized operator; what is domain-specific is chiral symmetry, the Dirac operator, the chiral condensate, and lattice QCD with Wilson quarks."
+}

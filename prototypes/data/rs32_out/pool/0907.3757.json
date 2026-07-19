@@ -1,0 +1,5 @@
+{
+  "method_atom": "a scalable addressing/demultiplexing control architecture in which a small number of shared input lines (a few digital address lines plus a handful of global analog and power lines) fan out to independently program a large set of local, individually addressable static (and limited time-varying) analog control values held at many elements, so that the number of shared control lines grows far more slowly than the number of controlled elements.",
+  "object_atom": "superconducting devices in an integrated circuit — specifically 64 magnetic-flux biases applied to the qubits/couplers of a unit cell of a superconducting adiabatic quantum optimization processor.",
+  "brief_reason": "The few-lines-to-many-independent-local-settings addressing/demultiplexing scheme is the transferable machinery, while the superconducting flux-biased quantum-optimization devices are the domain-specific object it is applied to."
+}

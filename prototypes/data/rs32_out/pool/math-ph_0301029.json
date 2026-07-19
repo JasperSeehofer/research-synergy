@@ -1,0 +1,5 @@
+{
+  "method_atom": "a systematic classification technique that enumerates a complete set of inequivalent concrete representations of an abstract algebraic structure as first-order differential operators acting on a finite-dimensional space, exploiting distinguished invariant subobjects (subobjects preserved under all structure-respecting automorphisms) to organize the enumeration and factor out equivalence.",
+  "object_atom": "real Lie algebras of dimension at most four, together with their realizations as vector fields on a space of an arbitrary finite number of variables, and their associated automorphisms, differentiations, ideals, and subalgebras.",
+  "brief_reason": "the invariant-subobject-driven classification and realization-enumeration machinery is the transferable method, while the specific low-dimensional real Lie algebras realized as vector fields are the domain-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a scalar correlation measure quantifying whether highly-connected units in a network of interacting elements preferentially link to other highly-connected units (positive correlation) or to weakly-connected ones (negative correlation), together with a generative model that tunes this nearest-neighbour connectivity correlation, analysed both analytically and numerically to show how the correlation shifts the percolation threshold and the resilience of the connected structure to random removal of units.",
+  "object_atom": "real-world complex networks — social networks of people, technological infrastructure networks, and biological interaction networks — described by their nodes and the links between them.",
+  "brief_reason": "the degree-correlation statistic and its effect on percolation and robustness are transferable machinery, while the specific social/technological/biological networks classified are the domain-specific object."
+}

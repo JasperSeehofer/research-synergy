@@ -1,0 +1,5 @@
+{
+  "method_atom": "a class of stochastic dynamical models whose stationary/equilibrium distribution is trivial (non-interacting units) but whose allowed transitions between configurations are locally restricted, so that slow collective relaxation, diverging timescales, dynamical (non-thermodynamic) transitions, aging, and spatial heterogeneity emerge purely from kinetic constraints rather than from any static ordering; analyzed via exact solutions, adiabatic and projection/mode-coupling approximations, diagrammatic expansions, and mappings to effective or quantum representations",
+  "object_atom": "glass-forming systems exhibiting slow relaxation and aging, including structural glasses, supercooled liquids, and cellular/foam-like materials, together with in- and out-of-equilibrium driven states thereof",
+  "brief_reason": "the constrained-transition mechanism producing slow dynamics without an equilibrium transition is the transferable machinery, while the glassy/supercooled-material phenomenology is the condensed-matter-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "an analysis of the rank-frequency statistics of discrete tokens drawn from a large sample, showing that the standard power-law-with-offset (generalized-power-law) distribution captures only a restricted portion of the data and that systematic deviations grow as the sample size increases, with all observed regimes unified under a single q-generalized (Tsallis nonextensive) family of distributions attributed to an underlying complex generative process",
+  "object_atom": "the rank-ordered occurrence frequencies of words in natural-language text corpora of varying size (quantitative linguistics)",
+  "brief_reason": "the transferable machinery is the rank-frequency statistical modeling and its unification within a nonextensive (Tsallis) distribution family, while the domain-specific object is the frequency of words in linguistic corpora."
+}

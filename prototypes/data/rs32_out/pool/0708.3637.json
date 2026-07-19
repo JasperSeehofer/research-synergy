@@ -1,0 +1,5 @@
+{
+  "method_atom": "An intertwining (conjugation) construction showing that the action of a subgroup of a symplectic group on a geometric configuration space is equivalent, via a conformal map over the quaternion division algebra, to a Möbius (fractional-linear) transformation acting on quaternionic coordinates. In other words, a change of variables that recasts a compact-group action as a fractional-linear (Möbius) action over a division algebra, generalizing an earlier such correspondence.",
+  "object_atom": "The geometry of two-qubit quantum states and their state space under the local unitary subgroup SO(2)⊗SU(2), i.e. a pair of qubits acted on by local unitary transformations.",
+  "brief_reason": "The transferable machinery is the intertwining of a symplectic-subgroup action with quaternionic Möbius transformations through a conformal map; the domain-specific object is the two-qubit quantum state space under local unitaries."
+}

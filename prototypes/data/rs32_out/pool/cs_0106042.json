@@ -1,0 +1,5 @@
+{
+  "method_atom": "a bounded finite-structure search that decides whether a set of formal constraints is satisfiable over a fixed finite domain by grounding the constraints into a purely propositional (Boolean) constraint set and solving it with a systematic backtracking Davis-Putnam-Logemann-Loveland satisfiability procedure, then lifting any satisfying assignment back to a full model; it complements deductive proof search by supplying explicit countermodels when no proof exists",
+  "object_atom": "first-order logical statements and their finite models, produced as a companion to the Otter automated theorem prover which searches for proofs while this tool searches for countermodels",
+  "brief_reason": "the reduce-to-propositional-SAT-over-a-bounded-domain-then-lift-solutions search machinery is the transferable method, while first-order logic formulas, finite model finding, and the Otter theorem-prover pairing are the logic-specific object."
+}

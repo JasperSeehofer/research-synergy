@@ -1,0 +1,5 @@
+{
+  "method_atom": "Decomposing a large interaction network into topological modules and characterizing a core-periphery organization, in which densely interlinked core modules perform basic shared functions while loosely coupled peripheral modules are more autonomous and specialized. The transferable step is correlating each element's structural position (core vs. periphery, module membership) with the rate and cohesiveness of change of its members over time, testing whether structural placement predicts how fast and how jointly the members change.",
+  "object_atom": "The Homo sapiens metabolic network — enzymes/proteins as nodes linked by metabolic reactions — together with the evolutionary ages and substitution rates of the member genes.",
+  "brief_reason": "The module-decomposition, core-periphery structure, and position-vs-rate-of-change correlation are transferable machinery; the metabolic reaction network and its proteins' evolutionary ages/rates are the biology-specific object."
+}

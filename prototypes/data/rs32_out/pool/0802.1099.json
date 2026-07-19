@@ -1,0 +1,5 @@
+{
+  "method_atom": "a surrogate/response-surface modeling approach that replaces an expensive deterministic input-output map with a computationally cheap emulator built as a Gaussian process characterized by mean and covariance functions, together with a tailored estimation procedure for fitting the emulator under difficult conditions (strongly nonlinear relations, highly dispersed or discontinuous outputs, high-dimensional inputs, and irregular sampling designs); the fitted emulator is then used for uncertainty propagation, global sensitivity analysis, and optimization.",
+  "object_atom": "an expensive complex computer code, illustrated on a hydrogeological simulator modeling radionuclide transport in groundwater.",
+  "brief_reason": "the Gaussian-process emulation and estimation machinery for cheaply approximating a costly function is field-neutral and transferable, while the specific costly simulator (a hydrogeological groundwater/radionuclide-transport code) is the domain-specific object."
+}

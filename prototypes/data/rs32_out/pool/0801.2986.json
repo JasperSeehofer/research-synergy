@@ -1,0 +1,5 @@
+{
+  "method_atom": "A quantum-computational algorithm that simulates the time evolution of an interacting many-body wavefunction in polynomial (indeed quadratic) time by split-operator/Trotter factorization of the propagator, representing the full state on a discretized spatial grid and advancing it with appropriately short timesteps, together with efficient subroutines for preparing physically meaningful initial states and for reading out dynamical observables such as state-to-state transition amplitudes and long-time rate quantities.",
+  "object_atom": "Chemical reaction dynamics — the coupled motion of electrons and nuclei during molecular reactions of more than about four atoms, treated beyond the Born-Oppenheimer approximation, with target quantities including state-to-state transition probabilities and thermal reaction rates.",
+  "brief_reason": "The split-operator grid propagation of a many-body wavefunction on a quantum computer, with efficient state preparation and observable extraction, is the transferable method; the coupled electron-nuclear molecular-reaction system is the domain-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "A general debiasing scheme that converts a biased, convergent sequence of approximations to a limiting quantity into an unbiased estimator of that limit, applicable to any iterative or stochastic process whose finite-time state can be sampled. It works by randomizing the truncation level of the converging process and reweighting the increments, yielding an unbiased estimate of the limiting value together with computable standard-error estimates.",
+  "object_atom": "Concrete numerical and financial computations: approximating integrals via numerical integration or Monte-Carlo quadrature, finding roots of equations via Newton-Raphson iteration, and pricing options under a Heston stochastic volatility model.",
+  "brief_reason": "The transferable randomized-truncation debiasing machinery for the limit of a samplable converging process carries across fields, while the specific numerical integrals, root-finding, and Heston-model option pricing are the domain-specific objects it is applied to."
+}

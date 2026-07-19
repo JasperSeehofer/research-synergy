@@ -1,0 +1,5 @@
+{
+  "method_atom": "estimation of a power-law scaling exponent from the two-point correlation function of a strongly fluctuating (intermittent) field across a range of separation scales, contrasted with the scaling of its integral moment. A key part of the machinery is accounting for how a surrogate or proxy reconstruction of the underlying quantity (a simplified operational estimator standing in for the true field) systematically distorts the correlation function at small separations, thereby restricting the range over which clean power-law scaling holds.",
+  "object_atom": "the energy dissipation field of fully developed turbulence, reconstructed from a single one-point time record of an atmospheric boundary layer, with its intermittency exponent measured over the inertial range of scales.",
+  "brief_reason": "The transferable part is the correlation-function power-law-exponent estimation plus the correction for surrogate/proxy-induced small-scale distortion; the turbulent energy-dissipation field measured in an atmospheric boundary layer is the domain-specific object."
+}

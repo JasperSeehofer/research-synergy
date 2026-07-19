@@ -1,0 +1,5 @@
+{
+  "method_atom": "an analysis of critical scaling and finite-size scaling of response functions near a marginal continuous phase transition, deriving multiplicative and additive logarithmic corrections to scaling (some of which are universal), and validating these predictions both at and away from the critical point using high-precision stochastic (Monte Carlo) sampling on finite systems.",
+  "object_atom": "the two-dimensional 4-state Potts model — variables each taking one of four discrete states on a 2D lattice — and its thermodynamic response functions, the susceptibility and the specific heat.",
+  "brief_reason": "The transferable part is the finite-size-scaling / logarithmic-correction analysis with Monte Carlo verification, while the specific 4-state Potts lattice system and its susceptibility/specific-heat are the domain-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "A single strongly-interacting local degree of freedom hybridized with a gapped reservoir carrying pairing/symmetry-breaking correlations, solved non-perturbatively by an iterative renormalization-group coarse-graining that integrates out environmental modes shell by shell. The scheme yields one- and two-particle dynamic response functions, the position and spectral weight of localized in-gap bound states, and ground-state phase diagrams as control parameters and symmetry conditions are varied.",
+  "object_atom": "A locally correlated electronic site (an Anderson magnetic impurity) embedded in a BCS superconducting medium, with Andreev bound states, particle-hole (a)symmetry regimes, and relevance to dynamical mean-field-theory extensions with superconducting symmetry breaking.",
+  "brief_reason": "The transferable part is the RG treatment of an interacting local mode coupled to a gapped, pairing-correlated bath giving in-gap bound states and phase diagrams; the domain-specific part is the correlated electron impurity in a BCS superconductor with Andreev states."
+}

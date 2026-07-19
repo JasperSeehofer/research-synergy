@@ -1,0 +1,5 @@
+{
+  "method_atom": "a self-consistent mean-field description of many interacting fermions in which a pairwise attractive coupling binds fermions into correlated pairs, treated at three levels of approximation: a variational pair-condensate ground state that spontaneously breaks the conserved-particle-number symmetry, a number-restored (projected) refinement of that condensate, and an exact analytic solution of the pairing Hamiltonian via a set of coupled nonlinear equations (a Bethe-ansatz-type construction) that recovers the full correlation energy and yields an unaveraged definition of the collective-pair wavefunction and the fraction of pairs that are collective",
+  "object_atom": "pairing correlations of nucleons in atomic nuclei, specifically the even samarium isotopes described in a Hartree-Fock nuclear mean field",
+  "brief_reason": "the mean-field pairing machinery and its BCS / number-projected / exactly-solvable (Richardson) hierarchy is the transferable method, while the nucleons of the even Sm isotopes are the nuclear-physics-specific object."
+}

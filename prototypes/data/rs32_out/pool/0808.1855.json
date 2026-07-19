@@ -1,0 +1,5 @@
+{
+  "method_atom": "An open-system framework in which a slowly-evolving background degree of freedom is coupled to a large thermal bath of many fast microscopic modes; integrating out the bath yields an effective Langevin-type equation of motion carrying a friction/dissipation term together with a stochastic noise term, the two linked by a fluctuation-dissipation relation. The dissipation coefficients are derived from real-time correlation functions of the interacting bath evaluated at finite temperature, computable for a range of interaction structures.",
+  "object_atom": "The inflaton scalar field driving cosmological inflation in the early universe, coupled to particle-physics fields that form a radiation bath (the warm-inflation scenario), with its resulting observational predictions.",
+  "brief_reason": "The transferable machinery is the finite-temperature integrating-out of a bath to obtain coupled dissipation-plus-noise (fluctuation-dissipation) dynamics for a slow variable, while the inflaton and early-universe cosmology are the domain-specific object."
+}

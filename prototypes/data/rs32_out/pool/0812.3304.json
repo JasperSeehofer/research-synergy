@@ -1,0 +1,5 @@
+{
+  "method_atom": "an exactly solvable driven-dissipative transport model in which a conserved quantity is injected at the top of a hierarchical branching structure, cascaded down through successive levels by a tunable transfer dynamics, and drained along the way; as a control parameter of the transfer rule is varied, the low-drain limit of the stationary state undergoes a transition between a near-equilibrium regime and a persistent-flux, far-from-equilibrium regime whose throughput does not vanish.",
+  "object_atom": "a driven dissipative Zero Range Process of particles hopping on a tree, where particles represent finite packets of energy exchanged between degrees of freedom, injected at large length scales (the tree's root) and dissipated mainly at small scales (the deepest branches).",
+  "brief_reason": "The transferable machinery is the hierarchical injection-cascade-dissipation transport model with a control-parameter-driven equilibrium/far-from-equilibrium transition in the low-dissipation limit; the tree-structured Zero Range Process of energy packets across length scales is the physics-specific object."
+}

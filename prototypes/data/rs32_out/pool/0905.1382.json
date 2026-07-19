@@ -1,0 +1,5 @@
+{
+  "method_atom": "A framework for classifying the boundary behaviour of a critically-tuned, scale- and conformally-invariant two-dimensional system: solving the boundary integrability (Yang-Baxter) equations to obtain mutually dual families of admissible boundary conditions, identifying the operators that mediate changes between boundary states, computing the associated representation-theoretic characters and invariant partition functions, evaluating the entropies of the boundary states, and organising the renormalisation-group flows between boundary fixed points into a consistent phase diagram.",
+  "object_atom": "The two-dimensional dilute O(n) model at criticality and its equivalent dilute loop-gas representation, including its anisotropic special surface transitions and the connectivity/crossing probabilities of Ising domain walls.",
+  "brief_reason": "The integrable-boundary plus conformal-field-theory machinery for classifying boundary conditions, their entropies, and inter-fixed-point flows is transferable, while the dilute O(n)/loop system and Ising domain walls are the field-specific object."
+}

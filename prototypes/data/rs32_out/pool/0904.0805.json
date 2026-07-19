@@ -1,0 +1,5 @@
+{
+  "method_atom": "a large collection of heterogeneous units coupled by competing (frustrated) interactions, of the spin-glass type, whose disorder-plus-competition produces a rugged landscape of many metastable states; this generically yields long epochs of stasis punctuated by abrupt collective transitions (crises) and hyper-sensitivity to small perturbations of the control parameters, with the aggregate dynamics arising endogenously from the interactions rather than from external forcing. Such systems are studied through highly stylized minimal models and agent-based numerical simulations of many boundedly-rational, finite-capability interacting units.",
+  "object_atom": "economic and financial systems — the erratic dynamics of markets and the behaviour of interacting economic agents, contrasted with traditional economics' assumption of rational agents with infinite foresight and computing ability.",
+  "brief_reason": "The transferable part is the frustrated-disordered-system / metastability-crisis-and-sensitivity machinery plus agent-based simulation of interacting units; the domain-specific object is markets and economic agents."
+}

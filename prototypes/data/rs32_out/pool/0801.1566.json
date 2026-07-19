@@ -1,0 +1,5 @@
+{
+  "method_atom": "a symmetry-preserving coarse-graining that reduces a full high-dimensional system to a lower-dimensional effective description while retaining a discrete global symmetry of the original, with the effective couplings fixed by perturbative matching to the full system in an asymptotic limit of the control parameter; the resulting effective model's phase diagram is then mapped non-perturbatively by numerical (lattice) simulation, revealing a continuous (second-order) symmetry-breaking transition whose presence is a direct consequence of having kept that discrete symmetry.",
+  "object_atom": "SU(2) Yang-Mills gauge fields at high temperature, whose center symmetry governs the confinement/deconfinement phase transition.",
+  "brief_reason": "The transferable part is the symmetry-respecting dimensional-reduction-plus-perturbative-matching scheme validated against the full theory's second-order transition; the domain-specific object is the SU(2) gauge theory and its center-symmetry-driven confinement transition."
+}

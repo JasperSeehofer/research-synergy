@@ -1,0 +1,5 @@
+{
+  "method_atom": "A stochastic (Monte Carlo) model of a multi-stage sequential activation cascade in which the interacting units can be spatially co-localized into a shared complex, used to study how such confinement reshapes the temporal distribution of a propagating activation signal. Spatial localization broadens the distribution of activation times, and the amount of a localizing agent that maximizes signal amplitude coincides with the broadest timing distribution, revealing a tunable trade-off between response magnitude and response duration.",
+  "object_atom": "Protein kinase signaling cascades in cell signaling, where scaffold proteins bind and spatially localize multiple kinases into a signaling complex to regulate signal duration and the timing of kinase activation.",
+  "brief_reason": "What carries across is the stochastic simulation of a sequential activation cascade whose signal timing is broadened by co-localizing components; what is domain-specific is the kinases and scaffold proteins of biological cell signaling."
+}

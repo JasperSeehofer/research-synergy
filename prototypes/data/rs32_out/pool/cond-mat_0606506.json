@@ -1,0 +1,5 @@
+{
+  "method_atom": "A critical logical analysis of a fluctuation-dissipation relation that links a system's linear response to an external perturbation (its dissipation) to the spectrum of its spontaneous equilibrium fluctuations. The analysis distinguishes a weak form of the relation, provable under broad general conditions, from a strong form whose very statement presupposes a stochastic equation of motion of damping-plus-random-noise type (a Langevin equation), and argues that this strong form has not been reliably derived.",
+  "object_atom": "Quantum-mechanical dissipative systems, specifically the quantum fluctuation-dissipation theorem and the quantum Langevin equation.",
+  "brief_reason": "The transferable part is the fluctuation-dissipation / damping-plus-noise stochastic-equation machinery and the weak-vs-strong-form derivability critique; the domain-specific part is its instantiation in the quantum-mechanical regime."
+}

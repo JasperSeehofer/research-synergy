@@ -1,0 +1,5 @@
+{
+  "method_atom": "A defect-formation mechanism in which a rapid symmetry-breaking transition proceeds by the independent nucleation of many spatial domains whose order-parameter orientations are uncorrelated; where domains meet, topological defects (line defects and closed loops) become trapped at a probability per domain fixed by the topology of the order-parameter space. The predicted trap probability is obtained from the homotopy/geometry of that space (here 1/pi in two dimensions for a space of the given type) and can be compared against a measured defect-per-domain rate.",
+  "object_atom": "The isotropic-to-nematic phase transition of a uniaxial nematic liquid crystal, whose disclination lines and loops are the observed strings, with order-parameter space S^2/Z_2.",
+  "brief_reason": "The domain-coalescence defect-trapping mechanism and its topology-fixed formation probability carry across fields, while the nematic liquid crystal and its disclinations are the condensed-matter-specific object."
+}

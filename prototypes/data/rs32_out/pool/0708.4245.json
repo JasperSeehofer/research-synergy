@@ -1,0 +1,5 @@
+{
+  "method_atom": "particle-based molecular simulation of a dense array of tethered, mutually interacting flexible chains driven by a shear or pressure-gradient flow of an embedding medium, revealing that individual constituents undergo periodic tumbling with non-Gaussian fluctuations of their orientation; the collective coupling of these driven units to the surrounding fluid reverses the direction of near-boundary transport, an effect quantified as an effective linear slip boundary condition relating surface velocity to shear rate.",
+  "object_atom": "a dense polymer brush of grafted, unentangled chains in contact with an explicit chemically-identical polymeric solvent, subjected to Couette and Poiseuille flow near the brush-coated surface.",
+  "brief_reason": "The transferable part is the driven-tethered-units-with-cyclic-tumbling machinery producing near-wall flow inversion characterized by an effective slip law; the polymer-brush-in-solvent grafted-chain system is the domain-specific object."
+}

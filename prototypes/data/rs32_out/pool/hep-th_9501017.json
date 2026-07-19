@@ -1,0 +1,5 @@
+{
+  "method_atom": "a perturbative renormalisation-group expansion around a scale-invariant critical fixed point, treating weak quenched (frozen) randomness in the coupling as a perturbation, to compute the crossover behaviour of two-point correlation functions; the analysis distinguishes an irrelevant case where randomness only rescales the correlation amplitude while leaving the scaling exponent unchanged, from a relevant case where it shifts the scaling exponent to a new fixed point.",
+  "object_atom": "the two-dimensional Ising and three-state Potts models with random bond couplings, at their critical points, with results compared against numerical data.",
+  "brief_reason": "The transferable part is the perturbative RG-around-a-fixed-point machinery for correlation-function crossover under quenched disorder; the domain-specific part is the 2D random-bond Ising/Potts spin systems (whose pure limits happen to be described by conformal field theories, a mild fusion of method and object)."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "constructing reducible (non-irreducible) representations of an operator algebra defined by canonical commutation and anticommutation relations, so that the generators are realized as genuine well-defined operators rather than distribution-valued objects, with the reducibility acting as a regularization that can yield finite rather than divergent results.",
+  "object_atom": "the second quantization of relativistic Dirac (fermionic) and Maxwell (bosonic/electromagnetic) fields in quantum field theory.",
+  "brief_reason": "the transferable machinery is the use of reducible representations of a canonical (anti)commutation algebra to obtain honest operators and finite outcomes; the domain-specific object is the quantized Dirac and Maxwell fields it is applied to."
+}

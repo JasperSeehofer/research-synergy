@@ -1,0 +1,5 @@
+{
+  "method_atom": "The flow of an eigenvalue distribution as a control parameter is varied, governed by a complex-valued inviscid Burgers-Hopf equation (a nonlinear advection/transport law), whose smooth spectral flow steepens and develops a shock singularity at a critical value. The shock-formation catastrophe is treated as a symmetry-breaking transition of a disordered, turbulent character, and universal critical exponents are read off from the local singular behavior at the moment of shock formation.",
+  "object_atom": "The eigenvalue distribution of a Wilson loop in large-N_c Yang-Mills gauge theory, its confinement transition (a realization of the Durhuus-Olesen transition via the Makeenko-Migdal loop equation), and the critical exponents measured in d=2 and d=3 lattice simulations, with speculation toward d=4.",
+  "brief_reason": "The nonlinear-advection Burgers-Hopf shock-formation with universal exponents is the transferable method, while the Wilson-loop eigenvalues and gauge-theory confinement are the domain-specific object; the two separate cleanly since the same shock-catastrophe machinery governs many spectral flows."
+}

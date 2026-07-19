@@ -1,0 +1,5 @@
+{
+  "method_atom": "A technique for decoupling two coupled degrees of freedom of a confined unit by tuning an external control field so that two distinct internal configurations experience an identical confining potential, allowing coherent manipulation of internal-state transitions independently of the unit's positional/center-of-mass motion; suppressing the leading systematic perturbation this way enables high-precision measurement of the internal transition and controlled coupling between the unit and a resonant mode.",
+  "object_atom": "Laser-cooled neutral atoms tightly localized in a deeply confining optical (light) trap, whose two electronic states are used for optical atomic clocks and for coherent control of single atoms and photons in cavity quantum electrodynamics.",
+  "brief_reason": "The matched-potential decoupling of an internal from an external degree of freedom for perturbation-free precision measurement is the transferable method, while the neutral-atoms-in-optical-traps-for-clocks-and-cavity-QED setting is the atomic-physics-specific object."
+}

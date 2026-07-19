@@ -1,0 +1,5 @@
+{
+  "method_atom": "an exact solution technique for the stationary distribution of many-body stochastic processes with driven, biased local transitions, in which the probability weight of each global configuration is written as a product (trace) of non-commuting operators satisfying a small algebra; this reduces the computation of macroscopic ensemble averages to algebraic manipulation of the operator representations and admits extensions to multiple interacting species and to synchronized/parallel update rules.",
+  "object_atom": "driven diffusive lattice-gas models such as exclusion processes, used to represent biological molecular transport and vehicular traffic flow, which display far-from-equilibrium features like shocks and boundary-driven phase transitions.",
+  "brief_reason": "The transferable part is the matrix/operator-product ansatz plus its algebraic machinery for computing steady-state statistics of stochastic many-body systems; the domain-specific part is the exclusion-process/driven-diffusion model of transport and traffic."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "elementary analytic manipulation of infinite series and definite integrals to derive and prove closed-form identities relating the values of a special function to combinatorial coefficients and partial-sum sequences, without recourse to advanced or non-elementary machinery",
+  "object_atom": "the Riemann zeta function together with binomial coefficients and the harmonic numbers, as studied in analytic number theory",
+  "brief_reason": "The transferable part is the elementary series/integral technique for producing closed-form identities among special-function values and combinatorial sequences, while the Riemann zeta function, binomial coefficients, and harmonic numbers are the number-theory-specific objects it acts on."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "rigorous asymptotic analysis of a large system of many identical, weakly-interacting units, deriving the leading-order collective energy of the lowest state and reducing the full high-dimensional interacting problem to a single effective nonlinear field equation for a macroscopic order parameter; the framework also characterizes emergence of macroscopic coherence, dissipationless collective flow, the qualitatively distinct behaviour when the system is confined to one effective dimension, and the response to imposed rotation, using controlled analytic estimates rather than approximation.",
+  "object_atom": "a dilute gas of ultra-cold interacting bosonic quantum particles, as realized in cold-atom experiments, including its ground-state energy, condensation, superfluidity, one-dimensional confinement, and rotating configurations.",
+  "brief_reason": "The transferable machinery is the rigorous reduction of a many-body interacting problem to an effective nonlinear order-parameter equation plus its coherence/flow/rotation analysis; what is domain-specific is the concrete ultra-cold interacting Bose gas the analysis is applied to."
+}

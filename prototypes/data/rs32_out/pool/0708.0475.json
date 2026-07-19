@@ -1,0 +1,5 @@
+{
+  "method_atom": "A nonlinear wave-mixing/merging process in which several quanta of a driving field combine into one, mediated by the field-induced polarizability of an underlying medium, with the driving background treated exactly (to all orders) rather than as a low-order perturbation. The resulting merging probability depends non-perturbatively on the amplitude (intensity) and frequency of the strong driving field, and the effect becomes observable when a high-momentum probe crosses the strong background.",
+  "object_atom": "The polarization of the quantum electromagnetic vacuum, probed by the merging of laser photons when a high-energy proton beam collides with a strong laser field, measurable by combining next-generation table-top petawatt lasers with existing proton accelerators.",
+  "brief_reason": "The transferable part is the exact-in-the-strong-background, non-perturbative nonlinear quanta-merging machinery driven by a medium's polarizability; the domain-specific part is the QED vacuum polarized in a proton-laser collision."
+}

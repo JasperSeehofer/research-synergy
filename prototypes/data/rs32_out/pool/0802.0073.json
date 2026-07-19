@@ -1,0 +1,5 @@
+{
+  "method_atom": "Entropic-sampling Monte Carlo algorithms (density-of-states / flat-histogram schemes) that reconstruct the full free-energy landscape of a many-body system of interacting binary units as a function of an order parameter, subject to site-quenched random external biasing fields. A double-peak free-energy-barrier criterion, tracked under finite-size scaling, is then used to decide whether a collective transition is genuinely discontinuous (first-order) or continuous, testing against a mean-field prediction of a tricritical point at strong disorder.",
+  "object_atom": "The three-dimensional bimodal random-field Ising model: magnetic spins on simple cubic lattices (linear sizes L=4-32) each subject to a quenched local field of two possible values (±h) in the strong-disorder regime (h=2 and h=2.25).",
+  "brief_reason": "The entropic-sampling plus free-energy-barrier finite-size machinery for classifying transition order under quenched disorder is transferable; the ±h random-field Ising magnet on a cubic lattice is the domain-specific object."
+}

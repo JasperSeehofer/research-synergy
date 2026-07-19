@@ -1,0 +1,5 @@
+{
+  "method_atom": "a proof of small-data global existence, uniqueness, and long-time stability of the trivial (zero) solution for a system of quasilinear hyperbolic partial differential equations derived from a nonlinear Lagrangian, exploiting a null-condition structure in the quadratic nonlinearities so that solutions decay at exactly the same rates as the underlying linear system; complemented by establishing hyperbolicity/well-posedness precisely in the parameter regime where the governing Lagrangian remains real-valued.",
+  "object_atom": "the Maxwell-Born-Infeld system, a nonlinear (self-interacting) theory of the electromagnetic field strength posed on a 1+3-dimensional Minkowski (or general Lorentzian) spacetime background.",
+  "brief_reason": "The transferable content is the null-condition-based small-data global-stability-and-decay analysis for Lagrangian-derived quasilinear hyperbolic PDEs, while the domain-specific object is the electromagnetic Born-Infeld field theory on spacetime."
+}

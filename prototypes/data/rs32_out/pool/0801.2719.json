@@ -1,0 +1,5 @@
+{
+  "method_atom": "a high-precision estimation of universal (system-independent) combinations of critical amplitudes near a continuous phase transition, obtained by fitting the singular behaviour of energy-like and order-parameter-like observables and their response functions to their leading scaling forms on either side of the critical point. It combines stochastic sampling of the equilibrium ensemble with high-order series-expansion data to pin down the amplitude prefactors of the power-law singularities.",
+  "object_atom": "the 3-state Potts model of interacting discrete spin variables on a two-dimensional square lattice, characterized by its energy, specific heat, magnetization, and susceptibility in the vicinity of the ferromagnetic critical point.",
+  "brief_reason": "The transferable method is the extraction of universal critical-amplitude ratios from scaling fits of thermodynamic observables via combined Monte Carlo and series-expansion analysis; the domain-specific object is the q=3 Potts spin system on a 2d square lattice."
+}

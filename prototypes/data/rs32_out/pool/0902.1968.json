@@ -1,0 +1,5 @@
+{
+  "method_atom": "the spontaneous self-organization of topologically stable, particle-like localized configurations of a continuous vector field (textures protected by a winding/topological invariant) into a regular, spatially periodic lattice, arising from competing interactions in a system lacking inversion symmetry and stabilized at the boundary between a disordered and an ordered phase under a weak external symmetry-breaking bias, detected as periodic order by a scattering/diffraction probe",
+  "object_atom": "the magnetization (spin texture) of the chiral itinerant-electron magnet MnSi, a crystalline material lacking inversion symmetry, in a small applied magnetic field near the border between paramagnetism and helimagnetic order",
+  "brief_reason": "the topology-protected-texture-forming-a-periodic-lattice-from-competing-chiral-interactions machinery is transferable, while the MnSi spin/magnetization system probed by neutron scattering is the physics-specific object; method and object are cleanly separable here."
+}

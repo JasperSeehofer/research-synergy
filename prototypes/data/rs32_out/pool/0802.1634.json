@@ -1,0 +1,5 @@
+{
+  "method_atom": "a nonsingular dynamical system whose global evolution reverses from a monotonically contracting phase to an expanding phase without ever reaching a degenerate/singular state, achieved by a mechanism that bounds the governing state variable away from the singular point; the framework also includes periodic (cyclic) trajectories and a linear-stability analysis of small fluctuations propagated through the smooth turning point.",
+  "object_atom": "the large-scale universe, i.e. its expansion/contraction described by cosmological solutions of gravity, including bouncing and cyclic cosmologies and the observable behavior of cosmological density perturbations.",
+  "brief_reason": "the collapse-to-expansion turnaround that avoids a singularity plus the stability tracking of perturbations across the reversal is the transferable machinery, while the expanding/contracting universe and its cosmological perturbations are the domain-specific object."
+}

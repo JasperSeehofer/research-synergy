@@ -1,0 +1,5 @@
+{
+  "method_atom": "a solution-generating symmetry (a duality/triality group of algebraic transformations) that maps one solution of a nonlinear evolution equation driven by a single self-interacting degree of freedom into another, by re-expressing the state variables as functions of that degree of freedom and then interchanging or inverting them while leaving one combination invariant, generating an equivalence class of related dynamical trajectories.",
+  "object_atom": "spatially flat and curved isotropic (FRW) cosmological backgrounds whose expansion is driven by an ordinary or phantom self-interacting scalar field or perfect fluids — accelerating (inflationary), contracting/decelerating (cyclic), and phantom universes — and the Randall-Sundrum type II braneworld scenario.",
+  "brief_reason": "The transferable part is the algebraic duality/triality machinery that permutes and inverts the variables of a scalar-driven evolution law to generate related solutions; the domain-specific part is the FRW/braneworld cosmological system with its scale factor, Hubble parameter, and scalar-field/fluid sources."
+}

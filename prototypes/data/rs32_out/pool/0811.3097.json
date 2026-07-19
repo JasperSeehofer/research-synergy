@@ -1,0 +1,5 @@
+{
+  "method_atom": "A statistical-estimation principle for combining several estimates of one underlying quantity that were all derived from the same finite stochastic sample: because the estimates share a common source they are cross-correlated, and treating them as independent systematically underestimates the variance of the combined result. The remedy is to incorporate the full covariance structure among the estimators, yielding a minimum-variance combined estimator with correctly propagated uncertainty at negligible extra computational cost.",
+  "object_atom": "Critical exponents and related observables of a system near a phase-transition point, extracted from importance-sampling Monte Carlo time series through thermal and finite-size scaling analyses.",
+  "brief_reason": "The covariance-aware pooling of correlated estimates from a shared sample is transferable to any correlated-estimation setting, while the phase-transition observables and Monte Carlo scaling analysis are the statistical-physics-specific object."
+}

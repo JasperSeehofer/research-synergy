@@ -1,0 +1,5 @@
+{
+  "method_atom": "A renormalization / scaling analysis of how the limiting distribution of the extreme (maximum) value drawn from a large collection of random variables approaches its universal limit at finite sample size, subdividing the universality classes by the exponent governing the finite-size convergence, which in turn fixes the leading-order shape-correction function to the limit law. For strongly correlated inputs the correction is expressed self-consistently in terms of the limit distribution itself.",
+  "object_atom": "The statistics of extreme values in finite data sets, both for independent identically distributed variables and for correlated systems: subcritical percolation and 1/f^alpha stationary noise across weakly (alpha<1) and strongly (alpha>1) correlated regimes.",
+  "brief_reason": "The finite-size renormalization/shape-correction machinery for extreme-value limit laws is the transferable method; the specific probabilistic systems (percolation, 1/f^alpha noise) are the domain-specific object."
+}

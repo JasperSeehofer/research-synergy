@@ -1,0 +1,5 @@
+{
+  "method_atom": "A hierarchical Bayesian inference framework that re-expresses a non-Gaussian likelihood and a sparsity-inducing penalty as scale mixtures of Gaussians, introducing latent auxiliary variables so that the full conditionals become tractable and can be sampled by Markov chain Monte Carlo. The same machinery yields point estimates (maximum-likelihood, maximum-a-posteriori) and full posterior summaries with uncertainty, supports variable selection, and lets the penalty strength be tuned as part of the model, remaining valid when the number of parameters far exceeds the number of observations.",
+  "object_atom": "Regularized logistic regression models fit to binary and binomial response data (classification / event-probability estimation), released as the R package reglogit on CRAN.",
+  "brief_reason": "The scale-mixture-of-Gaussians auxiliary-variable MCMC machinery for representing likelihoods and penalties transfers across domains, while the logistic (binary/binomial) regression model for labeled response data is the statistics-specific object."
+}

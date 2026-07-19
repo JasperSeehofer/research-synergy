@@ -1,0 +1,5 @@
+{
+  "method_atom": "constructing discrete complex-analytic (discrete-holomorphic) observables on a broad family of planar discretizations of a critical statistical system, and proving that as the mesh is refined these observables converge, under appropriate boundary conditions on bounded domains, to continuum holomorphic functions; this establishes that the fine-scale limit is universal (independent of the microscopic lattice structure) and invariant under angle-preserving (conformal) coordinate transformations, upgrading a weaker Mobius/scale symmetry to full conformal symmetry",
+  "object_atom": "the two-dimensional Ising model at its critical point — binary spins with nearest-neighbor interactions placed on planar graphs — together with its fermionic correlation observables",
+  "brief_reason": "the transferable part is the discrete-holomorphicity machinery that forces a critical lattice model's scaling limit to be universal and conformally invariant; the domain-specific part is the 2D critical Ising spin system and its fermionic observables."
+}

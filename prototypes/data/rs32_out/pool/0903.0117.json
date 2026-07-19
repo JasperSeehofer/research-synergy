@@ -1,0 +1,5 @@
+{
+  "method_atom": "A technique for expressing the successive derivatives of a function as polynomials in that same function, and deriving explicit closed-form expressions for the resulting polynomial coefficients in terms of combinatorial counting numbers (Stirling numbers of the second kind). Such explicit coefficient formulas are then leveraged to obtain closed-form evaluations of associated integrals and to write functional reflection identities in explicit form.",
+  "object_atom": "The hyperbolic and trigonometric tangent, cotangent and secant functions (tanh, tan, sech, sec) and their derivative polynomials, together with specific integrals of these functions and the reflection formula for the polygamma function.",
+  "brief_reason": "The transferable machinery is the derivative-polynomial construction with combinatorially expressed coefficients; the domain-specific object is the particular set of hyperbolic/trigonometric functions and the polygamma reflection formula it is applied to."
+}

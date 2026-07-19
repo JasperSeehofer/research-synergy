@@ -1,0 +1,5 @@
+{
+  "method_atom": "a response-function analysis that probes how a driven system relaxes back to baseline after impulsive perturbations, finding that most events follow a memoryless Poisson process while a subpopulation exhibits power-law relaxation whose decay exponents cluster into a few discrete dynamical classes. The relaxation is captured by a self-exciting branching/cascade process in which each event triggers descendants after a heavy-tailed (power-law) waiting-time distribution between cause and effect, formalized as an extension of the fluctuation-dissipation principle linking a system's response to perturbations to its intrinsic fluctuation dynamics.",
+  "object_atom": "collective human attention in an online social system, measured as the daily-view time-series of nearly 5 million YouTube videos, with activity bursts separated into endogenously generated versus externally driven origins.",
+  "brief_reason": "The perturbation-response/heavy-tailed-cascade machinery and fluctuation-dissipation framing are transferable across fields, while the YouTube video-view attention data is the specific social-system object it is applied to."
+}

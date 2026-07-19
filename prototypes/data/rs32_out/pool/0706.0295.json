@@ -1,0 +1,5 @@
+{
+  "method_atom": "A perturbative analysis on a fluctuating background that tests whether an apparent time-growing (secular) correction to an effective control parameter is a genuine physical effect or an artifact of the description's redundancy (gauge/coordinate freedom): it shows that the indicator used in prior work is not invariant under the theory's redundancy transformations, then constructs an invariant, coarse-grained observable smeared over an arbitrary window function and evaluates its corrections order by order in perturbation theory, finding no secular drift of the invariant quantity.",
+  "object_atom": "Long-wavelength (infrared) quantum graviton fluctuations in exponentially expanding de Sitter spacetime and their conjectured secular screening of the effective cosmological constant, i.e. the renormalized spacetime curvature scalar.",
+  "brief_reason": "The transferable part is the redundancy-invariance test that separates a real secular drift of an effective parameter from a mere gauge artifact by building a coarse-grained invariant observable; the graviton / de Sitter / cosmological-constant setting is the domain-specific object."
+}

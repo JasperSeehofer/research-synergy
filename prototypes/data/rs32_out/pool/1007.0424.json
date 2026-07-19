@@ -1,0 +1,5 @@
+{
+  "method_atom": "a variational coupling problem: minimise a total cost over all joint distributions on a product space whose fixed marginals are prescribed, and prove that the convex/relaxed optimum concentrates on the graph of a single deterministic assignment map (rather than a spread-out coupling) under structural conditions on the cost and a regularity condition on one marginal, with uniqueness of both the relaxed and the deterministic optima.",
+  "object_atom": "the multi-marginal optimal transportation problem — matching several prescribed probability measures (marginals) so as to minimise a given cost function, comparing its Kantorovich (relaxed coupling) and Monge (deterministic map) formulations.",
+  "brief_reason": "The transferable machinery is the argument that a relaxed convex optimum over couplings with fixed marginals reduces to a unique deterministic map under cost/marginal conditions; the domain-specific object is the multi-marginal optimal-transport setting with its particular marginals and cost."
+}

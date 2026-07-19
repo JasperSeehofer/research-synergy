@@ -1,0 +1,5 @@
+{
+  "method_atom": "a tunable-weight probability measure over configurations constrained to satisfy a local parity (even-degree) condition, shown to be derivable from a correlated cluster/percolation-type measure with a single control parameter; exact unbiased samples are drawn via coupling-from-the-past, and as the parameter crosses a critical value the system undergoes a phase transition whose scaling limit connects to conformally-invariant random curves",
+  "object_atom": "random even subgraphs of a finite graph, and in particular of a planar lattice, parameterized by an edge weight p in (0,1)",
+  "brief_reason": "the parity-constrained random-configuration ensemble, its derivation from a cluster measure, exact CFTP sampling, and critical phase transition are transferable machinery; the even subgraph of a planar lattice is the graph-theory-specific object."
+}

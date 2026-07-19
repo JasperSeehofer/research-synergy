@@ -1,0 +1,5 @@
+{
+  "method_atom": "a stochastic cluster-flip sampling scheme for a system of coupled binary variables with short-range agreement interactions, combined with histogram-reweighting of time-series observables and finite-size scaling analysis near a continuous phase transition to extract critical exponents and test whether they are invariant under changes in the underlying network geometry (universality across disordered vs. ordered connectivity)",
+  "object_atom": "the two-dimensional Ising model realized on Poissonian random Delaunay lattices (up to 80,000 sites) compared against regular crystalline lattices",
+  "brief_reason": "the cluster Monte Carlo + reweighting + finite-size-scaling universality-testing machinery is transferable to any critical system on varying connectivity, while the specific Ising spins on 2D random Delaunay lattices is the physics-specific object."
+}

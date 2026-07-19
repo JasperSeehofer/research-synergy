@@ -1,0 +1,5 @@
+{
+  "method_atom": "an adaptive, self-learning acceleration scheme for exploring a high-dimensional state space under a governing stochastic dynamics, which builds a history-dependent bias term that progressively discourages already-visited regions to enhance sampling of rare transitions; the bias is expressed over a large set of coarse descriptors and is refined on the fly by analyzing the accumulated trajectory to construct a patchwork of locally valid low-dimensional coordinates that adapt to newly encountered features",
+  "object_atom": "the atomistic dynamics of real chemical systems, including physical atomic clusters and biomolecular systems, whose free-energy landscape is sampled via molecular dynamics",
+  "brief_reason": "the transferable part is the adaptive history-dependent biasing / on-the-fly dimensionality-reduction scheme for accelerated exploration of a rugged high-dimensional landscape, while the domain-specific object is the molecular-dynamics simulation of chemical and biological systems."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "Coherent, large-amplitude population oscillations between two resonantly coupled states of a two-level system, whose frequency and amplitude are tuned by a control parameter sweeping the coupling through resonance, with the coupling strength depending on local density; combined with the principle that a bound composite excitation whose energy lies within a forbidden gap of a periodic band structure is protected from decaying into its constituents.",
+  "object_atom": "Ultracold 87Rb atoms confined one-per-site in the Mott-insulator phase of an optical lattice, coherently converted to a diatomic molecular state via a magnetic Feshbach resonance near 414 G.",
+  "brief_reason": "The two-level resonant Rabi-oscillation machinery and the gap-protection-against-dissociation principle are transferable; the specific atom-molecule conversion of Feshbach-resonant 87Rb in an optical-lattice Mott insulator is the domain-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "A large-scale repeated-sampling survey design that uniformly and multiply samples a bounded domain across several measurement channels, deliberately trading off breadth of coverage, sensitivity (depth of detection), and revisit cadence, and accumulating the repeated multi-epoch measurements into a massive relational catalog that supports both a static census of the sampled entities and the detection and characterization of rare, faint, or time-varying phenomena.",
+  "object_atom": "The optical night sky and its astronomical contents — dark energy and dark matter, Solar System bodies, transient and variable optical sources, and the structure of the Milky Way — observed by a wide-field ground-based telescope (LSST) imaging tens of thousands of square degrees in six optical bands over a decade.",
+  "brief_reason": "The optimize-coverage-depth-cadence, repeated-sampling-into-a-catalog machinery is transferable to any monitoring or census campaign, while the telescope surveying the optical sky is the astronomy-specific object."
+}

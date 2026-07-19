@@ -1,0 +1,5 @@
+{
+  "method_atom": "a Cartan-Leray-type spectral sequence that computes a cohomological invariant of a structure quotiented by a free action of a discrete group, expressing it in terms of the cohomology of that group acting on the corresponding invariant of the covering structure; the machinery specializes in low degree to a direct relation between the acting group and the invariant in degree one.",
+  "object_atom": "the Hochschild-Mitchell (co)homology of k-linear categories, applied to Galois coverings of linear categories and their Galois groups.",
+  "brief_reason": "The equivariant/descent spectral-sequence machinery relating a quotient's invariant to group cohomology and the covering's invariant is transferable, while Hochschild-Mitchell cohomology of Galois coverings of linear categories is the domain-specific object."
+}

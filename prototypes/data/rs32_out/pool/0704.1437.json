@@ -1,0 +1,5 @@
+{
+  "method_atom": "a one-parameter deformation of standard exponential statistics, derived from a generalized (deformed) entropy functional, that replaces the ordinary exponential distribution with a deformed power-law distribution controlled by a single deformation parameter. The parameter is fixed by the external driving gradients acting on the system, and the resulting stationary distribution characterizes a meta-equilibrium state rather than true thermodynamic equilibrium.",
+  "object_atom": "a relativistic gas of particles immersed in an external electromagnetic field, described by its temperature four-gradient and the gradient of the four-vector potential.",
+  "brief_reason": "the deformed-entropy/deformation-parameter machinery yielding power-law meta-equilibrium distributions is the transferable method, while the relativistic gas in an electromagnetic field (four-gradients of temperature and potential) is the physics-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "An effective mean-field / Landau-type theory with a spontaneously-broken symmetry order parameter, used to map a phase diagram in a two-dimensional control plane spanned by an effective temperature and a conjugate driving field (a chemical-potential-like intensive variable). The analysis tracks how the topology of that phase diagram — specifically the number and location of critical endpoints terminating lines of first-order transitions — changes as an explicit symmetry-breaking parameter is tuned, yielding zero, one, or two critical points.",
+  "object_atom": "The chiral dynamics of two flavors of quarks at finite temperature and baryon chemical potential, with the vacuum pion mass acting as the explicit symmetry-breaking parameter and the temperature-vs-baryon-chemical-potential QCD phase diagram as the object of study.",
+  "brief_reason": "The transferable machinery is the symmetry-breaking effective-field-theory analysis of how critical-endpoint structure in a two-parameter phase diagram depends on an explicit-breaking parameter; the quarks, pion mass, and baryon-chemical-potential/temperature plane are the QCD-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a topological method that treats a finite collection of time-parametrized planar paths as braided strands and, using braid theory and the theory of surface homeomorphisms, computes a topological entropy — a global invariant quantifying how intricately the strands wind around one another, i.e. the exponential growth rate of complexity induced by their mutual entanglement. It uses all paths jointly rather than one at a time, and vanishes when they are not braided in a complex way.",
+  "object_atom": "the two-dimensional trajectories of tracer particles advected by an unknown fluid flow — specifically oceanic floats, e.g. drifters in the Labrador Sea — from which properties of the underlying flow are to be inferred.",
+  "brief_reason": "The braid/topological-entropy machinery for measuring joint entanglement of a bundle of curves is domain-neutral and transferable; the fluid particle trajectories and the underlying oceanic flow are the fluid-dynamics-specific object."
+}

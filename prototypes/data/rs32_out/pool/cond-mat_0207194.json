@@ -1,0 +1,5 @@
+{
+  "method_atom": "A cavity / message-passing mean-field analysis of a sparse random constraint network at zero temperature, in which the order parameter is a distribution ('survey') of local fields over the many coexisting metastable states rather than a single average, yielding a phase diagram with an intermediate clustered phase where a proliferation of metastable states obstructs local search. These per-sample surveys are then turned into a message-passing algorithm that assigns variables and efficiently finds solutions to hard combinatorial optimization problems.",
+  "object_atom": "Randomly generated Boolean satisfiability instances in which each clause constrains K variables (studied concretely for K=3, i.e. random 3-SAT), the canonical hard combinatorial constraint-satisfaction problem.",
+  "brief_reason": "The transferable part is the cavity/survey-propagation machinery for sparse disordered constraint systems and its metastable-state phase structure; what is domain-specific is the random K-SAT Boolean-clause problem it is applied to."
+}

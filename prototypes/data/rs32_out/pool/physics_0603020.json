@@ -1,0 +1,5 @@
+{
+  "method_atom": "coherent optical control of a two-level (or effective two-state) quantum system via resonant excitation with circularly-polarized pulses, creating a coherent superposition whose generation efficiency is maximized for odd-integer multiples of a pi-area pulse; the resulting coherence precesses about a transverse field and is read out through a polarization-rotation probe of the driven state.",
+  "object_atom": "the electron spin of a single resident electron in n-type modulation-doped (In,Ga)As/GaAs semiconductor quantum dots, coupled optically to a trion state and precessing in an applied transverse magnetic field.",
+  "brief_reason": "the pulse-area-controlled resonant superposition and precession/optical-readout machinery is transferable to any driven two-state quantum system, while the specific carrier is the single-electron spin in a semiconductor quantum dot."
+}

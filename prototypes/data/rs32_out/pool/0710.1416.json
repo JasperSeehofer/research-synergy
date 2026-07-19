@@ -1,0 +1,5 @@
+{
+  "method_atom": "A sequence of discrete corrective interventions applied to a two-state unit at optimally chosen time instants, tuned so that each additional intervention cancels the next successive order of a short-time Taylor expansion of a fidelity/decay functional, yielding order-by-order suppression of deviation from the ideal state that is independent of the detailed generator of the dynamics for sufficiently short intervals. Its defining structure is that a linearly growing set of tunable timing parameters must simultaneously satisfy an exponentially growing set of nonlinear equations built from the (arbitrary) governing operators.",
+  "object_atom": "A qubit (a central spin / two-level quantum system) whose quantum coherence is lost through pure dephasing caused by coupling to an environment, e.g. the spin-boson bath or an arbitrary dephasing Hamiltonian.",
+  "brief_reason": "The transferable machinery is the optimized-timing, order-by-order perturbative-cancellation scheme with its linear-unknowns-vs-exponential-equations structure; the domain-specific object is the dephasing qubit coupled to a bath, with the two cleanly separable."
+}

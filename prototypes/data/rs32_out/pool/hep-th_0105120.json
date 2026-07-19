@@ -1,0 +1,5 @@
+{
+  "method_atom": "Replace the ordinary pointwise multiplication of functions on a deformed (non-commutative) coordinate algebra with a bilinear star product, and pair it with a coproduct (a Hopf-algebra rule for how a composite operation distributes over its constituent labels) that acts non-symmetrically on those labels; then analyze whether the combined multi-input operation is nonetheless invariant under permutation of identical inputs, and classify its higher-order (loop) contributions by a topological planar-vs-non-planar distinction inherited from the ordering non-commutativity.",
+  "object_atom": "Field theory built on kappa-Minkowski non-commutative space-time (a Lie-algebra-type deformed space-time with kappa-Poincare symmetry), specifically its interaction vertices among identical particle momenta and its Feynman loop diagrams.",
+  "brief_reason": "What carries across is the star-product/coproduct (Hopf-algebra) machinery and the planar/non-planar diagram classification for a non-symmetric composition rule; what is domain-specific is the kappa-Minkowski space-time and its particle-physics field-theory vertices and loops."
+}

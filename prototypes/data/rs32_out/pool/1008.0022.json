@@ -1,0 +1,5 @@
+{
+  "method_atom": "a spectral analysis of a weighted directed graph in which many coupled excitable units transmit activity to their neighbors, where the largest eigenvalue of the adjacency matrix acts as the control parameter governing collective response: the value one marks a critical point that maximizes the range of input intensities producing distinguishable collective outputs, with a nonlinear treatment using higher spectral properties showing that homogeneous connectivity broadens this responsive range relative to heterogeneous connectivity.",
+  "object_atom": "a network of coupled excitable systems (e.g., neurons) responding to an external stimulus, whose connection topology sets the range of stimulus intensities the network can distinguish.",
+  "brief_reason": "the transferable machinery is the largest-eigenvalue/spectral criticality criterion for responsiveness of a coupled-excitable-unit network, while the excitable systems driven by an external stimulus are the domain-specific object."
+}

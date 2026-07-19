@@ -1,0 +1,5 @@
+{
+  "method_atom": "A boundary-driven, far-from-equilibrium one-dimensional transport model in which two reservoirs impose opposing biases across a chain of coupled two-state units with a spectral gap. Beyond a threshold drive, the bulk self-organizes into oppositely ordered domains that pin near the boundaries and localize the carriers, so the steady-state flux decreases as the drive is increased — a negative differential response in which stronger forcing yields less current. The effect is structurally stable, persisting under perturbations that break the model's exact solvability.",
+  "object_atom": "An anisotropic Heisenberg spin-1/2 chain in the gapped regime — quantum magnetic moments on a one-dimensional lattice — and its spin current, with edge ferromagnetic domains and magnon localization suppressing spin transport.",
+  "brief_reason": "What transfers is the boundary-driven mechanism where drive-induced ordered domains localize carriers and produce negative differential conductivity robust to integrability breaking; what is domain-specific is the quantum spin-chain/magnon transport system."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "A variational, group-theoretic formalism in which the state space of an elementary unit is a homogeneous space of an enlarged symmetry group, from which one constructs a symmetry-invariant interaction term combining a short-range and a long-range coupling. Averaging over a fast internal oscillatory degree of freedom collapses the interaction to the familiar long-range law, while retaining that internal oscillation opens metastable bound configurations between two like-signed units whose internal orientations are aligned, contingent on initial conditions.",
+  "object_atom": "Two charged spin-1/2 elementary Dirac particles in relativistic spacetime, whose internal zitterbewegung spin structure mediates a Coulomb-like interaction and can bind two same-charge, parallel-spin particles into metastable pairs.",
+  "brief_reason": "The invariant-interaction-from-a-symmetry-group construction plus the averaging-away-internal-oscillation mechanism that (only) then permits like-sign bound states is the transferable method; the Dirac spin-1/2 charged particles, spacetime symmetry, and Coulomb force are the physics-specific object."
+}

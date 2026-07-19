@@ -1,0 +1,5 @@
+{
+  "method_atom": "a systematic construction and exhaustive classification of nonlinear self-interacting field models whose Euler-Lagrange equations of motion contain no higher than second-order derivatives, and a covariant procedure for lifting each such model from a flat ambient space to an arbitrary curved/dynamical background by adding compensating correction terms so that both the field equations and the associated conserved currents remain at most second order in derivatives of the field and of the background geometry, uniformly across dimensions.",
+  "object_atom": "scalar fields (Galileons) originally defined on flat spacetime, extended to and coupled with a curved spacetime metric / gravitational background.",
+  "brief_reason": "The transferable part is the second-order-preserving construction and its covariant extension to a curved ambient geometry; what is domain-specific is that the field is a gravitational-physics scalar field coupled to spacetime curvature."
+}

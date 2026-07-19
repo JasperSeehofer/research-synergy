@@ -1,0 +1,5 @@
+{
+  "method_atom": "a model of many identical two-level units collectively coupled to a single shared bosonic field mode, which undergoes a discontinuous (first-order) symmetry-breaking transition into a macroscopically coherent, co-ordered collective state once an interaction/coupling control parameter crosses a critical threshold.",
+  "object_atom": "an ensemble of qubits coupled to a cavity field mode, realized as atoms in an optical cavity or as interacting solid-state quantum dots coupled to an optical cavity mode.",
+  "brief_reason": "The transferable part is the collective coupling of many two-level units to one common mode producing a first-order transition to a coherent ordered phase; the domain-specific part is the concrete qubit-cavity (atomic or quantum-dot) hardware it is realized in."
+}

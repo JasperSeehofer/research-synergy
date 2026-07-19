@@ -1,0 +1,5 @@
+{
+  "method_atom": "A graph-based representation of composite derivations as directed nets whose composition is simply path composition, together with a direct, strongly-terminating local-rewriting normalisation procedure. All dynamics are computed by composing partial functions along paths via a geometry-of-interaction (feedback/trace) construction over the category of sets and partial functions, avoiding auxiliary bookkeeping such as relocating attachment points during simplification.",
+  "object_atom": "Proofs of multiplicative linear logic together with its units, whose cut-elimination normalisation previously required moving the jumps (attachments) of par units.",
+  "brief_reason": "The nets-as-graphs, path-composition, and geometry-of-interaction-over-partial-functions reduction machinery is field-neutral and transferable, while multiplicative linear logic with units and its cut elimination is the logic-specific object."
+}

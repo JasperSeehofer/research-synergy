@@ -1,0 +1,5 @@
+{
+  "method_atom": "Spontaneous thermal-spectrum quantum emission of collective wave excitations across an effective horizon that forms where a moving background medium's flow speed crosses the local propagation speed of small perturbations. The emission is computed from a fully microscopic dynamical model and diagnosed through characteristic long-range patterns in the two-point (density-density) correlation function, with quantitative benchmarking against a coarse-grained effective-field description valid in the long-wavelength limit, plus assessment of the signal's robustness to finite background fluctuations.",
+  "object_atom": "A one-dimensional flowing atomic Bose-Einstein condensate whose Bogoliubov phonons cross a sonic (acoustic) horizon, realizing an acoustic black hole and its analog Hawking radiation.",
+  "brief_reason": "The horizon-crossing-flow / correlation-diagnosed spontaneous quantum emission machinery is transferable across any wave-on-flow medium, while the atomic condensate, phonons, and sonic horizon are the physics-specific object."
+}

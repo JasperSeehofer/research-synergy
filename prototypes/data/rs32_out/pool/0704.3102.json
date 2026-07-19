@@ -1,0 +1,5 @@
+{
+  "method_atom": "A differential-geometric description of a system's space of equilibrium states, in which the manifold of states is endowed with a Riemannian metric constructed to be invariant under Legendre transformations of the governing potential; the curvature of this metric measures the strength of the underlying interactions, so that a flat geometry signals no interaction while curvature singularities locate critical points and phase transitions, and the Legendre invariance resolves representation-dependent ambiguities among competing metric choices.",
+  "object_atom": "The thermodynamics of black holes, specifically the charged Reissner-Nordstrom and the rotating Kerr black holes characterized by their mass, charge, angular momentum, and entropy and their respective phase-transition structure.",
+  "brief_reason": "The Legendre-invariant metric-geometry-of-equilibrium-states machinery, whose curvature encodes interactions and phase transitions, transfers to any thermodynamic system; the specific Reissner-Nordstrom and Kerr black-hole spacetimes are the gravity-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "An interferometric measurement scheme in which a single coherent wave is split into two spatially separated copies by adiabatically deforming a confining potential from a single well into a double well, letting each copy accumulate phase independently under a locally applied, tunable potential bias, and then reading out the accumulated relative phase from the spatial fringe pattern produced when the two copies are released and allowed to overlap and interfere.",
+  "object_atom": "Gaseous Bose-Einstein condensates of trapped atoms confined in an optical trap, coherently separated by about 13 micrometers for up to 5 ms, with their relative phase controlled by ac Stark shift potentials.",
+  "brief_reason": "The split-a-coherent-wave / accumulate-phase-under-a-controllable-bias / recover-relative-phase-from-interference-fringes machinery is transferable, while the trapped-atom Bose-Einstein-condensate-in-an-optical-double-well system is the atomic-physics-specific object."
+}

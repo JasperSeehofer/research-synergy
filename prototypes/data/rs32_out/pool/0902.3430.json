@@ -1,0 +1,5 @@
+{
+  "method_atom": "A framework for quantifying how a model calibrated on one probability distribution degrades when transferred to a different distribution: define a task-tailored distance between two distributions that is matched to the chosen cost/error functional, estimate that distance from finite samples with complexity-based confidence bounds, derive worst-case transfer-degradation guarantees from it, and formulate an optimization that minimizes the empirical distance to improve transfer of parameter-regularized estimators.",
+  "object_atom": "Supervised statistical learning under distribution shift: a labeled training sample drawn from a source distribution together with test data from a somewhat different target distribution, with predictors produced by regularization-based learners such as support vector machines and kernel ridge regression under various loss functions.",
+  "brief_reason": "The distribution-distance, finite-sample estimation, transfer-degradation bounding, and distance-minimization machinery is transferable; the labeled-vs-test supervised-learning setting with loss functions and kernel/SVM predictors is the ML-specific object."
+}

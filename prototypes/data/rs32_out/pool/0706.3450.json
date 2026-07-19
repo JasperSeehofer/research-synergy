@@ -1,0 +1,5 @@
+{
+  "method_atom": "A thermodynamic-geometry construction in which a Riemannian metric on the space of equilibrium states is built from the Hessian of a thermodynamic potential over the complete set of independent state variables, and its scalar curvature is read as a diagnostic of effective microscopic interactions: a flat (zero-curvature) state space signals an effectively non-interacting system while divergences of the curvature flag critical or limiting points. The verdict is sensitive to whether the full, complete set of coordinates/variables is used rather than a reduced subset.",
+  "object_atom": "Charged (Reissner-Nordström) black holes and their thermodynamic state space, in particular the behaviour of the curvature at the extremal (zero-temperature) limit.",
+  "brief_reason": "The Hessian-metric / scalar-curvature-as-interaction-diagnostic machinery is transferable to any thermodynamic system, whereas the charged-black-hole state space and its extremal limit is the gravity-specific object."
+}

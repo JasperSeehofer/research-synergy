@@ -1,0 +1,5 @@
+{
+  "method_atom": "A renormalization-group analysis of a continuous phase transition in which quenched (frozen-in) disorder enters as a marginally irrelevant perturbation at the clean-system fixed point, so that the disorder does not change the universality class but generates universal logarithmic corrections to the pure-system scaling laws. These predictions are cross-checked by finite-size-scaling analysis of high-statistics Monte Carlo simulations.",
+  "object_atom": "Two-dimensional Ising models with quenched randomness — the randomly site-diluted Ising model and the random-bond +-J (Edwards-Anderson) model — studied at their paramagnetic-ferromagnetic critical point.",
+  "brief_reason": "The transferable machinery is the RG treatment of marginally-irrelevant quenched disorder yielding universal logarithmic scaling corrections plus finite-size-scaling verification; the domain-specific object is the disordered 2D Ising / spin-glass-bond magnetic system at its ordering transition."
+}

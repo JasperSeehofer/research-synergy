@@ -1,0 +1,5 @@
+{
+  "method_atom": "stochastic (Monte Carlo) sampling of a many-degree-of-freedom system near a continuous phase transition, combined with finite-size scaling analysis to extract universal critical exponents and, in particular, the leading correction-to-scaling exponent; a tunable control parameter is then adjusted to the value at which the leading corrections to scaling vanish, yielding high-precision estimates of the universal exponents that are less contaminated by subleading effects",
+  "object_atom": "the one-component scalar phi^4 field model defined on a three-dimensional cubic lattice, parameterized by the self-coupling lambda",
+  "brief_reason": "the Monte-Carlo-plus-finite-size-scaling machinery for extracting critical and correction-to-scaling exponents and tuning-away leading corrections is transferable to any critical system, while the one-component phi^4 model on a 3D cubic lattice with coupling lambda is the domain-specific object."
+}

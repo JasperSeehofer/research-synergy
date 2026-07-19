@@ -1,0 +1,5 @@
+{
+  "method_atom": "A derivation of power-law scaling relations between a dimensionless integrated transport rate and the dimensionless driving and control parameters of a forced, unstable layer, obtained by partitioning the total energy-dissipation budget into a bulk contribution and a thin-boundary-layer contribution and balancing them. The boundary-layer/bulk dissipation-budget argument is transferable machinery for predicting how net throughput across a layer depends on the strength of forcing and on the ratios of the relevant diffusive time scales.",
+  "object_atom": "Turbulent magnetohydrodynamic Rayleigh-Benard convection: an electrically conducting fluid layer heated from below in a uniform vertical magnetic field, where the heat-transport rate (Nusselt number) is sought as a function of the magnetic Rayleigh number, the Prandtl number, and the magnetic Prandtl number.",
+  "brief_reason": "The dissipation-budget boundary-layer scaling derivation carries across to any forced transport-across-a-layer problem, while the magnetized convecting fluid layer and its magnetic control parameters are the domain-specific object."
+}

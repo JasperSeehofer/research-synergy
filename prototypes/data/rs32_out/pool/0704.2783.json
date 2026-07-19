@@ -1,0 +1,5 @@
+{
+  "method_atom": "A resummed (renormalized) perturbation-theory framework for the weakly nonlinear evolution of a field composed of many coupled oscillatory modes, in which nonlinear mode-coupling both damps a set of imprinted linear oscillations and generates additional oscillations that are out of phase with the linear ones; these phase-shifted contributions displace the apparent locations of oscillation nodes and peaks defined relative to a smooth background, and the resulting predictions for the spectrum and its Fourier-transform two-point correlation are benchmarked against direct numerical simulation.",
+  "object_atom": "The baryon acoustic oscillation features imprinted in the dark matter power spectrum and two-point correlation function of large-scale cosmic structure, evolved by gravitational instability and characterized as a function of cosmological redshift.",
+  "brief_reason": "The resummed-perturbation-theory treatment of mode-coupling that damps and phase-shifts imprinted oscillations in a two-point spectrum is the transferable method, while the baryon-acoustic features in the cosmological matter field are the domain-specific object."
+}

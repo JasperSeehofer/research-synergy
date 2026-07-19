@@ -1,0 +1,5 @@
+{
+  "method_atom": "a self-consistent finite-element numerical scheme that solves the governing field equations for a localized point source placed near an elongated guiding structure of arbitrary cross-section, computing exactly the fraction of the source's emitted energy that is channeled into a single dominant guided mode as well as the total emission/decay rate, under the assumption that one guided mode is overwhelmingly excited.",
+  "object_atom": "a quantum emitter positioned at nanoscale distance from plasmonic waveguides (a gold cylindrical nanowire and a rectangular waveguide), whose spontaneous emission couples into surface-plasmon modes.",
+  "brief_reason": "The self-consistent finite-element solver for a point source coupling into one dominant guided mode is the transferable machinery, while the quantum emitter radiating into plasmonic waveguide modes is the nano-optics-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "A self-consistent (mean-field) closure of an infinite hierarchy of coupled equations for the correlation functions of a fluctuating quantized field (a BBGKY-type hierarchy applied to one-loop self-consistent equations), solved exactly. Its key mechanism: a time-varying background breaks the balance between the continual creation and annihilation of virtual excitation pairs, so spontaneous net pair creation deposits excess energy into that background, generating a self-sustained collective acceleration of the background's evolution.",
+  "object_atom": "The quantum-fluctuating geometry of spacetime in an expanding Universe, with virtual gravitons as the field excitations, producing accelerated cosmological expansion (the dark-energy effect).",
+  "brief_reason": "The transferable part is the self-consistent hierarchy closure of a fluctuating quantum field in which a changing background unbalances virtual pair creation/annihilation and pumps energy back into the background; the domain-specific part is that the field is the graviton/spacetime geometry and the background is the expanding cosmos accelerating as dark energy."
+}

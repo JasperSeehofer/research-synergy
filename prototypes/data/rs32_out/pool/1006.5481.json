@@ -1,0 +1,5 @@
+{
+  "method_atom": "a double-diffusive fingering instability in a medium stratified by two scalar fields with very different diffusivities, where a stabilizing gradient in the fast-diffusing scalar and a destabilizing gradient in the slow-diffusing scalar drive slender convective fingers that transport a conserved quantity; the process is probed by 2D direct numerical simulation and by linear stability analysis, with an effective transport (diffusion) coefficient parameterized by the aspect ratio (length-to-diameter) of the fingers.",
+  "object_atom": "the radiative zone of a low-mass red-giant-branch star above the luminosity bump, where a mean-molecular-weight inversion produced by 3He burning drives extra-mixing of chemical composition across a range of metallicities.",
+  "brief_reason": "the double-diffusive/salt-fingering transport mechanism and its stability-plus-effective-diffusion-coefficient analysis are the transferable machinery, while the RGB stellar radiative zone with its 3He-burning composition gradient is the astrophysics-specific object."
+}

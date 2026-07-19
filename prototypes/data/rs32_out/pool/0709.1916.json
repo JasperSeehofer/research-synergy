@@ -1,0 +1,5 @@
+{
+  "method_atom": "an empirically-grounded local-interaction rule for a large ensemble of mobile units in which each unit couples to a fixed number of nearest neighbours (topological neighbourhood) rather than to all units within a fixed range (metric neighbourhood), combined with three-dimensional reconstruction of individual positions to infer the interaction structure; the fixed-degree topological coupling is shown by simulation to preserve global cohesion of the ensemble under large density fluctuations, whereas fixed-range coupling does not.",
+  "object_atom": "individual birds moving in large airborne flocks of a few thousand members, whose collective behaviour is destabilised by external perturbations such as predation.",
+  "brief_reason": "The transferable part is the fixed-degree topological (versus fixed-range metric) coupling rule and its density-robust cohesion, while the specific object is birds in a flock; the two separate cleanly since the coupling principle is stated without reference to birds."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "Treating measured data as a realization of a smooth continuous stochastic process (a random field) sampled on a manifold, and performing topological inference on its excursion sets to obtain significance thresholds and p-values that control the family-wise error or false-discovery rate across a large continuum of tested locations. The correction exploits the field's spatial continuity and smoothness rather than treating samples as independent discrete points, and is invariant to the geometry of the manifold on which the field is sampled.",
+  "object_atom": "Whole-brain electromagnetic recordings and their derived continuous maps — anatomical images, time-frequency maps, and distributed source reconstructions over time — sampled on smooth scalp or cortical meshes.",
+  "brief_reason": "The random-field / excursion-set topological-inference machinery for multiple-comparison control on a continuum carries across fields; the brain electromagnetic recordings on scalp/cortical meshes are the neuroimaging-specific object."
+}

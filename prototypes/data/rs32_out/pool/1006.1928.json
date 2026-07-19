@@ -1,0 +1,5 @@
+{
+  "method_atom": "A technique for deciding when two invertible transformations are equivalent under a change of coordinates (conjugacy) by lifting their action to the associated linear composition (Koopman) operators on a function space, and reducing the equivalence to the existence of a shared generalized eigenfunction of those operators. That common eigenfunction induces a topology on the transformation group in which the conjugating map is recovered as the limit, when it exists, of an iteratively generated sequence produced by a conjugacy operator.",
+  "object_atom": "Self-maps forming the group of homeomorphisms of unbounded subsets of normed vector spaces, with the main result stated for a class of generalized Lipschitz homeomorphisms (Lipeomorphisms).",
+  "brief_reason": "The eigenfunction-based/composition-operator conjugacy machinery and its iterative limit construction are transferable, while the specific carrier space of homeomorphisms of unbounded subsets of normed vector spaces (and Lipeomorphisms) is the domain-specific object."
+}

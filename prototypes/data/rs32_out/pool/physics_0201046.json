@@ -1,0 +1,5 @@
+{
+  "method_atom": "a theory of the systematic bias incurred when a non-linear (e.g. exponential) average of a random quantity is estimated from a finite sample of N values; it derives the exact bias for a solvable case, its asymptotic 1/N scaling for large N, and a universal law, using corrections to the central and other limit theorems and the machinery of stable (Levy) probability distributions",
+  "object_atom": "free energy differences between two thermodynamic states or systems, as estimated computationally for molecular systems in physical, chemical, and biological settings (with errors measured in units of kT)",
+  "brief_reason": "the finite-sample-bias analysis of non-linear averages via limit-theorem corrections and Levy distributions is the transferable method, while free energy differences of molecular systems is the domain-specific object it is applied to."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "An unsupervised encoder-decoder representation-learning scheme that factorizes a temporal sequence of signals into two latent groups combined multiplicatively: a slowly-varying invariant 'content' factor held constant across several consecutive samples, and a rapidly-varying 'location' factor constrained to be sparse; the encoder extracts features and the decoder reconstructs the input, and a second layer pools units over overlapping local neighborhoods under sparsity constraints, which drives the units to self-organize into a smooth topographic map.",
+  "object_atom": "Patches extracted from consecutive natural movie frames, and the resulting model of the mammalian primary visual cortex (V1): orientation- and frequency-selective complex cells whose receptive fields organize into pinwheel patterns.",
+  "brief_reason": "The transferable part is the temporal-invariance + sparse-variation factorization with local pooling that yields self-organized topography; the domain-specific part is the visual-cortex system (movie-frame images and V1 complex-cell pinwheel maps)."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a variational derivation of the equations of motion of a test element in a field theory whose action contains an arbitrary scalar function of a background field multiplicatively (non-minimally) coupled to the source/matter density, showing that this coupling generates an additional force term orthogonal to the element's velocity, and extracting the resulting modified acceleration law in the small-perturbation (weak-field) limit",
+  "object_atom": "test particles moving in f(R) modified gravity, where the coupling is between a function of the spacetime scalar curvature R and the matter Lagrangian, with the extra force examined against the four-velocity and related to MOND galactic dynamics and the Pioneer solar-system anomaly",
+  "brief_reason": "the transferable part is the non-minimal scalar-function-times-source coupling that yields a velocity-orthogonal extra force and a weak-limit acceleration law, while the gravitational curvature R, spacetime geodesics, and the MOND/Pioneer phenomena are the physics-specific object."
+}

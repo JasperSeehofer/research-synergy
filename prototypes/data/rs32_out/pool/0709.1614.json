@@ -1,0 +1,5 @@
+{
+  "method_atom": "A microscopic derivation of a Markovian master equation for a small system weakly coupled to a dissipative reservoir, obtained by tracing out the environment while retaining the dissipator cross-terms that oscillate at frequencies of order the characteristic coupling/splitting frequency instead of discarding them via a secular / rotating-wave (coarse-graining) approximation. This yields a corrected effective evolution law and delineates the parameter regime in which a simpler, purely phenomenological dissipation model is quantitatively justified.",
+  "object_atom": "A single two-level system coupled to one quantized bosonic field mode (the Jaynes-Cummings model), where the mode leaks quanta into a lossy environment through an imperfect resonator, characterized by the vacuum Rabi frequency of the coupling.",
+  "brief_reason": "The transferable part is the open-system reduction that keeps fast-oscillating dissipator terms beyond the secular approximation and bounds when the phenomenological model holds; the domain-specific object is the lossy two-level-plus-cavity-mode (Jaynes-Cummings) system of quantum optics."
+}

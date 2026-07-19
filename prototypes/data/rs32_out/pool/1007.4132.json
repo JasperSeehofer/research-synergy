@@ -1,0 +1,5 @@
+{
+  "method_atom": "a spectral-degeneracy analysis of a discrete Laplace operator on a combinatorial network, relating the multiplicity of its second-lowest eigenvalue to the sign-change (nodal-domain) structure of the corresponding eigenfunctions via a discrete analogue of a nodal-line theorem. The degenerate eigenspace is shown to induce an optimal ('tight') mapping into a Euclidean space whose dimension equals that multiplicity, and this multiplicity is bounded above by topological invariants (a genus-type embedding parameter and a chromatic/coloring number) of the underlying structure.",
+  "object_atom": "a graph G together with its combinatorial Laplacian, the second eigenvalue λ2 and its eigenspace, and the associated tight polyhedral surfaces of given genus and chromatic number.",
+  "brief_reason": "The transferable machinery is the link between eigenvalue-multiplicity, nodal/sign-change structure, an induced optimal embedding, and topological bounds; the domain-specific object is the specific graph Laplacian and its tight polyhedral-surface realizations."
+}

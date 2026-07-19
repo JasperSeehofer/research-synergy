@@ -1,0 +1,5 @@
+{
+  "method_atom": "Stochastic-sampling (Monte Carlo) study of a system of many interacting multi-state units arranged on a graph with frozen-in random connectivity (quenched topological/coordination-number disorder), used to determine whether such structural randomness preserves or alters the character of a collective ordering transition — specifically whether a discontinuous (first-order) transition survives or is softened into a continuous (second-order) one, and how this depends on the type of quenched disorder.",
+  "object_atom": "The eight-state Potts model on two-dimensional Poissonian random Voronoi/Delaunay lattices: spins each taking one of eight discrete states placed on randomly generated lattice sites with a disordered distribution of coordination numbers.",
+  "brief_reason": "What transfers is the Monte-Carlo probe of how quenched structural (connectivity) randomness affects the order of a collective transition in interacting multi-state units; what is domain-specific is the 8-state Potts spins on 2D random Voronoi/Delaunay lattices."
+}

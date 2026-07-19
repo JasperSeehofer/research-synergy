@@ -1,0 +1,5 @@
+{
+  "method_atom": "An approximation algorithm that recasts a min-max optimization problem via convex duality and solves it with first-order non-smooth optimization, specifically a specialization of the excessive-gap smoothing framework, achieving a provable convergence rate in the target accuracy that improves on greedy incremental (coreset-style) schemes. The machinery converts an inherently geometric covering/scaling problem into a saddle-point program and exploits its dual structure rather than direct geometric arguments.",
+  "object_atom": "The geometric problem of finding the smallest instance of a fixed convex shape that encloses a finite set of n points in d-dimensional Euclidean space: the minimum-radius enclosing ball, and the minimum-magnification enclosing convex polytope of a prescribed shape.",
+  "brief_reason": "The convex-duality plus excessive-gap non-smooth optimization scheme with its accuracy-dependent rate is the transferable method, while the enclosing-ball/enclosing-polytope over Euclidean point sets is the domain-specific computational-geometry object."
+}

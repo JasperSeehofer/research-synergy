@@ -1,0 +1,5 @@
+{
+  "method_atom": "A systematic technique for representing the generators of an abstract noncommutative algebra as formal power series in a canonical algebra of commuting variables together with their conjugate derivations (a Weyl/Heisenberg algebra). The whole family of such representations is connected by a group of similarity transformations, with each representation fixing a unique ordering prescription, from which one derives generalized derivations, a deformed product rule (Leibniz rule / coproduct), and an associative deformed multiplication (star-product) written in terms of the coproduct and an explicit twisting operator.",
+  "object_atom": "Generalized kappa-deformed noncommutative spacetime — the deformed coordinate algebra of noncommutative geometry — instantiated for a Nappi-Witten type noncommutative space.",
+  "brief_reason": "The realization-via-Weyl-algebra plus twist/star-product machinery is transferable to any noncommutative algebra, while the kappa-deformed, Nappi-Witten noncommutative spacetime is the physics-specific object it is applied to."
+}

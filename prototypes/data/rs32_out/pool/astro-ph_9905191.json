@@ -1,0 +1,5 @@
+{
+  "method_atom": "A decorrelation procedure for a noisy second-order statistic whose sampling-covariance has become broadly correlated across its argument: transform (prewhiten) the statistic so its noise covariance is proportional to the identity, then diagonalize the resulting covariance to obtain a basis of eigenmodes that are nearly uncorrelated. This basis yields a near-minimum-variance estimator and its Fisher information matrix, and the manipulations exploit a fast logarithmically-spaced integral transform (FFT/Hankel of a periodic log-spaced sequence).",
+  "object_atom": "The galaxy power spectrum measured from a galaxy redshift survey, after nonlinear gravitational evolution has correlated its amplitude across different wavenumbers, estimated in the Feldman-Kaiser-Peacock approximation.",
+  "brief_reason": "The prewhitening-then-eigenmode-decorrelation-to-minimum-variance-estimator machinery is transferable to any correlated-covariance statistical estimation problem, while the nonlinear galaxy power spectrum from a redshift survey is the astrophysics-specific object."
+}

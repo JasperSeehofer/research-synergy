@@ -1,0 +1,5 @@
+{
+  "method_atom": "a functional-analytic study of the continuity and robustness of a parametrized family of information/divergence functionals constructed from a deformed (generalized) logarithm, establishing that both the functionals and their associated pairwise divergences vary continuously and satisfy a uniform-stability condition under small perturbations of their arguments",
+  "object_atom": "the generalized entropies and relative entropies of Tsallis nonextensive thermostatistics, used as the concrete instances to which the continuity and stability analysis is applied",
+  "brief_reason": "The continuity/stability machinery for deformed-logarithm-based functionals and their divergences is field-neutral and transferable, while the Tsallis nonextensive-thermostatistics entropies are the physics-specific object it is demonstrated on."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "single-event counting of a stochastic two-body reactive process, in which each discrete reaction outcome is observed individually and the branching ratio between competing product channels — plus the overall decay probability of a transient intermediate complex — is estimated quantitatively from only a small number (tens to hundreds) of such events, and in which substituting a heavier constituent for a lighter but otherwise-identical one shifts the outcome, revealing a mass-dependent selectivity.",
+  "object_atom": "reactions between excited-state Mg+ ions and molecular hydrogen isotopologues (H2, HD, D2) at thermal energies, proceeding through MgH2+/MgHD+/MgD2+ intermediate complexes to form MgH+ or MgD+ products, with the deuterium-vs-hydrogen substitution as the isotope effect.",
+  "brief_reason": "The transferable machinery is estimating branching ratios and intermediate-decay probabilities of a stochastic reactive process from few discrete single events and detecting a mass-substitution-driven selectivity; the specific ion-neutral Mg+/H2-isotopologue system and its molecular product channels are the chemistry-specific object."
+}

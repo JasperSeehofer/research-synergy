@@ -1,0 +1,5 @@
+{
+  "method_atom": "a flexible linear chain of many sequentially-connected units that undergoes a sequence of conformational ordering transitions—from a disordered open state to progressively more compact folded states—as a function of chain length, temperature, and an externally imposed control parameter; inert space-filling particles reduce the available volume, and this excluded-volume (depletion) compaction shifts the thresholds of the ordering transitions depending on the particles' volume fraction and size.",
+  "object_atom": "an off-lattice helical homopolymer (a chain of identical monomers) immersed in a bath of inert crowding particles, forming random-coil, helix, helical-hairpin, and helix-bundle structures.",
+  "brief_reason": "The transferable machinery is the length/temperature-dependent conformational transitions of a connected-unit chain plus excluded-volume compaction by inert particles, while the specific helical homopolymer and its named structural states are the domain-specific object."
+}

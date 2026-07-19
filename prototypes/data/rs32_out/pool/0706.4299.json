@@ -1,0 +1,5 @@
+{
+  "method_atom": "Equip an infinite-dimensional space of objects with a Riemannian metric and construct an explicit isometry mapping it onto well-understood finite-dimensional manifolds (sphere, complex projective, Stiefel, Grassmann), so that geodesics, minimizing paths, distances, and sectional curvature can be transported and computed in closed form on the simpler space. Symmetry-group invariances are removed by quotienting the manifold under a group action and restricting to horizontal subspaces orthogonal to the group orbits.",
+  "object_atom": "The space of plane curves (open and closed) considered up to reparametrization and rigid rotation — a shape space of two-dimensional outlines.",
+  "brief_reason": "The isometry-to-classical-manifold machinery plus group-quotient/horizontal-lift construction is transferable, while the specific subject is 2D curve shapes modulo parametrization and rotation; the two separate cleanly with no forced fusion."
+}

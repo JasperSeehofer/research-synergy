@@ -1,0 +1,5 @@
+{
+  "method_atom": "A construction that assigns to an arbitrary probability distribution over a continuous variable an intensive scalar characterizing its dispersion, defined so that for the canonical exponential (log-linear) family it coincides with the standard variance-derived scale, and shown to be governed by the Fisher information of the distribution. In effect, it derives an intensive 'scale' parameter of a general density from an information-geometric quantity (Fisher information) rather than from the mean second moment alone.",
+  "object_atom": "The thermodynamic temperature of a physical system in statistical mechanics, specifically the distribution of particle momenta beyond the Boltzmann/ideal-gas case where kinetic and thermodynamic temperatures no longer coincide.",
+  "brief_reason": "The transferable part is the Fisher-information-based definition of an intensive dispersion/scale parameter for any distribution; the momentum distribution and its thermodynamic temperature are the physics-specific object it is applied to."
+}

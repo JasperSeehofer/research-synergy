@@ -1,0 +1,5 @@
+{
+  "method_atom": "a massless relativistic (Dirac-type) field theory in two spatial dimensions that possesses local conformal (Weyl) gauge symmetry, exploited on a curved lower-dimensional surface embedded in an emergent (2+1)-dimensional spacetime to derive geometric constraints under which a spectral observable (the density of states) is invariant when measured in the intrinsic reference frame of the field. The interplay of special-relativistic-like dynamics with local conformal symmetry yields an effective general-relativistic-like curvature description, from which infinite-dimensional conformal (Virasoro) algebra and the Liouville equation arise naturally as constraints on the surface profile.",
+  "object_atom": "the low-energy electronic excitations of a graphene sheet, whose charge carriers behave as massless Dirac fermions, and the physical shape/curvature of that sheet.",
+  "brief_reason": "The conformally-invariant massless-Dirac machinery and the emergent-geometry/Virasoro/Liouville structures are the transferable method; the graphene sheet's electrons and its physical shape are the condensed-matter-specific object, and they separate cleanly."
+}

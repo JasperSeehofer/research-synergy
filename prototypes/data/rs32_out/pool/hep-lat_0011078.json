@@ -1,0 +1,5 @@
+{
+  "method_atom": "A technique for quantifying the systematic errors introduced when a continuum theory is approximated by a discretized (grid/lattice) regularization, by exploiting an exact duality that maps the model onto a dual, exactly-solvable theory at a special self-similar (asymptotically free) point. The leading discretization corrections are shown to be universal yet to vanish only as inverse powers of the logarithm of a diverging characteristic length scale, computed via an exact scattering-amplitude bootstrap and via perturbative expansion.",
+  "object_atom": "The massive continuum limit of the 1+1-dimensional O(2) nonlinear sigma-model (XY model), reached through its equivalence to the Sine-Gordon model, with observables being the two-particle scattering phase shifts and the correlation function of the Noether current on a lattice.",
+  "brief_reason": "What carries across is the duality-based analysis of discretization artifacts and their universal logarithmic decay computed by bootstrap/perturbation theory; what is domain-specific is the 1+1D O(2)/XY spin field theory and its scattering and Noether-current observables."
+}

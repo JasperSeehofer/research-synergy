@@ -1,0 +1,5 @@
+{
+  "method_atom": "an analytical treatment of an extended, one-dimensional oscillating object carrying internal excitation (non-zero) modes as it propagates through a geometric singularity of a time-dependent background — a degenerate point where a periodic coordinate contracts to zero extent and then re-expands — showing that populating the object's internal modes regularizes its classical trajectory so the dynamics stays finite and well-defined across the degenerate point.",
+  "object_atom": "a classical relativistic string winding around the compact dimension of compactified Milne space, passing through the contraction-to-a-point and re-expansion singularity of that time-dependent orbifold spacetime.",
+  "brief_reason": "The transferable machinery is an internally excited extended object crossing a collapsing-then-re-expanding geometric singularity and being kept non-singular by its internal modes; the winding string in a compactified-Milne orbifold spacetime is the physics-specific object."
+}

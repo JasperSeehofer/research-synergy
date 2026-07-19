@@ -1,0 +1,5 @@
+{
+  "method_atom": "a many-body simulation of dissipative interacting particles held in a driven nonequilibrium steady state, in which continual external energy injection balances energy lost in inelastic pairwise collisions; the loss parameter tunes a monotonic transition toward spatial heterogeneity, producing power-law tails in the pair-correlation function (fractal, multi-scale aggregation) alongside non-Gaussian velocity statistics, with transport (diffusion) coefficients measured as functions of the dissipation strength and packing density",
+  "object_atom": "a gas of spherical granular grains confined to a quasi-2D layer, kept fluidized by vertical shaking over a rough substrate",
+  "brief_reason": "the driven-dissipative steady state with inelastic-collision-induced clustering, power-law correlations, non-Maxwellian statistics and density/dissipation-dependent transport is the transferable machinery, while the shaken layer of granular spheres is the domain-specific object."
+}

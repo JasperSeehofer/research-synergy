@@ -1,0 +1,5 @@
+{
+  "method_atom": "a confined quasi-one-dimensional ballistic system whose discrete transverse-mode band structure can be continuously and reversibly reshaped by an externally applied transverse field, driving qualitative changes in the dispersion relation — the level-crossing/fracturing of the occupied surface, sign reversal of the group velocity and effective mass, and reduction of spectral gaps — with these changes imprinted on transport and thermodynamic response functions (conduction plateaus, density-of-states singularities, thermoelectric coefficient, and thermally activated transport)",
+  "object_atom": "an armchair-edge graphene ribbon — a ballistic strip of a carbon monolayer acting as a quantum wire — whose electronic bands respond to an externally applied transverse voltage",
+  "brief_reason": "the transferable part is tuning a quasi-1D confined spectrum with a transverse field to invert dispersion curvature/velocity and shrink gaps, observable in transport; the graphene-ribbon carbon monolayer and its edge states are the condensed-matter-specific object."
+}

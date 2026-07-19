@@ -1,0 +1,5 @@
+{
+  "method_atom": "a framework in which a nontrivial algebraic symmetry structure (a bialgebra/Hopf algebra equipped with a braiding that deforms how tensor factors are exchanged) acts on a system built from many interacting degrees of freedom, so that invariance under the symmetry forces exact non-perturbative relations among the system's correlation/statistical quantities; the framework is made consistent by a fixed set of algebraic compatibility conditions between the braided composition rule and the symmetry's coproduct/antipode structure.",
+  "object_atom": "quantum field theories defined over noncommutative spacetimes and their Poincare symmetries, concretely the effective field theory of three-dimensional quantum gravity coupled to spinless particles, field theory on the Moyal plane, and field theory on kappa-Minkowski spacetime.",
+  "brief_reason": "What carries across is the braided-Hopf-algebra symmetry machinery and its symmetry-forced non-perturbative relations plus consistency conditions; what is domain-specific is the noncommutative-spacetime quantum field theories and their physical Poincare realizations."
+}

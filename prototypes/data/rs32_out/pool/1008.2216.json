@@ -1,0 +1,5 @@
+{
+  "method_atom": "an exact scattering solution for the correlated transport of one and two interacting quanta propagating in a one-dimensional continuum and scattering off a single localized two-state nonlinear scatterer, computing single- and two-quantum transmission currents. The method compares an unbounded (linear) versus a bounded periodic (sinusoidal tight-binding) energy-momentum dispersion, and reveals that the two-body interaction mediated by the saturable scatterer produces a resonant enhancement of the two-quantum current at a scatterer transition energy displaced from the single-quantum resonances.",
+  "object_atom": "photons propagating in one-dimensional waveguides coupled to a two-level system such as an atom or a quantum dot.",
+  "brief_reason": "The transferable machinery is the exact two-body scattering/transport calculation through a localized nonlinear two-state scatterer under different dispersion relations; the domain-specific object is few-photon transport in a waveguide coupled to a two-level system."
+}

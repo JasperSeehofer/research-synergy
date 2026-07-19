@@ -1,0 +1,5 @@
+{
+  "method_atom": "a technique for taking two distinct asymptotic low-parameter (slow-regime) limits of a covariantly formulated theory that carries redundant gauge degrees of freedom, in which the surviving constraint / gauge-fixing condition in each limit is selected by comparing the relative orders of magnitude of terms under a small-parameter expansion, rather than by a full tensor-covariant reformulation; the outcome is that one auxiliary constraint reduces to a different, simpler constraint depending on which of two competing terms dominates in the limit.",
+  "object_atom": "the scalar and vector potentials of electromagnetism and their gauge conditions (the Lorenz gauge versus the Coulomb gauge) in the non-relativistic 'electric' and 'magnetic' Galilean limits of Maxwell theory introduced by Lévy-Leblond and Le Bellac.",
+  "brief_reason": "What carries across is the order-of-magnitude / small-parameter limiting procedure that decides which gauge-fixing constraint survives in each asymptotic regime; what is domain-specific is the electromagnetic potentials and the Lorenz-versus-Coulomb gauge conditions."
+}

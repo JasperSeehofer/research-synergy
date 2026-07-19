@@ -1,0 +1,5 @@
+{
+  "method_atom": "a self-consistent mean-field variational scheme that reduces an interacting many-body problem to effective single-particle equations governed by a functional of the particle density, solved by expanding fields in a periodic Fourier (plane-wave) basis and replacing sharply-varying short-range structure with smoothed effective operators to cut computational cost, packaged as a modular, inter-operable open-source software suite optimized for massively-parallel execution",
+  "object_atom": "the electronic structure of materials — the quantum many-electron ground state of atoms, molecules, and crystalline solids in condensed-matter physics and materials science",
+  "brief_reason": "the density-functional/plane-wave/pseudopotential self-consistent-field machinery and its modular parallel-software packaging are transferable, while the many-electron ground state of materials is the domain-specific object it is applied to."
+}

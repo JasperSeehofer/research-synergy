@@ -1,0 +1,5 @@
+{
+  "method_atom": "A rigorous argument that locates the critical threshold of a probabilistic model with correlated (dependent) connectivity by identifying it with the fixed point of a self-duality transformation on the control parameter — the value at which the model maps to its own dual is proven to be exactly where the phase transition occurs. This is paired with a sharpness argument establishing exponential decay of correlations everywhere in the sub-critical regime, and the technique holds across a continuous family of a weighting parameter rather than only at isolated special values.",
+  "object_atom": "The two-dimensional random-cluster (Fortuin–Kasteleyn) model with cluster-weight parameter q≥1 on the square, triangular, and hexagonal lattices, together with the equivalent q-state Potts model whose critical temperature this determines.",
+  "brief_reason": "The self-duality-fixed-point localization of a phase transition plus the exponential-decay sharpness argument is the transferable machinery; the FK random-cluster / Potts lattice model at cluster weight q is the domain-specific probabilistic-physics object."
+}

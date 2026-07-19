@@ -1,0 +1,5 @@
+{
+  "method_atom": "an interactive WYSIWYG graphical editor that lets a user construct structured node-and-connector diagrams entirely through mouse click-and-drag operations without programming, and that serializes the resulting layout to a portable markup file for later reuse, exports it to a vector graphics format, and auto-generates equivalent typesetting/markup source code from the visual representation.",
+  "object_atom": "Feynman diagrams, the graphical representations of perturbative particle-physics interactions, together with the LaTeX code used to typeset them.",
+  "brief_reason": "The transferable part is the WYSIWYG click-and-drag diagram-editing, serialization, vector export, and code-generation machinery; the Feynman-diagram subject and its LaTeX output are the physics-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "A limit-theorem technique that shows the empirical distribution of a large ensemble's spectrum converges almost surely to a deterministic limiting measure: one uses logarithmic potential theory in the complex plane to reconstruct the limiting measure from the log-determinant / Stieltjes-type transform of the spectrum, and controls the extreme (especially smallest) singular values of shifted operators under only a finite fourth-moment condition to justify the convergence.",
+  "object_atom": "The eigenvalues of large complex random matrices with independent, identically distributed entries of mean zero and variance 1/n, whose empirical spectral distribution converges to the uniform law on the unit disk (the circular law).",
+  "brief_reason": "The potential-theory-plus-extreme-singular-value machinery for pinning down an almost-sure limiting spectral measure under a moment condition is transferable, while the i.i.d. random matrix ensemble and the resulting circular (uniform-on-the-disk) law are the linear-algebra/probability-specific object."
+}

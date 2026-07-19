@@ -1,0 +1,5 @@
+{
+  "method_atom": "a statistical-mechanics model whose microstates are dynamical graphs on a fixed set of nodes, with an energy functional over edge configurations that drives a symmetry-breaking transition from a high-energy, highly connected, fully permutation-symmetric regime to a low-energy ordered phase; free-energy analysis of the dominant interaction terms establishes thermodynamic stability of the ordered phase under local perturbations, and effective gauge structure can emerge in the ground state via a string-net condensation mechanism.",
+  "object_atom": "the emergence of spatial geometry, locality, dimensionality and matter in a background-independent model of quantum spacetime, where the low-energy ordered graph is interpreted as ordinary local space and the emergent gauge theory as a U(1) field.",
+  "brief_reason": "The transferable machinery is the graph-configuration energy model with a permutation-symmetry-breaking, thermodynamically stable ordering transition and emergent effective fields; what is domain-specific is the interpretation of the ordered low-dimensional graph as emergent physical spacetime geometry and matter."
+}

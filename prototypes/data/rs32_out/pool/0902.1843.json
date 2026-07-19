@@ -1,0 +1,5 @@
+{
+  "method_atom": "A convex-relaxation-and-bounding technique for hard combinatorial optimization: express a quadratic optimization over permutation/assignment structures as an optimization over positive-semidefinite matrices, then relax the integrality/rank constraints to obtain a tractable semidefinite program whose optimum is a provable bound on the original objective. One derived semidefinite bound can be shown to dominate a weaker relaxation, and its dominance relationship to linear-programming relaxations of the same problem can be characterized.",
+  "object_atom": "The symmetric traveling salesman problem — finding a minimum-cost cyclic tour that visits each city exactly once — treated as a special case of the quadratic assignment problem.",
+  "brief_reason": "The semidefinite-relaxation-of-a-quadratic-assignment machinery and its bound-dominance analysis transfer to any hard combinatorial optimization, while the city-tour TSP instance is the domain-specific object."
+}

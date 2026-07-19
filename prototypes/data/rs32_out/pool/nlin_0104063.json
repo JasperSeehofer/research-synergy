@@ -1,0 +1,5 @@
+{
+  "method_atom": "A phase-space statistical (kinetic) description of a partially-coherent nonlinear wave field: applying a Wigner-type transform to a nonlinear Schrodinger-type governing equation with arbitrary nonlinearity to derive a transport/evolution equation for the phase-space distribution. In this framework random phase fluctuations of a stochastic plane wave produce a Landau-type damping that suppresses a modulational (self-focusing) instability, and in the short-wavelength (eikonal) limit self-consistent localized stationary solutions exist.",
+  "object_atom": "Partially incoherent optical light waves propagating through nonlinear optical media.",
+  "brief_reason": "The Wigner-transform kinetic treatment of a nonlinear Schrodinger field, Landau-damping stabilization, and eikonal-limit localized states are transferable machinery, while incoherent light in nonlinear optical media is the domain-specific object."
+}

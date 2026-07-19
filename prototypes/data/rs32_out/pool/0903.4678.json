@@ -1,0 +1,5 @@
+{
+  "method_atom": "a competitive stochastic aggregation rule in which, at each step, candidate links between components are added according to a bias that depends on the sizes of the components they would merge, so that the growth of the largest connected component is suppressed until it undergoes an abrupt, discontinuous (first-order) jump as the number of added links increases. The resulting critical behavior falls into a distinct universality class from the corresponding unbiased random-aggregation process.",
+  "object_atom": "bond-percolation clusters forming on a two-dimensional regular lattice network, with occupied bonds connecting neighboring sites.",
+  "brief_reason": "The size-biased competitive link-addition rule producing an explosive first-order emergence of a giant component is the transferable machinery, while the two-dimensional lattice bonds and their percolation clusters are the domain-specific object."
+}

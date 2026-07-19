@@ -1,0 +1,5 @@
+{
+  "method_atom": "An algebraic semantics that captures the dynamics of a rewriting/reduction system by assigning weights to the paths through a network of interacting nodes and composing them into operators, producing an execution-invariant interpretation of the reduction process that also accommodates non-deterministic behaviour and can be realized as a concrete reversible computation, together with an accompanying equational theory.",
+  "object_atom": "The proofs and programs of linear logic represented as proofnets — specifically Differential Interaction Nets, a non-deterministic proofnet-like calculus extending the multiplicative-exponential fragment (MELL), and, as a by-product, the multiplicative-additive fragment (MALL).",
+  "brief_reason": "The path-weighting and operator-composition semantics for reduction dynamics is the transferable machinery, while the linear-logic proofnets and their MELL/MALL/differential fragments are the logic-specific object."
+}

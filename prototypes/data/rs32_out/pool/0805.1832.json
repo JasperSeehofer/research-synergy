@@ -1,0 +1,5 @@
+{
+  "method_atom": "A system of many identical coupled units carries a collective conjugate (phase) variable that spreads diffusively because of interactions among the units. Injecting external stochastic dephasing noise into the units' internal modes counterintuitively slows this diffusion through a Zeno-like freezing mechanism, in which frequent effective measurement of the modes impedes coherent evolution. The degree of suppression is amplified by a collective factor that grows with the number of units, scaling as N/log(N).",
+  "object_atom": "Ultracold bosonic atoms in a two-site (double-well) Bose-Hubbard system, where inter-particle collisions drive phase diffusion between the two sites and the quasi-momentum modes are subject to dephasing, with N the number of atoms.",
+  "brief_reason": "The noise-induced Zeno suppression of diffusive phase spreading, amplified by a size-dependent collective factor, is the transferable machinery; the double-well Bose-Hubbard cold-atom system with collisional interactions is the physics-specific object, with the bosonic N/log(N) enhancement being the one feature tied to the bosonic object."
+}

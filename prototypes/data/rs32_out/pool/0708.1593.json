@@ -1,0 +1,5 @@
+{
+  "method_atom": "an inference principle that updates a prior probability distribution to a posterior by maximizing relative entropy subject to constraints, simultaneously incorporating both directly observed outcomes and expectation-value (moment) constraints, yielding a generic canonical exponential-family form for the posterior; it also gives a criterion for when non-commuting constraints must be imposed sequentially versus simultaneously.",
+  "object_atom": "the multinomial inference problem of assigning probabilities to the faces of a tossed die, worked through two superficially similar but distinct constraint scenarios.",
+  "brief_reason": "the maximum-relative-entropy updating machinery and its handling of commuting versus non-commuting constraints is the transferable method, while the die-toss / multinomial outcome distribution is the domain-specific object it is demonstrated on."
+}

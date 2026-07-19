@@ -1,0 +1,5 @@
+{
+  "method_atom": "a deterministic time-integration scheme for the classical equations of motion of point masses confined to a bounded region and subject to a static, uniform transverse field that curves their trajectories, extended to several mutually interacting units via pairwise long-range forces; used to probe the transition between regular/quasiperiodic and chaotic dynamics as geometry, interaction strength, and field strength are varied, revealing islands of regularity at special commensurate parameter ratios",
+  "object_atom": "charged particles (single electrons and pairs of Coulomb-interacting electrons) bouncing inside hard-wall billiard cavities of arbitrary shape immersed in an external magnetic field, as a model for the classical limit of many-electron semiconductor nanostructures and transport devices",
+  "brief_reason": "the transferable part is the molecular-dynamics integration of confined, field-deflected interacting bodies and its chaos/regularity diagnostics; the domain-specific part is the electrons-in-a-magnetic-billiard semiconductor system the scheme models."
+}

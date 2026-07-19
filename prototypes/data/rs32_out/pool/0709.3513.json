@@ -1,0 +1,5 @@
+{
+  "method_atom": "an analytic perturbative computation of the leading interference (cross) term between two distinct one-loop amplitudes that contribute to the same final state, regularised via dimensional regularisation and reduced to a basis of master integrals with massive internal propagators, used to quantify how contributions from separate channels partially cancel and assess whether the net effect is numerically significant.",
+  "object_atom": "Higgs boson production in association with two jets at the LHC, specifically the interference between the gluon-fusion and weak-boson-fusion production channels.",
+  "brief_reason": "The transferable machinery is the analytic loop-level interference calculation via dimensional regularisation and massive master integrals; the domain-specific object is the gluon-fusion/weak-boson-fusion Higgs-plus-two-jet process at the LHC."
+}

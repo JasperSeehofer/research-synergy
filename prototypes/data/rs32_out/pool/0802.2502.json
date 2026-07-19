@@ -1,0 +1,5 @@
+{
+  "method_atom": "an iterative strong-disorder coarse-graining (decimation) scheme for a continuous-time Markov jump process defined by a master equation with transition rates between states: at each step eliminate the state with the largest total exit rate and generate renormalized rates among the surviving states. Because the renormalized rates combine multiplicatively, the distribution of effective exit barriers (minus-log rates) broadens without bound under iteration, making the procedure asymptotically exact at long time scales for broad-barrier-distribution regimes.",
+  "object_atom": "the slow non-equilibrium relaxation dynamics of quenched-disordered systems spanning many time scales, tested concretely on a directed polymer in a two-dimensional random medium.",
+  "brief_reason": "The transferable part is the rate-decimation renormalization of a master equation with a broadening barrier distribution; the domain-specific part is the disordered physical system (a directed polymer in a random medium) whose relaxation it describes."
+}

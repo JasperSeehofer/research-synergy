@@ -1,0 +1,5 @@
+{
+  "method_atom": "a recursive optimal-estimation scheme that fuses a model-based forecast with a stream of noisy measurements by minimizing average estimation error, generalized from the Gaussian/quadratic-error case to heavy-tailed (power-law / Lévy) fluctuations; when second moments are ill-defined it replaces the covariance matrix with a 'tail-covariance' object, so the linear update rule becomes a nonlinear matrix equation that down-weights new information as the tail exponent shrinks.",
+  "object_atom": "the hidden time-evolving state of a linear dynamical system that must be tracked from successive noisy observations, where both the forecasting errors and the observational noise are drawn from heavy-tailed (power-law / Lévy) distributions.",
+  "brief_reason": "The heavy-tailed recursive optimal-filtering machinery (tail-covariance, nonlinear update, exponent-dependent weighting) is the transferable method, while the tracked noisy dynamical-system state is the domain object; the two are only loosely separable since this is a methods paper whose object is a generic filtering setup rather than a specific physical system."
+}

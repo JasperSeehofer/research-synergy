@@ -1,0 +1,5 @@
+{
+  "method_atom": "Analog emulation: engineer a highly tunable, controllable interacting many-body substrate whose low-energy effective description reproduces the governing equations of a distinct, hard-to-solve target theory, so that the accessible substrate acts as a physical simulator of the target. Because the target model emerges in the substrate's low-energy sector, one can experimentally measure the target's spectral and correlation properties as an alternative to costly direct numerical computation.",
+  "object_atom": "Interacting relativistic quantum field theories in (1+1) spacetime dimensions — self-interacting Dirac fermions (the Thirring model) and Dirac fermions coupled to a dynamic scalar field (the Gross-Neveu model) — realized as the emergent low-energy sector of engineered bosonic and fermionic cold-atom systems.",
+  "brief_reason": "The transferable machinery is analog simulation via an engineered substrate whose low-energy effective theory matches a target model, enabling experimental probing; the domain-specific object is the particular (1+1)D relativistic QFTs (Thirring, Gross-Neveu) and their cold-atom realization."
+}

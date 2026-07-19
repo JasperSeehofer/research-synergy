@@ -1,0 +1,5 @@
+{
+  "method_atom": "a global-optimization strategy that recasts a computationally hard problem as the search for the minimum of a rugged, disordered cost/energy landscape over many coupled variables, then introduces a tunable stochastic fluctuation term that lets the state tunnel through or hop over barriers between local minima; the fluctuation strength is slowly reduced to zero (annealed) so the system adiabatically relaxes toward the global optimum. The transferable machinery is: map hard problem to ground-state search, add controllable escape-from-local-minima fluctuations, then anneal them away.",
+  "object_atom": "quantum spin-glass systems — disordered many-body physical systems whose fluctuations are quantum-mechanical rather than thermal — used as the physical substrate for analog quantum computation.",
+  "brief_reason": "The anneal-fluctuations-to-zero optimization principle over a disordered energy landscape carries across fields, while the quantum spin glass as the physical computing substrate is the physics-specific object."
+}

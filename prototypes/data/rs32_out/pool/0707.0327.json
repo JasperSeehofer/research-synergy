@@ -1,0 +1,5 @@
+{
+  "method_atom": "a fault-tolerant error-correction and encoding scheme that lets a set of imperfect, non-orthogonal basis elements support universal, reliable information processing even when those elements are weak in a key resource parameter and subject to stochastic loss, with the achievable error thresholds and the resource overhead of the first encoding level quantified by Monte Carlo simulation of the imperfections' effects.",
+  "object_atom": "two small-amplitude optical coherent states used as the qubit basis for linear optical quantum computing, degraded by photon loss and by the difficulty of generating large-amplitude diagonal states.",
+  "brief_reason": "The transferable part is the fault-tolerant encoding that tolerates weak, lossy basis elements plus its Monte Carlo threshold/resource analysis; the domain-specific part is the coherent-state optical qubits and photon loss they physically embody."
+}

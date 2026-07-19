@@ -1,0 +1,5 @@
+{
+  "method_atom": "In the limit of infinitely large matrices, the eigenvalue (spectral) distribution of a parameter-dependent operator undergoes a sharp transition as a control parameter is scaled. A universal scaling function governing this transition is extracted in a double-scaling limit from the average characteristic polynomial of the operator. Distinct instances of the transition are conjectured to belong to the same universality class, a conjecture tested numerically.",
+  "object_atom": "Wilson loop operators of fixed shape in large-N QCD (non-Abelian gauge theory) in two, three, and four spacetime dimensions.",
+  "brief_reason": "The large-matrix spectral-transition machinery, double-scaling universal function from the average characteristic polynomial, and same-universality-class conjecture are transferable; the Wilson-loop operators of gauge theory in various dimensions are the physics-specific object."
+}

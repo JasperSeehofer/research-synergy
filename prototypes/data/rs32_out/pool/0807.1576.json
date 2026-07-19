@@ -1,0 +1,5 @@
+{
+  "method_atom": "A Monte Carlo estimation procedure that draws many random configurations from a pseudorandom source to locate, with high numerical precision, the critical value of a control parameter at which a random-occupation process on a regular structure undergoes a sharp global-connectivity transition. It includes an application-specific statistical test of the random source used to select, among several generators, one whose residual correlations do not bias the high-precision estimate of the critical point.",
+  "object_atom": "Randomly occupied sites on a two-dimensional square lattice and the site-percolation threshold pc at which a system-spanning connected cluster first emerges.",
+  "brief_reason": "The Monte-Carlo/pseudorandom-generator-vetting machinery for high-precision estimation of a critical connectivity threshold is transferable, while the square-lattice site percolation and its threshold pc is the statistical-physics-specific object."
+}

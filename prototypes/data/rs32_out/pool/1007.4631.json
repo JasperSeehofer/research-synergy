@@ -1,0 +1,5 @@
+{
+  "method_atom": "a technique for handling a family of non-unique, non-self-adjoint linear operators that arise from different representation/basis choices but describe the same system: by equipping the state space with a modified (non-trivial) inner product defined by a positive metric operator, each such operator is shown to be self-adjoint with respect to that inner product and can be mapped by a similarity transformation to a single canonical self-adjoint operator with a common real eigenvalue spectrum, and two distinct metric-based reformulations are proven equivalent",
+  "object_atom": "the quantum dynamics of spin-1/2 (Dirac) particles in a stationary gravitational field, described by the several non-unique Hamiltonians obtained from the Dirac equation for the Kerr metric under different choices of tetrad vectors",
+  "brief_reason": "the transferable part is the pseudo-Hermitian / metric-operator machinery that unifies basis-dependent non-Hermitian operators into one Hermitian operator with a fixed spectrum; the domain-specific part is spin-1/2 particles and their tetrad-dependent Hamiltonians in curved (Kerr) spacetime."
+}

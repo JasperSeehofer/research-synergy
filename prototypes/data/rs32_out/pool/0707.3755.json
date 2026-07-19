@@ -1,0 +1,5 @@
+{
+  "method_atom": "A technique for evaluating the determinant of a linear differential operator — equivalently the pre-exponential Gaussian-fluctuation factor arising from a saddle-point / stationary-phase approximation of a path integral — by recasting it as a contour integral in the complex plane. It relies only on the theory of ordinary differential equations and elementary complex-variable analysis, so the determinant is obtained from the analytic structure (poles/zeros) of an associated function rather than by direct spectral summation.",
+  "object_atom": "The pre-exponential factor of the Feynman propagator for a large class of potentials, in the context of quantum-mechanical tunnelling processes.",
+  "brief_reason": "The contour-integral evaluation of a fluctuation-operator determinant is the transferable machinery, while the quantum propagator and its tunnelling application are the physics-specific object."
+}

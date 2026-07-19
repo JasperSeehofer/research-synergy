@@ -1,0 +1,5 @@
+{
+  "method_atom": "Treating the level sets (equal-value contour lines) of a rough two-dimensional scalar field as an ensemble of random curves and testing them for conformal invariance, then classifying those curves within a one-parameter family of stochastically-driven conformal growth processes indexed by a single diffusivity constant; matching the measured statistics to a known critical-interface universality class fixes that parameter, and a stochastic aggregation/growth rule is offered as a generative model reproducing the same large-scale contour statistics.",
+  "object_atom": "The iso-height (equal-elevation) lines on the rough surface of a WO3 (tungsten trioxide) thin film, together with a ballistic-deposition surface-growth model proposed to generate contours with matching large-scale statistics.",
+  "brief_reason": "The conformal-invariance testing and one-parameter stochastic-growth (SLE-style) classification of random contour lines is the transferable machinery, while the WO3 thin-film surface and its ballistic-deposition growth are the material-physics-specific object."
+}

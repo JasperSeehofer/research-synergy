@@ -1,0 +1,5 @@
+{
+  "method_atom": "an analysis of the synchronization transition between two coupled identical chaotic dynamical systems, in which a mean-field (annealed) approximation reduces the coupled dynamics to a low-dimensional order parameter and predicts that the synchronized state emerges through a transcritical bifurcation as coupling is varied, complemented by a finite-size scaling study of deviations from the mean-field prediction and a perturbative treatment of weak quenched disorder.",
+  "object_atom": "a pair of coupled identical Kauffman networks (random Boolean networks) driven into their chaotic phase, including partially disordered variants.",
+  "brief_reason": "The transferable machinery is the mean-field/annealed reduction and transcritical-bifurcation route to synchronization of coupled chaotic systems plus finite-size analysis; the domain-specific object is the coupled random Boolean (Kauffman) networks the analysis is applied to."
+}

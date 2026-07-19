@@ -1,0 +1,5 @@
+{
+  "method_atom": "a Hamilton-Jacobi-type reformulation of a wave equation that folds amplitude and phase into a single complex-valued action field, generating characteristic trajectories in the complex plane whose topology is organized by two distinct classes of singularities: one class (fold-type / caustics) arising during free propagation of a localized packet, and another (vortex / branch-point) arising when two propagating components superpose and interfere. A mapping is constructed that relates this complex-plane trajectory description back to the ordinary real-valued framework.",
+  "object_atom": "quantum-mechanical Gaussian wave packets in a scattering process, specifically the collision and interference of two such packets and the resulting quantum interference dynamics.",
+  "brief_reason": "The complex-action/complex-trajectory machinery with its caustic- and vortex-type singularities and the complex-to-real mapping is transferable to any wave or field system, while the colliding quantum Gaussian wave packets undergoing scattering interference are the physics-specific object."
+}

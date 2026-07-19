@@ -1,0 +1,5 @@
+{
+  "method_atom": "coherent elastic scattering of a wave from a spatially periodic array of scatterers, where interference produces sharp direction-selective (Bragg) reflection; phase-sensitive heterodyne detection against a reference wave recovers the phase shift imparted by the scattering, and confinement of each scatterer to displacements far smaller than the wavelength suppresses motional (Doppler) spectral broadening, while rigid collective displacement of the whole array leaves a detectable signature",
+  "object_atom": "cold atoms trapped by optical dipole forces at the antinodes of a standing wave formed by two counter-propagating modes of a laser-driven high-finesse ring cavity, forming a one-dimensional atomic grating that scatters laser light",
+  "brief_reason": "the interference-based periodic-array scattering plus phase-sensitive detection and sub-wavelength-confinement machinery is transferable, while the cavity-trapped cold-atom lattice illuminated by laser light is the atomic-physics-specific object."
+}

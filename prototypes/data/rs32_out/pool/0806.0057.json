@@ -1,0 +1,5 @@
+{
+  "method_atom": "the statistics of records (running extrema) in a stochastic process built as a cumulative sum of independent, identically distributed increments drawn from any continuous symmetric distribution, exhibiting universality — the record distribution is independent of the increment law — with the mean record count over N steps growing as sqrt(4N/pi), non-self-averaging fluctuations of order sqrt(N), and extreme-value scaling of the shortest and longest inter-record durations as sqrt(N) and a constant times N.",
+  "object_atom": "one-dimensional random walks and heavy-tailed Levy flights (the position time series of a random walker), including the discrete-step random walker.",
+  "brief_reason": "the universal, increment-distribution-independent record statistics of a sum of i.i.d. symmetric increments is the transferable machinery, while the walker-position time series of random walks and Levy flights is the domain-specific object."
+}

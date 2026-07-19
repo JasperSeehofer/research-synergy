@@ -1,0 +1,5 @@
+{
+  "method_atom": "A combinatorial-algebraic technique that rewrites a product of non-commuting generators into a canonically ordered form by deforming one associative product into another via a bilinear pairing built from a Hopf-algebra coproduct and convolution (a 'Cliffordization' of a symmetric product), turning the reordering rule into a single algebraic identity that yields closed-form expressions efficiently.",
+  "object_atom": "The normal (re-)ordering of products of creation and annihilation field operators in quantum field theory, i.e. Wick's theorem for reordering quantum field operators.",
+  "brief_reason": "The Hopf-algebraic coproduct/convolution deformation of one product into an ordered one is the transferable machinery, while the reordering of QFT creation/annihilation operators is the physics-specific object."
+}

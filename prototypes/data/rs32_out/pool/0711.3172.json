@@ -1,0 +1,5 @@
+{
+  "method_atom": "Given a single observed snapshot of a dynamical transformation (a completed map from initial to final states), a decision procedure that determines whether that map is consistent with some underlying continuous-time memoryless (Markovian) generative process, either time-homogeneous or time-varying, via computable necessary-and-sufficient criteria; from these criteria a computable scalar measure quantifying the degree of memorylessness is derived, and the geometry of the set of transformations that arise as solutions of such generator (divisibility) equations is characterized.",
+  "object_atom": "Quantum channels describing the evolution of open quantum systems, as reconstructed experimentally through quantum process tomography, and the set of such channels viewed as solutions of time-(in)dependent quantum master equations.",
+  "brief_reason": "The consistency-test / memorylessness-measure / generator-solvability-geometry machinery for a single observed map is transferable across fields, while the quantum channel, open-system dynamics, and process-tomography setting are the physics-specific object."
+}

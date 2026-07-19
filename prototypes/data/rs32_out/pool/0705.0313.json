@@ -1,0 +1,5 @@
+{
+  "method_atom": "an information-theoretic treatment of a noisy input/output channel, in which the mutual information transmitted from a continuous input signal to a noisy output is maximized (channel-capacity optimization) subject to a matching condition among the input's usable dynamic range, the shape of the deterministic input/output response function, and the input- and output-dependent noise, yielding parameter-free predictions for optimal signaling that can exceed a single bit.",
+  "object_atom": "the regulation of a gene's expression level by the concentration of a transcription factor, with measured noise in binding and transcription, exemplified by the Bicoid/Hunchback regulatory module in the early Drosophila embryo.",
+  "brief_reason": "The capacity-maximizing input/response/noise matching machinery is a transferable communication-channel optimization principle, while the transcription-factor-controlled gene-expression module (Bicoid/Hunchback) is the biology-specific object it is applied to."
+}

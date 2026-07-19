@@ -1,0 +1,5 @@
+{
+  "method_atom": "an analysis of how the connectivity of a graph of interlinked units degrades as elements are removed, contrasting random removal against targeted removal of the most-connected hubs, and showing that a highly heterogeneous degree distribution (power-law / scale-free) confers extreme resilience to random loss while creating extreme fragility to deliberate removal of high-degree elements.",
+  "object_atom": "real-world complex networks such as the World Wide Web, the Internet, social networks, and cellular interaction webs, whose nodes must remain able to communicate despite component failures or attacks.",
+  "brief_reason": "The transferable machinery is the degree-distribution-dependent percolation/robustness behavior under random vs. targeted node removal, while the specific communication and biological networks are the domain-specific objects it is applied to."
+}

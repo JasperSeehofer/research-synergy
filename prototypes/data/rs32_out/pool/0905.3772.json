@@ -1,0 +1,5 @@
+{
+  "method_atom": "A perturbative power-counting and renormalization analysis of a combinatorial field theory whose Feynman amplitudes are topological/cellular complexes rather than ordinary integrals: an algorithm identifies the lower-dimensional boundary substructures where divergences localize, isolates a special contractible class of diagrams via a systematic contraction procedure, and derives a complete power-counting bound on their divergence degree.",
+  "object_atom": "The Boulatov group-field-theory model of three-dimensional quantum gravity, whose Feynman diagrams are 3D simplicial complexes (bubbles / triangulations) encoding a discretized quantum spacetime whose continuum and topological structure at low energies is being probed.",
+  "brief_reason": "The renormalization/power-counting-by-boundary-contraction machinery for combinatorial-topological field-theory amplitudes is the transferable method, while the 3D quantum-gravity Boulatov model and its simplicial-spacetime diagrams are the domain-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "Analysis of a nonlinear dispersive wave equation whose self-focusing nonlinearity supports localized, shape-preserving coherent traveling structures; using a separation of timescales in the high-relative-velocity regime, one shows that when two such structures pass through each other in a slowly (adiabatically) varying external field they retain their profile (in a norm sense) for a controlled time window, the motion of their centers is governed approximately as if they were effective point particles moving in the external field, and the leading corrections arise from radiative energy loss and the finite spatial extent of the structures.",
+  "object_atom": "Two fast solitons of the nonlinear Schrodinger equation colliding in the presence of a spatially adiabatic external potential.",
+  "brief_reason": "What carries across is the timescale-separation analysis of two colliding self-focusing solitary waves reducing to effective particle dynamics with radiation corrections; what is domain-specific is that the dispersive equation is the nonlinear Schrodinger equation and the field is its external potential."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "A generalization of an exact identity constraining the fluctuating statistics of work-like quantities exchanged along driven stochastic trajectories, extended to the case where the driving protocol is conditioned on the outcomes of measurements performed on the system (closed-loop feedback). The extra terms quantify the mutual information acquired by measurement and the efficacy of the conditioning, yielding a generalized fluctuation-dissipation relation that accounts for the readout information.",
+  "object_atom": "Small thermodynamic systems coupled to a heat bath under measurement-based feedback control, illustrated by a Brownian particle in an 'information ratchet' that is transported in one direction while positive work is extracted from it.",
+  "brief_reason": "The measurement-conditioned fluctuation identity with its information-content and feedback-efficacy corrections transfers across fields, while the heat-bath-coupled Brownian-particle system is the physics-specific object."
+}

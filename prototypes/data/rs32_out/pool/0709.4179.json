@@ -1,0 +1,5 @@
+{
+  "method_atom": "purely relaxational (non-conserved order parameter) stochastic dynamics of a many-body system with quenched randomness near a continuous phase transition, characterised by a universal dynamic critical exponent that ties the divergence of autocorrelation/relaxation timescales to system size, estimated by Monte Carlo sampling both in equilibrium and off-equilibrium after a sudden quench of the control parameter across its critical value",
+  "object_atom": "three-dimensional disordered Ising magnets — site-diluted, bond-diluted, and random-bond (+-J) spin models on a lattice along the paramagnetic-ferromagnetic transition line",
+  "brief_reason": "the relaxational critical-dynamics machinery with its universal dynamic exponent carries across any disordered system at a continuous transition, while the diluted/random-bond Ising spin lattices are the condensed-matter-specific object."
+}

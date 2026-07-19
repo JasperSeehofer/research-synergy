@@ -1,0 +1,5 @@
+{
+  "method_atom": "a two-component transport system in a stably-stratified medium where two diffusing quantities with very different diffusivities and opposing gradients drive a small-scale double-diffusive instability; direct high-resolution simulation of the resulting saturated fluctuations yields effective turbulent transport coefficients, which are then fed into a generalized mean-field (scale-separation) stability analysis to predict which large-scale collective modes grow, with the dominant mode selected by the ratio of the two competing background gradients.",
+  "object_atom": "salt-fingering double-diffusive convection in the ocean's thermocline, where heat and salt gradients drive diapycnal mixing and large-scale structures such as thermohaline intrusions, gravity waves, and thermohaline staircases.",
+  "brief_reason": "The transferable part is the differential-diffusivity instability plus simulate-then-parameterize mean-field machinery for large-scale mode selection; the ocean heat/salt/thermocline/staircase system is the domain-specific object."
+}

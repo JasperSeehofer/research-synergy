@@ -1,0 +1,5 @@
+{
+  "method_atom": "An empirical scaling analysis that decomposes a composite interaction event into a countable number of elementary binary sub-interactions, measures the distribution of a produced output quantity as a function of an intensity variable, and tests whether the accumulated output per sub-interaction grows linearly with the count or saturates above a threshold in the high-intensity tail. The count of sub-interactions is selected by tagging conserved fragments, and the per-sub-interaction yield is normalized against a single-interaction baseline to detect deviations from independent superposition.",
+  "object_atom": "Charged hadrons (and neutral pions) produced in deuteron-gold and nucleon-gold nuclear collisions at sqrt(s_NN)=200 GeV, characterized by transverse momentum, collision centrality, and the number of binary nucleon-nucleon collisions suffered by the projectile.",
+  "brief_reason": "The count-of-elementary-binary-interactions scaling-vs-saturation analysis against a single-interaction baseline is the transferable method; the relativistic deuteron/nucleon-on-gold hadron-production system is the domain-specific object."
+}

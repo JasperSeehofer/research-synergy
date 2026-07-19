@@ -1,0 +1,5 @@
+{
+  "method_atom": "the spectral theory of large random matrices, which predicts the limiting eigenvalue density of a high-dimensional correlation/covariance matrix estimated from a finite, noisy sample and uses this null distribution to separate genuine signal from sampling noise; the toolkit includes the Marcenko-Pastur law and its generalisations, free-probability convolution of matrices, random singular-value decomposition, and extreme (largest) eigenvalue statistics, enabling denoising of estimated correlation structure and correction of the systematic bias between in-sample and out-of-sample estimates in the large-dimension, comparable-sample-size regime",
+  "object_atom": "empirical cross-correlations of financial asset returns and econometric variables, applied to portfolio optimisation and out-of-sample risk estimation in financial markets",
+  "brief_reason": "the random-matrix spectral machinery for cleaning noisy high-dimensional sample covariance matrices is field-neutral and transferable, while the correlated asset returns and portfolio/risk application are the finance-specific object."
+}

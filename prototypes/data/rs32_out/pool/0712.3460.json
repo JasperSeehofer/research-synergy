@@ -1,0 +1,5 @@
+{
+  "method_atom": "A technique for modifying a scalar potential (energy landscape) that has critical points: an additional 'uplifting' term is engineered to raise the overall potential value while exactly preserving the locations of the existing critical points and certain shift symmetries at leading order; a stability criterion for whether each preserved critical point remains a local minimum is then derived that depends solely on the magnitude of the added term and not on its detailed form, exposing a parameter regime in which critical points stay stable for an arbitrarily large modification.",
+  "object_atom": "The moduli sector of superstring compactifications, whose supergravity F-term scalar potential possesses Anti-de Sitter supersymmetric critical points that must be lifted to metastable Minkowski or de Sitter vacua with broken supersymmetry.",
+  "brief_reason": "The uplift-a-potential-while-preserving-its-critical-points plus magnitude-only-stability-condition machinery is transferable to any critical-point/energy-landscape problem, whereas the supergravity moduli and AdS-to-de-Sitter vacua are the string-phenomenology-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a scheme for realizing and stabilizing a highly excited, metastable collective state of a strongly-interacting many-body system by tuning pairwise interactions from repulsive to attractive across a geometry-induced resonance in a reduced (one-dimensional) confinement, where reduced dimensionality maintains and strengthens correlations that would otherwise destabilize the excited state; the crossover is diagnosed via the system's stiffness and energy.",
+  "object_atom": "a tunable ultracold quantum gas of bosonic cesium atoms confined to a one-dimensional geometry, driven across a confinement-induced interaction resonance.",
+  "brief_reason": "The transferable machinery is stabilizing an excited/metastable strongly-correlated state by tuning interactions across a resonance in low dimensionality; the ultracold cesium-atom 1D quantum gas is the physics-specific object."
+}

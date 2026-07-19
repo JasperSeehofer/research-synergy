@@ -1,0 +1,5 @@
+{
+  "method_atom": "A family of exact identities for externally driven stochastic dynamics that relate the ensemble average of an exponentiated path-dependent functional (a cost or dissipation accumulated along each trajectory) to a difference of state functions, and that relate the probability of a forward trajectory to that of its time-reversed counterpart; the identities are proven for general history-dependent (memory-bearing, non-Markovian) processes and require only the existence of an invariant stationary distribution, thereby excluding non-ergodic systems.",
+  "object_atom": "Systems driven out of equilibrium and read thermodynamically: the work performed on, and the entropy produced by, a physical system with memory that is externally driven between states, connected back to equilibrium free-energy differences.",
+  "brief_reason": "The transferable machinery is the exact forward/reverse trajectory-average identities for stationary memory-bearing stochastic processes; what is domain-specific is their thermodynamic reading in terms of work, free energy, and entropy production."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "An analytic-continuation technique that maps a driven, steady-state many-body problem onto an equilibrium-like formulation by working in an imaginary (complex-frequency) representation and introducing an auxiliary imaginary variable conjugate to the driving-bias parameter, so that the shifts the drive induces in the population/occupation function are retained. The resulting complex-time correlation functions can then be evaluated by stochastic (Monte Carlo) sampling, and the construction is consistent with the standard doubled-contour treatment of driven systems.",
+  "object_atom": "Strongly correlated electron transport through a quantum impurity in the Kondo regime, i.e. electrons flowing across a correlated system under a finite voltage bias (chemical-potential difference between reservoirs).",
+  "brief_reason": "The transferable part is the imaginary-time/auxiliary-conjugate-variable mapping of a bias-driven steady state onto an equilibrium-like, Monte-Carlo-samplable form; the domain-specific part is the correlated electronic conductor (Kondo impurity under voltage)."
+}

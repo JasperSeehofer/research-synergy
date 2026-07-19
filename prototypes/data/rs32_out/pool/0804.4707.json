@@ -1,0 +1,5 @@
+{
+  "method_atom": "a discrete stochastic growth process in which, at each round, K candidate elements are sampled uniformly at random from the still-available options and an adaptive selection rule ('power of choices') picks one to add, with the goal of forcing a desired global structure to emerge as early as possible; threshold analysis identifies distinct regimes for the number of rounds needed as a function of K, quantifying how the freedom to choose accelerates emergence relative to a purely random (no-choice) process, including matching upper and lower bounds.",
+  "object_atom": "a random graph grown incrementally by adding edges among n labeled vertices, where the target global structure whose first appearance is being timed is a Hamilton cycle.",
+  "brief_reason": "The choice-driven Achlioptas-style threshold machinery and its regime analysis are the transferable method, while the edge-by-edge graph construction and the Hamilton-cycle target are the combinatorics-specific object."
+}

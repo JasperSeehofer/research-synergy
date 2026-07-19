@@ -1,0 +1,5 @@
+{
+  "method_atom": "A construction that takes a low-energy effective relativistic (Dirac-type) wave equation governing the linearly-dispersing excitations of a discrete lattice and lifts it to a higher (four) number of dimensions, yielding a strictly local action carrying the minimal number of fermionic species that is compatible with an exact continuous chiral symmetry, as dictated by no-go theorems constraining discrete/lattice realizations of such fields.",
+  "object_atom": "The electronic structure of graphene — the two-dimensional carbon honeycomb lattice whose low-energy charge carriers behave as massless relativistic Dirac fermions — together with its hypothetical four-dimensional analogue.",
+  "brief_reason": "What carries across is the dimension-lifting of a Dirac-type effective description into a local, minimally-doubled, chirally-symmetric lattice fermion action; what is domain-specific is the graphene honeycomb-lattice electron system it is abstracted from."
+}

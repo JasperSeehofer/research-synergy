@@ -1,0 +1,5 @@
+{
+  "method_atom": "An optimality/extraction bound for a system driven between reservoirs is tightened by a controller that measures the system's state and applies state-conditioned operations (closed-loop feedback), so the maximum useful output is set by a potential-difference term plus a generalized mutual-information term quantifying the correlation acquired by the controller through measurement. The naive bound can be surpassed by exploiting acquired information, yet the underlying conservation/inequality principle is preserved once the resource cost of acquiring and processing that information is included.",
+  "object_atom": "A thermodynamic system exchanging energy with multiple heat baths under discrete quantum measurement-based feedback control, including a two-bath heat cycle whose engine can appear to beat the Carnot efficiency.",
+  "brief_reason": "The measurement-feedback inequality relating extractable output to a potential difference plus mutual information (and offset by information-processing cost) is the transferable machinery, while heat baths, work, and Carnot heat cycles are the thermodynamics-specific object."
+}

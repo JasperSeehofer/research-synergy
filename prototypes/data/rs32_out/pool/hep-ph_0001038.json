@@ -1,0 +1,5 @@
+{
+  "method_atom": "A numerical study of a nonlinear self-consistent integral equation for a two-point response/propagator function, whose solution branches change qualitatively once a dimensionless coupling control parameter exceeds a critical threshold, driving a spontaneous symmetry-breaking transition; the analytic structure of the resulting solution branches is examined and a self-generated 'mass'-like function is extracted from the solutions.",
+  "object_atom": "The propagator (Green function) and dynamically generated mass function of light quarks in QCD within Gribov's supercritical-charge scenario, where chiral symmetry breaking sets in once the strong coupling alpha_s exceeds a critical value alpha_c = 0.43 in the infrared (pion contributions neglected).",
+  "brief_reason": "What carries across is the critical-threshold nonlinear self-consistent equation whose solution branches undergo symmetry breaking above a critical control parameter; what is domain-specific is the QCD light-quark Green/mass function and chiral symmetry breaking."
+}

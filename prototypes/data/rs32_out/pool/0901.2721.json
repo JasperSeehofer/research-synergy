@@ -1,0 +1,5 @@
+{
+  "method_atom": "A statistical theory of escape rates from a metastable region of a many-dimensional state space, built on the distribution of transit ('gap') times between an object's entry through and exit across a bounding dividing surface. Assuming rapid ergodic mixing yields a statistical rate estimate; this is tested against the true decay of a trajectory ensemble, distinguishing algebraic (power-law) from exponential decay regimes and characterizing intermediate-time nonstatistical deviations that persist until the ensemble relaxes to the fully symmetric, well-mixed distribution.",
+  "object_atom": "The classical unimolecular isomerization reaction HCN reversible-arrow CNH, a molecular system with two symmetry-related product exit channels, analyzed via classical trajectories on its potential energy surface.",
+  "brief_reason": "The gap-time/first-passage escape-rate machinery and the statistical-versus-actual decay comparison are the transferable method, while the HCN isomerization molecule with its two symmetric channels is the chemistry-specific object."
+}

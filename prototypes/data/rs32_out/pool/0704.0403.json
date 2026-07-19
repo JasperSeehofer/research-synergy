@@ -1,0 +1,5 @@
+{
+  "method_atom": "Using a single isolated quantized emitter with discrete energy levels to regulate the emission statistics of individual quanta, replacing a broad (Poissonian) statistical distribution in the number of quanta emitted per interval with a controlled, sub-Poissonian one-at-a-time stream or a stream of correlated (entangled) pairs. The transferable machinery is the conversion of a classical statistical source into a deterministic, antibunched or pair-correlated source by confining excitation to a single localized two-level-like system.",
+  "object_atom": "Photons of light emitted by an individual semiconductor quantum dot embedded in a compact, robust, LED-like solid-state device, used to generate indistinguishable single photons and entangled photon pairs.",
+  "brief_reason": "What carries across is the single-quantum-emitter mechanism that produces a regulated stream of discrete quanta or correlated pairs; what is domain-specific is the semiconductor quantum dot emitting photons in a solid-state device."
+}

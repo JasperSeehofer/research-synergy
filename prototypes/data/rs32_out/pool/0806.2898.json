@@ -1,0 +1,5 @@
+{
+  "method_atom": "self-propelled units, each modeled as a localized force-dipole source of a long-range field, interacting with a bounding surface through that field, which reorients them parallel to the boundary and produces a net drift toward the nearest wall; from these interactions a steady-state spatial-distribution model in a confined geometry is derived, and the driving propulsive force is inferred inversely from the measured accumulation profile",
+  "object_atom": "smooth-swimming bacteria (Escherichia coli) confined between two glass plates, propelled by flagella, showing enhanced concentration at the boundaries",
+  "brief_reason": "the force-dipole/boundary-reorientation-and-attraction machinery plus the confined steady-state distribution and force-inversion carry across, while the flagellated E. coli swimming between glass plates is the domain-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "Derivation of renormalization-group flow equations for the effective potential of a coupled interacting field theory, used to locate a non-trivial interacting fixed point, trace the phase-transition boundary separating an ordered from a disordered phase in coupling-constant space, and analyze thermal restoration of a broken discrete symmetry at finite temperature, including an effective reduction of the system's effective dimensionality in the infrared and recovery of ideal-gas (Stefan-Boltzmann) thermodynamics in the symmetric high-temperature regime.",
+  "object_atom": "The three-dimensional N=1 Wess-Zumino model, a supersymmetric field theory in which fermions and bosons interact through a Yukawa coupling, carrying a global Z2 symmetry and a supersymmetric analogue of the Wilson-Fisher fixed point.",
+  "brief_reason": "The RG-flow / fixed-point / thermal-symmetry-restoration machinery is transferable to any interacting field theory, while the supersymmetric Wess-Zumino boson-fermion system with its Z2 symmetry is the high-energy-physics-specific object."
+}

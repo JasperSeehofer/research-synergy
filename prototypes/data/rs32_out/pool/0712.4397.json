@@ -1,0 +1,5 @@
+{
+  "method_atom": "a maximum-entropy probabilistic model over a large collection of interacting discrete units in which only the observed pairwise correlations are constrained, yielding a Boltzmann-type distribution with an effective energy function containing only pairwise coupling terms; the analysis shows that fitting such a model by matching empirical pairwise correlations is, in appropriate limits, mathematically equivalent to sampling configurations via Monte Carlo relaxation of a pairwise-coupled energy function.",
+  "object_atom": "biological systems described at the level of their constituent units: families of amino-acid sequences in homologous proteins, and the collective firing states of networks of neurons.",
+  "brief_reason": "The transferable machinery is the pairwise-constrained maximum-entropy / pairwise-coupled Boltzmann model and the equivalence between correlation-matching and Monte Carlo sampling, while the protein-sequence families and neural-network firing patterns are the biology-specific objects it is applied to."
+}

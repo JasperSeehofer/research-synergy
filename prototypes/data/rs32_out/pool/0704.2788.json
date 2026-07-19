@@ -1,0 +1,5 @@
+{
+  "method_atom": "an exhaustive derivation of all change-of-variable transformations that map a given curved quadratic (metric) form into one proportional (conformal) to a flat reference form, together with the associated scaling factors, including special reduced factors under maximal symmetry; the analysis further establishes the set-theoretic containment relations between the fully-symmetric class, the intermediate parametrized class, and more general classes of such structures.",
+  "object_atom": "the Robertson-Walker cosmological spacetime metrics (homogeneous, isotropic universes with curvature K), their maximally-symmetric special cases, and their conformal relationship to the flat Lorentz-Minkowski spacetime.",
+  "brief_reason": "The transferable machinery is the systematic enumeration of transformations rendering a metric conformally flat plus the inclusion relations among symmetry classes; what is domain-specific is the cosmological spacetime geometry (Robertson-Walker, maximally-symmetric, Minkowski) it is applied to."
+}

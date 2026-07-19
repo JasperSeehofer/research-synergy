@@ -1,0 +1,5 @@
+{
+  "method_atom": "A field-theoretic reduction formalism that extracts scattering-matrix elements (transition amplitudes) for many identical quanta from time-ordered correlation functions of an interacting field, applied to excitations propagating through a network of coupled linear modes that carry localized nonlinear scattering nodes. It yields the bound states of a single quantum on an elementary unit and the full multi-quantum S-matrix, and lets elementary units be composed into larger networks whose scattering matrices follow from the units.",
+  "object_atom": "Photons, including multi-photon states, propagating in a nano-scale array of coupled optical resonators that are coupled to artificial atoms acting as controlling quantum nodes, specifically a T-type coupled-resonator-array unit and the larger H-type coupled-resonator-array waveguide built from such units.",
+  "brief_reason": "The LSZ-style correlation-function-to-S-matrix scattering formalism for many quanta on coupled-mode networks with localized scatterers is transferable, while photons in coupled optical resonators controlled by artificial atoms is the domain-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "A technique for deriving exact consistency/recursion relations (identities) among the moments of an invariant integration measure: by exploiting the invariance of the measure under an underlying symmetry, one obtains differential identities constraining the generating function whose derivatives encode integrals of monomials in a chosen set of invariant basis functions. These identities let one compute or relate high-order moments without evaluating each integral directly.",
+  "object_atom": "Invariant (Haar) integrals over arbitrary simple compact Lie groups of monomials built from the fundamental characters, worked out explicitly for the rank-2 groups SU(3), Spin(5) and G_2 and for SU(4).",
+  "brief_reason": "The measure-invariance-implies-Ward-identity machinery for constraining moment generating functions is field-neutral and transferable, while the specific invariant subject — characters and Haar integrals of simple compact Lie groups — is the representation-theory-specific object."
+}

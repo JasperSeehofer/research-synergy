@@ -1,0 +1,5 @@
+{
+  "method_atom": "a unifying categorical construction in which a class of structured objects is recast as concrete sheaves on a concrete site — objects equipped with families of admissible probe-maps from fixed model shapes satisfying gluing and locality axioms — yielding a category that is locally cartesian closed and possesses all limits, all colimits, an internal mapping object between any two objects, and a weak subobject classifier, and that is stable under passing to subobjects and quotients.",
+  "object_atom": "generalized smooth spaces in differential geometry — Chen spaces and Souriau's diffeological spaces (as well as simplicial complexes) — where the probes are smooth maps from convex sets, together with the categories they form and the smooth mapping spaces between them.",
+  "brief_reason": "The transferable part is the concrete-sheaves-on-a-concrete-site machinery and the good categorical closure/completeness properties it guarantees; what is domain-specific is that the probes are smoothness data and the objects are smooth-space formalisms in differential geometry."
+}

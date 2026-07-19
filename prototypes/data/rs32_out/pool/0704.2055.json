@@ -1,0 +1,5 @@
+{
+  "method_atom": "The construction of algebraic invariants (a cohomology-type theory built from an underlying geometric/dynamical structure) that assign computable signatures to objects in order to distinguish and classify them up to equivalence, together with the study of when such an equivalence problem is algorithmically decidable.",
+  "object_atom": "Symplectic and contact manifolds and their topology — spaces equipped with a closed non-degenerate 2-form (or its odd-dimensional contact counterpart).",
+  "brief_reason": "The invariant-assignment and algorithmic-classification machinery is transferable to any equivalence-classification problem, while the symplectic/contact manifolds are the mathematics-specific object it is applied to."
+}

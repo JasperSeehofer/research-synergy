@@ -1,0 +1,5 @@
+{
+  "method_atom": "A convex-relaxation approach to combinatorial subset selection: an otherwise intractable choice of which components of an unknown vector should be nonzero is approximated by adding a convex penalty to a squared-error objective, using a parameterized family of penalty functions that encode prior structural constraints on the pattern of active components (subsuming the simplest sparsity-inducing norm). It comes with an analysis of the penalties' basic properties and a convergent iterative optimization algorithm for the penalized least-squares problem.",
+  "object_atom": "A sparse coefficient vector estimated in linear regression, where the support (nonzero pattern) has known structure, arising in machine learning, statistics, and signal processing.",
+  "brief_reason": "The transferable part is the convex-penalty relaxation of structured combinatorial selection plus its optimization; the domain-specific part is the linear-regression estimation task on a structured-sparse coefficient vector."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "A consistent, computationally tractable estimator for the likelihood of a probabilistic generative model whose exact likelihood (normalizing constant) is intractable, enabling quantitative, likelihood-based scoring and comparison of competing models against data instead of relying on qualitative inspection of generated samples.",
+  "object_atom": "Deep belief networks used as statistical generative models of natural image patches (natural sensory stimuli) in machine learning and computational neuroscience.",
+  "brief_reason": "The tractable likelihood-estimation-for-model-comparison machinery carries across fields, while the deep-belief-network model of natural image patches is the domain-specific object."
+}

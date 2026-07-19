@@ -1,0 +1,5 @@
+{
+  "method_atom": "a recursive Bayesian predictor-corrector estimator that infers a hidden, evolving state vector from a stream of noisy sequential observations by propagating and updating a mean and covariance, augmented so that the estimate is forced to satisfy known equality and inequality constraints on the state -- enforced either by projecting the unconstrained estimate onto the feasible set or by solving a constrained optimization at each update, with extensions for nonlinear constraints and for constraining the propagated prediction as well as the corrected estimate",
+  "object_atom": "the time-evolving state (e.g. position and velocity) of a target in an engineering recursive tracking problem, where physical or logical bounds on that state are known a priori",
+  "brief_reason": "the constrained recursive minimum-variance estimation machinery is the transferable method, while the tracked engineering target state and its known physical bounds are the domain-specific object."
+}

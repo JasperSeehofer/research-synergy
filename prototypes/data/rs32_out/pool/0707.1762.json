@@ -1,0 +1,5 @@
+{
+  "method_atom": "a many-body model of continuous-valued units that gradually relax their state toward the states of others, but interact only when their states lie within a fixed threshold distance of each other (bounded interaction range), producing spontaneous clustering into discrete groups; analyzed either by stochastic agent-based Monte-Carlo simulation or by a mean-field master/continuity equation for the density of states, with the number and configuration of clusters undergoing bifurcations as the threshold control parameter is varied.",
+  "object_atom": "the opinions of interacting social agents, where each agent holds a continuous (possibly multidimensional) opinion and adjusts it upon hearing sufficiently similar opinions of others, with possibly heterogeneous confidence bounds.",
+  "brief_reason": "The threshold-gated relaxation-toward-neighbors dynamics and its clustering bifurcations are the transferable machinery, while the social opinions of agents are the domain-specific object the machinery acts on."
+}

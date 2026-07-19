@@ -1,0 +1,5 @@
+{
+  "method_atom": "a technique for locating and counting the discrete point spectrum of a non-self-adjoint linear spectral operator that arises as the auxiliary problem of an integrable isospectral flow, by endowing the operator with a symplectic structure and assigning each eigenvalue a definite Krein signature; the signature constraint forces the point eigenvalues to be simple and confined to a fixed curve in the spectral plane, yielding an exact eigenvalue count from qualitative features of the input data.",
+  "object_atom": "the non-self-adjoint scattering (linear eigenvalue) problem whose isospectral flow is the sine-Gordon equation, applied to initially stationary pulse profiles characterized by a single sub-pi extremum with topological charge 0 or a monotone profile with topological charge +-1, compared against the Zakharov-Shabat scattering problem.",
+  "brief_reason": "The symplectic/Krein-signature eigenvalue-counting machinery for non-self-adjoint spectral operators transfers across fields, while the sine-Gordon scattering problem and its topologically-charged pulse profiles are the domain-specific object."
+}

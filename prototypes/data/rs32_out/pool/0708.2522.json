@@ -1,0 +1,5 @@
+{
+  "method_atom": "A parametrized family of integer-entry combinatorial configurations, defined by linear constraints that fix all full sums along each direction to a common value r while requiring all partial sums accumulated from either end to stay nonnegative, is identified with the set of integer lattice points of the r-th dilate of a single fixed integral convex polytope whose vertices are the r=1 base configurations. Because the objects are exactly the lattice points of a dilated polytope, for fixed size their number is given by an Ehrhart polynomial in the scaling parameter r.",
+  "object_atom": "Higher spin alternating sign matrices — square integer matrices generalizing standard alternating sign matrices — which encode configurations of spin r/2 statistical-mechanical vertex models with domain-wall boundary conditions, and reduce to semimagic squares when all entries are nonnegative.",
+  "brief_reason": "What carries across is the lattice-points-of-a-dilated-integral-polytope / Ehrhart-polynomial enumeration principle; what is domain-specific is the higher-spin alternating sign matrices and their vertex-model configurations."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a matrix-integral (large-N topological expansion) formulation that enumerates the ways elements arranged along a one-dimensional chain can be joined into pairwise contacts, classifying each configuration by the topological genus of the resulting arc diagram and yielding exact combinatorial counts of these configurations as a function of chain length. In the fully flexible limit where any pair of elements may connect, the model gives closed-form results for the distribution of genus.",
+  "object_atom": "an RNA molecule with an infinitely flexible phosphate-sugar backbone, whose nucleotide bases form contact structures including pseudoknots.",
+  "brief_reason": "the genus-graded matrix-model enumeration of pairwise contacts along a linear chain is the transferable machinery, while the RNA backbone, base pairing, and pseudoknots are the biology-specific object."
+}

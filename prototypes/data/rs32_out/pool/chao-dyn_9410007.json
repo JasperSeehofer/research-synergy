@@ -1,0 +1,5 @@
+{
+  "method_atom": "Selecting the natural invariant probability measure on the attractor of a driven, dissipative chaotic dynamical system (an SRB-type distribution that weights long-time statistical averages in a stationary state), and extracting from it a concrete quantitative prediction about the system's steady-state statistics without ever constructing the invariant measure explicitly, then checking that prediction against direct simulation.",
+  "object_atom": "The nonequilibrium stationary states of a many-particle system driven far from equilibrium, concretely a strongly sheared fluid, with a possible extension to macroscopic fluid mechanics.",
+  "brief_reason": "The attractor-invariant-measure selection principle and its test-without-construction procedure are the transferable machinery, while the driven many-particle sheared fluid is the physics-specific object."
+}

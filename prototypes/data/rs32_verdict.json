@@ -1,0 +1,31 @@
+{
+ "experiment": "EXP-RS-32",
+ "stage": "e1-graded",
+ "verdict": "WEAK-underpowered",
+ "overall": {
+  "stratum": "overall",
+  "n": 166363,
+  "n_pos": 82,
+  "auc_method": 0.813,
+  "auc_symmetric": 0.7139
+ },
+ "poor_poor": {
+  "stratum": "poor_poor",
+  "n": 41102,
+  "n_pos": 25,
+  "auc_method": 0.8323,
+  "auc_symmetric": 0.7536
+ },
+ "offdiag_poor_poor": {
+  "n": 9277,
+  "n_pos": 3,
+  "auc_method": 0.7435,
+  "auc_symmetric": 0.8494
+ },
+ "dAUC_offdiag": -0.1059,
+ "dAUC_offdiag_boot95CI": [
+  -0.4604,
+  0.0798
+ ],
+ "tau": 0.5
+}

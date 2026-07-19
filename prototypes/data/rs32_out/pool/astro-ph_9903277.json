@@ -1,0 +1,5 @@
+{
+  "method_atom": "an analytic treatment of a weakly-coupled multi-oscillator system in which the onset of chaotic (as opposed to quasi-periodic) motion is explained by the overlap of neighbouring components of a resonance between the systems characteristic frequencies, once a coupling/proximity threshold is crossed; the same framework yields closed-form estimates of the divergence (Lyapunov) timescale and the long-term escape/survival timescale of the system.",
+  "object_atom": "the outer giant planets of the solar system (Jupiter, Saturn, and Uranus) on their mutual mean-motion resonance, together with the historical removal of gas and planetesimals from the protoplanetary disk that set up that resonance.",
+  "brief_reason": "The resonance-overlap criterion for the transition to chaos and its associated timescale estimates are the transferable machinery, while the specific giant planets, their orbital resonance, and the protoplanetary-disk context are the astronomy-specific object."
+}

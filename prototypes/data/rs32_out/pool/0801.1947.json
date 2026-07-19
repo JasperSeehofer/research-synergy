@@ -1,0 +1,5 @@
+{
+  "method_atom": "A variational representation of the lowest-energy configuration of a one-dimensional chain of locally coupled units as a product of small matrices, one per site, closed into a cyclic (periodic) topology by tracing the product around the ring. An iterative energy-minimization scheme optimizes these matrices, and a factorization procedure for the long cyclic product of matrices reduces the computational cost from scaling as m^5 to m^3 in the matrix dimension m, without requiring the chain to be translationally uniform.",
+  "object_atom": "The quantum ground state of one-dimensional lattice spin models with periodic boundary conditions, specifically the S=1/2 and S=1 Heisenberg chains.",
+  "brief_reason": "The transferable machinery is the cyclic product-of-matrices state ansatz plus the long-product factorization that cuts the scaling; the domain-specific object is the quantum Heisenberg spin chain on a periodic 1D lattice."
+}

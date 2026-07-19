@@ -1,0 +1,5 @@
+{
+  "method_atom": "A measure of the shared statistical correlation (mutual information / entropy) between two complementary subregions of a spatially extended Gaussian (quadratic/free) system, proven to scale with the size of the codimension-one boundary separating the two subregions (a boundary/area law rather than a bulk law), together with a complete asymptotic expansion of this quantity computed over a domain carrying arbitrary intrinsic spatial curvature.",
+  "object_atom": "A free scalar quantum field defined on space, partitioned into two spatial regions separated by a hypersurface, in a background geometry with arbitrary purely spatial curvature.",
+  "brief_reason": "The boundary-scaling law for a correlation/entropy measure between complementary subsystems and its curvature-dependent asymptotic expansion for a Gaussian system is the transferable machinery, while the free scalar quantum field on a curved spatial manifold is the physics-specific object; the two are cleanly separable."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "Linear stability analysis of stationary uniform solutions of two nonlinear complex field/wave systems with repulsive self-interaction that are weakly coupled to each other through a barrier (a Josephson-type coupling). The analysis determines the sign of the coupling constant from physical constraints, shows the symmetric ground state is dynamically stable for any coupling strength and interaction, and identifies a long-wavelength transverse (snake-type) instability of an excited configuration carrying a pi relative phase between the two fields.",
+  "object_atom": "Two barrier-separated, concentric annular (double-ring) Bose-Einstein condensates that are tunnel-coupled through a separating barrier, exhibiting angular-momentum Josephson oscillations.",
+  "brief_reason": "The transferable part is the coupled-nonlinear-field stability machinery (sign of a weak inter-system coupling, stability of uniform states, snake-type transverse instability of a pi-phase mode); the domain-specific object is the pair of tunnel-coupled annular Bose-Einstein condensates."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a rigorous, convergent renormalization-group expansion for a many-body system of interacting units whose low-energy excitations vanish linearly around isolated points (a linearly-dispersing, Dirac-like spectrum), proving analyticity of the perturbation series for thermodynamic and correlation functions and showing that a weak short-range interaction only renormalizes effective parameters (a propagation velocity and a field-normalization constant) without shifting the infrared fixed point, thereby excluding symmetry-breaking or ordering instabilities; conserved-current (Ward) identities further constrain the correlation functions up to negligible corrections",
+  "object_atom": "electrons in a 2D Hubbard model on the honeycomb lattice at half filling with weak screened Coulomb interactions, modeling a single-layer graphene sheet",
+  "brief_reason": "the constructive RG proof that weak interactions merely renormalize velocity and wave function around a linear-dispersion fixed point is the transferable machinery, while the half-filled honeycomb-lattice electron system standing in for graphene is the condensed-matter-specific object."
+}

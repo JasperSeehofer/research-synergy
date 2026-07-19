@@ -1,0 +1,5 @@
+{
+  "method_atom": "A large-deviation formalism that estimates the exponentially small probabilities of rare, large fluctuations of random variables around their most probable value, encoding them in a rate function whose minima and convexity determine the typical state; the machinery supplies variational principles, Legendre-transform duality between the rate function and a scaled cumulant generating function (including the breakdown of that duality when the rate function is nonconvex), and symmetry relations constraining fluctuations far from the typical trajectory.",
+  "object_atom": "Equilibrium and nonequilibrium statistical-mechanical systems, including many-particle systems, noise-perturbed dynamics, multifractals, disordered and chaotic systems, and their thermodynamic potentials and fluctuation relations.",
+  "brief_reason": "The rate-function/variational/Legendre-duality machinery of large deviations is a domain-neutral probabilistic tool transferable to statistics, finance, or engineering, while the many-particle equilibrium and nonequilibrium physical systems it characterizes are the domain-specific objects."
+}

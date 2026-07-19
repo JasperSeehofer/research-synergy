@@ -1,0 +1,5 @@
+{
+  "method_atom": "a measurement scheme that recovers the value of a phase-space quasiprobability distribution at a point by combining two objects and counting discrete detection events, exploiting the fact that the overlap of two such distributions equals a measurable coincidence/counting statistic; in an appropriate limit this yields the distribution directly without any inverse-reconstruction (tomographic) algorithm, with a correction analysis for imperfect (sub-unit-efficiency) detectors",
+  "object_atom": "the quantum state of a single-mode light beam, characterized by its Wigner function / phase-space quasiprobability distribution, measured via photon counting in an optical setup that mixes two single-mode fields",
+  "brief_reason": "what carries across is the overlap-equals-counting-statistic estimation principle for a phase-space distribution obtained without tomographic inversion; what is domain-specific is the single-mode quantized light field and its photodetection realization."
+}

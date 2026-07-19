@@ -1,0 +1,5 @@
+{
+  "method_atom": "A technique for computing the multi-point correlation functions of a stochastic ensemble in closed form by expressing them as the Pfaffian of an antisymmetric matrix built from a 2x2 matrix-valued kernel, and then extracting universal large-size asymptotics by taking scaling limits of these correlations both in the interior (bulk) and near the boundary (edge) of the support.",
+  "object_atom": "The real Ginibre ensemble: a class of large asymmetric real random matrices and the statistical distribution of their (real and complex-conjugate) eigenvalues.",
+  "brief_reason": "The Pfaffian-kernel correlation-function machinery and its bulk/edge scaling-limit analysis carry across as domain-neutral tools, while the asymmetric-real-random-matrix eigenvalue ensemble is the random-matrix-theory-specific object they act on."
+}

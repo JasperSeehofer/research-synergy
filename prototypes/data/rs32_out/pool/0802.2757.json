@@ -1,0 +1,5 @@
+{
+  "method_atom": "Analysis of a stochastic transport process (a random walk) unfolding on a structured, hierarchically/recursively built network, quantified by the power-law growth of the mean-square displacement with time, <r^2>~t^{2/d_w}, whose anomalous scaling exponent is derived from a singular renormalization-group fixed point exhibiting a subtle boundary layer. The exponent can take exact irrational values (here involving the golden ratio) and is linked to universal scaling forms for first-passage times.",
+  "object_atom": "Diffusion of random walkers moving on the Hanoi networks, a specific class of recently proposed recursively constructed network geometries whose small-world/hierarchical connectivity determines the transport.",
+  "brief_reason": "The random-walk / mean-square-displacement scaling and RG-fixed-point machinery for extracting anomalous transport exponents transfers to any structured medium, while the Hanoi network geometry is the domain-specific object it acts on."
+}

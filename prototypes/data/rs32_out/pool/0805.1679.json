@@ -1,0 +1,5 @@
+{
+  "method_atom": "a normal-form / canonical-coordinate theorem for a system carrying a maximal family of mutually compatible (commuting) conserved quantities, guaranteeing coordinates that split the dynamics into cyclic angle-like directions and constant action-like invariants; the proof extends a classical non-degenerate result to a degenerate bracket structure by replacing differential-form calculus with the calculus of polyvector fields, together with a normalization (Caratheodory-Jacobi-Lie-type) lemma, and further relaxes the requirement that the conserved quantities commute.",
+  "object_atom": "integrable dynamical systems defined on Poisson manifolds (whose bracket may be degenerate rather than symplectic), including the non-commutative integrable-system variant.",
+  "brief_reason": "The action-angle normal-form result and its polyvector-field proof machinery are the transferable method, while the Poisson-manifold integrable-system geometry is the domain-specific object; the two are cleanly separable."
+}

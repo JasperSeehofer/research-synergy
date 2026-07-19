@@ -1,0 +1,5 @@
+{
+  "method_atom": "Exploit scale/conformal symmetry together with a bulk-boundary (holographic) duality to fully fix how a functional measuring the correlation between two complementary regions depends on the intrinsic and extrinsic (embedding) geometry of the codimension-two hypersurface that divides them, decomposing that dependence into a piece fixed purely by the surface's topology and a piece controlled by its extrinsic curvature, with the two pieces governed by two distinct symmetry-anomaly coefficients.",
+  "object_atom": "the entanglement entropy across a 2d surface Σ separating two subsystems of a strongly coupled N=4 SU(N) superconformal gauge theory and of generic 4d conformal field theories, including closed-form results when Σ is a sphere or a cylinder in flat space-time.",
+  "brief_reason": "What carries across is using conformal symmetry plus a holographic duality to pin a correlation functional's dependence on a dividing surface's topology and extrinsic curvature via two anomaly coefficients; what is domain-specific is that the functional is the quantum entanglement entropy of a 4d gauge/conformal field theory."
+}

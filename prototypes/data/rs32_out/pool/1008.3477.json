@@ -1,0 +1,5 @@
+{
+  "method_atom": "an iterative variational scheme that represents a high-dimensional many-body state as a linear chain of low-rank local factors contracted sequentially, and optimizes it by repeatedly renormalizing and truncating each factor to retain only the components carrying the largest weight of a reduced correlation operator, thereby compressing an exponentially large state into a polynomially controllable form for both static optimization and time evolution",
+  "object_atom": "the ground states, statics, and dynamics of one-dimensional strongly correlated quantum lattice systems",
+  "brief_reason": "the low-rank sequential-factorization / weighted-truncation compression machinery is the transferable method, while its use to simulate one-dimensional strongly correlated quantum lattices is the physics-specific object."
+}

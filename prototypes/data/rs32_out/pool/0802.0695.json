@@ -1,0 +1,5 @@
+{
+  "method_atom": "Building a non-Gaussian distribution as a continuous superposition (smearing) of Gaussian kernels indexed by a varying variance, and deriving the class of smearing measures over that variance for which the resulting family still satisfies the convolution/semigroup (Chapman-Kolmogorov) composition law rather than introducing memory into the underlying process. The same technique simplifies the associated hierarchy of moment-based evolution equations for conditional probabilities and reduces a full propagator computation to an easier averaged one over the mixing parameter.",
+  "object_atom": "Heavy-tailed fluctuation distributions arising in quantum-mechanical processes and in financial-market price movements, whose propagators are treated via path integrals.",
+  "brief_reason": "The variance-superposition of Gaussians, the semigroup-preserving smearing-measure derivation, and the induced simplification of moment equations and propagator integrals are the transferable machinery, while the quantum-process and financial-market fluctuation systems are the domain-specific objects."
+}

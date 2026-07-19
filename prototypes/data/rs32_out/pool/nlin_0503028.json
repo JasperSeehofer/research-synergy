@@ -1,0 +1,5 @@
+{
+  "method_atom": "a stochastic dynamical analysis of an extended object's orientation under a competition between a deterministic shearing/gradient forcing that drives persistent rotation and thermal noise that randomizes it, yielding intermittent flip (tumbling) events; the framework characterizes the non-Gaussian probability distributions of the orientation angle and of the inter-event (residence) times, and derives scaling laws for the distribution widths and a universal exponential tail for the event times as functions of a single dimensionless control parameter (the ratio of driving strength to noise), validated across experiment, theory, and numerics.",
+  "object_atom": "a single flexible polymer molecule suspended in a shear flow with thermal fluctuations, whose orientation relative to the shear plane and whose tumbling times are measured.",
+  "brief_reason": "The transferable machinery is the driven-vs-noise orientational tumbling statistics with control-parameter scaling and universal exponential tails; the polymer-in-shear-flow suspension is the domain-specific object the method is applied to."
+}

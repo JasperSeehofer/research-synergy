@@ -1,0 +1,5 @@
+{
+  "method_atom": "A construction that assigns algebraic invariants to a discrete/topological structure via the representation theory of a symmetry algebra carrying a deformation parameter, then uses a symmetry (quotient) principle to factor each invariant into a product of two sub-invariants, one attached to a quotient of the underlying symmetry group; it establishes that this factor is an algebraic integer when the deformation parameter is specialized to a prime root of unity, and that it admits a perturbative (asymptotic power-series) expansion in the deformation parameter.",
+  "object_atom": "Closed 3-manifolds, and in particular rational homology 3-spheres, together with their quantum topological invariants built from arbitrary simple Lie algebras and the associated projective (adjoint) group.",
+  "brief_reason": "What transfers is the symmetry-based factorization of a parameter-deformed invariant plus the integrality-at-prime-root and perturbative-expansion results; what is domain-specific is that the invariant is topological and the object acted on is a 3-manifold, with the Lie-algebraic input unavoidably fused into the machinery."
+}

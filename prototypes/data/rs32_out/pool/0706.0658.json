@@ -1,0 +1,5 @@
+{
+  "method_atom": "a variational energy functional of a local density field whose bulk part is imported directly from a first-principles equation-of-state (interaction energy computed for uniform infinite matter across a range of densities) rather than fitted from an effective two-body force, augmented by a phenomenological finite-range term to capture surface/inhomogeneity effects, with only a handful of adjustable parameters calibrated to reproduce observed global properties",
+  "object_atom": "the ground-state binding energies and radii of atomic nuclei, treated as a self-bound many-fermion system of nucleons (informed by nuclear and neutron matter), including spin-orbit and pairing correlations",
+  "brief_reason": "The transferable method is a density-functional built by grafting a microscopically-computed uniform-matter energy law onto a small phenomenological finite-range correction and minimal parameter fit; the domain-specific object is the nucleus and its nucleonic matter, with the coupling of first-principles input into the functional being the only mild fusion."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "an equilibrium linear-response calculation in a many-body medium of charged units carrying two conserved quantities, one of which is a parity-odd (handedness) imbalance enforced by a conjugate chemical potential; through an anomalous coupling this imbalance forces a non-dissipative response current directed along an applied external field, with the response coefficient computed as a function of field strength, the imbalance parameter, temperature, and the conserved-charge density",
+  "object_atom": "the quark-gluon plasma, whose quark chirality is induced by topological charge-changing transitions via the axial anomaly, placed in an external magnetic field and characterized by chirality, temperature, and baryon chemical potential",
+  "brief_reason": "the anomaly-driven equilibrium response generating a current parallel to an external field from a parity-odd charge imbalance is the transferable machinery, while the quark-gluon plasma, its quarks, magnetic field, and baryon chemical potential are the domain-specific object."
+}

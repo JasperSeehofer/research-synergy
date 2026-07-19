@@ -1,0 +1,5 @@
+{
+  "method_atom": "a stochastic spreading process of a binary (active/inactive) state among many units coupled on a small-world network whose topology interpolates from a regular lattice to a random graph via a single disorder/rewiring parameter; increasing the coupling disorder drives a dynamical transition from a fluctuating low-activity steady state to self-sustained periodic oscillations in the fraction of active units",
+  "object_atom": "an infectious disease propagating through a population of individuals, whose contact structure varies from ordered to random, with the size of the infected subpopulation as the observable",
+  "brief_reason": "the disorder-parameterized small-world spreading dynamics and its transition to self-sustained oscillations carry across fields, while the infection propagating through a human/biological population is the epidemiology-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "an analysis of a system driven slowly across a continuous symmetry-breaking transition, in which the control parameter is ramped through its critical value at a finite rate and the emergent order parameter fails to keep up with the changing state; analytical derivation of universal power-law scaling of that order parameter as a function of the ramp rate, cross-checked against numerical integration of a reduced one-dimensional model of the dynamics.",
+  "object_atom": "the magnetization of a ferromagnetic spin-1 Bose-Einstein condensate undergoing a slow quantum phase transition, studied in a one-dimensional model.",
+  "brief_reason": "The slow-ramp-through-criticality and order-parameter scaling machinery is transferable to any driven symmetry-breaking transition, while the spin-1 condensate and its magnetization are the domain-specific object."
+}

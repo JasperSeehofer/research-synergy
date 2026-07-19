@@ -1,0 +1,5 @@
+{
+  "method_atom": "a protocol for reconstructing an unknown state of a system at a remote location by exploiting a pre-established correlation shared between two separated subsystems together with the transmission of a limited amount of classical information, reformulated within a framework of nonlocal joint measurements and extended from discrete-valued states to states parameterized by continuous variables",
+  "object_atom": "the unknown state of a two-level (spin) quantum system, and its generalization to the state of a quantum system with continuous variables",
+  "brief_reason": "the shared-correlation-plus-classical-communication remote state-reconstruction machinery (recast as nonlocal measurement) is the transferable method, while the specific quantum spin/continuous-variable state is the physics-specific object."
+}

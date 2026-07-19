@@ -1,0 +1,5 @@
+{
+  "method_atom": "a renormalization-group derivation of finite-size scaling functions for a system near a continuous (second-order) phase transition, quantifying how observables depend on the finite extent of the system and on the distance to the critical point within a given symmetry-defined universality class, so that data from bounded samples can be extrapolated to the thermodynamic limit and the transition's order and critical exponents identified",
+  "object_atom": "the chiral phase transition of two-flavor QCD, modeled by its conjectured O(4)-symmetric universality class and probed through finite-volume lattice-QCD simulations of the phase boundary",
+  "brief_reason": "the RG-based finite-size scaling machinery for continuous transitions is field-neutral and transferable, while the two-flavor QCD chiral transition and its lattice study are the domain-specific object."
+}

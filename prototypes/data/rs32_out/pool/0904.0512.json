@@ -1,0 +1,5 @@
+{
+  "method_atom": "particle-based ab-initio molecular-dynamics simulation of a large collection of interacting units, used to show that a densely packed regular (body-centred-cubic) arrangement of point-like units reorganises under increasing compression into anisotropic rod-like and layered structures; the structural phase transition proceeds through an intermediate zigzag configuration of elongated units formed by the pairwise merging of neighbouring units",
+  "object_atom": "atomic nuclei in the ultra-dense matter of collapsing supernova cores, forming nuclear \"pasta\" phases such as triangular lattices of rod-like nuclei and layered slab-like structures",
+  "brief_reason": "The compression-driven reorganisation of packed units from a cubic lattice into rod-like/layered structures via merging, computed by particle-based molecular dynamics, is the transferable method; the atomic-nuclei-in-supernova-cores system is the nuclear-astrophysics-specific object."
+}

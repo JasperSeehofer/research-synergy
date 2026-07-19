@@ -1,0 +1,5 @@
+{
+  "method_atom": "an information-theoretic analysis of a nonlinear signal-transmission channel in which the intractable nonlinearity is recast as a linear channel corrupted by multiplicative (signal-dependent) noise, yielding an analytically tractable capacity; unlike the additive-noise linear case, the channel capacity does not increase without bound as signal power grows but saturates at a finite maximum.",
+  "object_atom": "the transmission of information as light propagating through an optical fiber, where Kerr-type nonlinearities of the medium limit the achievable communication rate.",
+  "brief_reason": "The multiplicative-noise recasting of a nonlinear channel and its saturating-capacity result carry across (the abstract itself notes applicability to neurobiological sensory transduction), while light propagating in an optical fiber is the domain-specific object."
+}

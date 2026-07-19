@@ -1,0 +1,5 @@
+{
+  "method_atom": "the characterization of power-law spectral fluctuations (spectra scaling as an inverse power of frequency) as a superposition of many independent relaxation processes with a broad distribution of time scales, exhibiting scale-invariant statistics, divergent low-frequency variance, and arising generically from diffusion, self-organized critical avalanche dynamics, and deterministic chaotic maps.",
+  "object_atom": "measured fluctuation signals across physical, geophysical, and biophysical systems — including earthquake magnitude/timing statistics and noise in a biophysical system — together with their numerical simulation.",
+  "brief_reason": "The transferable part is the mathematical/statistical machinery for generating and analyzing power-law-in-frequency fluctuations (superposed relaxations, scaling laws, criticality); the domain-specific part is the concrete measured systems (earthquakes, biophysical channels) whose noise it describes."
+}

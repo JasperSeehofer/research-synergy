@@ -1,0 +1,5 @@
+{
+  "method_atom": "a technique for evaluating a structured determinant in closed form by recognizing it as the determinant of a product of two Cauchy-like matrices (whose entries have the reciprocal-difference form 1/(x_i - y_j)), so that the elementary exact product formula for a Cauchy determinant can be applied, sidestepping eigenvalue-in-the-thermodynamic-limit or Toeplitz/Szego asymptotic approaches that fail on the structure.",
+  "object_atom": "the spontaneous magnetization (long-range order parameter) of the superintegrable chiral Potts model, a two-dimensional lattice statistical-mechanics spin system, where the specific determinant D_PQ arises.",
+  "brief_reason": "The transferable part is the Cauchy-matrix factorization trick for exactly evaluating a structured determinant; what is domain-specific is the lattice-spin model and its magnetization from which that particular determinant arises."
+}

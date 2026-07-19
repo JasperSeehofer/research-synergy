@@ -1,0 +1,5 @@
+{
+  "method_atom": "a statistical-fluctuation analysis of a many-body system held at fixed volume, quantifying the linear correlation between the equilibrium fluctuations of two conjugate aggregate observables, and attributing strong correlation to an effective inverse-power-law pairwise interaction that dominates the fluctuation behavior; in cases governed by a hard-core-plus-short-range-attraction interaction the correlation appears only after time-averaging the fluctuating signals",
+  "object_atom": "model liquids (and their crystal and glass phases) simulated at fixed volume — Lennard-Jones and other simple systems whose configurational pressure and potential energy fluctuate — contrasted with hydrogen-bonding liquids (methanol, water) and a liquid with significant second-neighbor pressure contributions where the correlation is absent",
+  "brief_reason": "what transfers is the fluctuation-correlation machinery plus the inverse-power-law explanation for it; what is domain-specific is the fixed-volume molecular liquid and its configurational pressure and energy, which are inseparable from the physics but here treated as the object the method acts on."
+}

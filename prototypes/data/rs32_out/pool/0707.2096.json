@@ -1,0 +1,5 @@
+{
+  "method_atom": "a comparison of approximation schemes for the reduced (coarse-grained) dynamics of a small subsystem weakly coupled to a large many-body environment, benchmarked against an exactly solvable model: time-local (time-convolutionless) versus time-nonlocal (memory-kernel / integro-differential) evolution equations expanded perturbatively in the coupling strength, where memoryless (Markovian) closures fail when the environment's correlation time is long or infinite, and a tunable memory kernel restores accuracy at long times",
+  "object_atom": "a single two-level quantum system (qubit) coupled to a bath of many spins through an Ising-type interaction",
+  "brief_reason": "the transferable machinery is the family of local-vs-nonlocal/memory-kernel reduced-dynamics approximations and their breakdown under long environmental correlation times; the qubit-plus-spin-bath with Ising coupling is the quantum-physics-specific object."
+}

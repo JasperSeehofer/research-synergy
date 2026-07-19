@@ -1,0 +1,5 @@
+{
+  "method_atom": "An analytical technique for locating multicritical threshold points of a system of many coupled binary units with quenched random pairwise interactions, by exploiting an exact duality transformation that maps the system's partition function onto a related dual partition function and carefully comparing the two under a fixed-point/self-dual condition. Disorder averaging is handled via the replica method, and the standard duality hypothesis is systematically improved to yield more precise critical-parameter values.",
+  "object_atom": "The +/-J Ising spin glass (random-bond Ising model with quenched ferromagnetic and antiferromagnetic couplings) on regular two-dimensional lattices — square, triangular, and hexagonal — parameterized by the probability p that a bond is ferromagnetic.",
+  "brief_reason": "The duality-between-two-partition-functions plus replica-averaging machinery for pinpointing multicritical thresholds is field-neutral and transferable; the +/-J Ising spin glass on 2D lattices is the physics-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a deterministic, trajectory-based ensemble dynamics in which a guidance/velocity field drives an initial out-of-equilibrium probability distribution to relax toward a fixed equilibrium distribution, where relaxation is suppressed ('frozen') for those degrees of freedom whose intrinsic evolution timescale, via a specific time-evolution inequality, is slow relative to a growing external control scale, so their initial non-equilibrium statistics are preserved and become quantitatively predictable",
+  "object_atom": "the statistics of scalar-field modes on an expanding cosmological spacetime in de Broglie-Bohm (pilot-wave) quantum theory, specifically super-Hubble modes during early radiation-dominated expansion, with consequences for the CMB, super-Hubble field correlations, and relic particles",
+  "brief_reason": "the relaxation-with-frozen-slow-modes machinery on an expanding background is transferable, while the de Broglie-Bohm scalar field and cosmological Hubble/CMB setting is the domain-specific object."
+}

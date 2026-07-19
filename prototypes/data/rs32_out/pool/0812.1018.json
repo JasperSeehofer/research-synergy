@@ -1,0 +1,5 @@
+{
+  "method_atom": "A one-parameter (q-deformed, non-extensive entropy) generalization of a concentration/inequality functional that nonlinearly remaps any scalar time series onto a new series. Pairwise distances between the remapped series (and between each series and their collective mean) are then computed to construct a distance-based similarity network. The analysis is swept over several characteristic timescales — a moving-average window for computing the index, a moving-average window for the distances, and a correlation time lag — together with a single distribution-fitting parameter, so as to detect the onset and later decay of collective correlation/integration among the units.",
+  "object_atom": "The annual GDP time series of 20 wealthy national economies over the interval 1950-2003, examined for evidence of economic globalization (a collective integration emerging around 1970 with signs of recent deviation).",
+  "brief_reason": "The q-generalized-index / distance-network / multi-timescale-sweep machinery transfers to any collection of time series, while the GDP-of-rich-countries-and-globalization subject is the economics-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a constrained quadratic/least-squares optimization augmented with an L1 penalty (proportional to the sum of the absolute values of the coefficients), which regularizes and stabilizes an ill-conditioned problem, induces sparse solutions with only a few nonzero coefficients, and encodes sign and budget constraints; solution quality is assessed by out-of-sample performance estimated from a modest amount of training data.",
+  "object_atom": "selection of asset weights in a Markowitz mean-variance financial portfolio, accounting for transaction costs and a limited number of short positions, evaluated by Sharpe ratio on Fama-French benchmark stock data against an equally-weighted portfolio.",
+  "brief_reason": "The L1-penalized constrained least-squares regularization that yields sparse, stable solutions is the transferable machinery, while the mean-variance financial portfolio of tradable assets is the domain-specific object."
+}

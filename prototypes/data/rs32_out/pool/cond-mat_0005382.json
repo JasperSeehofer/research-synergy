@@ -1,0 +1,5 @@
+{
+  "method_atom": "a maximum-entropy inference principle that assigns a probability distribution over the whole time-histories (trajectories) of a driven system's microscopic degrees of freedom, conditioned on the macroscopic constraints that hold it in a steady driven state; from that trajectory distribution one derives a symmetry relation constraining the odds of entropy-producing versus entropy-consuming fluctuations, an extremal principle selecting the state of maximal internal production, and, in the slow-driving limit, scale-free critical organization",
+  "object_atom": "open, non-equilibrium stationary states of flux-driven physical statistical-mechanical systems, described by their underlying microscopic phase-space trajectories",
+  "brief_reason": "the maximum-entropy-over-trajectories inference machinery and its fluctuation/extremal/critical corollaries are the transferable method, while their specific realization in flux-driven physical non-equilibrium statistical-mechanical systems is the domain-specific object."
+}

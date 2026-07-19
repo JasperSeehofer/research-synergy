@@ -1,0 +1,5 @@
+{
+  "method_atom": "a comparative study of numerical integration schemes (spectral methods with different dealiasing strategies versus finite-difference variants) for a nonlinear evolution partial differential equation, combined with adaptive mesh refinement to resolve the possible formation of a finite-time singularity, and a scaling analysis borrowed from the theory of critical phenomena used to estimate the spatial resolution needed to capture the emerging near-singular structure",
+  "object_atom": "the three-dimensional incompressible Euler equations governing inviscid fluid flow, evolved from a Kida-Pelz-type symmetric initial condition to probe whether the velocity field develops a blow-up in finite time",
+  "brief_reason": "the transferable part is the numerical-scheme comparison plus mesh-refinement-and-critical-scaling machinery for detecting/resolving finite-time blow-up in a nonlinear PDE, while the inviscid fluid-dynamics Euler system with its specific initial condition is the domain-specific object."
+}

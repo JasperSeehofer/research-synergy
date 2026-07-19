@@ -1,0 +1,5 @@
+{
+  "method_atom": "A graded vector space spanned by a combinatorial basis, equipped with a pair of grade-raising and grade-lowering linear operators that are adjoint with respect to an inner product and whose commutator is the grading (number) operator — a ladder-operator structure whose multiplicities are analyzed. On the symmetric algebra over this space one imposes a coproduct to obtain a Hopf algebra, while the space itself carries a dual noncommutative Hopf-algebra structure; the inner product is used to establish a graded-duality isomorphism between the two Hopf algebras.",
+  "object_atom": "Rooted trees, graded by their number of non-root vertices — concretely Kreimer's Hopf algebra of rooted trees (arising in renormalization) and the Grossman-Larson Hopf algebra of rooted trees.",
+  "brief_reason": "The transferable machinery is the adjoint raising/lowering operators with number-operator commutator plus the coproduct-and-graded-duality construction on a graded basis; the domain-specific object is the set of rooted trees and the specific Kreimer and Grossman-Larson Hopf algebras built on them."
+}

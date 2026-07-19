@@ -1,0 +1,5 @@
+{
+  "method_atom": "Deriving the admissible transformation structure of a homogeneous, isotropic continuum purely from those assumed symmetries, showing that the invariance requirements fix a particular Lie group parametrized by two universal invariant constants (a limiting rate and a residual curvature scale). The resulting group-theoretic framework then dictates the kinematics — transformation laws, invariant motions, and composition/decay of constituent entities — entirely from the algebraic structure of the symmetry group.",
+  "object_atom": "The flat spacetime of special relativity in the regime where gravity is neglected, whose two constants are the limiting speed c and the cosmological constant Lambda (a residual curvature of the universe), giving the de Sitter group SO(1,4) as the kinematical group and describing point-particle inertial motion, collisions, and decays.",
+  "brief_reason": "What transfers is the symmetry-to-group machinery that fixes a two-constant invariance group and derives kinematics from it; what is domain-specific is the spacetime manifold, the constants c and Lambda, and de Sitter relativity of point particles."
+}

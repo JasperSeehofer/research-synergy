@@ -1,0 +1,5 @@
+{
+  "method_atom": "First-passage / survival analysis of a continuous stochastic diffusion process governed by the diffusion (Fokker-Planck) equation confined by a time-dependent absorbing boundary that recedes at a constant rate, yielding a closed form for the joint probability density of surviving up to a given time while occupying a given position, conditioned on the starting position.",
+  "object_atom": "A Brownian particle with diffusion constant D moving inside an expanding d-dimensional sphere of initial radius L_0 whose surface, growing at constant rate c, acts as an absorbing boundary.",
+  "brief_reason": "The transferable machinery is survival probability of a diffusion under a linearly moving absorbing boundary; what is domain-specific is the physical Brownian particle inside a geometrically expanding d-dimensional sphere."
+}

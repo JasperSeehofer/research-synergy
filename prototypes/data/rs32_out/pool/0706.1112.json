@@ -1,0 +1,5 @@
+{
+  "method_atom": "an analytical treatment of dispersive shock waves — the expanding train of nonlinear oscillations that develops from a sharp step-like initial discontinuity evolving under a nonlinear dispersive wave equation — obtained via Whitham modulation theory, which averages over the fast oscillations to derive slowly-varying modulation (averaged conservation) equations for the wave parameters, cross-checked against direct numerical integration in both planar and radially symmetric configurations.",
+  "object_atom": "light beams propagating through a photorefractive nonlinear optical medium, in one-dimensional strip-like and cylindrically symmetric beam geometries, where such optical dispersive shocks have been observed experimentally.",
+  "brief_reason": "The transferable machinery is the Whitham-modulation analysis of dispersive-shock formation from a step discontinuity in a nonlinear dispersive system; the domain-specific object is the optical light beam in a photorefractive medium the machinery is applied to."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "A correspondence theorem showing that an invariant of a structured combinatorial/topological object can be recovered from a polynomial invariant of an associated abstract graph, together with a generalization of that correspondence to the case where the graph is realized as embedded in a higher-genus surface rather than the plane, achieved by replacing the classical single graph polynomial with a richer surface-aware (ribbon-graph) generalization that retains the embedding's genus information.",
+  "object_atom": "Virtual links (a generalization of classical knot/link diagrams) and the relationship between their Jones polynomial and the Tutte/Bollobas-Riordan polynomial of the graph obtained from the link diagram.",
+  "brief_reason": "What carries across is the invariant-from-graph-polynomial correspondence and its lift from planar to higher-genus embeddings; what is domain-specific is the knot-theoretic subject of virtual links and their Jones polynomial."
+}

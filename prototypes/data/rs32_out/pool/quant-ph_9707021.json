@@ -1,0 +1,5 @@
+{
+  "method_atom": "Encoding information in the collective topological state of a two-dimensional many-body system and processing it by adiabatically exchanging (braiding) localized point-like excitations around one another, where the resulting discrete state transformations depend only on the topology of the exchange paths and are therefore intrinsically robust to local perturbations; readout is obtained by pairwise merging of excitations and observing the discrete outcome of their combination.",
+  "object_atom": "Anyonic excitations of a two-dimensional quantum system, used as the physical substrate of a quantum computer.",
+  "brief_reason": "The transferable part is the topology-protected, braiding-based state manipulation with fusion readout; the domain-specific part is that the excitations are anyons in a 2D quantum-mechanical medium, and these are largely separable."
+}

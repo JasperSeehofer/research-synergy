@@ -1,0 +1,5 @@
+{
+  "method_atom": "An energy-resolved spectroscopic probe that drives a many-body system with a weak external field and records its excitation response as a function of energy, revealing a gap in the low-energy excitation spectrum below a critical control parameter, seen as an asymmetric response line shifted from the non-interacting reference. This is combined with spatial tomography — in-situ imaging plus 3D reconstruction — that inverts the response of a spatially inhomogeneous sample to recover the local, homogeneous response at each point.",
+  "object_atom": "A harmonically trapped, resonantly (unitary-limit) interacting two-component gas of ultracold fermionic atoms, whose atomic internal states are driven by a radio-frequency field at low temperature.",
+  "brief_reason": "The transferable part is energy-resolved perturbative spectroscopy plus tomographic inversion of an inhomogeneous sample to extract a local gapped response; the trapped unitary ultracold Fermi gas of atoms is the domain-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a thermodynamic/statistical-equilibrium description of a nonlinear conservative field with two conserved quantities (energy and total intensity), analyzed via a weak-turbulence kinetic theory with an ultraviolet cutoff, predicting spontaneous formation of a large-scale coherent mode below a critical energy density; the theory shows a dimension-dependent ordering transition (present in 3D, absent in 2D) that the nonlinear interaction renders subcritical (first-order-like).",
+  "object_atom": "classical nonlinear wave fields, specifically the defocusing nonlinear Schrödinger equation, and the emergence of an optical/matter-wave condensate mode, studied against Bose-Einstein condensation in quantum systems.",
+  "brief_reason": "The transferable part is the equilibrium-statistical/wave-turbulence machinery for conserved nonlinear fields yielding a dimension-dependent, interaction-driven subcritical condensation transition; the domain-specific part is the defocusing NLS classical-wave system and its condensate."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a one-parameter deformation of the standard exponential and logarithm into a paired family of generalized inverse functions constrained by a set of axiomatic criteria, from which an associated dual (deduced) function is constructed, so that an entropy/statistical estimation formalism can be re-expressed in terms of these deformed maps rather than the ordinary logarithm and exponential",
+  "object_atom": "the equilibrium statistical-mechanical description of physical many-body systems, i.e. generalized (non-extensive) thermostatistics",
+  "brief_reason": "the deformed exponential/logarithm pair with its axioms and deduced-dual construction is transferable machinery, while its use to build a thermodynamic entropy/ensemble framework is the physics-specific object."
+}

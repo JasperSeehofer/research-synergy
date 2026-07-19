@@ -1,0 +1,5 @@
+{
+  "method_atom": "a lossy encoding scheme that maps a continuous quantity to discrete levels by partitioning its range into non-contiguous, discontinuous cells (a many-to-one folding of the domain), so that redundant/over-complete measurements make the approximation error decay exponentially rather than polynomially in the amount of redundancy. The encoder is universal — it needs no prior knowledge of the source's structure — while decoding exploits side information (a low-complexity model class or similarity to known references), and the achievable accuracy is bounded in terms of the Kolmogorov metric entropy of the model class.",
+  "object_atom": "digital quantization of oversampled or compressively-sensed signals, including sparse signals and signals reconstructed with sparse or similarity-based signal models, under a rate-distortion trade-off.",
+  "brief_reason": "The transferable machinery is the discontinuous-cell universal quantizer with exponential error decay tied to metric entropy; what is domain-specific is that the quantity being encoded is a (possibly sparse, oversampled) signal in signal-processing terms."
+}

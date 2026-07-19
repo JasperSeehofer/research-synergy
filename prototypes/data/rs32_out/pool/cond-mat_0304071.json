@@ -1,0 +1,5 @@
+{
+  "method_atom": "A rigorous asymptotic analysis of the many-body governing (wave/eigenvalue) equation for a large number of identical units interacting through short-range pairwise interactions inside an anisotropic confining potential, delineating the parameter regimes — set by density, the aspect ratio of the confinement (transverse vs longitudinal extent), and the interaction strength — in which the collective behavior crosses over between an effectively lower-dimensional, exactly-solvable description and the full higher-dimensional one.",
+  "object_atom": "A trapped, low-density gas of bosonic atoms confined in a three-dimensional anisotropic trap, characterized by density, transverse and longitudinal trap dimensions, and s-wave scattering length, whose extreme-confinement limit is the one-dimensional Lieb-Liniger delta-function Bose gas.",
+  "brief_reason": "The transferable machinery is the rigorous dimensional-crossover analysis of a confined many-body interacting system as confinement/density/coupling vary; the domain-specific object is the ultracold trapped Bose gas and its 1D Lieb-Liniger limit."
+}

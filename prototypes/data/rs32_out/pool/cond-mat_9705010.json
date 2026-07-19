@@ -1,0 +1,5 @@
+{
+  "method_atom": "exact combinatorial-optimization algorithms — network-flow methods (shortest-path, maximum-flow, minimum-cost/convex-cost flow), minimum-weighted matching, and branch-and-cut — used to find the exact global minimum (ground state) of a discrete cost function defined over a system with competing constraints and quenched randomness, mapping the energy-minimization problem onto a polynomially solvable graph-optimization problem.",
+  "object_atom": "frustrated, disordered condensed-matter systems: the random-bond and random-field Ising models, the diluted antiferromagnet in a field, spin glasses, solid-on-solid models on a disordered substrate, superconducting flux-line lattices, and traffic-flow networks.",
+  "brief_reason": "The transferable machinery is exact discrete global-minimization via network-flow/matching/branch-and-cut algorithms; the domain-specific object is the set of frustrated disordered physical systems whose ground states are being computed."
+}

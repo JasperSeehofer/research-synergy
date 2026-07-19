@@ -1,0 +1,5 @@
+{
+  "method_atom": "A bipartite Schmidt decomposition of a many-body state that reinterprets the (logarithms of the) Schmidt coefficients as a full spectrum of levels rather than collapsing them to a single scalar summary; a clear gap in this spectrum separates a low-lying, universal set of levels — whose organization mirrors an effective boundary/edge description — from the rest, and this low-lying structure, which stays well-defined in the large-system limit, is used as a fingerprint to detect and classify a hidden global ordering that the scalar summary cannot resolve.",
+  "object_atom": "The nu = 5/2 fractional quantum Hall state, comparing the Moore-Read model wavefunction against a generic state obtained by finite-size diagonalization of second-Landau-level-projected Coulomb interactions, with the goal of identifying its non-Abelian topological order.",
+  "brief_reason": "The Schmidt-spectrum-with-entanglement-gap fingerprinting machinery is a transferable tool for any bipartite many-body state, while the fractional quantum Hall wavefunctions and their non-Abelian topological order are the physics-specific object."
+}

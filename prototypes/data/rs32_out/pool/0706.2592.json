@@ -1,0 +1,5 @@
+{
+  "method_atom": "a lattice model of many two-state units whose updates favour local agreement with their neighbourhood, driving spontaneous domain formation and phase separation; a stochastic control parameter (an effective noise/temperature) governs how strictly units follow this preference, and can be made spatially inhomogeneous. A feedback loop coupling the emergent degree of order back onto this control parameter drives it to self-organise toward a steady average value, largely independent of the initial noise distribution.",
+  "object_atom": "residents of two types placed on a city grid who relocate according to their preference for like neighbours, producing urban residential segregation.",
+  "brief_reason": "The neighbour-preference lattice dynamics, inhomogeneous noise parameter, and order-to-noise feedback self-organisation are the transferable machinery; the segregating urban residents on a city grid are the domain-specific object."
+}

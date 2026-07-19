@@ -1,0 +1,5 @@
+{
+  "method_atom": "A population of self-propelled, periodically-oscillating units embedded in a viscous medium interact only through the flow fields each unit generates, so that the medium-mediated long-range coupling drives mutual phase synchronization and effective attraction between neighbours. As a result the ensemble self-organizes into clusters whose average size follows a power-law dependence on the width of the distribution of the units' intrinsic oscillation frequencies. The dynamics are resolved with a particle-based mesoscopic simulation that explicitly represents the surrounding medium and its momentum transport.",
+  "object_atom": "Sperm cells swimming at low Reynolds number in a two-dimensional fluid, whose beating tails both propel them and create the flow fields, studied at high concentration in vivo or near substrates in vitro.",
+  "brief_reason": "The flow-mediated coupling that yields synchronization, attraction, and power-law swarm clustering is the transferable machinery, while the low-Reynolds swimming sperm with beating tails is the domain-specific object."
+}

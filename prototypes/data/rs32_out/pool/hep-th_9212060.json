@@ -1,0 +1,5 @@
+{
+  "method_atom": "an exhaustive classification of all bilinear combinatorial forms left invariant under the action of a discrete symmetry group, subject to consistency constraints of non-negative integer coefficients and a distinguished unique ground state; the enumeration proceeds via the number-theoretic and representation-theoretic structure of the group's action, yielding a complete finite list of admissible invariants and a general proof strategy extensible to related symmetry structures at other parameter values",
+  "object_atom": "the modular-invariant partition functions of a Wess-Zumino-Novikov-Witten conformal field theory built on the affine SU(3) Lie algebra (and more generally on affine Kac-Moody algebras at various levels).",
+  "brief_reason": "The transferable part is the general method of completely classifying discrete-group-invariant forms under integrality/uniqueness constraints; the domain-specific part is the affine SU(3)/WZNW partition-function system it is applied to, with the two cleanly separable."
+}

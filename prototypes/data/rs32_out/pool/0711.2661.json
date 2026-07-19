@@ -1,0 +1,5 @@
+{
+  "method_atom": "a driven, damped nonlinear oscillator in which feedback from a coupled resonant field produces effective negative damping, destabilizing the rest state into self-sustained limit-cycle oscillations. As drive strength grows the amplitude becomes large and the system's steady states are organized by an attractor diagram, including a regime where two nearly-degenerate oscillatory modes are simultaneously excited; a quantitative model reproduces the observed dynamics.",
+  "object_atom": "an optomechanical system: an illuminated Fabry-Perot optical cavity with one end-mirror mounted on a vibrating mechanical cantilever, whose motion is driven by radiation pressure from several optical cavity modes.",
+  "brief_reason": "The transferable machinery is the feedback-induced negative-damping self-oscillation of a nonlinear resonator with its attractor structure and multimode excitation; the cavity-plus-cantilever optomechanical setup driven by light is the domain-specific object."
+}

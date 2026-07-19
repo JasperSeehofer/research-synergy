@@ -1,0 +1,5 @@
+{
+  "method_atom": "a design principle in which a chosen spatial coordinate transformation is translated into an equivalent spatially varying distribution of the medium's material parameters, so that wave propagation in the physical space is bent along prescribed trajectories; this exploits the form-invariance of the governing wave equations under coordinate remapping to engineer functional devices such as beam deflectors and cloaks.",
+  "object_atom": "surface plasmon polaritons — electromagnetic modes bound to and propagating along a metal surface — steered by tailoring the dielectric medium placed on top of the metal.",
+  "brief_reason": "the coordinate-transformation-to-material-parameter mapping and its wave-equation form-invariance are the transferable machinery, while the metal-bound surface plasmon polaritons and their dielectric overlayer are the optics-specific object."
+}

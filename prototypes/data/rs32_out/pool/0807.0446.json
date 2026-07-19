@@ -1,0 +1,5 @@
+{
+  "method_atom": "a lattice model of many strongly-interacting units in which a tunable competition between nearest-neighbor hopping and on-site repulsion drives a transition between a globally coherent, delocalized ordered phase and a localized, incompressible frozen phase; superimposed quenched random heterogeneity across sites (disorder) is varied independently of the hopping-to-interaction ratio and is found to suppress the coherent order parameter.",
+  "object_atom": "ultracold bosonic atoms forming a Bose-Einstein condensate held in a fully characterized disordered optical lattice, realizing the disordered Bose-Hubbard model with its superfluid and Mott-insulator phases and their condensate fraction.",
+  "brief_reason": "The transferable machinery is the hopping-vs-interaction-driven coherent/localized transition on a lattice with quenched disorder degrading order; the domain-specific object is the ultracold-atom BEC in an optical lattice instantiating the disordered Bose-Hubbard model."
+}

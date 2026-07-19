@@ -1,0 +1,5 @@
+{
+  "method_atom": "a coherent complex order-parameter field whose phase must wind by an integer number of turns around a multiply-connected (ring-shaped) domain, so that circulating flow is quantized in discrete units and rendered metastable/non-decaying by this topological winding constraint; the circulation quantum is set by injecting angular momentum one unit at a time, and a higher-charge circulating state is topologically unstable, fragmenting into several unit-charge point defects when the domain's topology is changed from multiply- to simply-connected",
+  "object_atom": "Bose-condensed atoms confined in a toroidal trap, set into rotation by transferring orbital angular momentum from Laguerre-Gaussian photons, forming quantized vortices",
+  "brief_reason": "the transferable part is the quantized, topologically protected persistent circulation of a coherent phase field on a ring and the splitting of multi-charge states into unit defects; the atomic condensate in a toroidal trap driven by structured light is the physics-specific object."
+}

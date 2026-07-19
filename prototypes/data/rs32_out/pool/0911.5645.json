@@ -1,0 +1,5 @@
+{
+  "method_atom": "a framework for the statistics of the spectrum of large random operators whose entries lack the symmetry that would force real eigenvalues, in which every k-point correlation function of the (generally complex-plane) eigenvalues is exactly reduced to a single two-point kernel, yielding a determinantal/Pfaffian point-process description; universal scaling limits are then extracted as the system size grows, both far from and close to the symmetric point (strong and weak symmetry-breaking regimes) and under a continuous deformation parameter interpolating toward the symmetric case",
+  "object_atom": "the complex, real, and quaternion-real Ginibre ensembles of Gaussian random matrices and their elliptic deformations, whose eigenvalues spread into the complex plane",
+  "brief_reason": "the exact reduction of all eigenvalue correlations to a two-point kernel plus large-size scaling analysis is the transferable machinery, while the specific families of non-Hermitian Gaussian matrix ensembles and their elliptic deformations are the domain-specific object."
+}

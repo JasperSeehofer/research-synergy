@@ -1,0 +1,5 @@
+{
+  "method_atom": "an array of N periodically coupled resonant modes in which interference between the coupled resonant pathways suppresses absorption/loss over multiple narrow spectral windows, producing several sharp, highly transmissive transparency bands in the system's frequency response; the coupled-resonator interference reproduces the same multi-band transparency structure as a driven multi-level resonant system.",
+  "object_atom": "N periodically coupled whispering-gallery-mode optical resonators (realizable as microrings or microdisks) arranged in a parallel all-optical drop-filter configuration.",
+  "brief_reason": "The transferable part is the coupled-resonant-mode interference producing multiple narrow transparency windows; the domain-specific object is the parallel array of whispering-gallery-mode optical microresonators."
+}

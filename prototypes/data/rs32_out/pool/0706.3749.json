@@ -1,0 +1,5 @@
+{
+  "method_atom": "a construction for time-reversing a stochastic, non-deterministic linear transition map (a complete-positive/Markov-type propagator), yielding a conjugate reverse map that is not an inverse of the forward dynamics but instead relaxes toward the same equilibrium in both time directions; the probability of any forward trajectory and its time-reversed conjugate are related by an exchanged conserved quantity, giving a fluctuation-theorem-style symmetry",
+  "object_atom": "an open quantum system whose evolution is a quantum operation (complete positive map of operators), with individual quantum trajectories and the heat exchanged with the surrounding environment",
+  "brief_reason": "the stochastic-map time-reversal and trajectory/anti-trajectory ratio tied to an exchanged quantity is the transferable machinery, while the quantum-operation open-system and its environmental heat exchange are the physics-specific object."
+}

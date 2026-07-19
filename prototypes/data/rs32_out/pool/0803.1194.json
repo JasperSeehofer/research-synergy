@@ -1,0 +1,5 @@
+{
+  "method_atom": "A systematic construction-and-enumeration procedure over an enormous discrete landscape of solutions to a high-dimensional constrained system: candidate configurations are built from an underlying geometric/algebraic structure, otherwise-free continuous parameters are pinned to discrete values by imposing integer-quantized quantities integrated over topological cycles, and the resulting ensemble of admissible solutions is then characterized statistically to estimate how solutions distribute across the space.",
+  "object_atom": "String-theory vacua for phenomenological particle-physics model building — specifically F-theory flux vacua (and their relation to M-theory and perturbative type IIB string theory), with stabilization of moduli on compactification geometries.",
+  "brief_reason": "The transferable part is the machinery of building, parameter-fixing via quantized topological data, and statistically surveying a vast discrete solution landscape; what is domain-specific is that the objects being surveyed are string/F-theory compactification vacua."
+}

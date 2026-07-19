@@ -1,0 +1,5 @@
+{
+  "method_atom": "empirical analysis of how the number of distinct types (vocabulary) grows as a sublinear power law of accumulated events with an exponent smaller than one, showing that this innovation-rate scaling is scale-invariant across nested aggregation levels (whole system vs. individual sub-populations) and stable over the entire history of the process, taken as evidence of an underlying generative/heavy-tailed sampling mechanism.",
+  "object_atom": "user-assigned tags in a large-scale collaborative tagging (social bookmarking) system, del.icio.us, with vocabulary measured both globally across the entire system and locally per bookmarked resource or per user over time.",
+  "brief_reason": "The sublinear power-law type-growth law and its cross-scale universality is the transferable machinery, while the tags/resources/users of a social bookmarking platform are the domain-specific object; the split is clean since the same growth law is noted to hold for written text as well."
+}

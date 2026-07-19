@@ -1,0 +1,5 @@
+{
+  "method_atom": "Exploit a structural self-symmetry of a parametrized family of integrals, together with reduction of the whole family onto a small basis of irreducible elements via linear identities, to generate a tightly overdetermined system of relations among those basis elements. The relations pin down every basis element analytically as a combination of a few essentially trivial base-case elements, and the resulting pattern of transcendental constants explains why certain such constants are systematically absent from derived quantities.",
+  "object_atom": "Massless propagator-type Feynman loop integrals in perturbative quantum field theory at three and four (and prospectively five) loops, whose master integrals control quantities like the Adler function and where the noted absence of even zeta values appears.",
+  "brief_reason": "The symmetry-plus-basis-reduction machinery that forces all basis elements to collapse onto a few trivial ones is transferable, while the specific massless multi-loop Feynman integrals and their zeta-value transcendental structure are the QFT-specific object."
+}

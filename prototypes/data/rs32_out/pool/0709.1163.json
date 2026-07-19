@@ -1,0 +1,5 @@
+{
+  "method_atom": "A low-energy effective theory in which collective excitations obey a two-dimensional massless relativistic (Dirac-type) wave equation with linear dispersion, whose spectrum, confinement, and transport are tunable by external fields, by sample geometry/topology, and by perturbations such as disorder or coupling to other excitations; boundary termination produces localized edge modes, and the system shows quantized (integer-plateau) response to an applied field.",
+  "object_atom": "The charge carriers of graphene — a one-atom-thick two-dimensional carbon crystal — together with its layered stacks (varying by stacking order and layer count), its zigzag/armchair nanoribbon edges, and its lattice disorder and phonons.",
+  "brief_reason": "The 2D massless-Dirac/linear-dispersion machinery with its field-, geometry-, boundary-, and disorder-tunability is the transferable method, while the carbon-monolayer carriers, their stacking, and edge terminations are the condensed-matter-specific object."
+}

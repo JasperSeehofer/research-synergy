@@ -1,0 +1,5 @@
+{
+  "method_atom": "a scattering-theoretic formalism that expresses the fluctuation-induced interaction energy between spatially separated bodies purely in terms of each body's individual transition (T) operator and the propagation between them, yielding a series or determinant whose convergence and computability from single-object scattering data are analyzed, valid at arbitrary separation.",
+  "object_atom": "quantum-vacuum (Casimir) forces between material scatterers embedded in one- and three-dimensional space, specifically the force between two spherical bodies across all inter-body distances.",
+  "brief_reason": "the transition-operator/scattering decomposition of a pairwise interaction energy from single-object data is the transferable machinery, while the Casimir vacuum-fluctuation force between spheres is the physics-specific object."
+}

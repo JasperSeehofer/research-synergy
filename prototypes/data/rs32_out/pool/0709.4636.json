@@ -1,0 +1,5 @@
+{
+  "method_atom": "A construction of maximally-peaked (semiclassical) states that are invariant under a continuous non-abelian symmetry group, obtained by averaging/projecting states onto the symmetry-invariant sector, together with analysis of their pairwise overlap. The overlap is sharply Gaussian-peaked in the invariant coordinates whenever the states are labeled by non-degenerate orbits, but near singular points of the reduced invariant configuration space (degenerate orbits) the sharp peak flattens into a plateau, so the geometry of the quotient/invariant phase space governs how well concentration and semiclassicality hold.",
+  "object_atom": "Gauge-invariant coherent states for the non-abelian gauge group SU(2), defined on certain special graphs in Loop Quantum Gravity — i.e. quantum states of spatial geometry and their invariant phase space.",
+  "brief_reason": "The transferable part is the group-averaging construction of invariant peaked states and the way singularities of the invariant/quotient space degrade peak sharpness into a plateau; the SU(2) gauge structure, graphs, and quantum-gravity geometry are the domain-specific object."
+}

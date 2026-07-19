@@ -1,0 +1,5 @@
+{
+  "method_atom": "a model of many identical two-level units collectively coupled to a single shared bosonic field mode, in which the coupling (including counter-rotating terms) mediates effectively infinite-ranged interactions among the units, so that as the coupling strength crosses a critical value the system undergoes a symmetry-breaking transition from a disordered state to a self-organized, spontaneously ordered collective phase whose boundary is captured quantitatively by the underlying Hamiltonian",
+  "object_atom": "a Bose-Einstein condensate of ultracold atoms placed in an optical cavity and illuminated by a pump field, an open matter-light system whose ordered phase is a self-organized supersolid with broken spatial symmetry",
+  "brief_reason": "the collective coupling of many two-level units to one field mode giving long-ranged interactions and a critical symmetry-breaking transition is the transferable machinery, while the condensate-in-a-cavity matter-light platform and its supersolid phase are the physics-specific object."
+}

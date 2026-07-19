@@ -1,0 +1,5 @@
+{
+  "method_atom": "A state/trajectory-estimation strategy that fuses two complementary measurement channels: a costly, high-accuracy but only occasionally sampled absolute-reference measurement, and continuously available low-cost incremental (relative/rate) measurements that are integrated over time between reference points. The cheap channel carries the estimate forward while the expensive channel is invoked infrequently only to re-synchronize and correct accumulated drift, yielding an exponential reduction in resource expenditure for a linear degradation in estimate accuracy, tunable via the reference-sampling parameters.",
+  "object_atom": "A battery-constrained smartphone determining its own geographic location while in motion (highway and intra-city driving), using its onboard GPS, accelerometer, and compass sensors.",
+  "brief_reason": "What transfers is the fuse-cheap-continuous-relative-sensing-with-infrequent-expensive-absolute-fixes estimation scheme and its exponential-cost/linear-accuracy tradeoff; what is domain-specific is mobile-phone geolocation under energy constraints."
+}

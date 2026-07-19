@@ -1,0 +1,5 @@
+{
+  "method_atom": "an extreme-value / record-statistics analysis of a sequence of independent random variables drawn from a distribution whose mean slowly drifts, deriving that the leading-order change in the rate of record-breaking events is proportional to the ratio of the drift velocity to the standard deviation of the underlying distribution, allowing a small trend to be detected and quantified through its effect on record frequency.",
+  "object_atom": "time series of daily measured temperatures for fixed calendar days, taken from historical station recordings and re-analysis data for European and American weather stations.",
+  "brief_reason": "The record-rate-vs-drift/standard-deviation machinery is transferable to any noisy signal with a slow trend, while the daily-temperature climate time series is the domain-specific object it is applied to."
+}

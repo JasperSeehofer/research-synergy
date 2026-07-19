@@ -1,0 +1,5 @@
+{
+  "method_atom": "Computation of a momentum-transport coefficient (shear viscosity) for a many-body system of interacting particles using two complementary approaches: a semi-analytic kinetic theory built on pairwise (binary) collisions, and direct molecular-dynamics simulation of the particle trajectories. The two methods are cross-validated in a limiting (dilute/low-density) regime, and the coefficient is characterized as a function of a density control parameter; the resulting viscosity also acts as a dissipative damping channel for collective oscillatory modes of the medium.",
+  "object_atom": "The ionic (charged-nucleus) component of dense matter in the low-density envelope and outer crust of a rotating neutron star, compared against the electron contribution, with the viscosity governing the damping of r-mode oscillations and hence gravitational-wave emission.",
+  "brief_reason": "The binary-collision-plus-molecular-dynamics computation of shear viscosity and its role as mode damping is the transferable machinery, while the neutron-star ion crust and its r-modes are the astrophysics-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "A differential-geometric construction that extends the notion of a connection to a generalized bracket/algebroid structure on a bundle in order to characterize an integrable class of paired geometric structures; it introduces a new, non-standard equivalence relation between such structured spaces, and establishes a correspondence identifying distinguished sub-objects that satisfy boundary/compatibility conditions with those integrable structures, thereby permitting explicit construction of new instances.",
+  "object_atom": "Generalized Kaehler geometry and holomorphic Poisson manifolds: specifically branes on Poisson varieties and compact holomorphic Poisson manifolds equipped with positive Poisson line bundles (e.g. Fano manifolds), with a conjectural link to non-commutative algebraic geometry.",
+  "brief_reason": "What carries across is the connection-on-an-algebroid machinery plus the sub-object-to-integrable-structure equivalence; what is domain-specific is the Poisson/generalized-Kaehler geometry and its brane configurations."
+}

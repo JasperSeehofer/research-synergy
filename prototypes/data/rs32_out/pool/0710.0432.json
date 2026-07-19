@@ -1,0 +1,5 @@
+{
+  "method_atom": "An algebraic factorization scheme in which an algebra-valued character on a Hopf (or connected graded) algebra is uniquely split into two multiplicative components — a singular 'counterterm' part and a regular finite part — via a Birkhoff/Atkinson-type decomposition governed by a Rota-Baxter operator. Here the scheme is recast in a differential-algebra variant, giving a systematic recursive procedure for subtracting divergent/singular contributions and isolating a well-defined finite value from a formally ill-defined quantity.",
+  "object_atom": "Multiple zeta values (nested/iterated infinite series studied in number theory), with the renormalization of divergences in quantum field theory serving as the motivating setting.",
+  "brief_reason": "The Hopf-algebra Birkhoff-decomposition-into-counterterm-plus-finite-part machinery is the transferable method, while the multiple zeta values (and QFT renormalization context) are the domain-specific objects it is applied to."
+}

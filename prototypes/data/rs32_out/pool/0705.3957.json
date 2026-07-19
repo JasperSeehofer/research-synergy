@@ -1,0 +1,5 @@
+{
+  "method_atom": "a dynamical-systems analysis of a very high-dimensional deterministic nonlinear system: computing its unstable invariant solutions (equilibria and their leading eigenvalues and eigenfunctions), globally continuing the associated unstable invariant manifolds, and building a low-dimensional projection that visualizes how these manifolds partition the region of state space that transiently chaotic trajectories explore, with symmetry-induced heteroclinic connections organizing the geometry.",
+  "object_atom": "the velocity field of an incompressible viscous fluid sheared between two moving walls (plane Couette flow) at moderate Reynolds number in a small periodic cell, governed by the Navier-Stokes equations.",
+  "brief_reason": "the invariant-solution / unstable-manifold / heteroclinic-tessellation machinery in a high-dimensional state space is transferable to any nonlinear system, while the sheared viscous fluid governed by Navier-Stokes is the fluid-dynamics-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "the detection of faint propagating wave disturbances using resonant and interferometric sensors whose response is modelled from the coupling between the wave and the instrument, combined with statistical signal-extraction techniques (template/matched-filter data analysis) that recover a weak deterministic signal buried in dominant instrument noise, and the use of the resulting detections to constrain underlying theory and infer the properties of the emitting sources.",
+  "object_atom": "gravitational waves (ripples in spacetime), their most likely astrophysical emitting sources, the bar and interferometer detectors that measure them, and the consequences of such observations for physics, astrophysics, and cosmology.",
+  "brief_reason": "The transferable part is the weak-propagating-signal sensing plus matched-filter extraction-from-noise and inference-of-source machinery; what is domain-specific is that the signal is spacetime gravitational waves observed with bars/interferometers for astrophysics and cosmology."
+}

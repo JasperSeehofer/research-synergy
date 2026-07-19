@@ -1,0 +1,5 @@
+{
+  "method_atom": "A continuum limit that maps a discrete nearest-neighbor hopping Hamiltonian on a bipartite two-sublattice network onto an effective relativistic massless Dirac field theory, exploiting the low-energy linear dispersion near symmetry-protected band-touching points. The framework tracks discrete symmetries (spatial inversion, time reversal, charge conjugation, chirality) and shows how a symmetry-breaking term opens a gap (an effective mass), whose consequences for linear-response transport coefficients and their frequency-integrated sum rules are then computed.",
+  "object_atom": "Electrons on a two-dimensional honeycomb lattice of carbon atoms (graphene) with nearest-neighbor hopping, and their measurable optical response — the diagonal AC (frequency-dependent) and Hall conductivities.",
+  "brief_reason": "The transferable machinery is the discrete-lattice-to-continuum-Dirac mapping with symmetry-controlled mass generation and its linear-response/sum-rule consequences, while the graphene honeycomb carbon lattice and its optical conductivities are the condensed-matter-specific object."
+}

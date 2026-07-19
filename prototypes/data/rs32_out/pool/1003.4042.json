@@ -1,0 +1,5 @@
+{
+  "method_atom": "an iterative projection scheme that builds a growing subspace via a short three-term recurrence which reduces a self-adjoint operator to tridiagonal form, then applies successive orthogonal rotations (a two-sided QR/QLP factorization taking the tridiagonal to lower-tridiagonal form) to minimize the residual and, in the rank-deficient case, select the minimum-length (pseudoinverse) element; augmented with a preconditioning transform, adaptive stopping criteria, and running estimates of solution, residual, operator norm, and conditioning",
+  "object_atom": "indefinite or singular symmetric systems of linear equations, including incompatible (singular symmetric least-squares) problems, where the coefficient matrix is ill-conditioned or rank-deficient",
+  "brief_reason": "the Krylov/Lanczos-plus-rotation minimum-residual machinery is a transferable operator-inversion principle, while the symmetric linear systems and least-squares problems it solves are the numerical-linear-algebra object; the method is fairly general but was developed specifically for symmetric operators, a mild fusion."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "classical invariant theory applied to a parameter space acted on by a symmetry group: identify the ring of polynomial quantities left unchanged by the group action, find a generating set of primitive invariants, characterize the non-linear algebraic relations (syzygies) that constrain them, and compute the Hilbert series (the graded generating function counting independent invariants at each polynomial degree) to enumerate the structure; also extract a symmetry-covariant scalar quantity giving an intrinsic, basis-independent measure of a symmetry-breaking asymmetry.",
+  "object_atom": "the flavor (mixing) parameters of leptons and quarks in the Standard Model with a dimension-five Majorana neutrino mass operator and in the seesaw model, for two and three generations, and the CP-violating angle of the electroweak sector.",
+  "brief_reason": "The transferable part is the invariant-theory machinery (generators, syzygies, Hilbert series over a group-invariant polynomial ring); the domain-specific part is the particle-physics flavor/CP-violation content the invariants are built from."
+}

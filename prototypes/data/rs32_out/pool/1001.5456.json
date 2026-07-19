@@ -1,0 +1,5 @@
+{
+  "method_atom": "A model in which a narrow massive resonant mode is superposed coherently on top of a broad non-resonant continuum amplitude sharing the same final state, so that the observable spectral distribution is governed by the cross (interference) term rather than by the isolated resonance peak, producing a dispersive peak-dip distortion instead of a simple symmetric bump. The near-degeneracy or splitting between two closely spaced resonances, and additional virtual loop channels, modulate the sign and magnitude of this interference and thus control detectability.",
+  "object_atom": "Extra heavy Higgs scalars — the H and A bosons of the minimal SUSY (MSSM) Higgs sector and the r scalar tied to the new scale f of Little Higgs models — coupling strongly to the top quark via its large Yukawa coupling, probed through the top-antitop (ttbar) invariant-mass distribution in pair production at the LHC at sqrt(s)=7 TeV.",
+  "brief_reason": "The interference-dominated resonance-over-continuum spectral machinery is the transferable method, while the extra-Higgs scalars observed in ttbar production at the LHC are the particle-physics-specific object."
+}

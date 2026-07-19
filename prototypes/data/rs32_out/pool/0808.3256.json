@@ -1,0 +1,5 @@
+{
+  "method_atom": "analysis of anomalous transport in low-dimensional many-body systems, using generalized Langevin equations with Green's-function propagators for the linear/harmonic case and linear-response (Green-Kubo correlation) formulas for interacting cases, yielding a size-dependent transport coefficient that diverges with system length as a power law with a conjectured universal exponent in one dimension when a conserved current constrains the dynamics",
+  "object_atom": "heat conduction in low-dimensional lattice and hard-particle/hard-disc models representing phononic systems, and experimentally in nanowires and nanotubes, characterized by a thermal conductivity kappa that scales with system size L as kappa ~ L^alpha",
+  "brief_reason": "the transferable part is the linear-response/Langevin-Green's-function machinery predicting power-law divergence of a transport coefficient under a conservation law in low dimensions; the domain-specific object is phonon/particle heat conduction and its thermal conductivity."
+}

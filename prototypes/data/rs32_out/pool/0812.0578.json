@@ -1,0 +1,5 @@
+{
+  "method_atom": "a fixed-order perturbative expansion of a production rate to next-to-leading order in a coupling, matched to a Markovian multiplicative branching cascade that resums logarithmically-enhanced soft and collinear emissions, using a matching prescription that generates the hardest emission first and reweights to avoid double-counting between the fixed-order correction and the cascade; validated by cross-comparison against alternative matching schemes, higher-order fixed-order results, and resummed calculations of the same observables",
+  "object_atom": "Higgs boson production through gluon fusion in high-energy hadron-collider collisions at the Tevatron and LHC, and the resulting kinematic distributions of the produced particle",
+  "brief_reason": "the NLO-plus-branching-cascade matching machinery and its cross-validation against alternative resummations transfer across fields, while the Higgs-via-gluon-fusion process at specific colliders is the particle-physics-specific object."
+}

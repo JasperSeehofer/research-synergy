@@ -1,0 +1,5 @@
+{
+  "method_atom": "multiple independent random walkers propagating over a directed network, with analysis of the inter-arrival time distribution of successive walkers reaching a designated target node; the temporal statistics depart from a pure Poisson process and take on universal forms on homogeneous (Poissonian-degree) graphs versus more complex forms on heterogeneous (scale-free) graphs, enabling inference of the underlying propagation rules and topology from arrival timings observed at a single node",
+  "object_atom": "message propagation on botnets — networks of infected computers spreading viruses, SPAM, or denial-of-service traffic — and equivalently information spreading on unstructured peer-to-peer networks, with SPAM inter-arrival times at a single user's mailbox as the observed signal",
+  "brief_reason": "the transferable machinery is the multi-random-walker-on-a-directed-graph model and its inter-arrival-time statistics used to infer hidden dynamics/topology; the domain-specific object is botnet/SPAM and peer-to-peer message propagation."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "adiabatic cyclic transport of a two-state system's state vector around a closed loop in a control-parameter space, which accumulates a geometric (path-dependent, dynamics-independent) phase set only by the solid angle the loop subtends, detected by interfering the transported state against a reference; the same geometry also modulates the loss of phase coherence.",
+  "object_atom": "a solid-state superconducting qubit whose state is steered geometrically by microwave radiation and read out interferometrically.",
+  "brief_reason": "the geometric-phase-from-closed-loop-in-parameter-space and interferometric-readout machinery is transferable across any two-level system, while the superconducting solid-state qubit driven by microwaves is the domain-specific object."
+}

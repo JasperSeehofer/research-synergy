@@ -1,0 +1,5 @@
+{
+  "method_atom": "A coupled-channel framework in which a confining potential (a flavor-dependent harmonic well) supports a discrete spectrum of bare bound states, which are then coupled to a set of open and closed (energetically accessible and virtual) two-body decay channels; imposing unitarity on the full coupled system dynamically shifts the bare bound-state energies into complex resonance poles located in the continuum, and from a single fixed parameter set simultaneously predicts scattering cross sections and phase shifts.",
+  "object_atom": "The low-lying scalar mesons treated as quark-antiquark confinement states coupled to meson-meson decay channels, yielding a complete nonet below 1 GeV (the epsilon, S, delta and kappa states) with predictions for pion-pion, eta-pion and kaon-pion S-wave scattering.",
+  "brief_reason": "What carries across is the coupled-channel unitarization machinery that turns confined bound states plus decay continua into shifted resonance poles and scattering observables; what is domain-specific is the scalar-meson nonet and its quark-antiquark and meson-meson channels."
+}

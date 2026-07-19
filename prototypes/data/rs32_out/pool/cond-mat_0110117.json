@@ -1,0 +1,5 @@
+{
+  "method_atom": "a quantum-mechanical model of a discrete multi-level system coupled to a single quantized harmonic (bosonic) mode, in which the joint eigenstates become strongly entangled only when a tunable control parameter is set to special resonance values corresponding to single- and multi-quantum exchange between the two subsystems; near a single-quantum resonance the dynamics reduce to an effective two-level truncation whose accuracy degrades as the mode's occupation grows, and the coupled system exhibits collapse-and-revival dynamics of its excitations.",
+  "object_atom": "a small Josephson junction (superconducting islands hosting Cooper pairs, with its charge state tuned by an applied gate voltage) coupled to a single-mode resonant electromagnetic cavity exchanging photons with the junction.",
+  "brief_reason": "The transferable machinery is the level-system-coupled-to-a-quantized-oscillator model with tuned resonances, two-level truncation, entanglement, and collapse-revival; the Josephson-junction-plus-photon-cavity with gate-voltage tuning is the condensed-matter-specific object."
+}

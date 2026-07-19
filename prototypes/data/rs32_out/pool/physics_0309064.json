@@ -1,0 +1,5 @@
+{
+  "method_atom": "a linear stability analysis of the propagation of a partially coherent field through a medium with an intensity-dependent (self-focusing/defocusing) response, in which the growth rate and band of unstable perturbation wavenumbers depend crucially on the statistical spectrum of the incoherent fluctuations; increasing the spread of this spectrum does not monotonically shrink the instability band and can even amplify rather than damp the growth of perturbations, so that instability can persist even where long-wavelength modes are stable.",
+  "object_atom": "partially coherent light waves propagating in a nonlinear Kerr (intensity-dependent refractive-index) optical medium, characterized by the profile of the incoherent optical-field spectrum.",
+  "brief_reason": "The transferable machinery is the spectrum-dependent modulational-stability analysis of a self-interacting field with a statistical distribution of modes; the domain-specific object is coherent-versus-incoherent light in a nonlinear optical Kerr medium."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "A representation-theoretic construction in which a continuous symmetry group is realized concretely as fixed-small-size Hermitian matrices over a nonassociative division algebra, extending a lower-dimensional (2x2) construction to a higher-dimensional (3x3) one; the algebraic structure automatically exposes a nested hierarchy of embedded subgroups, and the group's action is analyzed on quadratic (squared) combinations built from short column-vector modules.",
+  "object_atom": "A particular real, noncompact form of the exceptional Lie group E6 together with its subgroups G2, F4, and the double cover of SO(9,1), represented through 3x3 octonionic matrices acting on 3-component 'Cayley spinors', used toward a description of fundamental particles.",
+  "brief_reason": "The division-algebra matrix-representation machinery and its subgroup-exposing algebra transfer across domains, while the specific E6/octonion/Cayley-spinor structures and the fundamental-particle application are the domain-specific object."
+}

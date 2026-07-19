@@ -1,0 +1,5 @@
+{
+  "method_atom": "a cavity-method / message-passing technique from the statistical mechanics of disordered systems that reformulates a single global connectivity constraint of a weighted combinatorial optimization problem into an equivalent set of purely local constraints, yielding both a new optimization algorithm and a way to compute typical-case (ensemble-averaged) properties of the optimal solution over random instances",
+  "object_atom": "the Minimum Weight Steiner Tree problem — finding the least-total-weight connected subnetwork joining a prescribed set of terminal nodes — studied on random graphs of various types",
+  "brief_reason": "the local-constraint reformulation plus cavity/message-passing analysis of optimization over random ensembles is the transferable machinery, while the minimum-weight Steiner tree on graphs is the domain-specific object it acts on."
+}

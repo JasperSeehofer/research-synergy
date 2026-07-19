@@ -1,0 +1,5 @@
+{
+  "method_atom": "A large ensemble of many mutually-repelling points in the plane, confined by an external potential, whose empirical distribution in the large-size limit converges to a deterministic equilibrium measure; for a suitable class of confining potentials this limiting density is uniform and supported on a compact planar region whose boundary is a simple smooth curve, with that boundary characterized rigorously through potential theory and a conformal-mapping relation.",
+  "object_atom": "The eigenvalues of random normal matrices (matrices that commute with their adjoint), with their spectrum restricted to a bounded set.",
+  "brief_reason": "The confined-2D-repelling-points equilibrium-measure and conformal-boundary machinery is the transferable method, while the random normal matrices whose eigenvalues realize it are the linear-algebra-specific object."
+}

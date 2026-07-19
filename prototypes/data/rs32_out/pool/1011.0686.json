@@ -1,0 +1,5 @@
+{
+  "method_atom": "an iterative reduction that recasts a sequential prediction problem — in which the distribution of future inputs is induced by the learner's own past outputs, breaking the i.i.d. assumption — into a sequence of ordinary supervised sub-problems solved by a no-regret online learner over the accumulated, self-induced data, producing a single stationary deterministic decision rule whose error is bounded by the learner's accumulated regret.",
+  "object_atom": "imitation learning, where a policy is trained to reproduce an expert's actions, and structured/sequence-labeling prediction where each label depends on previously predicted labels.",
+  "brief_reason": "The no-regret-online-learning reduction handling self-induced distribution shift is the transferable machinery; the expert-mimicking policies and sequence-labeling tasks are the domain-specific objects it acts on."
+}

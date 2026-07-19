@@ -1,0 +1,5 @@
+{
+  "method_atom": "a cluster-based stochastic sampling scheme that flips correlated groups of coupled binary units at once to beat critical slowing down, combined with reweighting/histogram techniques, finite-size scaling of an ensemble across increasing system sizes, and variance-reduced (improved) estimators, used to extract the critical exponents governing a continuous phase transition and to test whether they are invariant to the underlying connectivity structure (universality) rather than depending on quenched randomness in the coupling network",
+  "object_atom": "the Ising model of nearest-neighbor-coupled spins placed on two-dimensional Poissonian random lattices of up to 80,000 sites, connected via the Voronoi/Delaunay prescription, near its ferromagnetic phase transition",
+  "brief_reason": "the cluster-sampling plus finite-size-scaling machinery for measuring critical exponents and testing universality against network disorder is transferable, while the spins-on-a-2D-random-lattice system is the domain-specific object."
+}

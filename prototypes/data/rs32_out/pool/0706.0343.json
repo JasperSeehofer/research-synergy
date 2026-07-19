@@ -1,0 +1,5 @@
+{
+  "method_atom": "Laurent-series machinery for a complex function with an isolated simple pole: expressing its expansion coefficients about the singularity, relating those coefficients to the expansion coefficients of the function's logarithmic derivative, and deriving novel integral representations and rapidly convergent series for them. It also additively decomposes a slowly-growing oscillatory partial sum into separate component sums whose growth order can be bounded, and builds a parameterized family of the underlying function.",
+  "object_atom": "The Stieltjes constants gamma_k(a) (Laurent coefficients of the Hurwitz zeta function at s=1) and the eta_j coefficients (Laurent coefficients of the logarithmic derivative of the Riemann zeta function at s=1), together with the oscillatory subsum S_2(n) of the Li criterion for the Riemann hypothesis.",
+  "brief_reason": "The transferable part is the Laurent-coefficient / logarithmic-derivative / integral-representation / partial-sum-decomposition analytic machinery; the domain-specific part is the number-theoretic zeta-function objects and the Riemann-hypothesis Li criterion they are applied to."
+}

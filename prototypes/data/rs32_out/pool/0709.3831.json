@@ -1,0 +1,5 @@
+{
+  "method_atom": "A perturbative solution scheme for a nonlinear field theory posed on a space whose coordinate functions fail to commute, implemented by replacing ordinary pointwise multiplication with a deformed associative (star) product controlled by a small deformation parameter; observables are corrected order by order in that parameter, and here the leading first-order correction is computed to yield a shift in a characteristic spectral quantity.",
+  "object_atom": "A static point charge sourcing a gauge field on three-dimensional space with the origin excised, and the resulting first-order shift in the 1S hyperfine splitting of the hydrogen atom.",
+  "brief_reason": "The star-product deformation of a field theory with first-order perturbative correction to a spectral quantity is the transferable machinery, while the point charge and the hydrogen-atom hyperfine spectrum are the physics-specific objects, and the two are separable."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a large-N matrix field theory whose partition function is organized as a topological (genus) expansion, in which the leading N-to-infinity (planar) limit captures the dominant non-crossing configurations and successive 1/N^2 corrections systematically add contributions of higher topological genus; a recursion relation on the leading term is generalized to generate the subleading, higher-order configurations.",
+  "object_atom": "the folding of an RNA biomolecule — its secondary structure (base-pairings), together with tertiary structure and pseudo-knots.",
+  "brief_reason": "the genus-organized large-N matrix expansion with a planar limit and 1/N^2 corrections plus a recursion relation is the transferable machinery, while the RNA molecule and its secondary/tertiary/pseudo-knot folding are the biology-specific object."
+}

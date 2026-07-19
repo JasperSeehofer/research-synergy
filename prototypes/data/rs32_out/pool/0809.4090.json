@@ -1,0 +1,5 @@
+{
+  "method_atom": "A two-state unit with an intrinsic asymmetry between its states (a permanent, symmetry-breaking bias) driven by a strong periodic external field, whose nonlinear response makes the strongly-driven slow oscillation act as a parametric oscillator/amplifier: it generates a spectrum of new resonance frequencies and additional harmonics, shifts the slow driven-oscillation frequency, and emits radiation at that frequency, with the frequency tunable by the drive amplitude.",
+  "object_atom": "III-nitride semiconductor quantum dots carrying a strong built-in electric field that breaks inversion symmetry, whose arrays produce experimentally observable terahertz emission when exposed to a strong electromagnetic field.",
+  "brief_reason": "The strongly-driven asymmetric two-level parametric-amplification/harmonic-generation machinery is the transferable method, while the III-nitride quantum dots and their terahertz emission are the domain-specific object."
+}

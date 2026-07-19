@@ -1,0 +1,5 @@
+{
+  "method_atom": "a complete classification of the irreducible representations of an infinite-dimensional graded algebraic structure that decompose into weight spaces (simultaneous eigenspaces of a maximal commuting subalgebra) with finite-dimensional multiplicities, proving that every such representation reduces to one of a small number of canonical structural types",
+  "object_atom": "higher-rank Virasoro and super-Virasoro algebras (infinite-dimensional Lie/super-Lie algebras generalizing the centerless Virasoro algebra to higher-rank abelian grading groups) and their Harish-Chandra modules, which split into modules of the intermediate series and finitely-dense modules",
+  "brief_reason": "The transferable part is the weight-space classification machinery for irreducible representations with finite multiplicities over a graded algebra; the domain-specific part is the particular higher-rank Virasoro/super-Virasoro algebras and their concrete module types."
+}

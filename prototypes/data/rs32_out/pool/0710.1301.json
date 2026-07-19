@@ -1,0 +1,5 @@
+{
+  "method_atom": "A fault-tolerance / error-correction scheme that protects encoded information against strongly asymmetric (biased) noise, in which one failure channel dominates all others by orders of magnitude; by exploiting this asymmetry in the elementary conditional two-body operations, it derives a rigorous lower bound on the critical error-rate threshold below which arbitrarily reliable processing is achievable, and shows that the tolerable threshold rises substantially (here by a factor of five) relative to the symmetric-noise case.",
+  "object_atom": "Quantum computation on qubits subject to dephasing-dominated noise, with single-qubit preparations, single-qubit measurements, and conditional-phase (CPHASE) gates as the fundamental operations.",
+  "brief_reason": "The transferable part is exploiting a strong noise-channel asymmetry to raise a fault-tolerance error-rate threshold; the domain-specific part is qubits, dephasing, and CPHASE gates."
+}

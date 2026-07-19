@@ -1,0 +1,5 @@
+{
+  "method_atom": "mapping a noisy error-correction / information-recovery process onto a disordered statistical-mechanical model with quenched randomness and multi-body (three-unit) interactions, then locating the order-disorder phase transition of that model via Monte Carlo simulation of its phase diagram to extract a critical threshold in the disorder/noise parameter below which recovery succeeds",
+  "object_atom": "topological quantum error-correcting codes (color codes) that support direct Clifford-gate implementation for entanglement distillation, teleportation, and fault-tolerant quantum computation, characterized by their tolerable qubit-error threshold",
+  "brief_reason": "the disorder-model-mapping plus Monte-Carlo phase-transition-threshold machinery is transferable to any error-recovery-versus-noise problem, while the color-code fault-tolerant-quantum-computation system is the quantum-information-specific object."
+}

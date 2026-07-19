@@ -1,0 +1,5 @@
+{
+  "method_atom": "high-velocity scattering of a self-focusing nonlinear wave packet off a localized attractive point defect: a cubic-nonlinear dispersive evolution equation with a delta-function potential well is analyzed in the fast-incidence limit, yielding explicit asymptotic formulas that split the incoming coherent pulse into transmitted and reflected coherent components plus a small dispersive/radiative remainder, and showing that the fraction captured by the well's bound state vanishes as velocity grows.",
+  "object_atom": "a matter-wave soliton governed by the Gross-Pitaevskii equation scattering off an attractive delta-function impurity potential.",
+  "brief_reason": "The transferable machinery is the perturbative fast-limit splitting of a coherent nonlinear wave by a localized attractive potential with vanishing trapping; the domain-specific object is the Gross-Pitaevskii matter-wave soliton and its delta impurity."
+}

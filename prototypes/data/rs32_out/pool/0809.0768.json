@@ -1,0 +1,5 @@
+{
+  "method_atom": "Rapid periodic time-modulation of a system's parameters that renormalizes its effective properties and stabilizes qualitatively new states absent in the static system (the archetype being the fast-oscillation stabilization of an otherwise-unstable equilibrium), described within a 'dressing' framework in which the coupling to the periodic drive replaces the bare system with an effective one. The modulation amplitude acts as a control parameter that can be varied adiabatically and reversibly to tune the many-body system across a transition between two distinct collective phases.",
+  "object_atom": "Macroscopic quantum matter waves realized as Bose-Einstein condensates held in a periodically driven optical lattice, whose many-body ground state is switched between a superfluid and a Mott-insulating state by changing the driving amplitude.",
+  "brief_reason": "The fast-periodic-driving/dressing machinery and control-parameter-driven adiabatic phase change transfer to any driven system, while the condensate-in-a-driven-optical-lattice with its superfluid-to-Mott-insulator transition is the physics-specific object."
+}

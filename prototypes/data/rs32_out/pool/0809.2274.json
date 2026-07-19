@@ -1,0 +1,5 @@
+{
+  "method_atom": "a randomized algorithm that computes a near-optimal low-rank approximation of a large linear operator by projecting it onto a small random subspace, achieving accuracy provably close to the best attainable rank-deficient approximation (in the spectral norm) with efficiency independent of the operator's dimensions.",
+  "object_atom": "the data matrix in principal component analysis, whose dominant low-rank structure encodes the leading directions of variation in a high-dimensional dataset.",
+  "brief_reason": "the transferable machinery is randomized-projection low-rank approximation of a matrix with near-optimal spectral-norm accuracy guarantees; the domain-specific object is the PCA data matrix and its principal components."
+}

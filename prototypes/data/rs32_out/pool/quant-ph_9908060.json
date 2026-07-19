@@ -1,0 +1,5 @@
+{
+  "method_atom": "a many-body theory of a weakly-interacting Bose gas in which a macroscopic condensate forms and the low-lying collective excitations acquire a linear-in-momentum dispersion at long wavelengths, so that the emergent quanta possess a finite effective mass and chemical potential and the medium supports sound-like propagating disturbances; a critical-velocity threshold below which dissipationless (frictionless) flow is possible serves as the operational test for the ordered collective phase",
+  "object_atom": "photons confined in a nonlinear Fabry-Perot cavity filled with ground-state atoms, where atom-mediated photon-photon collisions during the cavity ring-down time create a 2D 'photon fluid' probed for superfluidity",
+  "brief_reason": "the condensation-plus-Bogoliubov-excitation-spectrum and Landau critical-velocity machinery is the transferable method, while the cavity-confined light coupled to atoms is the quantum-optics-specific object."
+}

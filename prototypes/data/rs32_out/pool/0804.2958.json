@@ -1,0 +1,5 @@
+{
+  "method_atom": "an estimation strategy that combines two independently specified models — one predicting a target quantity from auxiliary variables, the other modeling the probability that each unit is observed given those same variables — into a single combined estimator that remains consistent as long as at least one of the two models is correctly specified; the analysis contrasts such combined (two-model) estimators against single-model and inverse-probability-weighted estimators under joint misspecification, noting that weighting-based estimators become unstable when some estimated inclusion probabilities are near zero.",
+  "object_atom": "estimating the mean of an outcome variable across a population when some outcome values are missing not-at-random-controllable, using covariates that relate both to the outcome and to the chance of being missing.",
+  "brief_reason": "The two-model combination principle with consistency guaranteed under either-model-correct, and the instability of small inverse weights, transfers across fields; the missing-outcome population-mean estimation task is the statistics-specific object."
+}

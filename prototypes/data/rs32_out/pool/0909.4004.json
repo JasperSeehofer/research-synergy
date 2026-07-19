@@ -1,0 +1,5 @@
+{
+  "method_atom": "an algebraic analysis showing that two involutive transformation operations, when applied at a single element of a discrete structure, generate a finite permutation group (isomorphic to the symmetric group S_3); the finite-group closure yields a canonical normal form that reduces any composed sequence of the operations to a shortest equivalent, from which the set of reachable configurations and equivalences between operation sequences can be characterized.",
+  "object_atom": "the principal pivot transform (pivot) and loop-complementation operations acting on graphs and set systems, together with the induced local-complementation and edge-complementation operations on simple graphs.",
+  "brief_reason": "The transferable part is the finite-group-of-involutions structure and its resulting normal-form reduction for operation sequences; what is domain-specific is that the operations are pivot and loop/local/edge complementation on graphs and set systems."
+}

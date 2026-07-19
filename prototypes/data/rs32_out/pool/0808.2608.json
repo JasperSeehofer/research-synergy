@@ -1,0 +1,5 @@
+{
+  "method_atom": "an asymptotic extreme-value analysis of the fluctuations at the boundary of the support of a large ensemble of correlated random points, in which a tunable control parameter (here scaling as a critical power of system size) drives a transition in the local point-process statistics near the edge between an uncorrelated (Poisson) regime and a strongly-correlated (Airy) regime; correspondingly, the limiting law for the maximum coordinate interpolates between the independent-variables extreme-value distribution (Gumbel) and the strongly-correlated universality class (Tracy-Widom)",
+  "object_atom": "the eigenvalues of a family of large random matrices with iid centered complex Gaussian entries that interpolate between the Hermitian GUE and the fully non-Hermitian Ginibre ensemble, whose limiting spectrum fills an ellipse in the complex plane collapsing to a real interval as non-Hermiticity vanishes",
+  "brief_reason": "the edge-statistics/extreme-value transition machinery (Poisson-to-Airy, Gumbel-to-Tracy-Widom) is the transferable method, while the specific interpolating non-Hermitian random-matrix spectrum is the domain-specific object."
+}

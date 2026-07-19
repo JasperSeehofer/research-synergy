@@ -1,0 +1,5 @@
+{
+  "method_atom": "An information-theoretic capacity-region analysis of a one-to-many communication channel, in which a single source transmits independent messages to multiple receivers; the achievable-rate region is derived as an inner bound from a specific encoding-and-detection scheme, and its tightness is reduced to an extremal optimization conjecture asserting that a distinguished class of input states minimizes an output-entropy functional of the channel.",
+  "object_atom": "A bosonic (quantum electromagnetic-mode) broadcast channel subject to loss and additive thermal noise, where one transmitter sends to two receivers using coherent-state inputs, characterized via the von Neumann entropy at the channel output.",
+  "brief_reason": "The transferable part is the capacity-region-via-entropy-minimization-conjecture machinery for a broadcast channel; the domain-specific part is the noisy bosonic quantum channel with coherent-state encoding and von Neumann output entropy."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a higher-order perturbative expansion in a small coupling that computes the next correction to the coupled evolution kernels of a linear renormalization-group / integro-differential flow equation for a set of scale-dependent distributions, with the kernels derived in both an integral-transform (moment) representation and the conjugate variable-space representation, supplied as closed-form and approximate parametrized expressions, and assessed for series convergence, asymptotic small-variable behaviour, and stability of the evolution under variation of an arbitrary reference scale",
+  "object_atom": "the unpolarized flavour-singlet parton densities of the proton in perturbative QCD and the NNLO (third-order) splitting functions that govern their evolution, expressed in Mellin-N and Bjorken-x space",
+  "brief_reason": "the transferable part is the scheme of computing the next-order kernel of a renormalization-group evolution equation and analysing its convergence and scale stability, while the flavour-singlet parton densities and their QCD splitting functions are the domain-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a family of estimators for the entropy rate of an unknown discrete-valued, stationary, ergodic stochastic process observed as a single long symbol sequence, including a direct empirical-frequency (plug-in) estimator, estimators derived from universal data-compression codelengths, a Bayesian tree-mixture predictive estimator, and a recurrence-time (renewal) estimator; accompanied by consistency proofs, heuristic bias and standard-error approximations, a resampling (bootstrap) scheme for quantifying uncertainty, and an exact method for computing the entropy rate of a known finite-state hidden Markov model as ground truth",
+  "object_atom": "binary time series (sequences of two-valued symbols), motivated by and applied to neural spike-train recordings in neuroscience",
+  "brief_reason": "the compression- and recurrence-based entropy-rate estimation machinery with its consistency/bias analysis is transferable to any finite-alphabet stochastic sequence, while the binary neural spike-train series is the neuroscience-specific object it is demonstrated on."
+}

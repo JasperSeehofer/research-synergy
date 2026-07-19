@@ -1,0 +1,5 @@
+{
+  "method_atom": "solving the coupled nonlinear conservation equations of a compressible, electrically-conducting continuous medium moving symmetrically in a central potential, then partitioning the space of the flow's conserved integrals (total energy and angular momentum) into distinct classes of steady-state solution topologies, and locating discontinuous jump transitions where the medium abruptly changes state",
+  "object_atom": "axisymmetric adiabatic accretion of magnetized plasma onto compact gravitating bodies (neutron stars and black holes), including the magnetohydrodynamic shock waves that can form in such flows",
+  "brief_reason": "the transferable piece is the conserved-quantity parameter-space classification of steady flow topologies and shock formation for a conducting continuum in a central field; the accreting magnetized plasma onto neutron stars and black holes is the astrophysics-specific object."
+}

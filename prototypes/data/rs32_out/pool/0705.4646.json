@@ -1,0 +1,5 @@
+{
+  "method_atom": "a stochastic dynamical description of an actively driven unit in two dimensions whose magnitude of motion and its orientation each fluctuate as two statistically independent processes with their own characteristic relaxation time-scales; the analysis yields a complex transient with alternating regimes governed by the angular dynamics (persistent vs. directed random walks), additive corrections to the effective diffusion coefficient, and a velocity autocorrelation function expressible as a sum of exponential terms.",
+  "object_atom": "self-propelled particles moving in a two-dimensional plane, characterized by a fluctuating propulsion speed and a fluctuating direction of motion.",
+  "brief_reason": "The two-independent-fluctuating-timescales machinery with its regime transients, diffusion-coefficient corrections, and multi-exponential autocorrelation is the transferable method, while the two-dimensional self-propelled particle is the domain-specific object."
+}

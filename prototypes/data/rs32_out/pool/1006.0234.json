@@ -1,0 +1,5 @@
+{
+  "method_atom": "A procedure for reconstructing a hidden directed network of transmission from only the times at which individual units become activated by a spreading contagion, without observing the transmissions themselves. It casts inference as choosing the latent edge set that maximizes the likelihood of the observed cascade of activation times under a probabilistic pairwise-transmission model; because exact optimization is NP-hard, it exploits submodular structure to give a scalable greedy approximation with provable near-optimality guarantees.",
+  "object_atom": "The flow of information and viral content through online media, applied to a corpus of 170 million blogs and news articles over one year to infer the unobserved diffusion network among the top media sites and blogs.",
+  "brief_reason": "The transferable part is likelihood-based reconstruction of a latent transmission network from node activation times via a near-optimal submodular greedy algorithm; the domain-specific part is the online news/media adoption cascades it is applied to."
+}

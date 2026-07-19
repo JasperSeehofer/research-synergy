@@ -1,0 +1,5 @@
+{
+  "method_atom": "An effective-action / variational free-energy analysis of a many-body system whose interactions are non-local, showing that the spatially uniform state becomes unstable and spontaneously breaks continuous translational symmetry, so the ordered ground state is a spatially periodic, modulated ('stripe') pattern rather than a homogeneous one.",
+  "object_atom": "A self-interacting scalar field with a quartic (phi^4) coupling defined on a two-dimensional non-commutative space, whose non-locality stems from the non-commutative product of coordinates.",
+  "brief_reason": "What transfers is the mechanism by which non-local interactions drive spontaneous breaking of translational symmetry into a modulated stripe phase, analyzed via effective-action techniques; the two-dimensional non-commutative quartic scalar field is the domain-specific object."
+}

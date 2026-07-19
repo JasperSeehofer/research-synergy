@@ -1,0 +1,5 @@
+{
+  "method_atom": "An analysis of the spectral function associated with the fluctuations of a conserved-current/stress quantity, extracting a low-frequency transport coefficient from the zero-frequency limit of that spectral function. Analytic progress is made in two limiting regimes — weak coupling and the neighborhood of a second-order critical point — where a narrow peak emerges at low frequency. It also addresses the ill-posed inverse problem of analytically continuing an imaginary-time (Euclidean) correlation function, sampled with statistical error, to recover the real-frequency spectral function.",
+  "object_atom": "The trace of the stress-energy tensor in QCD (the strongly-interacting quark-gluon medium) and its bulk viscosity, with the Euclidean correlator obtained from lattice-QCD data.",
+  "brief_reason": "The spectral-function/transport-coefficient extraction and the Euclidean-to-real-frequency analytic-continuation machinery carry across fields, while the QCD stress tensor, its bulk viscosity, and lattice data are the domain-specific object."
+}

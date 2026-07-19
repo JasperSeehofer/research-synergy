@@ -1,0 +1,5 @@
+{
+  "method_atom": "Represent a set of elements and their pairwise similarities as a weighted graph, build a Laplacian operator from the resulting adjacency/degree structure, and use the low-lying eigenvectors of that operator to embed the elements into a low-dimensional coordinate space where a simple centroid-based partition separates them into groups. This is a spectral relaxation of a balanced graph-cut optimization, turning a combinatorial partitioning problem into a tractable linear-algebra eigenproblem.",
+  "object_atom": "A dataset of observations (points in a feature space) together with their pairwise similarity scores, which are to be grouped into a chosen number of clusters.",
+  "brief_reason": "The graph-Laplacian eigenvector/graph-cut-relaxation machinery is the transferable method, while the specific subject is the data-analysis task of clustering observations; the fusion is mild since a tutorial's object is the generic partitioning problem itself."
+}

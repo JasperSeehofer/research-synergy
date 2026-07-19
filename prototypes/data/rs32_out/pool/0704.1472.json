@@ -1,0 +1,5 @@
+{
+  "method_atom": "A system with a continuous rotational order parameter perturbed by a discrete q-fold anisotropy that is 'dangerously irrelevant': the perturbation is irrelevant at the ordering transition yet becomes relevant beyond a crossover length scale that diverges as a power of the correlation length. Below that scale an effective continuous symmetry emerges, and the crossover is captured by a full scaling function whose crossover exponent scales quadratically with q and is extracted numerically.",
+  "object_atom": "The three-dimensional XY model of planar rotor spins with a Z_q anisotropic term, simulated by Monte Carlo, interpreted in relation to deconfined quantum critical points separating antiferromagnetic and valence-bond-solid states in quantum spin systems.",
+  "brief_reason": "The dangerously-irrelevant-perturbation/emergent-continuous-symmetry crossover scaling machinery transfers across fields, while the XY spin model and its quantum-magnetism (deconfined criticality) interpretation are the domain-specific object."
+}

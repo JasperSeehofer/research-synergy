@@ -1,0 +1,5 @@
+{
+  "method_atom": "an accounting framework for stochastic systems steered by a feedback loop, quantifying the reduction in configurational uncertainty (entropy) produced by repeatedly measuring the system's state and conditioning subsequent actions on the outcome, and using this information-gain term to close the balance that bounds the maximum resource (work) extractable when control is conditioned on acquired information.",
+  "object_atom": "isothermal feedback-controlled physical systems, in particular Maxwell's-demon-type setups, exemplified by a simple information-fueled particle-pumping device operating at fixed temperature.",
+  "brief_reason": "the entropy-reduction-from-repeated-measurement-and-conditioned-action bookkeeping and its resulting extractable-work bound are the transferable method, while the isothermal thermal engine / Maxwell's demon / particle pump are the physics-specific objects."
+}

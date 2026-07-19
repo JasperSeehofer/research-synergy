@@ -1,0 +1,5 @@
+{
+  "method_atom": "a random/typical unitary mixing dynamics acting on a finite subsystem that rapidly scrambles freshly injected information across the whole, so that this information becomes decodable from the outflowing/exchanged part almost immediately once more than half of the subsystem's entropy has been transferred out (and stays concealed until that half-way point). The mechanism works because typical local circuits act as near-optimal encoders for quantum error-correcting codes that nearly saturate the capacity of the quantum erasure channel, yielding an estimate of the information-retention time of such a mixing subsystem.",
+  "object_atom": "an evaporating black hole with unitary, rapidly-mixing internal dynamics, and the retrieval of quantum information from its emitted Hawking radiation, assessed against the black hole complementarity hypothesis.",
+  "brief_reason": "The transferable part is the random-unitary scrambling that makes injected information recoverable from the exchanged subsystem past a half-entropy threshold via near-capacity erasure-channel codes; the domain-specific part is the black hole and its Hawking radiation."
+}

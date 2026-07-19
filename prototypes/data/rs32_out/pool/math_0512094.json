@@ -1,0 +1,5 @@
+{
+  "method_atom": "a category-theoretic framework in which a class of structured objects together with structure-preserving maps form a category, where the morphisms include the actions of a symmetry group and the quotient (reduction) maps that collapse an object modulo those symmetries; equipped with an additional structure that singles out a canonical simplest representative of every quotient object, plus a purpose-built formal language for describing and comparing such symmetry-and-quotient structures.",
+  "object_atom": "second-order parabolic partial differential equations defined on arbitrary manifolds, with a nonlinear reaction-diffusion equation treated as a detailed example.",
+  "brief_reason": "the transferable part is the categorical machinery of symmetry morphisms, quotient objects, and canonical-representative selection; the domain-specific part is the parabolic PDEs on manifolds it is applied to."
+}

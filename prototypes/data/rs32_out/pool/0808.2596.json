@@ -1,0 +1,5 @@
+{
+  "method_atom": "An algorithmic certification technique that searches, over a tower of difference-algebraic extensions, for a solution to a parameterized linear 'telescoping' (collapsing) functional equation among a parameter-indexed family of terms. The key inference is negative: when no such certificate exists, that provable non-existence is converted into a rigorous proof that the accumulated aggregate quantities are algebraically independent (transcendental) over the base structure, and the minimal order at which a certificate does exist characterizes when the aggregate is reducible.",
+  "object_atom": "Indefinite and definite hypergeometric-type sums studied in symbolic summation / computer algebra, together with the linear recurrences produced for them by creative-telescoping procedures such as Zeilberger's algorithm.",
+  "brief_reason": "The transferable part is the difference-algebraic machinery that reads non-existence of a parameterized-telescoping certificate as a proof of algebraic independence/transcendence; the domain-specific part is that the aggregated objects are sums and the concrete tool is Zeilberger-style creative telescoping."
+}

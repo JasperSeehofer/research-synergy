@@ -1,0 +1,5 @@
+{
+  "method_atom": "a scaling-collapse ansatz that reduces the joint dependence of a slowing-down/relaxation process on two control parameters to an effective single-parameter description, by positing that one control variable enters only through a single effective interaction-energy scale that is a function of it; the dynamical response then depends on the ratio of this effective energy to the other control parameter, yielding a one-variable master curve and testable formal consequences.",
+  "object_atom": "the flow and structural relaxation (slowing down toward the glass) of glassforming liquids and polymers as a function of temperature and density.",
+  "brief_reason": "the two-to-one-parameter scaling collapse via a single effective energy function is the transferable machinery, while the glassforming-liquid/polymer relaxation under temperature and density is the domain-specific object."
+}

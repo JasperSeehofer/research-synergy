@@ -1,0 +1,5 @@
+{
+  "method_atom": "a parameter-dependent non-Hermitian eigenvalue problem for two coupled resonant modes of an open (lossy) system, in which tuning a control parameter drives a transition from diabatic level crossing to avoided crossing; at a critical threshold the two complex eigenvalues and their eigenvectors coalesce at an exceptional point, a branch-point degeneracy that produces a singular topology on the eigenvalue surfaces and makes consistent labeling of the two branches impossible when encircling that point",
+  "object_atom": "the quasi-eigenmodes (leaky optical resonances) of a chaotic dielectric optical microcavity with a large size parameter whose boundary shape is progressively deformed, with the shape deformation setting both the mode coupling and the cavity's openness",
+  "brief_reason": "The transferable part is the coupled-mode non-Hermitian spectrum with an exceptional-point branch-point degeneracy and crossing-to-anticrossing transition; domain-specific is the deformed open optical microcavity and its light resonances that the machinery is applied to."
+}

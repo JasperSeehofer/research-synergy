@@ -1,0 +1,5 @@
+{
+  "method_atom": "a wave-carrying medium threaded by a background flow whose speed varies in space; wherever the flow speed exceeds the local group velocity of the medium's excitations, an effective trapping horizon forms that confines propagating quanta on one side, and such a horizon spontaneously emits a thermal spectrum of those quanta — treated here for a discrete-lattice field theory with a nonlinear dispersion relation, together with a scheme to detect the emitted signal.",
+  "object_atom": "phonon excitations of a ring of trapped ions set rotating with a stationary but inhomogeneous velocity profile, serving as a laboratory analogue in which supersonic regions mimic a black-hole horizon and its Hawking radiation.",
+  "brief_reason": "The horizon-formation-from-supersonic-flow and thermal-emission-of-quanta machinery is field-neutral and transferable; the rotating trapped-ion ring with its phonons is the domain-specific object it is applied to."
+}

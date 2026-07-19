@@ -1,0 +1,5 @@
+{
+  "method_atom": "a technique for binding two pre-prepared constituent units into a single composite occupying its lowest internal energy configuration via a single resonant light-induced association step, with selective population of chosen discrete internal levels at differing yields; paired with a state-readout scheme that identifies which internal level was populated by selectively removing (depleting) population from a targeted level and detecting the products through resonant multi-step ionization followed by time-of-flight separation, from which a production rate is quantified.",
+  "object_atom": "two laser-cooled atomic species (Li and Cs) associated into ultracold LiCs polar molecules in the absolute X^1Sigma^+, v''=0, J''=0 rovibrational ground state (and selectively in v''=0, J''=2), yielding large samples of externally and internally cold dipolar molecules.",
+  "brief_reason": "The single-step resonant association into a lowest-energy bound composite plus depletion/resonant-ionization time-of-flight state readout is the transferable machinery, while the specific laser-cooled-atom to LiCs-polar-molecule system is the physics-specific object."
+}

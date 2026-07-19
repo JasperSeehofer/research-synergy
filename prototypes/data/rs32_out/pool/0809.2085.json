@@ -1,0 +1,5 @@
+{
+  "method_atom": "a convex joint-estimation scheme that fits many related linear parameter vectors simultaneously under a spectral/matrix-norm penalty encoding the prior that the vectors partition into an unknown number of latent groups whose members are mutually similar, so the grouping is inferred jointly with the vectors rather than supplied in advance, yielding a single convex optimization problem.",
+  "object_atom": "a set of related supervised classification/regression tasks, each with its own weight vector, evaluated on synthetic examples and on IEDB MHC-I peptide-binding prediction across alleles.",
+  "brief_reason": "the convex latent-cluster-inducing regularization of many coupled parameter vectors is the transferable machinery, while the supervised prediction tasks and the MHC-I binding domain are the object-specific subject; the two are cleanly separable."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a necessary-and-sufficient extremality criterion for the vertices (extreme points) of a convex set of positive-semidefinite operators that is carved out by imposing an additional positivity constraint under a linear partitioning transformation, together with a constructive algorithm that enumerates such extreme points in finite dimension.",
+  "object_atom": "finite-dimensional density matrices of a composite quantum system that are required to have a positive partial transpose with respect to one subsystem.",
+  "brief_reason": "the convex-geometry extremality criterion and vertex-finding algorithm for a positivity-constrained operator set are transferable machinery, while the density matrices with positive partial transpose of a bipartite quantum system are the physics-specific object."
+}

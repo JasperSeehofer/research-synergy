@@ -1,0 +1,5 @@
+{
+  "method_atom": "A distributed, asynchronous algorithm in which many autonomous agents, communicating only through sporadic, short-range, unreliable pairwise exchanges, iteratively reassign ownership of the elements of a discrete set (the vertices of a graph) using a purely local pairwise update rule. Cast as a dynamical system on the space of partitions of that set, the process is proven to converge in finite time to a pairwise-optimal equilibrium partition, and it runs anytime with bounded per-agent resources and scales to large numbers of agents.",
+  "object_atom": "A team of mobile robots deployed to partition and provide coverage of a non-convex physical environment, where the environment is discretized as a graph and neighboring robots exchange only intermittent short-range \"gossip\" messages.",
+  "brief_reason": "The transferable machinery is the local pairwise-partition-reassignment dynamics over a discrete set that provably converges to a pairwise-optimal equilibrium under unreliable gossip communication, while the mobile-robots-covering-a-non-convex-environment system is the robotics-specific object."
+}

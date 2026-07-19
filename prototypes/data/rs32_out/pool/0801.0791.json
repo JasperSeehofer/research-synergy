@@ -1,0 +1,5 @@
+{
+  "method_atom": "a variational trial state built as an equal-weight linear superposition of exactly those configurations that satisfy a hard local constraint (here, minimising pairwise repulsion), so that its expectation values can be computed exactly; energy minimisation over this constrained ensemble then predicts a spontaneous symmetry-breaking deviation from a naively expected balanced occupancy and yields a quantitative estimate of the emergent density-modulation order parameter.",
+  "object_atom": "hard-core bosons occupying the sites of a triangular lattice, forming a supersolid phase with coexisting off-diagonal order and diagonal (solid) density-wave order near half-filling.",
+  "brief_reason": "the constrained-superposition variational machinery and its exact evaluation of a symmetry-breaking order parameter transfers across fields, while the hard-core bosons on a triangular lattice and their supersolid are the condensed-matter-specific object."
+}

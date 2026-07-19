@@ -1,0 +1,5 @@
+{
+  "method_atom": "a distributed network architecture of many local nodes linked by channels, in which a fragile correlated resource is generated and characterized locally and then distributed across the network via reversible interconnects that transduce state losslessly between heterogeneous physical carriers, enabling long-range correlations to be shared and transferred between distant nodes.",
+  "object_atom": "quantum states, coherence, and entanglement carried by single photons and atoms serving as the channels and nodes of a network for quantum computation, communication, and metrology.",
+  "brief_reason": "The node-channel network with reversible state-converting interconnects distributing a shared correlated resource is the transferable machinery, while the quantum coherence/entanglement carried by photons and atoms is the physics-specific object, with some unavoidable fusion since the distributed resource is inherently quantum."
+}

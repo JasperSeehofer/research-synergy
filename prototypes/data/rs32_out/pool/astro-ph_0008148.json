@@ -1,0 +1,5 @@
+{
+  "method_atom": "a weak-turbulence (wave-kinetic) formalism for an ensemble of weakly coupled waves in which the lowest-order resonant three-wave interactions close into a system of kinetic equations governing the evolution of the spectral densities of the conserved invariants, admitting exact stationary power-law spectra whose prefactor constants depend on the degree of correlation between the two interacting fields.",
+  "object_atom": "incompressible magnetohydrodynamic turbulence — the coupled velocity and magnetic fields of a conducting fluid, with energy and helicity as the conserved spectral densities, benchmarked against numerical simulations.",
+  "brief_reason": "The three-wave weak-turbulence closure yielding kinetic equations and correlation-dependent power-law spectra is the transferable machinery, while the coupled velocity/magnetic fields of a conducting fluid are the MHD-specific object."
+}

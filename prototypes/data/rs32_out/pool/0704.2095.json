@@ -1,0 +1,5 @@
+{
+  "method_atom": "Propagation of a field's quantum fluctuation modes across a smooth transition between two successive dynamical regimes, with a matching of mode evolution and a physically-motivated choice of the initial vacuum state across the changeover. The transition modifies the mode spectrum, suppressing long-wavelength (low-frequency) fluctuations relative to the prediction of the second regime alone; the resulting modified power spectrum is then confronted with observational data to constrain when the transition occurred.",
+  "object_atom": "The inflaton scalar field in early-universe cosmology, whose quantum fluctuations seed large-scale temperature anisotropy of the cosmic microwave background, in a scenario where a pre-inflation radiation-dominated epoch transitions into the inflationary epoch, constrained against WMAP data and the scale-invariant LambdaCDM model.",
+  "brief_reason": "The transferable machinery is the cross-regime matching of a field's fluctuation modes with vacuum-state selection that reshapes the low-frequency spectrum; the inflaton, CMB anisotropy, and radiation-to-inflation cosmology are the domain-specific object."
+}

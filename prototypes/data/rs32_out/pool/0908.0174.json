@@ -1,0 +1,5 @@
+{
+  "method_atom": "A measurement technique that resolves and reads out the state of every individual constituent of a large interacting many-body ensemble at the level of single sites on a discrete array, achieving near-unity detection fidelity through high-resolution imaging. It bridges bulk, ensemble-averaged characterization with complete constituent-by-constituent control, and uses a programmable holographic projection to generate an array of arbitrary geometry that simultaneously supports strong inter-site coupling and strong on-site confinement.",
+  "object_atom": "Ultracold neutral atoms forming a quantum gas held in a Hubbard-regime optical lattice, used both as strongly correlated matter and as a large-scale quantum-information register.",
+  "brief_reason": "The single-site-resolved, near-perfect individual-unit imaging on a programmable discrete array is the transferable machinery, while the ultracold-atoms-in-an-optical-lattice system is the physics-specific object."
+}

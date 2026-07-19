@@ -1,0 +1,5 @@
+{
+  "method_atom": "Reconstruct an effective potential (a free-energy landscape) as a function of a single scalar collective observable from stochastically sampled configuration data, and classify the order of a phase transition by the shape of that landscape — a single minimum for a continuous transition versus competing degenerate minima separated by a barrier for a discontinuous (first-order) transition. Sweep external control parameters to trace the transition line and locate the critical point where first-order behavior sets in or terminates.",
+  "object_atom": "Strongly-interacting quark matter described by two-flavor lattice QCD at finite temperature and finite baryon (quark) and isospin chemical potential, simulated with p4-improved staggered quarks, with the average plaquette serving as the collective observable.",
+  "brief_reason": "The transferable machinery is inferring a free-energy landscape over a collective observable and reading transition order from its minima structure; the finite-density lattice-QCD quark-gluon system and the plaquette observable are the physics-specific object."
+}

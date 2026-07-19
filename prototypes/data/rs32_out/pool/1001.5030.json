@@ -1,0 +1,5 @@
+{
+  "method_atom": "a stochastic aggregation process on a growing network in which, at each step, a single link is added by a local selection rule that picks from a small candidate set of potential links sharing common nodes; the macroscopic dynamics is captured exactly by a closed system of deterministic evolution (rate) differential equations, and the process produces a discontinuous emergence of a system-spanning connected cluster while nonetheless obeying power-law scaling with critical exponents characteristic of continuous transitions.",
+  "object_atom": "an evolving random graph built by adding edges between vertices, and the emergence of its giant connected component, benchmarked against the classic Erdos-Renyi random-graph model.",
+  "brief_reason": "The local-choice aggregation dynamics analyzable via rate equations and its hybrid discontinuous-onset-with-continuous-scaling signature is the transferable machinery; the edges-vertices random graph and its giant component are the graph-theory-specific object."
+}

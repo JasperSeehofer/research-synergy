@@ -1,0 +1,5 @@
+{
+  "method_atom": "A family of coupled nonlinear recurrence relations recast as the mutation dynamics of a cluster algebra — an algebraic structure whose variables are iteratively transformed by exchange (mutation) rules generated from an initial seed. Reformulating the recurrence this way lets the Laurent phenomenon guarantee that every iterate is a Laurent polynomial in the initial seed variables, thereby establishing the polynomiality/integrality of the recurrence's solutions.",
+  "object_atom": "The Q-system: the discrete functional/recursion relations first arising in the Bethe-equation analysis of the XXX model and generalized Heisenberg spin chains, defined for simple (here simply-laced) Lie algebras and other Kac-Moody algebras, together with its representation-theoretic interpretation of the solutions.",
+  "brief_reason": "The cluster-algebra mutation structure and the Laurent-phenomenon guarantee that recurrence iterates are Laurent polynomials in the seed variables carry across any recurrence system; the specific Q-system of integrable spin chains and Lie-algebra representation theory is the domain-specific object."
+}

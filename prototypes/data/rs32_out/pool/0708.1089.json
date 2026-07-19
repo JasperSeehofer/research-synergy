@@ -1,0 +1,5 @@
+{
+  "method_atom": "a parameter-estimation framework that bounds the ultimate precision of any estimator of a control parameter via the Fisher information and the associated Cramer-Rao limit, exploiting the fact that near a critical point of a collective transition the system's response to the parameter diverges, so that estimation precision improves with system size (scaling as 1/L) relative to the off-critical regime.",
+  "object_atom": "many-body systems undergoing a quantum phase transition driven by a coupling parameter (illustrated by a fermion tight-binding model with pair creation, the BCS model), and by analogy the temperature of a system at a classical phase transition.",
+  "brief_reason": "The transferable part is the critical-point-enhanced Fisher-information/Cramer-Rao estimation machinery, while the domain-specific object is the quantum-critical BCS system whose coupling (or classical temperature) is being estimated."
+}

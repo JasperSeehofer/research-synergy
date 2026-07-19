@@ -1,0 +1,5 @@
+{
+  "method_atom": "A suite of general-purpose algorithms for approximating high-dimensional definite integrals, combining adaptive importance-sampling and stratified/recursive-subdivision Monte Carlo estimation with deterministic adaptive cubature rules, able to handle vector-valued integrands and to refine estimates where the integrand varies most.",
+  "object_atom": "A concrete numerical-software library (Cuba) that packages four such integration routines and exposes them through uniform Fortran, C/C++, and Mathematica programming interfaces.",
+  "brief_reason": "The adaptive Monte Carlo and cubature integration/estimation machinery is the transferable part, while the specific software-library implementation and its multi-language interfaces are the domain-specific object; the split is partly fused because in a numerical-methods paper the method essentially is the subject."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "A technique for solving a boundary-interacting quantum system coupled to a dissipative environment by re-expressing its degrees of freedom in a free (fermionic) representation, then constructing exact boundary states at special ('magic') values of the coupling parameters, and using this to prove an exact equivalence (duality) between two seemingly distinct boundary quantum field theories.",
+  "object_atom": "Quantum particles moving in two dimensions subject to a uniform magnetic field, a periodic potential, and a dissipative force (the dissipative Hofstadter model), and its counterpart the critical boundary sine-Gordon model.",
+  "brief_reason": "The transferable part is the free-fermion boundary-state construction that establishes an exact duality between two boundary theories at special couplings; the specific quantum systems (dissipative Hofstadter and boundary sine-Gordon) are the domain-specific objects."
+}

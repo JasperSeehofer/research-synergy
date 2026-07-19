@@ -1,0 +1,5 @@
+{
+  "method_atom": "a complex-analytic technique that uses contour integration around the spectrum of a linear operator to derive closed-form expressions for the regularized product of its eigenvalues (its determinant), including a refinement that isolates and excludes null eigenvalues so the remaining product stays finite and well-defined.",
+  "object_atom": "functional determinants of second-order linear differential operators subject to prescribed boundary conditions (illustrated with Dirichlet conditions), including the physically important operators that possess zero modes.",
+  "brief_reason": "the contour-integration machinery for evaluating spectral products with singular modes removed is transferable to any operator whose determinant is sought, whereas the differential operators, their boundary conditions, and their zero modes are the domain-specific objects."
+}

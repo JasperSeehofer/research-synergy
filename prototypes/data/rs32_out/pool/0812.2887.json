@@ -1,0 +1,5 @@
+{
+  "method_atom": "the theory of self-propulsion of a body in the inertia-less (linear, time-reversible Stokes) regime of a viscous continuum, where net translation requires a non-reciprocal deformation cycle; the machinery includes linear resistance/mobility matrices relating generalized forces to velocities of rigid bodies, superposition of point-force flow singularities, and reduced descriptions of slender deforming filaments via resistive-force and slender-body approximations, together with optimization of periodic actuation strokes.",
+  "object_atom": "motile cells and microorganisms swimming in viscous biological fluids at the tens-of-microns scale, propelled by actuated flagella, and their engineered counterparts (small-scale artificial swimmers).",
+  "brief_reason": "The transferable part is the low-Reynolds-number self-propulsion machinery (Stokes-flow resistance matrices, flow singularities, slender-body/resistive-force reductions, non-reciprocal stroke optimization); the domain-specific object is flagellated cells swimming in biological viscous fluids."
+}

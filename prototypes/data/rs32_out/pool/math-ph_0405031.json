@@ -1,0 +1,5 @@
+{
+  "method_atom": "A functional-integration (sum-over-paths) technique that represents the solution of a broad class of linear second-order operator problems as a weighted integral over a space of paths, constructing elementary propagator kernels that enforce absorbing/reflecting boundary constraints and composing them to build the general solution.",
+  "object_atom": "Linear second-order partial differential equations — elliptic, parabolic, and hyperbolic, including the Schrödinger/diffusion equation — posed with Dirichlet or Neumann boundary conditions.",
+  "brief_reason": "The path-integral / functional-integration construction with boundary-enforcing kernels is the transferable method, while the specific class of second-order PDEs with prescribed boundary conditions is the domain-specific object it is applied to."
+}

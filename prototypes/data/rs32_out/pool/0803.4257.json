@@ -1,0 +1,5 @@
+{
+  "method_atom": "Enumerate the invariants of a group action on a space by building generating functions (a graded Hilbert series) via a group-averaging integral over the symmetry group (Molien-Weyl formula) combined with plethystic/symmetric-function operations, and read off how the symmetry organises the invariants through a character expansion. Then treat the set of joint solutions of the invariance constraints as an algebraic variety and characterise it with computational algebraic geometry — its irreducible components, degree, and defining relations (syzygies) — identifying its global geometry as a cone-like variety with special (Calabi-Yau) structure.",
+  "object_atom": "The chiral gauge-invariant operators and the classical vacuum moduli space of supersymmetric QCD (SQCD) for arbitrary numbers of colours and flavours.",
+  "brief_reason": "The invariant-counting-by-generating-functions plus algebraic-geometry-of-the-solution-variety machinery transfers to any group acting on a space, while the SQCD gauge theory with its specific colours/flavours is the physics-specific object."
+}

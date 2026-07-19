@@ -1,0 +1,5 @@
+{
+  "method_atom": "A construction that takes a system of nonlinear elliptic partial differential equations, introduces a controlled perturbation so the solution set is well-behaved, and builds a virtual fundamental cycle on the moduli space of solutions; the deformation of this cycle as the perturbation is varied is analyzed through wall-crossing and matched to a classical monodromy/deformation theory, yielding an extended invariant of the unperturbed system that satisfies a fixed set of structural axioms.",
+  "object_atom": "The equation proposed as the replacement for the Cauchy-Riemann equation in the singularity (Landau-Ginzburg) setting associated to a quasi-homogeneous polynomial, whose resulting invariants are compared to Gromov-Witten theory and r-spin theory.",
+  "brief_reason": "The transferable machinery is the perturb-then-build-a-virtual-cycle-on-a-moduli-space-of-PDE-solutions procedure with wall-crossing matched to a monodromy/deformation theory; the domain-specific object is the Landau-Ginzburg singularity equation for a quasi-homogeneous polynomial, and the two are largely separable."
+}

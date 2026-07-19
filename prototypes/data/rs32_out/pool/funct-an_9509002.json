@@ -1,0 +1,5 @@
+{
+  "method_atom": "An exact spectral duality that maps a continuous second-order differential operator defined on the edges of a network/graph onto an equivalent discrete second-order difference operator acting on the vertices — a tridiagonal, nearest-neighbor linear operator — so that the spectrum of the continuous problem is recovered from a finite-difference recurrence. The correspondence extends to networks whose edges carry gauge phases and to periodic or quasi-periodic connectivity patterns.",
+  "object_atom": "Quantum-mechanical Schroedinger operators living on metric graphs, including the Kronig-Penney model, rectangular lattices with and without a magnetic field, and comb-shaped graphs.",
+  "brief_reason": "The transferable part is the continuous-operator-on-a-network to discrete-tridiagonal-operator spectral duality; the domain-specific part is the quantum Schroedinger operators on graphs it is demonstrated on."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a mean-field framework for a large collection of continuous units coupled by frozen random p-body interactions, analyzed by three mutually-consistent routes: an equilibrium calculation using replica methods that reveals many pure states, overlap distributions, and symmetry-breaking below a static critical point; a stochastic-dynamics calculation via a generating-functional formalism yielding coupled correlation-and-response equations with a mode-coupling closure and a distinct dynamical arrest transition; and a landscape/complexity analysis counting the exponentially many metastable stationary points of an approximate free energy, with an entropy crisis, a threshold level, and saddle structure.",
+  "object_atom": "mean-field spin-glasses, concretely the p-spin spherical model — magnetic spins with quenched random multi-spin couplings.",
+  "brief_reason": "The disordered-mean-field machinery (replica symmetry breaking, generating-functional/mode-coupling dynamics, and metastable-state complexity counting) is the transferable method, while the p-spin spherical spin-glass is the physics-specific object it is applied to."
+}

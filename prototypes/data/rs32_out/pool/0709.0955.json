@@ -1,0 +1,5 @@
+{
+  "method_atom": "a symmetry-reduction technique for convex (semidefinite) optimization: given a problem invariant under a symmetry group, use the group's orbit structure and block-diagonalization of the invariant operators to collapse the number of variables and the dimension of the matrices, making otherwise infeasible large instances solvable and sometimes yielding closed-form solutions. The optimized objective is the minimization of the sub-dominant eigenvalue modulus (spectral gap) of a stochastic operator, i.e. maximizing the convergence rate of an iterative averaging process toward its equilibrium distribution.",
+  "object_atom": "a Markov chain (random walk) defined on the edges of a graph, whose edge transition probabilities are the design variables, for symmetric graph families such as edge-transitive and distance-transitive graphs.",
+  "brief_reason": "the group-orbit/block-diagonalization reduction of a symmetric semidefinite program and the spectral-gap objective are the transferable machinery, while the random walk on a symmetric graph is the domain-specific object."
+}

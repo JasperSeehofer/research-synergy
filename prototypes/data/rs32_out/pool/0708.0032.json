@@ -1,0 +1,5 @@
+{
+  "method_atom": "A framework for proving that a discrete stochastic system defined on a lattice converges, in a fine-mesh scaling limit, to a continuum object whose statistics are invariant under angle-preserving (conformal) transformations. The random boundary/interface curves of such critical systems are characterized by a one-parameter family of stochastically-driven conformal maps (a Loewner-type evolution driven by Brownian motion), from which universal critical exponents and fractal dimensions can be derived rigorously.",
+  "object_atom": "Two-dimensional lattice models of statistical physics at their critical points — percolation, the Ising model, and self-avoiding polymers — and their conjectured scaling limits.",
+  "brief_reason": "The scaling-limit / conformal-invariance proof strategy and the stochastic Loewner-evolution characterization of random interfaces are the transferable machinery, while the specific 2D critical lattice systems (percolation, Ising, polymers) are the physics-specific object."
+}

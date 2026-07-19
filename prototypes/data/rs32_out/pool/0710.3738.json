@@ -1,0 +1,5 @@
+{
+  "method_atom": "a three-stage protocol for a two-level quantum degree of freedom: deterministic initialization into a chosen basis state by resonantly exciting a paired excitation and letting selective decay leave the system in that state; coherent manipulation via a resonant drive that produces Rabi oscillation between two states, conditioned on the initial state; and projective read-out through a state-selective transition that yields a measurable macroscopic signal correlated with the pre-measurement state.",
+  "object_atom": "a single hole spin trapped in a semiconductor quantum dot, manipulated through its optically coupled charged-exciton states and read out as a photocurrent.",
+  "brief_reason": "The init/coherent-conditional-rotation/selective-read-out sequence for a two-level system is the transferable machinery, while the hole spin in a quantum dot with exciton/photocurrent coupling is the solid-state-physics-specific object."
+}

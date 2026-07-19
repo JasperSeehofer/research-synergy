@@ -1,0 +1,5 @@
+{
+  "method_atom": "a robust error-estimation protocol that applies long, randomly chosen sequences of operations drawn from a group of transformations and tracks how a fidelity or survival signal decays with sequence length; because the random sequences average over configurations and the estimate is read from the decay rate rather than absolute endpoints, the result is insensitive to errors in preparation and readout and scales efficiently while capturing the compounding of errors under composition.",
+  "object_atom": "elementary logic operations (gates, e.g. pi/2 rotations) acting on trapped atomic ion two-level quantum bits in a scalable quantum computer.",
+  "brief_reason": "the transferable machinery is the randomized-sequence decay-fit estimation of average error robust to endpoint imperfections; the domain-specific object is the quantum gates on trapped-ion qubits."
+}

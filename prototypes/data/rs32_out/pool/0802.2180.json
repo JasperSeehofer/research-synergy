@@ -1,0 +1,5 @@
+{
+  "method_atom": "a mean-field statistical-mechanics theory, built on the replica method, that computes the structure and thermodynamics of maximally-dense, amorphous (disordered, metastable) configurations of many identical mutually-excluding units, predicting correlation functions and contact-force-like distributions and admitting an exact solution in the limit of high dimensionality; it also relates such static extremal-packing computations to the dynamical procedures that generate disordered configurations.",
+  "object_atom": "identical hard spheres in physical dimensions two through six, used as models for liquids, crystals, colloidal systems, granular materials and powders, and specifically their amorphous (glassy, jammed) packings versus ordered crystalline packings.",
+  "brief_reason": "the replica-based mean-field theory of maximally-packed disordered units, with its solvable large-dimension limit, is the transferable machinery, while identical hard spheres and their amorphous packings are the condensed-matter-specific object."
+}

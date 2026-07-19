@@ -1,0 +1,5 @@
+{
+  "method_atom": "Large-population asymptotic analysis of an ensemble of N independent identical stochastic exploratory processes started from a common state: computing the ensemble-averaged coverage (number of distinct states visited) and the order/extreme-value statistics of first-passage and absorption times among the first j of the N processes. All such quantities admit a common large-N asymptotic expansion as a series in inverse powers of ln(N) with iterated-logarithm (ln ln N) corrective terms that remain non-negligible even for large N.",
+  "object_atom": "N >> 1 independent random walkers initially placed on the same site of a substrate that is a Euclidean, deterministic-fractal, or disordered lattice, including the case of a Euclidean lattice randomly occupied by a concentration c of absorbing traps.",
+  "brief_reason": "The large-N extreme/order-statistics machinery and its shared inverse-log asymptotic series carry across to any ensemble of independent stochastic explorers, while the random walkers diffusing on physical, fractal, or trap-occupied lattices are the statistical-physics-specific object."
+}

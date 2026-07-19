@@ -1,0 +1,5 @@
+{
+  "method_atom": "a stochastic dynamical model of a slowly-evolving field coupled to a thermal reservoir, whose overdamped equation of motion contains a dissipative friction term and a thermal-noise source, where the friction coefficient itself depends on the reservoir temperature; the resulting fluctuation power spectrum is computed and shown to be strongly amplified when the friction coefficient grows with temperature, with a distinct weak-friction regime.",
+  "object_atom": "the inflaton field of warm inflationary cosmology in the early universe, whose thermal fluctuations seed large-scale density (cosmological) perturbations.",
+  "brief_reason": "the temperature-dependent-friction stochastic-fluctuation machinery and its power-spectrum amplification is transferable, while the inflaton-driven early-universe density perturbations are the cosmology-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "A first-order primal-dual optimization scheme for minimizing a composite convex objective built from a nonsmooth sparsity-promoting regularizer plus a data-fidelity term: the problem is reformulated into a partially separable form by adding auxiliary variables and coupling constraints, then solved by an exact or inexact alternating-direction (block-coordinate) method that updates both primal and dual variables at every iteration, with established convergence.",
+  "object_atom": "Sparse-solution recovery from underdetermined linear measurements in compressive sensing, specifically the basis-pursuit and unconstrained/constrained basis-pursuit-denoising problems, including robust ell_1 data-fidelity for the case of erroneous measurements.",
+  "brief_reason": "The variable-splitting alternating-direction primal-dual minimization of a regularizer-plus-fidelity objective is the transferable machinery, while the compressive-sensing sparse-recovery problems are the domain-specific object."
+}

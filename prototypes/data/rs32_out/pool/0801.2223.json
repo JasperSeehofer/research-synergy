@@ -1,0 +1,5 @@
+{
+  "method_atom": "an invariant coordinate-transformation applied to a linear wave equation, which maps the transformed geometry onto a medium with spatially engineered local parameters (an effective potential and a position-dependent effective mass/coefficient), so that the field is steered smoothly around an enclosed region at a fixed energy without scattering, rendering that region undetectable; the construction is derived consistently from both wave and ray/particle limits.",
+  "object_atom": "quantum-mechanical matter waves of particles governed by the Schrodinger equation, realized concretely for cold atoms confined and shaped by optical lattices.",
+  "brief_reason": "The transformation-based parameter-engineering that routes a wave around a hidden region carries across fields; the matter-wave/cold-atom-in-optical-lattice system is the quantum-physics-specific object."
+}

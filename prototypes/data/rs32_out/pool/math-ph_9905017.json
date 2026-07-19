@@ -1,0 +1,5 @@
+{
+  "method_atom": "Representation-theoretic classification in which a high-dimensional irreducible representation of an algebraic symmetry structure is decomposed (branched) along a chain of successively smaller subalgebras, so that a stepwise symmetry-breaking cascade partitions the representation into multiplets. The sizes of the resulting multiplets are then matched against an empirically observed degeneracy pattern to select which algebra and which breaking sequence reproduce it.",
+  "object_atom": "The degeneracy structure of the genetic code — the 64 codons and how they group into multiplets encoding the same amino acid in the standard code.",
+  "brief_reason": "The transferable machinery is the branching/subalgebra-reduction and symmetry-breaking classification of an irreducible representation to fit a target multiplet spectrum; the domain-specific object is the codon-to-amino-acid degeneracy of the genetic code."
+}

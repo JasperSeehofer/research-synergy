@@ -1,0 +1,5 @@
+{
+  "method_atom": "a resampling-based procedure that estimates the expected out-of-sample error (risk) of a fitted predictor by repeatedly partitioning the available observations into a portion used to fit and a disjoint held-out portion used to evaluate, then averaging the held-out errors; these estimated risks are compared across a family of candidate predictors to pick the one with lowest estimated risk, with theoretical guarantees governed by how the data is split.",
+  "object_atom": "statistical estimators and predictive models fitted to data, and the task of selecting among competing models in statistics and machine learning.",
+  "brief_reason": "The resampling/held-out risk-estimation-and-selection machinery is transferable to any domain that fits and compares predictors, while the object is inherently the statistical model-selection setting itself, so method and object are only weakly separable in this survey of the method."
+}

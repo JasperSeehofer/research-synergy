@@ -1,0 +1,5 @@
+{
+  "method_atom": "Measure the power spectral density of fluctuations in a physical system and interpret it as evidence of a background field's zero-point fluctuations; then constrain the total integrated fluctuation energy against an externally-measured global energy budget to derive an upper cutoff frequency of the spectrum, using the largest experimentally reached frequencies as a lower bound on that global energy. A separate transferable claim: suppressing (imposing a cutoff on) fluctuations above a high frequency generates a 1/f low-frequency noise spectrum.",
+  "object_atom": "Zero-point quantum fluctuations manifested as current-noise spectral density in superconducting Josephson junctions, and the dark-energy (vacuum-energy) density of the universe that bounds their total energy.",
+  "brief_reason": "The transferable machinery is bounding a background field's zero-point-fluctuation spectrum by matching integrated fluctuation energy to a measured global energy budget (plus cutoff-to-1/f-noise); the domain-specific objects are Josephson-junction current noise and cosmological dark energy."
+}

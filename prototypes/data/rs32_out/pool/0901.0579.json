@@ -1,0 +1,5 @@
+{
+  "method_atom": "A scheme for high-fidelity coherent control of a large one-dimensional array of coupled two-level units by driving them through a near-continuum of shared collective vibrational modes with simply shaped control pulses, made scalable by engineering an anharmonic confining potential whose shape yields nearly uniform spacing of the units and keeps the extended array stable.",
+  "object_atom": "A large stabilized linear chain of trapped ions confined in a simple anharmonic trap and cooled to the Doppler temperature, serving as qubits that are gated via shaped laser pulses coupling to their transverse motional modes.",
+  "brief_reason": "The transferable part is control of many coupled units through a continuum of shared collective modes plus an anharmonic potential engineered for uniform spacing and stability; the domain-specific part is the trapped-ion crystal, Doppler cooling, and laser-driven transverse motional modes."
+}

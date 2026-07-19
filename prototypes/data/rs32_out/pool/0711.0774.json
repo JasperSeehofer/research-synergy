@@ -1,0 +1,5 @@
+{
+  "method_atom": "a multiple-scattering (Green's-function) computation of the interaction energy and force induced between two disjoint bodies by a fluctuating field, where each body is represented as a localized contact (delta-function) potential coupling to the field whose strong-coupling limit enforces a hard vanishing boundary condition; a perturbative power-series expansion in the coupling strength that can be resummed into simple closed form, together with a short-separation leading-order approximation (interaction set by the local surface geometry) that acquires large computable corrections as the bodies separate",
+  "object_atom": "the vacuum-fluctuation-induced force from a fluctuating scalar field between two disjoint semitransparent spheres, and between two disjoint parallel semitransparent cylinders",
+  "brief_reason": "the multiple-scattering resummation of a fluctuation-induced force between contact-potential bodies with a proximity/short-distance approximation is the transferable machinery, while the scalar Casimir field acting on spherical and cylindrical geometries is the physics-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a statistic that estimates the conditional mean of the most extreme fraction of a sample distribution beyond a fixed quantile threshold, satisfying a set of coherence axioms (monotonicity, positive homogeneity, translation invariance, and subadditivity) and admitting several equivalent representations suited to different purposes",
+  "object_atom": "the downside risk of a financial portfolio, characterized from a sample of returns as a coherent alternative to Value at Risk at a fixed confidence level",
+  "brief_reason": "the coherent tail-average estimator over a distribution's worst-case quantile region is the transferable machinery; the portfolio-returns risk-measurement setting is the finance-specific object."
+}

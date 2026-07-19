@@ -1,0 +1,5 @@
+{
+  "method_atom": "an observation that the coefficients of a graded analytic/topological invariant (a modular generating function whose expansion coefficients are nonnegative integers) decompose exactly as sums of the dimensions of the irreducible representations of a finite symmetry group, revealing a hidden action of that discrete group on the underlying structure via representation theory.",
+  "object_atom": "the elliptic genus of the K3 surface, whose expansion coefficients are matched to the irreducible-representation dimensions of the largest Mathieu group M_24.",
+  "brief_reason": "the transferable part is the decomposition of an invariant's integer coefficients into dimensions of a finite group's irreducible representations; the K3 elliptic genus and the specific sporadic group M_24 are the domain-specific objects."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a symmetry-classification procedure that determines, for a parametrized family of governing equations, the continuous transformation groups (invariance algebras) each member admits, and uses the structure theory of abstract low-dimensional Lie algebras to partition the family into finitely many inequivalent classes up to a change of variables, bounding the maximal admissible symmetry dimension and enumerating canonical representatives per dimension.",
+  "object_atom": "a class of nonlinear second-order evolution (heat-conductivity) partial differential equations of the form u_t = F(t,x,u,u_x) u_xx + G(t,x,u,u_x).",
+  "brief_reason": "The transferable part is the Lie-symmetry/abstract-Lie-algebra classification machinery for enumerating inequivalent equations, while the specific family of nonlinear heat-conduction PDEs is the domain-specific object it is applied to."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "an analytic series-expansion technique that approximates the transition probability density (and hence the log-likelihood) of a discretely sampled continuous-time multivariate stochastic process, with expansion coefficients derived explicitly by exploiting the generator/structure of the dynamics and with provable convergence to the exact likelihood; this yields a tractable maximum-likelihood estimation and inference procedure for continuous-time dynamics observed only at discrete intervals.",
+  "object_atom": "systems of coupled stochastic differential equations (multivariate diffusion processes) as used to model asset/price dynamics in financial statistics, observed at discrete time intervals.",
+  "brief_reason": "The closed-form likelihood-expansion machinery for inferring parameters of discretely sampled continuous-time stochastic dynamics is field-neutral and transferable, while the multivariate financial diffusion models are the domain-specific object; the two are cleanly separable."
+}

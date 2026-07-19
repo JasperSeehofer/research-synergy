@@ -1,0 +1,5 @@
+{
+  "method_atom": "a single-degree-of-freedom nonlinear dynamical system whose slowly-evolving background trajectory is a stable dynamical attractor, so that small perturbations around it remain purely adiabatic (co-moving with the attractor rather than sourced by an independent mode) and are amplified into a nearly scale-invariant, slightly tilted fluctuation spectrum with non-Gaussian statistics — achieved with one variable alone, bypassing the two-step route of first exciting an auxiliary orthogonal mode and then converting it.",
+  "object_atom": "a contracting early universe undergoing ultra-slow (ekpyrotic) contraction driven by a single canonical scalar field within conventional general relativity, and its cosmological curvature/density perturbations.",
+  "brief_reason": "The attractor-based single-variable mechanism that yields a scale-invariant, red, non-Gaussian spectrum is the transferable machinery, while the ekpyrotically contracting scalar-field cosmos and its curvature perturbations are the cosmology-specific object; the split is clean since the dynamical-attractor argument does not intrinsically require the gravitational setting."
+}

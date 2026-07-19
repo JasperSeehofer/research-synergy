@@ -1,0 +1,5 @@
+{
+  "method_atom": "A non-perturbative renormalization-group flow (truncated to a local-potential approximation) that computes universal scaling functions and critical exponents for a continuous-symmetry order parameter near a second-order phase transition in the presence of an external symmetry-breaking field. It yields parameterized scaling functions for the order parameter and the longitudinal response, verifies universal relations between them, checks the predicted asymptotic large-field behavior, and quantifies corrections to scaling.",
+  "object_atom": "A four-component continuous-symmetry order parameter in three dimensions belonging to the O(4) universality class, concretely the finite-temperature chiral phase transition of two-flavor QCD, with the results aimed at the scaling analysis of lattice QCD data.",
+  "brief_reason": "The RG-computed universal scaling functions and critical-exponent machinery under an external field carry across to any continuous-symmetry critical system, while the O(4)/two-flavor-QCD chiral transition and lattice QCD are the physics-specific object."
+}

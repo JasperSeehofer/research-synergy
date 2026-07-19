@@ -1,0 +1,5 @@
+{
+  "method_atom": "Stochastic-dynamics simulation combined with scaling-argument analysis of many self-driven anisotropic units confined between two parallel boundaries, incorporating random thermal fluctuations and long-range medium-mediated (hydrodynamic) coupling. The active units accumulate as a boundary excess in confined geometry, and power-law scaling relations for this accumulation are derived as functions of confinement width, unit length, and driving-force magnitude by mapping the problem onto an analogous mechanical system.",
+  "object_atom": "Self-propelled nano- and micro-rods (active elongated colloidal particles) suspended in a fluid and confined between two parallel walls at nano- to micrometer length scales.",
+  "brief_reason": "The transferable machinery is the noise-plus-hydrodynamics simulation and analogy-based scaling of self-driven anisotropic units accumulating at confining boundaries, while the fluid-suspended self-propelled rods between walls are the soft-matter-specific object."
+}

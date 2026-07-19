@@ -1,0 +1,5 @@
+{
+  "method_atom": "An algebraic-combinatorial framework built on an algebra of commuting nilpotent generators (each squaring to zero) and its associated Fock-space representation, equipped with trace identities and a noncommutative integration-by-parts formula. This machinery yields a criterion for the long-run convergence of an iterated linear stochastic operator to a unique invariant state without ever forming powers of that operator.",
+  "object_atom": "A Markov chain: a discrete-state stochastic process specified by a transition matrix, whose ergodicity (convergence to a unique stationary distribution) is being characterized.",
+  "brief_reason": "The nilpotent-generator/Fock-space plus trace-identity and integration-by-parts machinery is field-neutral and transferable, whereas the transition-matrix Markov chain and its ergodicity are the domain-specific object."
+}

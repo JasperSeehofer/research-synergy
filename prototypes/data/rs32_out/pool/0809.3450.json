@@ -1,0 +1,5 @@
+{
+  "method_atom": "A framework for detecting proximity to a continuous (second-order) phase transition by computing higher-order, non-Gaussian cumulants (third and fourth central moments) of a fluctuating observable, exploiting the fact that these cumulants diverge as increasingly high powers of the diverging correlation length near the critical point, so that odd and quartic cumulants are far more sensitive indicators of criticality than the variance.",
+  "object_atom": "The conjectured QCD critical point, probed via event-by-event fluctuations of experimental observables in heavy-ion collisions, specifically the multiplicities of pions and protons.",
+  "brief_reason": "The scaling of high-order cumulants with a diverging correlation length as a sharp probe of a critical point is the transferable method, while the QCD critical point and hadron-multiplicity fluctuations in heavy-ion collisions are the domain-specific object."
+}

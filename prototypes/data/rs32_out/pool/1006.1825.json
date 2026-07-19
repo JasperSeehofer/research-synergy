@@ -1,0 +1,5 @@
+{
+  "method_atom": "an Enskog-type kinetic theory that coarse-grains stochastic microscopic many-body dynamics into closed macroscopic transport equations, yielding explicit expressions for the transport coefficients and predicting a symmetry-breaking transition from a disordered to a collectively ordered state, analyzed both numerically and analytically",
+  "object_atom": "self-propelled agents with velocity-alignment interactions (the Vicsek model), whose collective flocking state emerges from a disordered phase",
+  "brief_reason": "the coarse-graining-to-hydrodynamics kinetic-theory machinery and its order-disorder transition are transferable, while the self-propelled aligning agents of the Vicsek model are the domain-specific object."
+}

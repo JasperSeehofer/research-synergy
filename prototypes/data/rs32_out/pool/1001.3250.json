@@ -1,0 +1,5 @@
+{
+  "method_atom": "a weakly-coupled two-level dressing scheme that admixes a small fraction of a strongly, isotropically repulsive long-range interacting state into an otherwise weakly interacting many-body ground state, generating effective nonlocal interactions whose momentum-space Fourier transform is partially attractive; this softens the collective excitation spectrum into a roton-maxon form and, when the roton minimum touches zero, drives a spontaneous transition to a self-organized state with coexisting long-range spatial order and global phase coherence",
+  "object_atom": "a three-dimensional Bose-Einstein condensate of ultracold atoms whose ground state is optically dressed with a highly excited Rydberg state carrying strong van der Waals interactions, subject to realistic decoherence and loss mechanisms",
+  "brief_reason": "The transferable machinery is the weak-admixture-induced nonlocal interaction with a partially attractive momentum-space kernel that yields a roton-maxon spectrum and a supersolid-type order-plus-coherence instability; the Rydberg-dressed atomic BEC is the domain-specific object it acts on."
+}

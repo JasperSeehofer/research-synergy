@@ -1,0 +1,5 @@
+{
+  "method_atom": "A unified reduction of the exact free energy of an integrable many-body system to the solution of a single nonlinear integral equation, from which all thermodynamic quantities follow by quadrature. The same equation simultaneously governs the finite-temperature regime and the finite-size (zero-temperature) regime, is solved by iteration in one limiting regime and in closed form in the opposite (scale-invariant) regime, and admits systematic higher-order corrections extracted from its Riemann-Hilbert representation.",
+  "object_atom": "Exactly-solvable lattice and quantum-field systems: the six-vertex model with twisted boundary conditions, the XXZ magnetic spin chain in an external magnetic field, and the sine-Gordon / massive Thirring field theory in a periodic box.",
+  "brief_reason": "The reduction of thermodynamics/finite-size behavior to a single nonlinear integral equation with Riemann-Hilbert-based corrections is the transferable machinery, while the specific integrable spin chains and field theories are the domain-specific objects."
+}

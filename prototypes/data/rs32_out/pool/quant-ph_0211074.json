@@ -1,0 +1,5 @@
+{
+  "method_atom": "A technique for quantifying the correlation shared between a bounded subregion of a strongly-correlated many-body system and the rest of it by computing the entropy of the subregion's reduced state after the remainder is averaged out; near a continuous, scale-invariant transition this subregion entropy grows logarithmically with the subregion's size, with a prefactor fixed by the universal scale-invariant (conformal) theory that governs the transition, and this in turn implies a monotonic decrease of the quantity along a coarse-graining/renormalization flow together with a majorization ordering of the reduced state's spectrum.",
+  "object_atom": "The zero-temperature ground states of one-dimensional spin-chain models near and at their critical points, where the reduced state describes a contiguous block of L spins.",
+  "brief_reason": "The reduced-state entropy, its logarithmic scaling with subregion size, and the universal-prefactor / monotonicity-along-coarse-graining machinery carry across fields, while the 1D spin chains at their zero-temperature critical points are the physics-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "Bayesian parameter inference for an exponential-family probability model whose normalising constant (partition function) is analytically intractable, carried out with a Markov chain Monte Carlo scheme that circumvents evaluating that constant, and accelerated by a population/interacting-chains MCMC approach that improves convergence and mixing relative to Monte Carlo maximum-likelihood estimation.",
+  "object_atom": "exponential random graph models — probabilistic models of network structure whose parameters weight configurations (edges, subgraph counts) of a graph.",
+  "brief_reason": "The transferable machinery is Bayesian/population-MCMC inference for a model with an intractable normalising constant; the domain-specific object is the exponential random graph model of network data."
+}

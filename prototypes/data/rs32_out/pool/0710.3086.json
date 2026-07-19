@@ -1,0 +1,5 @@
+{
+  "method_atom": "A scheme for subdividing a single broadband resource that carries distributed pairwise correlations into a large number N of mutually independent, parallel channels by accessing 2N component modes at distinct Fourier frequencies and combining them pairwise via interference. This is frequency-division multiplexing of one shared wideband correlated resource into many separable subchannels, where the achievable channel count is set by the ratio of the resource's bandwidth to the receiver's usable bandwidth.",
+  "object_atom": "A broadband squeezed optical field from which distributed Einstein-Podolsky-Rosen entangled two-mode states are extracted and measured with homodyne detectors, each entangled pair serving as a resource for a quantum communication protocol such as quantum key distribution or teleportation.",
+  "brief_reason": "The transferable part is partitioning a single broadband correlated resource into many independent parallel channels by pairing modes at different frequencies (frequency multiplexing); the squeezed-light/EPR-entanglement optical system and quantum-communication protocols are the domain-specific object."
+}

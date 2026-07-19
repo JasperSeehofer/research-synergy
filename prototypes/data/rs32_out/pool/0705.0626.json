@@ -1,0 +1,5 @@
+{
+  "method_atom": "A dynamical-slowdown mechanism in which geometrically preferred local arrangements of many interacting units — identified by partitioning space around each unit via a cell-tessellation (Voronoi) construction — seed slow, long-lived correlated domains whose spatial extent grows as a control parameter is lowered. The rate of this domain growth sets how sharply the collective relaxation departs from a simple activated (exponential/Arrhenius) law, with faster growth producing a more pronounced super-Arrhenius slowdown.",
+  "object_atom": "A supercooled binary mixture of two particle species interacting through Lennard-Jones potentials at fixed pressure, studied by molecular dynamics — a model glass-forming liquid whose fragility (the steepness of its temperature-dependent slowdown approaching the glass transition) is being characterized.",
+  "brief_reason": "What carries across is the general link between the growth of geometrically-favored, locally-preferred correlated domains and the degree of super-Arrhenius slowdown; the domain-specific object is the supercooled Lennard-Jones binary liquid and its fragility."
+}

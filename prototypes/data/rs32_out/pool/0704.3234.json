@@ -1,0 +1,5 @@
+{
+  "method_atom": "an effective mean-field free-energy (thermodynamic-potential) framework built from two coupled order parameters, whose equilibrium values are determined by minimizing a grand-canonical potential as a function of a control temperature and a conserved-charge chemical potential, yielding a phase diagram of coupled symmetry-breaking transitions and derived bulk response quantities. Renormalization-group arguments are used to fix how the potential's parameters depend on the system's degrees of freedom.",
+  "object_atom": "strongly-interacting two-flavor quark-meson matter coupled to a Polyakov loop represented by a background temporal gauge field, and its deconfinement and chiral phase transitions as functions of temperature and quark chemical potential.",
+  "brief_reason": "The coupled-order-parameter, potential-minimization, temperature-plus-chemical-potential phase-diagram machinery transfers across fields, while the quarks, mesons, Polyakov loop, and deconfinement/chiral transitions are the QCD-specific object."
+}

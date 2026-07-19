@@ -1,0 +1,5 @@
+{
+  "method_atom": "a framework for proving that a stochastically forced dissipative dynamical system driven out of balance by coupling to two reservoirs at its boundaries possesses a unique stationary (steady-state) distribution, using hypoellipticity (Hörmander bracket conditions) and controllability arguments; it further establishes exponentially fast convergence to that state and characterises steady throughput and fluctuations, with the regularity arguments extended to infinite-dimensional stochastic evolution equations via Malliavin calculus.",
+  "object_atom": "a chain of point masses connected by springs, coupled at its two ends to infinite heat reservoirs held at different temperatures, together with certain stochastic partial differential equations.",
+  "brief_reason": "The transferable part is the existence/uniqueness/convergence machinery for stationary states of boundary-driven stochastic systems (hypoellipticity, controllability, Malliavin regularity); the domain-specific object is the spring-coupled mass chain between thermal reservoirs."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "Porting a compute-bound, highly data-parallel iterative numerical simulation onto a massively parallel throughput processor (a many-core accelerator programmed in a data-parallel language), using separate parallel kernels for neighbor-local (short-range) versus all-pairs (long-range) pairwise-interaction summation together with a parallel congruential pseudo-random-number generator, and benchmarking the achieved throughput against a serial general-purpose processor to quantify the speedup.",
+  "object_atom": "Molecular dynamics simulations of many particles evolving in time under short-ranged and long-ranged pairwise interaction forces.",
+  "brief_reason": "The parallel-hardware acceleration and benchmarking machinery transfers to any data-parallel numerical workload, while the many-particle molecular-dynamics-under-interaction-forces system is the domain-specific object."
+}

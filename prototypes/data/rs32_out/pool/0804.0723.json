@@ -1,0 +1,5 @@
+{
+  "method_atom": "an inverse-problem estimation framework that recovers an unknown smooth coordinate warping which maps a stationary, rotation-invariant reference process into an observed inhomogeneous one, using dense sampling of a single realization. It establishes when such a warping is identifiable from second-order structure alone and supplies an end-to-end algorithmic recovery procedure from modelling assumptions to numerical reconstruction of the transformation.",
+  "object_atom": "isotropic Gaussian random fields on the two-dimensional plane, and the class of nonstationary processes obtained by spatially deforming them.",
+  "brief_reason": "The identifiability-plus-algorithmic recovery of a warping that stationarizes a process is the transferable machinery, while the isotropic Gaussian field on R^2 and its deformed nonstationary version are the domain-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a system of two coupled resonant modes in which destructive interference between the excitation pathways opens a narrow spectral window of anomalously low dissipation surrounded by steep (normal) dispersion, so that wave packets crossing the window acquire a large group delay (slow propagation); because the interaction region is much thinner than the relevant wavelength, identical units can be stacked in series to broaden the low-loss dispersive band and raise throughput",
+  "object_atom": "a subwavelength-structured planar electromagnetic metamaterial slab through which electromagnetic pulses propagate",
+  "brief_reason": "the coupled-resonator interference producing a low-loss, steeply-dispersive transparency window with large group delay in a sub-wavelength stackable structure is the transferable machinery, while the planar electromagnetic metamaterial acting on light is the domain-specific object."
+}

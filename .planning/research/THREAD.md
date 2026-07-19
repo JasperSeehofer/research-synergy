@@ -57,12 +57,40 @@ scoring (Gen-4 LBD — vault: `wiki/concepts/dynamical-lbd.md`, the three accept
 | The RS-26/27 discovery yield (~12.5% end-to-end genuine bridges) is real reduction-retrieval signal, not LLM confabulation on any surface-disjoint cross-field pair | **VERIFIED — PASS (Phase 47 EXP-RS-28, 2026-07-18)** — the byte-identical card+adjudicator pipeline on 80 RANDOM cross-archive ∧ lexical<0.06 pairs (reduction did NOT flag) confirms **0/80** (card) → **0/80** genuine (end-to-end) vs treatment 6/40 → 5/40 → **10× enrichment, Fisher one-sided p=0.0035**. Reconstructed adjudicator reproduces 5/6 on treatment (harness-valid). The open-book card stage alone rejected all 80 → it is a strong well-calibrated first gate, not a rubber stamp → scaling justified. | `.planning/phases/47-calibration-control/47-{PREREG,VERIFICATION}.md`, `prototypes/data/rs28_verdict.json` |
 | The genuine cross-field bridges surfaced by the finder (RS-26/27) are NOVEL discoveries | **REFUTED (Phase 48 EXP-RS-29, 2026-07-18)** — adversarial web prior-art hunt + skeptical classifier over the 7 genuine non-textbook bridges: **0 novel-looking / 3 specialist-known / 4 explicitly-published cross-field** (B6=Baake-Baake-Wagner PRL 78,559 1997; B2=Fulling-Kaplan-Wilson; B7=Deift RH program; E0=Hofbauer-Sigmund). The bridges are REAL (7/7) but the "surprising" model-knowledge label ≠ unpublished (7/7 not novel). At n=140 the strongest reduction matches ARE the canonical equivalences. **The finder is a validated cross-field analogy-REDISCOVERY engine, not a novelty engine** → forward needs scale + weak-match tail + a literature novelty-gate. | `.planning/phases/48-web-novelty/48-VERIFICATION.md`, `prototypes/data/rs29_novelty.json` |
 | The finder surfaces novel bridges at SCALE + by hunting the weak-match TAIL (RS-29's remaining escape hatch) | **REFUTED — KILL (Phase 49 EXP-RS-30, 2026-07-18)** — 684 papers (~5×), two strata + two-hunter novelty-gate: adjudicated-genuine **top 5, tail 0**; novelty **3 known-crossfield / 2 specialist / 0 novel**. The TAIL (ranks 4-12) yielded 0 genuine bridges (1/40 card-confirmed, 0 adjudicated) → weak matches are spurious, not hidden-novel. Positive control passed (top 8.3%). **REFRAMED by RS-31: this KILL was SELECTION-OBJECTIVE-bound (argmax=canonical), NOT representation-bound — the reduction DOES carry degree-independent future-bridge signal on the obscure stratum.** | `.planning/phases/49-scaled-novelty-test/49-{PREREG,VERIFICATION}.md`, `prototypes/data/rs30_verdict.json` |
+| Ranking on an object-stripped method-atom beats the whole-reduction cosine at predicting future cross-field bridges | **SUPPORTED (exploratory) — WEAK on pre-reg primary (Phase 51 EXP-RS-32/E3, 2026-07-19)** — method-atom AUC 0.813 overall / 0.832 Poor-Poor vs symmetric 0.714 / 0.754 (+0.08-0.10; object-stripping sharpens the mechanism match). Feynman split-gate PASSED 5/5 (typed method/object atomization viable). Pre-registered off-diagonal "un-buries transfers" test WEAK-underpowered (3/82 object-distant positives < 10) → main effect NOT promoted to PASS (no goalpost-move). Carry method-atom ranking forward as the E2 substrate. | `.planning/phases/51-method-object/51-{PREREG,VERIFICATION}.md`, `prototypes/data/rs32_verdict.json` |
 | The field-neutral reduction cosine predicts FUTURE cross-field bridging beyond node degree (a prospective novelty signal), incl. among obscure papers | **VERIFIED — PASS (Phase 50 EXP-RS-31/E1, 2026-07-18)** — temporal holdout T=2010 on the mined benchmark (165 future-bridge positives): reduction AUC **0.714** overall / **0.754 Poor-Poor** / 0.751 Rich-Rich vs preferential-attachment degree-null **~0.50 (chance)**; Poor-Poor ΔAUC +0.259, p=1e-5, bootstrap CI [0.084,0.418]. Circularity-audited clean (assertion-based mining, blind reduction). **The rediscovery ceiling is a selection-objective artifact, not a representation limit → novelty path reopened, E2/E3/E4 falsifiable.** Caveat: PASS = signal exists (degree-independent, obscure), NOT usable novel-bridge precision yet. | `.planning/phases/50-temporal-novelty/50-{PREREG,VERIFICATION}.md`, `prototypes/data/rs31_verdict.json` |
 
 ## Active experiment
 
-**NONE active — EXP-RS-31 (E1) TEMPORAL-HOLDOUT NOVELTY BENCHMARK → PASS (pre-registered, 2026-07-18).
-The rediscovery ceiling is a SELECTION-OBJECTIVE ARTIFACT, not a representation limit — the novelty path
+**NONE active — EXP-RS-32 (E3) method/object flip CONCLUDED (2026-07-19): WEAK-underpowered on the
+pre-registered off-diagonal test, BUT method-atom ranking STRICTLY BEATS the whole-reduction cosine
+(overall AUC 0.813 vs 0.714; Poor-Poor 0.832 vs 0.754) → a better substrate, carry it into E2.** Feynman
+split-gate PASSED 5/5 (LLM cleanly splits method vs object — typed atomization is viable). The specific
+"symmetric buries object-distant transfers" mechanism is untestable here (only 3/82 positives are
+object-distant at τ=0.5 < N_min 10; NOT promoted to PASS — no goalpost-moving). Next = **E2
+(candidate-inference/residue reranking)** on the method-atom substrate, graded on E1; route E2's O(N)
+reduction to a cheaper model tier (Mistral/Haiku, validated vs E1 first) to stop draining the Claude
+rate-limit window. `.planning/phases/51-method-object/51-{PREREG,VERIFICATION}.md`; `data/rs32_verdict.json`.
+
+### (just-concluded, WEAK+signal 2026-07-19) EXP-RS-32 (E3) → Phase 51 — Method/Object Asymmetric Retrieval
+
+**The cheapest objective-flip. Split each paper into method_atom + object_atom (new frozen
+`rs32_methobj.md`), rank on method-similarity, grade on E1.** Feynman split-validation gate FIRST →
+**GATE-PASS 5/5** (method-sim > object-sim on all curated deep analogies; within-paper method↔object 0.714
+< 0.85; physics-leak risk did NOT bite → typed method/object atomization is viable). Pool: 633/634
+method/object-reduced (1 policy-flagged excluded). **Result:** pre-registered PRIMARY (off-diagonal
+object-distant transfer lift) = **WEAK-underpowered** (only 3/82 positives clear cos(object)<0.5; the
+"buries transfers" mechanism untestable in this corpus). **Robust secondary: method-atom cosine strictly
+dominates the symmetric full-reduction as a future-bridge predictor** — overall 0.813 vs 0.714, Poor-Poor
+0.832 vs 0.754 (object-stripping sharpens the mechanism match; mechanistically expected). Honest: reported
+as exploratory, not promoted to PASS. **Carry method-atom ranking forward.** Operational note: 634 Opus
+reductions hit the session rate-limit at ~514 → tier the O(N) reduction step off Opus next.
+`.planning/phases/51-method-object/51-{PREREG,VERIFICATION}.md`; `prototypes/rs32_asymmetric.py`.
+
+---
+
+### (concluded, PASS 2026-07-18) EXP-RS-31 (E1) TEMPORAL-HOLDOUT NOVELTY BENCHMARK → PASS.
+**The rediscovery ceiling is a SELECTION-OBJECTIVE ARTIFACT, not a representation limit — the novelty path
 is REOPENED.** The field-neutral reduction cosine predicts FUTURE cross-field bridging beyond node degree,
 including on the obscure Poor-Poor stratum (AUC 0.754 vs degree-null 0.495, ΔAUC +0.259, p=1e-5, bootstrap
 95%CI [0.084,0.418]); degree predicts at CHANCE (0.50). Circularity audit CLEAN (mined pairs selected by a

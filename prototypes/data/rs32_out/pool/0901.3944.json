@@ -1,0 +1,5 @@
+{
+  "method_atom": "a staged estimation of a system's normalizing constant (partition function) relative to a reference system, in which a large composite entity is assembled incrementally from a small set of elementary building blocks whose configurations and pairwise interactions are pre-computed once and cached in reusable libraries and lookup tables, so the global quantity is obtained by combining these pre-tabulated pieces rather than recomputing them, while the same procedure yields equilibrium ensembles of the assembled configurations at no extra cost for cross-checking.",
+  "object_atom": "the absolute free energy (partition function) of molecules, specifically small peptides grown from amino-acid and capping-group fragments, benchmarked against standard molecular dynamics simulation.",
+  "brief_reason": "the reference-system partition-function estimation via staged assembly from pre-tabulated reusable building blocks is the transferable machinery, while molecules/peptides built from amino-acid fragments are the chemistry-specific object."
+}

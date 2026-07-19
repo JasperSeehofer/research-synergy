@@ -1,0 +1,5 @@
+{
+  "method_atom": "A greedy linear-time peeling procedure that produces a total elimination ordering of a recursively decomposable structure built from fully-connected modules joined through minimal separating cuts: at each step it removes a peripheral module attached to the remainder via a minimal cut, and it can be steered to begin from the module whose attaching cut is extremal (minimal or maximal under set inclusion) among all such minimal cuts.",
+  "object_atom": "Chordal graphs and their simplicial vertex elimination schemes, where the modules are maximal cliques, the pendant module is a pending maximal clique, and the cuts are minimal vertex separators.",
+  "brief_reason": "The transferable part is the linear-time greedy peeling of a clique-tree-like decomposable structure by detaching extremal, minimally-attached modules, while the chordal-graph / maximal-clique / minimal-separator terminology is the domain-specific object, with the 'simplicial' peeling notion being somewhat graph-intrinsic."
+}

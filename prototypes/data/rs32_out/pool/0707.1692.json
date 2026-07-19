@@ -1,0 +1,5 @@
+{
+  "method_atom": "Inducing an effective ordered/paired condensate onto the topologically protected boundary modes of a system by placing it in contact with a bulk carrier of that order (proximity coupling), yielding an emergent state whose effective pairing symmetry differs from the inducing one and hosts protected zero-energy modes localized at topological defects and along one-dimensional interfaces; assembling networks of such interfaces then provides a scheme to create, transport, and merge these localized defect-bound excitations.",
+  "object_atom": "The two-dimensional surface states of a strong topological insulator coupled to an adjacent s-wave superconductor, hosting Majorana bound states at superconducting vortices and Majorana-fermion wires formed by linear junctions between superconductors.",
+  "brief_reason": "The transferable machinery is proximity-induced order on protected boundary states producing defect-bound zero modes manipulated via interface networks; the topological-insulator/superconductor/Majorana-fermion system is the condensed-matter-specific object, with the vortex-bound zero mode being the natural fusion point between the two."
+}

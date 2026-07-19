@@ -1,0 +1,5 @@
+{
+  "method_atom": "Parametric excitation of the ground-state (vacuum) fluctuations of a quantized field by externally imposed time-dependent boundary conditions or modulated system parameters, converting virtual fluctuations into real, detectable quanta. The paper also applies a survey-and-classification method: partitioning candidate experimental-realization schemes into categories and enumerating the outstanding theoretical obstacles common to them.",
+  "object_atom": "The quantized electromagnetic field confined by moving mirrors or a cavity with time-varying properties, and the predicted creation of real photons from its vacuum — the setting of the Dynamical Casimir Effect and its proposed laboratory realizations.",
+  "brief_reason": "The transferable machinery is time-dependent-boundary parametric amplification of a quantum field's vacuum into real quanta (plus a review taxonomy); the electromagnetic-field-between-moving-mirrors Casimir system is the physics-specific object."
+}

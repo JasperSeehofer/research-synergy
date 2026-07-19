@@ -1,0 +1,5 @@
+{
+  "method_atom": "an analysis of mutually-dependent coupled networks in which the removal of nodes triggers an iterative cascade of failures that propagates back and forth between the layers through cross-dependency links, producing a percolation transition whose robustness to random node removal is qualitatively different from and more fragile than that of a single isolated network.",
+  "object_atom": "real interdependent systems whose components rely on each other across domains — power grids and their control communication networks, and analogous coupled systems in infrastructure, biology, sociology, and economics.",
+  "brief_reason": "the transferable part is the coupled-network percolation/cascade-of-failures machinery and its heightened vulnerability under coupling; the domain-specific part is the concrete interdependent infrastructure/biological/social/economic systems it describes."
+}

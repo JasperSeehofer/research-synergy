@@ -1,0 +1,5 @@
+{
+  "method_atom": "derivation of an exact asymptotic formula for a macroscopic connectivity/enclosure event in a critical random-cluster process on a two-dimensional lattice, where at the critical point the probability that a random connected cluster touches a prescribed boundary region and encircles a designated interior point converges to a conformally invariant limit expressible in closed form",
+  "object_atom": "critical site percolation on the triangular grid inside the unit disk, specifically the event that a percolation cluster intersects a boundary arc A while the cluster together with A surrounds the origin",
+  "brief_reason": "the conformally invariant scaling-limit machinery for boundary-connection and encirclement probabilities of critical random clusters is the transferable method, whereas site percolation on the triangular grid in the disk is the domain-specific object."
+}

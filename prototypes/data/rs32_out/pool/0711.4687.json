@@ -1,0 +1,5 @@
+{
+  "method_atom": "a superstatistical (hierarchical stochastic) model in which a fast memoryless counting process with a fixed rate is generalized by letting that rate fluctuate across an ensemble, drawn from an inverse-chi-square mixing distribution over several parallel macroscopic pathways; averaging the fast dynamics over this slow parameter distribution yields broad, heavy-tailed marginal distributions of waiting/first-passage times",
+  "object_atom": "the progression of malignant cancer cells through the metastatic cascade, benchmarked against observed survival-time distributions of breast cancer patients",
+  "brief_reason": "the superstatistical Poisson-with-fluctuating-rate machinery producing heavy-tailed first-passage times carries across fields, while the metastatic-cascade and patient-survival subject is the biomedical-specific object."
+}

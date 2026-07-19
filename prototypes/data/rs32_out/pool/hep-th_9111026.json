@@ -1,0 +1,5 @@
+{
+  "method_atom": "an analytic technique that exploits the conformal invariance of a system at a continuous critical point to compute boundary-to-boundary connection probabilities within a bounded two-dimensional domain, deriving exact closed-form predictions and showing these observables are invariant not merely under global rescaling but under the full group of maps that are conformal in the interior and continuous on the boundary — a stronger symmetry than generic critical observables possess.",
+  "object_atom": "geometric connectivity of clusters in two-dimensional percolation tuned to its threshold, specifically the probability that a cluster spans between opposite sides of a rectangle, benchmarked against numerical simulation.",
+  "brief_reason": "The conformal-invariance machinery for computing boundary-crossing probabilities in a finite 2D region carries across fields, while the percolation-at-threshold spanning-cluster system is the domain-specific object."
+}

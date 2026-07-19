@@ -1,0 +1,5 @@
+{
+  "method_atom": "distributed gradient-descent optimization of a class of coverage/utility functions over many interacting agents, in which each agent adjusts its state by following the local gradient of a shared objective, yielding a closed-loop dynamics that is adaptive, asynchronous, decentralized, and provably convergent to an optimal configuration",
+  "object_atom": "a group of autonomous mobile vehicles, each acting as a tunable sensor, coordinating their positions to perform a distributed sensing task",
+  "brief_reason": "the distributed gradient-descent-on-a-shared-utility coordination machinery is transferable to any multi-agent optimization setting, while the mobile-sensor vehicle network performing spatial sensing is the domain-specific object."
+}

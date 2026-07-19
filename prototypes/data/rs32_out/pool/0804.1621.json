@@ -1,0 +1,5 @@
+{
+  "method_atom": "A coherent linear wave propagating through a weak static random potential undergoes many small-amplitude reflections whose interference suppresses transport, halting the wave's expansion and producing a stationary, exponentially decaying amplitude profile. The exponential-decay (localization) length can be extracted by fitting the tails and compared to theory. A threshold (mobility edge) in the wave's spatial-frequency/wavelength content, set by a high-spatial-frequency cutoff in the disorder's noise spectrum, separates a regime of exponential localization from one of algebraic (power-law) decay.",
+  "object_atom": "Matter-waves of a Bose-Einstein condensate released into a one-dimensional waveguide and expanding through a controlled laser-speckle disorder potential, in a regime of weak disorder and low atomic density where interatomic interactions are negligible.",
+  "brief_reason": "The wave-interference-in-a-random-medium machinery producing exponential localization and a spatial-frequency mobility edge is field-neutral and transferable; the specific BEC-in-a-1D-speckle-potential system is the atomic-physics object."
+}

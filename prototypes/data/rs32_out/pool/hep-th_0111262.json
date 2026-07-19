@@ -1,0 +1,5 @@
+{
+  "method_atom": "Representing a dynamical system's full state as a single element (a spinor) of an associative algebra generated from a Hermitian bilinear form, so that a pair of conjugate variables are jointly encoded in and extracted from that one algebraic object. The state obeys a first-order equation of motion derived from a reparametrization-invariant variational principle, with auxiliary gauge fields whose own equations of motion enforce the system's constraints and secure invariance under symmetry transformations.",
+  "object_atom": "The relativistic point particle, whose space-time coordinates and conjugate momenta evolve along its worldline consistent with local Lorentz invariance.",
+  "brief_reason": "The algebra-of-a-bilinear-form encoding of conjugate variables plus constraint-generating gauge invariance is the transferable machinery, while the space-time coordinates/momenta of a relativistic particle are the physics-specific object."
+}

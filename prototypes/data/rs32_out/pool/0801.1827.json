@@ -1,0 +1,5 @@
+{
+  "method_atom": "resonant transduction in which the position of a mechanical oscillator is parametrically coupled to the resonance frequency of a driven electromagnetic (or wave) cavity, so that reading out the cavity's transmitted signal yields a continuous, high-sensitivity estimate of the oscillator's displacement; the technique operates near the fundamental measurement-imprecision floor set by the quantum backaction/standard-quantum-limit tradeoff of a continuous linear detector.",
+  "object_atom": "a nanomechanical beam whose position is capacitively coupled to a superconducting transmission-line microwave cavity, measured at tens of milliKelvin to detect thermomechanical motion with aN/sqrt(Hz) force sensitivity.",
+  "brief_reason": "The parametric position-to-cavity-frequency coupling and continuous-detection-at-the-quantum-limit machinery is the transferable method, while the specific nanomechanical beam plus superconducting microwave cavity at cryogenic temperature is the domain-specific object."
+}

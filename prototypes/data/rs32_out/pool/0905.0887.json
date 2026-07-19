@@ -1,0 +1,5 @@
+{
+  "method_atom": "an iterative eigenvalue-estimation algorithm that extracts the extremal eigenvalue of a Hermitian operator by encoding it into the relative phase of a coherent two-level (qubit) register and reading that phase out bit-by-bit via repeated controlled-evolution and measurement, achieving only polynomial rather than exponential growth of computational resources with problem size, realized on a physical wave-interference-based information-processing substrate",
+  "object_atom": "the ground-state electronic energy of the smallest molecule (molecular hydrogen in a minimal basis), obtained by solving its Schrodinger equation, implemented in a photonic experiment as a step toward computing molecular properties in quantum chemistry",
+  "brief_reason": "the phase-estimation/eigenvalue-extraction machinery with polynomial scaling carries across to any Hermitian-operator problem, while the hydrogen-molecule electronic-structure calculation is the chemistry-specific object."
+}

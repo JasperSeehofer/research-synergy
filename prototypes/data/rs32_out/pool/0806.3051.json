@@ -1,0 +1,5 @@
+{
+  "method_atom": "Approximating the discrete spectrum of a self-adjoint linear operator by expanding it in the complete orthonormal eigenbasis of a simpler, exactly solvable operator, truncating that basis to a finite set, and numerically diagonalizing the resulting finite matrix representation to recover the lowest eigenvalues and eigenvectors.",
+  "object_atom": "The low-lying bound states of a one-dimensional quantum-mechanical particle governed by the Schrödinger equation for a short-range potential — most notably the harmonic oscillator — using the infinite square-well eigenfunctions as the working basis.",
+  "brief_reason": "The truncated-basis matrix-diagonalization scheme for operator eigenvalue problems is the transferable method, while the one-dimensional quantum bound-state / harmonic-oscillator system it is applied to is the domain-specific object."
+}

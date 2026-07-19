@@ -1,0 +1,5 @@
+{
+  "method_atom": "An information-theoretic complexity measure built from the entropy of the harmonic (Fourier-mode) decomposition of a phase-space quasi-probability distribution, valid for both pure and mixed states, that reduces to a known classical complexity measure in the appropriate limit. The number of significant harmonics grows exponentially in time, giving a linear entropy increase up to saturation whose growth rate flags sharp transitions and whose long-term fluctuation size distinguishes regular (integrable) from irregular (chaotic) dynamical regimes.",
+  "object_atom": "A quantum many-body system exhibiting the interplay of chaos and entanglement, illustrated on an Ising spin chain in a homogeneous tilted magnetic field across its integrable, chaotic, and phase-transition regimes.",
+  "brief_reason": "The transferable part is the phase-space-harmonic entropy as a generic complexity/order-parameter diagnostic for any dynamical distribution; the domain-specific part is the quantum many-body spin chain and its entanglement-driven dynamics."
+}

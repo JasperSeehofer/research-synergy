@@ -1,0 +1,5 @@
+{
+  "method_atom": "a differential (operator) representation of a pair of deformed raising/lowering operators satisfying a one-parameter deformation of the canonical commutation relation, analyzed in the limit where the deformation parameter recovers the undeformed algebra; from this, the construction of generalized nonlinear and Gazeau-Klauder coherent states as parameter-labelled superpositions built on the number-like operator spectrum, and an intertwining (factorization) technique that generates families of almost-isospectral partner operators sharing nearly the same spectrum.",
+  "object_atom": "quons — quantum excitations obeying the q-mutation relation between creation and annihilation operators, and the associated free quonic harmonic-oscillator Hamiltonian formed from the deformed number operator.",
+  "brief_reason": "The deformed-ladder-operator representation, coherent-state construction, and intertwining/factorization machinery transfer to any system with a deformed algebra, while the quonic oscillator and its q-mutation relation are the physics-specific object."
+}

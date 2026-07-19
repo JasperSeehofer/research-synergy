@@ -1,0 +1,5 @@
+{
+  "method_atom": "an inverse-inference procedure that reconstructs the effective coupling parameters of a coarse-grained model from configurations sampled from a finer underlying model, by solving a set of exact moment/consistency equations (Schwinger-Dyson / integration-by-parts identities) derived from the invariance of the system's integration measure under its symmetry group. Near a first-order transition the inverse problem becomes ill-conditioned (a fine-tuning problem), which is kept under control by restricting the number of fitted parameters.",
+  "object_atom": "SU(3) Yang-Mills gauge theory at finite temperature and varying coupling, recast as effective Polyakov-loop models that must reproduce the order parameter across its first-order deconfinement phase transition.",
+  "brief_reason": "The measure-symmetry-based inverse-fitting of a coarse model's couplings from fine-scale samples (and its near-transition ill-conditioning) is the transferable machinery; the SU(3) gauge theory and its Polyakov-loop order parameter are the physics-specific object."
+}

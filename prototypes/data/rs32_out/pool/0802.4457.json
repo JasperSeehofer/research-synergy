@@ -1,0 +1,5 @@
+{
+  "method_atom": "measuring how the resonant frequency of an oscillator shifts as a control parameter (temperature) is varied, then fitting the observed shift to a theory of the resonator's coupling to an ensemble of bistable (two-level) fluctuators to infer the number of fluctuators coupled to the mode; the coupling strength is measured across a family of geometrically scaled devices, and its scaling with a size parameter discriminates whether the fluctuators are distributed over a bounding surface versus throughout the bulk, further constraining the thickness of the active layer",
+  "object_atom": "niobium superconducting coplanar waveguide microwave microresonators of varying center-strip width, and the two-level systems residing in a thin (few-nm) native-oxide surface layer that perturb them at sub-kelvin temperatures",
+  "brief_reason": "the frequency-shift-versus-control-parameter fit and geometric-scaling argument for surface-versus-bulk distribution of coupled two-level fluctuators is the transferable machinery, while the niobium resonators and their oxide-layer two-level systems are the condensed-matter-specific object."
+}

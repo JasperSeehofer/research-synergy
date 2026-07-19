@@ -1,0 +1,5 @@
+{
+  "method_atom": "a network-topology analysis showing that a large interaction graph decomposes into many small, densely connected clusters that nest recursively into progressively larger, looser groupings, with the number of clusters and their degree of internal cohesion following power-law scaling — a signature of scale-free hierarchical modular architecture that can be detected purely from connectivity.",
+  "object_atom": "the metabolic reaction networks of 43 organisms (nodes are metabolites/reactions, links are biochemical conversions), where the recovered topological modules map onto known biochemical functional units in Escherichia coli.",
+  "brief_reason": "the hierarchical-modularity / power-law-clustering detection on a connectivity graph is the transferable method; the biochemical metabolic network and its functional biology is the domain-specific object."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "A large network of coupled binary state-variables updated in discrete synchronous steps by fixed logical rules, analyzed with a decimation/pruning algorithm that iteratively removes units whose output has frozen to a constant, leaving a reduced dynamical core; the frozen fraction is understood as a percolation of a stability signal through the network, and exhaustive enumeration of the reduced system reveals how the count of periodic attractors scales with system size.",
+  "object_atom": "Random Boolean networks (the Kauffman model) of N nodes with randomly assigned Boolean update functions, used as an idealized model of genetic regulatory networks.",
+  "brief_reason": "The decimation-to-a-dynamical-core, stability-as-percolation, and attractor-counting-versus-size machinery is transferable to any discrete deterministic dynamical system, while the specific Kauffman random-Boolean-network genetic model is the domain object."
+}

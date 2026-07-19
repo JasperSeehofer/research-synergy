@@ -1,0 +1,5 @@
+{
+  "method_atom": "An operator-algebraic / K-theoretic framework: from the translation (symmetry) action on a discrete geometric pattern one builds a groupoid with an induced topology and its associated C*-algebra of observables, then computes the algebra's scaled, ordered K_0 group as a topological invariant. Pairing this invariant with an invariant measure via a trace/state yields a labelling that enumerates and pins the location of gaps in the spectrum of a self-adjoint operator, and the invariant measure alone can fully determine that labelling.",
+  "object_atom": "Aperiodic tilings — in particular one-dimensional tilings, their Cartesian products, and substitution-invariant tilings — together with the Schroedinger operators and integrated density of states describing one- or many-particle systems moving on such tilings and their periodic identifications.",
+  "brief_reason": "The groupoid-C*-algebra/K-theory-plus-invariant-measure gap-labelling machinery is the transferable method, while the aperiodic tilings and the Schroedinger particle systems living on them are the condensed-matter-specific object."
+}

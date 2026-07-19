@@ -1,0 +1,5 @@
+{
+  "method_atom": "Computational study of a dynamical-arrest / ergodicity-breaking transition in a many-body system of densely packed, mutually repelling units, driven by a packing-density control parameter (and a temperature-like softness parameter); the arrest is characterized by a divergence of equilibrium relaxation times, an avoided mode-coupling-type singularity, a scaling estimate of the equilibrium equation of state up to the arrest point where the conjugate response (pressure) stays finite, and non-equilibrium driving protocols that reveal a continuum of arrest points with different divergence thresholds rather than a single one.",
+  "object_atom": "Dense, polydisperse fluids of hard and finitely-compressible purely repulsive spheres, parameterized by volume fraction and, for the compressible case, finite temperature, up to jamming.",
+  "brief_reason": "The dynamical-arrest, relaxation-time-divergence, and equation-of-state-scaling machinery is transferable to any densely packed interacting system, while the hard/compressible repulsive spheres at a given volume fraction are the condensed-matter-specific object."
+}

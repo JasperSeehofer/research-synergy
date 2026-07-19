@@ -1,0 +1,5 @@
+{
+  "method_atom": "a multi-scale framework for collectives of many self-driven, mutually interacting units, formulated across microscopic (particle-based), mesoscopic (gas-kinetic), and macroscopic (fluid-dynamic) levels with an explicit micro-macro link; it uses statistical-physics and non-linear-dynamics tools to explain self-organization, symmetry-breaking pattern formation, phase-transition-like congestion and jamming instabilities that arise far below maximum load, and universal collective states shared across such driven ensembles",
+  "object_atom": "vehicular traffic on highways and in cities and crowds of pedestrians (the flowing streams, jams, stop-and-go waves, lane formation and panic deadlocks of moving vehicles and people), with noted extensions to bacterial colonies, bird flocks, and stock-market dynamics",
+  "brief_reason": "the transferable part is the multi-scale statistical-physics/non-linear-dynamics machinery for self-driven interacting-particle collectives (self-organization, phase transitions, jamming), while the domain-specific object is real vehicular and pedestrian traffic flow."
+}

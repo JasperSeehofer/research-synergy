@@ -1,0 +1,5 @@
+{
+  "method_atom": "a perturbative similarity-flow renormalization scheme that transforms a high-dimensional operator into a band-diagonal (small-width) effective operator by truncating a perturbative expansion at low order, then projects that effective operator onto a small basis and diagonalizes the reduced matrix to recover a discrete eigenstate; a companion operator-algebra technique on a constrained state space extends the same reduction to more general operators.",
+  "object_atom": "the Hamiltonian of an asymptotically free quantum field theory with a bound state, realized as a solvable matrix model and aimed at light-front Fock-space Hamiltonians of QCD and related theories.",
+  "brief_reason": "What carries across is the perturbative similarity-renormalization/effective-operator-truncation-plus-projection-and-diagonalization machinery for extracting eigenstates; what is domain-specific is the field-theoretic (QCD-type) Hamiltonian and its bound state."
+}

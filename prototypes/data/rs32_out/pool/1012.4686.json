@@ -1,0 +1,5 @@
+{
+  "method_atom": "A constrained maximum-likelihood estimation of a latent aggregate quantity that is only partially observable because a parent entity splits into several products, some of whose degrees of freedom escape measurement. Rather than relying on a limiting approximation that is valid only in a small fraction of cases, the unmeasured variables are inferred by minimizing a likelihood function over the full physically allowed configuration space, subject to consistency and conservation constraints that link the unobserved and observed components.",
+  "object_atom": "The invariant mass of a heavy resonance (a Z/gamma* or Higgs boson) that decays into a pair of tau leptons, whose subsequent decays emit multiple neutrinos that escape the detector, reconstructed for collider events at the Tevatron (CDF) and LHC.",
+  "brief_reason": "The constrained-likelihood inference of a hidden global quantity from partially observed products carries across fields; the tau-pair resonance mass with missing neutrinos at particle colliders is the domain-specific object."
+}

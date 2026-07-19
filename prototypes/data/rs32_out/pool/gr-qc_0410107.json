@@ -1,0 +1,5 @@
+{
+  "method_atom": "a linear spectral-stability analysis of an equilibrium background: perturbations are decomposed into characteristic damped-oscillation eigenmodes with complex frequencies, and the sign of the imaginary part (decay versus growth) determines whether the configuration is stable against small perturbations. The real and imaginary parts of these complex eigenfrequencies are traced as a governing control parameter is varied, using full non-linear numerical solution.",
+  "object_atom": "a 2+1 dimensional rotating 'draining bathtub' acoustic (fluid-flow) analogue of a rotating Kerr black hole, parameterised by its rotation parameter B.",
+  "brief_reason": "The complex-eigenfrequency / imaginary-part-sign stability machinery transfers to any perturbed background, while the rotating acoustic black-hole fluid analogue is the domain-specific object it is applied to."
+}

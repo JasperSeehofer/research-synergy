@@ -1,0 +1,5 @@
+{
+  "method_atom": "A small nonlinear feedback network that acts as a relaxation oscillator, producing periodic spike-like pulses in the concentration of a shuttling signalling species; the temporal pulse train encodes input conditions, and a downstream readout with fast binding/unbinding kinetics rectifies this oscillatory input into an ultrasensitive, switch-like response with very high effective cooperativity.",
+  "object_atom": "The NF-kB signalling system: nuclear-cytoplasmic translocation of the NF-kB transcription factor and its fast binding/dissociation at operator sites of downstream target genes in a cell.",
+  "brief_reason": "The transferable part is the spike-generating feedback oscillator plus a fast-kinetics readout that yields ultrasensitive (high-Hill) frequency/amplitude decoding; the domain-specific object is the NF-kB transcription factor shuttling and gene-operator binding."
+}

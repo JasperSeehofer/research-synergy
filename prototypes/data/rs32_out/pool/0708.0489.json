@@ -1,0 +1,5 @@
+{
+  "method_atom": "a steady-state fluctuation theory for stochastic dynamics held away from equilibrium, decomposing the joint fluctuations of two conjugate observables — a time-symmetric quantity (fraction of time spent in each state) and a time-antisymmetric quantity (net directed flow) — into complementary sectors. It introduces a symmetric activity/frequency functional as the counterpart to the antisymmetric entropy-production functional, and exhibits a canonical structure in which the two sectors are mutually coupled far from equilibrium but decouple near it, recovering extremum principles for the antisymmetric part.",
+  "object_atom": "overdamped (Brownian) diffusion processes driven out of thermal equilibrium by non-conservative forces.",
+  "brief_reason": "The two-sector (symmetric-occupation vs antisymmetric-current) fluctuation machinery and its near-equilibrium decoupling is transferable to any driven stochastic process, while the overdamped thermal diffusion is the physics-specific object it is applied to."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "represent entities as high-dimensional vectors whose coordinates are co-occurrence frequency statistics collected in a matrix, then quantify similarity between entities by the geometric proximity of their vectors (e.g. cosine of the angle); the choice of what indexes the matrix rows versus columns (entity-vs-context, entity-vs-entity, or pair-vs-pattern) yields distinct notions of similarity, and the raw frequency counts are typically reweighted and dimensionally reduced before comparison",
+  "object_atom": "the meaning (semantics) of human natural language as carried by text — specifically words, documents, and word-pairs/relations whose similarity in meaning is to be inferred and used in language-processing applications",
+  "brief_reason": "the frequency-matrix-to-vector-space geometric-similarity machinery is transferable to any co-occurrence data, while the linguistic meaning of words and documents in text is the domain-specific object it is applied to."
+}

@@ -1,0 +1,5 @@
+{
+  "method_atom": "a no-go argument that derives a logical contradiction between the joint outcome correlations of separated subsystems and the assumption that those outcomes are produced by underlying local, deterministic variables fixed independently at each site; crucially it strengthens the classic impossibility result by covering even the restricted regime where individual outcomes can be predicted with certainty, using a slightly enriched correlation structure to rule out any local-deterministic reproduction.",
+  "object_atom": "the measurement outcomes and correlations predicted by quantum theory, framed against Einstein's notion of an 'element of reality' for cases where an experiment's result can be predicted with certainty.",
+  "brief_reason": "the transferable part is the impossibility argument that local deterministic variables cannot reproduce given correlations even under certain prediction; the domain-specific part is quantum theory's outcomes and the EPR element-of-reality framing."
+}
